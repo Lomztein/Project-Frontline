@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3751266253062353309}
   - component: {fileID: 735094114993082431}
   m_Layer: 0
-  m_Name: MachineGunProjectile
+  m_Name: CannonProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,12 +44,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b9264c6df168824c81ff14270b80a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 150
-  Damage: 10
+  Speed: 250
+  Damage: 100
   Life: 10
-  HitParticle: {fileID: 732464253019408292, guid: 92a563c3efd2b8344b126e88c4daa3d5,
+  HitParticle: {fileID: 732464253019408292, guid: a71421db197de0842adeb4f60ee44d49,
     type: 3}
-  HitParticleLife: 0.1
+  HitParticleLife: 3
 --- !u!120 &735094114993082431
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -92,8 +92,8 @@ LineRenderer:
   m_Positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1.75}
-  - {x: 0, y: 0, z: 2}
+  - {x: 0, y: 0, z: 2.5}
+  - {x: 0, y: 0, z: 3}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -102,7 +102,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.057149887
+        value: 0.25227165
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -111,7 +111,7 @@ LineRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 0.13333444
-        value: 0.10000023
+        value: 0.35609612
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -120,12 +120,12 @@ LineRenderer:
         outWeight: 0
       - serializedVersion: 3
         time: 1
-        value: 0
-        inSlope: -0.8280873
-        outSlope: -0.8280873
+        value: 0.10975647
+        inSlope: -2.5609732
+        outSlope: -2.5609732
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.5959596
+        inWeight: 0.19230796
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2

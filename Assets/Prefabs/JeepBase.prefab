@@ -44,6 +44,8 @@ GameObject:
   m_Component:
   - component: {fileID: 8666043346284543018}
   - component: {fileID: 8653570774820491200}
+  - component: {fileID: 7594603848885044144}
+  - component: {fileID: 6460095528493340735}
   m_Layer: 0
   m_Name: JeepBase
   m_TagString: Untagged
@@ -84,6 +86,37 @@ MonoBehaviour:
   MaxTurnAngle: 60
   TurnAngleRotationSpeed: 240
   Threaded: 0
+--- !u!114 &7594603848885044144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421092486902088640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60355d97f73b31041ab3eeaa2f238030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6460095528493340735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421092486902088640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34bf0fc1e60907849af01ac541774608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AcquireTargetRange: 100
+  LooseTargetRange: 200
+  AttackRange: 35
+  Turret: {fileID: 0}
+  AimTolerance: 10
+  Weapon: {fileID: 0}
+  AngleClamp: 30
 --- !u!1 &3041059097428840829
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,6 +282,7 @@ GameObject:
   - component: {fileID: 8402176248905869405}
   - component: {fileID: 310376303000287759}
   - component: {fileID: 8381133607833507193}
+  - component: {fileID: 5314845517829754568}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -290,7 +324,7 @@ MonoBehaviour:
   WheelRadius: 0.45
   WheelAngleMultiplier: 0.5
   MaxAccelerationDeltaVelocity: 20
-  MaxDeltaAngle: 0
+  MaxDeltaAngle: 60
   TurnWheels:
   - {fileID: 7973522330000172860}
   - {fileID: 3847493517757063126}
@@ -318,6 +352,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &5314845517829754568
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6163270852402674653}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5, y: 1.6124058, z: 3.5846496}
+  m_Center: {x: 0, y: 1.0510559, z: -0.0013306141}
 --- !u!1 &6326548084656688570
 GameObject:
   m_ObjectHideFlags: 0

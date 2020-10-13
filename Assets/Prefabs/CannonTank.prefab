@@ -67,6 +67,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6494382962392457834, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
+      propertyPath: Turret
+      value: 
+      objectReference: {fileID: 8683999436979398621}
+    - target: {fileID: 6494382962392457834, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
+      propertyPath: Weapon
+      value: 
+      objectReference: {fileID: 4087703225273270338}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb15c42a80dcae14c80a2ac996877dfd, type: 3}
 --- !u!4 &8028916297572676644 stripped
@@ -142,5 +152,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: TankTurret
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8184117371708750930, guid: 8288d97482ec3f14c844ed96fb2e5c13, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8288d97482ec3f14c844ed96fb2e5c13, type: 3}
+--- !u!114 &8683999436979398621 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4418676387342414220, guid: 8288d97482ec3f14c844ed96fb2e5c13,
+    type: 3}
+  m_PrefabInstance: {fileID: 5030953687387346513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cad23ff18fddae1429619df162a8db41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4087703225273270338 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9037591767176435219, guid: 8288d97482ec3f14c844ed96fb2e5c13,
+    type: 3}
+  m_PrefabInstance: {fileID: 5030953687387346513}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

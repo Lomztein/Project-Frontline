@@ -45,8 +45,9 @@ public class Turret : MonoBehaviour
 
     public float DeltaAngle (Vector3 target)
     {
-        Vector3 localPosition = HorizontalAxis.InverseTransformPoint(target - new Vector3(0f, VerticalAxis.localPosition.y));
-        return Vector3.Angle(Vector3.forward, localPosition);
+        Vector3 localPosition = VerticalAxis.InverseTransformPoint(target);
+        float angle = Vector3.Angle(Vector3.forward, localPosition);
+        return angle;
     }
 
     public bool CanHit(Vector3 target)

@@ -70,6 +70,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6743208972335148256}
+  - component: {fileID: 3468866559977640772}
+  - component: {fileID: 6305933840788071201}
   m_Layer: 0
   m_Name: LightTurretBase
   m_TagString: Untagged
@@ -93,6 +95,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3468866559977640772
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7977617831024787339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60355d97f73b31041ab3eeaa2f238030, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6305933840788071201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7977617831024787339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41487ee171311704884c1278dc50ac3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Range: 100
+  Turret: {fileID: 0}
+  Weapon: {fileID: 0}
+  AimTolerance: 5
 --- !u!1001 &6862855492203470616
 PrefabInstance:
   m_ObjectHideFlags: 0

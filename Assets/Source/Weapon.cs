@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Weapon : MonoBehaviour
+public class Weapon : MonoBehaviour, IFactionComponent
 {
     public float Firerate;
     public float BurstReloadTime;
@@ -14,6 +14,8 @@ public class Weapon : MonoBehaviour
     public GameObject ProjectilePrefab;
     public Transform Muzzle;
     public float Inaccuracy;
+
+    public LayerMask LayerMask;
 
     private void Start()
     {
@@ -61,5 +63,10 @@ public class Weapon : MonoBehaviour
     private void Reload ()
     {
         _currentBurstAmmo = BurstAmmo;
+    }
+
+    public void SetFaction(Faction faction)
+    {
+        LayerMask = faction.GetOtherLayerMasks();
     }
 }
