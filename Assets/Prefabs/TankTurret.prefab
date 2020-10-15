@@ -5098,6 +5098,8 @@ GameObject:
   - component: {fileID: 1602166274375968580}
   - component: {fileID: 4418676387342414220}
   - component: {fileID: 9037591767176435219}
+  - component: {fileID: 4846103613687055894}
+  - component: {fileID: 4737644825142325621}
   m_Layer: 0
   m_Name: TankTurret
   m_TagString: Untagged
@@ -5162,6 +5164,39 @@ MonoBehaviour:
   LayerMask:
     serializedVersion: 2
     m_Bits: 0
+--- !u!95 &4846103613687055894
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5899074968905561659}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 773f018ed6eea3948ae3656e9349ac06, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4737644825142325621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5899074968905561659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ad78e0628b1a64fa0ca702ff61b70a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weapon: {fileID: 9037591767176435219}
+  Animator: {fileID: 4846103613687055894}
 --- !u!1 &6287412760512523646
 GameObject:
   m_ObjectHideFlags: 0

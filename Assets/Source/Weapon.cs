@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class Weapon : MonoBehaviour, IFactionComponent
 {
@@ -16,6 +17,8 @@ public class Weapon : MonoBehaviour, IFactionComponent
     public float Inaccuracy;
 
     public LayerMask LayerMask;
+
+    public event Action OnFire;
 
     private void Start()
     {
@@ -45,7 +48,8 @@ public class Weapon : MonoBehaviour, IFactionComponent
         Projectile projectile = proj.GetComponent<Projectile>();
 
         float rad = Inaccuracy * Mathf.Deg2Rad;
-        Vector3 angled = Muzzle.forward + Muzzle.rotation * (Vector3.right * Mathf.Sin(Random.Range(-rad, rad)) + Vector3.up * Mathf.Sin(Random.Range(-rad, rad)));
+        Vector3 angled = Muzzle.forward + Muzzle.rotation * (Vector3.right * Mathf.Sin(UnityEngine.Random.Range(-rad, rad)) + Vector3.up * Mathf.Sin(UnityEngine.Random.Range(-rad, rad)));
+        OnFire?.Invoke();
 
         projectile.Fire(angled);
     }

@@ -12,11 +12,11 @@ public class FollowerCamera : MonoBehaviour
     public float PositionLerpSpeed;
     public float RotationLerpSpeed;
 
-    private Vector3 TargetPosition => FollowObject.TransformPoint(PositionOffset);
-    private Vector3 TargetLookPosition => FollowObject.TransformPoint(LookPositionOffset);
-    private Vector3 TargetUp => FollowObject.up;
+    protected Vector3 TargetPosition => FollowObject.TransformPoint(PositionOffset);
+    protected Vector3 TargetLookPosition => FollowObject.TransformPoint(LookPositionOffset);
+    protected Vector3 TargetUp => FollowObject.up;
 
-    void FixedUpdate()
+    virtual protected void FixedUpdate()
     {
         if (FollowObject)
         {
@@ -25,7 +25,7 @@ public class FollowerCamera : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmos()
+    protected virtual void OnDrawGizmos()
     {
         if (FollowObject)
         {
