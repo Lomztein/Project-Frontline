@@ -43,6 +43,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8666043346284543018}
+  - component: {fileID: -2477253026524029928}
   - component: {fileID: 8653570774820491200}
   - component: {fileID: 7594603848885044144}
   - component: {fileID: 6460095528493340735}
@@ -68,6 +69,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-2477253026524029928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421092486902088640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 100
+  Debris: {fileID: 6309138862387603851, guid: ce8bba28af204f94db7328d615882804, type: 3}
+  DebrisLife: 3
 --- !u!114 &8653570774820491200
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,8 +126,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34bf0fc1e60907849af01ac541774608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AcquireTargetRange: 100
-  LooseTargetRange: 200
+  AcquireTargetRange: 1000
+  LooseTargetRange: 1000
   AttackRange: 35
   Turret: {fileID: 0}
   AimTolerance: 10
