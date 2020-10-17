@@ -199,8 +199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34bf0fc1e60907849af01ac541774608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AcquireTargetRange: 1000
-  LooseTargetRange: 1000
+  AcquireTargetRange: 75
+  LooseTargetRange: 100
   HoldRange: 50
   AttackRange: 50
   TurretObject: {fileID: 0}
@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 310376303000287759}
   - component: {fileID: 8381133607833507193}
   - component: {fileID: 5314845517829754568}
+  - component: {fileID: 776441542339992072}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -377,6 +378,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1.6124058, z: 3.5846496}
   m_Center: {x: 0, y: 1.0510559, z: -0.0013306141}
+--- !u!54 &776441542339992072
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6163270852402674653}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6326548084656688570
 GameObject:
   m_ObjectHideFlags: 0

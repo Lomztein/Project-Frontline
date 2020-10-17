@@ -5,5 +5,5 @@ public interface IWeapon
     event Action OnFire;
 
     bool CanFire();
-    void TryFire();
+    void TryFire(ITarget intendedTarget);
 }

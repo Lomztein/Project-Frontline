@@ -41,13 +41,16 @@ public class PlayerController : MonoBehaviour
             _controllable.Accelerate(Input.GetAxis("Vertical"));
             _controllable.Turn(Input.GetAxis("Horizontal"));
         }
+
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        ITarget target = new PositionTarget(ray.GetPoint(1000));
+
         if (Turret != null)
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
             if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
             {
                 Turret.AimTowards(hit.point);
+                target = hit.collider.gameObject.CompareTag("Terrain") ? target : new ColliderTarget(hit.collider);
             }
             else
             {
@@ -56,7 +59,7 @@ public class PlayerController : MonoBehaviour
         }
         if (Weapon != null && Input.GetMouseButton(0))
         {
-            Weapon.TryFire();
+            Weapon.TryFire(target);
         }
     }
 }

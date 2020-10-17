@@ -7,8 +7,7 @@ public class AttackerController : MonoBehaviour, IFactionComponent, IController
     private LayerMask _targetLayer;
     private TargetFinder _targetFinder = new TargetFinder();
 
-    private GameObject _currentTarget;
-    private Collider _targetCol;
+    private ITarget _currentTarget;
 
     public float AcquireTargetRange;
     public float LooseTargetRange;
@@ -22,6 +21,9 @@ public class AttackerController : MonoBehaviour, IFactionComponent, IController
     public GameObject WeaponObject;
     public IWeapon Weapon;
     public float AngleClamp;
+
+    private Waypoint _currentWaypoint;
+
     public bool Enabled { get => enabled; set => enabled = value; }
 
     private void Awake()
@@ -42,25 +44,30 @@ public class AttackerController : MonoBehaviour, IFactionComponent, IController
         _targetLayer = faction.GetOtherLayerMasks();
     }
 
+    public void SetWaypoint (Waypoint waypoint)
+    {
+        _currentWaypoint = waypoint;
+    }
+
     private void FixedUpdate()
     {
-        if (_currentTarget)
+        if (_currentTarget.ExistsAndValid())
         {
-            Vector3 local = _currentTarget.transform.position - transform.position;
+            Vector3 local = _currentTarget.GetPosition() - transform.position;
             float sqrDist = Vector3.SqrMagnitude(local);
-            float angle = Mathf.Clamp (Mathf.DeltaAngle (transform.eulerAngles.y, Mathf.Atan2(local.x, local.z) * Mathf.Rad2Deg), -AngleClamp, AngleClamp);
+            float angle = Mathf.Clamp(Mathf.DeltaAngle(transform.eulerAngles.y, Mathf.Atan2(local.x, local.z) * Mathf.Rad2Deg), -AngleClamp, AngleClamp);
             float speed = 1f;
 
             if (Turret != null)
             {
-                Turret.AimTowards(_targetCol.bounds.center);
+                Turret.AimTowards(_currentTarget.GetPosition());
 
                 if (Weapon != null)
                 {
-                    float aimDelta = Turret.DeltaAngle(_targetCol.bounds.center);
+                    float aimDelta = Turret.DeltaAngle(_currentTarget.GetPosition());
                     if (sqrDist < AttackRange * AttackRange && aimDelta < AimTolerance)
                     {
-                        Weapon.TryFire();
+                        Weapon.TryFire(_currentTarget);
                     }
 
                     if (sqrDist < HoldRange * HoldRange)
@@ -80,10 +87,13 @@ public class AttackerController : MonoBehaviour, IFactionComponent, IController
         }
         else
         {
-            _currentTarget = _targetFinder.FindTarget(transform.position, AcquireTargetRange, _targetLayer);
-            if (_currentTarget)
+            _currentTarget = new ColliderTarget (_targetFinder.FindTarget(transform.position, AcquireTargetRange, _targetLayer));
+
+            if (_currentWaypoint)
             {
-                _targetCol = _currentTarget.GetComponentInChildren<Collider>();
+                Controllable.Accelerate(1f);
+                float angle = Mathf.Clamp(Vector3.SignedAngle(transform.forward, _currentWaypoint.OutgoingVector, Vector3.up), -AngleClamp, AngleClamp);
+                Controllable.Turn(angle);
             }
         }
     }

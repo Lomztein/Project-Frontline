@@ -10,9 +10,6 @@ public class Weapon : MonoBehaviour, IFactionComponent, IWeapon
     private int _currentBurstAmmo;
     private bool _chambered;
 
-    private bool _isRechambering;
-    private bool _isReloading;
-
     public ParticleSystem FireParticle;
 
     public GameObject ProjectilePrefab;
@@ -29,11 +26,11 @@ public class Weapon : MonoBehaviour, IFactionComponent, IWeapon
         _chambered = true;
     }
 
-    public void TryFire()
+    public void TryFire(ITarget intendedTarget)
     {
         if (CanFire())
         {
-            Fire();
+            Fire(intendedTarget);
             _chambered = false;
             _currentBurstAmmo--;
             Invoke("Rechamber", 1f / Firerate);
@@ -45,12 +42,17 @@ public class Weapon : MonoBehaviour, IFactionComponent, IWeapon
         }
     }
 
-    private void Fire()
+    private void Fire(ITarget intendedTarget)
     {
-        FireParticle.Play();
+        if (FireParticle)
+        {
+            FireParticle.Play();
+        }
+
         GameObject proj = Instantiate(ProjectilePrefab, Muzzle.transform.position, Muzzle.transform.rotation);
         Projectile projectile = proj.GetComponent<Projectile>();
         projectile.SetFaction(_faction);
+        projectile.Target = intendedTarget;
 
         float rad = Inaccuracy * Mathf.Deg2Rad;
         Vector3 angled = Muzzle.forward + Muzzle.rotation * (Vector3.right * Mathf.Sin(UnityEngine.Random.Range(-rad, rad)) + Vector3.up * Mathf.Sin(UnityEngine.Random.Range(-rad, rad)));

@@ -5,8 +5,7 @@ using UnityEngine;
 public class SentryController : MonoBehaviour, IFactionComponent, IController
 {
     private LayerMask _targetLayer;
-    private GameObject _currentTarget;
-    private Collider _targetCollider;
+    private ITarget _currentTarget;
     private TargetFinder _targetFinder;
 
     public float Range;
@@ -42,15 +41,15 @@ public class SentryController : MonoBehaviour, IFactionComponent, IController
 
     private void FixedUpdate()
     {
-        if (_currentTarget)
+        if (_currentTarget.ExistsAndValid() && _currentTarget is ColliderTarget colTarget)
         {
-            if (CanHit(_currentTarget))
+            if (CanHit(colTarget.Collider.gameObject))
             {
-                _turret.AimTowards(_targetCollider.bounds.center);
-                float delta = _turret.DeltaAngle(_targetCollider.bounds.center);
+                _turret.AimTowards(_currentTarget.GetPosition());
+                float delta = _turret.DeltaAngle(_currentTarget.GetPosition());
                 if (delta < AimTolerance && _weapon != null)
                 {
-                    _weapon.TryFire();
+                    _weapon.TryFire(_currentTarget);
                 }
             }
             else
@@ -60,11 +59,7 @@ public class SentryController : MonoBehaviour, IFactionComponent, IController
         }
         else
         {
-            _currentTarget = _targetFinder.FindTarget(transform.position, Range, _targetLayer);
-            if (_currentTarget)
-            {
-                _targetCollider = _currentTarget.GetComponentInChildren<Collider>();
-            }
+            _currentTarget = new ColliderTarget (_targetFinder.FindTarget(transform.position, Range, _targetLayer));
         }
     }
 }

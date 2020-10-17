@@ -9,16 +9,19 @@ public class UnitFactory : MonoBehaviour, IFactionComponent
     public float SpawnRange;
 
     private Faction _faction;
+    private Waypoint _nearestWaypoint;
 
     public void Start()
     {
         InvokeRepeating("Spawn", SpawnDelay, SpawnDelay);
+        _nearestWaypoint = Waypoint.GetNearest(transform.position);
     }
 
     private void Spawn ()
     {
         Vector3 pos = GetLocalRandomSpawnPosition() + transform.position;
-        _faction.Instantiate(UnitPrefab, pos, transform.rotation);
+        GameObject go = _faction.Instantiate(UnitPrefab, pos, transform.rotation);
+        go.SendMessage("SetWaypoint", _nearestWaypoint);
     }
 
     private Vector3 GetLocalRandomSpawnPosition ()

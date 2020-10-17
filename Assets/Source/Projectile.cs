@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour, IFactionComponent
     public float Damage;
     public DamageArmorMapping.Damage DamageType;
     public Vector3 Velocity;
+    public ITarget Target;
 
     public float Life;
     public GameObject HitParticle;
