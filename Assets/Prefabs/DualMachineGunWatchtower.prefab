@@ -62,6 +62,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3185736187319399132, guid: 104d0956dafc3d547be77feca426a9f5,
+        type: 3}
+      propertyPath: Turret
+      value: 
+      objectReference: {fileID: 3414922074962326106}
+    - target: {fileID: 3185736187319399132, guid: 104d0956dafc3d547be77feca426a9f5,
+        type: 3}
+      propertyPath: Weapon
+      value: 
+      objectReference: {fileID: 3414922074962326106}
     - target: {fileID: 8530490600597396632, guid: 104d0956dafc3d547be77feca426a9f5,
         type: 3}
       propertyPath: m_Name
@@ -69,6 +79,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 104d0956dafc3d547be77feca426a9f5, type: 3}
+--- !u!1 &3414922074962326106 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8530490600597396632, guid: 104d0956dafc3d547be77feca426a9f5,
+    type: 3}
+  m_PrefabInstance: {fileID: 6414913166424043202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8578528768267773016
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -136,7 +152,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 968309744135680216, guid: 8c9aeb8aedbb1694485fcc7673507336, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8c9aeb8aedbb1694485fcc7673507336, type: 3}
 --- !u!4 &5920746026311480396 stripped
 Transform:

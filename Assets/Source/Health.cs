@@ -3,9 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviour, IDamagable
 {
     public float MaxHealth;
+    public DamageArmorMapping.Armor ArmorType;
     private float _currentHealth;
     public GameObject Debris;
     public float DebrisLife;
@@ -15,13 +16,14 @@ public class Health : MonoBehaviour
         _currentHealth = MaxHealth;
     }
 
-    public void TakeDamage (float damage)
+    public float TakeDamage (DamageArmorMapping.Damage damageType, float damage)
     {
-        _currentHealth -= damage;
+        _currentHealth -= damage * DamageArmorMapping.GetDamageFactor(damageType, ArmorType);
         if (_currentHealth <= 0f)
         {
             Die();
         }
+        return _currentHealth;
     }
 
     private void Die()

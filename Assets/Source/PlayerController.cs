@@ -5,29 +5,56 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject ControllableObject;
-    public Turret Turret;
-    public Weapon Weapon;
+    public GameObject TurretGO;
+    public ITurret Turret;
+    public GameObject WeaponGO;
+    public IWeapon Weapon;
     private IControllable _controllable;
 
     private void Awake()
     {
-        _controllable = ControllableObject.GetComponent<IControllable>();
+        if (ControllableObject)
+        {
+            Control(ControllableObject);
+        }
+    }
+
+    public void Control (GameObject obj)
+    {
+        if (obj)
+        {
+            _controllable = obj.GetComponentInChildren<IControllable>();
+        }
+    }
+
+    public void Release()
+    {
+        _controllable = null;
+        Turret = null;
+        Weapon = null;
     }
 
     void Update()
     {
-        _controllable.Accelerate(Input.GetAxis("Vertical"));
-        _controllable.Turn(Input.GetAxis("Horizontal"));
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+        if (_controllable != null)
         {
-            Turret.AimTowards(hit.point);
+            _controllable.Accelerate(Input.GetAxis("Vertical"));
+            _controllable.Turn(Input.GetAxis("Horizontal"));
         }
-        else
+        if (Turret != null)
         {
-            Turret.AimTowards(ray.GetPoint(1000f));
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
+            {
+                Turret.AimTowards(hit.point);
+            }
+            else
+            {
+                Turret.AimTowards(ray.GetPoint(1000f));
+            }
         }
-        if (Input.GetMouseButton(0))
+        if (Weapon != null && Input.GetMouseButton(0))
         {
             Weapon.TryFire();
         }

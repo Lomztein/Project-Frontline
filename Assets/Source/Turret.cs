@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class Turret : MonoBehaviour, ITurret
 {
     public Transform Base;
     public Transform HorizontalAxis;
@@ -16,13 +16,11 @@ public class Turret : MonoBehaviour
 
     private Vector3 _baseTargetLocalPosition;
     private Vector3 _horizontalTargetLocalPosition;
-    
-    public float AimTowards (Vector3 position)
+
+    public void AimTowards(Vector3 position)
     {
         _baseTargetLocalPosition = Base.InverseTransformPoint(position);
         _horizontalTargetLocalPosition = HorizontalAxis.InverseTransformPoint(position - new Vector3(0f, VerticalAxis.localPosition.y));
-
-        return DeltaAngle(position);
     }
 
     private void FixedUpdate()
@@ -31,19 +29,19 @@ public class Turret : MonoBehaviour
         RotateVertical(_horizontalTargetLocalPosition, Time.fixedDeltaTime);
     }
 
-    private void RotateHorizontal (Vector3 localPosition, float deltaTime)
+    private void RotateHorizontal(Vector3 localPosition, float deltaTime)
     {
-        float angle = Mathf.Clamp (Mathf.Atan2(localPosition.x, localPosition.z) * Mathf.Rad2Deg, HorizontalRange.x, HorizontalRange.y);
+        float angle = Mathf.Clamp(Mathf.Atan2(localPosition.x, localPosition.z) * Mathf.Rad2Deg, HorizontalRange.x, HorizontalRange.y);
         HorizontalAxis.localRotation = Quaternion.RotateTowards(HorizontalAxis.localRotation, Quaternion.Euler(0f, angle, 0f), HorizontalSpeed * deltaTime);
     }
 
-    private void RotateVertical (Vector3 localPosition, float deltaTime)
+    private void RotateVertical(Vector3 localPosition, float deltaTime)
     {
         float angle = Mathf.Clamp(-Mathf.Atan2(localPosition.y, localPosition.z) * Mathf.Rad2Deg, VerticalRange.x, VerticalRange.y);
         VerticalAxis.localRotation = Quaternion.RotateTowards(VerticalAxis.localRotation, Quaternion.Euler(angle, 0f, 0f), VerticalSpeed * deltaTime);
     }
 
-    public float DeltaAngle (Vector3 target)
+    public float DeltaAngle(Vector3 target)
     {
         Vector3 localPosition = VerticalAxis.InverseTransformPoint(target);
         float angle = Vector3.Angle(Vector3.forward, localPosition);

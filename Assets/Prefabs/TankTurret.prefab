@@ -65,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Firerate: 5
+  Firerate: 3
   BurstReloadTime: 2
   BurstAmmo: 36
   FireParticle: {fileID: 5895526449520221033}
@@ -73,9 +73,6 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 2595297173145813033}
   Inaccuracy: 1.5
-  LayerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!114 &6080008043277028670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,9 +85,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41487ee171311704884c1278dc50ac3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Range: 100
-  Turret: {fileID: 4412292833601166741}
-  Weapon: {fileID: 368535152998239065}
+  Range: 50
+  Turret: {fileID: 4568813153004562}
+  Weapon: {fileID: 4568813153004562}
   AimTolerance: 10
 --- !u!1 &60223028035756230
 GameObject:
@@ -219,7 +216,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -5161,9 +5158,6 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 7195166017730976624}
   Inaccuracy: 0
-  LayerMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!95 &4846103613687055894
 Animator:
   serializedVersion: 3

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackerController : MonoBehaviour, IFactionComponent
+public class AttackerController : MonoBehaviour, IFactionComponent, IController
 {
     private LayerMask _targetLayer;
     private TargetFinder _targetFinder = new TargetFinder();
@@ -12,17 +12,29 @@ public class AttackerController : MonoBehaviour, IFactionComponent
 
     public float AcquireTargetRange;
     public float LooseTargetRange;
+    public float HoldRange;
     public float AttackRange;
 
     public IControllable Controllable;
-    public Turret Turret;
+    public GameObject TurretObject;
+    public ITurret Turret;
     public float AimTolerance;
-    public Weapon Weapon;
+    public GameObject WeaponObject;
+    public IWeapon Weapon;
     public float AngleClamp;
+    public bool Enabled { get => enabled; set => enabled = value; }
 
     private void Awake()
     {
-        Controllable = GetComponent<IControllable>();
+        Controllable = GetComponentInChildren<IControllable>();
+        if (TurretObject)
+        {
+            Turret = TurretObject.GetComponent<ITurret>();
+        }
+        if (WeaponObject)
+        {
+            Weapon = WeaponObject.GetComponent<IWeapon>();
+        }
     }
 
     public void SetFaction(Faction faction)
@@ -39,16 +51,28 @@ public class AttackerController : MonoBehaviour, IFactionComponent
             float angle = Mathf.Clamp (Mathf.DeltaAngle (transform.eulerAngles.y, Mathf.Atan2(local.x, local.z) * Mathf.Rad2Deg), -AngleClamp, AngleClamp);
             float speed = 1f;
 
-            float aimDelta = Turret.AimTowards(_targetCol.bounds.center);
-            if (sqrDist < AttackRange * AttackRange && aimDelta < AimTolerance)
+            if (Turret != null)
             {
-                Weapon.TryFire();
-                speed = 0f;
-            }
+                Turret.AimTowards(_targetCol.bounds.center);
 
-            if (sqrDist > LooseTargetRange * LooseTargetRange)
-            {
-                _currentTarget = null;
+                if (Weapon != null)
+                {
+                    float aimDelta = Turret.DeltaAngle(_targetCol.bounds.center);
+                    if (sqrDist < AttackRange * AttackRange && aimDelta < AimTolerance)
+                    {
+                        Weapon.TryFire();
+                    }
+
+                    if (sqrDist < HoldRange * HoldRange)
+                    {
+                        speed = 0f;
+                    }
+
+                    if (sqrDist > LooseTargetRange * LooseTargetRange)
+                    {
+                        _currentTarget = null;
+                    }
+                }
             }
 
             Controllable.Accelerate(speed);

@@ -62,26 +62,6 @@ Transform:
   m_Father: {fileID: 1203527197847100008}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7239376096382777707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6942735109106212573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Firerate: 7.5
-  BurstReloadTime: 1.5
-  BurstAmmo: 30
-  FireParticle: {fileID: 5692174496391114448}
-  ProjectilePrefab: {fileID: 706538927366367410, guid: 02243d61965c5ed499bec10f0188c561,
-    type: 3}
-  Muzzle: {fileID: 5439985229681543511}
-  Inaccuracy: 1.5
 --- !u!1 &8530490600597396632
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,6 +72,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1203527197847100008}
   - component: {fileID: 3472769953334383905}
+  - component: {fileID: 492954009635993433}
   m_Layer: 0
   m_Name: MachineGunTurret
   m_TagString: Untagged
@@ -133,6 +114,26 @@ MonoBehaviour:
   VerticalRange: {x: -30, y: 30}
   HorizontalSpeed: 180
   VerticalSpeed: 180
+--- !u!114 &492954009635993433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8530490600597396632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Firerate: 7.5
+  BurstReloadTime: 1.5
+  BurstAmmo: 30
+  FireParticle: {fileID: 5692174496391114448}
+  ProjectilePrefab: {fileID: 706538927366367410, guid: 02243d61965c5ed499bec10f0188c561,
+    type: 3}
+  Muzzle: {fileID: 5439985229681543511}
+  Inaccuracy: 1.5
 --- !u!1 &8840328975211844015
 GameObject:
   m_ObjectHideFlags: 0
@@ -451,12 +452,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 757568c38f96f9e4a8a7c9e1f8e88307, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 272eb295ef021b7468a67c9d99e9698b, type: 3}
---- !u!1 &6942735109106212573 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 272eb295ef021b7468a67c9d99e9698b,
-    type: 3}
-  m_PrefabInstance: {fileID: 7825256268760982412}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7715330682001081447 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 272eb295ef021b7468a67c9d99e9698b,

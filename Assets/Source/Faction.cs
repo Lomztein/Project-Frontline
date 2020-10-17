@@ -24,12 +24,27 @@ public class Faction
     public static GameObject Instantiate(Faction faction, GameObject prefab, Vector3 position, Quaternion rotation)
     {
         GameObject obj = Object.Instantiate(prefab, position, rotation);
-        FactionObject factObj = obj.GetComponent<FactionObject>();
-        factObj.SetFaction(faction);
+        ApplyFaction(obj, faction);
         return obj;
     }
 
     public GameObject Instantiate(GameObject prefab, Vector3 position, Quaternion rotation) => Instantiate(this, prefab, position, rotation);
+
+    public void ApplyFaction(GameObject go) => ApplyFaction(go, this);
+
+    public static void ApplyFaction(GameObject obj, Faction faction)
+    {
+        foreach (Transform transform in obj.GetComponentsInChildren<Transform>())
+        {
+            transform.gameObject.layer = faction.GetLayer();
+        }
+
+        var components = obj.GetComponentsInChildren<IFactionComponent>();
+        foreach (var component in components)
+        {
+            component.SetFaction(faction);
+        }
+    }
 
     public static int GetLayerMask(int factionId) => LayerMaskStart << factionId;
     public int GetLayer() => LayerStart + Id;

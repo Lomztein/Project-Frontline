@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour, IFactionComponent
+public class Weapon : MonoBehaviour, IFactionComponent, IWeapon
 {
     public float Firerate;
     public float BurstReloadTime;
@@ -10,13 +10,16 @@ public class Weapon : MonoBehaviour, IFactionComponent
     private int _currentBurstAmmo;
     private bool _chambered;
 
+    private bool _isRechambering;
+    private bool _isReloading;
+
     public ParticleSystem FireParticle;
 
     public GameObject ProjectilePrefab;
     public Transform Muzzle;
     public float Inaccuracy;
 
-    public LayerMask LayerMask;
+    private Faction _faction;
 
     public event Action OnFire;
 
@@ -34,10 +37,11 @@ public class Weapon : MonoBehaviour, IFactionComponent
             _chambered = false;
             _currentBurstAmmo--;
             Invoke("Rechamber", 1f / Firerate);
-        }
-        if (_currentBurstAmmo < 1 && !IsInvoking())
-        {
-            Invoke("Reload", BurstReloadTime);
+
+            if (_currentBurstAmmo == 0)
+            {
+                Invoke("Reload", BurstReloadTime);
+            }
         }
     }
 
@@ -46,6 +50,7 @@ public class Weapon : MonoBehaviour, IFactionComponent
         FireParticle.Play();
         GameObject proj = Instantiate(ProjectilePrefab, Muzzle.transform.position, Muzzle.transform.rotation);
         Projectile projectile = proj.GetComponent<Projectile>();
+        projectile.SetFaction(_faction);
 
         float rad = Inaccuracy * Mathf.Deg2Rad;
         Vector3 angled = Muzzle.forward + Muzzle.rotation * (Vector3.right * Mathf.Sin(UnityEngine.Random.Range(-rad, rad)) + Vector3.up * Mathf.Sin(UnityEngine.Random.Range(-rad, rad)));
@@ -54,23 +59,23 @@ public class Weapon : MonoBehaviour, IFactionComponent
         projectile.Fire(angled);
     }
 
-    public bool CanFire ()
+    public bool CanFire()
     {
         return _chambered && _currentBurstAmmo > 0;
     }
 
-    private void Rechamber ()
+    private void Rechamber()
     {
         _chambered = true;
     }
 
-    private void Reload ()
+    private void Reload()
     {
         _currentBurstAmmo = BurstAmmo;
     }
 
     public void SetFaction(Faction faction)
     {
-        LayerMask = faction.GetOtherLayerMasks();
+        _faction = faction;
     }
 }

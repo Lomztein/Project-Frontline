@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 731879210430979566}
+  - component: {fileID: 2103737329827059564}
   - component: {fileID: -7599231597128654091}
   - component: {fileID: 3483803279578888436}
   - component: {fileID: 6494382962392457834}
-  - component: {fileID: 6851652374664257124}
   m_Layer: 0
   m_Name: TankBase
-  m_TagString: Untagged
+  m_TagString: MobileUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,6 +35,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2103737329827059564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 322077662733208751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955e3746abfe5e14cb56265a34877e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Info:
+    Name: 
+    Description: 
+    Cost: 0
+    Value: 0
+    UnitRole: 0
+    UnitTier: 0
+    UnitClass: 0
+    UnitType: 0
 --- !u!114 &-7599231597128654091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,7 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 1000
+  MaxHealth: 250
+  ArmorType: 3
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
 --- !u!114 &3483803279578888436
@@ -82,23 +104,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AcquireTargetRange: 1000
   LooseTargetRange: 1000
-  AttackRange: 40
-  Turret: {fileID: 0}
+  HoldRange: 40
+  AttackRange: 75
+  TurretObject: {fileID: 0}
   AimTolerance: 2
-  Weapon: {fileID: 0}
+  WeaponObject: {fileID: 0}
   AngleClamp: 60
---- !u!114 &6851652374664257124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 322077662733208751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60355d97f73b31041ab3eeaa2f238030, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1348014734247289720
 GameObject:
   m_ObjectHideFlags: 0
