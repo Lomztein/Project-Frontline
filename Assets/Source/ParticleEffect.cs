@@ -6,7 +6,7 @@ public class ParticleEffect : Effect
 {
     public ParticleSystem System;
 
-    public override bool IsPlaying => System.particleCount == 0;
+    public override bool IsPlaying => System.IsAlive(true);
 
     public override void Play()
     {

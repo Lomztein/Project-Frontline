@@ -6,7 +6,7 @@ public static class DamageArmorMapping
 {
     public enum Damage
     {
-        Gun, Cannon, Grenade, Fire, Energy, Tesla, Rocket
+        Gun, Cannon, Grenade, Fire, Energy, Tesla, Rocket, APGun
     }
 
     public enum Armor
@@ -58,6 +58,16 @@ public static class DamageArmorMapping
             { Armor.Heavy, 0.6f },
             { Armor.Structure, 1.2f },
             { Armor.Shield, 0.2f },
+        } },
+        { Damage.APGun, new Dictionary<Armor, float>()
+        {
+            { Armor.Kevlar, 0.8f },
+            { Armor.Flak, 0.6f },
+            { Armor.Light, 1.1f },
+            { Armor.Medium, 0.8f },
+            { Armor.Heavy, 0.6f },
+            { Armor.Structure, 1.2f },
+            { Armor.Shield, 2f },
         } }
     };
 }

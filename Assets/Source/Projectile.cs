@@ -24,7 +24,7 @@ public class Projectile : MonoBehaviour, IFactionComponent, IPoolObject
 
     public void Fire(Vector3 direction)
     {
-        Invoke("End", Life);
+        Invoke(nameof(End), Life);
         transform.LookAt(transform.position + direction);
         Velocity = Speed * direction;
     }
@@ -39,23 +39,27 @@ public class Projectile : MonoBehaviour, IFactionComponent, IPoolObject
                 damagable.TakeDamage(DamageType, Damage);
             }
 
-            HitEffect.transform.position = hit.point;
-            HitEffect.transform.forward = hit.normal;
-
-            Hit();
+            Hit(hit.point, hit.normal);
             End();
         }
     }
 
-    private void Hit()
+    private void Hit(Vector3 point, Vector3 normal)
     {
         if (HitEffect)
         {
+            HitEffect.transform.position = point;
+            HitEffect.transform.forward = normal;
+
             HitEffect.Detatch();
             HitEffect.Play();
             HitEffect.Recall(transform, EffectRecallTime);
         }
 
+        if (TrailEffect)
+        {
+            TrailEffect.transform.position = point;
+        }
     }
 
     private void End()
@@ -67,6 +71,7 @@ public class Projectile : MonoBehaviour, IFactionComponent, IPoolObject
             TrailEffect.Recall(transform, EffectRecallTime);
         }
 
+        CancelInvoke();
         gameObject.SetActive(false);
     }
 

@@ -58,14 +58,25 @@ public class ObjectPool : IObjectPool
 
     public static ObjectPool GetPool(GameObject prefab)
     {
+        ObjectPool p = null;
         foreach (var pool in _freePools)
         {
             if (pool.Prefab == prefab)
             {
-                return pool;
+                p = pool;
+                break;
             }
         }
-        return new ObjectPool(prefab);
+
+        if (p != null)
+        {
+            _freePools.Remove(p);
+            return p;
+        }
+        else
+        {
+            return new ObjectPool(prefab);
+        }
     }
 
     public static void FreePool (ObjectPool pool)
