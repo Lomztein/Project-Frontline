@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,10 +16,13 @@ public class SentryController : MonoBehaviour, IFactionComponent, IController
     private IWeapon _weapon;
     public float AimTolerance;
 
+    private Ticker _targetFindingTicker;
+
     public bool Enabled { get => enabled; set => enabled = value; }
 
     private void Awake()
     {
+        _targetFindingTicker = new Ticker(0.5f, TickerCallback);
         _targetFinder = new TargetFinder(go => CanHit(go));
 
         _turret = Turret.GetComponent<ITurret>();
@@ -59,7 +63,12 @@ public class SentryController : MonoBehaviour, IFactionComponent, IController
         }
         else
         {
-            _currentTarget = new ColliderTarget (_targetFinder.FindTarget(transform.position, Range, _targetLayer));
+            _targetFindingTicker.Tick();
         }
+    }
+
+    private void TickerCallback()
+    {
+        _currentTarget = new ColliderTarget(_targetFinder.FindTarget(transform.position, Range, _targetLayer));
     }
 }

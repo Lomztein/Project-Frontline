@@ -6,12 +6,12 @@ public static class DamageArmorMapping
 {
     public enum Damage
     {
-        Gun, Cannon, Grenade, Fire, Energy, Tesla
+        Gun, Cannon, Grenade, Fire, Energy, Tesla, Rocket
     }
 
     public enum Armor
     {
-        Kevlar, Flak, Light, Medium, Heavy, Structure
+        Kevlar, Flak, Light, Medium, Heavy, Structure, Shield
     }
 
     private static float _fallbackDamageFactor = 1f;
@@ -34,9 +34,10 @@ public static class DamageArmorMapping
         {
             { Armor.Kevlar, 0.7f },
             { Armor.Flak, 0.2f },
-            { Armor.Light, 2f },
+            { Armor.Light, 1.7f },
             { Armor.Medium, 1.5f },
             { Armor.Heavy, 1.2f },
+            { Armor.Shield, 1.6f },
         } },
         { Damage.Gun, new Dictionary<Armor, float>()
         {
@@ -46,6 +47,17 @@ public static class DamageArmorMapping
             { Armor.Medium, 0.3f },
             { Armor.Heavy, 0.05f },
             { Armor.Structure, 0.2f },
+            { Armor.Shield, 0.3f },
+        } },
+        { Damage.Rocket, new Dictionary<Armor, float>()
+        {
+            { Armor.Kevlar, 0.8f },
+            { Armor.Flak, 0.1f },
+            { Armor.Light, 2.0f },
+            { Armor.Medium, 1.3f },
+            { Armor.Heavy, 0.6f },
+            { Armor.Structure, 1.2f },
+            { Armor.Shield, 0.2f },
         } }
     };
 }

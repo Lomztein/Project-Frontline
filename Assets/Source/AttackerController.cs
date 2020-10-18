@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,11 +24,14 @@ public class AttackerController : MonoBehaviour, IFactionComponent, IController
     public float AngleClamp;
 
     private Waypoint _currentWaypoint;
+    private Ticker _targetFindingTicker;
 
     public bool Enabled { get => enabled; set => enabled = value; }
 
     private void Awake()
     {
+        _targetFindingTicker = new Ticker(0.25f, TickerCallback);
+
         Controllable = GetComponentInChildren<IControllable>();
         if (TurretObject)
         {
@@ -37,6 +41,11 @@ public class AttackerController : MonoBehaviour, IFactionComponent, IController
         {
             Weapon = WeaponObject.GetComponent<IWeapon>();
         }
+    }
+
+    private void TickerCallback()
+    {
+        _currentTarget = new ColliderTarget(_targetFinder.FindTarget(transform.position, AcquireTargetRange, _targetLayer));
     }
 
     public void SetFaction(Faction faction)
@@ -87,7 +96,7 @@ public class AttackerController : MonoBehaviour, IFactionComponent, IController
         }
         else
         {
-            _currentTarget = new ColliderTarget (_targetFinder.FindTarget(transform.position, AcquireTargetRange, _targetLayer));
+            _targetFindingTicker.Tick();
 
             if (_currentWaypoint)
             {

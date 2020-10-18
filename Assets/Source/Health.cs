@@ -29,6 +29,11 @@ public class Health : MonoBehaviour, IDamagable
     private void Die()
     {
         Destroy(gameObject);
-        Destroy(Instantiate(Debris, transform.position, transform.rotation), DebrisLife);
+        GameObject d = Instantiate(Debris, transform.position, transform.rotation);
+        foreach (ParticleSystem system in d.GetComponentsInChildren<ParticleSystem>())
+        {
+            system.Play();
+        }
+        Destroy(d, DebrisLife);
     }
 }

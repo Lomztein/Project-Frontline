@@ -29,7 +29,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3.42, z: -9.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 4210795137510504152}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49,10 +50,10 @@ MonoBehaviour:
   Damage: 200
   DamageType: 1
   Velocity: {x: 0, y: 0, z: 0}
-  Life: 10
-  HitParticle: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1,
-    type: 3}
-  HitParticleLife: 3
+  Life: 5
+  HitEffect: {fileID: 6200551195187449239}
+  TrailEffect: {fileID: 0}
+  EffectRecallTime: 3
 --- !u!114 &378259457130168591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,3 +174,90 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!1001 &3927721942838417868
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8180433780344764018}
+    m_Modifications:
+    - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6309138862387603851, guid: ce8bba28af204f94db7328d615882804,
+        type: 3}
+      propertyPath: m_Name
+      value: SmallExplosionParticle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ce8bba28af204f94db7328d615882804, type: 3}
+--- !u!4 &4210795137510504152 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
+    type: 3}
+  m_PrefabInstance: {fileID: 3927721942838417868}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6200551195187449239 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6957738415964132443, guid: ce8bba28af204f94db7328d615882804,
+    type: 3}
+  m_PrefabInstance: {fileID: 3927721942838417868}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb1c28bf2dc66644ba94b80a80e6591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
