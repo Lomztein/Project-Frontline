@@ -10,18 +10,25 @@ public class Health : MonoBehaviour, IDamagable
     private float _currentHealth;
     public GameObject Debris;
     public float DebrisLife;
+    public event Action<DamageInfo> OnTakeDamage;
+    public event Action<float> OnDamageTaken;
+    public event Action OnDeath;
 
     private void Awake()
     {
         _currentHealth = MaxHealth;
     }
 
-    public float TakeDamage (DamageArmorMapping.Damage damageType, float damage)
+    public float TakeDamage (DamageInfo info)
     {
-        _currentHealth -= damage * DamageArmorMapping.GetDamageFactor(damageType, ArmorType);
+        OnTakeDamage?.Invoke(info);
+        float dmg = info.Damage * DamageArmorMapping.GetDamageFactor(info.Type, ArmorType);
+        _currentHealth -= dmg;
+        OnDamageTaken?.Invoke(dmg);
         if (_currentHealth <= 0f)
         {
             Die();
+            OnDeath?.Invoke();
         }
         return _currentHealth;
     }

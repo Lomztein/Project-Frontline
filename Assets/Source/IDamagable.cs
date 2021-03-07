@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IDamagable
 {
-    float TakeDamage(DamageArmorMapping.Damage damageType, float damage);
+    float TakeDamage(DamageInfo info);
 }

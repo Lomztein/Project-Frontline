@@ -39,6 +39,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 731879210430979566, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 731879210430979566, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -54,6 +59,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 731879210430979566, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 731879210430979566, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
@@ -65,16 +75,6 @@ PrefabInstance:
     - target: {fileID: 731879210430979566, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 731879210430979566, guid: eb15c42a80dcae14c80a2ac996877dfd,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 731879210430979566, guid: eb15c42a80dcae14c80a2ac996877dfd,
-        type: 3}
-      propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 731879210430979566, guid: eb15c42a80dcae14c80a2ac996877dfd,
@@ -94,8 +94,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
+      propertyPath: Info.Cost
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
       propertyPath: Info.Name
       value: '"Furier" 6502-MBT'
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
+      propertyPath: Info.Value
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
@@ -104,20 +114,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
-      propertyPath: Info.Cost
-      value: 1500
-      objectReference: {fileID: 0}
-    - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
-        type: 3}
       propertyPath: Info.Description
       value: Serving as your earliest battle tanks, the Furier tanks are armed with
         a powerful main cannon, capable of destroying lighter vehicles in a single
         shot.
       objectReference: {fileID: 0}
-    - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
+    - target: {fileID: 5966162003396434665, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
-      propertyPath: Info.Value
-      value: 15
+      propertyPath: Muzzle
+      value: 
+      objectReference: {fileID: 2741518883045969185}
+    - target: {fileID: 5966162003396434665, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
+      propertyPath: Weapon
+      value: 
+      objectReference: {fileID: 4087703225273270338}
+    - target: {fileID: 5966162003396434665, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
+      propertyPath: RecoilStrength
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6494382962392457834, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
@@ -131,13 +146,13 @@ PrefabInstance:
       objectReference: {fileID: 4087703225273270338}
     - target: {fileID: 6494382962392457834, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
-      propertyPath: AttackRange
-      value: 75
+      propertyPath: HoldRange
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 6494382962392457834, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
-      propertyPath: HoldRange
-      value: 40
+      propertyPath: AttackRange
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 6494382962392457834, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
@@ -151,13 +166,13 @@ PrefabInstance:
       objectReference: {fileID: 1444583270844571754}
     - target: {fileID: 6494382962392457834, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
-      propertyPath: AcquireTargetRange
-      value: 75
+      propertyPath: LooseTargetRange
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6494382962392457834, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
-      propertyPath: LooseTargetRange
-      value: 100
+      propertyPath: AcquireTargetRange
+      value: 75
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6851652374664257124, guid: eb15c42a80dcae14c80a2ac996877dfd, type: 3}
@@ -183,6 +198,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1602166274375968580, guid: 8288d97482ec3f14c844ed96fb2e5c13,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1602166274375968580, guid: 8288d97482ec3f14c844ed96fb2e5c13,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -198,6 +218,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1602166274375968580, guid: 8288d97482ec3f14c844ed96fb2e5c13,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1602166274375968580, guid: 8288d97482ec3f14c844ed96fb2e5c13,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -210,16 +235,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1602166274375968580, guid: 8288d97482ec3f14c844ed96fb2e5c13,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1602166274375968580, guid: 8288d97482ec3f14c844ed96fb2e5c13,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1602166274375968580, guid: 8288d97482ec3f14c844ed96fb2e5c13,
         type: 3}
@@ -274,3 +289,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &2741518883045969185 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7195166017730976624, guid: 8288d97482ec3f14c844ed96fb2e5c13,
+    type: 3}
+  m_PrefabInstance: {fileID: 5030953687387346513}
+  m_PrefabAsset: {fileID: 0}

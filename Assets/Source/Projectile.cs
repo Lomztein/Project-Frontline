@@ -36,7 +36,7 @@ public class Projectile : MonoBehaviour, IFactionComponent, IPoolObject
             var damagable = hit.collider.GetComponentInParent<IDamagable>();
             if (damagable != null)
             {
-                damagable.TakeDamage(DamageType, Damage);
+                damagable.TakeDamage(new DamageInfo (Damage, DamageType, hit.point, Velocity.normalized));
             }
 
             Hit(hit.point, hit.normal);

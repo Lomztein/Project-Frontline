@@ -88,4 +88,5 @@ public class Posessor : MonoBehaviour
         _currentPosessed = null;
         Controller.Release();
     }
+
 }

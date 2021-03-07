@@ -477,6 +477,10 @@ GameObject:
   - component: {fileID: 3021080328534185434}
   - component: {fileID: 67662175714970656}
   - component: {fileID: 765120943237272454}
+  - component: {fileID: 7095865279330459189}
+  - component: {fileID: 584144282909637092}
+  - component: {fileID: 4742184290985814328}
+  - component: {fileID: 5966162003396434665}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -530,6 +534,69 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &7095865279330459189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4498443656709198219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b494f2175eabe4f855652a8d13db4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BodyPivot: {fileID: 3021080328534185434}
+  RecoilAnimMult: {x: 1, y: 1, z: 1}
+  Dampening: 0.85
+  SpringStrength: 1.5
+--- !u!114 &584144282909637092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4498443656709198219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3f54dbcd716af341be9f955f4e87574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Body: {fileID: 3483803279578888436}
+  Anim: {fileID: 7095865279330459189}
+  MaxAccelerationDeltaVelocity: 5
+  MaxDeltaAngle: 15
+--- !u!114 &4742184290985814328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4498443656709198219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42b59497fc95d83409155e1eae003b05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: {fileID: -7599231597128654091}
+  Anim: {fileID: 7095865279330459189}
+  Sturdyness: 2
+--- !u!114 &5966162003396434665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4498443656709198219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe3846dde81a35458d9b66f44f48c0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Muzzle: {fileID: 0}
+  Weapon: {fileID: 0}
+  Animator: {fileID: 7095865279330459189}
+  RecoilStrength: 0
 --- !u!1 &4831808868964742683
 GameObject:
   m_ObjectHideFlags: 0
