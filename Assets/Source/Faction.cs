@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Faction
+[CreateAssetMenu(fileName = "New Faction", menuName = "Faction")]
+public class Faction : ScriptableObject
 {
     private const int LayerMaskStart = 1 << 24;
     private const int LayerStart = 24;
@@ -20,6 +20,22 @@ public class Faction
     public int Id;
     public string Name;
     public Color Color;
+
+    public Texture2D Palette;
+    [SerializeField] private Material _baseMaterial;
+
+    private Material _factionMaterialCache;
+    public Material FactionMaterial => GetFactionMaterial ();
+
+    private Material GetFactionMaterial()
+    {
+        if (_factionMaterialCache == null)
+        {
+            _factionMaterialCache = Instantiate(_baseMaterial);
+            _factionMaterialCache.mainTexture = Palette;
+        }
+        return _factionMaterialCache;
+    }
 
     public static GameObject Instantiate(Faction faction, GameObject prefab, Vector3 position, Quaternion rotation)
     {
@@ -45,6 +61,7 @@ public class Faction
             component.SetFaction(faction);
         }
     }
+
 
     public static int GetLayerMask(int factionId) => LayerMaskStart << factionId;
     public int GetLayer() => LayerStart + Id;

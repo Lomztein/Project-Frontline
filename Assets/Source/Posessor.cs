@@ -55,10 +55,10 @@ public class Posessor : MonoBehaviour
             {
                 if (Input.GetMouseButtonDown (0))
                 {
-                    var toPosess = hit.collider.GetComponentInParent<IController>() as Component;
+                    var toPosess = hit.collider.GetComponentInParent<IControllable>() as Component;
                     if (toPosess == null)
                     {
-                        toPosess = hit.collider.GetComponentInChildren<IController>() as Component;
+                        toPosess = hit.collider.GetComponentInChildren<IControllable>() as Component;
                     }
                     if (toPosess)
                     {

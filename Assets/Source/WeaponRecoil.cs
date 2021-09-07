@@ -6,12 +6,22 @@ public class WeaponRecoil : MonoBehaviour
 {
     public Transform Muzzle;
     public Weapon Weapon;
+    public GameObject WeaponObject;
+    private IWeapon _weapon;
     public VehicleBodyRecoilAnimator Animator;
     public float RecoilStrength;
 
     private void Start()
     {
-        Weapon.OnFire += OnFire;
+        if (WeaponObject)
+        {
+            _weapon = WeaponObject.GetComponent<IWeapon>();
+        }
+        if (Weapon)
+        {
+            _weapon = Weapon;
+        }
+        _weapon.OnFire += OnFire;
     }
 
     private void OnFire()
