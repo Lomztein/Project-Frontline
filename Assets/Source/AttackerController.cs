@@ -59,7 +59,7 @@ public class AttackerController : MonoBehaviour, IFactionComponent, IController
         _currentWaypoint = waypoint;
     }
 
-    protected virtual void Aim ()
+    protected virtual void Aim()
     {
         if (Turret != null)
         {
@@ -117,14 +117,14 @@ public class AttackerController : MonoBehaviour, IFactionComponent, IController
     {
         if (_currentTarget.ExistsAndValid())
         {
+            Aim();
+            Attack();
+            MoveTowardsTarget();
+
             if (GetTargetSquareDistance() > LooseTargetRange * LooseTargetRange)
             {
                 _currentTarget = null;
             }
-
-            Aim();
-            Attack();
-            MoveTowardsTarget();
         }
         else
         {

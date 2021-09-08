@@ -25,7 +25,10 @@ public class SentryController : MonoBehaviour, IFactionComponent, IController
         _targetFindingTicker = new Ticker(0.5f, TickerCallback);
         _targetFinder = new TargetFinder(go => CanHit(go));
 
-        _turret = Turret.GetComponent<ITurret>();
+        if (Turret)
+        {
+            _turret = Turret.GetComponent<ITurret>();
+        }
         if (Weapon)
         {
             _weapon = Weapon.GetComponent<IWeapon>();
@@ -35,7 +38,19 @@ public class SentryController : MonoBehaviour, IFactionComponent, IController
     private bool CanHit (GameObject go)
     {
         return Vector3.SqrMagnitude(go.transform.position - transform.position) < Range * Range
-            && _turret.CanHit(go.transform.position);
+            && CanTurretHitOrNoTurret(go);
+    }
+
+    private bool CanTurretHitOrNoTurret (GameObject go)
+    {
+        if (_turret != null)
+        {
+            return _turret.CanHit(go.transform.position);
+        }
+        else
+        {
+            return true;
+        }
     }
 
     public void SetFaction(Faction faction)
@@ -49,8 +64,12 @@ public class SentryController : MonoBehaviour, IFactionComponent, IController
         {
             if (CanHit(colTarget.Collider.gameObject))
             {
-                _turret.AimTowards(_currentTarget.GetPosition());
-                float delta = _turret.DeltaAngle(_currentTarget.GetPosition());
+                float delta = 0f;
+                if (_turret != null)
+                {
+                    _turret.AimTowards(_currentTarget.GetPosition());
+                    delta = _turret.DeltaAngle(_currentTarget.GetPosition());
+                }
                 if (delta < AimTolerance && _weapon != null)
                 {
                     _weapon.TryFire(_currentTarget);
