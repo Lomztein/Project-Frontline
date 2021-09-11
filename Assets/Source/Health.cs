@@ -6,41 +6,71 @@ using UnityEngine;
 public class Health : MonoBehaviour, IDamagable
 {
     public float MaxHealth;
-    public DamageArmorMapping.Armor ArmorType;
-    private float _currentHealth;
+    public DamageMatrix.Armor ArmorType;
+    private bool _isDead;
+    public float CurrentHealth { get; private set; }
+    public bool DestroyOnDeath = true;
     public GameObject Debris;
     public float DebrisLife;
+
     public event Action<DamageInfo> OnTakeDamage;
     public event Action<float> OnDamageTaken;
     public event Action OnDeath;
 
     private void Awake()
     {
-        _currentHealth = MaxHealth;
+        CurrentHealth = MaxHealth;
     }
 
     public float TakeDamage (DamageInfo info)
     {
         OnTakeDamage?.Invoke(info);
-        float dmg = info.Damage * DamageArmorMapping.GetDamageFactor(info.Type, ArmorType);
-        _currentHealth -= dmg;
+        float dmg = info.Damage * DamageMatrix.GetDamageFactor(info.Type, ArmorType);
+        CurrentHealth -= dmg;
         OnDamageTaken?.Invoke(dmg);
-        if (_currentHealth <= 0f)
+        if (CurrentHealth <= 0f && !_isDead)
         {
             Die();
             OnDeath?.Invoke();
+            _isDead = true;
         }
-        return _currentHealth;
+        if (CurrentHealth > MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
+        }
+        return CurrentHealth;
+    }
+
+    public void Heal (float amount)
+    {
+        CurrentHealth += amount;
+        if (CurrentHealth > MaxHealth)
+        {
+            CurrentHealth = MaxHealth;
+        }
+    }
+
+    public void Revive ()
+    {
+        _isDead = false;
+        CurrentHealth = MaxHealth;
     }
 
     private void Die()
     {
-        Destroy(gameObject);
-        GameObject d = Instantiate(Debris, transform.position, transform.rotation);
-        foreach (ParticleSystem system in d.GetComponentsInChildren<ParticleSystem>())
+        if (DestroyOnDeath)
         {
-            system.Play();
+            Destroy(gameObject);
         }
-        Destroy(d, DebrisLife);
+
+        if (Debris)
+        {
+            GameObject d = Instantiate(Debris, transform.position, transform.rotation);
+            
+            foreach (ParticleSystem system in d.GetComponentsInChildren<ParticleSystem>())
+                system.Play();
+
+            Destroy(d, DebrisLife);
+        }
     }
 }

@@ -64,6 +64,7 @@ public class Faction : ScriptableObject
 
 
     public static int GetLayerMask(int factionId) => LayerMaskStart << factionId;
+    public static int Invert(int mask) => AllFactions & ~mask;
     public int GetLayer() => LayerStart + Id;
     public int GetLayerMask() => GetLayerMask(Id);
     public int GetOtherLayerMasks() => AllFactions & ~GetLayerMask();

@@ -5,21 +5,21 @@ using UnityEngine;
 
 public class TargetFinder
 {
-    private static Func<Vector3, GameObject, float> _defaultEvaluator = (center, go) => -Vector3.SqrMagnitude(go.transform.position - center);
-    private static Predicate<GameObject> _defaultFilter = go => true;
+    public static Func<Vector3, GameObject, float> DefaultEvaluator { get; private set; } = (center, go) => -Vector3.SqrMagnitude(go.transform.position - center);
+    public static Predicate<GameObject> DefaultFilter { get; private set; } = go => true;
 
     private Func<Vector3, GameObject, float> _evaluator;
     private Predicate<GameObject> _filter;
 
-    public TargetFinder () : this(_defaultEvaluator, _defaultFilter)
+    public TargetFinder () : this(DefaultEvaluator, DefaultFilter)
     {
     }
 
-    public TargetFinder(Func<Vector3, GameObject, float> evaluator) : this(evaluator, _defaultFilter)
+    public TargetFinder(Func<Vector3, GameObject, float> evaluator) : this(evaluator, DefaultFilter)
     {
     }
 
-    public TargetFinder(Predicate<GameObject> filter) : this(_defaultEvaluator, filter)
+    public TargetFinder(Predicate<GameObject> filter) : this(DefaultEvaluator, filter)
     {
     }
 
@@ -28,6 +28,9 @@ public class TargetFinder
         _evaluator = evaluator;
         _filter = filter;
     }
+
+    public void SetEvaluator(Func<Vector3, GameObject, float> evaluator) => _evaluator = evaluator;
+    public void SetFilter(Predicate<GameObject> filter) => _filter = filter;
 
     public GameObject FindTarget (Vector3 center, float range, LayerMask layerMask)
     {

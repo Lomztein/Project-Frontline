@@ -5,7 +5,7 @@ using UnityEngine;
 public class FactionApplier : MonoBehaviour
 {
     public Faction Faction;
-    public void Start()
+    public void Awake()
     {
         Faction.ApplyFaction(gameObject);
     }

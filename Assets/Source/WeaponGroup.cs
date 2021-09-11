@@ -11,11 +11,15 @@ public class WeaponGroup : MonoBehaviour, IWeapon
     private IWeapon[] _weapons;
     private IFireControl _fireControl = new NoFireControl();
 
+    public float Damage => GetWeapons().First().Damage;
+    public float Firerate => GetWeapons().First().Firerate * _weapons.Length;
+    public DamageMatrix.Damage DamageType => GetWeapons().First().DamageType;
+
     public event Action OnFire;
 
-    private void Start()
+    private void Awake()
     {
-        _weapons = Weapons.Select(x => x.GetComponent<IWeapon>()).ToArray();
+        GetWeapons();
         IFireControl replacement = GetComponent<IFireControl>();
         if (replacement != null)
         {
@@ -26,6 +30,15 @@ public class WeaponGroup : MonoBehaviour, IWeapon
         {
             weapon.OnFire += OnWeaponFire;
         }
+    }
+
+    private IWeapon[] GetWeapons()
+    {
+        if (_weapons == null)
+        {
+            _weapons = Weapons.Select(x => x.GetComponent<IWeapon>()).ToArray();
+        }
+        return _weapons;
     }
 
     private void OnWeaponFire()

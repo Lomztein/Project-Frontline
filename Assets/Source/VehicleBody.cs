@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VehicleBody : MonoBehaviour, IControllable
+public class VehicleBody : MobileBody, IControllable
 {
-    public float MaxSpeed;
-    public float CurrentSpeed { get; private set; }
+    public override float CurrentSpeed { get; protected set; }
+
     public float AccelerationSpeed;
     public float BrakeDrag;
     private float _targetSpeedFactor;
@@ -17,8 +17,6 @@ public class VehicleBody : MonoBehaviour, IControllable
     private float _targetTurnFactor;
 
     public bool Threaded;
-
-    public Vector3 Velocity => Vector3.forward * CurrentSpeed;
 
     public Vector3 Accelerate(float factor)
     {

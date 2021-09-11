@@ -8,11 +8,11 @@ using UnityEngine;
 public class DamageInfo
 {
     public float Damage;
-    public DamageArmorMapping.Damage Type;
+    public DamageMatrix.Damage Type;
     public Vector3 Point;
     public Vector3 Direction;
 
-    public DamageInfo(float damage, DamageArmorMapping.Damage type, Vector3 point, Vector3 direction)
+    public DamageInfo(float damage, DamageMatrix.Damage type, Vector3 point, Vector3 direction)
     {
         Damage = damage;
         Type = type;

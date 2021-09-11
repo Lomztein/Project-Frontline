@@ -6,4 +6,8 @@ public interface IWeapon
 
     bool CanFire();
     void TryFire(ITarget intendedTarget);
+
+    float Damage { get; }
+    float Firerate { get; }
+    DamageMatrix.Damage DamageType { get; }
 }

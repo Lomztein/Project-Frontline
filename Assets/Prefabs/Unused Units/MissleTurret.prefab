@@ -1,0 +1,234 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &2085214943903799239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6738381879026634058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41487ee171311704884c1278dc50ac3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Faction: {fileID: 0}
+  AcquireTargetRange: 0
+  LooseTargetRange: 0
+  AttackRange: 0
+  TurretObject: {fileID: 0}
+  WeaponObject: {fileID: 0}
+  AimTolerance: 10
+  Modifiers: []
+--- !u!114 &940882466925403748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 117514825805703800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955e3746abfe5e14cb56265a34877e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Info:
+    Name: 
+    Description: 
+    Cost: 1500
+    Value: 15
+    UnitRole: 0
+    UnitTier: 0
+    UnitClass: 0
+    UnitType: 0
+--- !u!1001 &5655344120006292453
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8010740272965454026}
+    m_Modifications:
+    - target: {fileID: 1439000263739211438, guid: 4f99c9d0adae1ea4ebba10d792e43ce5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439000263739211438, guid: 4f99c9d0adae1ea4ebba10d792e43ce5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439000263739211438, guid: 4f99c9d0adae1ea4ebba10d792e43ce5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439000263739211438, guid: 4f99c9d0adae1ea4ebba10d792e43ce5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439000263739211438, guid: 4f99c9d0adae1ea4ebba10d792e43ce5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439000263739211438, guid: 4f99c9d0adae1ea4ebba10d792e43ce5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439000263739211438, guid: 4f99c9d0adae1ea4ebba10d792e43ce5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439000263739211438, guid: 4f99c9d0adae1ea4ebba10d792e43ce5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439000263739211438, guid: 4f99c9d0adae1ea4ebba10d792e43ce5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439000263739211438, guid: 4f99c9d0adae1ea4ebba10d792e43ce5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439000263739211438, guid: 4f99c9d0adae1ea4ebba10d792e43ce5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439000263739211439, guid: 4f99c9d0adae1ea4ebba10d792e43ce5,
+        type: 3}
+      propertyPath: m_Name
+      value: SmallMissleTurret
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4f99c9d0adae1ea4ebba10d792e43ce5, type: 3}
+--- !u!1 &6738381879026634058 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1439000263739211439, guid: 4f99c9d0adae1ea4ebba10d792e43ce5,
+    type: 3}
+  m_PrefabInstance: {fileID: 5655344120006292453}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8004952877647812083
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6305933840788071201, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: Turret
+      value: 
+      objectReference: {fileID: 6738381879026634058}
+    - target: {fileID: 6305933840788071201, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: Weapon
+      value: 
+      objectReference: {fileID: 6738381879026634058}
+    - target: {fileID: 6305933840788071201, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: AttackRange
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305933840788071201, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: TurretObject
+      value: 
+      objectReference: {fileID: 6738381879026634058}
+    - target: {fileID: 6305933840788071201, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: WeaponObject
+      value: 
+      objectReference: {fileID: 6738381879026634058}
+    - target: {fileID: 6305933840788071201, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: LooseTargetRange
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305933840788071201, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: AcquireTargetRange
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743208972335148256, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743208972335148256, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743208972335148256, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743208972335148256, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743208972335148256, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743208972335148256, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743208972335148256, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743208972335148256, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743208972335148256, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743208972335148256, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6743208972335148256, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977617831024787339, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: m_Name
+      value: MissleTurret
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5eef721856967274c80f299c4cc69d23, type: 3}
+--- !u!1 &117514825805703800 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7977617831024787339, guid: 5eef721856967274c80f299c4cc69d23,
+    type: 3}
+  m_PrefabInstance: {fileID: 8004952877647812083}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8010740272965454026 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 17051153543322937, guid: 5eef721856967274c80f299c4cc69d23,
+    type: 3}
+  m_PrefabInstance: {fileID: 8004952877647812083}
+  m_PrefabAsset: {fileID: 0}

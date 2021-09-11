@@ -24,7 +24,7 @@ public class ObjectPool : IObjectPool
         return _globalParent.transform;
     }
 
-    public GameObject GetObject()
+    public GameObject GetObject(Vector3 position, Quaternion rotation)
     {
         IPoolObject pobj = null;
 
@@ -43,6 +43,10 @@ public class ObjectPool : IObjectPool
             pobj.OnInstantiated();
             _objects.Add(pobj);
         }
+
+        GameObject go = (pobj as Component).gameObject;
+        go.transform.position = position;
+        go.transform.rotation = rotation;
 
         pobj.OnEnabled();
         return pobj.GameObject;

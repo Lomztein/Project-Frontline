@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AccelerationRecoil : MonoBehaviour
 {
-    public VehicleBody Body;
+    public MobileBody Body;
     public VehicleBodyRecoilAnimator Anim;
     public float MaxAccelerationDeltaVelocity;
     public float MaxDeltaAngle;

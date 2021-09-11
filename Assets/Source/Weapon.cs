@@ -6,7 +6,7 @@ public class Weapon : MonoBehaviour, IFactionComponent, IWeapon
 {
     public float Damage;
     public float Firerate;
-    public DamageArmorMapping.Damage DamageType;
+    public DamageMatrix.Damage DamageType;
     public float Speed;
     public int Amount = 1;
 
@@ -22,8 +22,12 @@ public class Weapon : MonoBehaviour, IFactionComponent, IWeapon
     public Transform Muzzle;
     public float Inaccuracy;
 
-    private Faction _faction;
     private IObjectPool _pool;
+    private LayerMask _hitLayerMask;
+
+    float IWeapon.Damage => Damage;
+    float IWeapon.Firerate => Firerate;
+    DamageMatrix.Damage IWeapon.DamageType => DamageType;
 
     public event Action OnFire;
 
@@ -59,23 +63,21 @@ public class Weapon : MonoBehaviour, IFactionComponent, IWeapon
 
         for (int i = 0; i < Amount; i++)
         {
-            GameObject proj = _pool.GetObject();
+            Quaternion rotation = Muzzle.transform.rotation * Quaternion.Euler (UnityEngine.Random.Range(-Inaccuracy, Inaccuracy), UnityEngine.Random.Range(-Inaccuracy, Inaccuracy), 0f);
+            GameObject proj = _pool.GetObject(Muzzle.transform.position, rotation);
 
             proj.transform.position = Muzzle.transform.position;
             proj.transform.rotation = Muzzle.transform.rotation;
 
             Projectile projectile = proj.GetComponent<Projectile>();
-            projectile.SetFaction(_faction);
+            projectile.HitLayerMask = _hitLayerMask;
             projectile.Target = intendedTarget;
 
             projectile.Damage = Damage;
             projectile.DamageType = DamageType;
             projectile.Speed = Speed;
 
-            float rad = Inaccuracy * Mathf.Deg2Rad;
-            Vector3 angled = Muzzle.forward + Muzzle.rotation * (Vector3.right * Mathf.Sin(UnityEngine.Random.Range(-rad, rad)) + Vector3.up * Mathf.Sin(UnityEngine.Random.Range(-rad, rad)));
-
-            projectile.Fire(angled);
+            projectile.Fire(rotation * Vector3.forward);
         }
 
         OnFire?.Invoke();
@@ -105,6 +107,6 @@ public class Weapon : MonoBehaviour, IFactionComponent, IWeapon
 
     public void SetFaction(Faction faction)
     {
-        _faction = faction;
+        _hitLayerMask = faction.GetOtherLayerMasks();
     }
 }
