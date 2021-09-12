@@ -2,7 +2,7 @@
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
-public class Weapon : MonoBehaviour, IFactionComponent, IWeapon
+public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
 {
     public float Damage;
     public float Firerate;
@@ -25,7 +25,7 @@ public class Weapon : MonoBehaviour, IFactionComponent, IWeapon
     private IObjectPool _pool;
     private LayerMask _hitLayerMask;
 
-    float IWeapon.Damage => Damage;
+    float IWeapon.Damage => Damage * Amount;
     float IWeapon.Firerate => Firerate;
     DamageMatrix.Damage IWeapon.DamageType => DamageType;
 
@@ -105,7 +105,7 @@ public class Weapon : MonoBehaviour, IFactionComponent, IWeapon
         _currentBurstAmmo = BurstAmmo;
     }
 
-    public void SetFaction(Faction faction)
+    public void SetTeam(TeamInfo faction)
     {
         _hitLayerMask = faction.GetOtherLayerMasks();
     }

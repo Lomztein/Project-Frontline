@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FactionMaterialApplier : MonoBehaviour, IFactionComponent
+public class TeamMaterialApplier : MonoBehaviour, ITeamComponent
 {
     [SerializeField] private Renderer[] _renderersToApplyTo;
 
-    public void SetFaction(Faction faction)
+    public void SetTeam(TeamInfo team)
     {
         foreach (Renderer renderer in _renderersToApplyTo)
         {
-            renderer.material = faction.FactionMaterial;
+            renderer.material = team.TeamMaterial;
         }
     }
 }

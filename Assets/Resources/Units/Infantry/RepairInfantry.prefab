@@ -25,7 +25,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12d7c56d6db96f6469baca41915a6a8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Faction: {fileID: 0}
+  Team: {fileID: 0}
   AcquireTargetRange: 200
   LooseTargetRange: 200
   AttackRange: 20
@@ -136,11 +136,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1177128837, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: MaxHealth
-      value: 20
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: Info.Cost
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
+      propertyPath: Info.Value
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: Info.UnitRole

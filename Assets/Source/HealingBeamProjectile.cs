@@ -10,7 +10,7 @@ public class HealingBeamProjectile : Projectile
     public override void Fire(Vector3 direction)
     {
         base.Fire(direction);
-        HitLayerMask = Faction.Invert(HitLayerMask);
+        HitLayerMask = TeamInfo.Invert(HitLayerMask);
 
         float range = Life * Speed;
         var hits = Physics.RaycastAll(transform.position, direction, range, HitLayerMask | TerrainLayerMask);

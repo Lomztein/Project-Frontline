@@ -42,11 +42,9 @@ public class AnimatorTurret : MonoBehaviour, ITurret
     public void AimTowards(Vector3 position)
     {
         Vector3 loc = Base.InverseTransformPoint(position);
+        Vector2 angles = Turret.CalculateAngleTowards(loc);
 
-        float x = Mathf.Atan2(loc.y, loc.z) * Mathf.Rad2Deg;
-        float y = Mathf.Atan2(loc.x, loc.z) * Mathf.Rad2Deg;
-
-        _targetAim = new Vector2(x, y);
+        _targetAim = new Vector2(angles.x, angles.y);
     }
 
     public float DeltaAngle(Vector3 target)

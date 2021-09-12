@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41487ee171311704884c1278dc50ac3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Faction: {fileID: 0}
+  Team: {fileID: 0}
   AcquireTargetRange: 100
   LooseTargetRange: 100
   AttackRange: 100
@@ -183,10 +183,10 @@ MonoBehaviour:
   Info:
     Name: 
     Description: 
-    Cost: 1250
+    Cost: 1500
     Value: 15
     UnitRole: 2
-    UnitTier: 1
+    UnitTier: 0
     UnitClass: 2
     UnitType: 3
 --- !u!114 &-4855668697756973212
@@ -5227,7 +5227,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8880310155063153174}
-  - {fileID: 7239507549102304599}
   - {fileID: 7239507548481140458}
   m_Father: {fileID: 7239507548301112919}
   m_RootOrder: 1
@@ -5312,8 +5311,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8101322960042555189}
+  - {fileID: 7239507549102304599}
   m_Father: {fileID: 7239507547836584735}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7239507549102304598
 GameObject:
@@ -5340,11 +5340,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7239507549102304598}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.0713892, y: 0.716, z: 1.9}
+  m_LocalPosition: {x: 0.0713892, y: 0.06800002, z: 2.7220001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5562326544163951966}
-  m_Father: {fileID: 7239507547836584735}
+  m_Father: {fileID: 7239507548481140458}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7239507549102304552
@@ -5359,7 +5359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 400
+  Damage: 300
   Firerate: 0.4
   DamageType: 1
   Speed: 300

@@ -71,10 +71,10 @@ public static class DamageMatrix
         } },
         { Damage.Energy, new Dictionary<Armor, float>()
         {
-            { Armor.Kevlar, 0.8f },
-            { Armor.Flak, 0.6f },
-            { Armor.Light, 0.3f },
-            { Armor.Medium, 0.4f },
+            { Armor.Kevlar, 0.4f },
+            { Armor.Flak, 0.2f },
+            { Armor.Light, 0.6f },
+            { Armor.Medium, 0.8f },
             { Armor.Heavy, 1.5f },
             { Armor.Structure, 1.4f },
             { Armor.Shield, 0.1f },

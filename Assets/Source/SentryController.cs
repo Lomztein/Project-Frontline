@@ -3,6 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SentryController : AIController, IFactionComponent, IController
+public class SentryController : AIController, ITeamComponent, IController
 {
 }

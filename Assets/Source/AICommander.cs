@@ -7,6 +7,8 @@ public class AICommander : Commander
 {
     public float TargetAvarageAPM = 20;
 
+    public UnitWeightTableBase UnitWeightTable;
+
     private IUnitSelector _unitSelector;
     private IPositionSeletor _positionSelector;
 
@@ -38,9 +40,7 @@ public class AICommander : Commander
 
         if (unit)
         {
-            Credits -= unit.GetComponent<Unit>().Cost;
-            GameObject prefab = GeneratePrefab(unit);
-            AssignCommander(Faction.Instantiate(prefab, position, transform.rotation));
+            PlaceUnit(unit, position, transform.rotation);
         }
     }
 }

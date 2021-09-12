@@ -31,13 +31,17 @@ public class Turret : MonoBehaviour, ITurret
 
     private void RotateHorizontal(Vector3 localPosition, float deltaTime)
     {
-        float angle = Mathf.Clamp(Mathf.Atan2(localPosition.x, localPosition.z) * Mathf.Rad2Deg, HorizontalRange.x, HorizontalRange.y);
+        Vector3 baseAngles = Clamp(CalculateAngleTowards(localPosition), HorizontalRange, VerticalRange);
+        float angle = baseAngles.y;
+
         HorizontalAxis.localRotation = Quaternion.RotateTowards(HorizontalAxis.localRotation, Quaternion.Euler(0f, angle, 0f), HorizontalSpeed * deltaTime);
     }
 
     private void RotateVertical(Vector3 localPosition, float deltaTime)
     {
-        float angle = Mathf.Clamp(-Mathf.Atan2(localPosition.y, localPosition.z) * Mathf.Rad2Deg, VerticalRange.x, VerticalRange.y);
+        Vector3 baseAngles = Clamp(CalculateAngleTowards(localPosition), HorizontalRange, VerticalRange);
+        float angle = baseAngles.x;
+
         VerticalAxis.localRotation = Quaternion.RotateTowards(VerticalAxis.localRotation, Quaternion.Euler(angle, 0f, 0f), VerticalSpeed * deltaTime);
     }
 
@@ -51,5 +55,26 @@ public class Turret : MonoBehaviour, ITurret
     public bool CanHit(Vector3 target)
     {
         return true;
+    }
+
+    public static Vector2 CalculateAngleTowards (Vector3 localPosition)
+    {
+        Vector3 angles = Quaternion.FromToRotation(Vector3.forward, localPosition).eulerAngles;
+
+        float horizontal = angles.y;
+        float vertical = angles.x;
+
+        if (localPosition.y > 0f)
+            vertical = (360f - angles.x) * -1;
+
+        if (localPosition.x < 0f)
+            horizontal = (360f - angles.y) * -1;
+
+        return new Vector2(vertical, horizontal);
+    }
+
+    public static Vector2 Clamp(Vector2 angles, Vector2 horMinMax, Vector2 verMinMax)
+    {
+        return new Vector2(Mathf.Clamp(angles.x, verMinMax.x, verMinMax.y), Mathf.Clamp(angles.y, horMinMax.x, horMinMax.y));
     }
 }

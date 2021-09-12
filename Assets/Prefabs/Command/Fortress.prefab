@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3616443299717698607}
   - component: {fileID: 3624032928379106665}
+  - component: {fileID: -8404627194951678604}
   m_Layer: 0
   m_Name: Fortress
   m_TagString: StructureUnit
@@ -46,8 +47,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 25000
   ArmorType: 5
+  DestroyOnDeath: 1
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 5
+--- !u!114 &-8404627194951678604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1744709123000931361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe1a2ce28ac50a2428b5c4d27cda89bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Commander: {fileID: 0}
+  IncomePerSecond: 25
 --- !u!1 &2126730953651146373
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,6 +120,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -128,6 +145,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &6744635693241817819
 BoxCollider:
   m_ObjectHideFlags: 0

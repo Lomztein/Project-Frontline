@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitFactory : MonoBehaviour, IFactionComponent
+public class UnitFactory : MonoBehaviour, ITeamComponent
 {
     public GameObject UnitPrefab;
     public float SpawnDelay;
     public float SpawnRange;
 
-    private Faction _faction;
+    private TeamInfo _team;
     private Waypoint _nearestWaypoint;
 
     public void Start()
@@ -20,7 +20,7 @@ public class UnitFactory : MonoBehaviour, IFactionComponent
     private void Spawn ()
     {
         Vector3 pos = GetLocalRandomSpawnPosition() + transform.position;
-        GameObject go = _faction.Instantiate(UnitPrefab, pos, transform.rotation);
+        GameObject go = _team.Instantiate(UnitPrefab, pos, transform.rotation);
         go.SendMessage("SetWaypoint", _nearestWaypoint);
     }
 
@@ -30,8 +30,8 @@ public class UnitFactory : MonoBehaviour, IFactionComponent
         return new Vector3(unitSphere.x, 0f, unitSphere.z);
     }
 
-    public void SetFaction(Faction faction)
+    public void SetTeam(TeamInfo faction)
     {
-        _faction = faction;
+        _team = faction;
     }
 }

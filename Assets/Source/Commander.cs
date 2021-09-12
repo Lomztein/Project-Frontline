@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public abstract class Commander : MonoBehaviour, IFactionComponent
+public abstract class Commander : MonoBehaviour, ITeamComponent
 {
     public string Name;
+
     public int Credits;
-    public Faction Faction;
+    private float _incomingCredits;
+
+    public TeamInfo Team;
 
     public bool IsEliminated => Fortress == null;
     public Transform Fortress;
@@ -21,6 +24,7 @@ public abstract class Commander : MonoBehaviour, IFactionComponent
     protected virtual void Awake()
     {
         gameObject.name = Name;
+        AssignCommander(gameObject);
     }
 
     protected virtual void FixedUpdate ()
@@ -48,6 +52,22 @@ public abstract class Commander : MonoBehaviour, IFactionComponent
         }
     }
 
+    protected GameObject PlaceUnit (GameObject unit, Vector3 position, Quaternion rotation)
+    {
+        Unit u = unit.GetComponent<Unit>();
+        Credits -= u.Info.Cost;
+        GameObject prefab = GeneratePrefab(unit);
+        GameObject go = Team.Instantiate(prefab, position, rotation);
+        AssignCommander(go);
+
+        PassiveIncome pi = go.GetComponent<PassiveIncome>();
+        if (pi)
+        {
+            pi.IncomePerSecond = u.Info.Value;
+        }
+        return go;
+    }
+
     public void AssignCommander(GameObject obj)
     {
         var components = obj.GetComponentsInChildren<ICommanderComponent>();
@@ -57,8 +77,16 @@ public abstract class Commander : MonoBehaviour, IFactionComponent
         }
     }
 
-    public void SetFaction(Faction faction)
+    public void Earn (float moneys)
     {
-        Faction = faction;
+        _incomingCredits += moneys;
+        int earned = Mathf.FloorToInt(_incomingCredits);
+        _incomingCredits -= earned;
+        Credits += earned;
+    }
+
+    public void SetTeam(TeamInfo faction)
+    {
+        Team = faction;
     }
 }

@@ -31,7 +31,7 @@ public class HealerAIControllerModifier : AIControllerModifier
 
         Controller.OnTargetAcquired += Controller_OnTargetAcquired;
         Controller.OnTargetLost += Controller_OnTargetLost;
-        Controller.SetTargetLayerMask(Controller.Faction.GetLayerMask());
+        Controller.SetTargetLayerMask(Controller.Team.GetLayerMask());
     }
 
     private void Controller_OnTargetLost(ITarget obj)

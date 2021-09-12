@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackerController : AIController, IFactionComponent, IController
+public class AttackerController : AIController, ITeamComponent, IController
 {
     private const float HOLD_VARIANCE = 2.5f;
 
@@ -28,7 +28,7 @@ public class AttackerController : AIController, IFactionComponent, IController
         {
             Controllable.Accelerate(1f);
             float angle = Mathf.Clamp(Vector3.SignedAngle(transform.forward, _currentWaypoint.OutgoingVector, Vector3.up), -AngleClamp, AngleClamp);
-            Controllable.Turn(angle);
+            Controllable.Turn(angle / AngleClamp);
         }
     }
 

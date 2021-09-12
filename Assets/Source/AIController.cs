@@ -7,7 +7,7 @@ public abstract class AIController : MonoBehaviour, IController
 {
     public bool Enabled { get => enabled; set => enabled = value; }
 
-    [HideInInspector] public Faction Faction;
+    [HideInInspector] public TeamInfo Team;
     public IControllable Controllable;
 
     private LayerMask _targetLayer;
@@ -72,7 +72,7 @@ public abstract class AIController : MonoBehaviour, IController
     public void SetTargetFilter(Predicate<GameObject> filter) => _targetFinder.SetFilter(filter);
     public void SetTargetLayerMask(LayerMask mask) => _targetLayer = mask;
 
-    private float GetDamageFactor(GameObject target)
+    protected float GetDamageFactor(GameObject target)
     {
         Health health = target.GetComponentInParent<Health>();
         if (health)
@@ -99,9 +99,9 @@ public abstract class AIController : MonoBehaviour, IController
         CurrentTarget = null;
     }
 
-    public void SetFaction(Faction faction)
+    public void SetTeam(TeamInfo faction)
     {
-        Faction = faction;
+        Team = faction;
         _targetLayer = faction.GetOtherLayerMasks();
     }
 
