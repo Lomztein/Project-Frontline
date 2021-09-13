@@ -5919,7 +5919,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d66f087e5568b6a48809fd2448b48f8f, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6076,10 +6075,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 125
+  Damage: 250
   Firerate: 0.1
   DamageType: 5
-  Speed: 40
+  Speed: 50
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
@@ -6186,7 +6185,7 @@ MonoBehaviour:
   Muzzle: {fileID: 5640369137706752032}
   HorRotationSpeed: 15
   VerRotationSpeed: 15
-  ProjectileSpeed: 40
+  ProjectileSpeed: 50
   ProjectileGravity: 15
 --- !u!1 &5640369137036882505
 GameObject:
@@ -6233,10 +6232,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 125
+  Damage: 250
   Firerate: 0.1
   DamageType: 5
-  Speed: 40
+  Speed: 50
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
@@ -11100,7 +11099,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d66f087e5568b6a48809fd2448b48f8f, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11274,6 +11272,7 @@ GameObject:
   - component: {fileID: 5640369137628400755}
   - component: {fileID: 6032616352911189941}
   - component: {fileID: -7567754369517084437}
+  - component: {fileID: -454217863282750625}
   m_Layer: 0
   m_Name: MRLS
   m_TagString: MobileUnit
@@ -11318,7 +11317,7 @@ MonoBehaviour:
     UnitRole: 1
     UnitTier: 1
     UnitClass: 3
-    UnitType: 0
+    UnitType: 1
 --- !u!114 &5640369137628400754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11331,7 +11330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
+  MaxHealth: 250
   ArmorType: 2
   DestroyOnDeath: 1
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -11349,15 +11348,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 0}
-  AcquireTargetRange: 150
-  LooseTargetRange: 200
+  AcquireTargetRange: 125
+  LooseTargetRange: 125
   AttackRange: 100
   TurretObject: {fileID: 5640369136892039193}
   WeaponObject: {fileID: 5640369136630403019}
   AimTolerance: 5
-  Modifiers: []
+  Modifiers:
+  - {fileID: -454217863282750625}
   AngleClamp: 30
-  HoldRange: 95
+  HoldRange: 100
 --- !u!114 &6032616352911189941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11391,6 +11391,18 @@ MonoBehaviour:
   FactoryPrefab: {fileID: 6801044878694592254, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
     type: 3}
   ProductionTime: 80
+--- !u!114 &-454217863282750625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5640369137628400748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8c498c43eb27de4bac5bf82321f14fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5640369137643957884
 GameObject:
   m_ObjectHideFlags: 0
@@ -16229,7 +16241,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d66f087e5568b6a48809fd2448b48f8f, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -16320,10 +16331,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 125
+  Damage: 250
   Firerate: 0.1
   DamageType: 5
-  Speed: 40
+  Speed: 50
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
@@ -16394,10 +16405,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 125
+  Damage: 250
   Firerate: 0.1
   DamageType: 5
-  Speed: 40
+  Speed: 50
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
@@ -21293,7 +21304,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: d66f087e5568b6a48809fd2448b48f8f, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

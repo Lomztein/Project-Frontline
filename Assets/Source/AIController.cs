@@ -64,7 +64,7 @@ public abstract class AIController : MonoBehaviour, IController
 
         foreach (AIControllerModifier modifier in Modifiers)
         {
-            modifier.OnInitialized();
+            modifier.OnInitialized(this);
         }
     }
 

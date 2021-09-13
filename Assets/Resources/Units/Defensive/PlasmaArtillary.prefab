@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 55885839613171485}
   - component: {fileID: 2476162970634138865}
   - component: {fileID: 835560189604165040}
-  - component: {fileID: 1299817282169800281}
   - component: {fileID: 5226911492694726194}
   m_Layer: 0
   m_Name: PlasmaCannon
@@ -111,26 +110,6 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 4959599944303177577}
   Inaccuracy: 7
---- !u!114 &1299817282169800281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244591003029453303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41487ee171311704884c1278dc50ac3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Team: {fileID: 0}
-  AcquireTargetRange: 300
-  LooseTargetRange: 300
-  AttackRange: 300
-  TurretObject: {fileID: 1244591003029453303}
-  WeaponObject: {fileID: 1244591003029453303}
-  AimTolerance: 5
-  Modifiers: []
 --- !u!114 &5226911492694726194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5387,124 +5366,155 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1001 &5149531361137979571
-PrefabInstance:
+--- !u!1 &9151599428216314589
+GameObject:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 923672242349165846, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: Debris
-      value: 
-      objectReference: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1,
-        type: 3}
-    - target: {fileID: 923672242349165846, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: MaxHealth
-      value: 1000
-      objectReference: {fileID: 0}
-    - target: {fileID: 923672242349165846, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: DebrisLife
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2210742952194359433, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: Info.Cost
-      value: 8000
-      objectReference: {fileID: 0}
-    - target: {fileID: 2210742952194359433, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: Info.Value
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 2210742952194359433, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: Info.UnitTier
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2210742952194359433, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: Info.UnitType
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2210742952194359433, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: Info.UnitClass
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4068945415173352041, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4068945415173352041, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4068945415173352041, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4068945415173352041, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 57.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4068945415173352041, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4068945415173352041, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4068945415173352041, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4068945415173352041, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4068945415173352041, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4068945415173352041, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4068945415173352041, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4068945415173352046, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: m_Name
-      value: PlasmaArtillary
-      objectReference: {fileID: 0}
-    - target: {fileID: 4068945415173352046, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-        type: 3}
-      propertyPath: m_TagString
-      value: StructureUnit
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d42cf4ee73e9f6848958e9b38cbc4b8b, type: 3}
---- !u!4 &9151599428409537146 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4068945416037089993, guid: d42cf4ee73e9f6848958e9b38cbc4b8b,
-    type: 3}
-  m_PrefabInstance: {fileID: 5149531361137979571}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9151599428216314586}
+  - component: {fileID: 5451401190002703781}
+  - component: {fileID: 6474184489573724218}
+  - component: {fileID: 9094752563827018474}
+  - component: {fileID: 1159676567398182207}
+  - component: {fileID: 8966566408742433458}
+  m_Layer: 0
+  m_Name: PlasmaArtillary
+  m_TagString: StructureUnit
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9151599428216314586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9151599428216314589}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -3, y: 0, z: 57.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 9151599428409537146}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5451401190002703781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9151599428216314589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 1000
+  ArmorType: 5
+  DestroyOnDeath: 1
+  Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
+  DebrisLife: 5
+--- !u!114 &6474184489573724218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9151599428216314589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955e3746abfe5e14cb56265a34877e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Info:
+    Name: 
+    Description: 
+    Cost: 8000
+    Value: 20
+    UnitRole: 2
+    UnitTier: 2
+    UnitClass: 3
+    UnitType: 3
+--- !u!65 &9094752563827018474
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9151599428216314589}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 2.5231802, z: 4}
+  m_Center: {x: 0, y: 1.252994, z: 0}
+--- !u!114 &1159676567398182207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9151599428216314589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41487ee171311704884c1278dc50ac3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Team: {fileID: 0}
+  AcquireTargetRange: 300
+  LooseTargetRange: 300
+  AttackRange: 300
+  TurretObject: {fileID: 1244591003029453303}
+  WeaponObject: {fileID: 1244591003029453303}
+  AimTolerance: 5
+  Modifiers:
+  - {fileID: 8966566408742433458}
+--- !u!114 &8966566408742433458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9151599428216314589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8c498c43eb27de4bac5bf82321f14fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &9151599428409537149
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9151599428409537146}
+  m_Layer: 0
+  m_Name: Turret
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9151599428409537146
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9151599428409537149}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.449, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2207822421660533835}
+  - {fileID: 55885839613171485}
+  m_Father: {fileID: 9151599428216314586}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

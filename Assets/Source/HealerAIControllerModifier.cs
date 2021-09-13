@@ -8,8 +8,10 @@ public class HealerAIControllerModifier : AIControllerModifier
     public AIController Controller;
     private Health _currentTargetHealth;
 
-    public override void OnInitialized ()
+    public override void OnInitialized (AIController controller)
     {
+        Controller = controller;
+
         Controller.SetTargetEvaluator((pos, go) =>
         {
         Health health = go.GetComponentInParent<Health>();

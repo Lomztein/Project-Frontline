@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class AIControllerModifier : MonoBehaviour
 {
-    public abstract void OnInitialized();
+    public abstract void OnInitialized(AIController controller);
 }
