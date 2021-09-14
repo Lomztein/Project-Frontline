@@ -2,15 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityTemplateProjects;
 
 public class Posessor : MonoBehaviour
 {
     private GameObject _currentPosessed;
 
     public Camera MainCamera;
+    public SimpleCameraController MainCameraController;
+
     public FollowerCamera CameraController;
     private Camera _followCamera;
-    
+
     public PlayerController Controller;
 
     private void Awake()
@@ -28,7 +31,8 @@ public class Posessor : MonoBehaviour
         {
             MainCamera.enabled = false;
             _followCamera.enabled = true;
-            CameraController.FollowObject = target.transform;
+            CameraController.Follow(target.transform);
+            MainCameraController.enabled = false;
 
             Controller.Turret = turret;
             Controller.Weapon = weapon;
@@ -95,6 +99,8 @@ public class Posessor : MonoBehaviour
         MainCamera.enabled = true;
         _followCamera.enabled = false;
         _currentPosessed = null;
+        CameraController.StopFollow();
+        MainCameraController.enabled = true;
         Controller.Release();
     }
 

@@ -38,6 +38,28 @@ public class Ragdoll : MonoBehaviour
         SetRagdollEnabled(false);   
     }
 
+    public void AddForce (Vector3 position, Vector3 force)
+    {
+        GetClosestRigidbody(position).AddForceAtPosition(force, position, ForceMode.Impulse);
+    }
+
+    private Rigidbody GetClosestRigidbody (Vector3 position)
+    {
+        TryCache();
+        Rigidbody closest = null;
+        float dist = float.MaxValue;
+        foreach (Rigidbody rb in _rigidbodies)
+        {
+            float d = Vector3.SqrMagnitude(rb.transform.position - position);
+            if (dist > d)
+            {
+                dist = d;
+                closest = rb;
+            }
+        }
+        return closest;
+    }
+
     private void SetRagdollEnabled (bool value)
     {
         foreach (Rigidbody rigidbody in _rigidbodies)
