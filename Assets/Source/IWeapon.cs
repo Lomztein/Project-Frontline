@@ -9,6 +9,7 @@ public interface IWeapon
 
     float Damage { get; }
     float Firerate { get; }
+    float Speed { get; }
 
     DamageMatrix.Damage DamageType { get; }
 }

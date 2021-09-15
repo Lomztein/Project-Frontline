@@ -29,6 +29,8 @@ public abstract class AIController : MonoBehaviour, IController
     public IWeapon Weapon;
 
     public float AimTolerance;
+    public bool LeadTarget;
+    private Vector3 _targetLastPosition;
 
     private DamageMatrix.Damage _primaryWeaponDamageType;
     private Ticker _targetFindingTicker;
@@ -90,6 +92,7 @@ public abstract class AIController : MonoBehaviour, IController
         {
             CurrentTarget = new ColliderTarget(target);
             OnTargetAcquired?.Invoke(CurrentTarget);
+            _targetLastPosition = CurrentTarget.GetPosition();
         }
     }
 
@@ -112,7 +115,17 @@ public abstract class AIController : MonoBehaviour, IController
     {
         if (Turret != null)
         {
-            Turret.AimTowards(CurrentTarget.GetPosition());
+            Vector3 targetPosition = CurrentTarget.GetPosition();
+            if (LeadTarget && Weapon != null)
+            {
+                Vector3 vel = (targetPosition - _targetLastPosition) / Time.fixedDeltaTime;
+                float dist = Vector3.Distance(targetPosition, transform.position);
+                targetPosition += vel * (dist / Weapon.Speed);
+
+                _targetLastPosition = CurrentTarget.GetPosition();
+            }
+
+            Turret.AimTowards(targetPosition);
             _aimDelta = Turret.DeltaAngle(CurrentTarget.GetPosition());
         }
         else

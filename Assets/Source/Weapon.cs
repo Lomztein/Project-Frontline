@@ -27,6 +27,7 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
 
     float IWeapon.Damage => Damage * Amount;
     float IWeapon.Firerate => Firerate;
+    float IWeapon.Speed => Speed;
 
     DamageMatrix.Damage IWeapon.DamageType => DamageType;
 

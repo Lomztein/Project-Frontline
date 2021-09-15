@@ -13,6 +13,8 @@ public class WeaponGroup : MonoBehaviour, IWeapon
 
     public float Damage => GetWeapons().First().Damage;
     public float Firerate => GetWeapons().First().Firerate * _weapons.Length;
+    public float Speed => GetWeapons().First().Speed;
+
     public DamageMatrix.Damage DamageType => GetWeapons().First().DamageType;
 
     public event Action OnFire;
