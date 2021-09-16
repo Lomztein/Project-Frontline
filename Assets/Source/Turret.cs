@@ -41,6 +41,7 @@ public class Turret : MonoBehaviour, ITurret
     {
         Vector3 baseAngles = Clamp(CalculateAngleTowards(localPosition), HorizontalRange, VerticalRange);
         float angle = baseAngles.x;
+        Debug.Log(localPosition.x + " | " + CalculateAngleTowards(localPosition).x);
 
         VerticalAxis.localRotation = Quaternion.RotateTowards(VerticalAxis.localRotation, Quaternion.Euler(angle, 0f, 0f), VerticalSpeed * deltaTime);
     }
@@ -54,7 +55,11 @@ public class Turret : MonoBehaviour, ITurret
 
     public bool CanHit(Vector3 target)
     {
-        return true;
+        Vector3 localPosition = Base.InverseTransformPoint(target);
+        Vector3 angles = Turret.CalculateAngleTowards(localPosition);
+
+        return HorizontalRange.x < angles.y && angles.y < HorizontalRange.y
+            && VerticalRange.x < angles.x && angles.x < VerticalRange.y;
     }
 
     public static Vector2 CalculateAngleTowards (Vector3 localPosition)
@@ -66,6 +71,9 @@ public class Turret : MonoBehaviour, ITurret
 
         if (localPosition.y > 0f)
             vertical = (360f - angles.x) * -1;
+
+        if (vertical < -359f)
+            vertical = 0f; // idk i think angles just hate me
 
         if (localPosition.x < 0f)
             horizontal = (360f - angles.y) * -1;
