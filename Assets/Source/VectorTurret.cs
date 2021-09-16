@@ -27,12 +27,10 @@ public class VectorTurret : MonoBehaviour, ITurret
     public bool CanHit(Vector3 target)
     {
         Vector3 localPosition = Base.InverseTransformPoint(target);
+        Vector3 angles = Turret.CalculateAngleTowards(localPosition);
 
-        float x = Mathf.Atan2(localPosition.x, localPosition.z) * Mathf.Rad2Deg;
-        float y = Mathf.Atan2(localPosition.y, localPosition.z) * Mathf.Rad2Deg;
-
-        return HorizontalRange.x < x && x < HorizontalRange.y
-            && VerticalRange.x < y && y < VerticalRange.y;
+        return HorizontalRange.x < angles.y && angles.y < HorizontalRange.y
+            && VerticalRange.x < angles.x && angles.x < VerticalRange.y;
     }
 
     public float DeltaAngle(Vector3 target)
