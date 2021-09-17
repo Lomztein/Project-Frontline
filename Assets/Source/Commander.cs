@@ -68,6 +68,27 @@ public abstract class Commander : MonoBehaviour, ITeamComponent
         return go;
     }
 
+    public GameObject GetUnitFactoryPrefab (GameObject unit)
+    {
+        ProductionInfo info = unit.GetComponent<ProductionInfo>();
+        if (info)
+        {
+            return info.FactoryPrefab;
+        }
+        return null;
+    }
+
+    public Vector3 GetUnitPlacementCheckSize (GameObject unit)
+    {
+        GameObject factory = GetUnitFactoryPrefab(unit);
+        if (factory)
+        {
+            // TODO: Create strategy-based size getter thing
+            return factory.GetComponentInChildren<BoxCollider>().size;
+        }
+        return unit.GetComponentInChildren<BoxCollider>().size;
+    }
+
     public void AssignCommander(GameObject obj)
     {
         var components = obj.GetComponentsInChildren<ICommanderComponent>();

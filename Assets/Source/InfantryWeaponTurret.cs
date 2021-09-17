@@ -8,13 +8,10 @@ public class InfantryWeaponTurret : MonoBehaviour, ITurret
     public Transform Transform;
 
     public Transform Pivot;
-    public Transform Fulcrum;
     public Transform Muzzle;
 
     private void Start()
     {
-        Quaternion rot = Transform.rotation;
-
         Transform.SetParent(Pivot);
         Transform.localPosition = Vector3.zero;
         Transform.rotation = transform.root.rotation;
@@ -25,14 +22,7 @@ public class InfantryWeaponTurret : MonoBehaviour, ITurret
         ((ITurret)AnimatorTurret).AimTowards(position);
         if (CanHit(position))
         {
-            if (!Fulcrum)
-            {
-                Transform.LookAt(position);
-            }
-            else
-            {
-                Muzzle.LookAt(position);
-            }
+            Transform.LookAt(position);
         }
     }
 
@@ -44,13 +34,5 @@ public class InfantryWeaponTurret : MonoBehaviour, ITurret
     public float DeltaAngle(Vector3 target)
     {
         return ((ITurret)AnimatorTurret).DeltaAngle(target);
-    }
-
-    private void FixedUpdate()
-    {
-        if (Fulcrum)
-        {
-            Transform.rotation = Quaternion.LookRotation(Fulcrum.position - Pivot.position, Vector3.up);
-        }
     }
 }

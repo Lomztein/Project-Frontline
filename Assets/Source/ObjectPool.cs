@@ -74,12 +74,14 @@ public class ObjectPool : IObjectPool
 
         if (p != null)
         {
-            _freePools.Remove(p);
+            //_freePools.Remove(p);
             return p;
         }
         else
         {
-            return new ObjectPool(prefab);
+            p = new ObjectPool(prefab);
+            _freePools.Add(p);
+            return p;
         }
     }
 
@@ -87,7 +89,7 @@ public class ObjectPool : IObjectPool
     {
         if (Application.isPlaying)
         {
-            _freePools.Add(pool);
+            //_freePools.Add(pool);
         }
     }
 

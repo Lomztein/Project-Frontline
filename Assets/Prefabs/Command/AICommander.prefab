@@ -48,11 +48,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Bertrude
   Credits: 100000
-  Faction: {fileID: 0}
+  Team: {fileID: 0}
   Fortress: {fileID: 8977660350736787723}
   AvailableUnits:
+  - {fileID: 6125008043333848041, guid: d6be60e0994e35746ac413ef9f9a3aea, type: 3}
   - {fileID: 1006977410456563417, guid: dad9e28e52145d140a136868c5c59e6b, type: 3}
+  - {fileID: 3173293893950344040, guid: b2ea2c33055ca5a4e8a12cbafbcc4e99, type: 3}
+  - {fileID: 1249313772280228456, guid: 8145ded560b622b4a95fd98c77acd898, type: 3}
+  - {fileID: 6962003151734455349, guid: e024a6df19ebb9349b04c2fdabd476e2, type: 3}
+  - {fileID: 5640369137628400748, guid: 621324a701f556d4e8aa94c8a5e76089, type: 3}
+  - {fileID: 5396550744513459931, guid: bfe4951a9e0d45249affb7353bd9e104, type: 3}
+  - {fileID: 1685374889454587877, guid: d9117cde3af7c7e49b48839c2fef3f80, type: 3}
+  - {fileID: 1858310021985413352, guid: ac3bd44ced2e09740a4dfe58efcc5117, type: 3}
+  - {fileID: 8208751554970705719, guid: c22ef9011cc0a4449a736bb72421a739, type: 3}
+  - {fileID: 6364331591275548564, guid: ba41715f419efa54b8b0d44e8977b735, type: 3}
+  - {fileID: 5392427408549977929, guid: 842cea45b547e6045bb9176bc5ce4c96, type: 3}
+  - {fileID: 9173316093531560376, guid: e05713655e5b9e241b822f76b14d040a, type: 3}
+  - {fileID: 4537945579328423773, guid: fc39f1918b671d044a3ef815f4b98744, type: 3}
+  - {fileID: 4059168509002600804, guid: c37e6be94065b3049867b243465feb47, type: 3}
+  - {fileID: 8878022408532305572, guid: a253db55a42f04a41a7b83aa88881838, type: 3}
+  - {fileID: 1382969094849056518, guid: 24c8e371e2bcdf448a54ed3bc77166e0, type: 3}
+  - {fileID: 825600886256743386, guid: cd9bf6476b4e5e74e98b93bfbf0a209d, type: 3}
+  - {fileID: 1679189555824321595, guid: 9b8a614ee32cb23408490c7652465c69, type: 3}
+  - {fileID: 1969378935209648158, guid: 5d7d73f47434d164286468bccfc9309f, type: 3}
+  - {fileID: 2772477570969109767, guid: d294f7f297ea0834fa9746bd89c1559b, type: 3}
+  - {fileID: 9151599428216314589, guid: 5150fee02f26b67418e4c5c090dc6011, type: 3}
+  - {fileID: 8960168159513935519, guid: 4689cc2f0884d474395ca9e8150c8d6f, type: 3}
+  - {fileID: 5100886103782147142, guid: bd6c1602a155ec645b6c577d0b314949, type: 3}
+  - {fileID: 8106105647802903052, guid: 48fbd6f0c663ecf409ca1f71e6312484, type: 3}
+  - {fileID: 4325982583102194759, guid: 41aa27b60c7077f4db9994e3e44702ea, type: 3}
+  - {fileID: 6370023998665172067, guid: 6728e865994021f469439b68381145a0, type: 3}
   TargetAvarageAPM: 60
+  UnitWeightTable: {fileID: 0}
 --- !u!114 &5667567378679379695
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,6 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlacementSize: 6
   SearchStepSize: 7.5
+  SearchStepSizeVariance: 5
   MaxIters: 50
 --- !u!1001 &5667567378796756260
 PrefabInstance:

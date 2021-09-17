@@ -7,20 +7,13 @@ public class NearbyPositionSelector : MonoBehaviour, IPositionSeletor
 {
     public float PlacementSize;
     public float SearchStepSize;
+    public float SearchStepSizeVariance;
     public int MaxIters;
 
     private const string StructTag = "StructureUnit";
     private const int TerrainLayer = 1 << 8;
 
-    private Vector3[] _searchDirections = new Vector3[]
-    {
-        new Vector3 (1f, 0f, 0f),
-        new Vector3 (0f, 0f, 1f),
-        new Vector3 (-1f, 0f, 0f),
-        new Vector3 (0f, 0f, -1f)
-    };
-
-    public Vector3 SelectPosition(IEnumerable<Vector3> centers)
+    public Vector3 SelectPosition(IEnumerable<Vector3> centers, Vector3 checkSize)
     {
         Vector3 position = Vector3.zero;
         foreach (Vector3 center in centers)
@@ -28,9 +21,11 @@ public class NearbyPositionSelector : MonoBehaviour, IPositionSeletor
             int iters = 0;
 
             position = center;
-            while (!CanPlace(position) && iters < MaxIters)
+            while (!CanPlace(position, checkSize) && iters < MaxIters)
             {
-                position += _searchDirections[Random.Range(0, _searchDirections.Length)] * SearchStepSize;
+                Vector2 randBase = Random.insideUnitCircle;
+                Vector3 rand = new Vector3(randBase.x, 0f, randBase.y);
+                position += rand * (SearchStepSize + Random.Range(-SearchStepSizeVariance, SearchStepSizeVariance));
                 iters++;
             }
         }
@@ -38,9 +33,9 @@ public class NearbyPositionSelector : MonoBehaviour, IPositionSeletor
         return position;
     }
 
-    private bool CanPlace (Vector3 position)
+    private bool CanPlace (Vector3 position, Vector3 checkSize)
     {
-        Collider[] colliders = Physics.OverlapSphere(position, PlacementSize, ~TerrainLayer);
+        Collider[] colliders = Physics.OverlapBox(position, checkSize / 2f, Quaternion.identity, ~TerrainLayer);
         return !colliders.Any(x => x.CompareTag(StructTag));
     }
 }

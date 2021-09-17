@@ -6,7 +6,7 @@ public class TrailEffect : Effect
 {
     public TrailRenderer Trail;
 
-    public override bool IsPlaying => Time.time > _stopTime + Trail.time;
+    public override bool IsPlaying => Time.time < _stopTime + Trail.time;
     private float _stopTime;
 
     public override void Play()

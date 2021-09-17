@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IPositionSeletor
 {
-    Vector3 SelectPosition(IEnumerable<Vector3> centers);
+    Vector3 SelectPosition(IEnumerable<Vector3> centers, Vector3 checkSize);
 }

@@ -41,7 +41,6 @@ public class Turret : MonoBehaviour, ITurret
     {
         Vector3 baseAngles = Clamp(CalculateAngleTowards(localPosition), HorizontalRange, VerticalRange);
         float angle = baseAngles.x;
-        Debug.Log(localPosition.x + " | " + CalculateAngleTowards(localPosition).x);
 
         VerticalAxis.localRotation = Quaternion.RotateTowards(VerticalAxis.localRotation, Quaternion.Euler(angle, 0f, 0f), VerticalSpeed * deltaTime);
     }
