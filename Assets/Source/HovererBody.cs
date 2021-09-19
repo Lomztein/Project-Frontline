@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HovererBody : MonoBehaviour, IControllable
+public class HovererBody : MobileBody, IControllable
 {
     public float AccelerationSpeed;
     public float AngularAccelerationSpeed;
@@ -18,8 +18,11 @@ public class HovererBody : MonoBehaviour, IControllable
 
     public float AccFactor { get; private set; }
     public float TurnFactor { get; private set; }
-    public Vector3 Velocity { get; private set; }
     public float AngularVelocity { get; private set; }
+
+    private Vector3 _velocity;
+
+    public override float CurrentSpeed { get; protected set; }
 
     public Vector3 Accelerate(float factor)
     {
@@ -39,18 +42,19 @@ public class HovererBody : MonoBehaviour, IControllable
         Turn();
         Accelerate();
 
-        Velocity *= Dampening;
+        _velocity *= Dampening;
         AngularVelocity *= AngularDampening;
+        CurrentSpeed = transform.InverseTransformVector(_velocity).z;
 
-        transform.position += Velocity * Time.fixedDeltaTime;
-        transform.Rotate(0f, AngularVelocity * Time.fixedDeltaTime, 0f);
+        Move (_velocity * Time.fixedDeltaTime);
+        Rotate(0f, AngularVelocity * Time.fixedDeltaTime, 0f);
     }
 
     private void Hover ()
     {
         float hoverDelta = HoverHeight - transform.position.y;
         float hSpeed = Mathf.Min(Mathf.Abs(hoverDelta), HoverSpeed) * Mathf.Sign(hoverDelta);
-        Velocity += Vector3.up * hSpeed * Time.fixedDeltaTime;
+        _velocity += Vector3.up * hSpeed * Time.fixedDeltaTime;
     }
 
     private void Turn ()
@@ -60,6 +64,6 @@ public class HovererBody : MonoBehaviour, IControllable
 
     private void Accelerate ()
     {
-        Velocity += transform.forward * AccelerationSpeed * AccFactor * Time.fixedDeltaTime;
+        _velocity += transform.forward * AccelerationSpeed * AccFactor * Time.fixedDeltaTime;
     }
 }

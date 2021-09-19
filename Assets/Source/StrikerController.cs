@@ -5,6 +5,7 @@ using UnityEngine;
 public class StrikerController : AttackerController
 {
     private bool _engaging = true;
+    public float ReengageRange;
 
     protected override void MoveTowardsTarget()
     {
@@ -12,6 +13,10 @@ public class StrikerController : AttackerController
         if (sqrDist <= HoldRange * HoldRange)
         {
             _engaging = false;
+        }
+        if (sqrDist >= ReengageRange * ReengageRange)
+        {
+            _engaging = true;
         }
         if (_engaging)
         {

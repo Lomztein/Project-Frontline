@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InfantryBody : MonoBehaviour, IControllable
+public class InfantryBody : MobileBody, IControllable
 {
     public bool IsMoving;
 
@@ -13,12 +13,15 @@ public class InfantryBody : MonoBehaviour, IControllable
     public float MovementSpeed;
     public float RotateSpeed;
 
+    public override float CurrentSpeed { get; protected set; }
+
     private void FixedUpdate()
     {
         IsMoving = Mathf.Abs(_accFactor) > 0.01f;
 
-        transform.position += transform.forward * _accFactor * MovementSpeed * Time.fixedDeltaTime;
-        transform.Rotate(0f, _rotFactor * RotateSpeed * Time.fixedDeltaTime, 0f);
+        CurrentSpeed = _accFactor * MovementSpeed;
+        Move (transform.forward * _accFactor * MovementSpeed * Time.fixedDeltaTime);
+        Rotate(0f, _rotFactor * RotateSpeed * Time.fixedDeltaTime, 0f);
     }
 
     public Vector3 Accelerate(float factor)

@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5667567378679379699}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Bertrude
-  Credits: 100000
+  Credits: 500
   Team: {fileID: 0}
   Fortress: {fileID: 8977660350736787723}
   AvailableUnits:
@@ -78,7 +78,9 @@ MonoBehaviour:
   - {fileID: 8106105647802903052, guid: 48fbd6f0c663ecf409ca1f71e6312484, type: 3}
   - {fileID: 4325982583102194759, guid: 41aa27b60c7077f4db9994e3e44702ea, type: 3}
   - {fileID: 6370023998665172067, guid: 6728e865994021f469439b68381145a0, type: 3}
-  TargetAvarageAPM: 60
+  - {fileID: 117514825805703800, guid: 2c78cb6badfaeed49a41c60af811d176, type: 3}
+  - {fileID: 7396626019781516943, guid: e5da1d3cc6af8034cb2cd9f8cf67f5ac, type: 3}
+  TargetAvarageAPM: 10
   UnitWeightTable: {fileID: 0}
 --- !u!114 &5667567378679379695
 MonoBehaviour:
@@ -107,7 +109,7 @@ MonoBehaviour:
   PlacementSize: 6
   SearchStepSize: 7.5
   SearchStepSizeVariance: 5
-  MaxIters: 50
+  MaxIters: 200
 --- !u!1001 &5667567378796756260
 PrefabInstance:
   m_ObjectHideFlags: 0

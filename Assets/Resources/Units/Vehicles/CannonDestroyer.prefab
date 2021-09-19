@@ -5197,7 +5197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b6cafccd0e61a4ca019c486be74ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FactoryPrefab: {fileID: 9082799248539080770, guid: 4e09576f00b09ee4896863ecb3f9a71f,
+  FactoryPrefab: {fileID: 8913899801669703661, guid: b091d99d3a2dced4086ab2fbd438a737,
     type: 3}
   ProductionTime: 35
 --- !u!1001 &1141224368888527271
@@ -5207,6 +5207,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -2205974339445141656, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2205974339445141656, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2445538912635436398, guid: 809019c0ba3607d4ebcaa98d3d42a698,
         type: 3}
       propertyPath: LeadTarget
@@ -5242,6 +5252,11 @@ PrefabInstance:
       propertyPath: MaxSpeed
       value: 7.5
       objectReference: {fileID: 0}
+    - target: {fileID: 5442625256619780080, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: Rigidbody
+      value: 
+      objectReference: {fileID: 7977211409159190223}
     - target: {fileID: 7413236967939623016, guid: 809019c0ba3607d4ebcaa98d3d42a698,
         type: 3}
       propertyPath: Info.Cost
@@ -5317,6 +5332,12 @@ PrefabInstance:
 --- !u!1 &8106105647802903052 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9198845951950377899, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+    type: 3}
+  m_PrefabInstance: {fileID: 1141224368888527271}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &7977211409159190223 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: -2205974339445141656, guid: 809019c0ba3607d4ebcaa98d3d42a698,
     type: 3}
   m_PrefabInstance: {fileID: 1141224368888527271}
   m_PrefabAsset: {fileID: 0}

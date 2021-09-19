@@ -8,6 +8,7 @@ public class ShieldProjector : MonoBehaviour
     public Transform ShieldTransform;
     public Renderer ShieldRenderer;
     public Renderer InsideRenderer;
+    public ParticleSystem BreakEffect;
     public Health ShieldHealth;
     public float ShieldSizeMultiplier;
 
@@ -21,6 +22,7 @@ public class ShieldProjector : MonoBehaviour
     public float HealDelay;
     public float HealRate;
     public float ReviveTime;
+    public float HealthOnReviveMult = 0.2f;
     public float ShieldLerpTime;
 
     private float _shieldTargetSize;
@@ -34,19 +36,31 @@ public class ShieldProjector : MonoBehaviour
         ShieldHealth.OnTakeDamage += ShieldHealth_OnTakeDamage;
         ShieldHealth.OnDeath += ShieldHealth_OnDeath;
 
-        ReviveShield();
+        _shieldTargetSize = ShieldSize;
     }
 
     private void ShieldHealth_OnDeath()
     {
         _shieldTargetSize = 0f;
+        Shatter();
+        ShieldTransform.localScale = Vector3.one * _shieldTargetSize;
         Invoke(nameof(ReviveShield), ReviveTime);
+    }
+
+    private void Shatter ()
+    {
+        BreakEffect.Play();
+    }
+
+    private void OnDestroy()
+    {
+        Shatter();
     }
 
     private void ReviveShield ()
     {
         ShieldHealth.Revive();
-        _shieldTargetSize = ShieldSize;
+        ShieldHealth.Heal((ShieldHealth.MaxHealth * (1-HealthOnReviveMult)) * -1);
     }
 
     private void ShieldHealth_OnTakeDamage(DamageInfo obj)
@@ -61,6 +75,8 @@ public class ShieldProjector : MonoBehaviour
         float damageFlashFactor = Mathf.Lerp(0f, DamageFlashAmount, factor);
 
         _shieldMaterial.SetFloat("Strength", Mathf.Lerp(ShieldMaterialStrenghtMinMax.x, ShieldMaterialStrenghtMinMax.y, ShieldHealth.CurrentHealth / ShieldHealth.MaxHealth) + damageFlashFactor);
+        _shieldMaterial.SetFloat("Health", ShieldHealth.CurrentHealth / ShieldHealth.MaxHealth);
+
         ShieldTransform.localScale = Vector3.Lerp(ShieldTransform.localScale, Vector3.one * _shieldTargetSize * ShieldSizeMultiplier, ShieldLerpTime * Time.fixedDeltaTime);
         if (Time.time > _lastDamageTime + HealDelay)
         {

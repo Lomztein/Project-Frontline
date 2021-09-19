@@ -55,8 +55,8 @@ public class VehicleBody : MobileBody, IControllable
     }
     private void Move(float deltaTime)
     {
-        transform.position += transform.forward * CurrentSpeed * deltaTime;
+        Move (transform.forward * CurrentSpeed * deltaTime);
         float speedTurnFactor = Threaded ? 1f : CurrentSpeed / MaxSpeed;
-        transform.Rotate(0f, CurrentTurnAngle * speedTurnFactor * deltaTime, 0f);
+        Rotate(0f, CurrentTurnAngle * speedTurnFactor * deltaTime, 0f);
     }
 }

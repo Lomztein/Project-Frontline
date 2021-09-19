@@ -463,7 +463,7 @@ MonoBehaviour:
   LeadTarget: 0
   Modifiers: []
   AngleClamp: 60
-  HoldRange: 60
+  HoldRange: 50
 --- !u!114 &6370023998665172071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,6 +529,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eacb87c274841e438873d7e7d275697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MaxSpeed: 0
+  Rigidbody: {fileID: 0}
   AccelerationSpeed: 40
   AngularAccelerationSpeed: 120
   HoverHeight: 20

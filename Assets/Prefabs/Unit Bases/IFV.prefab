@@ -383,13 +383,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41487ee171311704884c1278dc50ac3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Faction: {fileID: 0}
+  Team: {fileID: 0}
   AcquireTargetRange: 0
   LooseTargetRange: 0
   AttackRange: 0
   TurretObject: {fileID: 0}
   WeaponObject: {fileID: 0}
   AimTolerance: 5
+  LeadTarget: 0
   Modifiers: []
 --- !u!1 &7553692932367407739
 GameObject:
@@ -483,6 +484,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 10
+  Rigidbody: {fileID: 0}
   AccelerationSpeed: 20
   BrakeDrag: 30
   MaxTurnAngle: 45
@@ -500,13 +502,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34bf0fc1e60907849af01ac541774608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Faction: {fileID: 0}
+  Team: {fileID: 0}
   AcquireTargetRange: 75
   LooseTargetRange: 100
   AttackRange: 50
   TurretObject: {fileID: 0}
   WeaponObject: {fileID: 0}
   AimTolerance: 5
+  LeadTarget: 0
   Modifiers: []
   AngleClamp: 30
   HoldRange: 50
@@ -675,13 +678,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41487ee171311704884c1278dc50ac3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Faction: {fileID: 0}
+  Team: {fileID: 0}
   AcquireTargetRange: 0
   LooseTargetRange: 0
   AttackRange: 0
   TurretObject: {fileID: 0}
   WeaponObject: {fileID: 0}
   AimTolerance: 5
+  LeadTarget: 0
   Modifiers: []
 --- !u!1001 &74068327689997663
 PrefabInstance:

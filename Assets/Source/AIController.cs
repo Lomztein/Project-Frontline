@@ -41,7 +41,7 @@ public abstract class AIController : MonoBehaviour, IController
     protected virtual void Awake()
     {
         _targetFinder = new TargetFinder(go => CanEngage(go));
-        _targetFindingTicker = new Ticker(0.25f, FindNewTarget);
+        _targetFindingTicker = new Ticker(0.5f, FindNewTarget);
 
         Controllable = GetComponentInChildren<IControllable>();
         if (TurretObject)
@@ -148,7 +148,10 @@ public abstract class AIController : MonoBehaviour, IController
     }
 
     public virtual bool CanEngage(GameObject target)
-        => Turret != null ? Turret.CanHit(target.transform.position) : true;
+        => CanHitOrNoTurret(target.transform.position);
+
+    public virtual bool CanHitOrNoTurret(Vector3 position)
+        => Turret == null || Turret.CanHit(position);
 
     protected virtual void FixedUpdate()
     {
@@ -157,7 +160,7 @@ public abstract class AIController : MonoBehaviour, IController
             Aim();
             Attack();
 
-            if (GetTargetSquareDistance() > LooseTargetRange * LooseTargetRange)
+            if (GetTargetSquareDistance() > LooseTargetRange * LooseTargetRange || !CanHitOrNoTurret(CurrentTarget.GetPosition()))
             {
                 CurrentTarget = null;
             }

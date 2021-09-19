@@ -5258,8 +5258,13 @@ PrefabInstance:
         type: 3}
       propertyPath: FactoryPrefab
       value: 
-      objectReference: {fileID: 9082799248539080770, guid: 4e09576f00b09ee4896863ecb3f9a71f,
+      objectReference: {fileID: 8913899801669703661, guid: b091d99d3a2dced4086ab2fbd438a737,
         type: 3}
+    - target: {fileID: 705834118997294627, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      propertyPath: Rigidbody
+      value: 
+      objectReference: {fileID: 3678285295917660912}
     - target: {fileID: 893436009936804718, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
       propertyPath: AttackRange
@@ -5330,6 +5335,16 @@ PrefabInstance:
       propertyPath: WeaponObject
       value: 
       objectReference: {fileID: 5328371602657346740}
+    - target: {fileID: 5255336135643099021, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5255336135643099021, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5620488823234584247, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
       propertyPath: MaxHealth
@@ -5423,6 +5438,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 33f5a0aae17b39244abe6fcfea9db228, type: 3}
+--- !u!54 &3678285295917660912 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 5255336135643099021, guid: 33f5a0aae17b39244abe6fcfea9db228,
+    type: 3}
+  m_PrefabInstance: {fileID: 8927630501266658685}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8306340213301872522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 622443194761057015, guid: 33f5a0aae17b39244abe6fcfea9db228,

@@ -21,8 +21,8 @@ public class DroneBody : MobileBody, IControllable
         float hSpeed = Mathf.Min(Mathf.Abs(hoverDelta), HoverSpeed) * Mathf.Sign(hoverDelta);
         CurrentSpeed = _accFactor * HoverSpeed;
 
-        transform.position += transform.forward * CurrentSpeed * Time.fixedDeltaTime + Vector3.up * hSpeed * Time.fixedDeltaTime;
-        transform.Rotate(0f, _turnFactor * TurnSpeed * Time.fixedDeltaTime, 0f);
+        Move (transform.forward * CurrentSpeed * Time.fixedDeltaTime + Vector3.up * hSpeed * Time.fixedDeltaTime);
+        Rotate (Quaternion.Euler (0f, _turnFactor * TurnSpeed * Time.fixedDeltaTime, 0f));
     }
 
     public Vector3 Accelerate(float factor)
