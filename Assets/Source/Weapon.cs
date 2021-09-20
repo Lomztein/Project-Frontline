@@ -40,7 +40,7 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
         _chambered = true;
     }
 
-    public virtual void TryFire(ITarget intendedTarget)
+    public virtual bool TryFire(ITarget intendedTarget)
     {
         if (CanFire())
         {
@@ -53,7 +53,10 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
             {
                 Invoke("Reload", BurstReloadTime);
             }
+
+            return true;
         }
+        return false;
     }
 
     private void Fire(ITarget intendedTarget)

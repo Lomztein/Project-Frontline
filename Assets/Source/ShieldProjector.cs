@@ -60,7 +60,9 @@ public class ShieldProjector : MonoBehaviour
     private void ReviveShield ()
     {
         ShieldHealth.Revive();
-        ShieldHealth.Heal((ShieldHealth.MaxHealth * (1-HealthOnReviveMult)) * -1);
+        ShieldHealth.Heal(ShieldHealth.MaxHealth * (1-HealthOnReviveMult) * -1);
+        _shieldTargetSize = ShieldSize;
+        Debug.Log(ShieldHealth.CurrentHealth);
     }
 
     private void ShieldHealth_OnTakeDamage(DamageInfo obj)

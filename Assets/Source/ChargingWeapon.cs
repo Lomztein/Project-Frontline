@@ -6,12 +6,23 @@ public class ChargingWeapon : Weapon
 {
     public float MaxChargeTime;
     public float CurrentChargeTime;
+    public bool ResetChargeOnFire;
     private bool _isCharging = false;
 
-    public override void TryFire(ITarget intendedTarget)
+    public override bool TryFire(ITarget intendedTarget)
     {
-        base.TryFire(intendedTarget);
+        if (base.TryFire(intendedTarget))
+        {
+            if (ResetChargeOnFire)
+            {
+                CurrentChargeTime = 0f;
+            }
+            _isCharging = true;
+            return true;
+        }
         _isCharging = true;
+        return false;
+
     }
 
     public override bool CanFire()

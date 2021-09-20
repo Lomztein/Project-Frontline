@@ -50,12 +50,14 @@ public class WeaponGroup : MonoBehaviour, IWeapon
 
     public bool CanFire() => _weapons.All(x => x.CanFire());
 
-    public void TryFire(ITarget intendedTarget)
+    public bool TryFire(ITarget intendedTarget)
     {
         if (CanFire())
         {
             _fireControl.Fire(_weapons.Length, (index) => FireControlCallback(index, intendedTarget));
+            return true;
         }
+        return false;
     }
 
     private void FireControlCallback(int index, ITarget intendedTarget)

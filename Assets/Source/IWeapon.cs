@@ -5,7 +5,7 @@ public interface IWeapon
     event Action OnFire;
 
     bool CanFire();
-    void TryFire(ITarget intendedTarget);
+    bool TryFire(ITarget intendedTarget);
 
     float Damage { get; }
     float Firerate { get; }
