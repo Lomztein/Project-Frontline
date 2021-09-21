@@ -35,12 +35,12 @@ public class AICommander : Commander
 
     private void PerformAction()
     {
-        GameObject unit = _unitSelector.SelectUnit(AvailableUnits.Where(x => x.GetComponent<Unit>().Cost <= Credits));
+        GameObject unit = _unitSelector.SelectUnit(UnitSource.GetAvailableUnitPrefabs().Where(x => x.GetComponent<Unit>().Cost <= Credits));
 
         if (unit)
         {
             Vector3 position = _positionSelector.SelectPosition(new Vector3[] { Fortress.position }, GetUnitPlacementCheckSize(unit));
-            PlaceUnit(unit, position, transform.rotation);
+            TryPurchaseAndPlaceUnit(unit, position, transform.rotation);
         }
     }
 }

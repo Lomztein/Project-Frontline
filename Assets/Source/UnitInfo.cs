@@ -12,12 +12,12 @@ public class UnitInfo
 
     public enum Tier
     {
-        Basic, Intermediate, Advanced
+        Basic, Intermediate, Advanced, Omega
     }
 
     public enum Class
     {
-        InfantrySupport, MainBattleTank, Sentry, Artillery
+        InfantrySupport, MainBattleTank, Sentry, Artillery, HeavyTank, Destroyer, AssaultInfantry, SupportInfantry
     }
 
     public enum Type

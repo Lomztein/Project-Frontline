@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public abstract class Commander : MonoBehaviour, ITeamComponent
+public class Commander : MonoBehaviour, ITeamComponent
 {
     public string Name;
 
@@ -17,7 +17,7 @@ public abstract class Commander : MonoBehaviour, ITeamComponent
     public Transform Fortress;
     private bool _ded = false;
 
-    public GameObject[] AvailableUnits;
+    public UnitSource UnitSource;
 
     public event Action<Commander> OnEliminated;
 
@@ -36,7 +36,7 @@ public abstract class Commander : MonoBehaviour, ITeamComponent
         }
     }
 
-    protected GameObject GeneratePrefab (GameObject unitPrefab)
+    public GameObject GeneratePrefab (GameObject unitPrefab)
     {
         ProductionInfo info = unitPrefab.GetComponent<ProductionInfo>();
         if (info)
@@ -52,23 +52,32 @@ public abstract class Commander : MonoBehaviour, ITeamComponent
         }
     }
 
-    protected GameObject PlaceUnit (GameObject unit, Vector3 position, Quaternion rotation)
+    protected GameObject PlaceUnit (GameObject prefab, Vector3 position, Quaternion rotation)
     {
-        Unit u = unit.GetComponent<Unit>();
-        Credits -= u.Info.Cost;
-        GameObject prefab = GeneratePrefab(unit);
+        Unit u = prefab.GetComponent<Unit>();
         GameObject go = Team.Instantiate(prefab, position, rotation);
         AssignCommander(go);
-
-        PassiveIncome pi = go.GetComponent<PassiveIncome>();
-        if (pi)
-        {
-            pi.IncomePerSecond = u.Info.Value;
-        }
         return go;
     }
 
-    public GameObject GetUnitFactoryPrefab (GameObject unit)
+    public bool TryPurchaseAndPlaceUnit(GameObject unitPrefab, Vector3 position, Quaternion rotation)
+    {
+        Unit unit = unitPrefab.GetComponent<Unit>();
+        if (TrySpend(unit.Cost))
+        {
+            GameObject placedUnit = PlaceUnit(GeneratePrefab(unitPrefab), position, rotation);
+
+            PassiveIncome pi = placedUnit.GetComponent<PassiveIncome>();
+            if (pi)
+            {
+                pi.IncomePerSecond = unit.Info.Value;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public GameObject GetUnitFactoryPrefab (GameObject unit) // This should not be unique to Commander.
     {
         ProductionInfo info = unit.GetComponent<ProductionInfo>();
         if (info)
@@ -78,7 +87,7 @@ public abstract class Commander : MonoBehaviour, ITeamComponent
         return null;
     }
 
-    public Vector3 GetUnitPlacementCheckSize (GameObject unit)
+    public Vector3 GetUnitPlacementCheckSize (GameObject unit) // This should not be unique to Commander.
     {
         GameObject factory = GetUnitFactoryPrefab(unit);
         if (factory)
@@ -87,6 +96,16 @@ public abstract class Commander : MonoBehaviour, ITeamComponent
             return factory.GetComponentInChildren<BoxCollider>().size;
         }
         return unit.GetComponentInChildren<BoxCollider>().size;
+    }
+
+    public bool TrySpend (int credits)
+    {
+        if (Credits >= credits)
+        {
+            Credits -= credits;
+            return true;
+        }
+        return false;
     }
 
     public void AssignCommander(GameObject obj)
