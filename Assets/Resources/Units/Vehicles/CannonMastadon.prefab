@@ -69,6 +69,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b62ca45d1832a1349b67dc09af56bd52, type: 3}
+--- !u!1 &8283012526989638948 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7232724795620966200, guid: b62ca45d1832a1349b67dc09af56bd52,
+    type: 3}
+  m_PrefabInstance: {fileID: 1633928032613188124}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &9033277055726630492 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7777792958370411584, guid: b62ca45d1832a1349b67dc09af56bd52,
@@ -108,8 +114,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1020735542546060326, guid: d9117cde3af7c7e49b48839c2fef3f80,
         type: 3}
+      propertyPath: Info.Name
+      value: Heavy Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020735542546060326, guid: d9117cde3af7c7e49b48839c2fef3f80,
+        type: 3}
       propertyPath: Info.UnitClass
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020735542546060326, guid: d9117cde3af7c7e49b48839c2fef3f80,
+        type: 3}
+      propertyPath: Info.Description
+      value: This is an absolute unit, capable of taking insane punishment while
+        dealing it as well. Only sustained heavy fire will take this down.
       objectReference: {fileID: 0}
     - target: {fileID: 1685374889454587877, guid: d9117cde3af7c7e49b48839c2fef3f80,
         type: 3}
@@ -171,6 +188,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5276871314173370656, guid: d9117cde3af7c7e49b48839c2fef3f80,
+        type: 3}
+      propertyPath: TurretObject
+      value: 
+      objectReference: {fileID: 8283012526989638948}
+    - target: {fileID: 5276871314173370656, guid: d9117cde3af7c7e49b48839c2fef3f80,
+        type: 3}
+      propertyPath: WeaponObject
+      value: 
+      objectReference: {fileID: 8283012526989638948}
     - target: {fileID: 5728593424244484284, guid: d9117cde3af7c7e49b48839c2fef3f80,
         type: 3}
       propertyPath: _renderersToApplyTo.Array.data[9]

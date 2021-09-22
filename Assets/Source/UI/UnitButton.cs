@@ -7,11 +7,12 @@ using Util;
 
 namespace UI
 {
-    public class UnitButton : MonoBehaviour
+    public class UnitButton : MonoBehaviour, IHasTooltip
     {
         public Image UnitImage;
         public Image UnitTierImage;
         public Button Button;
+        public GameObject TooltipPrefab;
 
         public Sprite[] TierSprites;
         public Color[] TierColors;
@@ -53,6 +54,14 @@ namespace UI
             Button.interactable = interactable;
             UnitImage.color = interactable ? ImageInteractableColor : ImageUnInteractableColor;
             UnitTierImage.color = TierColors[(int)_unit.Info.UnitTier] * (interactable ? ImageInteractableColor : ImageUnInteractableColor);
+        }
+
+        public GameObject InstantiateTooltip()
+        {
+            GameObject newTooltip = Instantiate(TooltipPrefab);
+            newTooltip.transform.Find("Name").GetComponentInChildren<Text>().text = _unit.Name + " - " + _unit.Cost + "$";
+            newTooltip.transform.Find("Description").GetComponentInChildren<Text>().text = _unit.Description;
+            return newTooltip;
         }
     }
 }
