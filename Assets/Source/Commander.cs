@@ -13,12 +13,19 @@ public class Commander : MonoBehaviour, ITeamComponent
 
     public TeamInfo Team;
 
-    public bool IsEliminated => Fortress == null;
+    public bool CanBuild => Fortress != null;
+    public bool Eliminated => _alivePlaced.Count == 0;
+
+
     public Transform Fortress;
+    private List<Unit> _alivePlaced = new List<Unit>();
+
     private bool _ded = false;
 
     public UnitSource UnitSource;
 
+    public event Action<Unit> OnPlacedUnitDeath;
+    public event Action<Commander> OnFortressDestroyed;
     public event Action<Commander> OnEliminated;
 
     protected virtual void Awake()
@@ -32,7 +39,7 @@ public class Commander : MonoBehaviour, ITeamComponent
         if (_ded == false && !Fortress)
         {
             _ded = true;
-            OnEliminated?.Invoke(this);
+            OnFortressDestroyed?.Invoke(this);
         }
     }
 
@@ -57,13 +64,28 @@ public class Commander : MonoBehaviour, ITeamComponent
         Unit u = prefab.GetComponent<Unit>();
         GameObject go = Team.Instantiate(prefab, position, rotation);
         AssignCommander(go);
+        _alivePlaced.Add(u);
+        go.GetComponent<Health>().OnDeath += OnUnitDeath;
+
+        void OnUnitDeath ()
+        {
+            u.GetComponent<Health>().OnDeath -= OnUnitDeath;
+            _alivePlaced.Remove(u);
+            OnPlacedUnitDeath?.Invoke(u);
+            if (_alivePlaced.Count == 0)
+            {
+                OnEliminated?.Invoke(this);
+            }
+        }
+
+
         return go;
     }
 
     public bool TryPurchaseAndPlaceUnit(GameObject unitPrefab, Vector3 position, Quaternion rotation)
     {
         Unit unit = unitPrefab.GetComponent<Unit>();
-        if (TrySpend(unit.Cost))
+        if (TrySpend(unit.Cost) && CanBuild)
         {
             GameObject placedUnit = PlaceUnit(GeneratePrefab(unitPrefab), position, rotation);
 
@@ -100,13 +122,15 @@ public class Commander : MonoBehaviour, ITeamComponent
 
     public bool TrySpend (int credits)
     {
-        if (Credits >= credits)
+        if (HasCredits(credits))
         {
             Credits -= credits;
             return true;
         }
         return false;
     }
+
+    public bool HasCredits(int credits) => Credits >= credits;
 
     public void AssignCommander(GameObject obj)
     {

@@ -9,6 +9,7 @@ public class UnitPlacement : MonoBehaviour
     public bool Active => _prefab;
 
     public Color CanPlaceColor;
+    public Color CannotAffordColor;
     public Color CannotPlaceColor;
     public LayerMask TerrainLayer;
 
@@ -18,6 +19,7 @@ public class UnitPlacement : MonoBehaviour
     private GameObject _prefab;
     private GameObject _model;
     private Commander _commander;
+    private Unit _unit;
     private Vector3 _placementCheckSize;
 
     public void TakeUnit (GameObject prefab, Commander commander)
@@ -34,6 +36,7 @@ public class UnitPlacement : MonoBehaviour
         _prefab = prefab;
         _commander = commander;
         _placementCheckSize = _commander.GetUnitPlacementCheckSize(_prefab);
+        _unit = prefab.GetComponent<Unit>();
 
         AIController controller = placementPrefab.GetComponent<AIController>();
         float unitRange = 0f;
@@ -68,22 +71,29 @@ public class UnitPlacement : MonoBehaviour
             {
                 transform.position = hit.point;
 
-                if (CanPlace(hit.point, _placementCheckSize))
+                if (_commander.HasCredits(_unit.Cost))
                 {
-                    SetModelColor(CanPlaceColor);
-                    if (Input.GetMouseButtonDown(0) && !UIHoverChecker.IsOverUI(Input.mousePosition))
+                    if (CanPlace(hit.point, _placementCheckSize))
                     {
-                        _commander.TryPurchaseAndPlaceUnit(_prefab, hit.point, _commander.transform.rotation);
-
-                        if (!Input.GetKey(KeyCode.LeftShift))
+                        SetModelColor(CanPlaceColor);
+                        if (Input.GetMouseButtonDown(0) && !UIHoverChecker.IsOverUI(Input.mousePosition))
                         {
-                            Cancel();
+                            _commander.TryPurchaseAndPlaceUnit(_prefab, hit.point, _commander.transform.rotation);
+
+                            if (!Input.GetKey(KeyCode.LeftShift))
+                            {
+                                Cancel();
+                            }
                         }
+                    }
+                    else
+                    {
+                        SetModelColor(CannotPlaceColor);
                     }
                 }
                 else
                 {
-                    SetModelColor(CannotPlaceColor);
+                    SetModelColor(CannotAffordColor);
                 }
             }
             if (Input.GetKeyDown(KeyCode.Escape))

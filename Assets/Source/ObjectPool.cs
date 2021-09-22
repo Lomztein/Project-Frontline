@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObjectPool : IObjectPool
 {
@@ -13,6 +14,17 @@ public class ObjectPool : IObjectPool
     public ObjectPool(GameObject prefab)
     {
         Prefab = prefab;
+    }
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSplashScreen)]
+    public static void OnStartUp ()
+    {
+        SceneManager.sceneUnloaded += SceneUnloaded;
+    }
+
+    private static void SceneUnloaded(Scene arg0)
+    {
+        DisposePools();
     }
 
     private Transform GetGlobalParent ()
@@ -56,8 +68,12 @@ public class ObjectPool : IObjectPool
     {
         foreach (var obj in _objects)
         {
-            obj.Dispose();
+            if (obj as Object != null)
+            {
+                obj.Dispose();
+            }
         }
+        _objects.Clear();
     }
 
     public static ObjectPool GetPool(GameObject prefab)
@@ -99,9 +115,10 @@ public class ObjectPool : IObjectPool
         {
             pool.Dispose();
         }
+        _freePools.Clear();
         if (_globalParent)
         {
-            UnityEngine.Object.Destroy(_globalParent.gameObject);
+            Object.Destroy(_globalParent.gameObject);
         }
     }
 }

@@ -19,17 +19,14 @@ public class AICommander : Commander
         _positionSelector = GetComponent<IPositionSeletor>();
     }
 
-    protected override void FixedUpdate ()
+    protected override void FixedUpdate()
     {
         base.FixedUpdate();
 
-        if (!IsEliminated)
+        int randLimit = Mathf.RoundToInt((60 / Time.fixedDeltaTime) / TargetAvarageAPM);
+        if (Random.Range(0, randLimit) == 0)
         {
-            int randLimit = Mathf.RoundToInt((60 / Time.fixedDeltaTime) / TargetAvarageAPM);
-            if (Random.Range(0, randLimit) == 0)
-            {
-                PerformAction();
-            }
+            PerformAction();
         }
     }
 

@@ -19,7 +19,7 @@ public class Projectile : MonoBehaviour, IPoolObject
     protected const int TerrainLayerMask = 1 << 8;
     public LayerMask HitLayerMask;
 
-    public bool IsAvailable => !gameObject.activeSelf && !AreEffectsPlaying();
+    public bool IsAvailable => !gameObject.activeSelf && !AreEffectsPlaying(); 
     public GameObject GameObject => gameObject;
 
     public virtual void Fire(Vector3 direction)
