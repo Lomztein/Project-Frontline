@@ -6,9 +6,9 @@ using UnityEngine;
 public class AttackerController : AIController, ITeamComponent, IController
 {
     private const float HOLD_VARIANCE = 2.5f;
+    private const float STEER_DEVIANCE_CLAMP = 5f;
 
-    private Waypoint _currentWaypoint;
-    public float AngleClamp;
+    protected Waypoint _currentWaypoint;
     public float HoldRange;
 
     protected override void Awake()
@@ -27,15 +27,15 @@ public class AttackerController : AIController, ITeamComponent, IController
         if (_currentWaypoint)
         {
             Controllable.Accelerate(1f);
-            float angle = Mathf.Clamp(Vector3.SignedAngle(transform.forward, _currentWaypoint.OutgoingVector, Vector3.up), -AngleClamp, AngleClamp);
-            Controllable.Turn(angle / AngleClamp);
+            float angle = Vector3.SignedAngle(transform.forward, _currentWaypoint.OutgoingVector, Vector3.up);
+            SmoothTurnTowardsAngle(angle);
         }
     }
 
     protected virtual void MoveTowardsTarget ()
     {
         Vector3 local = GetTargetLocalPosition();
-        float angle = Mathf.Clamp(Mathf.DeltaAngle(transform.eulerAngles.y, Mathf.Atan2(local.x, local.z) * Mathf.Rad2Deg), -AngleClamp, AngleClamp);
+        float angle = Mathf.DeltaAngle(transform.eulerAngles.y, Mathf.Atan2(local.x, local.z) * Mathf.Rad2Deg);
         float speed = 1f;
 
         if (local.sqrMagnitude < HoldRange * HoldRange)
@@ -44,7 +44,12 @@ public class AttackerController : AIController, ITeamComponent, IController
         }
 
         Controllable.Accelerate(speed);
-        Controllable.Turn(angle / AngleClamp);
+        SmoothTurnTowardsAngle(angle);
+    }
+
+    protected void SmoothTurnTowardsAngle(float angle) {
+        float factor = Mathf.Abs(angle) > STEER_DEVIANCE_CLAMP ? Mathf.Sign(angle) : angle / STEER_DEVIANCE_CLAMP;
+        Controllable.Turn(factor);
     }
 
     protected override void FixedUpdate()

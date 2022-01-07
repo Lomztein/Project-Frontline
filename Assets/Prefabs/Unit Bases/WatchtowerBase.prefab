@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8085156602065617453}
   - component: {fileID: 4101473015708955558}
   - component: {fileID: 7685962009944202034}
-  - component: {fileID: 2714745228464452947}
   - component: {fileID: 9035589861437556256}
   m_Layer: 0
   m_Name: WatchtowerBase
@@ -63,22 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 500
   ArmorType: 3
-  Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
-  DebrisLife: 3
---- !u!114 &2714745228464452947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1256509098192466957}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxHealth: 250
-  ArmorType: 0
+  DestroyOnDeath: 1
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
 --- !u!114 &9035589861437556256
@@ -174,6 +158,26 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b3f5aa728455ece4aa47e2a7a622a5d1,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b3f5aa728455ece4aa47e2a7a622a5d1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b3f5aa728455ece4aa47e2a7a622a5d1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b3f5aa728455ece4aa47e2a7a622a5d1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b3f5aa728455ece4aa47e2a7a622a5d1,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -186,6 +190,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: b3f5aa728455ece4aa47e2a7a622a5d1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071067
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3f5aa728455ece4aa47e2a7a622a5d1,
         type: 3}
@@ -204,16 +213,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3f5aa728455ece4aa47e2a7a622a5d1,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.7071067
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: b3f5aa728455ece4aa47e2a7a622a5d1,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: b3f5aa728455ece4aa47e2a7a622a5d1,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -226,21 +225,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: b3f5aa728455ece4aa47e2a7a622a5d1,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: b3f5aa728455ece4aa47e2a7a622a5d1,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: b3f5aa728455ece4aa47e2a7a622a5d1,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b3f5aa728455ece4aa47e2a7a622a5d1,
         type: 3}

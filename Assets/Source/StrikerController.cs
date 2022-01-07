@@ -6,6 +6,7 @@ public class StrikerController : AttackerController
 {
     private bool _engaging = true;
     public float ReengageRange;
+    public bool DisengageAlongWaypoint;
 
     protected override void MoveTowardsTarget()
     {
@@ -25,11 +26,11 @@ public class StrikerController : AttackerController
         else
         {
             Vector3 local = GetTargetLocalPosition();
-            float angle = Mathf.Clamp(Mathf.DeltaAngle(transform.eulerAngles.y, Mathf.Atan2(local.x, local.z) * Mathf.Rad2Deg - 180), -AngleClamp, AngleClamp);
+            float angle = Mathf.DeltaAngle(transform.eulerAngles.y, Mathf.Atan2(local.x, local.z) * Mathf.Rad2Deg - 180);
             float speed = 1f;
 
             Controllable.Accelerate(speed);
-            Controllable.Turn(angle / AngleClamp);
+            SmoothTurnTowardsAngle(angle);
         }
     }
 

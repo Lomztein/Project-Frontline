@@ -43,9 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 100
+  Damage: 150
   Firerate: 0.65
-  DamageType: 4
+  DamageType: 3
   Speed: 1337
   Amount: 1
   BurstReloadTime: 0
@@ -260,9 +260,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 100
+  Damage: 150
   Firerate: 0.65
-  DamageType: 4
+  DamageType: 3
   Speed: 1337
   Amount: 1
   BurstReloadTime: 0
@@ -739,9 +739,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 100
+  Damage: 150
   Firerate: 0.65
-  DamageType: 4
+  DamageType: 3
   Speed: 1337
   Amount: 1
   BurstReloadTime: 0
@@ -801,9 +801,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 0}
-  AcquireTargetRange: 100
-  LooseTargetRange: 100
-  AttackRange: 100
+  AcquireTargetRange: 75
+  LooseTargetRange: 75
+  AttackRange: 75
   TurretObject: {fileID: 2816974995353551254}
   WeaponObject: {fileID: 2816974995353551254}
   AimTolerance: 1
@@ -821,7 +821,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 1500
+  MaxHealth: 2500
   ArmorType: 3
   DestroyOnDeath: 1
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -854,9 +854,8 @@ MonoBehaviour:
   Info:
     Name: Laser Turret
     Description: Tri-barreled laser cannons are a powerful tool for dispelling anyone
-      who thought they'd like a closer look at your base. It's long range makes up
-      for a somewhat lackluster damage.
-    Cost: 5000
+      who thought they'd like a closer look at your base.
+    Cost: 4000
     Value: 12
     UnitRole: 2
     UnitTier: 2

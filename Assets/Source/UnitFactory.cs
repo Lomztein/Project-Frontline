@@ -21,7 +21,7 @@ public class UnitFactory : MonoBehaviour, ITeamComponent
     {
         Vector3 pos = GetLocalRandomSpawnPosition() + transform.position;
         GameObject go = _team.Instantiate(UnitPrefab, pos, transform.rotation);
-        go.SendMessage("SetWaypoint", _nearestWaypoint);
+        go.BroadcastMessage("SetWaypoint", _nearestWaypoint);
     }
 
     private Vector3 GetLocalRandomSpawnPosition ()

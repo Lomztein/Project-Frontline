@@ -48,7 +48,7 @@ public class WeaponGroup : MonoBehaviour, IWeapon
         OnFire?.Invoke();
     }
 
-    public bool CanFire() => _weapons.All(x => x.CanFire());
+    public bool CanFire() => _weapons.First().CanFire();
 
     public bool TryFire(ITarget intendedTarget)
     {

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using UnityEngine;
@@ -22,11 +23,15 @@ public class Projectile : MonoBehaviour, IPoolObject
     public bool IsAvailable => !gameObject.activeSelf && !AreEffectsPlaying(); 
     public GameObject GameObject => gameObject;
 
+    public event Action<Projectile, Vector3> OnFired;
+    public event Action<Projectile, Collider, Vector3, Vector3> OnHit;
+
     public virtual void Fire(Vector3 direction)
     {
         Invoke(nameof(End), Life);
         transform.LookAt(transform.position + direction);
         Velocity = Speed * direction;
+        OnFired?.Invoke(this, direction);
     }
     protected virtual void FixedUpdate()
     {
@@ -34,22 +39,24 @@ public class Projectile : MonoBehaviour, IPoolObject
         float dist = Speed * Time.fixedDeltaTime + 0.2f;
         if (Physics.Raycast(transform.position, transform.forward * dist, out RaycastHit hit, dist, HitLayerMask | TerrainLayerMask))
         {
-            DoDamage(hit);
+            DoDamage(hit.collider, hit.point);
             Hit(hit.point, hit.normal);
             End();
+
+            OnHit?.Invoke(this, hit.collider, hit.point, hit.normal);
         }
     }
 
-    protected virtual void DoDamage (RaycastHit hit)
+    protected virtual void DoDamage (Collider col, Vector3 point)
     {
-        var damagable = hit.collider.GetComponentInParent<IDamagable>();
+        var damagable = col.GetComponentInParent<IDamagable>();
         if (damagable != null)
         {
-            damagable.TakeDamage(new DamageInfo(Damage, DamageType, hit.point, Velocity.normalized));
+            damagable.TakeDamage(new DamageInfo(Damage, DamageType, point, Velocity.normalized));
         }
     }
 
-    protected virtual void Hit(Vector3 point, Vector3 normal)
+    public virtual void Hit(Vector3 point, Vector3 normal)
     {
         if (HitEffect)
         {
@@ -67,7 +74,7 @@ public class Projectile : MonoBehaviour, IPoolObject
         }
     }
 
-    protected virtual void End()
+    public virtual void End()
     {
         if (TrailEffect)
         {

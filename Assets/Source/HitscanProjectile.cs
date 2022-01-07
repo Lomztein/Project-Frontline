@@ -12,7 +12,7 @@ public class HitscanProjectile : Projectile
         float range = Life * Speed;
         if (Physics.Raycast(transform.position, direction, out RaycastHit hit, range, HitLayerMask | TerrainLayerMask))
         {
-            DoDamage(hit);
+            DoDamage(hit.collider, hit.point);
             Hit(hit.point, hit.normal);
             Renderer.SetPositions(transform.position, hit.point);
         }

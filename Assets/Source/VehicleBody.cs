@@ -13,7 +13,6 @@ public class VehicleBody : MobileBody, IControllable
 
     public float MaxTurnAngle;
     public float CurrentTurnAngle { get; private set; }
-    public float TurnAngleRotationSpeed;
     private float _targetTurnFactor;
 
     public bool Threaded;
@@ -50,8 +49,7 @@ public class VehicleBody : MobileBody, IControllable
 
     private void UpdateTurnAngle(float deltaTime)
     {
-        float targetAngle = _targetTurnFactor * MaxTurnAngle;
-        CurrentTurnAngle = Mathf.MoveTowards(CurrentTurnAngle, targetAngle, TurnAngleRotationSpeed * deltaTime);
+        CurrentTurnAngle = _targetTurnFactor * MaxTurnAngle;
     }
     private void Move(float deltaTime)
     {

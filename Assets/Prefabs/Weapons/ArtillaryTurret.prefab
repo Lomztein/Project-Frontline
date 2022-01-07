@@ -211,7 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 50
+  Damage: 100
   Firerate: 0.25
   DamageType: 1
   Speed: 60
@@ -235,13 +235,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41487ee171311704884c1278dc50ac3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Faction: {fileID: 0}
+  Team: {fileID: 0}
   AcquireTargetRange: 150
   LooseTargetRange: 150
   AttackRange: 150
   TurretObject: {fileID: 4688001931536659702}
   WeaponObject: {fileID: 4688001931536659702}
   AimTolerance: 5
+  LeadTarget: 0
   Modifiers: []
 --- !u!1 &4688001931894474398
 GameObject:
