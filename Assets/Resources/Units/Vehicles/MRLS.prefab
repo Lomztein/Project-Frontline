@@ -11273,6 +11273,7 @@ GameObject:
   - component: {fileID: 6032616352911189941}
   - component: {fileID: -7567754369517084437}
   - component: {fileID: -454217863282750625}
+  - component: {fileID: 5688178698784461455}
   m_Layer: 0
   m_Name: MRLS
   m_TagString: MobileUnit
@@ -11313,11 +11314,13 @@ MonoBehaviour:
       of a mobile artillary station is capable of, well, wrecking homes with unprecedented
       effeciency.
     Cost: 2500
-    Value: 12
+    Value: 250
     UnitRole: 1
     UnitTier: 1
     UnitClass: 3
     UnitType: 1
+  _weapons:
+  - {fileID: 5640369136630403019}
 --- !u!114 &5640369137628400754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11357,7 +11360,6 @@ MonoBehaviour:
   LeadTarget: 0
   Modifiers:
   - {fileID: -454217863282750625}
-  AngleClamp: 30
   HoldRange: 125
 --- !u!114 &6032616352911189941
 MonoBehaviour:
@@ -11376,7 +11378,6 @@ MonoBehaviour:
   AccelerationSpeed: 5
   BrakeDrag: 10
   MaxTurnAngle: 25
-  TurnAngleRotationSpeed: 30
   Threaded: 1
 --- !u!114 &-7567754369517084437
 MonoBehaviour:
@@ -11405,6 +11406,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c498c43eb27de4bac5bf82321f14fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &5688178698784461455
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5640369137628400748}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5640369137643957884
 GameObject:
   m_ObjectHideFlags: 0

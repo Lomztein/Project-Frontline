@@ -167,7 +167,7 @@ public abstract class AIController : MonoBehaviour, IController
         }
         else
         {
-            if (CurrentTarget != null && !CurrentTarget.IsValid())
+            if (!CurrentTarget.ExistsAndValid() || !CanHitOrNoTurret(CurrentTarget.GetPosition()))
             {
                 FindNewTarget();
             }

@@ -62,6 +62,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5287726931714886481, guid: b62ca45d1832a1349b67dc09af56bd52,
+        type: 3}
+      propertyPath: VerticalSpeed
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 5287726931714886481, guid: b62ca45d1832a1349b67dc09af56bd52,
+        type: 3}
+      propertyPath: HorizontalSpeed
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 7232724795620966200, guid: b62ca45d1832a1349b67dc09af56bd52,
         type: 3}
       propertyPath: m_Name
@@ -84,6 +94,12 @@ MeshRenderer:
 --- !u!23 &6657653844282358867 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5388658136288656975, guid: b62ca45d1832a1349b67dc09af56bd52,
+    type: 3}
+  m_PrefabInstance: {fileID: 1633928032613188124}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &489290896114398170 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1181825027164434886, guid: b62ca45d1832a1349b67dc09af56bd52,
     type: 3}
   m_PrefabInstance: {fileID: 1633928032613188124}
   m_PrefabAsset: {fileID: 0}
@@ -119,6 +135,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1020735542546060326, guid: d9117cde3af7c7e49b48839c2fef3f80,
         type: 3}
+      propertyPath: Info.Value
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020735542546060326, guid: d9117cde3af7c7e49b48839c2fef3f80,
+        type: 3}
       propertyPath: Info.UnitClass
       value: 4
       objectReference: {fileID: 0}
@@ -128,6 +149,21 @@ PrefabInstance:
       value: This is an absolute unit, capable of taking insane punishment while
         dealing it as well. Only sustained heavy fire will take this down.
       objectReference: {fileID: 0}
+    - target: {fileID: 1020735542546060326, guid: d9117cde3af7c7e49b48839c2fef3f80,
+        type: 3}
+      propertyPath: _weapons.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020735542546060326, guid: d9117cde3af7c7e49b48839c2fef3f80,
+        type: 3}
+      propertyPath: _weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 8283012526989638948}
+    - target: {fileID: 1020735542546060326, guid: d9117cde3af7c7e49b48839c2fef3f80,
+        type: 3}
+      propertyPath: _weapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 489290896114398170}
     - target: {fileID: 1685374889454587877, guid: d9117cde3af7c7e49b48839c2fef3f80,
         type: 3}
       propertyPath: m_Name

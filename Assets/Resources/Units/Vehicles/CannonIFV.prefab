@@ -131,8 +131,8 @@ MonoBehaviour:
   VerticalAxis: {fileID: 1925955925272789095}
   HorizontalRange: {x: -180, y: 180}
   VerticalRange: {x: -180, y: 180}
-  HorizontalSpeed: 60
-  VerticalSpeed: 60
+  HorizontalSpeed: 135
+  VerticalSpeed: 135
 --- !u!1 &3481265301275641868
 GameObject:
   m_ObjectHideFlags: 0
@@ -5338,7 +5338,7 @@ PrefabInstance:
     - target: {fileID: 2913741366723729313, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
       propertyPath: Info.Value
-      value: 15
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 2913741366723729313, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
@@ -5353,6 +5353,26 @@ PrefabInstance:
         the doors jam shut immidiately after boarding. The vehicle itself remains
         highly effective on the battlefield, regardless.
       objectReference: {fileID: 0}
+    - target: {fileID: 2913741366723729313, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      propertyPath: _weapons.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913741366723729313, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      propertyPath: _weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 5328371602657346740}
+    - target: {fileID: 2913741366723729313, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      propertyPath: _weapons.Array.data[1]
+      value: 
+      objectReference: {fileID: 2322684498228296267}
+    - target: {fileID: 2913741366723729313, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      propertyPath: _weapons.Array.data[2]
+      value: 
+      objectReference: {fileID: 124425532207379155}
     - target: {fileID: 4095960138140975757, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
       propertyPath: Muzzle

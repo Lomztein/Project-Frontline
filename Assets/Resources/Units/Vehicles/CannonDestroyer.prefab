@@ -4989,8 +4989,8 @@ MonoBehaviour:
   VerticalAxis: {fileID: 2126640209}
   HorizontalRange: {x: -180, y: 180}
   VerticalRange: {x: -15, y: 30}
-  HorizontalSpeed: 45
-  VerticalSpeed: 45
+  HorizontalSpeed: 90
+  VerticalSpeed: 90
 --- !u!1 &2126640208
 GameObject:
   m_ObjectHideFlags: 0
@@ -5256,7 +5256,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Rigidbody
       value: 
-      objectReference: {fileID: 7977211409159190223}
+      objectReference: {fileID: 0}
     - target: {fileID: 7413236967939623016, guid: 809019c0ba3607d4ebcaa98d3d42a698,
         type: 3}
       propertyPath: Info.Cost
@@ -5270,7 +5270,7 @@ PrefabInstance:
     - target: {fileID: 7413236967939623016, guid: 809019c0ba3607d4ebcaa98d3d42a698,
         type: 3}
       propertyPath: Info.Value
-      value: 10
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 7413236967939623016, guid: 809019c0ba3607d4ebcaa98d3d42a698,
         type: 3}
@@ -5283,6 +5283,16 @@ PrefabInstance:
       value: Armed with an excessively heavy cannon, this vehicle is capable of dealing
         massive damage to enemy tanks from a distance.
       objectReference: {fileID: 0}
+    - target: {fileID: 7413236967939623016, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: _weapons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413236967939623016, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: _weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 1379412215}
     - target: {fileID: 8212536064758022890, guid: 809019c0ba3607d4ebcaa98d3d42a698,
         type: 3}
       propertyPath: m_RootOrder
@@ -5348,12 +5358,6 @@ PrefabInstance:
 --- !u!1 &8106105647802903052 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9198845951950377899, guid: 809019c0ba3607d4ebcaa98d3d42a698,
-    type: 3}
-  m_PrefabInstance: {fileID: 1141224368888527271}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &7977211409159190223 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: -2205974339445141656, guid: 809019c0ba3607d4ebcaa98d3d42a698,
     type: 3}
   m_PrefabInstance: {fileID: 1141224368888527271}
   m_PrefabAsset: {fileID: 0}

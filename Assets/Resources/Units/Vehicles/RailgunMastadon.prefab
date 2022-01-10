@@ -388,6 +388,7 @@ MonoBehaviour:
   MaxChargeTime: 2.5
   CurrentChargeTime: 0
   ResetChargeOnFire: 1
+  ChargeOnlyWhenCanFire: 1
 --- !u!114 &7510242043936985995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5318,7 +5319,7 @@ PrefabInstance:
     - target: {fileID: 1020735542546060326, guid: d9117cde3af7c7e49b48839c2fef3f80,
         type: 3}
       propertyPath: Info.Value
-      value: 25
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1020735542546060326, guid: d9117cde3af7c7e49b48839c2fef3f80,
         type: 3}
@@ -5332,6 +5333,16 @@ PrefabInstance:
         energized railgun prototype. Only the absolute strongest armor can withstand
         even a single hit from this.
       objectReference: {fileID: 0}
+    - target: {fileID: 1020735542546060326, guid: d9117cde3af7c7e49b48839c2fef3f80,
+        type: 3}
+      propertyPath: _weapons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1020735542546060326, guid: d9117cde3af7c7e49b48839c2fef3f80,
+        type: 3}
+      propertyPath: _weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 7706273481973247910}
     - target: {fileID: 1685374889454587877, guid: d9117cde3af7c7e49b48839c2fef3f80,
         type: 3}
       propertyPath: m_Name

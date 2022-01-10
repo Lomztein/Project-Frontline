@@ -12,7 +12,7 @@ public class SimpleWeaponAnimator : MonoBehaviour
         Weapon.OnFire += OnFire;
     }
 
-    private void OnFire()
+    private void OnFire(IWeapon weapon)
     {
         Animator.SetTrigger("Fire");
     }

@@ -406,6 +406,7 @@ GameObject:
   - component: {fileID: 6370023998665172070}
   - component: {fileID: 6370023998665172069}
   - component: {fileID: 6370023998665172074}
+  - component: {fileID: 2276988023606929621}
   m_Layer: 0
   m_Name: HeavyHelicoper
   m_TagString: Untagged
@@ -462,7 +463,6 @@ MonoBehaviour:
   AimTolerance: 60
   LeadTarget: 0
   Modifiers: []
-  AngleClamp: 60
   HoldRange: 50
 --- !u!114 &6370023998665172071
 MonoBehaviour:
@@ -481,11 +481,14 @@ MonoBehaviour:
     Description: More armored, and equipped with a powerful minigun on each side.
       These choppers can slaughter hordes of infantry with relative ease.
     Cost: 3000
-    Value: 17
+    Value: 300
     UnitRole: 1
     UnitTier: 1
     UnitClass: 0
     UnitType: 2
+  _weapons:
+  - {fileID: 6397997311296759549}
+  - {fileID: 7142785241784914061}
 --- !u!114 &6370023998665172070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,6 +543,22 @@ MonoBehaviour:
   AngularDampening: 0.95
   AccFactorLerp: 10
   TurnFactorLeap: 10
+--- !u!54 &2276988023606929621
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6370023998665172067}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &6397997312150594963
 GameObject:
   m_ObjectHideFlags: 0
@@ -833,6 +852,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6370023998494290528}
     m_Modifications:
+    - target: {fileID: 4317269777234900627, guid: 02dbbee0d91bdf541830ab8d8a4e6585,
+        type: 3}
+      propertyPath: VerticalSpeed
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4317269777234900627, guid: 02dbbee0d91bdf541830ab8d8a4e6585,
+        type: 3}
+      propertyPath: HorizontalSpeed
+      value: 180
+      objectReference: {fileID: 0}
     - target: {fileID: 4317269777234900638, guid: 02dbbee0d91bdf541830ab8d8a4e6585,
         type: 3}
       propertyPath: m_RootOrder
@@ -895,6 +924,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02dbbee0d91bdf541830ab8d8a4e6585, type: 3}
+--- !u!1 &7142785241784914061 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4317269777234900639, guid: 02dbbee0d91bdf541830ab8d8a4e6585,
+    type: 3}
+  m_PrefabInstance: {fileID: 6397997312490317330}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7142785241784914060 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4317269777234900638, guid: 02dbbee0d91bdf541830ab8d8a4e6585,
@@ -922,6 +957,16 @@ PrefabInstance:
         type: 3}
       propertyPath: ClampVelocityModule.magnitude.scalar
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4317269777234900627, guid: 02dbbee0d91bdf541830ab8d8a4e6585,
+        type: 3}
+      propertyPath: VerticalSpeed
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 4317269777234900627, guid: 02dbbee0d91bdf541830ab8d8a4e6585,
+        type: 3}
+      propertyPath: HorizontalSpeed
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 4317269777234900638, guid: 02dbbee0d91bdf541830ab8d8a4e6585,
         type: 3}
@@ -985,6 +1030,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 02dbbee0d91bdf541830ab8d8a4e6585, type: 3}
+--- !u!1 &6397997311296759549 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4317269777234900639, guid: 02dbbee0d91bdf541830ab8d8a4e6585,
+    type: 3}
+  m_PrefabInstance: {fileID: 7142785240822632546}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6397997311296759548 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4317269777234900638, guid: 02dbbee0d91bdf541830ab8d8a4e6585,

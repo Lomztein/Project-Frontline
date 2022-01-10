@@ -40,8 +40,6 @@ public class ProjectileExplodeNearTarget : MonoBehaviour
 
     private void Burst ()
     {
-        Projectile.End();
-
         Collider[] nearby = Physics.OverlapSphere(transform.position, ExplosiveRange, Projectile.HitLayerMask);
         foreach (Collider col in nearby)
         {
@@ -51,8 +49,10 @@ public class ProjectileExplodeNearTarget : MonoBehaviour
                 float factor = Vector3.Distance(transform.position, col.transform.position) / ExplosiveRange;
                 float damage = DamageFalloff.Evaluate(factor) * ExplosiveDamage;
 
-                damagable.TakeDamage(new DamageInfo(damage, DamageType, col.transform.position, (col.transform.position - transform.position).normalized));
+                Projectile.DoDamage(damagable, damage, DamageType, transform.position, (col.transform.position - transform.position).normalized);
             }
         }
+
+        Projectile.End();
     }
 }

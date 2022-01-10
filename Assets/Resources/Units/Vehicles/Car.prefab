@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1006977410456563399}
   - component: {fileID: -8872882051033503931}
   - component: {fileID: -6092937491455133949}
+  - component: {fileID: 4794036188516636798}
   m_Layer: 0
   m_Name: Car
   m_TagString: MobileUnit
@@ -58,11 +59,13 @@ MonoBehaviour:
       complaining about "the children on the back seats whining". We've attached
       some guns on them, and they should be fairly effective at harrasing enemy units.
     Cost: 500
-    Value: 5
+    Value: 50
     UnitRole: 0
     UnitTier: 0
     UnitClass: 0
     UnitType: 1
+  _weapons:
+  - {fileID: 6934022648993680902}
 --- !u!114 &8214553814044750081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,7 +100,6 @@ MonoBehaviour:
   AccelerationSpeed: 20
   BrakeDrag: 30
   MaxTurnAngle: 180
-  TurnAngleRotationSpeed: 360
   Threaded: 0
 --- !u!114 &8707016819434108285
 MonoBehaviour:
@@ -155,9 +157,9 @@ MonoBehaviour:
   AimTolerance: 5
   LeadTarget: 0
   Modifiers: []
-  AngleClamp: 30
   HoldRange: 20
   ReengageRange: 75
+  DisengageAlongWaypoint: 0
 --- !u!114 &-6092937491455133949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,6 +181,23 @@ MonoBehaviour:
     UnitTier: 1
     UnitClass: 1
     UnitType: 1
+  _weapons: []
+--- !u!54 &4794036188516636798
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1006977410456563417}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1593664101717156871
 GameObject:
   m_ObjectHideFlags: 0
@@ -1371,15 +1390,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92a563c3efd2b8344b126e88c4daa3d5, type: 3}
---- !u!198 &3611535646411459172 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 2638061004860430971, guid: 92a563c3efd2b8344b126e88c4daa3d5,
-    type: 3}
-  m_PrefabInstance: {fileID: 1622006188491149343}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5173377716123603236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5857214540084150587, guid: 92a563c3efd2b8344b126e88c4daa3d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1622006188491149343}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3611535646411459172 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2638061004860430971, guid: 92a563c3efd2b8344b126e88c4daa3d5,
     type: 3}
   m_PrefabInstance: {fileID: 1622006188491149343}
   m_PrefabAsset: {fileID: 0}

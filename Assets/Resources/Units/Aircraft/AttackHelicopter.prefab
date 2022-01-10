@@ -347,7 +347,7 @@ MonoBehaviour:
   VectoringPlatform: {fileID: 4325982582569524211}
   HorizontalRange: {x: -180, y: 180}
   VerticalRange: {x: -10, y: 180}
-  VectoringSpeed: 120
+  VectoringSpeed: 180
   _targetLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &4325982582558911290
 MonoBehaviour:
@@ -493,11 +493,14 @@ MonoBehaviour:
       capable of taking out strong armor with a single volley of rockets. You generally
       do not want to piss these guys off.
     Cost: 2500
-    Value: 12
+    Value: 250
     UnitRole: 1
     UnitTier: 1
     UnitClass: 0
     UnitType: 2
+  _weapons:
+  - {fileID: 4325982582558911292}
+  - {fileID: 4325982582396688272}
 --- !u!114 &4325982583102194754
 MonoBehaviour:
   m_ObjectHideFlags: 0

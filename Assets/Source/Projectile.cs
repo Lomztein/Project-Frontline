@@ -25,6 +25,8 @@ public class Projectile : MonoBehaviour, IPoolObject
 
     public event Action<Projectile, Vector3> OnFired;
     public event Action<Projectile, Collider, Vector3, Vector3> OnHit;
+    public event Action<Projectile, IDamagable> OnKill;
+    public event Action<Projectile> OnEnd;
 
     public virtual void Fire(Vector3 direction)
     {
@@ -50,9 +52,17 @@ public class Projectile : MonoBehaviour, IPoolObject
     protected virtual void DoDamage (Collider col, Vector3 point)
     {
         var damagable = col.GetComponentInParent<IDamagable>();
+        DoDamage(damagable, Damage, DamageType, point, Velocity.normalized);
+    }
+
+    public void DoDamage (IDamagable damagable, float damage, DamageMatrix.Damage type, Vector3 point, Vector3 direction)
+    {
         if (damagable != null)
         {
-            damagable.TakeDamage(new DamageInfo(Damage, DamageType, point, Velocity.normalized));
+            if (damagable.TakeDamage(new DamageInfo(damage, type, point, direction)) <= 0f)
+            {
+                OnKill?.Invoke(this, damagable);
+            }
         }
     }
 
@@ -72,6 +82,7 @@ public class Projectile : MonoBehaviour, IPoolObject
         {
             TrailEffect.transform.position = point;
         }
+
     }
 
     public virtual void End()
@@ -85,6 +96,7 @@ public class Projectile : MonoBehaviour, IPoolObject
 
         CancelInvoke();
         gameObject.SetActive(false);
+        OnEnd?.Invoke(this);
     }
 
     private bool AreEffectsPlaying ()

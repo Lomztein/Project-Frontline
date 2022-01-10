@@ -31,7 +31,10 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
 
     DamageMatrix.Damage IWeapon.DamageType => DamageType;
 
-    public event Action OnFire;
+    public event Action<IWeapon> OnFire;
+    public event Action<IWeapon, Projectile> OnProjectile;
+    public event Action<IWeapon, Projectile, Collider, Vector3, Vector3> OnHit;
+    public event Action<IWeapon, Projectile, IDamagable> OnKill;
 
     private void Start()
     {
@@ -83,9 +86,32 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
             projectile.Speed = Speed;
 
             projectile.Fire(rotation * Vector3.forward);
+
+            projectile.OnHit += Projectile_OnHit;
+            projectile.OnKill += Projectile_OnKill;
+            projectile.OnEnd += Projectile_OnEnd;
+
+            OnProjectile?.Invoke(this, projectile);
         }
 
-        OnFire?.Invoke();
+        OnFire?.Invoke(this);
+    }
+
+    private void Projectile_OnEnd(Projectile projectile)
+    {
+        projectile.OnHit -= Projectile_OnHit;
+        projectile.OnKill -= Projectile_OnKill;
+        projectile.OnEnd -= Projectile_OnEnd;
+    }
+
+    private void Projectile_OnKill(Projectile projectile, IDamagable damagable)
+    {
+        OnKill?.Invoke(this, projectile, damagable);
+    }
+
+    private void Projectile_OnHit(Projectile projectile, Collider col, Vector3 point, Vector3 direction)
+    {
+        OnHit?.Invoke(this, projectile, col, point, direction);
     }
 
     private void OnDestroy()

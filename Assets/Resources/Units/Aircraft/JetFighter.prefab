@@ -118,12 +118,14 @@ MonoBehaviour:
     Description: Incredibly fast hit-and-run jet, capable of outmaneuvering all but
       the fastest missiles. Armed with powerful surface-to-everything missles with
       enough explosives to demolish all you've ever loved.
-    Cost: 4000
-    Value: 10
+    Cost: 3500
+    Value: 350
     UnitRole: 1
-    UnitTier: 2
+    UnitTier: 1
     UnitClass: 0
     UnitType: 2
+  _weapons:
+  - {fileID: 1854339823547716753}
 --- !u!114 &1854339823422044919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +199,7 @@ MonoBehaviour:
   LeadTarget: 1
   Modifiers: []
   HoldRange: 75
-  ReengageRange: 200
+  ReengageRange: 150
   DisengageAlongWaypoint: 0
 --- !u!114 &583668082125912536
 MonoBehaviour:
@@ -214,8 +216,8 @@ MonoBehaviour:
   MaxHealth: 750
   ArmorType: 2
   DestroyOnDeath: 1
-  Debris: {fileID: 0}
-  DebrisLife: 0
+  Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
+  DebrisLife: 3
 --- !u!1 &1854339823547716753
 GameObject:
   m_ObjectHideFlags: 0

@@ -30,7 +30,7 @@ PrefabInstance:
     - target: {fileID: 3451883676540623872, guid: 8cde096bc4044aa43969fa0883258089,
         type: 3}
       propertyPath: Info.Value
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 3451883676540623872, guid: 8cde096bc4044aa43969fa0883258089,
         type: 3}
@@ -53,6 +53,16 @@ PrefabInstance:
       value: Equipped with a dumb rocket launcher, this is a cheap option for dealing
         with enemy armor and aircraft.
       objectReference: {fileID: 0}
+    - target: {fileID: 3451883676540623872, guid: 8cde096bc4044aa43969fa0883258089,
+        type: 3}
+      propertyPath: _weapons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451883676540623872, guid: 8cde096bc4044aa43969fa0883258089,
+        type: 3}
+      propertyPath: _weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 6727749598346478957}
     - target: {fileID: 3817131376503336587, guid: 8cde096bc4044aa43969fa0883258089,
         type: 3}
       propertyPath: Muzzle
@@ -238,6 +248,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DumbMissleLauncher
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439000263739211472, guid: ae01bae4f37236d4eabe405e3adf2004,
+        type: 3}
+      propertyPath: VerticalSpeed
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 1439000263739211472, guid: ae01bae4f37236d4eabe405e3adf2004,
+        type: 3}
+      propertyPath: HorizontalSpeed
+      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae01bae4f37236d4eabe405e3adf2004, type: 3}

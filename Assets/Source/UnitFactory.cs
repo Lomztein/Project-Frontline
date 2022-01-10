@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,6 +12,8 @@ public class UnitFactory : MonoBehaviour, ITeamComponent
     private TeamInfo _team;
     private Waypoint _nearestWaypoint;
 
+    public event Action<UnitFactory, GameObject> OnUnitSpawned;
+
     public void Start()
     {
         InvokeRepeating("Spawn", SpawnDelay, SpawnDelay);
@@ -22,11 +25,12 @@ public class UnitFactory : MonoBehaviour, ITeamComponent
         Vector3 pos = GetLocalRandomSpawnPosition() + transform.position;
         GameObject go = _team.Instantiate(UnitPrefab, pos, transform.rotation);
         go.BroadcastMessage("SetWaypoint", _nearestWaypoint);
+        OnUnitSpawned?.Invoke(this, go);
     }
 
     private Vector3 GetLocalRandomSpawnPosition ()
     {
-        Vector3 unitSphere = Random.insideUnitSphere * SpawnRange;
+        Vector3 unitSphere = UnityEngine.Random.insideUnitSphere * SpawnRange;
         return new Vector3(unitSphere.x, 0f, unitSphere.z);
     }
 

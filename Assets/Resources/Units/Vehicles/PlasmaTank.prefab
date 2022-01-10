@@ -291,8 +291,8 @@ MonoBehaviour:
   VerticalAxis: {fileID: 7859782480026814779}
   HorizontalRange: {x: -180, y: 180}
   VerticalRange: {x: -15, y: 15}
-  HorizontalSpeed: 45
-  VerticalSpeed: 45
+  HorizontalSpeed: 135
+  VerticalSpeed: 135
 --- !u!114 &8783121932350719234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5398,7 +5398,7 @@ PrefabInstance:
     - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
       propertyPath: Info.Value
-      value: 11
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
@@ -5421,6 +5421,16 @@ PrefabInstance:
       value: High-tech, heavily armored tank, wielding an incredibly powerful plasma
         cannon, which has absolutely zero problems cutting through heavy armor.
       objectReference: {fileID: 0}
+    - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
+      propertyPath: _weapons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
+      propertyPath: _weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 6149008217251603754}
     - target: {fileID: 5966162003396434665, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
       propertyPath: Muzzle

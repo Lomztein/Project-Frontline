@@ -475,7 +475,6 @@ MonoBehaviour:
   AimTolerance: 1
   LeadTarget: 0
   Modifiers: []
-  AngleClamp: 60
   HoldRange: 60
 --- !u!114 &5322509346237236352
 MonoBehaviour:
@@ -495,11 +494,13 @@ MonoBehaviour:
       Four laser cannons quickly melt through heavy armor and can burn through structures
       with easy.
     Cost: 5000
-    Value: 17
+    Value: 500
     UnitRole: 1
     UnitTier: 2
     UnitClass: 0
     UnitType: 2
+  _weapons:
+  - {fileID: 1059517595597004955}
 --- !u!114 &5322509346237236353
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1267,6 +1268,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserCannon (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7390663637667179775, guid: 1ebdbbbaaf5e68b4392c27eef7d9d3dd,
+        type: 3}
+      propertyPath: VerticalSpeed
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390663637667179775, guid: 1ebdbbbaaf5e68b4392c27eef7d9d3dd,
+        type: 3}
+      propertyPath: HorizontalSpeed
+      value: 135
+      objectReference: {fileID: 0}
     - target: {fileID: 8891430329597459010, guid: 1ebdbbbaaf5e68b4392c27eef7d9d3dd,
         type: 3}
       propertyPath: m_RootOrder
@@ -1347,6 +1358,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserCannon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390663637667179775, guid: 1ebdbbbaaf5e68b4392c27eef7d9d3dd,
+        type: 3}
+      propertyPath: VerticalSpeed
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390663637667179775, guid: 1ebdbbbaaf5e68b4392c27eef7d9d3dd,
+        type: 3}
+      propertyPath: HorizontalSpeed
+      value: 135
       objectReference: {fileID: 0}
     - target: {fileID: 8891430329597459010, guid: 1ebdbbbaaf5e68b4392c27eef7d9d3dd,
         type: 3}
@@ -1619,6 +1640,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: LaserCannon (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7390663637667179775, guid: 1ebdbbbaaf5e68b4392c27eef7d9d3dd,
+        type: 3}
+      propertyPath: VerticalSpeed
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390663637667179775, guid: 1ebdbbbaaf5e68b4392c27eef7d9d3dd,
+        type: 3}
+      propertyPath: HorizontalSpeed
+      value: 135
+      objectReference: {fileID: 0}
     - target: {fileID: 8891430329597459010, guid: 1ebdbbbaaf5e68b4392c27eef7d9d3dd,
         type: 3}
       propertyPath: m_RootOrder
@@ -1794,6 +1825,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserCannon (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390663637667179775, guid: 1ebdbbbaaf5e68b4392c27eef7d9d3dd,
+        type: 3}
+      propertyPath: VerticalSpeed
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 7390663637667179775, guid: 1ebdbbbaaf5e68b4392c27eef7d9d3dd,
+        type: 3}
+      propertyPath: HorizontalSpeed
+      value: 135
       objectReference: {fileID: 0}
     - target: {fileID: 8891430329597459010, guid: 1ebdbbbaaf5e68b4392c27eef7d9d3dd,
         type: 3}

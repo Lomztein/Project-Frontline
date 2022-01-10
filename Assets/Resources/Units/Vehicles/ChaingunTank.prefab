@@ -110,7 +110,7 @@ PrefabInstance:
     - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
       propertyPath: Info.Value
-      value: 15
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
@@ -134,6 +134,16 @@ PrefabInstance:
         a tank? Yes? Oh. Well here's another one. Most powerful against enemy infantry,
         but its armor piercing rounds can take out armor as well.
       objectReference: {fileID: 0}
+    - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
+      propertyPath: _weapons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
+      propertyPath: _weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 1526240527474165222}
     - target: {fileID: 2593547852960117922, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -240,6 +250,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5923299413588858148}
     m_Modifications:
+    - target: {fileID: 6364709213450896241, guid: 1a52e36f42318014d9b1eb963b104e91,
+        type: 3}
+      propertyPath: VerticalSpeed
+      value: 135
+      objectReference: {fileID: 0}
+    - target: {fileID: 6364709213450896241, guid: 1a52e36f42318014d9b1eb963b104e91,
+        type: 3}
+      propertyPath: HorizontalSpeed
+      value: 135
+      objectReference: {fileID: 0}
     - target: {fileID: 6364709213450896242, guid: 1a52e36f42318014d9b1eb963b104e91,
         type: 3}
       propertyPath: DamageType
@@ -251,6 +271,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4353457072589820952, guid: 96bcadc2b022995429899a109d1414a4,
         type: 3}
+    - target: {fileID: 6364709213450896242, guid: 1a52e36f42318014d9b1eb963b104e91,
+        type: 3}
+      propertyPath: ChargeOnlyWhenCanFire
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6364709213450896244, guid: 1a52e36f42318014d9b1eb963b104e91,
         type: 3}
       propertyPath: m_RootOrder

@@ -1,8 +1,8 @@
 ﻿using System;
+using UnityEngine;
 
 public interface IWeapon
 {
-    event Action OnFire;
 
     bool CanFire();
     bool TryFire(ITarget intendedTarget);
@@ -12,6 +12,11 @@ public interface IWeapon
     float Speed { get; }
 
     DamageMatrix.Damage DamageType { get; }
+
+    event Action<IWeapon> OnFire;
+    event Action<IWeapon, Projectile> OnProjectile;
+    event Action<IWeapon, Projectile, Collider, Vector3, Vector3> OnHit;
+    event Action<IWeapon, Projectile, IDamagable> OnKill;
 }
 
 public static class WeaponExtensions

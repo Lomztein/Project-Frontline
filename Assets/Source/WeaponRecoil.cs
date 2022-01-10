@@ -24,7 +24,7 @@ public class WeaponRecoil : MonoBehaviour
         _weapon.OnFire += OnFire;
     }
 
-    private void OnFire()
+    private void OnFire(IWeapon weapon)
     {
         Animator.Recoil(Muzzle.forward * -1 * RecoilStrength);
     }

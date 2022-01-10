@@ -17,7 +17,10 @@ public class WeaponGroup : MonoBehaviour, IWeapon
 
     public DamageMatrix.Damage DamageType => GetWeapons().First().DamageType;
 
-    public event Action OnFire;
+    public event Action<IWeapon> OnFire;
+    public event Action<IWeapon, Projectile> OnProjectile;
+    public event Action<IWeapon, Projectile, Collider, Vector3, Vector3> OnHit;
+    public event Action<IWeapon, Projectile, IDamagable> OnKill;
 
     private void Awake()
     {
@@ -30,8 +33,31 @@ public class WeaponGroup : MonoBehaviour, IWeapon
 
         foreach (IWeapon weapon in _weapons)
         {
-            weapon.OnFire += OnWeaponFire;
+            weapon.OnFire += Weapon_OnFire;
+            weapon.OnProjectile += Weapon_OnProjectile;
+            weapon.OnHit += Weapon_OnHit;
+            weapon.OnKill += Weapon_OnKill;
         }
+    }
+
+    private void Weapon_OnKill(IWeapon arg1, Projectile arg2, IDamagable arg3)
+    {
+        OnKill?.Invoke(arg1, arg2, arg3);
+    }
+
+    private void Weapon_OnHit(IWeapon arg1, Projectile arg2, Collider arg3, Vector3 arg4, Vector3 arg5)
+    {
+        OnHit?.Invoke(arg1, arg2, arg3, arg4, arg5);
+    }
+
+    private void Weapon_OnProjectile(IWeapon arg1, Projectile arg2)
+    {
+        OnProjectile?.Invoke(arg1, arg2);
+    }
+
+    private void Weapon_OnFire(IWeapon obj)
+    {
+        OnFire?.Invoke(obj);
     }
 
     private IWeapon[] GetWeapons()
@@ -41,11 +67,6 @@ public class WeaponGroup : MonoBehaviour, IWeapon
             _weapons = Weapons.Select(x => x.GetComponent<IWeapon>()).ToArray();
         }
         return _weapons;
-    }
-
-    private void OnWeaponFire()
-    {
-        OnFire?.Invoke();
     }
 
     public bool CanFire() => _weapons.First().CanFire();

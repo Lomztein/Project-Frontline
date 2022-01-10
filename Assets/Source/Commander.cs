@@ -88,15 +88,30 @@ public class Commander : MonoBehaviour, ITeamComponent
         if (TrySpend(unit.Cost) && CanBuild)
         {
             GameObject placedUnit = PlaceUnit(GeneratePrefab(unitPrefab), position, rotation);
-
-            PassiveIncome pi = placedUnit.GetComponent<PassiveIncome>();
-            if (pi)
+            UnitFactory factory = placedUnit.GetComponent<UnitFactory>();
+            if (factory)
             {
-                pi.IncomePerSecond = unit.Info.Value;
+                factory.OnUnitSpawned += Factory_OnUnitSpawned;
+                // TODO: Clean up.
             }
+
             return true;
         }
         return false;
+    }
+
+    private void Factory_OnUnitSpawned(UnitFactory arg1, GameObject arg2)
+    {
+        arg2.GetComponent<Unit>().OnKill += Unit_OnKill;
+    }
+
+    private void Unit_OnKill(Unit arg1, IWeapon arg2, Projectile arg3, IDamagable arg4)
+    {
+        if (arg4 is Component component)
+        {
+            var killedUnit = component.GetComponentInParent<Unit>();
+            Earn(killedUnit.Info.Value);
+        }
     }
 
     public GameObject GetUnitFactoryPrefab (GameObject unit) // This should not be unique to Commander.
