@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 using Util;
@@ -61,7 +63,35 @@ namespace UI
             GameObject newTooltip = Instantiate(TooltipPrefab);
             newTooltip.transform.Find("Name").GetComponentInChildren<Text>().text = _unit.Name + " - " + _unit.Cost + "$";
             newTooltip.transform.Find("Description").GetComponentInChildren<Text>().text = _unit.Description;
+            string weaponInfo = WeaponInfoToString();
+            if (string.IsNullOrEmpty(weaponInfo))
+            {
+                newTooltip.transform.Find("Weapons").gameObject.SetActive(false);
+            }
+            else
+            {
+                newTooltip.transform.Find("Weapons").GetComponentInChildren<Text>().text = WeaponInfoToString();
+            }
             return newTooltip;
+        }
+
+        private string WeaponInfoToString ()
+        {
+            WeaponInfo[] info = _unit.GetWeaponInfo();
+            if (info.Length > 0)
+            {
+                var groups = info.GroupBy(x => x.Name);
+                StringBuilder builder = new StringBuilder();
+                foreach (var group in groups)
+                {
+                    int count = group.Count();
+                    string prefix = count == 1 ? "" : count + "x ";
+                    builder.AppendLine($"<b>{prefix}{group.Key}</b>");
+                    builder.AppendLine($"<i>{group.First().Description}</i>");
+                }
+                return builder.ToString().Trim();
+            }
+            return null;
         }
     }
 }

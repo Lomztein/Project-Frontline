@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1924133014072981696}
   - component: {fileID: 3250579649345278529}
   - component: {fileID: 3926321410229856326}
+  - component: {fileID: 8721965451783326238}
   m_Layer: 0
   m_Name: Bazooka
   m_TagString: Untagged
@@ -73,8 +74,24 @@ MonoBehaviour:
   AnimatorTurret: {fileID: 0}
   Transform: {fileID: 1924133014072981696}
   Pivot: {fileID: 0}
-  Fulcrum: {fileID: 0}
   Muzzle: {fileID: 0}
+--- !u!114 &8721965451783326238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3364937308259394650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Bazooka
+  Caliber: 80mm
+  Description: Launches fire-and-forget missiles that can track all but the fastest
+    targets.
+  Sort: 0
 --- !u!1 &5739219566226020873
 GameObject:
   m_ObjectHideFlags: 0

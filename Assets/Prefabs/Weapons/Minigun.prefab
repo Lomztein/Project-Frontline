@@ -155,8 +155,8 @@ MonoBehaviour:
   VerticalAxis: {fileID: 4317269777617966680}
   HorizontalRange: {x: -80, y: 80}
   VerticalRange: {x: -60, y: 60}
-  HorizontalSpeed: 120
-  VerticalSpeed: 120
+  HorizontalSpeed: 180
+  VerticalSpeed: 180
 --- !u!114 &4317269777234900636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad85e42caa7afe45bb1b2c60e93b67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 5
+  Damage: 10
   Firerate: 20
   DamageType: 0
   Speed: 250
@@ -183,6 +183,8 @@ MonoBehaviour:
   Inaccuracy: 0.75
   MaxChargeTime: 0.4
   CurrentChargeTime: 0
+  ResetChargeOnFire: 0
+  ChargeOnlyWhenCanFire: 0
 --- !u!114 &4317269777234900637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -638,8 +640,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2638061004860430971, guid: 92a563c3efd2b8344b126e88c4daa3d5,
         type: 3}
+      propertyPath: NoiseModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638061004860430971, guid: 92a563c3efd2b8344b126e88c4daa3d5,
+        type: 3}
+      propertyPath: ClampVelocityModule.dampen
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638061004860430971, guid: 92a563c3efd2b8344b126e88c4daa3d5,
+        type: 3}
       propertyPath: InitialModule.startSpeed.scalar
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2638061004860430971, guid: 92a563c3efd2b8344b126e88c4daa3d5,
+        type: 3}
+      propertyPath: ClampVelocityModule.magnitude.scalar
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5057429543617351506, guid: 92a563c3efd2b8344b126e88c4daa3d5,
         type: 3}

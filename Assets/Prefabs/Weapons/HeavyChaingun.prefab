@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad85e42caa7afe45bb1b2c60e93b67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 5
+  Damage: 10
   Firerate: 30
   DamageType: 6
   Speed: 400
@@ -141,9 +141,10 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 656114708173170299}
   Inaccuracy: 1
-  TargetFriendly: 0
   MaxChargeTime: 1
   CurrentChargeTime: 0
+  ResetChargeOnFire: 0
+  ChargeOnlyWhenCanFire: 0
 --- !u!114 &6364709213450896243
 MonoBehaviour:
   m_ObjectHideFlags: 0

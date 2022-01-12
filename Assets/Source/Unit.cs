@@ -34,8 +34,6 @@ public class Unit : MonoBehaviour, IPurchasable
 
     public WeaponInfo[] GetWeaponInfo()
     {
-        var infos = _weapons.Select(x => x.GetComponent<WeaponInfo>()).ToList();
-        infos.Sort((x, y) => x.Sort - y.Sort);
-        return infos.ToArray();
+        return GetComponentsInChildren<WeaponInfo>();
     }
 }
