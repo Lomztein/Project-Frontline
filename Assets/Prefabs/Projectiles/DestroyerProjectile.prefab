@@ -54,6 +54,9 @@ MonoBehaviour:
   HitEffect: {fileID: 6200551195187449239}
   TrailEffect: {fileID: 0}
   EffectRecallTime: 3
+  HitLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &378259457130168591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,6 +87,7 @@ TrailRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -117,7 +121,7 @@ TrailRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.041666668
+        value: 0.09321594
         inSlope: 0.1421371
         outSlope: 0.1421371
         tangentMode: 0
@@ -127,11 +131,11 @@ TrailRenderer:
       - serializedVersion: 3
         time: 1
         value: 0
-        inSlope: -0.7006429
-        outSlope: -0.7006429
+        inSlope: -0.21780454
+        outSlope: -0.21780454
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.15137613
+        inWeight: 0.3890909
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -166,7 +170,7 @@ TrailRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 0
+    numCapVertices: 2
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
@@ -181,6 +185,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8180433780344764018}
     m_Modifications:
+    - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -198,6 +207,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
+        type: 3}
       propertyPath: m_LocalRotation.x
       value: -0
       objectReference: {fileID: 0}
@@ -210,16 +224,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalRotation.z
       value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 931591541085269780, guid: ce8bba28af204f94db7328d615882804,
         type: 3}

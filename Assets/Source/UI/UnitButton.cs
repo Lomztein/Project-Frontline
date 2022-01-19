@@ -84,9 +84,12 @@ namespace UI
                 StringBuilder builder = new StringBuilder();
                 foreach (var group in groups)
                 {
+                    IWeapon weapon = group.First().GetComponent<IWeapon>();
+
                     int count = group.Count();
                     string prefix = count == 1 ? "" : count + "x ";
-                    builder.AppendLine($"<b>{prefix}{group.Key}</b>");
+                    string suffix = weapon != null ? $" - {weapon.GetDPS()*count} {weapon.DamageType}-type DPS" : ""; 
+                    builder.AppendLine($"<b>{prefix}{group.Key}</b>{suffix}");
                     builder.AppendLine($"<i>{group.First().Description}</i>");
                 }
                 return builder.ToString().Trim();

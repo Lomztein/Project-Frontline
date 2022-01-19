@@ -119,7 +119,11 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
         ObjectPool.FreePool(_pool as ObjectPool);
     }
 
-    public float GetDPS() => Firerate * Damage * Amount;
+    public virtual float GetDPS()
+    {
+        float shotDamage = Damage * Amount;
+        return Mathf.Min(shotDamage * Firerate, shotDamage * (BurstAmmo / BurstReloadTime));
+    }
 
     public virtual bool CanFire()
     {

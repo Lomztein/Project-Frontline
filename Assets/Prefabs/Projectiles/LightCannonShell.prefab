@@ -53,6 +53,9 @@ MonoBehaviour:
   HitEffect: {fileID: 8238054069651359604}
   TrailEffect: {fileID: 0}
   EffectRecallTime: 0.4
+  HitLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!120 &9067394334025725167
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -68,6 +71,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -94,9 +98,7 @@ LineRenderer:
   m_SortingOrder: 0
   m_Positions:
   - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 1}
-  - {x: 0, y: 0, z: 1.5}
-  - {x: 0, y: 0, z: 2}
+  - {x: 0, y: 0, z: 3.92}
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -105,7 +107,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.050245285
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -113,22 +115,13 @@ LineRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 0.085170075
-        value: 0.17427239
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
         time: 1
-        value: 0
-        inSlope: -0.7180502
-        outSlope: -0.7180502
+        value: 0.15254211
+        inSlope: -0.1150877
+        outSlope: -0.1150877
         tangentMode: 0
         weightedMode: 0
-        inWeight: 0.11532698
+        inWeight: 0.32196748
         outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -163,7 +156,7 @@ LineRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 0
+    numCapVertices: 2
     alignment: 0
     textureMode: 0
     shadowBias: 0.5
@@ -179,6 +172,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4490968886850527777, guid: 3c45ca53cbca83c4fa6afdea87ba52f3,
         type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4490968886850527777, guid: 3c45ca53cbca83c4fa6afdea87ba52f3,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -191,6 +189,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4490968886850527777, guid: 3c45ca53cbca83c4fa6afdea87ba52f3,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4490968886850527777, guid: 3c45ca53cbca83c4fa6afdea87ba52f3,
         type: 3}
@@ -209,16 +212,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4490968886850527777, guid: 3c45ca53cbca83c4fa6afdea87ba52f3,
         type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4490968886850527777, guid: 3c45ca53cbca83c4fa6afdea87ba52f3,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4490968886850527777, guid: 3c45ca53cbca83c4fa6afdea87ba52f3,
-        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: -90
       objectReference: {fileID: 0}
@@ -234,13 +227,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5442150991366633825, guid: 3c45ca53cbca83c4fa6afdea87ba52f3,
         type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 0.4
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5442150991366633825, guid: 3c45ca53cbca83c4fa6afdea87ba52f3,
         type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 30
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 7291360389459240126, guid: 3c45ca53cbca83c4fa6afdea87ba52f3,
         type: 3}

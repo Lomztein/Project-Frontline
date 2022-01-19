@@ -22,6 +22,8 @@ public class WeaponGroup : MonoBehaviour, IWeapon
     public event Action<IWeapon, Projectile, Collider, Vector3, Vector3> OnHit;
     public event Action<IWeapon, Projectile, IDamagable> OnKill;
 
+    public float GetDPS() => GetWeapons().First().GetDPS() * _weapons.Length;
+
     private void Awake()
     {
         GetWeapons();
@@ -85,6 +87,7 @@ public class WeaponGroup : MonoBehaviour, IWeapon
     {
         _weapons[index].TryFire(intendedTarget);
     }
+
 
     private class NoFireControl : IFireControl
     {

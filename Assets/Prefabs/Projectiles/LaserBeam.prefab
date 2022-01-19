@@ -53,6 +53,9 @@ MonoBehaviour:
   HitEffect: {fileID: 0}
   TrailEffect: {fileID: 0}
   EffectRecallTime: 0.2
+  HitLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   Renderer: {fileID: 5873641081375284419}
 --- !u!114 &5873641081375284419
 MonoBehaviour:
@@ -160,7 +163,7 @@ LineRenderer:
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
-    numCapVertices: 0
+    numCapVertices: 2
     alignment: 0
     textureMode: 0
     shadowBias: 0.5

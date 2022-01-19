@@ -34,4 +34,9 @@ public class RagdollOnDeath : MonoBehaviour
         Destroy(Root.gameObject);
         Destroy(RagdollRoot.gameObject, 10f);
     }
+
+    private void Freeze ()
+    {
+        Ragdoll.enabled = false;
+    }
 }

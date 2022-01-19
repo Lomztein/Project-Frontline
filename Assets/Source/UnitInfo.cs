@@ -15,11 +15,6 @@ public class UnitInfo
         Basic, Intermediate, Advanced, Omega
     }
 
-    public enum Class
-    {
-        InfantrySupport, MainBattleTank, Sentry, Artillery, HeavyTank, Destroyer, AssaultInfantry, SupportInfantry
-    }
-
     public enum Type
     {
         Infantry, Vehicle, Aircraft, Defense, Structure
@@ -33,6 +28,5 @@ public class UnitInfo
 
     public Role UnitRole;
     public Tier UnitTier;
-    public Class UnitClass;
     public Type UnitType;
 }
