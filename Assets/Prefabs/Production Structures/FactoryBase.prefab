@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8903107383226797014}
   - component: {fileID: 2635971483640119611}
   - component: {fileID: 7746603083531687878}
+  - component: {fileID: 1568255785295421517}
   m_Layer: 0
   m_Name: FactoryBase
   m_TagString: StructureUnit
@@ -46,9 +47,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e57d5a6b8f1047c4a9eafc5a31b99700, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UnitPrefab: {fileID: 4630581255410833218, guid: 7969d8e308054374a8d4579f4069bcbf,
+  UnitPrefab: {fileID: 546102629436944585, guid: c18c28507a67443458dafd89e2923978,
     type: 3}
-  SpawnDelay: 5
+  SpawnDelay: 10
   SpawnRange: 5
 --- !u!114 &8903107383226797014
 MonoBehaviour:
@@ -93,3 +94,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo: []
+--- !u!114 &1568255785295421517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6801044878694592254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955e3746abfe5e14cb56265a34877e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Info:
+    Name: 
+    Description: 
+    Cost: 0
+    Value: 0
+    UnitRole: 0
+    UnitTier: 0
+    UnitType: 0
+  _weapons: []

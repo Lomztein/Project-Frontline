@@ -16,6 +16,7 @@ public class Projectile : MonoBehaviour, IPoolObject
     public Effect HitEffect;
     public Effect TrailEffect;
     public float EffectRecallTime;
+    private float _endTime;
 
     protected const int TerrainLayerMask = 1 << 8;
     public LayerMask HitLayerMask;
@@ -94,6 +95,7 @@ public class Projectile : MonoBehaviour, IPoolObject
             TrailEffect.Recall(transform, EffectRecallTime);
         }
 
+        _endTime = Time.time;
         CancelInvoke();
         gameObject.SetActive(false);
         OnEnd?.Invoke(this);
@@ -109,7 +111,7 @@ public class Projectile : MonoBehaviour, IPoolObject
         {
             return true;
         }
-        return false;
+        return Time.time < _endTime + EffectRecallTime + 0.1;
     }
 
     public void OnInstantiated()

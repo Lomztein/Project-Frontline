@@ -62,6 +62,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 559474316926106586, guid: b62ca45d1832a1349b67dc09af56bd52,
+        type: 3}
+      propertyPath: Damage
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 5287726931714886481, guid: b62ca45d1832a1349b67dc09af56bd52,
         type: 3}
       propertyPath: VerticalSpeed
@@ -77,11 +82,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Turret
       objectReference: {fileID: 0}
+    - target: {fileID: 8244208058561881657, guid: b62ca45d1832a1349b67dc09af56bd52,
+        type: 3}
+      propertyPath: Damage
+      value: 300
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b62ca45d1832a1349b67dc09af56bd52, type: 3}
 --- !u!1 &8283012526989638948 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7232724795620966200, guid: b62ca45d1832a1349b67dc09af56bd52,
+    type: 3}
+  m_PrefabInstance: {fileID: 1633928032613188124}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7904273434200753409 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8871385571812017949, guid: b62ca45d1832a1349b67dc09af56bd52,
     type: 3}
   m_PrefabInstance: {fileID: 1633928032613188124}
   m_PrefabAsset: {fileID: 0}
@@ -128,6 +144,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 401246402849022399, guid: d9117cde3af7c7e49b48839c2fef3f80,
+        type: 3}
+      propertyPath: MaxHealth
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: 1020735542546060326, guid: d9117cde3af7c7e49b48839c2fef3f80,
         type: 3}
       propertyPath: Info.Cost
@@ -229,6 +250,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4744411222456162723, guid: d9117cde3af7c7e49b48839c2fef3f80,
+        type: 3}
+      propertyPath: Muzzle
+      value: 
+      objectReference: {fileID: 7904273434200753409}
+    - target: {fileID: 4744411222456162723, guid: d9117cde3af7c7e49b48839c2fef3f80,
+        type: 3}
+      propertyPath: WeaponObject
+      value: 
+      objectReference: {fileID: 8283012526989638948}
     - target: {fileID: 5276871314173370656, guid: d9117cde3af7c7e49b48839c2fef3f80,
         type: 3}
       propertyPath: TurretObject

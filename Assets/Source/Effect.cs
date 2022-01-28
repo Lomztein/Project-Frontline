@@ -30,7 +30,7 @@ public abstract class Effect : MonoBehaviour
     public void Play(float time)
     {
         Play();
-        Invoke("Stop", time);
+        Invoke(nameof(Stop), time);
     }
 
     public void Detatch ()

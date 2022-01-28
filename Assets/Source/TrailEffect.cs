@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class TrailEffect : Effect
 {
+    private const float MIN_PLAY_TIME = 0.1f;
+
     public TrailRenderer Trail;
 
-    public override bool IsPlaying => Time.time < _stopTime + Trail.time;
+    public override bool IsPlaying => Time.time < _stopTime + Mathf.Max(Trail.time, MIN_PLAY_TIME);
     private float _stopTime;
 
     public override void Play()

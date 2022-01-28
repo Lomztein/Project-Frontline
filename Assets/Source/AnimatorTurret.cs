@@ -36,7 +36,7 @@ public class AnimatorTurret : MonoBehaviour, ITurret
     private void UpdateAnimator ()
     {
         Animator.SetFloat(HorAimName, _currentAim.y);
-        Animator.SetFloat(VerAimName, _currentAim.x);
+        Animator.SetFloat(VerAimName, -_currentAim.x);
     }
 
     public void AimTowards(Vector3 position)
