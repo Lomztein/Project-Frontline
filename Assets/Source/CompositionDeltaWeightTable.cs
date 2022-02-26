@@ -81,13 +81,14 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
     {
         float armorScore = 0f;
         float damageScore = 0f;
+        (Unit unit, float productionTime) = GetUnitOrProducingUnit(go.GetComponent<Unit>());
 
         Health[] healths = go.GetComponentsInChildren<Health>();
         foreach (var pair in enemyDamage)
         {
             foreach (Health health in healths)
             {
-                armorScore -= (DamageMatrix.GetDamageFactor(pair.Key, health.ArmorType) * pair.Value / health.MaxHealth);
+                armorScore -= (DamageMatrix.GetDamageFactor(pair.Key, health.ArmorType) * pair.Value / health.MaxHealth) / productionTime;
             }
         }
 
@@ -96,7 +97,7 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
         {
             foreach (var weapon in weapons)
             {
-                damageScore += weapon.GetDPS () * DamageMatrix.GetDamageFactor(weapon.DamageType, pair.Key) * Mathf.Max(0f, pair.Value);
+                damageScore += (weapon.GetDPS () * DamageMatrix.GetDamageFactor(weapon.DamageType, pair.Key) * Mathf.Max(0f, pair.Value)) / productionTime;
             }
         }
 

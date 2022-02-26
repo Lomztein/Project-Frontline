@@ -8,7 +8,6 @@ public class ArtillaryTurret : MonoBehaviour, ITurret
     public Transform HorizontalAxis;
     public Transform VerticalAxis;
     public Transform Muzzle;
-    private Vector3 _muzzleOffset;
 
     public float HorRotationSpeed;
     public float VerRotationSpeed;
@@ -17,17 +16,14 @@ public class ArtillaryTurret : MonoBehaviour, ITurret
     public float ProjectileGravity;
 
     private Vector3 _targetLocalPos;
+    private Vector3 _targetHorizontalLocalPos;
     private float _targetLocalAngle;
-
-    private void Awake()
-    {
-        _muzzleOffset = HorizontalAxis.InverseTransformPoint(Muzzle.position);
-    }
 
     public void AimTowards(Vector3 position)
     {
         _targetLocalPos = Base.InverseTransformPoint (position);
-        _targetLocalAngle = ComputeTrajectoryAngle(_targetLocalPos.z, _targetLocalPos.y, ProjectileSpeed, ProjectileGravity);
+        _targetHorizontalLocalPos = HorizontalAxis.InverseTransformPoint (position) - VerticalAxis.localPosition;
+        _targetLocalAngle = ComputeTrajectoryAngle(_targetHorizontalLocalPos.z, _targetHorizontalLocalPos.y, ProjectileSpeed, ProjectileGravity);
     }
 
     private void FixedUpdate()
