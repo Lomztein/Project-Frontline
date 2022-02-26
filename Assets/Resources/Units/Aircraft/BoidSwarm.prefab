@@ -69,6 +69,7 @@ GameObject:
   - component: {fileID: 3282090621347408221}
   - component: {fileID: -4380333589024801555}
   - component: {fileID: 1461346515}
+  - component: {fileID: 4068546118847816497}
   m_Layer: 0
   m_Name: BoidSwarm
   m_TagString: Untagged
@@ -138,7 +139,6 @@ MonoBehaviour:
     Value: 66
     UnitRole: 1
     UnitTier: 2
-    UnitClass: 0
     UnitType: 2
   _weapons:
   - {fileID: 3282090620644235267}
@@ -175,6 +175,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: fd8bd5038244fc345962f8e5c0e829dd, type: 2}
+--- !u!114 &4068546118847816497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3282090621347408217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 60
+  ArmorType: 2
+  DestroyOnDeath: 0
+  Debris: {fileID: 0}
+  DebrisLife: 0
 --- !u!1001 &3282090619795535251
 PrefabInstance:
   m_ObjectHideFlags: 0

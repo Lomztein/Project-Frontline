@@ -287,8 +287,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Quad Missle Rack
-  Description: Powerful anti-armor missles that fire in bursts but take a while to
-    reload.
+  Description: Powerful air-to-everything missles that fire in bursts but take a
+    while to reload.
 --- !u!1 &4325982582558911292
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,8 +336,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 10
-  Firerate: 6
+  Damage: 20
+  Firerate: 5
   DamageType: 6
   Speed: 200
   Amount: 1
@@ -528,7 +528,6 @@ MonoBehaviour:
     Value: 250
     UnitRole: 1
     UnitTier: 1
-    UnitClass: 0
     UnitType: 2
   _weapons:
   - {fileID: 4325982582558911292}
@@ -6049,6 +6048,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MissleRack
       objectReference: {fileID: 0}
+    - target: {fileID: 4264672590885527510, guid: 6c59b8192261e78478024c66e7c6cbb3,
+        type: 3}
+      propertyPath: Damage
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264672590885527510, guid: 6c59b8192261e78478024c66e7c6cbb3,
+        type: 3}
+      propertyPath: DamageType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5749680998883452189, guid: 6c59b8192261e78478024c66e7c6cbb3,
         type: 3}
       propertyPath: m_RootOrder
@@ -6129,6 +6138,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MissleRack (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264672590885527510, guid: 6c59b8192261e78478024c66e7c6cbb3,
+        type: 3}
+      propertyPath: Damage
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264672590885527510, guid: 6c59b8192261e78478024c66e7c6cbb3,
+        type: 3}
+      propertyPath: DamageType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5749680998883452189, guid: 6c59b8192261e78478024c66e7c6cbb3,
         type: 3}
@@ -6211,6 +6230,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: MissleRack (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4264672590885527510, guid: 6c59b8192261e78478024c66e7c6cbb3,
+        type: 3}
+      propertyPath: Damage
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264672590885527510, guid: 6c59b8192261e78478024c66e7c6cbb3,
+        type: 3}
+      propertyPath: DamageType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5749680998883452189, guid: 6c59b8192261e78478024c66e7c6cbb3,
         type: 3}
       propertyPath: m_RootOrder
@@ -6291,6 +6320,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MissleRack (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264672590885527510, guid: 6c59b8192261e78478024c66e7c6cbb3,
+        type: 3}
+      propertyPath: Damage
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4264672590885527510, guid: 6c59b8192261e78478024c66e7c6cbb3,
+        type: 3}
+      propertyPath: DamageType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5749680998883452189, guid: 6c59b8192261e78478024c66e7c6cbb3,
         type: 3}

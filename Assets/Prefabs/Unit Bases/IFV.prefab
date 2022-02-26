@@ -53,12 +53,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1492331264106524089}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 6622980339607156336}
-  m_RootOrder: 2
+  m_Father: {fileID: 8325610309168289302}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2114471540878931719
 GameObject:
@@ -97,6 +97,7 @@ Transform:
   - {fileID: 7132860675886743795}
   - {fileID: 2644921230036136333}
   - {fileID: 182437450531371283}
+  - {fileID: 2725226326586901645}
   m_Father: {fileID: 6622980339607156336}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -406,6 +407,7 @@ GameObject:
   - component: {fileID: 705834118997294627}
   - component: {fileID: 1118208566537510245}
   - component: {fileID: -7435522493268463660}
+  - component: {fileID: 4537210662011155107}
   m_Layer: 0
   m_Name: IFV
   m_TagString: MobileUnit
@@ -426,7 +428,6 @@ Transform:
   m_Children:
   - {fileID: 3216893609965043413}
   - {fileID: 8325610309168289302}
-  - {fileID: 2725226326586901645}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -452,8 +453,8 @@ MonoBehaviour:
     Value: 10
     UnitRole: 0
     UnitTier: 0
-    UnitClass: 0
     UnitType: 0
+  _weapons: []
 --- !u!114 &5620488823234584247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -488,7 +489,6 @@ MonoBehaviour:
   AccelerationSpeed: 20
   BrakeDrag: 30
   MaxTurnAngle: 45
-  TurnAngleRotationSpeed: 135
   Threaded: 0
 --- !u!114 &1118208566537510245
 MonoBehaviour:
@@ -511,7 +511,6 @@ MonoBehaviour:
   AimTolerance: 5
   LeadTarget: 0
   Modifiers: []
-  AngleClamp: 30
   HoldRange: 50
 --- !u!114 &-7435522493268463660
 MonoBehaviour:
@@ -528,6 +527,22 @@ MonoBehaviour:
   FactoryPrefab: {fileID: 6801044878694592254, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
     type: 3}
   ProductionTime: 20
+--- !u!54 &4537210662011155107
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7553692932367407739}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8523417839389160178
 GameObject:
   m_ObjectHideFlags: 0

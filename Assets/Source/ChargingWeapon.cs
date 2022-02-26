@@ -40,6 +40,18 @@ public class ChargingWeapon : Weapon
         return base.CanFire() && (CurrentChargeTime >= MaxChargeTime);
     }
 
+    public override float GetDPS()
+    {
+        if (ResetChargeOnFire)
+        {
+            return Damage / (1 / Firerate + MaxChargeTime);
+        }
+        else
+        {
+            return base.GetDPS();
+        }
+    }
+
     private void FixedUpdate()
     {
         if (_isCharging)

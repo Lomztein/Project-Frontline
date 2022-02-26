@@ -11,7 +11,7 @@ public class Commander : MonoBehaviour, ITeamComponent
     public int Credits;
     private float _incomingCredits;
 
-    public TeamInfo Team;
+    public TeamInfo TeamInfo;
 
     public bool CanBuild => Fortress != null;
     public bool Eliminated => _alivePlaced.Count == 0;
@@ -34,6 +34,17 @@ public class Commander : MonoBehaviour, ITeamComponent
         AssignCommander(gameObject);
     }
 
+    private void Start()
+    {
+        Team.GetTeam(TeamInfo).AddCommander(this);
+    }
+
+    private void OnDestroy()
+    {
+        if (Team.GetTeam(TeamInfo) != null)
+            Team.GetTeam(TeamInfo).RemoveCommander(this);
+    }
+
     protected virtual void FixedUpdate ()
     {
         if (_ded == false && !Fortress)
@@ -42,6 +53,8 @@ public class Commander : MonoBehaviour, ITeamComponent
             OnFortressDestroyed?.Invoke(this);
         }
     }
+
+    public Unit[] GetPlacedUnits() => _alivePlaced.ToArray();
 
     public GameObject GeneratePrefab (GameObject unitPrefab)
     {
@@ -62,7 +75,7 @@ public class Commander : MonoBehaviour, ITeamComponent
     protected GameObject PlaceUnit (GameObject prefab, Vector3 position, Quaternion rotation)
     {
         Unit u = prefab.GetComponent<Unit>();
-        GameObject go = Team.Instantiate(prefab, position, rotation);
+        GameObject go = TeamInfo.Instantiate(prefab, position, rotation);
         AssignCommander(go);
         _alivePlaced.Add(u);
         go.GetComponent<Health>().OnDeath += OnUnitDeath;
@@ -166,6 +179,6 @@ public class Commander : MonoBehaviour, ITeamComponent
 
     public void SetTeam(TeamInfo faction)
     {
-        Team = faction;
+        TeamInfo = faction;
     }
 }

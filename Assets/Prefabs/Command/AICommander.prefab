@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5667567378679379696}
   - component: {fileID: 5667567378679379697}
-  - component: {fileID: 5667567378679379695}
   - component: {fileID: 5667567378679379694}
   - component: {fileID: 164316000}
+  - component: {fileID: -1274060127916580420}
   m_Layer: 0
   m_Name: AICommander
   m_TagString: Untagged
@@ -49,23 +49,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Bertrude
   Credits: 500
-  Team: {fileID: 0}
+  TeamInfo: {fileID: 0}
   Fortress: {fileID: 8977660350736787723}
   UnitSource: {fileID: 0}
   TargetAvarageAPM: 10
-  UnitWeightTable: {fileID: 0}
---- !u!114 &5667567378679379695
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5667567378679379699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b87b433ace5f83f46b704b535208a176, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5667567378679379694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +81,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58c486e966ee1eb43845055886b5c68f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1274060127916580420
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5667567378679379699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd8d2890cdc92fb44ba1363ef5aea54f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  WeightTable: {fileID: 0}
+  WeightRandomizer: {x: 0.8, y: 1}
+  WeightDebug: {fileID: 0}
 --- !u!1001 &5667567378796756260
 PrefabInstance:
   m_ObjectHideFlags: 0

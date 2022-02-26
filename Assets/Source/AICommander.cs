@@ -7,8 +7,6 @@ public class AICommander : Commander
 {
     public float TargetAvarageAPM = 20;
 
-    public UnitWeightTableBase UnitWeightTable;
-
     private IUnitSelector _unitSelector;
     private IPositionSeletor _positionSelector;
 

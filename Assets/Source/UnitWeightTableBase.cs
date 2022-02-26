@@ -4,5 +4,9 @@ using UnityEngine;
 
 public abstract class UnitWeightTableBase : ScriptableObject
 {
-    public abstract float GetWeight(string unitName);
+    public abstract Dictionary<GameObject, float> GetWeights(IEnumerable<GameObject> options);
+
+    public abstract void Initialize(Commander commander, IEnumerable<GameObject> availableUnits);
+
+    public abstract UnitWeightTableBase DeepCopy();
 }
