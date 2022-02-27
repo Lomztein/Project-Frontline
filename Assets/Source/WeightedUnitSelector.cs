@@ -15,9 +15,8 @@ public class WeightedUnitSelector : MonoBehaviour, IUnitSelector
 
     private void Awake()
     {
-        WeightTable = Instantiate(WeightTable); // Bit jank, but allows for the same table to be assigned to multiple AIs in inspector.
+        WeightTable = WeightTable.DeepCopy();
     }
-
 
     public GameObject SelectUnit(IEnumerable<GameObject> options)
     {

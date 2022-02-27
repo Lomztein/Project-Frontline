@@ -61,7 +61,7 @@ public abstract class AIController : MonoBehaviour, IController
             _primaryWeaponDamageType = Weapon.DamageType;
             _targetFinder.SetEvaluator((pos, go) =>
                 TargetFinder.DefaultEvaluator(pos, go) +
-                GetDamageFactor(go) * 1000f);
+                GetDamageFactor(go) * 1000000f);
         }
 
         foreach (AIControllerModifier modifier in Modifiers)

@@ -13,7 +13,7 @@ public class TypeUnitWeightTable : UnitWeightTable
         foreach (GameObject go in options)
         {
             Unit unit = go.GetComponent<Unit>();
-            SetWeight(go, Weights.FirstOrDefault(x => x.Type == unit.Info.UnitType)?.Weight ?? 0);
+            SetWeight(go, Weights.FirstOrDefault(x => x.Type == unit.Info.UnitType)?.GetWeight() ?? 0);
         }
     }
 
@@ -21,6 +21,8 @@ public class TypeUnitWeightTable : UnitWeightTable
     public class TypeWeight
     {
         public UnitInfo.Type Type;
-        public float Weight;
+        public Vector2 WeightMinMax = Vector2.one;
+
+        public float GetWeight() => Random.Range(WeightMinMax.x, WeightMinMax.y);
     }
 }

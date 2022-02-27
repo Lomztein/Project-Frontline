@@ -10,7 +10,6 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
     public float FallbackProductionTime;
 
     private Commander _commander;
-    private IEnumerable<GameObject> _availableUnits;
     private static Dictionary<DamageMatrix.Damage, Dictionary<DamageMatrix.Armor, float>> _damageMappingCopy;
 
     public override Dictionary<GameObject, float> GetWeights(IEnumerable<GameObject> options)
@@ -122,7 +121,6 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
     public override void Initialize(Commander commander, IEnumerable<GameObject> availableUnits)
     {
         _commander = commander;
-        _availableUnits = availableUnits;
     }
 
     public override UnitWeightTableBase DeepCopy() => Instantiate(this);

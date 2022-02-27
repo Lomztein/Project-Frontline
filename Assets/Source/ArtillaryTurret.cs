@@ -22,7 +22,7 @@ public class ArtillaryTurret : MonoBehaviour, ITurret
     public void AimTowards(Vector3 position)
     {
         _targetLocalPos = Base.InverseTransformPoint (position);
-        _targetHorizontalLocalPos = HorizontalAxis.InverseTransformPoint (position) - VerticalAxis.localPosition;
+        _targetHorizontalLocalPos = HorizontalAxis.InverseTransformPoint(position) - HorizontalAxis.InverseTransformPoint(Muzzle.position);
         _targetLocalAngle = ComputeTrajectoryAngle(_targetHorizontalLocalPos.z, _targetHorizontalLocalPos.y, ProjectileSpeed, ProjectileGravity);
     }
 

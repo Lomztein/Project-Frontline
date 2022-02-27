@@ -29,7 +29,15 @@ public abstract class UnitWeightTable : UnitWeightTableBase
 
             return results;
         }
-        else return WeightTable;
+        else
+        {
+            var results = new Dictionary<GameObject, float>();
+            foreach (var option in options)
+            {
+                results.Add(option, WeightTable[option]);
+            }
+            return results;
+        }
     }
 
     protected void SetWeight(GameObject unit, float newWeight)
