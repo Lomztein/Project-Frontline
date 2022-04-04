@@ -8,13 +8,15 @@ public class TierUnitWeightTable : UnitWeightTable
 {
     public TierWeight[] Weights;
 
-    public override void Initialize(Commander commander, IEnumerable<GameObject> availableUnits)
+    public override Dictionary<GameObject, float> GenerateWeights(IEnumerable<GameObject> options)
     {
-        foreach (GameObject go in availableUnits)
+        var results = new Dictionary<GameObject, float>();
+        foreach (GameObject go in options)
         {
             Unit unit = go.GetComponent<Unit>();
-            SetWeight(go, Weights.FirstOrDefault(x => x.Tier == unit.Info.UnitTier)?.Weight ?? 0);
+            results.Add (go, Weights.FirstOrDefault(x => x.Tier == unit.Info.UnitTier)?.Weight ?? 0);
         }
+        return results;
     }
 
     [System.Serializable]

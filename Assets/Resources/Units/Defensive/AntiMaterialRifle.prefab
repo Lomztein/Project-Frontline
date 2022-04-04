@@ -211,6 +211,7 @@ GameObject:
   - component: {fileID: 2996561609964713333}
   - component: {fileID: 2996561609964713338}
   - component: {fileID: 2996561609964713331}
+  - component: {fileID: 2726443102629586329}
   m_Layer: 0
   m_Name: AntiMaterialRifle
   m_TagString: Untagged
@@ -255,7 +256,6 @@ MonoBehaviour:
     Value: 0
     UnitRole: 2
     UnitTier: 1
-    UnitClass: 2
     UnitType: 3
   _weapons:
   - {fileID: 2996561609964713339}
@@ -366,6 +366,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
+--- !u!114 &2726443102629586329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2996561609964713339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 2261706903961581372}
+  - {fileID: 4029099572149331}
+  - {fileID: 6104195247142357133}
+  - {fileID: 2099554789985614223}
 --- !u!1 &2996561610042921427
 GameObject:
   m_ObjectHideFlags: 0

@@ -52,6 +52,7 @@ MonoBehaviour:
   HorizontalRange: {x: -135, y: 135}
   VerticalRange: {x: -10, y: 10}
   VectoringSpeed: 180
+  Instant: 1
   _targetLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &8462001736979775215
 MonoBehaviour:
@@ -66,7 +67,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 500
-  Firerate: 1
+  Firerate: 0.5
   DamageType: 4
   Speed: 75
   Amount: 2
@@ -77,7 +78,7 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 2055436044}
   Inaccuracy: 0
-  MaxChargeTime: 2.5
+  MaxChargeTime: 1
   CurrentChargeTime: 0
   ResetChargeOnFire: 1
   ChargeOnlyWhenCanFire: 1

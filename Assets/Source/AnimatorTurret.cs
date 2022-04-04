@@ -57,8 +57,8 @@ public class AnimatorTurret : MonoBehaviour, ITurret
     {
         Vector3 localPosition = Base.InverseTransformPoint(target);
 
-        float x = Mathf.Atan2(localPosition.y, localPosition.z) * Mathf.Rad2Deg;
-        float y = Mathf.Atan2(localPosition.x, localPosition.z) * Mathf.Rad2Deg;
+        float x = Mathf.Atan2(localPosition.x, localPosition.z) * Mathf.Rad2Deg;
+        float y = Mathf.Atan2(localPosition.y, localPosition.z) * Mathf.Rad2Deg;
 
         return HorMinMax.x < x && x < HorMinMax.y
             && VerMinMax.x < y && y < VerMinMax.y;

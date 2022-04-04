@@ -10,18 +10,29 @@ public class VectorTurret : MonoBehaviour, ITurret
     public Vector2 HorizontalRange;
     public Vector2 VerticalRange;
     public float VectoringSpeed;
+    public bool Instant;
 
     public Vector3 _targetLocalPosition;
 
     public void AimTowards(Vector3 position)
     {
-        _targetLocalPosition = Base.InverseTransformPoint(position);
+        if (Instant)
+        {
+            VectoringPlatform.LookAt(position);
+        }
+        else
+        {
+            _targetLocalPosition = Base.InverseTransformPoint(position);
+        }
     }
 
     private void FixedUpdate()
     {
-        Vector3 angles = Turret.Clamp(Turret.CalculateAngleTowards(_targetLocalPosition), HorizontalRange, VerticalRange);
-        VectoringPlatform.localRotation = Quaternion.RotateTowards(VectoringPlatform.transform.localRotation, Quaternion.Euler(angles.x, angles.y, 0f), VectoringSpeed * Time.fixedDeltaTime);
+        if (!Instant)
+        {
+            Vector3 angles = Turret.Clamp(Turret.CalculateAngleTowards(_targetLocalPosition), HorizontalRange, VerticalRange);
+            VectoringPlatform.localRotation = Quaternion.RotateTowards(VectoringPlatform.transform.localRotation, Quaternion.Euler(angles.x, angles.y, 0f), VectoringSpeed * Time.fixedDeltaTime);
+        }
     }
 
     public bool CanHit(Vector3 target)

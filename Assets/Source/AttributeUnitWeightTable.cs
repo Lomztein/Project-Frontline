@@ -58,33 +58,35 @@ public class AttributeUnitWeightTable : UnitWeightTable
         return 120f; // magic numbers cause fuck you
     }
 
-    public override void Initialize(Commander commander, IEnumerable<GameObject> availableUnits)
+    protected void SetCustomFunction (Func<GameObject, float> func)
     {
+        _function = func;
+        AttributeGetter = Function.Custom;
+    }
+
+    public override Dictionary<GameObject, float> GenerateWeights(IEnumerable<GameObject> options)
+    {
+        var results = new Dictionary<GameObject, float>();
         if (AttributeGetter != Function.Custom)
         {
             _function = _funcs[(int)AttributeGetter];
         }
 
         float highest = 0f;
-        foreach (GameObject go in availableUnits)
+        foreach (GameObject go in options)
         {
             float weight = _function(go);
             if (weight > highest)
             {
                 highest = weight;
             }
-            SetWeight(go, weight);
+            results.Add(go, weight);
         }
 
-        foreach (GameObject go in availableUnits)
+        foreach (GameObject go in options)
         {
-            SetWeight(go, WeightTable[go] / highest);
+            results[go] = results[go] / highest;
         }
-    }
-
-    protected void SetCustomFunction (Func<GameObject, float> func)
-    {
-        _function = func;
-        AttributeGetter = Function.Custom;
+        return results;
     }
 }

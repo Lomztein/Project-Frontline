@@ -11,7 +11,7 @@ public static class DamageMatrix
 
     public enum Armor
     {
-        Kevlar, Flak, Light, Medium, Heavy, Structure, Shield
+        Infantry = 0, Light = 2, Medium = 3, Heavy = 4, Structure = 5, Shield = 6
     }
 
     private static float _fallbackDamageFactor = 1f;
@@ -32,67 +32,60 @@ public static class DamageMatrix
     {
         { Damage.Cannon, new Dictionary<Armor, float>()
         {
-            { Armor.Kevlar, 0.3f },
-            { Armor.Flak, 0.1f },
-            { Armor.Light, 1.1f },
-            { Armor.Medium, 1.5f },
-            { Armor.Heavy, 0.6f },
-            { Armor.Shield, 0.6f },
+            { Armor.Infantry, 0.1f },
+            { Armor.Light, 0.7f },
+            { Armor.Medium, 1.0f },
+            { Armor.Heavy, 0.4f },
+            { Armor.Shield, 0.4f },
         } },
         { Damage.Gun, new Dictionary<Armor, float>()
         {
-            { Armor.Kevlar, 0.7f },
-            { Armor.Flak, 1.3f },
-            { Armor.Light, 0.5f },
-            { Armor.Medium, 0.2f },
+            { Armor.Infantry, 1f },
+            { Armor.Light, 0.3f },
+            { Armor.Medium, 0.1f },
             { Armor.Heavy, 0.05f },
-            { Armor.Structure, 0.2f },
-            { Armor.Shield, 1.3f },
+            { Armor.Structure, 0.15f },
+            { Armor.Shield, 1.5f },
         } },
         { Damage.Grenade, new Dictionary<Armor, float>()
         {
-            { Armor.Kevlar, 1.5f },
-            { Armor.Flak, 0.2f },
-            { Armor.Light, 0.5f },
-            { Armor.Medium, 0.1f },
+            { Armor.Infantry, 1f },
+            { Armor.Light, 0.35f },
+            { Armor.Medium, 0.05f },
             { Armor.Heavy, 0f },
-            { Armor.Structure, 1.2f },
-            { Armor.Shield, 1.5f },
+            { Armor.Structure, 0.7f },
+            { Armor.Shield, 1.0f },
         } },
         { Damage.Rocket, new Dictionary<Armor, float>()
         {
-            { Armor.Kevlar, 0.3f },
-            { Armor.Flak, 0.05f },
-            { Armor.Light, 1.6f },
-            { Armor.Medium, 1.1f },
-            { Armor.Heavy, 0.6f },
-            { Armor.Structure, 0.7f },
-            { Armor.Shield, 0.2f },
+            { Armor.Infantry, 0.2f },
+            { Armor.Light, 1.0f },
+            { Armor.Medium, 0.7f },
+            { Armor.Heavy, 0.3f },
+            { Armor.Structure, 0.4f },
+            { Armor.Shield, 0.14f },
         } },
         { Damage.APGun, new Dictionary<Armor, float>()
         {
-            { Armor.Kevlar, 1.2f },
-            { Armor.Flak, 1.5f },
+            { Armor.Infantry, 1.0f },
             { Armor.Light, 0.6f },
-            { Armor.Medium, 0.4f },
-            { Armor.Heavy, 0.2f },
+            { Armor.Medium, 0.3f },
+            { Armor.Heavy, 0.1f },
             { Armor.Structure, 0.4f },
-            { Armor.Shield, 2f },
+            { Armor.Shield, 1.5f },
         } },
         { Damage.Energy, new Dictionary<Armor, float>()
         {
-            { Armor.Kevlar, 0.2f },
-            { Armor.Flak, 0.1f },
-            { Armor.Light, 0.4f },
-            { Armor.Medium, 0.7f },
-            { Armor.Heavy, 1.5f },
-            { Armor.Structure, 1.4f },
-            { Armor.Shield, 0.1f },
+            { Armor.Infantry, 0.5f },
+            { Armor.Light, 0.3f },
+            { Armor.Medium, 0.6f },
+            { Armor.Heavy, 1.0f },
+            { Armor.Structure, 0.8f },
+            { Armor.Shield, 0.05f },
         } },
         { Damage.Tesla, new Dictionary<Armor, float>()
         {
-            { Armor.Kevlar, 0.6f },
-            { Armor.Flak, 0.6f },
+            { Armor.Infantry, 0.6f },
             { Armor.Light, 0.7f },
             { Armor.Medium, 1.0f },
             { Armor.Heavy, 1.0f },

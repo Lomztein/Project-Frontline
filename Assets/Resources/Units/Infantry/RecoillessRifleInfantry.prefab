@@ -7,26 +7,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 546102629436944584}
     m_Modifications:
-    - target: {fileID: 964552844594102203, guid: 7b1001a9d264e91469aefa6f7e0c3525,
-        type: 3}
-      propertyPath: Damage
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 4597182523266795356, guid: 7b1001a9d264e91469aefa6f7e0c3525,
-        type: 3}
-      propertyPath: Damage
-      value: 75
-      objectReference: {fileID: 0}
-    - target: {fileID: 4597182523266795356, guid: 7b1001a9d264e91469aefa6f7e0c3525,
-        type: 3}
-      propertyPath: FireParticle
-      value: 
-      objectReference: {fileID: 1496605455556378886}
-    - target: {fileID: 4685812046233690419, guid: 7b1001a9d264e91469aefa6f7e0c3525,
-        type: 3}
-      propertyPath: Damage
-      value: 75
-      objectReference: {fileID: 0}
     - target: {fileID: 5260784036467463223, guid: 7b1001a9d264e91469aefa6f7e0c3525,
         type: 3}
       propertyPath: m_RootOrder
@@ -82,16 +62,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6481496302152080226, guid: 7b1001a9d264e91469aefa6f7e0c3525,
-        type: 3}
-      propertyPath: Damage
-      value: 75
-      objectReference: {fileID: 0}
     - target: {fileID: 7335505591195485361, guid: 7b1001a9d264e91469aefa6f7e0c3525,
         type: 3}
       propertyPath: Pivot
       value: 
-      objectReference: {fileID: 546102630061898107}
+      objectReference: {fileID: 546102629459941999}
     - target: {fileID: 7335505591195485361, guid: 7b1001a9d264e91469aefa6f7e0c3525,
         type: 3}
       propertyPath: AnimatorTurret
@@ -116,12 +91,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8370746468123670479}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &1496605455556378886 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 6985046925167064777, guid: 7b1001a9d264e91469aefa6f7e0c3525,
-    type: 3}
-  m_PrefabInstance: {fileID: 8370746468123670479}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8411161869155700526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135,7 +104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1177128837, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: ArmorType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1177128837, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: MaxHealth
@@ -201,6 +170,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3340765615440518667, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
+      propertyPath: FactoryPrefab
+      value: 
+      objectReference: {fileID: 6496082389243146588, guid: 2aff6db69e9aede41aebbe48adf87b80,
+        type: 3}
+    - target: {fileID: 3340765615440518667, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
       propertyPath: ProductionTime
       value: 20
       objectReference: {fileID: 0}
@@ -233,6 +208,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7651415233274957058, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8299666086444987988, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
@@ -417,9 +397,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8411161869155700526}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &546102630061898107 stripped
+--- !u!4 &546102629459941999 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8299666086444987989, guid: 50378c4ca65714b4ebd2928ade59a707,
+  m_CorrespondingSourceObject: {fileID: 8299666088116606273, guid: 50378c4ca65714b4ebd2928ade59a707,
     type: 3}
   m_PrefabInstance: {fileID: 8411161869155700526}
   m_PrefabAsset: {fileID: 0}

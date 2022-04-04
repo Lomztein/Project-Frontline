@@ -26,7 +26,7 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
         foreach (var placed in enemyPlaced)
         {
             // Aggregate enemy damage - lowest damage type is the one we want to build armor against.
-            (Unit unit, float productionTime) = GetUnitOrProducingUnit(placed);
+            (Unit unit, float productionTime) = GetUnitProductionInfo(placed);
             foreach (IWeapon weapon in unit.GetWeapons())
             {
                 enemyDamage[weapon.DamageType] += weapon.GetDPS() / productionTime;
@@ -40,7 +40,7 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
         // Subtract our damage from enemy armor - highest remaining armor type is the one we need to counter.
         foreach (var placed in alliedPlaced)
         {
-            (Unit unit, float productionTime) = GetUnitOrProducingUnit(placed);
+            (Unit unit, float productionTime) = GetUnitProductionInfo(placed);
             foreach (IWeapon weapon in unit.GetWeapons())
             {
                 foreach (var value in Enum.GetValues(typeof(DamageMatrix.Armor)))
@@ -80,14 +80,14 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
     {
         float armorScore = 0f;
         float damageScore = 0f;
-        (Unit unit, float productionTime) = GetUnitOrProducingUnit(go.GetComponent<Unit>());
+        (Unit unit, float productionTime) = GetUnitProductionInfo(go.GetComponent<Unit>());
 
         Health[] healths = go.GetComponentsInChildren<Health>();
         foreach (var pair in enemyDamage)
         {
             foreach (Health health in healths)
             {
-                armorScore -= (DamageMatrix.GetDamageFactor(pair.Key, health.ArmorType) * pair.Value / health.MaxHealth) / productionTime;
+                armorScore -= DamageMatrix.GetDamageFactor(pair.Key, health.ArmorType) * pair.Value / (health.MaxHealth / 1000f) / productionTime;
             }
         }
 
@@ -96,14 +96,14 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
         {
             foreach (var weapon in weapons)
             {
-                damageScore += (weapon.GetDPS () * DamageMatrix.GetDamageFactor(weapon.DamageType, pair.Key) * Mathf.Max(0f, pair.Value)) / productionTime;
+                damageScore += weapon.GetDPS () * DamageMatrix.GetDamageFactor(weapon.DamageType, pair.Key) * Mathf.Max(0f, pair.Value) / productionTime;
             }
         }
 
         return Mathf.Max (0.1f, armorScore + damageScore);
     }
 
-    private (Unit unit, float productionTime) GetUnitOrProducingUnit (Unit potentialFactory)
+    private (Unit unit, float productionTime) GetUnitProductionInfo (Unit potentialFactory)
     {
         Unit unit = potentialFactory;
         float productionTime = FallbackProductionTime;
@@ -113,6 +113,12 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
         {
             unit = factory.UnitPrefab.GetComponent<Unit>();
             productionTime = unit.GetComponent<ProductionInfo>().ProductionTime;
+        }
+
+        ProductionInfo info = potentialFactory.GetComponent<ProductionInfo>();
+        if (info)
+        {
+            productionTime = info.ProductionTime;
         }
 
         return (unit, productionTime);

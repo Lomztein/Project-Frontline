@@ -106,7 +106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203211488354598021}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.001, y: 0.288, z: 0.27}
+  m_LocalPosition: {x: -0.076, y: 0.22, z: 0.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 81192092582222024}
@@ -124,7 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 75
+  Damage: 100
   Firerate: 0.1
   DamageType: 5
   Speed: 60
@@ -132,7 +132,7 @@ MonoBehaviour:
   BurstReloadTime: 1
   BurstAmmo: 1
   FireParticle: {fileID: 0}
-  ProjectilePrefab: {fileID: 2375430243017228703, guid: 01e36b5a96a4dd64d9e5f397ef1b2072,
+  ProjectilePrefab: {fileID: 2375430243017228703, guid: 163a6b3d2264ffb408a13cf1310211c5,
     type: 3}
   Muzzle: {fileID: 137306637608516793}
   Inaccuracy: 5
@@ -161,11 +161,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238597943078241391}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.146, y: 0.165, z: 0.27}
+  m_LocalPosition: {x: -0.074, y: 0.212, z: 0.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7052340731509774975}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3665783134460045184
 MonoBehaviour:
@@ -179,72 +179,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 75
+  Damage: 100
   Firerate: 0.1
-  DamageType: 6
+  DamageType: 5
   Speed: 60
   Amount: 1
   BurstReloadTime: 1
   BurstAmmo: 1
   FireParticle: {fileID: 0}
-  ProjectilePrefab: {fileID: 2375430243017228703, guid: 01e36b5a96a4dd64d9e5f397ef1b2072,
+  ProjectilePrefab: {fileID: 2375430243017228703, guid: 163a6b3d2264ffb408a13cf1310211c5,
     type: 3}
   Muzzle: {fileID: 432456442051016282}
-  Inaccuracy: 5
---- !u!1 &447688663048297377
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4210530875997037555}
-  - component: {fileID: 4971076040918350369}
-  m_Layer: 0
-  m_Name: Weapon (1)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4210530875997037555
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447688663048297377}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.001, y: 0.288, z: 0.27}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 7052340731509774975}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4971076040918350369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 447688663048297377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Damage: 75
-  Firerate: 0.1
-  DamageType: 6
-  Speed: 60
-  Amount: 1
-  BurstReloadTime: 1
-  BurstAmmo: 1
-  FireParticle: {fileID: 0}
-  ProjectilePrefab: {fileID: 2375430243017228703, guid: 01e36b5a96a4dd64d9e5f397ef1b2072,
-    type: 3}
-  Muzzle: {fileID: 4210530875997037555}
   Inaccuracy: 5
 --- !u!1 &490675004990936569
 GameObject:
@@ -275,7 +220,6 @@ Transform:
   m_Children:
   - {fileID: 1376826805171369487}
   - {fileID: 8031730106635040099}
-  - {fileID: 4210530875997037555}
   - {fileID: 432456442051016282}
   m_Father: {fileID: 8060258215903643255}
   m_RootOrder: 4
@@ -305,7 +249,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1174100289274811721}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.14, y: 0.168, z: 0.27}
+  m_LocalPosition: {x: 0.067, y: 0.223, z: 0.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 81192092582222024}
@@ -323,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 75
+  Damage: 100
   Firerate: 0.1
   DamageType: 5
   Speed: 60
@@ -331,7 +275,7 @@ MonoBehaviour:
   BurstReloadTime: 1
   BurstAmmo: 1
   FireParticle: {fileID: 0}
-  ProjectilePrefab: {fileID: 2375430243017228703, guid: 01e36b5a96a4dd64d9e5f397ef1b2072,
+  ProjectilePrefab: {fileID: 2375430243017228703, guid: 163a6b3d2264ffb408a13cf1310211c5,
     type: 3}
   Muzzle: {fileID: 7966156883604265973}
   Inaccuracy: 5
@@ -384,8 +328,6 @@ MonoBehaviour:
   - {fileID: 1174100289274811721}
   - {fileID: 2231163927800775311}
   - {fileID: 203211488354598021}
-  - {fileID: 447688663048297377}
-  - {fileID: 7610563609873241888}
   - {fileID: 238597943078241391}
 --- !u!114 &8209130294494047717
 MonoBehaviour:
@@ -446,7 +388,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2231163927800775311}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.14, y: 0.168, z: 0.27}
+  m_LocalPosition: {x: 0.072, y: 0.21, z: 0.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7052340731509774975}
@@ -464,15 +406,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 75
+  Damage: 100
   Firerate: 0.1
-  DamageType: 6
+  DamageType: 5
   Speed: 60
   Amount: 1
   BurstReloadTime: 1
   BurstAmmo: 1
   FireParticle: {fileID: 0}
-  ProjectilePrefab: {fileID: 2375430243017228703, guid: 01e36b5a96a4dd64d9e5f397ef1b2072,
+  ProjectilePrefab: {fileID: 2375430243017228703, guid: 163a6b3d2264ffb408a13cf1310211c5,
     type: 3}
   Muzzle: {fileID: 8031730106635040099}
   Inaccuracy: 5
@@ -10712,61 +10654,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SequenceDelay: 0.2
---- !u!1 &7610563609873241888
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 181564920425361679}
-  - component: {fileID: 6658976653064953304}
-  m_Layer: 0
-  m_Name: Weapon (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &181564920425361679
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7610563609873241888}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.146, y: 0.165, z: 0.27}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 81192092582222024}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6658976653064953304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7610563609873241888}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Damage: 75
-  Firerate: 0.1
-  DamageType: 5
-  Speed: 60
-  Amount: 1
-  BurstReloadTime: 1
-  BurstAmmo: 1
-  FireParticle: {fileID: 0}
-  ProjectilePrefab: {fileID: 2375430243017228703, guid: 01e36b5a96a4dd64d9e5f397ef1b2072,
-    type: 3}
-  Muzzle: {fileID: 181564920425361679}
-  Inaccuracy: 5
 --- !u!1 &8222577657335244267
 GameObject:
   m_ObjectHideFlags: 0
@@ -10913,7 +10800,6 @@ Transform:
   - {fileID: 2242046768042056697}
   - {fileID: 7966156883604265973}
   - {fileID: 137306637608516793}
-  - {fileID: 181564920425361679}
   m_Father: {fileID: 8060258215903643255}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 60}

@@ -67,7 +67,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 75
   Firerate: 2
-  DamageType: 6
+  DamageType: 2
   Speed: 60
   Amount: 1
   BurstReloadTime: 3
@@ -5226,6 +5226,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -7435522493268463660, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
+      propertyPath: FactoryPrefab
+      value: 
+      objectReference: {fileID: 8913899801669703661, guid: b091d99d3a2dced4086ab2fbd438a737,
+        type: 3}
+    - target: {fileID: -7435522493268463660, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
       propertyPath: ProductionTime
       value: 45
       objectReference: {fileID: 0}
@@ -5318,7 +5324,7 @@ PrefabInstance:
     - target: {fileID: 5620488823234584247, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
       propertyPath: MaxHealth
-      value: 750
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 6622980339607156336, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
