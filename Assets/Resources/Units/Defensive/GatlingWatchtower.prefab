@@ -351,27 +351,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &2057621213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3604651880949064601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41487ee171311704884c1278dc50ac3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Team: {fileID: 0}
-  AcquireTargetRange: 75
-  LooseTargetRange: 75
-  AttackRange: 75
-  TurretObject: {fileID: 1187514992}
-  WeaponObject: {fileID: 1187514992}
-  AimTolerance: 60
-  LeadTarget: 1
-  Modifiers: []
 --- !u!1 &2813255482157008795
 GameObject:
   m_ObjectHideFlags: 0
@@ -714,6 +693,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 7.464
       objectReference: {fileID: 0}
+    - target: {fileID: 4101473015708955558, guid: 8c9aeb8aedbb1694485fcc7673507336,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 8.954309
+      objectReference: {fileID: 0}
+    - target: {fileID: 4101473015708955558, guid: 8c9aeb8aedbb1694485fcc7673507336,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 4.407296
+      objectReference: {fileID: 0}
     - target: {fileID: 5977948751325609706, guid: 8c9aeb8aedbb1694485fcc7673507336,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -825,6 +814,27 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2555317350688053140}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2057621213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3604651880949064601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41487ee171311704884c1278dc50ac3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Team: {fileID: 0}
+  AcquireTargetRange: 75
+  LooseTargetRange: 75
+  AttackRange: 75
+  TurretObject: {fileID: 1187514992}
+  WeaponObject: {fileID: 1187514992}
+  AimTolerance: 60
+  LeadTarget: 1
+  Modifiers: []
 --- !u!1001 &7598937987878868510
 PrefabInstance:
   m_ObjectHideFlags: 0

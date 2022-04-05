@@ -23,7 +23,6 @@ public class InfantryWeaponTurret : MonoBehaviour, ITurret
         if (CanHit(position))
         {
             Transform.LookAt(position);
-            Debug.Log("YES");
         }
     }
 
