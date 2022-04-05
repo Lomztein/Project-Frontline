@@ -164,6 +164,7 @@ GameObject:
   - component: {fileID: 8114042654974297418}
   - component: {fileID: 8114042654974297424}
   - component: {fileID: 8114042654974297425}
+  - component: {fileID: 8484332554461163597}
   m_Layer: 0
   m_Name: Bunker
   m_TagString: StructureUnit
@@ -279,6 +280,19 @@ MonoBehaviour:
   MaxRange: 25
   Garrison: {fileID: 8114042654974297424}
   Repeat: 1
+--- !u!65 &8484332554461163597
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8114042654974297419}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.03, y: 4.2071996, z: 7.4879513}
+  m_Center: {x: 0, y: 1.3068244, z: -0.3990059}
 --- !u!1001 &8114042654967015412
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -368,12 +382,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2770a411f5f1114dbc99a426bc60ba6, type: 3}
---- !u!1 &8960957214900624037 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c2770a411f5f1114dbc99a426bc60ba6,
-    type: 3}
-  m_PrefabInstance: {fileID: 8114042654967015412}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8579471297951580191 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c2770a411f5f1114dbc99a426bc60ba6,
@@ -386,16 +394,3 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 8114042654967015412}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &8114042654267014127
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8960957214900624037}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.2552025, y: 1.5935509, z: 0.69311917}
-  m_Center: {x: 0, y: 0, z: 0.312803}
