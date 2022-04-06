@@ -16,6 +16,7 @@ namespace Util
             GameObject model = UnityEngine.Object.Instantiate(original);
 
             var transforms = model.GetComponentsInChildren<Transform>(true);
+
             List<Component> nonVitals = model.GetComponentsInChildren<Component>().Where(x => !(x is Transform) && !(x is Renderer) && !(x is MeshFilter) && !(x is Rigidbody)).ToList();
             foreach (Component comp in nonVitals)
             {

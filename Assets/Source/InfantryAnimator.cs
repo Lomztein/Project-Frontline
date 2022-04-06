@@ -11,7 +11,7 @@ public class InfantryAnimator : MonoBehaviour
     public float SpeedMultiplier = 1f;
     public WeaponType WeaponPoseType;
 
-    public void Start()
+    public void Awake()
     {
         Animator.SetFloat("RunMult", SpeedMultiplier);
         Animator.SetInteger("WeaponType", (int)WeaponPoseType);

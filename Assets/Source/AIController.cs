@@ -14,6 +14,7 @@ public abstract class AIController : MonoBehaviour, IController
     private TargetFinder _targetFinder = new TargetFinder();
 
     protected ITarget CurrentTarget { get; private set; }
+    protected bool ForcedTarget { get; private set; }
 
     public float AcquireTargetRange;
     public float LooseTargetRange;
@@ -153,6 +154,12 @@ public abstract class AIController : MonoBehaviour, IController
     public virtual bool CanHitOrNoTurret(Vector3 position)
         => Turret == null || Turret.CanHit(position);
 
+    public void ForceTarget (ITarget target)
+    {
+        CurrentTarget = target;
+        ForcedTarget = true;
+    }
+
     protected virtual void FixedUpdate()
     {
         if (CurrentTarget.ExistsAndValid())
@@ -160,13 +167,14 @@ public abstract class AIController : MonoBehaviour, IController
             Aim();
             Attack();
 
-            if (GetTargetSquareDistance() > LooseTargetRange * LooseTargetRange || !CanHitOrNoTurret(CurrentTarget.GetPosition()))
+            if ((GetTargetSquareDistance() > LooseTargetRange * LooseTargetRange) && ForcedTarget != true || !CanHitOrNoTurret(CurrentTarget.GetPosition()))
             {
                 CurrentTarget = null;
             }
         }
         else
         {
+            ForcedTarget = false;
             if (!CurrentTarget.ExistsAndValid() || !CanHitOrNoTurret(CurrentTarget.GetPosition()))
             {
                 FindNewTarget();

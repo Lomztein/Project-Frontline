@@ -41,4 +41,9 @@ public class WeaponGroupEditor : WeaponEditorBase<WeaponGroup>
 {
 }
 
+[CustomEditor(typeof(UnitFactoryWeapon))]
+public class UnitFactoryWeaponEditor : WeaponEditorBase<UnitFactoryWeapon>
+{
+}
+
 // This is dumb and I love it.
