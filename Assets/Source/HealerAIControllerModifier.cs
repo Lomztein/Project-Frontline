@@ -6,6 +6,8 @@ using UnityEngine;
 public class HealerAIControllerModifier : AIControllerModifier
 {
     public AIController Controller;
+    [Range(0, 1)]
+    public float StartHealTreshold = 0.75f;
     private Health _currentTargetHealth;
 
     public override void OnInitialized (AIController controller)
@@ -26,7 +28,7 @@ public class HealerAIControllerModifier : AIControllerModifier
             Health health = go.GetComponentInParent<Health>();
             if (health)
             {
-                return (health.CurrentHealth < health.MaxHealth - 10f) && go.transform.root != transform.root && health.ArmorType != DamageMatrix.Armor.Shield;
+                return (health.CurrentHealth < health.MaxHealth * StartHealTreshold) && go.transform.root != transform.root && health.ArmorType != DamageMatrix.Armor.Shield;
             }
             return false;
         });

@@ -5009,6 +5009,8 @@ GameObject:
   - component: {fileID: 556936880231865810}
   - component: {fileID: 556936880231865811}
   - component: {fileID: 556936880231865813}
+  - component: {fileID: 752778836651382636}
+  - component: {fileID: 7748798745049271299}
   m_Layer: 0
   m_Name: ArtillaryTurret
   m_TagString: Untagged
@@ -5097,6 +5099,33 @@ MonoBehaviour:
   AimTolerance: 5
   LeadTarget: 0
   Modifiers: []
+--- !u!114 &752778836651382636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556936880231865815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0ad78e0628b1a64fa0ca702ff61b70a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weapon: {fileID: 556936880231865811}
+  Animator: {fileID: 2374645308003323555}
+--- !u!65 &7748798745049271299
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556936880231865815}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 1.8825486, z: 5}
+  m_Center: {x: 0, y: 0.84932816, z: 0}
 --- !u!1 &556936880805627272
 GameObject:
   m_ObjectHideFlags: 0
@@ -5220,8 +5249,6 @@ GameObject:
   - component: {fileID: 1858310021985413359}
   - component: {fileID: 3273074936498737040}
   - component: {fileID: 4545227489854603791}
-  - component: {fileID: 1800319906508896479}
-  - component: {fileID: 1531819547}
   - component: {fileID: 97203068935603767}
   m_Layer: 0
   m_Name: HeavyArtillaryStation
@@ -5285,38 +5312,6 @@ MonoBehaviour:
     UnitType: 3
   _weapons:
   - {fileID: 556936880231865815}
---- !u!65 &1800319906508896479
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858310021985413352}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 5, y: 1.8825486, z: 5}
-  m_Center: {x: 0, y: 0.84932816, z: 0}
---- !u!95 &1531819547
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1858310021985413352}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7f56d0fb5ac7e1d428ca78a140c251da, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &97203068935603767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5457,6 +5452,7 @@ GameObject:
   - component: {fileID: 6021731429601674998}
   - component: {fileID: 8418483121602956159}
   - component: {fileID: 174823415990326581}
+  - component: {fileID: 2374645308003323555}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -5527,6 +5523,25 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!95 &2374645308003323555
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8654024571180994757}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 81f9317d4d3a3a94180bf3007fb5e391, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8800282786320184167
 GameObject:
   m_ObjectHideFlags: 0

@@ -19,8 +19,8 @@ public class Turret : MonoBehaviour, ITurret
 
     public void AimTowards(Vector3 position)
     {
-        _baseTargetLocalPosition = Base.InverseTransformPoint(position);
-        _horizontalTargetLocalPosition = Base.InverseTransformPoint(position - new Vector3(0f, VerticalAxis.localPosition.y));
+        _baseTargetLocalPosition = Base.InverseTransformPoint(position - HorizontalAxis.localPosition);
+        _horizontalTargetLocalPosition = HorizontalAxis.InverseTransformPoint(position - VerticalAxis.localPosition);
     }
 
     private void FixedUpdate()
