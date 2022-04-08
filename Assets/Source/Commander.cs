@@ -24,7 +24,8 @@ public class Commander : MonoBehaviour, ITeamComponent
 
     public UnitSource UnitSource;
 
-    public event Action<Unit> OnPlacedUnitDeath;
+    public event Action<Commander, Unit> OnPlacedUnitDeath;
+    public event Action<Commander, UnitFactory, Unit> OnUnitSpawned;
     public event Action<Commander> OnFortressDestroyed;
     public event Action<Commander> OnEliminated;
 
@@ -77,14 +78,14 @@ public class Commander : MonoBehaviour, ITeamComponent
         Unit u = prefab.GetComponent<Unit>();
         GameObject go = TeamInfo.Instantiate(prefab, position, rotation);
         AssignCommander(go);
-        _alivePlaced.Add(u);
+        _alivePlaced.Add(go.GetComponent<Unit>());
         go.GetComponent<Health>().OnDeath += OnUnitDeath;
 
         void OnUnitDeath ()
         {
             u.GetComponent<Health>().OnDeath -= OnUnitDeath;
             _alivePlaced.Remove(u);
-            OnPlacedUnitDeath?.Invoke(u);
+            OnPlacedUnitDeath?.Invoke(this, u);
             if (_alivePlaced.Count == 0)
             {
                 OnEliminated?.Invoke(this);
@@ -115,7 +116,9 @@ public class Commander : MonoBehaviour, ITeamComponent
 
     private void Factory_OnUnitSpawned(UnitFactory arg1, GameObject arg2)
     {
-        arg2.GetComponent<Unit>().OnKill += Unit_OnKill;
+        Unit unit = arg2.GetComponent<Unit>();
+        unit.OnKill += Unit_OnKill;
+        OnUnitSpawned?.Invoke(this, arg1, unit);
     }
 
     private void Unit_OnKill(Unit arg1, IWeapon arg2, Projectile arg3, IDamagable arg4)

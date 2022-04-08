@@ -114,7 +114,7 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
 
     public bool TryFire(ITarget intendedTarget)
     {
-        if (DestroyUnengagedUnits && _currentSimultanious.Count == MaxSimultanious)
+        if (DestroyUnengagedUnits && _currentSimultanious.Count == MaxSimultanious && _canPlace && _currentHolding > 0)
         {
             DestroyUnengaged();
         }

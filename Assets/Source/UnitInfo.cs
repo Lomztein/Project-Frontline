@@ -20,6 +20,7 @@ public class UnitInfo
         Infantry, Vehicle, Aircraft, Defense, Structure
     }
 
+    public string Identifier;
     public string Name;
     [TextArea]
     public string Description;

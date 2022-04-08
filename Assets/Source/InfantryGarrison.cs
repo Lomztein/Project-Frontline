@@ -46,7 +46,7 @@ public class InfantryGarrison : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (Application.isPlaying)
+        if (gameObject.scene.isLoaded) // Check if OnDestroy is called because the object was destroyed or due to scene unloading.
         {
             EvacuateAll();
         }
@@ -59,8 +59,9 @@ public class InfantryGarrison : MonoBehaviour
             InfantryBody body = unit.GetComponentInChildren<InfantryBody>();
             body.enabled = true;
             unit.transform.SetParent(null);
-            unit.transform.rotation = Quaternion.Euler(0f, unit.transform.eulerAngles.y, 0f);
-            unit.transform.position = new Vector3(unit.transform.position.x, transform.root.position.y, unit.transform.position.z);
+            unit.transform.SetPositionAndRotation(
+                new Vector3(unit.transform.position.x, transform.root.position.y, unit.transform.position.z),
+                Quaternion.Euler(0f, unit.transform.eulerAngles.y, 0f));
 
             if (HideGarrisoned)
             {
