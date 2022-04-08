@@ -46,7 +46,10 @@ public class InfantryGarrison : MonoBehaviour
 
     private void OnDestroy()
     {
-        EvacuateAll();
+        if (Application.isPlaying)
+        {
+            EvacuateAll();
+        }
     }
 
     public void LeaveGarrison (GameObject unit)

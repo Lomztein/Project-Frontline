@@ -19,7 +19,10 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
     public int MaxHolding = 1;
 
     public int MaxSimultanious;
-    private int _currentSimultanious;
+    private List<GameObject> _currentSimultanious = new List<GameObject>();
+    private List<EngagedTracker> _currentTrackers = new List<EngagedTracker>();
+    public bool DestroyUnengagedUnits;
+    public float DestroyUnengagedTimeTreshold = 10;
 
     public float SpawnRange;
 
@@ -89,19 +92,47 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
 
     public bool CanFire()
     {
-        return _canPlace && _currentSimultanious < MaxSimultanious && _currentHolding > 0;
+        return _canPlace && _currentSimultanious.Count < MaxSimultanious && _currentHolding > 0;
+    }
+
+    private void DestroyUnengaged ()
+    {
+        Health toDestroy = null;
+        foreach (var tracker in _currentTrackers)
+        {
+            if (tracker != null && Time.time > tracker.LastAttackTime + DestroyUnengagedTimeTreshold)
+            {
+                toDestroy = tracker.GetComponent<Health>();
+                break;
+            }
+        }
+        if (toDestroy)
+        {
+            toDestroy.TakeDamage(new DamageInfo(toDestroy.MaxHealth, DamageMatrix.Damage.Heal, transform.position, transform.forward));
+        }
     }
 
     public bool TryFire(ITarget intendedTarget)
     {
+        if (DestroyUnengagedUnits && _currentSimultanious.Count == MaxSimultanious)
+        {
+            DestroyUnengaged();
+        }
+
         if (CanFire())
         {
-            Debug.Log("Spawn!");
             GameObject go = Spawn();
-            _currentSimultanious++;
+            EngagedTracker tracker = go.GetComponent<EngagedTracker>();
+
+            _currentSimultanious.Add(go);
+            _currentTrackers.Add(tracker);
 
             go.GetComponent<AIController>().ForceTarget(intendedTarget);
-            go.GetComponent<Health>().OnDeath += () => _currentSimultanious--;
+            go.GetComponent<Health>().OnDeath += () =>
+            {
+                _currentSimultanious.Remove(go);
+                _currentTrackers.Remove(tracker);
+            };
 
             _canPlace = false;
             Invoke(nameof(CanPlaceAgain), PlaceDelay);

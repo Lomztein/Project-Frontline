@@ -321,6 +321,7 @@ GameObject:
   - component: {fileID: 7487213878524425639}
   - component: {fileID: 6185378209787905339}
   - component: {fileID: 5514449885119331128}
+  - component: {fileID: -1175783587793280878}
   m_Layer: 0
   m_Name: MiniTurretBase
   m_TagString: Untagged
@@ -425,11 +426,12 @@ MonoBehaviour:
     Name: Mini Turret (MG)
     Description: 
     Cost: 500
-    Value: 50
+    Value: 0
     UnitRole: 2
     UnitTier: 0
     UnitType: 3
-  _weapons: []
+  _weapons:
+  - {fileID: 7347173786867067739}
 --- !u!114 &7487213878524425639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,3 +477,15 @@ MonoBehaviour:
   InitialDamage: 0
   DamagePerSecond: 4
   DamageType: 7
+--- !u!114 &-1175783587793280878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7347173786867067739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9350a1697671914c979c08837da05ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
