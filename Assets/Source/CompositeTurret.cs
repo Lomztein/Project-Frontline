@@ -6,7 +6,7 @@ using UnityEngine;
 public class CompositeTurret : MonoBehaviour, ITurret
 {
     public GameObject[] Turrets;
-    private ITurret[] _turrets;
+    private List<ITurret> _turrets;
 
     public void AimTowards(Vector3 position)
     {
@@ -24,8 +24,10 @@ public class CompositeTurret : MonoBehaviour, ITurret
         return _turrets.Min(x => x.DeltaAngle(target));
     }
 
+    public void AddTurret(ITurret turret) => _turrets.Add(turret);
+
     private void Awake()
     {
-        _turrets = Turrets.Select(x => x.GetComponent<ITurret>()).ToArray();
+        _turrets = Turrets.Select(x => x.GetComponent<ITurret>()).ToList();
     }
 }

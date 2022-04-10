@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
+    Identifier: 
     Name: Fighter Jet
     Description: Incredibly fast hit-and-run jet, capable of outmaneuvering all but
       the fastest missiles. Armed with powerful surface-to-everything missles with
@@ -193,7 +194,8 @@ MonoBehaviour:
   LooseTargetRange: 500
   AttackRange: 75
   TurretObject: {fileID: 0}
-  WeaponObject: {fileID: 1854339823547716753}
+  WeaponObjects:
+  - {fileID: 1854339823547716753}
   AimTolerance: 1
   LeadTarget: 1
   Modifiers: []

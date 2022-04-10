@@ -811,7 +811,8 @@ MonoBehaviour:
   LooseTargetRange: 100
   AttackRange: 100
   TurretObject: {fileID: 8208751554970705719}
-  WeaponObject: {fileID: 8208751554970705719}
+  WeaponObjects:
+  - {fileID: 8208751554970705719}
   AimTolerance: 1
   LeadTarget: 0
   Modifiers: []
@@ -868,6 +869,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
+    Identifier: 
     Name: SAM Site
     Description: Surface-to-air rockets are, unsurprisingly, an incredibly effecient
       way of reducing the airspace clutter near them. A small swarm of rockets fired

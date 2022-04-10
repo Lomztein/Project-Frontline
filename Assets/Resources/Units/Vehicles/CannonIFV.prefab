@@ -1,19 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &3064730656059143976
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 124425532207379155}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Machine Gun
-  Description: Side-mounted machine guns which can assist against lighter infantry.
 --- !u!1 &683060937118495848
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,20 +133,6 @@ MonoBehaviour:
   VerticalRange: {x: -60, y: 20}
   HorizontalSpeed: 135
   VerticalSpeed: 135
---- !u!114 &5218133395690268544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2322684498228296267}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: Machine Gun
-  Description: Side-mounted machine guns which can assist against lighter infantry.
 --- !u!1 &3481265301275641868
 GameObject:
   m_ObjectHideFlags: 0
@@ -5374,6 +5346,16 @@ PrefabInstance:
       propertyPath: AcquireTargetRange
       value: 75
       objectReference: {fileID: 0}
+    - target: {fileID: 1118208566537510245, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      propertyPath: WeaponObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1118208566537510245, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      propertyPath: WeaponObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 5328371602657346740}
     - target: {fileID: 2913741366723729313, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
       propertyPath: Info.Cost
@@ -5393,6 +5375,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Info.UnitType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913741366723729313, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      propertyPath: Info.Identifier
+      value: IFV.Cannon
       objectReference: {fileID: 0}
     - target: {fileID: 2913741366723729313, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
@@ -5563,3 +5550,31 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 8927630501266658685}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5218133395690268544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2322684498228296267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Machine Gun
+  Description: Side-mounted machine guns which can assist against lighter infantry.
+--- !u!114 &3064730656059143976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124425532207379155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Machine Gun
+  Description: Side-mounted machine guns which can assist against lighter infantry.

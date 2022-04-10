@@ -77,14 +77,15 @@ public class Commander : MonoBehaviour, ITeamComponent
     {
         Unit u = prefab.GetComponent<Unit>();
         GameObject go = TeamInfo.Instantiate(prefab, position, rotation);
+        Unit placed = go.GetComponent<Unit>();
         AssignCommander(go);
-        _alivePlaced.Add(go.GetComponent<Unit>());
+        _alivePlaced.Add(placed);
         go.GetComponent<Health>().OnDeath += OnUnitDeath;
 
         void OnUnitDeath ()
         {
             u.GetComponent<Health>().OnDeath -= OnUnitDeath;
-            _alivePlaced.Remove(u);
+            _alivePlaced.Remove(placed);
             OnPlacedUnitDeath?.Invoke(this, u);
             if (_alivePlaced.Count == 0)
             {

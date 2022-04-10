@@ -459,7 +459,7 @@ MonoBehaviour:
   LooseTargetRange: 125
   AttackRange: 85
   TurretObject: {fileID: 0}
-  WeaponObject: {fileID: 0}
+  WeaponObjects: []
   AimTolerance: 60
   LeadTarget: 0
   Modifiers: []
@@ -477,6 +477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
+    Identifier: 
     Name: Heavy Helicopter
     Description: More armored, and equipped with a powerful minigun on each side.
       These choppers can slaughter hordes of infantry with relative ease.
@@ -851,16 +852,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6370023998494290528}
     m_Modifications:
-    - target: {fileID: 4317269777234900627, guid: 02dbbee0d91bdf541830ab8d8a4e6585,
-        type: 3}
-      propertyPath: VerticalSpeed
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 4317269777234900627, guid: 02dbbee0d91bdf541830ab8d8a4e6585,
-        type: 3}
-      propertyPath: HorizontalSpeed
-      value: 180
-      objectReference: {fileID: 0}
     - target: {fileID: 4317269777234900638, guid: 02dbbee0d91bdf541830ab8d8a4e6585,
         type: 3}
       propertyPath: m_RootOrder

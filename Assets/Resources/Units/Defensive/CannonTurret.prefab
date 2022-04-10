@@ -135,7 +135,8 @@ MonoBehaviour:
   LooseTargetRange: 75
   AttackRange: 75
   TurretObject: {fileID: 7239507548301112918}
-  WeaponObject: {fileID: 7239507549102304598}
+  WeaponObjects:
+  - {fileID: 7239507549102304598}
   AimTolerance: 1
   LeadTarget: 1
   Modifiers: []
@@ -182,6 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
+    Identifier: 
     Name: Cannon Turret
     Description: Stationary cannon turret with a caliber that makes you wonder what
       the designer was compensating for. Can take out enemy armor fairly easily.

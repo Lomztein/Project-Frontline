@@ -471,7 +471,8 @@ MonoBehaviour:
   LooseTargetRange: 100
   AttackRange: 75
   TurretObject: {fileID: 1059517595597004955}
-  WeaponObject: {fileID: 1059517595597004955}
+  WeaponObjects:
+  - {fileID: 1059517595597004955}
   AimTolerance: 1
   LeadTarget: 0
   Modifiers: []
@@ -489,6 +490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
+    Identifier: 
     Name: Laser VTOL
     Description: Large, heavily armored, and a bit unwieldy, however incredibly powerful.
       Four laser cannons quickly melt through heavy armor and can burn through structures

@@ -247,6 +247,7 @@ MonoBehaviour:
   HorizontalRange: {x: -180, y: 180}
   VerticalRange: {x: -180, y: 70}
   VectoringSpeed: 180
+  Instant: 0
   _targetLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &3196350384754030666
 MonoBehaviour:
@@ -289,7 +290,8 @@ MonoBehaviour:
   LooseTargetRange: 100
   AttackRange: 100
   TurretObject: {fileID: 2000255555047774689}
-  WeaponObject: {fileID: 2000255555047774689}
+  WeaponObjects:
+  - {fileID: 2000255555047774689}
   AimTolerance: 1
   LeadTarget: 0
   Modifiers:
@@ -307,6 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 652168679518639588}
+  StartHealTreshold: 0.75
 --- !u!1 &4719334386525473134
 GameObject:
   m_ObjectHideFlags: 0

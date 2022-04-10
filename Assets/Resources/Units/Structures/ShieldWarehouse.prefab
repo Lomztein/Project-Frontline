@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8481149593104203267}
   - component: {fileID: 8481149593104203264}
   - component: {fileID: 8481149593104203265}
+  - component: {fileID: 8387516038791962156}
   m_Layer: 0
   m_Name: ShieldWarehouse
   m_TagString: StructureUnit
@@ -28,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8481149593104203270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8230787794471493123}
@@ -51,7 +52,8 @@ MonoBehaviour:
     Identifier: 
     Name: Personal Shield Warehouse
     Description: A great big warehouse filled to the brim with small, personal shield
-      generators that can be fitted onto anything, and automatically adjust themsef.
+      generators that can be fitted onto anything. 5% chance to attach a 50%+ health
+      shield to any unit.
     Cost: 5000
     Value: 500
     UnitRole: 1
@@ -101,8 +103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UpgradeIdentifier: ShieldWarehouse
-  BaseChance: 0.05
-  ChancePerStack: 0.05
+  BaseChance: 0.1
+  ChancePerStack: 0.1
   Filter: {fileID: 11400000, guid: b0b9c82e5df243b4b8e8022341499794, type: 2}
   Object: {fileID: 6176094635248760833, guid: a11b6452c910ce348acc19c57c1b0e2d, type: 3}
   UnitTransformInfos:
@@ -110,6 +112,21 @@ MonoBehaviour:
     Path: 
     LocalPosition: {x: 0, y: 0, z: 0}
     LocalRotation: {x: 0, y: 0, z: 0}
+  AddWeaponToAI: 0
+--- !u!114 &8387516038791962156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8481149593104203270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 5382746081214082855}
 --- !u!1001 &8481149592461998568
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -202,6 +219,12 @@ PrefabInstance:
 --- !u!4 &8230787794471493123 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: df3fb05e9508a11429c5d9515bf0112f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8481149592461998568}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5382746081214082855 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: df3fb05e9508a11429c5d9515bf0112f,
     type: 3}
   m_PrefabInstance: {fileID: 8481149592461998568}
   m_PrefabAsset: {fileID: 0}

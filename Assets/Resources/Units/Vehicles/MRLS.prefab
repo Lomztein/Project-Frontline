@@ -11309,6 +11309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
+    Identifier: 
     Name: Mobile Rocket Artillary
     Description: Often nicknamed the "Homewrecker" by frontline forces, this monster
       of a mobile artillary station is capable of, well, wrecking homes with unprecedented
@@ -11317,7 +11318,6 @@ MonoBehaviour:
     Value: 250
     UnitRole: 1
     UnitTier: 1
-    UnitClass: 3
     UnitType: 1
   _weapons:
   - {fileID: 5640369136630403019}
@@ -11355,7 +11355,8 @@ MonoBehaviour:
   LooseTargetRange: 150
   AttackRange: 125
   TurretObject: {fileID: 5640369136892039193}
-  WeaponObject: {fileID: 5640369136630403019}
+  WeaponObjects:
+  - {fileID: 5640369136630403019}
   AimTolerance: 5
   LeadTarget: 0
   Modifiers:

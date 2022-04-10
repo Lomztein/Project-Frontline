@@ -140,6 +140,30 @@ MonoBehaviour:
   Name: Wrench
   Description: The right tool for all the jobs. The engineers use this to build sentries
     on the battlefield.
+--- !u!114 &5169430314657805041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2258442974852995947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6d592aa2ab6d984ba56a8b18bf02497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UnitPrefabs:
+  - {fileID: 617264327678039175, guid: a29d3350e43792f49aa4b784db76bf07, type: 3}
+  - {fileID: 7448611568755667999, guid: 1651ef41661189d42ac4f8cb259a99ca, type: 3}
+  - {fileID: 2125763379215476279, guid: 9f693a029d59d0c4289784795efadd2d, type: 3}
+  SelectionBehaviour: 0
+  Cooldown: 10
+  PlaceDelay: 2
+  MaxHolding: 2
+  MaxSimultanious: 3
+  DestroyUnengagedUnits: 1
+  DestroyUnengagedTimeTreshold: 10
+  SpawnRange: 3
 --- !u!1001 &1411579667782654623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -183,7 +207,7 @@ PrefabInstance:
     - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: _weapons.Array.data[0]
       value: 
-      objectReference: {fileID: 6969503423178843512}
+      objectReference: {fileID: 2258442974852995947}
     - target: {fileID: 1177128839, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: HoldRange
       value: 60
@@ -208,6 +232,14 @@ PrefabInstance:
       propertyPath: AcquireTargetRange
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 1177128839, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
+      propertyPath: WeaponObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177128839, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
+      propertyPath: WeaponObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 6969503423178843512}
     - target: {fileID: 3340765615440518667, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: FactoryPrefab
@@ -429,27 +461,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1411579667782654623}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &95766314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6969503423178843512}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6d592aa2ab6d984ba56a8b18bf02497, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  UnitPrefabs:
-  - {fileID: 617264327678039175, guid: a29d3350e43792f49aa4b784db76bf07, type: 3}
-  - {fileID: 7448611568755667999, guid: 1651ef41661189d42ac4f8cb259a99ca, type: 3}
-  - {fileID: 2125763379215476279, guid: 9f693a029d59d0c4289784795efadd2d, type: 3}
-  SelectionBehaviour: 0
-  Cooldown: 10
-  PlaceDelay: 2
-  MaxHolding: 2
-  MaxSimultanious: 3
-  DestroyUnengagedUnits: 1
-  DestroyUnengagedTimeTreshold: 10
-  SpawnRange: 3

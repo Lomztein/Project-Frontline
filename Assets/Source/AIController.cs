@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class AIController : MonoBehaviour, IController
@@ -23,11 +24,11 @@ public abstract class AIController : MonoBehaviour, IController
     public event Action<ITarget> OnTargetAcquired;
     public event Action<ITarget> OnTargetLost;
 
-    public GameObject TurretObject;
+    public GameObject TurretObject; // TODO: Refactor these to lists.
     public ITurret Turret;
 
-    public GameObject WeaponObject;
-    public IWeapon Weapon;
+    public List<GameObject> WeaponObjects;
+    public List<IWeapon> Weapons;
 
     public float AimTolerance;
     public bool LeadTarget;
@@ -49,17 +50,24 @@ public abstract class AIController : MonoBehaviour, IController
         {
             Turret = TurretObject.GetComponent<ITurret>();
         }
-        if (WeaponObject)
+
+        Weapons = WeaponObjects.Select(x => x.GetComponent<IWeapon>()).ToList();
+    }
+
+    public void AddWeapon (IWeapon weapon)
+    {
+        if (weapon is Component component)
         {
-            Weapon = WeaponObject.GetComponent<IWeapon>();
+            WeaponObjects.Add(component.gameObject);
         }
+        Weapons.Add(weapon);
     }
 
     protected virtual void Start()
     {
-        if (Weapon != null)
+        if (Weapons.Count > 0)
         {
-            _primaryWeaponDamageType = Weapon.DamageType;
+            _primaryWeaponDamageType = Weapons[1].DamageType;
             _targetFinder.SetEvaluator((pos, go) =>
                 TargetFinder.DefaultEvaluator(pos, go) +
                 GetDamageFactor(go) * 1000000f);
@@ -117,11 +125,11 @@ public abstract class AIController : MonoBehaviour, IController
         if (Turret != null)
         {
             Vector3 targetPosition = CurrentTarget.GetPosition();
-            if (LeadTarget && Weapon != null)
+            if (LeadTarget && Weapons.Count > 0)
             {
                 Vector3 vel = (targetPosition - _targetLastPosition) / Time.fixedDeltaTime;
                 float dist = Vector3.Distance(targetPosition, transform.position);
-                targetPosition += vel * (dist / Weapon.Speed);
+                targetPosition += vel * (dist / Weapons[0].Speed);
 
                 _targetLastPosition = CurrentTarget.GetPosition();
             }
@@ -138,12 +146,12 @@ public abstract class AIController : MonoBehaviour, IController
 
     protected virtual void Attack()
     {
-        if (Weapon != null)
+        float sqrDist = GetTargetSquareDistance();
+        if (sqrDist < AttackRange * AttackRange && _aimDelta <= AimTolerance)
         {
-            float sqrDist = GetTargetSquareDistance();
-            if (sqrDist < AttackRange * AttackRange && _aimDelta <= AimTolerance)
+            foreach (var weapon in Weapons)
             {
-                Weapon.TryFire(CurrentTarget);
+                weapon.TryFire(CurrentTarget);
             }
         }
     }

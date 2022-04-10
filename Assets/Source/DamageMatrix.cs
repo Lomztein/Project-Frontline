@@ -45,7 +45,7 @@ public static class DamageMatrix
             { Armor.Medium, 0.1f },
             { Armor.Heavy, 0.05f },
             { Armor.Structure, 0.15f },
-            { Armor.Shield, 1.5f },
+            { Armor.Shield, 1.0f },
         } },
         { Damage.Grenade, new Dictionary<Armor, float>()
         {
@@ -72,7 +72,7 @@ public static class DamageMatrix
             { Armor.Medium, 0.3f },
             { Armor.Heavy, 0.1f },
             { Armor.Structure, 0.4f },
-            { Armor.Shield, 1.5f },
+            { Armor.Shield, 1.0f },
         } },
         { Damage.Energy, new Dictionary<Armor, float>()
         {
@@ -90,7 +90,7 @@ public static class DamageMatrix
             { Armor.Medium, 1.0f },
             { Armor.Heavy, 1.0f },
             { Armor.Structure, 0.3f },
-            { Armor.Shield, 2.0f },
+            { Armor.Shield, 1.5f },
         } },
     };
 

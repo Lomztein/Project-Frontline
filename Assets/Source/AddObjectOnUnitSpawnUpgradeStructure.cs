@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class AddObjectOnUnitSpawnUpgradeStructure : ChanceOnUnitSpawnUpgradeStructure
 {
     public GameObject Object;
     public UnitTransformInfo[] UnitTransformInfos;
+    public bool AddWeaponToAI;
 
     private Dictionary<string, UnitTransformInfo> _infoCache;
 
@@ -15,11 +17,17 @@ public class AddObjectOnUnitSpawnUpgradeStructure : ChanceOnUnitSpawnUpgradeStru
 
         (Transform parent, Vector3 localPos, Vector3 localRot) = FindUnitTransform(target);
 
+        Assert.IsNotNull(parent, "Upgrade parent is null.");
         GameObject newObject = Instantiate(Object, parent, false);
         newObject.transform.localPosition = localPos;
         newObject.transform.localRotation = Quaternion.Euler(localRot);
         _commander.TeamInfo.ApplyTeam(newObject);
         _commander.AssignCommander(newObject);
+
+        if (AddWeaponToAI)
+        {
+            target.GetComponent<AIController>().AddWeapon(newObject.GetComponentInChildren<IWeapon>());
+        }
     }
 
     private void BakePathCache (UnitTransformInfo[] infos)

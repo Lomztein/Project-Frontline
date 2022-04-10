@@ -14,26 +14,29 @@ public class Unit : MonoBehaviour, IPurchasable
     public int Cost => Info.Cost;
 
     [SerializeField] private GameObject[] _weapons;
-    private IWeapon[] _weaponCache;
+    private List<IWeapon> _weaponCache;
 
     public event Action<Unit, IWeapon, Projectile, IDamagable> OnKill;
 
-    public IWeapon[] GetWeapons ()
+    public IEnumerable<IWeapon> GetWeapons ()
     {
         if (_weaponCache == null)
         {
-            _weaponCache = new IWeapon[_weapons.Length];
-            for (int i = 0; i < _weaponCache.Length; i++)
+            _weaponCache = new List<IWeapon>();
+            for (int i = 0; i < _weapons.Length; i++)
             {
-                _weaponCache[i] = _weapons[i].GetComponent<IWeapon>();
+                _weaponCache.Add(_weapons[i].GetComponent<IWeapon>());
             }
         }
         return _weaponCache;
     }
 
+    public void AddWeapon(IWeapon weapon)
+        => _weaponCache.Add(weapon);
+
     private void Awake()
     {
-        _weaponCache = _weapons.Select(x => x.GetComponent<IWeapon>()).ToArray();
+        GetWeapons();
         foreach (IWeapon weapon in _weaponCache)
         {
             weapon.OnKill += Weapon_OnKill;

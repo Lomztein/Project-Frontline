@@ -28,7 +28,7 @@ public abstract class UpgradeStructure : MonoBehaviour, ICommanderComponent
 
     private void OnDestroy()
     {
-        if (gameObject.scene.isLoaded)
+        if (gameObject.scene.isLoaded && _commander)
         {
             UpgradeStructure first = GetFirst();
             if (this == first || first == null)

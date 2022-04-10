@@ -1,29 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &4074910436805005047
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6962003151734455349}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 955e3746abfe5e14cb56265a34877e72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Info:
-    Name: 50. Sentry
-    Description: Loaded with thousands of heavy caliber rounds, and an AI largely
-      equivalent to a child, you might want to pray that the targeting works as intended.
-    Cost: 500
-    Value: 5
-    UnitRole: 2
-    UnitTier: 0
-    UnitClass: 2
-    UnitType: 3
-  _weapons:
-  - {fileID: 3297325972595082053}
 --- !u!1001 &1020120139183801278
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -76,6 +52,16 @@ PrefabInstance:
       propertyPath: AcquireTargetRange
       value: 75
       objectReference: {fileID: 0}
+    - target: {fileID: 6305933840788071201, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: WeaponObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305933840788071201, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: WeaponObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 3297325972595082053}
     - target: {fileID: 6743208972335148256, guid: 5eef721856967274c80f299c4cc69d23,
         type: 3}
       propertyPath: m_RootOrder
@@ -155,6 +141,30 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1020120139183801278}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4074910436805005047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6962003151734455349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955e3746abfe5e14cb56265a34877e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Info:
+    Identifier: 
+    Name: 50. Sentry
+    Description: Loaded with thousands of heavy caliber rounds, and an AI largely
+      equivalent to a child, you might want to pray that the targeting works as intended.
+    Cost: 500
+    Value: 5
+    UnitRole: 2
+    UnitTier: 0
+    UnitType: 3
+  _weapons:
+  - {fileID: 3297325972595082053}
 --- !u!1001 &6602295202937413597
 PrefabInstance:
   m_ObjectHideFlags: 0

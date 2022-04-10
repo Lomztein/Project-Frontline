@@ -248,6 +248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
+    Identifier: 
     Name: Anti-Material Turret
     Description: '"Death from long range" is an inadaqute description, rather something
       along the lines of "all your memories scattered across the battlefield" is
@@ -276,7 +277,8 @@ MonoBehaviour:
   LooseTargetRange: 150
   AttackRange: 150
   TurretObject: {fileID: 2996561609964713339}
-  WeaponObject: {fileID: 2996561609964713339}
+  WeaponObjects:
+  - {fileID: 2996561609964713339}
   AimTolerance: 1
   LeadTarget: 1
   Modifiers: []

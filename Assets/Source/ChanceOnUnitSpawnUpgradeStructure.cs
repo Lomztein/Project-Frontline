@@ -37,7 +37,10 @@ public abstract class ChanceOnUnitSpawnUpgradeStructure : UpgradeStructure
 
     private void Commander_OnUnitSpawned(Commander arg1, UnitFactory arg2, Unit arg3)
     {
-        if (Random.Range(0f, 1f) < ComputeChance() && CheckFilter(arg3))
+        float rand = Random.Range(0f, 1f);
+        float chance = ComputeChance();
+
+        if (rand < chance && CheckFilter(arg3))
         {
             ApplyUpgrade(arg3);
         }

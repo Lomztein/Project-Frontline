@@ -365,6 +365,7 @@ MonoBehaviour:
   HorizontalRange: {x: -180, y: 180}
   VerticalRange: {x: -10, y: 180}
   VectoringSpeed: 180
+  Instant: 0
   _targetLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &4325982582558911290
 MonoBehaviour:
@@ -383,7 +384,7 @@ MonoBehaviour:
   LooseTargetRange: 75
   AttackRange: 75
   TurretObject: {fileID: 4325982582558911292}
-  WeaponObject: {fileID: 4325982582558911292}
+  WeaponObjects: []
   AimTolerance: 5
   LeadTarget: 1
   Modifiers: []
@@ -502,7 +503,8 @@ MonoBehaviour:
   LooseTargetRange: 125
   AttackRange: 85
   TurretObject: {fileID: 0}
-  WeaponObject: {fileID: 4325982582396688272}
+  WeaponObjects:
+  - {fileID: 4325982582396688272}
   AimTolerance: 60
   LeadTarget: 0
   Modifiers: []
@@ -520,6 +522,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
+    Identifier: 
     Name: Attack Helicopter
     Description: Armed to the teeth with arguably incredibly unsafe explosives, and
       capable of taking out strong armor with a single volley of rockets. You generally

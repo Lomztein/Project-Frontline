@@ -71,7 +71,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Pivot
       value: 
-      objectReference: {fileID: 1679189556590650714}
+      objectReference: {fileID: 1679189556312415354}
     - target: {fileID: 8973724217068591027, guid: 934edc4273011b040b39a55346cb9a7b,
         type: 3}
       propertyPath: AnimatorTurret
@@ -362,9 +362,9 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7233898468033207260}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1679189556590650714 stripped
+--- !u!4 &1679189556312415354 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8299666087293566598, guid: 50378c4ca65714b4ebd2928ade59a707,
+  m_CorrespondingSourceObject: {fileID: 8299666087550683046, guid: 50378c4ca65714b4ebd2928ade59a707,
     type: 3}
   m_PrefabInstance: {fileID: 7233898468033207260}
   m_PrefabAsset: {fileID: 0}
@@ -411,7 +411,8 @@ MonoBehaviour:
   LooseTargetRange: 200
   AttackRange: 20
   TurretObject: {fileID: 1679189556493854530}
-  WeaponObject: {fileID: 4599500793293433204}
+  WeaponObjects:
+  - {fileID: 4599500793293433204}
   AimTolerance: 5
   LeadTarget: 0
   Modifiers:

@@ -226,21 +226,6 @@ Transform:
   m_Father: {fileID: 5600779822525254063}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5158429636063451545
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5100886103782147142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b6cafccd0e61a4ca019c486be74ad8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FactoryPrefab: {fileID: 8913899801669703661, guid: b091d99d3a2dced4086ab2fbd438a737,
-    type: 3}
-  ProductionTime: 40
 --- !u!1 &6149008217251603754
 GameObject:
   m_ObjectHideFlags: 0
@@ -5471,6 +5456,16 @@ PrefabInstance:
       propertyPath: AcquireTargetRange
       value: 75
       objectReference: {fileID: 0}
+    - target: {fileID: 6494382962392457834, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
+      propertyPath: WeaponObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494382962392457834, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
+      propertyPath: WeaponObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 6149008217251603754}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb15c42a80dcae14c80a2ac996877dfd, type: 3}
 --- !u!1 &5100886103782147142 stripped
@@ -5485,3 +5480,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4805836747560995049}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5158429636063451545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5100886103782147142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b6cafccd0e61a4ca019c486be74ad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FactoryPrefab: {fileID: 8913899801669703661, guid: b091d99d3a2dced4086ab2fbd438a737,
+    type: 3}
+  ProductionTime: 40

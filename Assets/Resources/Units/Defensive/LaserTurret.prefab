@@ -887,7 +887,8 @@ MonoBehaviour:
   LooseTargetRange: 75
   AttackRange: 75
   TurretObject: {fileID: 2816974995353551254}
-  WeaponObject: {fileID: 2816974995353551254}
+  WeaponObjects:
+  - {fileID: 2816974995353551254}
   AimTolerance: 1
   LeadTarget: 0
   Modifiers: []
@@ -934,6 +935,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
+    Identifier: 
     Name: Laser Turret
     Description: Tri-barreled laser cannons are a powerful tool for dispelling anyone
       who thought they'd like a closer look at your base.

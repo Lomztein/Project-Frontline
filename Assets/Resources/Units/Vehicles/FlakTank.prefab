@@ -1,27 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &4835823382694591805
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5461233869205741998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34bf0fc1e60907849af01ac541774608, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Team: {fileID: 0}
-  AcquireTargetRange: 75
-  LooseTargetRange: 100
-  AttackRange: 75
-  TurretObject: {fileID: 5461233867797301202}
-  WeaponObject: {fileID: 5461233867797301202}
-  AimTolerance: 15
-  LeadTarget: 1
-  Modifiers: []
-  HoldRange: 65
 --- !u!1001 &1747644708879124886
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -309,3 +287,26 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4219315178750843161}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4835823382694591805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5461233869205741998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34bf0fc1e60907849af01ac541774608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Team: {fileID: 0}
+  AcquireTargetRange: 75
+  LooseTargetRange: 100
+  AttackRange: 75
+  TurretObject: {fileID: 5461233867797301202}
+  WeaponObjects:
+  - {fileID: 5461233867797301202}
+  AimTolerance: 15
+  LeadTarget: 1
+  Modifiers: []
+  HoldRange: 65

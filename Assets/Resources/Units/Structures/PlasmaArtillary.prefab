@@ -5513,6 +5513,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
+    Identifier: 
     Name: Heavy Plasma Artillary
     Description: Exteremely long range and high damage define this structure. It
       is able to shoot square across the battlefield and destroy enemy structures
@@ -5553,7 +5554,8 @@ MonoBehaviour:
   LooseTargetRange: 300
   AttackRange: 300
   TurretObject: {fileID: 1244591003029453303}
-  WeaponObject: {fileID: 1244591003029453303}
+  WeaponObjects:
+  - {fileID: 1244591003029453303}
   AimTolerance: 5
   LeadTarget: 0
   Modifiers:

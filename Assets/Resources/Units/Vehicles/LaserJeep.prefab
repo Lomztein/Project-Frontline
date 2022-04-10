@@ -165,6 +165,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3451883676540623872, guid: 8cde096bc4044aa43969fa0883258089,
         type: 3}
+      propertyPath: Info.Identifier
+      value: Scout.Laser
+      objectReference: {fileID: 0}
+    - target: {fileID: 3451883676540623872, guid: 8cde096bc4044aa43969fa0883258089,
+        type: 3}
       propertyPath: Info.Description
       value: Scout with a light laser cannon mounted on top. While it has somewhat
         low damage, it is a good low-tier tool for destroying enemy structures and
@@ -214,6 +219,16 @@ PrefabInstance:
     - target: {fileID: 6460095528493340735, guid: 8cde096bc4044aa43969fa0883258089,
         type: 3}
       propertyPath: WeaponObject
+      value: 
+      objectReference: {fileID: 8701779087536696405}
+    - target: {fileID: 6460095528493340735, guid: 8cde096bc4044aa43969fa0883258089,
+        type: 3}
+      propertyPath: WeaponObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6460095528493340735, guid: 8cde096bc4044aa43969fa0883258089,
+        type: 3}
+      propertyPath: WeaponObjects.Array.data[0]
       value: 
       objectReference: {fileID: 8701779087536696405}
     - target: {fileID: 8666043346284543018, guid: 8cde096bc4044aa43969fa0883258089,
@@ -271,7 +286,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3817131376503336587, guid: 8cde096bc4044aa43969fa0883258089, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8cde096bc4044aa43969fa0883258089, type: 3}
 --- !u!4 &1833301988532351839 stripped
 Transform:

@@ -1,20 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-4666202143623441187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3173293893950344040}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0b6cafccd0e61a4ca019c486be74ad8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  FactoryPrefab: {fileID: 8913899801669703661, guid: b091d99d3a2dced4086ab2fbd438a737,
-    type: 3}
-  ProductionTime: 30
 --- !u!1001 &2914376611557967815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55,7 +40,7 @@ PrefabInstance:
     - target: {fileID: 731879210430979566, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 7.5
       objectReference: {fileID: 0}
     - target: {fileID: 731879210430979566, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
@@ -116,6 +101,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Info.UnitClass
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
+      propertyPath: Info.Identifier
+      value: Tank.Cannon
       objectReference: {fileID: 0}
     - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
@@ -194,6 +184,16 @@ PrefabInstance:
       propertyPath: AcquireTargetRange
       value: 75
       objectReference: {fileID: 0}
+    - target: {fileID: 6494382962392457834, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
+      propertyPath: WeaponObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6494382962392457834, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
+      propertyPath: WeaponObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 1444583270844571754}
     m_RemovedComponents:
     - {fileID: 6851652374664257124, guid: eb15c42a80dcae14c80a2ac996877dfd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: eb15c42a80dcae14c80a2ac996877dfd, type: 3}
@@ -209,6 +209,21 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2914376611557967815}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &-4666202143623441187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3173293893950344040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b6cafccd0e61a4ca019c486be74ad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FactoryPrefab: {fileID: 8913899801669703661, guid: b091d99d3a2dced4086ab2fbd438a737,
+    type: 3}
+  ProductionTime: 30
 --- !u!1001 &5030953687387346513
 PrefabInstance:
   m_ObjectHideFlags: 0
