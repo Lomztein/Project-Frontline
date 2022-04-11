@@ -347,6 +347,7 @@ MonoBehaviour:
   HorizontalRange: {x: -75, y: 75}
   VerticalRange: {x: -35, y: 35}
   VectoringSpeed: 60
+  Instant: 0
   _targetLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &5744793623595235346
 MonoBehaviour:
@@ -385,13 +386,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 0}
-  AcquireTargetRange: 0
-  LooseTargetRange: 0
-  AttackRange: 0
-  TurretObject: {fileID: 0}
-  WeaponObject: {fileID: 0}
+  AcquireTargetRange: 50
+  LooseTargetRange: 50
+  AttackRange: 50
+  TurretObject: {fileID: 6619875413042999094}
+  WeaponObjects:
+  - {fileID: 6619875413042999094}
   AimTolerance: 5
-  LeadTarget: 0
+  LeadTarget: 1
   Modifiers: []
 --- !u!1 &7553692932367407739
 GameObject:
@@ -444,6 +446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
+    Identifier: 
     Name: '"Hopperduct" MI-66A'
     Description: Also known as a mobile coffin, the "Hopperduct" carries a number
       of infantry units to be deployed on the battlefield. No one told them, however,
@@ -507,7 +510,7 @@ MonoBehaviour:
   LooseTargetRange: 100
   AttackRange: 50
   TurretObject: {fileID: 0}
-  WeaponObject: {fileID: 0}
+  WeaponObjects: []
   AimTolerance: 5
   LeadTarget: 0
   Modifiers: []
@@ -656,6 +659,7 @@ MonoBehaviour:
   HorizontalRange: {x: -75, y: 75}
   VerticalRange: {x: -35, y: 35}
   VectoringSpeed: 60
+  Instant: 0
   _targetLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &4013033669570582312
 MonoBehaviour:
@@ -694,13 +698,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 0}
-  AcquireTargetRange: 0
-  LooseTargetRange: 0
-  AttackRange: 0
-  TurretObject: {fileID: 0}
-  WeaponObject: {fileID: 0}
+  AcquireTargetRange: 50
+  LooseTargetRange: 50
+  AttackRange: 50
+  TurretObject: {fileID: 8817868846401890222}
+  WeaponObjects:
+  - {fileID: 8817868846401890222}
   AimTolerance: 5
-  LeadTarget: 0
+  LeadTarget: 1
   Modifiers: []
 --- !u!1001 &74068327689997663
 PrefabInstance:
