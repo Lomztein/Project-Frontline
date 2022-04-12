@@ -25,6 +25,8 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
     public float DestroyUnengagedTimeTreshold = 10;
 
     public float SpawnRange;
+    public bool SpawnRelativeToRoot;
+    private Transform _root;
 
     private TeamInfo _team;
 
@@ -54,6 +56,11 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
         }
     }
 
+    private void Start()
+    {
+        _root = transform.root;
+    }
+
     private void FixedUpdate()
     {
         if (_currentHolding < MaxHolding)
@@ -73,8 +80,10 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
 
     private GameObject Spawn()
     {
-        Vector3 pos = GetLocalRandomSpawnPosition() + transform.position;
-        GameObject go = _team.Instantiate(SelectUnitPrefab(), pos, transform.rotation);
+        Vector3 basePos = SpawnRelativeToRoot ? _root.position : transform.position;
+        Quaternion baseRot = SpawnRelativeToRoot ? _root.rotation : transform.rotation;
+        Vector3 pos = GetLocalRandomSpawnPosition() + basePos;
+        GameObject go = _team.Instantiate(SelectUnitPrefab(), pos, baseRot);
         OnUnitSpawned?.Invoke(this, go);
         return go;
     }

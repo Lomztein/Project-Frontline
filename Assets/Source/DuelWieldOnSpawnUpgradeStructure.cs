@@ -6,7 +6,7 @@ using UnityEngine;
 public class DuelWieldOnSpawnUpgradeStructure : ChanceOnUnitSpawnUpgradeStructure
 {
     public string CommonRootName = "spine.003";
-    public char SideSplitCharacter = '.';
+    public string SideSplitCharacter = ".";
     public string LeftSideSuffix = "L";
     public string RightSideSuffix = "R";
 
@@ -19,13 +19,11 @@ public class DuelWieldOnSpawnUpgradeStructure : ChanceOnUnitSpawnUpgradeStructur
             if (weapon is Component component)
             {
                 var infTurret = component.GetComponent<InfantryWeaponTurret>();
-                if (infTurret)
+                Transform original = infTurret ? infTurret.Pivot : component.transform.parent;
+                Transform opposite = FindOppositeBodyPart(original);
+                if (opposite)
                 {
-                    Transform opposite = FindOppositeBodyPart(infTurret.Pivot);
-                    if (opposite)
-                    {
-                        CopyWeaponTo(target, component.gameObject, opposite);
-                    }
+                    CopyWeaponTo(target, component.gameObject, opposite);
                 }
             }
         }
@@ -34,6 +32,8 @@ public class DuelWieldOnSpawnUpgradeStructure : ChanceOnUnitSpawnUpgradeStructur
     private void CopyWeaponTo (Unit unit, GameObject weaponObj, Transform parent)
     {
         GameObject newWeapon = Instantiate(weaponObj, weaponObj.transform.parent);
+        newWeapon.transform.localPosition = weaponObj.transform.localPosition;
+        newWeapon.transform.localRotation = weaponObj.transform.localRotation;
         newWeapon.transform.localScale += Vector3.right * newWeapon.transform.localScale.x * -2;
         var turret = newWeapon.GetComponent<InfantryWeaponTurret>();
         if (turret)
@@ -41,7 +41,9 @@ public class DuelWieldOnSpawnUpgradeStructure : ChanceOnUnitSpawnUpgradeStructur
             turret.Pivot = parent;
             unit.GetComponentInChildren<CompositeTurret>().AddTurret(turret);
         }
-        unit.GetComponent<AIController>().AddWeapon(newWeapon.GetComponent<IWeapon>());
+        AIController controller = unit.GetComponent<AIController>();
+        controller.AddWeapon(newWeapon.GetComponent<IWeapon>());
+        controller.Team.ApplyTeam(newWeapon);
     }
 
     private Transform FindOppositeBodyPart (Transform original)

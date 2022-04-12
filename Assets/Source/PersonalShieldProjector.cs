@@ -12,6 +12,7 @@ public class PersonalShieldProjector : MonoBehaviour
 
     private void Start()
     {
+        // TODO: Look into offset centers, eg. the jet
         transform.rotation = transform.parent.rotation;
 
         Bounds bounds = new Bounds();

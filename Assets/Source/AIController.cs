@@ -67,7 +67,7 @@ public abstract class AIController : MonoBehaviour, IController
     {
         if (Weapons.Count > 0)
         {
-            _primaryWeaponDamageType = Weapons[1].DamageType;
+            _primaryWeaponDamageType = Weapons[0].DamageType;
             _targetFinder.SetEvaluator((pos, go) =>
                 TargetFinder.DefaultEvaluator(pos, go) +
                 GetDamageFactor(go) * 1000000f);
