@@ -54,7 +54,7 @@ MonoBehaviour:
     Description: High-tech laboratory where which experiments with coil-based weaponry.
       10% chance to upgrade various units to coil weapons, granting hitscan and 3x
       damage.
-    Cost: 8000
+    Cost: 6000
     Value: 800
     UnitRole: 1
     UnitTier: 2
@@ -120,6 +120,7 @@ MonoBehaviour:
   BaseChance: 0.1
   ChancePerStack: 0.1
   Filter: {fileID: 11400000, guid: b0b9c82e5df243b4b8e8022341499794, type: 2}
+  AILeadTargetAfterUpgrade: 0
   Upgrades:
   - ProjectileType: {fileID: 706538927366367410, guid: 02243d61965c5ed499bec10f0188c561,
       type: 3}

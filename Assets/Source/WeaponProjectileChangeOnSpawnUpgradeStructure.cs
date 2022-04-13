@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class WeaponProjectileChangeOnSpawnUpgradeStructure : ChanceOnUnitSpawnUpgradeStructure
 {
+    public bool AILeadTargetAfterUpgrade;
     public WeaponProjectileUpgrade[] Upgrades;
 
     // A bug is likely going to occur where, if this is placed before an armory, then infantry will only have one of their weapons upgraded.
@@ -19,7 +20,7 @@ public class WeaponProjectileChangeOnSpawnUpgradeStructure : ChanceOnUnitSpawnUp
                 AIController controller = target.GetComponent<AIController>();
                 if (controller.Weapons[0] is Weapon concrete && concrete == weapon)
                 {
-                    controller.LeadTarget = false; // If the main weapon is changed to coil, don't lead the target.
+                    controller.LeadTarget = AILeadTargetAfterUpgrade; // If the main weapon is changed to coil, don't lead the target.
                 }
             }
         }

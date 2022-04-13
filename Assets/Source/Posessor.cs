@@ -9,7 +9,7 @@ public class Posessor : MonoBehaviour
     private GameObject _currentPosessed;
 
     public Camera MainCamera;
-    public SimpleCameraController MainCameraController;
+    public FreeCameraController MainCameraController;
 
     public FollowerCamera CameraController;
     private Camera _followCamera;
