@@ -48,7 +48,7 @@ MonoBehaviour:
   LooseTargetRange: 50
   AttackRange: 0
   TurretObject: {fileID: 0}
-  WeaponObject: {fileID: 0}
+  WeaponObjects: []
   AimTolerance: 0
   LeadTarget: 0
   Modifiers: []
@@ -117,6 +117,7 @@ MonoBehaviour:
   - {fileID: 7989911880624851529}
   - {fileID: 7989911879347484217}
   - {fileID: 7989911879988743839}
+  Health: {fileID: 4068546118847816497}
 --- !u!114 &3282090621347408221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
+    Identifier: 
     Name: Cutter Swarm
     Description: We're not entirely sure where they came from, but these drone swarms
       were found in a crashed meteorite some years ago. They seem to be some sort

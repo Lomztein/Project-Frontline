@@ -5,6 +5,7 @@ using UnityEngine;
 public class BoidSwarm : MonoBehaviour, IEnumerable<Boid>
 {
     public List<Boid> Boids;
+    public Health Health; // Total hack lol
 
     public IEnumerator<Boid> GetEnumerator()
     {
@@ -29,7 +30,7 @@ public class BoidSwarm : MonoBehaviour, IEnumerable<Boid>
         Boids.Remove(boid);
         if (Boids.Count <= 0)
         {
-            Destroy(gameObject);
+            Health.TakeDamage(new DamageInfo(Health.MaxHealth * 2f, DamageMatrix.Damage.Heal, Vector3.forward, Vector3.forward));
         }
     }
 

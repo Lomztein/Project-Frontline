@@ -58,7 +58,6 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetMouseButton(i))
             {
-                Debug.Log(Weapons[i]);
                 Weapons[i].TryFire(target);
             }
         }

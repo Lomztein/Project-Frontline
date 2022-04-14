@@ -17,8 +17,8 @@ public class WeaponProjectileChangeOnSpawnUpgradeStructure : ChanceOnUnitSpawnUp
             if (upgrade != null)
             {
                 ApplyWeaponUpgrade(weapon, upgrade);
-                AIController controller = target.GetComponent<AIController>();
-                if (controller.Weapons[0] is Weapon concrete && concrete == weapon)
+                AIController controller = weapon.GetComponentInParent<AIController>();
+                if (controller.Weapons.Count > 0 && controller.Weapons[0] is Weapon concrete && concrete == weapon)
                 {
                     controller.LeadTarget = AILeadTargetAfterUpgrade; // If the main weapon is changed to coil, don't lead the target.
                 }
