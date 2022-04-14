@@ -4,17 +4,30 @@ using UnityEngine;
 
 public abstract class TopDownCameraController : MonoBehaviour
 {
-    public float PanSpeed;
+    public Vector2 PanSpeedMinMax;
     public float PanMargin;
+
+    private float _targetZoomLevel = 1f;
+    private float _zoomLevel = 1f;
+
+    public float ZoomSpeed;
+    public float ZoomLerpSpeed;
 
     private void Update()
     {
         Vector3 direction = GetPanDirection();
-        transform.position += PanSpeed * Time.deltaTime * (Quaternion.Euler(0f, transform.eulerAngles.y, 0f) * direction);
-        Zoom(Input.GetAxis("Mouse ScrollWheel"), Time.deltaTime);
+        float panSpeed = Mathf.Lerp(PanSpeedMinMax.x, PanSpeedMinMax.y, _zoomLevel);
+        transform.position += panSpeed * Time.deltaTime * (Quaternion.Euler(0f, transform.eulerAngles.y, 0f) * direction);
+
+        _targetZoomLevel += Input.GetAxis("Mouse ScrollWheel") * ZoomSpeed * Time.deltaTime;
+        _targetZoomLevel = Mathf.Clamp01(_targetZoomLevel);
+
+        _zoomLevel = Mathf.Lerp(_zoomLevel, _targetZoomLevel, ZoomLerpSpeed * Time.deltaTime);
+
+        UpdateZoom(_zoomLevel);
     }
 
-    protected abstract void Zoom(float amount, float deltaTime);
+    protected abstract void UpdateZoom(float zoomLevel);
 
     private Vector3 GetPanDirection ()
     {

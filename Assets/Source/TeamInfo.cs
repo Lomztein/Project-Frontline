@@ -5,8 +5,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Faction", menuName = "Faction")]
 public class TeamInfo : ScriptableObject
 {
-    private const int LayerMaskStart = 1 << 24;
-    private const int LayerStart = 24;
+    private const int LayerStart = 16;
+    private const int LayerMaskStart = 1 << LayerStart;
     private const int AllTeams =
         LayerMaskStart
         | LayerMaskStart << 1
@@ -16,6 +16,18 @@ public class TeamInfo : ScriptableObject
         | LayerMaskStart << 5
         | LayerMaskStart << 6
         | LayerMaskStart << 7;
+
+    private const int ProjectileLayerStart = 24;
+    private const int ProjectileLayerMaskStart = 1 << ProjectileLayerStart;
+    private const int ProjectileAllTeams =
+    ProjectileLayerMaskStart
+    | ProjectileLayerMaskStart << 1
+    | ProjectileLayerMaskStart << 2
+    | ProjectileLayerMaskStart << 3
+    | ProjectileLayerMaskStart << 4
+    | ProjectileLayerMaskStart << 5
+    | ProjectileLayerMaskStart << 6
+    | ProjectileLayerMaskStart << 7;
 
     public int Id;
     public string Name;
@@ -65,7 +77,15 @@ public class TeamInfo : ScriptableObject
 
     public static int GetLayerMask(int factionId) => LayerMaskStart << factionId;
     public static int Invert(int mask) => AllTeams & ~mask;
+
     public int GetLayer() => LayerStart + Id;
     public int GetLayerMask() => GetLayerMask(Id);
     public int GetOtherLayerMasks() => AllTeams & ~GetLayerMask();
+
+    public static int ProjectileGetLayerMask(int factionId) => ProjectileLayerMaskStart << factionId;
+    public static int ProjectileInvert(int mask) => ProjectileAllTeams & ~mask;
+
+    public int ProjectileGetLayer() => ProjectileLayerStart + Id;
+    public int ProjectileGetLayerMask() => ProjectileGetLayerMask(Id);
+    public int ProjectileGetOtherLayerMasks() => ProjectileAllTeams & ~ProjectileGetLayerMask();
 }

@@ -5,18 +5,37 @@ using UnityEngine;
 public class CameraSelector : MonoBehaviour
 {
     public GameObject[] Cameras;
-    private int _currentIndex;
+    public int SelectedIndex;
+
+    private GameObject Current => Cameras[SelectedIndex];
+
+    private void Start()
+    {
+        SelectCamera(SelectedIndex);
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Q)) Prev();
+        if (Input.GetKeyDown(KeyCode.E)) Next();
+    }
 
     public void SelectCamera(int index)
     {
-        Cameras[_currentIndex].SetActive(false);
-        _currentIndex = index % Cameras.Length;
-        Cameras[_currentIndex].SetActive(true);
+        Vector3 pos = Current.transform.position;
+        Quaternion rot = Current.transform.rotation;
+        Current.SetActive(false);
+        SelectedIndex = index % Cameras.Length;
+        if (SelectedIndex < 0f) SelectedIndex = Cameras.Length - 1;
+        Current.SetActive(true);
+        Current.transform.position = pos;
+        Current.transform.rotation = rot;
     }
 
+
     public void Next ()
-        => SelectCamera(_currentIndex + 1);
+        => SelectCamera(SelectedIndex + 1);
 
     public void Prev ()
-        => SelectCamera(_currentIndex - 1);
+        => SelectCamera(SelectedIndex - 1);
 }

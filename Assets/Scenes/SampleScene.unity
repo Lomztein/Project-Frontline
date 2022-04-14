@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44135216, g: 0.49016625, b: 0.57020897, a: 1}
+  m_IndirectSpecularColor: {r: 0.4413527, g: 0.49016678, b: 0.5702105, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1123,8 +1123,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ControllableObject: {fileID: 0}
-  TurretGO: {fileID: 0}
-  WeaponGO: {fileID: 0}
 --- !u!114 &300557915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1244,7 +1242,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 7.1e-43, y: -244.0116, z: 7.1e-43, w: 1.53e-43}
+  m_BoundingSphereOverride: {x: 7.12e-43, y: 7.1e-44, z: 0, w: -0.00000008538967}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2431,7 +2429,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 1.2585994e+9, z: 4.5905e-41, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: -0.000000023143144}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -2653,8 +2651,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ControllableObject: {fileID: 0}
-  TurretGO: {fileID: 0}
-  WeaponGO: {fileID: 0}
 --- !u!4 &846709017
 Transform:
   m_ObjectHideFlags: 0
@@ -2872,6 +2868,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 980051606}
+  - component: {fileID: 980051607}
   m_Layer: 0
   m_Name: Cameras
   m_TagString: Untagged
@@ -2897,6 +2894,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &980051607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 980051605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e7737b8f85e91e4c8e5be3a7aa60acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cameras:
+  - {fileID: 1086880949}
+  - {fileID: 1168037769}
+  - {fileID: 963194225}
+  - {fileID: 268101477}
+  SelectedIndex: 0
 --- !u!1001 &981227453
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3110,9 +3125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AvailableUnits:
-  - {fileID: 825600886256743386, guid: cd9bf6476b4e5e74e98b93bfbf0a209d, type: 3}
-  - {fileID: 4325982583102194759, guid: 41aa27b60c7077f4db9994e3e44702ea, type: 3}
-  - {fileID: 8481149593104203270, guid: d0c104a1f1f2c1f448848d7027a99c14, type: 3}
+  - {fileID: 7240952256543642800, guid: e63aaec190c483047a37a3a4defa3628, type: 3}
 --- !u!114 &985687950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3291,7 +3304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1086880950
 Transform:
   m_ObjectHideFlags: 0
@@ -3318,13 +3331,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac65f1ef48eb268448b91eebb4c561b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanSpeed: 100
+  PanSpeedMinMax: {x: 20, y: 50}
   PanMargin: 10
-  HeightMinMax: {x: 5, y: 150}
-  PitchMinMax: {x: 0, y: 75}
-  ZoomLevel: 1
   ZoomSpeed: 1
   ZoomLerpSpeed: 10
+  HeightMinMax: {x: 5, y: 150}
+  PitchMinMax: {x: 0, y: 75}
 --- !u!114 &1086880952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3348,10 +3360,10 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 2
   m_AntialiasingQuality: 2
-  m_StopNaN: 0
+  m_StopNaN: 1
   m_Dithering: 0
   m_ClearDepth: 1
   m_AllowXRRendering: 1
@@ -3426,7 +3438,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1093986462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3619,7 +3631,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1168037770
 Transform:
   m_ObjectHideFlags: 0
@@ -3730,13 +3742,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e1e478b27914d44949e4d4575dbf32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PanSpeed: 100
+  PanSpeedMinMax: {x: 5, y: 100}
   PanMargin: 10
-  Camera: {fileID: 1168037773}
-  SizeMinMax: {x: 5, y: 100}
-  CurrentZoom: 1
   ZoomSpeed: 1
   ZoomLerpSpeed: 10
+  Camera: {fileID: 1168037773}
+  SizeMinMax: {x: 5, y: 100}
 --- !u!1 &1181976844
 GameObject:
   m_ObjectHideFlags: 0
@@ -5831,7 +5842,7 @@ PrefabInstance:
     - target: {fileID: 5667567378679379697, guid: 2dd36e91ae6aac44aa6bf1dafa9e3de9,
         type: 3}
       propertyPath: Credits
-      value: 500000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 5667567378679379697, guid: 2dd36e91ae6aac44aa6bf1dafa9e3de9,
         type: 3}
@@ -6574,7 +6585,7 @@ PrefabInstance:
     - target: {fileID: 5667567378679379697, guid: 2dd36e91ae6aac44aa6bf1dafa9e3de9,
         type: 3}
       propertyPath: Credits
-      value: 500000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 5667567378679379697, guid: 2dd36e91ae6aac44aa6bf1dafa9e3de9,
         type: 3}
@@ -6800,9 +6811,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AvailableUnits:
-  - {fileID: 825600886256743386, guid: cd9bf6476b4e5e74e98b93bfbf0a209d, type: 3}
-  - {fileID: 4325982583102194759, guid: 41aa27b60c7077f4db9994e3e44702ea, type: 3}
-  - {fileID: 8481149593104203270, guid: d0c104a1f1f2c1f448848d7027a99c14, type: 3}
+  - {fileID: 2464237684173604384, guid: 7ab768f9bbd47354a92aae0221abdef6, type: 3}
 --- !u!114 &1960745170
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7470,7 +7479,7 @@ PrefabInstance:
     - target: {fileID: 5667567378679379699, guid: 2dd36e91ae6aac44aa6bf1dafa9e3de9,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}

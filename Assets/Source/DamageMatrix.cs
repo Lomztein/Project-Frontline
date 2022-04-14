@@ -6,7 +6,7 @@ public static class DamageMatrix
 {
     public enum Damage
     {
-        Gun, Cannon, Grenade, Energy, Tesla, Rocket, APGun, Heal
+        Gun, Cannon, Grenade, Energy, Tesla, Rocket, APGun, Heal, PointDefense
     }
 
     public enum Armor

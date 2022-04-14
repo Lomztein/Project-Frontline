@@ -5,10 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameObject ControllableObject;
-    public GameObject TurretGO;
-    public ITurret Turret;
-    public GameObject WeaponGO;
-    public IWeapon Weapon;
+
+    public List<ITurret> Turrets = new List<ITurret>();
+    public List<IWeapon> Weapons = new List<IWeapon>();
     private IControllable _controllable;
 
     private void Awake()
@@ -30,8 +29,8 @@ public class PlayerController : MonoBehaviour
     public void Release()
     {
         _controllable = null;
-        Turret = null;
-        Weapon = null;
+        Turrets.Clear();
+        Weapons.Clear();
     }
 
     void Update()
@@ -45,21 +44,23 @@ public class PlayerController : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         ITarget target = new PositionTarget(ray.GetPoint(1000));
 
-        if (Turret != null)
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
         {
-            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity))
-            {
-                Turret.AimTowards(hit.point);
-                target = hit.collider.gameObject.CompareTag("Terrain") ? target : new ColliderTarget(hit.collider);
-            }
-            else
-            {
-                Turret.AimTowards(ray.GetPoint(1000f));
-            }
+            Turrets.ForEach(x => x.AimTowards(hit.point));
+            target = hit.collider.gameObject.CompareTag("Terrain") ? target : new ColliderTarget(hit.collider);
         }
-        if (Weapon != null && Input.GetMouseButton(0))
+        else
         {
-            Weapon.TryFire(target);
+            Turrets.ForEach(x => x.AimTowards(ray.GetPoint(1000f)));
+        }
+
+        for (int i = 0; i < Mathf.Min(Weapons.Count, 2); i++)
+        {
+            if (Input.GetMouseButton(i))
+            {
+                Debug.Log(Weapons[i]);
+                Weapons[i].TryFire(target);
+            }
         }
     }
 }

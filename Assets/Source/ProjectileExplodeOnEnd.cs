@@ -13,19 +13,22 @@ public class ProjectileExplodeOnEnd : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Projectile.OnHit += Explode; ;   
+        Projectile.OnHit += Explode;
     }
 
-    private void Explode(Projectile arg1, Collider arg2, Vector3 arg3, Vector3 arg4)
+    private void Explode(Projectile proj, Collider col, Vector3 pos, Vector3 dir)
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, ExplosionRange, arg1.HitLayerMask);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, ExplosionRange, proj.HitLayerMask);
         foreach (Collider collider in colliders)
         {
-            IDamagable[] healths = collider.GetComponentsInParent<IDamagable>();
-            foreach (IDamagable health in healths)
+            if (Physics.Linecast(pos, collider.transform.position, out RaycastHit hit, Projectile.HitLayerMask) && hit.collider == collider)
             {
-                Projectile.DoDamage(health, ExplosionDamage, ExplosionDamageType, transform.position, (collider.transform.position - transform.position).normalized);
-            }
+                IDamagable[] healths = collider.GetComponentsInParent<IDamagable>();
+                foreach (IDamagable health in healths)
+                {
+                    Projectile.DoDamage(health, ExplosionDamage, ExplosionDamageType, transform.position, (collider.transform.position - transform.position).normalized);
+                }
+            } 
         }
     }
 }

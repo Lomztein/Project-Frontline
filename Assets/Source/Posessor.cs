@@ -16,6 +16,9 @@ public class Posessor : MonoBehaviour
 
     public PlayerController Controller;
 
+    public List<ITurret> _turrets;
+    public List<IWeapon> _weapons;
+
     private void Awake()
     {
         _followCamera = CameraController.GetComponent<Camera>();
@@ -24,18 +27,20 @@ public class Posessor : MonoBehaviour
     public void Posess (GameObject target)
     {
         IControllable controllable = target.GetComponentInChildren<IControllable>();
-        ITurret turret = target.GetComponentInChildren<ITurret>();
-        IWeapon weapon = target.GetComponentInChildren<IWeapon>();
+        AIController controller = target.GetComponentInChildren<AIController>();
 
-        if (controllable != null || turret != null || weapon != null)
+        if (controllable != null && controller != null)
         {
             MainCamera.enabled = false;
             _followCamera.enabled = true;
             CameraController.Follow(target.transform);
             MainCameraController.enabled = false;
 
-            Controller.Turret = turret;
-            Controller.Weapon = weapon;
+            if (controller.Turret != null)
+            {
+                Controller.Turrets.Add(controller.Turret);
+            }
+            Controller.Weapons.AddRange(controller.Weapons);
             Controller.Control(target);
 
             _currentPosessed = target;

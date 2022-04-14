@@ -32,4 +32,7 @@ public class BoidSwarm : MonoBehaviour, IEnumerable<Boid>
             Destroy(gameObject);
         }
     }
+
+    public void AddBoid(Boid boid)
+        => Boids.Add(boid);
 }
