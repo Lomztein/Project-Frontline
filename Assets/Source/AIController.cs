@@ -11,7 +11,7 @@ public abstract class AIController : MonoBehaviour, IController
     [HideInInspector] public TeamInfo Team;
     public IControllable Controllable;
 
-    private LayerMask _targetLayer;
+    public LayerMask TargetLayer { get; private set; }
     private TargetFinder _targetFinder = new TargetFinder();
 
     protected ITarget CurrentTarget { get; private set; }
@@ -81,7 +81,7 @@ public abstract class AIController : MonoBehaviour, IController
 
     public void SetTargetEvaluator(Func<Vector3, GameObject, float> evaluator) => _targetFinder.SetEvaluator(evaluator);
     public void SetTargetFilter(Predicate<GameObject> filter) => _targetFinder.SetFilter(filter);
-    public void SetTargetLayerMask(LayerMask mask) => _targetLayer = mask;
+    public void SetTargetLayerMask(LayerMask mask) => TargetLayer = mask;
 
     protected float GetDamageFactor(GameObject target)
     {
@@ -96,7 +96,7 @@ public abstract class AIController : MonoBehaviour, IController
 
     public void FindNewTarget()
     {
-        GameObject target = _targetFinder.FindTarget(transform.position, AcquireTargetRange, _targetLayer);
+        GameObject target = _targetFinder.FindTarget(transform.position, AcquireTargetRange, TargetLayer);
         if (target)
         {
             CurrentTarget = new ColliderTarget(target);
@@ -114,7 +114,7 @@ public abstract class AIController : MonoBehaviour, IController
     public void SetTeam(TeamInfo faction)
     {
         Team = faction;
-        _targetLayer = faction.GetOtherLayerMasks();
+        TargetLayer = faction.GetOtherLayerMasks();
     }
 
     protected Vector3 GetTargetLocalPosition() => CurrentTarget.GetPosition() - transform.position;

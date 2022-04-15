@@ -35,6 +35,7 @@ public class Projectile : MonoBehaviour, IPoolObject
         Velocity = Speed * direction;
         OnFired?.Invoke(this, direction);
     }
+
     protected virtual void FixedUpdate()
     {
         transform.position += Velocity * Time.fixedDeltaTime;

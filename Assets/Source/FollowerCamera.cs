@@ -41,6 +41,7 @@ public class FollowerCamera : MonoBehaviour
     {
         FollowObject = obj;
         SetMouseStatus(false);
+        _orbitRotation = new Vector2(obj.eulerAngles.x - 180 + 70, obj.eulerAngles.y);
     }
 
     public void StopFollow ()

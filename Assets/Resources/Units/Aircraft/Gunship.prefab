@@ -601,8 +601,8 @@ MonoBehaviour:
     Name: Gunship
     Description: Huge and heavy gunship that circles targets and pummels them with
       fury and hellfire. Can take a lot of punishment and can deal even more.
-    Cost: 6000
-    Value: 350
+    Cost: 10000
+    Value: 1000
     UnitRole: 1
     UnitTier: 2
     UnitType: 2
@@ -1067,6 +1067,7 @@ GameObject:
   - component: {fileID: 5710782334178748814}
   - component: {fileID: 5710782334178748801}
   - component: {fileID: 5710782334178748812}
+  - component: {fileID: 10344611111076567}
   m_Layer: 0
   m_Name: Light
   m_TagString: Untagged
@@ -1173,6 +1174,20 @@ MonoBehaviour:
   AimTolerance: 5
   LeadTarget: 1
   Modifiers: []
+--- !u!114 &10344611111076567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5710782334178748803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Gatling Cannon
+  Description: 
 --- !u!1 &5710782334328814192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,6 +1295,7 @@ GameObject:
   - component: {fileID: 5710782334378631600}
   - component: {fileID: 5710782334378631603}
   - component: {fileID: 5710782334378631601}
+  - component: {fileID: 6294151555696835385}
   m_Layer: 0
   m_Name: Heavy
   m_TagString: Untagged
@@ -1334,7 +1350,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 400
-  Firerate: 0.4
+  Firerate: 0.6
   DamageType: 1
   Speed: 250
   Amount: 1
@@ -1367,6 +1383,20 @@ MonoBehaviour:
   AimTolerance: 5
   LeadTarget: 1
   Modifiers: []
+--- !u!114 &6294151555696835385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5710782334378631605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Heavy Cannon
+  Description: 
 --- !u!1 &5710782334424547443
 GameObject:
   m_ObjectHideFlags: 0
@@ -11569,6 +11599,7 @@ GameObject:
   - component: {fileID: 5710782335347440845}
   - component: {fileID: 5710782335347440844}
   - component: {fileID: 5710782335347440843}
+  - component: {fileID: 8318471240968389943}
   m_Layer: 0
   m_Name: Medium
   m_TagString: Untagged
@@ -11627,7 +11658,7 @@ MonoBehaviour:
   DamageType: 6
   Speed: 200
   Amount: 1
-  BurstReloadTime: 2.5
+  BurstReloadTime: 1
   BurstAmmo: 32
   FireParticle: {fileID: 5710782335071857936}
   ProjectilePrefab: {fileID: 2842756162439936608, guid: 5fe0e32f98b205147a1dc210c3b93a8e,
@@ -11675,6 +11706,20 @@ MonoBehaviour:
   AimTolerance: 5
   LeadTarget: 1
   Modifiers: []
+--- !u!114 &8318471240968389943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5710782335347440846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Auotcannon
+  Description: 
 --- !u!1 &5710782335364941268
 GameObject:
   m_ObjectHideFlags: 0
@@ -12471,15 +12516,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92a563c3efd2b8344b126e88c4daa3d5, type: 3}
---- !u!4 &2164480799648896152 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5857214540084150587, guid: 92a563c3efd2b8344b126e88c4daa3d5,
-    type: 3}
-  m_PrefabInstance: {fileID: 5710782334152856995}
-  m_PrefabAsset: {fileID: 0}
 --- !u!198 &7772228650770223064 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2638061004860430971, guid: 92a563c3efd2b8344b126e88c4daa3d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 5710782334152856995}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2164480799648896152 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5857214540084150587, guid: 92a563c3efd2b8344b126e88c4daa3d5,
     type: 3}
   m_PrefabInstance: {fileID: 5710782334152856995}
   m_PrefabAsset: {fileID: 0}

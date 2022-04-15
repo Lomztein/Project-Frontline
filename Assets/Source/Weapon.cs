@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -51,7 +52,7 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
             Fire(intendedTarget);
             _chambered = false;
             _currentBurstAmmo--;
-            Invoke("Rechamber", 1f / Firerate);
+            StartCoroutine(Rechamber((1f / Firerate)));
 
             if (_currentBurstAmmo == 0)
             {
@@ -132,8 +133,9 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
         return _chambered && _currentBurstAmmo > 0;
     }
 
-    private void Rechamber()
+    private IEnumerator Rechamber (float time)
     {
+        yield return new WaitForSeconds(time);
         _chambered = true;
     }
 

@@ -7,7 +7,7 @@ public class TeamInfo : ScriptableObject
 {
     private const int LayerStart = 16;
     private const int LayerMaskStart = 1 << LayerStart;
-    private const int AllTeams =
+    public const int LayerAllTeams =
         LayerMaskStart
         | LayerMaskStart << 1
         | LayerMaskStart << 2
@@ -19,7 +19,7 @@ public class TeamInfo : ScriptableObject
 
     private const int ProjectileLayerStart = 24;
     private const int ProjectileLayerMaskStart = 1 << ProjectileLayerStart;
-    private const int ProjectileAllTeams =
+    public const int ProjectileLayerAllTeams =
     ProjectileLayerMaskStart
     | ProjectileLayerMaskStart << 1
     | ProjectileLayerMaskStart << 2
@@ -76,16 +76,16 @@ public class TeamInfo : ScriptableObject
 
 
     public static int GetLayerMask(int factionId) => LayerMaskStart << factionId;
-    public static int Invert(int mask) => AllTeams & ~mask;
+    public static int Invert(int mask) => LayerAllTeams & ~mask;
 
     public int GetLayer() => LayerStart + Id;
     public int GetLayerMask() => GetLayerMask(Id);
-    public int GetOtherLayerMasks() => AllTeams & ~GetLayerMask();
+    public int GetOtherLayerMasks() => LayerAllTeams & ~GetLayerMask();
 
     public static int ProjectileGetLayerMask(int factionId) => ProjectileLayerMaskStart << factionId;
-    public static int ProjectileInvert(int mask) => ProjectileAllTeams & ~mask;
+    public static int ProjectileInvert(int mask) => ProjectileLayerAllTeams & ~mask;
 
     public int ProjectileGetLayer() => ProjectileLayerStart + Id;
     public int ProjectileGetLayerMask() => ProjectileGetLayerMask(Id);
-    public int ProjectileGetOtherLayerMasks() => ProjectileAllTeams & ~ProjectileGetLayerMask();
+    public int ProjectileGetOtherLayerMasks() => ProjectileLayerAllTeams & ~ProjectileGetLayerMask();
 }

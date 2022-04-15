@@ -1,0 +1,217 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &559614447971223994
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 637757549003210343}
+  m_Layer: 0
+  m_Name: Muzzle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &637757549003210343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559614447971223994}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.104, z: 0.417}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5083494016600904549}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8254392988960772095
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5083494016600904549}
+  - component: {fileID: 8152560891312683492}
+  - component: {fileID: 7656909446768690147}
+  - component: {fileID: 5301482376955558955}
+  m_Layer: 0
+  m_Name: InfantryBlaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5083494016600904549
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254392988960772095}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.04279749, y: 1.6632283, z: -0.71895427}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4774037481218971113}
+  - {fileID: 637757549003210343}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8152560891312683492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254392988960772095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 100
+  Firerate: 0.3
+  DamageType: 0
+  Speed: 1
+  Amount: 1
+  BurstReloadTime: 1
+  BurstAmmo: 3
+  FireParticle: {fileID: 0}
+  ProjectilePrefab: {fileID: 5374328899955687704, guid: 774cc169879099644b5a4ecb3ed470c9,
+    type: 3}
+  Muzzle: {fileID: 2716794144110472882, guid: 3a681380f268e4046b106a6410ac17d1, type: 3}
+  Inaccuracy: 0
+--- !u!114 &7656909446768690147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254392988960772095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d00108eea1266a4da21e65c40f2f089, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnimatorTurret: {fileID: 0}
+  Transform: {fileID: 5083494016600904549}
+  Pivot: {fileID: 0}
+  Muzzle: {fileID: 637757549003210343}
+--- !u!114 &5301482376955558955
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254392988960772095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Blaster Rifle
+  Description: Handheld blaster than can incinerate infantry targets caught in its
+    blast.
+--- !u!1001 &5028955864837943810
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5083494016600904549}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: de5ac52aef64ffe4f96d1aaa5802dddb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: de5ac52aef64ffe4f96d1aaa5802dddb,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.17059548
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: de5ac52aef64ffe4f96d1aaa5802dddb,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.17059548
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: de5ac52aef64ffe4f96d1aaa5802dddb,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.17059548
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: de5ac52aef64ffe4f96d1aaa5802dddb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: de5ac52aef64ffe4f96d1aaa5802dddb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: de5ac52aef64ffe4f96d1aaa5802dddb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: de5ac52aef64ffe4f96d1aaa5802dddb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: de5ac52aef64ffe4f96d1aaa5802dddb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: de5ac52aef64ffe4f96d1aaa5802dddb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: de5ac52aef64ffe4f96d1aaa5802dddb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: de5ac52aef64ffe4f96d1aaa5802dddb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: de5ac52aef64ffe4f96d1aaa5802dddb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: de5ac52aef64ffe4f96d1aaa5802dddb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1461304994638716399, guid: de5ac52aef64ffe4f96d1aaa5802dddb,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 493b65bffd860e0418bc029f19db329c, type: 2}
+    - target: {fileID: 919132149155446097, guid: de5ac52aef64ffe4f96d1aaa5802dddb,
+        type: 3}
+      propertyPath: m_Name
+      value: BlasterRifle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: de5ac52aef64ffe4f96d1aaa5802dddb, type: 3}
+--- !u!4 &4774037481218971113 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: de5ac52aef64ffe4f96d1aaa5802dddb,
+    type: 3}
+  m_PrefabInstance: {fileID: 5028955864837943810}
+  m_PrefabAsset: {fileID: 0}
