@@ -54,7 +54,8 @@ public class Posessor : MonoBehaviour
             {
                 if (!IsInvoking())
                 {
-                    Invoke("Reset", 3f);
+                    Controller.Release();
+                    Invoke(nameof(Reset), 3f);
                 }
             }
 

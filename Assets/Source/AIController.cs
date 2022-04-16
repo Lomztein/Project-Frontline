@@ -177,17 +177,12 @@ public abstract class AIController : MonoBehaviour, IController
 
             if ((GetTargetSquareDistance() > LooseTargetRange * LooseTargetRange) && ForcedTarget != true || !CanHitOrNoTurret(CurrentTarget.GetPosition()))
             {
-                CurrentTarget = null;
+                FindNewTarget();
             }
         }
         else
         {
             ForcedTarget = false;
-            if (!CurrentTarget.ExistsAndValid() || !CanHitOrNoTurret(CurrentTarget.GetPosition()))
-            {
-                FindNewTarget();
-            }
-
             _targetFindingTicker.Tick();
         }
     }

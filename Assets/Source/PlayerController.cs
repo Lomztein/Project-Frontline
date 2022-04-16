@@ -74,30 +74,30 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (_controllable != null)
+        if (_controllable as Component != null)
         {
             _controllable.Accelerate(Input.GetAxis("Vertical"));
             _controllable.Turn(Input.GetAxis("Horizontal"));
-        }
 
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        ITarget target = new PositionTarget(ray.GetPoint(1000));
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            ITarget target = new PositionTarget(ray.GetPoint(1000));
 
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _targetLayer))
-        {
-            Turrets.ForEach(x => x.AimTowards(hit.point));
-            target = hit.collider.gameObject.CompareTag("Terrain") ? target : new ColliderTarget(hit.collider);
-        }
-        else
-        {
-            Turrets.ForEach(x => x.AimTowards(ray.GetPoint(1000f)));
-        }
-
-        for (int i = 0; i < Mathf.Min(Weapons.Count, 2); i++)
-        {
-            if (Input.GetMouseButton(i))
+            if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _targetLayer))
             {
-                Weapons[i].TryFire(target);
+                Turrets.ForEach(x => x.AimTowards(hit.point));
+                target = hit.collider.gameObject.CompareTag("Terrain") ? target : new ColliderTarget(hit.collider);
+            }
+            else
+            {
+                Turrets.ForEach(x => x.AimTowards(ray.GetPoint(1000f)));
+            }
+
+            for (int i = 0; i < Mathf.Min(Weapons.Count, 2); i++)
+            {
+                if (Input.GetMouseButton(i))
+                {
+                    Weapons[i].TryFire(target);
+                }
             }
         }
     }
