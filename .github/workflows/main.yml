@@ -35,10 +35,12 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
+      - run: snap install blender --classic
+      
       - uses: game-ci/unity-builder@v2
         with:
           buildMethod: Builder.CDBuildGame
-          unityVersion: 2020.3.13f1
+          unityVersion: 2020.3.33f1
           targetPlatform: ${{ matrix.targetPlatform }}
 
       - uses: actions/upload-artifact@v2
@@ -72,7 +74,7 @@ jobs:
         env:
           BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
           CHANNEL: ${{ steps.channel.outputs.content }}
-          ITCH_GAME: brute-force-attack-2
+          ITCH_GAME: project-frontline
           ITCH_USER: Lomztein
           PACKAGE: ./build/${{ matrix.buildTarget }}
           VERSION_FILE: ./build/${{ matrix.buildTarget }}/version.txt
