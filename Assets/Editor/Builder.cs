@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using UnityEditor;
@@ -8,7 +9,9 @@ using UnityEngine;
 
 public class Builder : MonoBehaviour
 {
-    private static readonly string buildPrefix = "ProjectFrontline";
+    private const string BUILD_PREFIX = "ProjectFrontline";
+    private const string ITCH_PATH = "lomztein/project-frontline";
+    private static string LocalBuildPath => Directory.GetParent(Application.dataPath) + "\\Build\\";
 
     private static readonly Dictionary<BuildTarget, string> buildSuffixes = new Dictionary<BuildTarget, string>()
         {
@@ -43,6 +46,42 @@ public class Builder : MonoBehaviour
     public static void BuildGame()
     {
         BuildGame(Directory.GetParent(Application.dataPath) + "\\Build\\", "StandaloneWindows64");
+    }
+
+    [MenuItem("Project Frontline/Build and Push to Itch.io")]
+    public static void BuildAndPushToItch()
+    {
+        string[] args = new string[] { 
+            LocalBuildPath,
+            "StandaloneWindows64", "StandaloneLinux64", "StandaloneOSX"
+        };
+
+        BuildGame(args);
+
+        string appData = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+        string butlerBase = appData + "\\itch\\apps\\butler\\butler.exe";
+
+        foreach (var directory in Directory.GetDirectories(LocalBuildPath))
+        {
+            string version = File.ReadAllText(Path.Combine(directory, "version.txt"));
+            string channel = File.ReadAllText(Path.Combine(directory, "channel.txt"));
+
+            // Compress each directory into an archive.
+            /*var tarInfo = new ProcessStartInfo("tar.exe", $"-cf {name}.zip {LocalBuildPath}");
+            var tarProcess = new Process();
+            tarProcess.StartInfo = tarInfo;
+            tarProcess.Start();*/
+
+            // Push each directory to itch.
+
+            UnityEngine.Debug.Log($"{butlerBase} push {directory} {ITCH_PATH}:{channel} --userversion {version}");
+
+            var butlerInfo = new ProcessStartInfo(butlerBase, $"push {directory} {ITCH_PATH}:{channel} --userversion {version}");
+            var butlerProcess = new Process();
+            butlerProcess.StartInfo = butlerInfo;
+            butlerProcess.Start();
+        }
+
     }
 
     public static void CDBuildGame()
@@ -80,7 +119,7 @@ public class Builder : MonoBehaviour
                 target = target,
                 scenes = buildScenes,
                 options = BuildOptions.None,
-                locationPathName = Path.Combine(dir, $"{buildPrefix}-{buildSuffixes[target]}{buildExtensions[target]}")
+                locationPathName = Path.Combine(dir, $"{BUILD_PREFIX}-{buildSuffixes[target]}{buildExtensions[target]}")
             };
 
             BuildPipeline.BuildPlayer(options);
