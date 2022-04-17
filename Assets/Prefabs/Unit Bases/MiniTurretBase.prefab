@@ -367,6 +367,7 @@ MonoBehaviour:
   - {fileID: 7347173786867067739}
   AimTolerance: 5
   LeadTarget: 1
+  TargetSearchFrequency: 2
   Modifiers: []
 --- !u!114 &776516858351423687
 MonoBehaviour:
@@ -477,7 +478,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialDamage: 0
-  DamagePerSecond: 5
+  DamagePerSecond: 0
+  DamagePerSecondAcceleration: 0.2
   DamageType: 7
 --- !u!114 &-1175783587793280878
 MonoBehaviour:

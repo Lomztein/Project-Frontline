@@ -37,13 +37,14 @@ public abstract class AIController : MonoBehaviour, IController
     private DamageMatrix.Damage _primaryWeaponDamageType;
     private Ticker _targetFindingTicker;
     private float _aimDelta;
+    public float TargetSearchFrequency = 2f;
 
     public AIControllerModifier[] Modifiers;
 
     protected virtual void Awake()
     {
         _targetFinder = new TargetFinder(go => CanEngage(go));
-        _targetFindingTicker = new Ticker(0.5f, FindNewTarget);
+        _targetFindingTicker = new Ticker(1f / TargetSearchFrequency, FindNewTarget);
 
         Controllable = GetComponentInChildren<IControllable>();
         if (TurretObject)
@@ -177,6 +178,7 @@ public abstract class AIController : MonoBehaviour, IController
 
             if ((GetTargetSquareDistance() > LooseTargetRange * LooseTargetRange) && ForcedTarget != true || !CanHitOrNoTurret(CurrentTarget.GetPosition()))
             {
+                CurrentTarget = null;
                 FindNewTarget();
             }
         }

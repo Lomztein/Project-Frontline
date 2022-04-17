@@ -1133,6 +1133,7 @@ MonoBehaviour:
   WeaponObjects: []
   AimTolerance: 60
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 60
 --- !u!114 &7897096464993776621
@@ -1208,8 +1209,8 @@ MonoBehaviour:
   AngularAccelerationSpeed: 120
   HoverHeight: 20
   HoverSpeed: 10
-  Dampening: 0.95
-  AngularDampening: 0.95
+  DragCoeffecient: 0.7
+  AngularDragCoeffecient: 0.2
   AccFactorLerp: 10
   TurnFactorLeap: 10
 --- !u!54 &7897096464993778124

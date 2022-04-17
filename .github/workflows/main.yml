@@ -1,0 +1,78 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Build and Publish All
+# Can perhaps be split into seperate build and publish workflows.
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the master branch
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    
+    env:
+      UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+      
+    strategy:
+      matrix: 
+        targetPlatform:
+          - StandaloneWindows64 
+          - StandaloneLinux64
+          - StandaloneOSX
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+      
+      - uses: game-ci/unity-builder@v2
+        with:
+          buildMethod: Builder.CDBuildGame
+          unityVersion: 2020.3.13f1
+          targetPlatform: ${{ matrix.targetPlatform }}
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.targetPlatform }}
+          path: ./build/
+      
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    
+    strategy:
+      matrix:
+        buildTarget:
+          - StandaloneWindows64 
+          - StandaloneLinux64
+          - StandaloneOSX
+    
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: ${{ matrix.buildTarget }}
+          path: ./build/
+
+      - uses: juliangruber/read-file-action@v1
+        id: channel
+        with:
+          path: ./build/${{ matrix.buildTarget }}/channel.txt
+                
+      - uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: ${{ steps.channel.outputs.content }}
+          ITCH_GAME: brute-force-attack-2
+          ITCH_USER: Lomztein
+          PACKAGE: ./build/${{ matrix.buildTarget }}
+          VERSION_FILE: ./build/${{ matrix.buildTarget }}/version.txt

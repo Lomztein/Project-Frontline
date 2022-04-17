@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Util;
 
 public class HovererBody : MobileBody, IControllable
 {
@@ -10,8 +11,8 @@ public class HovererBody : MobileBody, IControllable
     public float HoverHeight;
     public float HoverSpeed;
 
-    public float Dampening;
-    public float AngularDampening;
+    public float DragCoeffecient;
+    public float AngularDragCoeffecient;
 
     public float AccFactorLerp;
     public float TurnFactorLeap;
@@ -42,8 +43,8 @@ public class HovererBody : MobileBody, IControllable
         Turn();
         Accelerate();
 
-        _velocity *= Dampening;
-        AngularVelocity *= AngularDampening;
+        _velocity += UnityUtils.ComputeSimpleDragForce(_velocity, DragCoeffecient) * Time.fixedDeltaTime;
+        AngularVelocity -= UnityUtils.ComputeSimpleDrag(Mathf.Abs(AngularVelocity), AngularDragCoeffecient) * Mathf.Sign(AngularVelocity) * Time.fixedDeltaTime;
         CurrentSpeed = transform.InverseTransformVector(_velocity).z;
 
         Move (_velocity * Time.fixedDeltaTime);

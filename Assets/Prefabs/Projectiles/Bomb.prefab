@@ -186,7 +186,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Projectile: {fileID: 4941295505354261099}
-  DragFactor: 0.99
+  DragCoeffecient: 0.025
 --- !u!135 &-4931353201638041453
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -198,7 +198,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0.84}
 --- !u!114 &9081208224054268384
 MonoBehaviour:
@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 10
+  MaxHealth: 15
   ArmorType: 3
   DestroyOnDeath: 0
   Debris: {fileID: 0}

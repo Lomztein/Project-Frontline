@@ -79,9 +79,9 @@ GameObject:
   - component: {fileID: 681589584778586267}
   - component: {fileID: 681589584778586268}
   - component: {fileID: 1789922621893258165}
-  - component: {fileID: 8302122604785612756}
   - component: {fileID: 681589584778586258}
   - component: {fileID: 681589584778586259}
+  - component: {fileID: 1675680301}
   m_Layer: 0
   m_Name: Bomber
   m_TagString: Untagged
@@ -196,20 +196,6 @@ MonoBehaviour:
   DestroyOnDeath: 1
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
---- !u!114 &8302122604785612756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681589584778586269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 122cf59bf8864e545963e5a276b244e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Movement: {x: 0, y: 30, z: -200}
-  Transformed: 1
 --- !u!114 &681589584778586258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +217,7 @@ MonoBehaviour:
   - {fileID: 1068877623092155105}
   AimTolerance: 5
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers:
   - {fileID: 681589584778586259}
   HoldRange: 150
@@ -246,6 +233,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c498c43eb27de4bac5bf82321f14fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1675680301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681589584778586269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46fe0a88465a2b94c817b7220b4e3306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
 --- !u!1 &1068877621232310972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1140,8 +1140,8 @@ MonoBehaviour:
   DamageType: 2
   Speed: 50
   Amount: 1
-  BurstReloadTime: 5
-  BurstAmmo: 10
+  BurstReloadTime: 8
+  BurstAmmo: 16
   FireParticle: {fileID: 0}
   ProjectilePrefab: {fileID: 8742067100785924932, guid: cadc8e0098eb8d042a6637e4f32d86be,
     type: 3}

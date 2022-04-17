@@ -388,6 +388,7 @@ MonoBehaviour:
   - {fileID: 4325982582558911292}
   AimTolerance: 5
   LeadTarget: 1
+  TargetSearchFrequency: 2
   Modifiers: []
 --- !u!114 &3112912025015692450
 MonoBehaviour:
@@ -508,6 +509,7 @@ MonoBehaviour:
   - {fileID: 4325982582396688272}
   AimTolerance: 60
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 65
 --- !u!114 &4325982583102194755
@@ -586,8 +588,8 @@ MonoBehaviour:
   AngularAccelerationSpeed: 120
   HoverHeight: 20
   HoverSpeed: 10
-  Dampening: 0.95
-  AngularDampening: 0.95
+  DragCoeffecient: 0.5
+  AngularDragCoeffecient: 0.2
   AccFactorLerp: 10
   TurnFactorLeap: 10
 --- !u!54 &8555348099755170094
