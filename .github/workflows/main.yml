@@ -35,7 +35,7 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
       
-      - run:  sudo snap install blender --classic
+      - run:  sudo snap install blender
       
       - uses: game-ci/unity-builder@v2
         with:
