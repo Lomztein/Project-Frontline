@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,12 @@ public class StructureFocusAIControllerModifier : AIControllerModifier // Temp c
 
     public override void OnInitialized(AIController controller)
     {
-        controller.SetTargetEvaluator((pos, go) => -Vector3.SqrMagnitude(pos - transform.position) + (go.CompareTag(STRUCTURE_UNIT_TAG) ? 10000000 : 0));
+        controller.SetTargetEvaluator(EvaluateTarget);
+    }
+
+    private float EvaluateTarget(Vector3 pos, GameObject obj)
+    {
+        float value = -Vector3.SqrMagnitude(pos - obj.transform.position) + (obj.CompareTag(STRUCTURE_UNIT_TAG) ? 10000000000 : -1000000000);
+        return value;
     }
 }

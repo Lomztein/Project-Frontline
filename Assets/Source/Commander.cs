@@ -14,7 +14,7 @@ public class Commander : MonoBehaviour, ITeamComponent
     public TeamInfo TeamInfo;
 
     public bool CanBuild => Fortress != null;
-    public bool Eliminated => _alivePlaced.Count == 0;
+    public bool Eliminated => _ded;
 
 
     public Transform Fortress;

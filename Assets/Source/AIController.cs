@@ -182,7 +182,12 @@ public abstract class AIController : MonoBehaviour, IController
                 FindNewTarget();
             }
         }
-        else
+        else if (CurrentTarget != null)
+        {
+            ForcedTarget = false;
+            CurrentTarget = null;
+            FindNewTarget();
+        }else
         {
             ForcedTarget = false;
             _targetFindingTicker.Tick();

@@ -66,14 +66,7 @@ public class Builder : MonoBehaviour
             string version = File.ReadAllText(Path.Combine(directory, "version.txt"));
             string channel = File.ReadAllText(Path.Combine(directory, "channel.txt"));
 
-            // Compress each directory into an archive.
-            /*var tarInfo = new ProcessStartInfo("tar.exe", $"-cf {name}.zip {LocalBuildPath}");
-            var tarProcess = new Process();
-            tarProcess.StartInfo = tarInfo;
-            tarProcess.Start();*/
-
             // Push each directory to itch.
-
             UnityEngine.Debug.Log($"{butlerBase} push {directory} {ITCH_PATH}:{channel} --userversion {version}");
 
             var butlerInfo = new ProcessStartInfo(butlerBase, $"push {directory} {ITCH_PATH}:{channel} --userversion {version}");

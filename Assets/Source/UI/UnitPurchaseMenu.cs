@@ -18,7 +18,22 @@ namespace UI
 
         private void Start()
         {
+            UpdateActive();
+            if (Commander)
+            {
+                Commander.OnEliminated += Commander_OnEliminated;
+            }
             OpenTab(CurrentOpenTab);
+        }
+
+        private void UpdateActive ()
+        {
+            gameObject.SetActive(Commander != null && Commander.isActiveAndEnabled && !Commander.Eliminated);
+        }
+
+        private void Commander_OnEliminated(Commander obj)
+        {
+            UpdateActive();
         }
 
         public void OpenTab(UnitInfo.Type unitType)

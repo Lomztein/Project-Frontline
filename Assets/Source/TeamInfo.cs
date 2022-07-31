@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Faction", menuName = "Faction")]
+[CreateAssetMenu(fileName = "New Team", menuName = "Team")]
 public class TeamInfo : ScriptableObject
 {
     private const int LayerStart = 16;
