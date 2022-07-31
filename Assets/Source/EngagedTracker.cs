@@ -44,7 +44,7 @@ public class EngagedTracker : MonoBehaviour
         LastAttackTime = Time.time;
     }
 
-    private void Health_OnDamageTaken(float obj)
+    private void Health_OnDamageTaken(Health health, float obj)
     {
         LastDamagedTime = Time.time;
     }

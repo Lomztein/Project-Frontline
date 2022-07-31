@@ -19,9 +19,9 @@ public class SquareBattlefieldShape : IBattlefieldShape
         float halfWidth = info.Width / 2f;
         float halfHeight = info.Height / 2f;
 
-        yield return new Vector3(halfHeight, 0f, halfWidth);
-        yield return new Vector3(halfHeight, 0f, -halfWidth);
-        yield return new Vector3(-halfHeight, 0f, -halfWidth);
-        yield return new Vector3(-halfHeight, 0f, halfWidth);
+        yield return new Vector3(halfWidth, 0f, halfHeight);
+        yield return new Vector3(halfWidth, 0f, -halfHeight);
+        yield return new Vector3(-halfWidth, 0f, -halfHeight);
+        yield return new Vector3(-halfWidth, 0f, halfHeight);
     }
 }

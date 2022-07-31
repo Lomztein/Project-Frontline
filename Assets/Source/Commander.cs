@@ -19,6 +19,11 @@ public class Commander : MonoBehaviour, ITeamComponent
 
     public Transform Fortress;
     private List<Unit> _alivePlaced = new List<Unit>();
+    private List<Unit> _aliveProduced = new List<Unit>();
+
+    public IEnumerable<Unit> AlivePlaced => _alivePlaced;
+    public IEnumerable<Unit> AliveProduced => _aliveProduced;
+    public IEnumerable<Unit> AliveAll => Enumerable.Concat(AlivePlaced, AliveProduced);
 
     private bool _ded = false;
 
@@ -80,11 +85,11 @@ public class Commander : MonoBehaviour, ITeamComponent
         Unit placed = go.GetComponent<Unit>();
         AssignCommander(go);
         _alivePlaced.Add(placed);
-        go.GetComponent<Health>().OnDeath += OnUnitDeath;
+        go.GetComponent<Health>().OnDeath += PlacedUnitDeath;
 
-        void OnUnitDeath ()
+        void PlacedUnitDeath (Health health)
         {
-            u.GetComponent<Health>().OnDeath -= OnUnitDeath;
+            u.GetComponent<Health>().OnDeath -= PlacedUnitDeath;
             _alivePlaced.Remove(placed);
             OnPlacedUnitDeath?.Invoke(this, u);
             if (_alivePlaced.Count == 0)
@@ -120,6 +125,13 @@ public class Commander : MonoBehaviour, ITeamComponent
         Unit unit = arg2.GetComponent<Unit>();
         unit.OnKill += Unit_OnKill;
         OnUnitSpawned?.Invoke(this, arg1, unit);
+        _aliveProduced.Add(unit);
+        unit.GetComponent<Health>().OnDeath += OnProducedUnitDeath;
+    }
+
+    private void OnProducedUnitDeath(Health obj)
+    {
+        _aliveProduced.Remove(obj.GetComponent<Unit>());
     }
 
     private void Unit_OnKill(Unit arg1, IWeapon arg2, Projectile arg3, IDamagable arg4)

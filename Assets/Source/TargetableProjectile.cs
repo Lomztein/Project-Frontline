@@ -19,7 +19,7 @@ public class TargetableProjectile : MonoBehaviour, ITeamComponent
         Health.OnDeath += TargetableProjectile_OnDeath;
     }
 
-    private void TargetableProjectile_OnDeath()
+    private void TargetableProjectile_OnDeath(Health health)
     {
         Projectile.End();
     }

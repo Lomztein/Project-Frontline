@@ -39,7 +39,7 @@ public class ShieldProjector : MonoBehaviour
         _shieldTargetSize = ShieldSize;
     }
 
-    private void ShieldHealth_OnDeath()
+    private void ShieldHealth_OnDeath(Health health)
     {
         _shieldTargetSize = 0f;
         Shatter();
@@ -67,7 +67,7 @@ public class ShieldProjector : MonoBehaviour
     public void ForceResetSize ()
         => _shieldTargetSize = ShieldSize;
 
-    private void ShieldHealth_OnTakeDamage(DamageInfo obj)
+    private void ShieldHealth_OnTakeDamage(Health health, DamageInfo obj)
     {
         _lastDamageTime = Time.time;
     }

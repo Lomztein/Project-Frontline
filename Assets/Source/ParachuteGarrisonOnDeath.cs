@@ -13,7 +13,7 @@ public class ParachuteGarrisonOnDeath : MonoBehaviour
         Health.OnDeath += Health_OnDeath;
     }
 
-    private void Health_OnDeath()
+    private void Health_OnDeath(Health health)
     {
         foreach (var slot in Garrison.Slots)
         {
