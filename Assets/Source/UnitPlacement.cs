@@ -128,6 +128,6 @@ public class UnitPlacement : MonoBehaviour
     private bool CanPlace(Vector3 position, Vector3 checkSize)
     {
         Collider[] colliders = Physics.OverlapBox(position, checkSize / 2f, Quaternion.identity, ~TerrainLayer);
-        return !colliders.Any(x => x.CompareTag("StructureUnit"));
+        return !colliders.Any(x => x.CompareTag("StructureUnit")) && MatchSettings.Current.BattlefieldInfo.Contains(position);
     }
 }

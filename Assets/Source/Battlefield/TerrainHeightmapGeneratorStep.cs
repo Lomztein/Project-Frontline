@@ -71,8 +71,7 @@ public class TerrainHeightmapGeneratorStep : ISceneryGeneratorStep
 
         float wx = terrain.GetPosition().x + xr * terrain.terrainData.size.x;
         float wz = terrain.GetPosition().z + yr * terrain.terrainData.size.z;
-        var pos = terrain.GetPosition();
 
-        return new Vector3(wx, 0f, wz);
+        return new Vector3(wz, 0f, wx);
     }
 }

@@ -73,5 +73,19 @@ namespace Util
             Vector3 refl = Vector3.Reflect(velocity, perp);
             return refl / magnitude * force * -1f;
         }
+
+        public static string GetPath(this Transform transform)
+        {
+            Transform current = transform;
+            string path = "";
+            while (current != null)
+            {
+                path = current.name + "/" + path;
+                current = current.parent;
+            }
+            if (string.IsNullOrEmpty(path))
+                return String.Empty;
+            return path.Substring(0, path.Length - 1);
+        }
     }
 }

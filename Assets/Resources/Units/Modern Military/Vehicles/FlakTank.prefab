@@ -251,6 +251,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8161709482788567209, guid: 8cd500522f6ce674a9b045047f64181f,
         type: 3}
+      propertyPath: Info.Identifier
+      value: Tank.Flak
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161709482788567209, guid: 8cd500522f6ce674a9b045047f64181f,
+        type: 3}
       propertyPath: Info.Description
       value: Designed for speed and agility, with a quad flak cannon mounted on the
         back, this speedster can keep up with aircraft and blow them out of the sky
@@ -323,5 +328,6 @@ MonoBehaviour:
   - {fileID: 5461233867797301202}
   AimTolerance: 15
   LeadTarget: 1
+  TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 65

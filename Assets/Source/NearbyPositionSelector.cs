@@ -41,6 +41,6 @@ public class NearbyPositionSelector : MonoBehaviour, IPositionSeletor
     private bool CanPlace (Vector3 position, Vector3 checkSize)
     {
         Collider[] colliders = Physics.OverlapBox(position, checkSize / 2f, Quaternion.identity, ~TerrainLayer);
-        return !colliders.Any(x => x.CompareTag(StructTag));
+        return !colliders.Any(x => x.CompareTag(StructTag)) && MatchSettings.Current.BattlefieldInfo.Contains(position);
     }
 }

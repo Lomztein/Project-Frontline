@@ -1,54 +1,104 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ActionCameraController : MonoBehaviour
 {
-    public ActionCamera[] Cameras;
-    public ActionCamera CurrentCamera;
+    public ActionCam[] Cameras;
+    public ActionCam CurrentCamera;
     public Transform CurrentParent;
-    public float SwitchTime = 30f;
+    public Health CurrentHealth;
+    public Vector2 SwitchTime = new Vector2(20f, 40f);
+
+    public float RotLerpTime;
+
+    public float FindDelay = 2f;
+    public float FreeDelay = 1f;
+
+    public float FallbackHeight;
+    public float FallbackLookHeight;
+    private List<Transform> _fallbacks;
+
+    private void Awake()
+    {
+        GenerateFallbacks();
+        Cameras = Resources.LoadAll<ActionCam>("ActionCam");
+    }
+
+    private void OnEnable()
+    {
+        FindActionCamera();
+    }
 
     public void Update()
     {
-        if (CurrentParent == null)
+        if (CurrentParent == null && !IsInvoking())
         {
-            FindActionCamera();
-            if (CurrentParent)
-            {
-                CancelInvoke();
-                Invoke(nameof(Switch), SwitchTime);
-            }
+            Invoke(nameof(FindActionCamera), FindDelay);
         }
     }
 
-    public void LateUpdate()
+    private void LateUpdate()
     {
-        if (CurrentParent)
+        if (CurrentParent && CurrentCamera != null)
         {
             transform.position = CurrentParent.TransformPoint(CurrentCamera.LocalPosition);
-            transform.rotation = CurrentParent.transform.rotation * Quaternion.Euler(CurrentCamera.LocalRotation);
+            transform.rotation = Quaternion.Lerp(transform.rotation, CurrentParent.transform.rotation * CurrentCamera.LocalRotation, RotLerpTime * Time.deltaTime);
+        }
+    }
+
+    private void GenerateFallbacks ()
+    {
+        _fallbacks = new List<Transform>();
+        var verts = MatchSettings.Current.BattlefieldInfo.GetPerimeterPolygon().ToArray();
+        foreach (var vert in verts)
+        {
+            var pos = new Vector3(vert.z / 2f, FallbackHeight, vert.x / 2f);
+            GameObject newFallback = new GameObject($"ActionCam Fallback ({pos})");
+            newFallback.transform.position = pos;
+            newFallback.transform.LookAt(Vector3.up * FallbackLookHeight);
+            _fallbacks.Add(newFallback.transform);
+        }
+
+        for (int i = 0; i < verts.Length; i++)
+        {
+            var v1 = verts[i] * 1.5f;
+            var v2 = verts[(i + 1) % verts.Length] * 1.5f;
+
+            var pos = Vector3.Lerp(v1, v2, 0.5f);
+            pos = new Vector3(pos.z / 2f, FallbackHeight, pos.x / 2f);
+
+            GameObject newFallback = new GameObject($"ActionCam Fallback ({pos})");
+            newFallback.transform.position = pos;
+            newFallback.transform.LookAt(Vector3.up * FallbackLookHeight);
+            _fallbacks.Add(newFallback.transform);
         }
     }
 
     private void FindActionCamera()
     {
-        var camera = Cameras[Random.Range(0, Cameras.Length)];
+        ActionCam camera = null;
         var commanders = GameObject.FindGameObjectsWithTag("Commander");
         var commander = commanders[Random.Range(0, commanders.Length)].GetComponent<Commander>();
 
         Unit highest = null;
-        float highestScore = float.MinValue;
+        float highestScore = 0.1f;
 
         foreach (var unit in commander.AliveProduced)
         {
-            if (unit != null && unit.Info.Identifier.StartsWith(camera.UnitIdentifier))
+            if (unit.CompareTag("StructureUnit") && !unit.IsEngaged)
+                continue;
+
+            var unitCamera = GetRandomCamera(unit);
+            if (unit != null && unitCamera != null)
             {
-                float score = unit.GetComponent<Health>().CurrentHealth * Random.Range(0.5f, 1f);
+                float score = (unit.GetWeapons().Sum(x => x.GetDPS()) + unit.GetComponent<Health>().CurrentHealth) * Random.Range(0f, 1f);
                 if (score > highestScore)
                 {
                     highestScore = score;
                     highest = unit;
+                    camera = unitCamera;
                 }
             }
         }
@@ -64,20 +114,57 @@ public class ActionCameraController : MonoBehaviour
             {
                 CurrentParent = highest.transform.Find(camera.TransformPath);
             }
+            if (CurrentHealth)
+            {
+                CurrentHealth.OnDeath -= ActionCameraController_OnDeath;
+            }
+            CurrentHealth = highest.GetComponent<Health>();
+            CurrentHealth.OnDeath += ActionCameraController_OnDeath;
         }
+        else
+        {
+            CurrentParent = _fallbacks[Random.Range(0, _fallbacks.Count)];
+            CurrentCamera = ScriptableObject.CreateInstance<ActionCam>();
+        }
+
+        CancelInvoke();
+        Invoke(nameof(Switch), Random.Range(SwitchTime.x, SwitchTime.y));
+    }
+
+    private void ActionCameraController_OnDeath(Health obj)
+    {
+        obj.OnDeath -= ActionCameraController_OnDeath;
+        if (CurrentHealth == obj)
+        {
+            CancelInvoke();
+            Invoke(nameof(Free), FreeDelay);
+            Invoke(nameof(FindActionCamera), FindDelay);
+        }
+    }
+
+    public void Free ()
+    {
+        CurrentCamera = null;
+    }
+
+    private ActionCam GetRandomCamera(Unit target)
+    {
+        var cameras = Cameras.Where(x => Matches(target, x)).ToArray();
+        if (cameras.Length > 0)
+        {
+            return cameras[Random.Range(0, cameras.Length)];
+        }
+        return null;
+    }
+
+    private bool Matches(Unit unit, ActionCam cam)
+    {
+        string id = cam.UnitIdentifier;
+        return unit.Info.Identifier.StartsWith(id);
     }
 
     private void Switch ()
     {
-        CurrentParent = null;
-    }
-
-    [System.Serializable]
-    public class ActionCamera
-    {
-        public string UnitIdentifier;
-        public string TransformPath;
-        public Vector3 LocalPosition;
-        public Vector3 LocalRotation;
+        FindActionCamera();
     }
 }

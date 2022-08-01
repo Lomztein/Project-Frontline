@@ -59,6 +59,7 @@ MonoBehaviour:
     UnitRole: 1
     UnitTier: 1
     UnitType: 4
+  Health: {fileID: 0}
   _weapons: []
 --- !u!114 &8124651150434441101
 MonoBehaviour:
@@ -130,6 +131,18 @@ MonoBehaviour:
     Path: Body
     LocalPosition: {x: 0, y: 0.561, z: 3.27}
     LocalRotation: {x: -0.00012294337, y: -0.000095622636, z: 180}
+  - UnitIdentifier: Jet.Fighter
+    Path: Body
+    LocalPosition: {x: 0, y: 0.986, z: -3.218}
+    LocalRotation: {x: 90, y: 180, z: 0}
+  - UnitIdentifier: Plane.Gunship
+    Path: Body
+    LocalPosition: {x: 0, y: 0.932, z: -9.543}
+    LocalRotation: {x: 315.00015, y: 180, z: 180}
+  - UnitIdentifier: Plane.Bomber
+    Path: Body
+    LocalPosition: {x: 0, y: 0.003, z: -11.332}
+    LocalRotation: {x: 90, y: 180.00006, z: 0}
   AddWeaponToAI: 0
 --- !u!1001 &5571006344789279763
 PrefabInstance:
