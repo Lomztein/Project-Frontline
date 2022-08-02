@@ -377,7 +377,7 @@ Transform:
   m_LocalScale: {x: 2.528379, y: 2.5283785, z: 2.5283785}
   m_Children:
   - {fileID: 1933418263252746648}
-  m_Father: {fileID: 5710782334631474095}
+  m_Father: {fileID: 7951979433448186474}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6167486233595586896
@@ -429,6 +429,38 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4296086612087228145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 301861650821684497}
+  m_Layer: 0
+  m_Name: Rotate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &301861650821684497
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4296086612087228145}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2638152763938761454}
+  - {fileID: 5435062216261462175}
+  m_Father: {fileID: 5710782335507930189}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4505395326669620945
 GameObject:
   m_ObjectHideFlags: 0
@@ -459,7 +491,7 @@ Transform:
   m_LocalScale: {x: 2.528379, y: 2.5283785, z: 2.5283785}
   m_Children:
   - {fileID: 3285045491559126046}
-  m_Father: {fileID: 5710782335507930189}
+  m_Father: {fileID: 301861650821684497}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2370695670840839097
@@ -630,8 +662,9 @@ MonoBehaviour:
   Info:
     Identifier: Plane.Gunship
     Name: Gunship
-    Description: Huge and heavy gunship that circles targets and pummels them with
-      fury and hellfire. Can take a lot of punishment and can deal even more.
+    Description: Huge and both heavily armored and armed gunship that circles targets
+      and pummels them with fury and hellfire. Can take a lot of punishment and can
+      deal even more.
     Cost: 10000
     Value: 1000
     UnitRole: 1
@@ -857,11 +890,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5521355488362438823}
-  m_LocalRotation: {x: 0.49999842, y: 0.50000155, z: 0.5000015, w: -0.49999854}
+  m_LocalRotation: {x: 0.49999845, y: 0.50000155, z: 0.5000015, w: -0.4999985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.528379, y: 2.5283785, z: 2.5283785}
   m_Children: []
-  m_Father: {fileID: 5710782335507930189}
+  m_Father: {fileID: 301861650821684497}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 270}
 --- !u!33 &2839687620577537647
@@ -1155,9 +1188,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 5
-  Firerate: 20
+  Firerate: 30
   DamageType: 0
-  Speed: 400
+  Speed: 240
   Amount: 1
   BurstReloadTime: 2
   BurstAmmo: 150
@@ -1183,7 +1216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Weapon: {fileID: 5710782334178748814}
-  RotatingTransform: {fileID: 2638152763938761454}
+  RotatingTransform: {fileID: 301861650821684497}
   RotationPerSecond: {x: 1200, y: 0, z: 0}
 --- !u!114 &5710782334178748812
 MonoBehaviour:
@@ -1198,9 +1231,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 0}
-  AcquireTargetRange: 85
-  LooseTargetRange: 85
-  AttackRange: 85
+  AcquireTargetRange: 100
+  LooseTargetRange: 100
+  AttackRange: 100
   TurretObject: {fileID: 5710782334178748803}
   WeaponObjects:
   - {fileID: 5710782334178748803}
@@ -1386,7 +1419,7 @@ MonoBehaviour:
   Damage: 300
   Firerate: 0.6
   DamageType: 1
-  Speed: 250
+  Speed: 150
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
@@ -1408,9 +1441,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 0}
-  AcquireTargetRange: 85
-  LooseTargetRange: 85
-  AttackRange: 85
+  AcquireTargetRange: 100
+  LooseTargetRange: 100
+  AttackRange: 100
   TurretObject: {fileID: 5710782334378631605}
   WeaponObjects:
   - {fileID: 5710782334378631605}
@@ -1576,8 +1609,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 118899379557215060}
-  - {fileID: 1240801828678893545}
+  - {fileID: 7951979433448186474}
   - {fileID: 5710782335071857938}
   m_Father: {fileID: 5710782335347440847}
   m_RootOrder: 0
@@ -6641,7 +6673,7 @@ Transform:
   m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 0.29999998}
   m_Children: []
   m_Father: {fileID: 5710782334631474095}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!198 &5710782335071857936
 ParticleSystem:
@@ -11688,7 +11720,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad85e42caa7afe45bb1b2c60e93b67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 10
+  Damage: 15
   Firerate: 12
   DamageType: 6
   Speed: 200
@@ -11732,9 +11764,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 0}
-  AcquireTargetRange: 85
-  LooseTargetRange: 85
-  AttackRange: 85
+  AcquireTargetRange: 100
+  LooseTargetRange: 100
+  AttackRange: 100
   TurretObject: {fileID: 5710782335347440846}
   WeaponObjects:
   - {fileID: 5710782335347440846}
@@ -12090,8 +12122,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2638152763938761454}
-  - {fileID: 5435062216261462175}
+  - {fileID: 301861650821684497}
   - {fileID: 2164480799648896152}
   m_Father: {fileID: 5710782334178748800}
   m_RootOrder: 0
@@ -12142,6 +12173,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseLengthScale: 0
   Variance: 0.3
+--- !u!1 &5973776391798893219
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7951979433448186474}
+  m_Layer: 0
+  m_Name: Rotate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7951979433448186474
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5973776391798893219}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 118899379557215060}
+  - {fileID: 1240801828678893545}
+  m_Father: {fileID: 5710782334631474095}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6592183504842911641
 GameObject:
   m_ObjectHideFlags: 0
@@ -12278,11 +12341,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8232971539023703285}
-  m_LocalRotation: {x: 0.49999842, y: 0.50000155, z: 0.5000015, w: -0.49999854}
+  m_LocalRotation: {x: 0.49999845, y: 0.50000155, z: 0.5000015, w: -0.4999985}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.528379, y: 2.5283785, z: 2.5283785}
   m_Children: []
-  m_Father: {fileID: 5710782334631474095}
+  m_Father: {fileID: 7951979433448186474}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 270}
 --- !u!33 &5951254874012370956
@@ -12498,7 +12561,7 @@ PrefabInstance:
     - target: {fileID: 5857214540084150587, guid: 92a563c3efd2b8344b126e88c4daa3d5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5857214540084150587, guid: 92a563c3efd2b8344b126e88c4daa3d5,
         type: 3}

@@ -149,7 +149,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2971242610451871948}
-  m_LocalRotation: {x: -0.2588186, y: -0, z: -0, w: 0.965926}
+  m_LocalRotation: {x: -0.258819, y: 0, z: 0, w: 0.9659259}
   m_LocalPosition: {x: 0, y: 1.695, z: -0.3003235}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -5523,6 +5523,7 @@ MonoBehaviour:
     UnitRole: 2
     UnitTier: 2
     UnitType: 4
+  Health: {fileID: 0}
   _weapons: []
 --- !u!65 &9094752563827018474
 BoxCollider:
@@ -5550,14 +5551,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 0}
-  AcquireTargetRange: 300
-  LooseTargetRange: 300
-  AttackRange: 300
+  AcquireTargetRange: 500
+  LooseTargetRange: 500
+  AttackRange: 500
   TurretObject: {fileID: 1244591003029453303}
   WeaponObjects:
   - {fileID: 1244591003029453303}
   AimTolerance: 5
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers:
   - {fileID: 8966566408742433458}
 --- !u!114 &8966566408742433458

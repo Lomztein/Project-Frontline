@@ -12,7 +12,7 @@ public class SceneryGenerator : ScriptableObject
     [SerializeReference, SR]
     public ISceneryGeneratorStep[] Steps;
 
-    public void Generate (BattlefieldInfo info)
+    public void Generate (MapInfo info)
     {
         foreach (var step in Steps)
         {

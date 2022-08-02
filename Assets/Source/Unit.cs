@@ -39,7 +39,7 @@ public class Unit : MonoBehaviour, IPurchasable
     private void CheckBattlefieldBounds()
     {
         // Kill the unit if they go way too far out of bounds.
-        if (!MatchSettings.Current.BattlefieldInfo.Contains(transform.position / 2f))
+        if (!MatchSettings.Current.MapInfo.Contains(transform.position / 2f))
         {
             GetComponent<Health>().TakeDamage(new DamageInfo(999999999f, DamageMatrix.Damage.Cannon, transform.position, transform.forward));
         }

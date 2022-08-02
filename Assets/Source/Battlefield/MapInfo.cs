@@ -4,7 +4,7 @@ using UnityEngine;
 using Util;
 
 [System.Serializable]
-public class BattlefieldInfo
+public class MapInfo
 {
     public float Width;
     public float Height;

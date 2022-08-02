@@ -4,7 +4,9 @@ using UnityEngine;
 
 public interface IBattlefieldShape
 {
-    public IEnumerable<Vector3> GetPerimeterPolygon(BattlefieldInfo info);
+    public IEnumerable<Vector3> GetPerimeterPolygon(MapInfo info);
 
-    public IEnumerable<Waypoint> GenerateWaypoints(BattlefieldInfo info);
+    public IEnumerable<Waypoint> GenerateWaypoints(MapInfo info);
+
+    public IEnumerable<SpawnLine> GenerateSpawnLines(MapInfo info);
 }

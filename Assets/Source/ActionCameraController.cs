@@ -51,7 +51,7 @@ public class ActionCameraController : MonoBehaviour
     private void GenerateFallbacks ()
     {
         _fallbacks = new List<Transform>();
-        var verts = MatchSettings.Current.BattlefieldInfo.GetPerimeterPolygon().ToArray();
+        var verts = MatchSettings.Current.MapInfo.GetPerimeterPolygon().ToArray();
         foreach (var vert in verts)
         {
             var pos = new Vector3(vert.z / 2f, FallbackHeight, vert.x / 2f);
@@ -79,56 +79,68 @@ public class ActionCameraController : MonoBehaviour
     private void FindActionCamera()
     {
         ActionCam camera = null;
-        var commanders = GameObject.FindGameObjectsWithTag("Commander");
-        var commander = commanders[Random.Range(0, commanders.Length)].GetComponent<Commander>();
-
-        Unit highest = null;
-        float highestScore = 0.1f;
-
-        foreach (var unit in commander.AliveProduced)
+        var commanders = GameObject.FindGameObjectsWithTag("Commander").Where(x => x.GetComponent<Commander>().AliveAll.Count() > 0).ToArray();
+        if (commanders.Length > 0)
         {
-            if (unit.CompareTag("StructureUnit") && !unit.IsEngaged)
-                continue;
+            var commander = commanders[Random.Range(0, commanders.Length)].GetComponent<Commander>();
 
-            var unitCamera = GetRandomCamera(unit);
-            if (unit != null && unitCamera != null)
+            Unit highest = null;
+            float highestScore = 0.1f;
+
+            foreach (var unit in commander.AliveAll)
             {
-                float score = (unit.GetWeapons().Sum(x => x.GetDPS()) + unit.GetComponent<Health>().CurrentHealth) * Random.Range(0f, 1f);
-                if (score > highestScore)
+                if (unit.CompareTag("StructureUnit") && !unit.IsEngaged)
+                    continue;
+
+                var unitCamera = GetRandomCamera(unit);
+                if (unit != null && unitCamera != null)
                 {
-                    highestScore = score;
-                    highest = unit;
-                    camera = unitCamera;
+                    float score = (unit.GetWeapons().Sum(x => x.GetDPS()) + unit.GetComponent<Health>().CurrentHealth) * Random.Range(0f, 1f);
+                    if (score > highestScore)
+                    {
+                        highestScore = score;
+                        highest = unit;
+                        camera = unitCamera;
+                    }
                 }
             }
-        }
 
-        if (highest)
-        {
-            CurrentCamera = camera;
-            if (string.IsNullOrEmpty(camera.TransformPath))
+            if (highest)
             {
-                CurrentParent = highest.transform;
+                CurrentCamera = camera;
+                if (string.IsNullOrEmpty(camera.TransformPath))
+                {
+                    CurrentParent = highest.transform;
+                }
+                else
+                {
+                    CurrentParent = highest.transform.Find(camera.TransformPath);
+                }
+                if (CurrentHealth)
+                {
+                    CurrentHealth.OnDeath -= ActionCameraController_OnDeath;
+                }
+                CurrentHealth = highest.GetComponent<Health>();
+                CurrentHealth.OnDeath += ActionCameraController_OnDeath;
             }
             else
             {
-                CurrentParent = highest.transform.Find(camera.TransformPath);
+                Fallback();
             }
-            if (CurrentHealth)
-            {
-                CurrentHealth.OnDeath -= ActionCameraController_OnDeath;
-            }
-            CurrentHealth = highest.GetComponent<Health>();
-            CurrentHealth.OnDeath += ActionCameraController_OnDeath;
         }
         else
         {
-            CurrentParent = _fallbacks[Random.Range(0, _fallbacks.Count)];
-            CurrentCamera = ScriptableObject.CreateInstance<ActionCam>();
+            Fallback();
         }
 
         CancelInvoke();
         Invoke(nameof(Switch), Random.Range(SwitchTime.x, SwitchTime.y));
+    }
+
+    private void Fallback ()
+    {
+        CurrentParent = _fallbacks[Random.Range(0, _fallbacks.Count)];
+        CurrentCamera = ScriptableObject.CreateInstance<ActionCam>();
     }
 
     private void ActionCameraController_OnDeath(Health obj)

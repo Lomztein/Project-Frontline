@@ -26,7 +26,7 @@ namespace UI
             OpenTab(CurrentOpenTab);
         }
 
-        private void UpdateActive ()
+        public void UpdateActive ()
         {
             gameObject.SetActive(Commander != null && Commander.isActiveAndEnabled && !Commander.Eliminated);
         }

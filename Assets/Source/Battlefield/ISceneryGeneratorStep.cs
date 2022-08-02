@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface ISceneryGeneratorStep
 {
-    public void Execute(BattlefieldInfo info);
+    public void Execute(MapInfo info);
 }

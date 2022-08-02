@@ -4,17 +4,38 @@ using UnityEngine;
 
 public class SquareBattlefieldShape : IBattlefieldShape
 {
-    public IEnumerable<Waypoint> GenerateWaypoints(BattlefieldInfo info)
+    public IEnumerable<SpawnLine> GenerateSpawnLines(MapInfo info)
     {
         float halfWidth = info.Width / 2f;
+        float halfHeight = info.Height / 2f;
+        var lines = new SpawnLine[2];
 
-        // Left side
-        yield return Waypoint.Create(new Vector3(halfWidth, 0f), Vector3.left, Vector3.right);
-        // Right side
-        yield return Waypoint.Create(new Vector3(-halfWidth, 0f), Vector3.right, Vector3.left);
+        lines[0] = new SpawnLine(
+            new Vector3(halfHeight - 75, 0f, halfWidth - 75),
+            new Vector3(-halfHeight + 75, 0f, halfWidth - 75));
+
+        lines[1] = new SpawnLine(
+            new Vector3(halfHeight - 75, 0f, -halfWidth + 75),
+            new Vector3(-halfHeight + 75, 0f, -halfWidth + 75));
+
+        return lines;
     }
 
-    public IEnumerable<Vector3> GetPerimeterPolygon(BattlefieldInfo info)
+    public IEnumerable<Waypoint> GenerateWaypoints(MapInfo info)
+    {
+        float halfWidth = info.Width / 2f;
+        var list = new List<Waypoint>
+        {
+            // Left side
+            Waypoint.Create(new Vector3(0f, 0f, halfWidth), Vector3.forward, Vector3.back),
+            // Right side
+            Waypoint.Create(new Vector3(0f, 0f, -halfWidth), Vector3.back, Vector3.forward)
+        };
+
+        return list;
+    }
+
+    public IEnumerable<Vector3> GetPerimeterPolygon(MapInfo info)
     {
         float halfWidth = info.Width / 2f;
         float halfHeight = info.Height / 2f;

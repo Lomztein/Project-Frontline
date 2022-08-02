@@ -8,7 +8,7 @@ public class PlacePropsGeneratorStep : ISceneryGeneratorStep
     public PropInfo[] Props;
     public LayerMask TargetLayer;
 
-    public void Execute(BattlefieldInfo info)
+    public void Execute(MapInfo info)
     {
         for (int i = 0; i < Props.Length; i++)
         {
@@ -16,7 +16,7 @@ public class PlacePropsGeneratorStep : ISceneryGeneratorStep
         }
     }
 
-    private void HandlePropInfo(BattlefieldInfo info, PropInfo prop)
+    private void HandlePropInfo(MapInfo info, PropInfo prop)
     {
         int amount = Random.Range(prop.Amount.x, prop.Amount.y);
         for (int i = 0; i < amount; i++)
@@ -25,7 +25,7 @@ public class PlacePropsGeneratorStep : ISceneryGeneratorStep
         }
     }
 
-    private void SpawnProp(BattlefieldInfo info, PropInfo prop)
+    private void SpawnProp(MapInfo info, PropInfo prop)
     {
         bool success = false;
         while (!success)

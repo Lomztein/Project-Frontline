@@ -14,7 +14,7 @@ public class TerrainHeightmapGeneratorStep : ISceneryGeneratorStep
     public int NoiseOctaves;
     public float NoisePower = 4f;
 
-    public void Execute(BattlefieldInfo info)
+    public void Execute(MapInfo info)
     {
         foreach (var terrain in Terrain.activeTerrains)
         {
@@ -38,7 +38,7 @@ public class TerrainHeightmapGeneratorStep : ISceneryGeneratorStep
         }
     }
 
-    private float GenerateHeight(BattlefieldInfo info, Vector3 worldPos)
+    private float GenerateHeight(MapInfo info, Vector3 worldPos)
     {
         var shape = info.Shape.GetPerimeterPolygon(info);
         bool isInside = GeometryXZ.IsInsidePolygon(shape, worldPos);

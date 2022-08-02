@@ -7,7 +7,10 @@ public class TeamApplier : MonoBehaviour
     public TeamInfo Team;
     public void Awake()
     {
-        Team.ApplyTeam(gameObject);
+        if (Team)
+        {
+            Team.ApplyTeam(gameObject);
+        }
     }
 
 }

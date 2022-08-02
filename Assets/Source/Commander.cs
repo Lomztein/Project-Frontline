@@ -7,6 +7,7 @@ using UnityEngine;
 public class Commander : MonoBehaviour, ITeamComponent
 {
     public string Name;
+    public float BuildRadius;
 
     public int Credits;
     private float _incomingCredits;
@@ -100,6 +101,12 @@ public class Commander : MonoBehaviour, ITeamComponent
 
 
         return go;
+    }
+
+    public bool IsNearAnyPlaced (Vector3 position)
+    {
+        var toCheck = Enumerable.Concat(Fortress.GetComponent<Unit>().SingleObjectAsEnumerable(), AlivePlaced);
+        return toCheck.Any(x => Vector3.Distance(x.transform.position, position) < BuildRadius);
     }
 
     public bool TryPurchaseAndPlaceUnit(GameObject unitPrefab, Vector3 position, Quaternion rotation)

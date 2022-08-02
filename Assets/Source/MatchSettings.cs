@@ -8,22 +8,27 @@ using UnityEngine.Assertions;
 public class MatchSettings : ScriptableObject
 {
     public const string PATH_TO_DEFAULT = "Match Settings/Default";
-    public BattlefieldInfo BattlefieldInfo;
+    public MapInfo MapInfo;
 
-    public static MatchSettings Current;
+    private static MatchSettings _current;
+    public static MatchSettings Current { get => GetCurrent(); set => _current = value; }
 
-    private void OnEnable()
+    public static MatchSettings GetCurrent ()
     {
-        Current = Default();
+        if (_current == null)
+            _current = Default();
+        return _current;
     }
 
-    public static void Reset()
+    public static MatchSettings Default ()
     {
-        Current = Default();
+        var settings = Resources.Load<MatchSettings>(PATH_TO_DEFAULT);
+        foreach (var player in settings.Players)
+        {
+            player.Name = NameGenerator.GenerateName();
+        }
+        return settings;
     }
-
-    public static MatchSettings Default () 
-        => Resources.Load<MatchSettings>(PATH_TO_DEFAULT);
 
     [SerializeField]
     private List<PlayerInfo> _players = new List<PlayerInfo>();
@@ -47,10 +52,11 @@ public class MatchSettings : ScriptableObject
         public string Name;
 
         public Faction Faction;
-        public Team Team;
+        public TeamInfo Team;
 
         public Vector2 Position;
         public int StartingCredits;
+        public float Handicap;
 
         public AIPlayerProfile AIProfile;
         public bool IsPlayer => AIProfile == null;
