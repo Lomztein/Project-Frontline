@@ -85,7 +85,7 @@ public class ActionCameraController : MonoBehaviour
             var commander = commanders[Random.Range(0, commanders.Length)].GetComponent<Commander>();
 
             Unit highest = null;
-            float highestScore = 0.1f;
+            float highestScore = float.MinValue;
 
             foreach (var unit in commander.AliveAll)
             {
@@ -149,7 +149,6 @@ public class ActionCameraController : MonoBehaviour
         if (CurrentHealth == obj)
         {
             CancelInvoke();
-            Invoke(nameof(Free), FreeDelay);
             Invoke(nameof(FindActionCamera), FindDelay);
         }
     }

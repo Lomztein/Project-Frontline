@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class UnitWeightTable : UnitWeightTableBase
 {
+    protected Commander Commander { get; private set; }
     public bool NormalizeOptions = true;
     public bool Cache = true;
 
@@ -11,6 +12,7 @@ public abstract class UnitWeightTable : UnitWeightTableBase
 
     public override void Initialize(Commander commander, IEnumerable<GameObject> availableUnits)
     {
+        Commander = commander;
         if (Cache)
         {
             WeightCache = GenerateWeights(availableUnits);

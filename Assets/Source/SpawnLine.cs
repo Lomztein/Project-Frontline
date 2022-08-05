@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class SpawnLine
 {
-    public Vector3 Start;
-    public Vector3 End;
+    public Vector3 Center;
+    public Vector3 ExtendDirection;
 
-    public SpawnLine (Vector3 start, Vector3 end)
+    public float DistanceBetween;
+
+    public SpawnLine (Vector3 center, Vector3 extendDirection, float distanceBetween)
     {
-        Start = start;
-        End = end;
+        Center = center;
+        ExtendDirection = extendDirection;
+        DistanceBetween = distanceBetween;
     }
 
     public Vector3 GetSpawnPoint(int index, int total)
     {
-        if (total == 1) return Vector3.Lerp(Start, End, 0.5f);
-        float val = (float)index / (total - 1);
-        return Vector3.Lerp(Start, End, val);
+        // shrug
+        Vector3 startPos = Center - ExtendDirection * (DistanceBetween/2f * (total - 1f)) * 2f;
+        return startPos + ExtendDirection * DistanceBetween * index * 2f;
     }
 }

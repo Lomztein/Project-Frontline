@@ -32,7 +32,7 @@ public class MatchInitializer : MonoBehaviour
         {
             var players = teams[i].ToArray();
 
-            Vector3 teamPosition = Vector3.Lerp(spawnLines[i].Start, spawnLines[i].End, 0.5f);
+            Vector3 teamPosition = spawnLines[i].Center;
             Quaternion rotation = Quaternion.Euler(0f, Waypoint.GetNearest(teamPosition).OutgoingAngle, 0f);
             Team team = SpawnTeam(teams[i].Key, teamPosition, rotation);
 
@@ -65,6 +65,10 @@ public class MatchInitializer : MonoBehaviour
         else
         {
             commanderObj = Instantiate(AIPrefab, position, rotation);
+            AICommander aiCom = commanderObj.GetComponent<AICommander>();
+            aiCom.TargetAvarageAPM = info.AIProfile.ActionsPerMinute;
+            var selector = aiCom.GetComponent<WeightedUnitSelector>();
+            selector.WeightTable = info.AIProfile.UnitWeightTable;
         }
         Commander commander = commanderObj.GetComponent<Commander>();
         commander.Fortress = Instantiate(info.Faction.HeadquartersPrefab, commanderObj.transform).transform;

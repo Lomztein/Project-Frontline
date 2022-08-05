@@ -32,7 +32,9 @@ public abstract class ChanceOnUnitSpawnUpgradeStructure : UpgradeStructure
         (initial as ChanceOnUnitSpawnUpgradeStructure)._currentStack -= ChancePerStack;
     }
 
-    private bool CheckFilter(Unit unit)
+    public bool CanUpgrade(GameObject unit) => CheckFilter(unit);
+
+    private bool CheckFilter(GameObject unit)
         => Filter == null ? true : Filter.Check(unit.gameObject);
 
     private void Commander_OnUnitSpawned(Commander arg1, UnitFactory arg2, Unit arg3)
@@ -40,7 +42,7 @@ public abstract class ChanceOnUnitSpawnUpgradeStructure : UpgradeStructure
         float rand = Random.Range(0f, 1f);
         float chance = ComputeChance();
 
-        if (rand < chance && CheckFilter(arg3))
+        if (rand < chance && CheckFilter(arg3.gameObject))
         {
             ApplyUpgrade(arg3);
         }

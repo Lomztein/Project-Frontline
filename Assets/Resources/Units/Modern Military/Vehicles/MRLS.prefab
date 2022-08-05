@@ -11314,11 +11314,14 @@ MonoBehaviour:
     Description: Often nicknamed the "Homewrecker" by frontline forces, this monster
       of a mobile artillary station is capable of, well, wrecking homes with unprecedented
       effeciency.
+    Tags:
+    - Siege
     Cost: 2500
     Value: 250
     UnitRole: 1
     UnitTier: 1
     UnitType: 1
+  Health: {fileID: 0}
   _weapons:
   - {fileID: 5640369136630403019}
 --- !u!114 &5640369137628400754
@@ -11359,6 +11362,7 @@ MonoBehaviour:
   - {fileID: 5640369136630403019}
   AimTolerance: 5
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers:
   - {fileID: -454217863282750625}
   HoldRange: 125

@@ -11,12 +11,12 @@ public class SquareBattlefieldShape : IBattlefieldShape
         var lines = new SpawnLine[2];
 
         lines[0] = new SpawnLine(
-            new Vector3(halfHeight - 75, 0f, halfWidth - 75),
-            new Vector3(-halfHeight + 75, 0f, halfWidth - 75));
+            new Vector3(0f, 0f, halfWidth - 75),
+            new Vector3(1f, 0f, 0f), 30f);
 
         lines[1] = new SpawnLine(
-            new Vector3(halfHeight - 75, 0f, -halfWidth + 75),
-            new Vector3(-halfHeight + 75, 0f, -halfWidth + 75));
+            new Vector3(0f, 0f, -halfWidth + 75),
+            new Vector3(1f, 0f, 0f), 30f);
 
         return lines;
     }

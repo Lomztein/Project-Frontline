@@ -1,0 +1,40 @@
+Balanced - "Default", uses whatever units appear to be the best fits. (Implemented)
+Heavy - Similar to balanced, but prioritizes units by health and armor. (Current tanker, remove current steamroller)
+Tech - Similar to balanced, but prioritizes units by tech level and cost
+Turtle - Focus on eco and defense early game, then transitions to producing units late-game.
+Bombardier - Focus on long range units that can bombard the enemy from afar
+Light - Similar to balanced, but prioritizes units by their cost relative to income
+Aircraft - Focus on defenses and eco if it can't produce air units, but otherwise a whole lotta aircraft.
+Infantry - Balanced, but prioritizes infantry
+Vehicle - Balanced, but prioritizes infantry
+Optimized - Largely random, but uses the effeciency tracker to decide on what to place more of.
+
+Implement a "Base AI" that has weights for counters, healing units, siege breaker, upgrade, defence, anti air, shield, and point defense, and economy.
+This should handle all base functionality that most AI's should have.
+
+Features to add / upgrade
+Income tracker, tracks approximate income over time
+Effeciency tracker, tracks the "effeciency" of a unit by comparing their kill how much they earn from kills with how much money they grant the enemy.
+Allow AI to save up for units based on approximate income
+
+Weight tables to implement
+DefenseWeightTable - Prioritizes defense units when on the defense.
+SiegeBreakerWeightTable - Prioritzies siege units when siegeing for a while
+HarraserWeightTable - Prioritizes harraser units when sieged for a while
+AntiAirWeightTable - Prioritizes anti-air units if the enemy has a comparatively large amount of air units.
+	How to determine if unit is anti-air? Unit tags maybe?
+
+BaseSelectorWeightTable // This is responsible for telling the AI which base set of units is needed at the moment
+	CompositeDelta * 
+	Healer *
+	Upgrade *
+	Shield *
+	Garrison *
+	Economy *
+	Turtle * 
+
+BasePrioritizerWeightTable // This "filters" the base selector weight table according to the games circumstances.
+	Defense
+	Anti-Air
+	SiegeBreaker
+	Harasser

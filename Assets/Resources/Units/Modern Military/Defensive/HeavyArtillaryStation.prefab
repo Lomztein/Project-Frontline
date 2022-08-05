@@ -5099,6 +5099,7 @@ MonoBehaviour:
   - {fileID: 556936880231865815}
   AimTolerance: 5
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
 --- !u!114 &752778836651382636
 MonoBehaviour:
@@ -5307,11 +5308,14 @@ MonoBehaviour:
     Name: Short Range Artillary
     Description: Built for short range bombardment, this artillary station is a much
       beloved defensive structure used to enforce a defensive frontline.
+    Tags:
+    - Artillary
     Cost: 2500
     Value: 12
     UnitRole: 2
     UnitTier: 1
     UnitType: 3
+  Health: {fileID: 0}
   _weapons:
   - {fileID: 556936880231865815}
 --- !u!114 &97203068935603767

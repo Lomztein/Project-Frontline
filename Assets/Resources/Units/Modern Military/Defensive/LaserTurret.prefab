@@ -891,6 +891,7 @@ MonoBehaviour:
   - {fileID: 2816974995353551254}
   AimTolerance: 1
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
 --- !u!114 &8697719627572123384
 MonoBehaviour:
@@ -939,11 +940,13 @@ MonoBehaviour:
     Name: Laser Turret
     Description: Tri-barreled laser cannons are a powerful tool for dispelling anyone
       who thought they'd like a closer look at your base.
+    Tags: []
     Cost: 4000
     Value: 12
     UnitRole: 2
     UnitTier: 2
     UnitType: 3
+  Health: {fileID: 0}
   _weapons:
   - {fileID: 2816974995353551254}
 --- !u!114 &9222581611965296804

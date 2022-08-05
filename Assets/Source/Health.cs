@@ -10,6 +10,7 @@ public class Health : MonoBehaviour, IDamagable
     private bool _isDead;
     public float CurrentHealth { get; private set; }
     public bool DestroyOnDeath = true;
+    public float DestroyDelay;
     public GameObject Debris;
     public float DebrisLife;
 
@@ -60,13 +61,13 @@ public class Health : MonoBehaviour, IDamagable
     {
         if (DestroyOnDeath)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, DestroyDelay);
         }
 
         if (Debris)
         {
             GameObject d = Instantiate(Debris, transform.position, transform.rotation);
-            
+
             foreach (ParticleSystem system in d.GetComponentsInChildren<ParticleSystem>())
                 system.Play();
 

@@ -35,15 +35,43 @@ public class Commander : MonoBehaviour, ITeamComponent
     public event Action<Commander> OnFortressDestroyed;
     public event Action<Commander> OnEliminated;
 
+    public Frontline Frontline;
+    public float DefenseFrontlineDistance = 200f;
+    public float OffenseFactor => Mathf.Clamp01(Vector3.Distance (Fortress.position, Frontline.Position) / DefenseFrontlineDistance);
+    public float DefenseFactor => 1f - OffenseFactor;
+
+    public float OffensiveSiegeTime { get; private set; }
+    public float DefensiveSiegeTime { get; private set; }
+
+    private float[] _earningsAverageWindow = new float[10];
+    private int _earningsAverageIndex;
+    private float _currentIndexEarnings;
+
+    public float AverageIncomePerSecond => _earningsAverageWindow.Average();
+
     protected virtual void Awake()
     {
         gameObject.name = Name;
+        Frontline = new Frontline(10, 3);
         AssignCommander(gameObject);
+    }
+
+    private void MoveNextAverageEarnings ()
+    {
+        _earningsAverageWindow[_earningsAverageIndex] = _currentIndexEarnings;
+        _currentIndexEarnings = 0f;
+
+        _earningsAverageIndex++;
+        if (_earningsAverageIndex >= _earningsAverageWindow.Length)
+        {
+            _earningsAverageIndex = 0;
+        }
     }
 
     private void Start()
     {
         Team.GetTeam(TeamInfo).AddCommander(this);
+        InvokeRepeating(nameof(MoveNextAverageEarnings), 1f, 1f);
     }
 
     private void OnDestroy()
@@ -139,6 +167,7 @@ public class Commander : MonoBehaviour, ITeamComponent
     private void OnProducedUnitDeath(Health obj)
     {
         _aliveProduced.Remove(obj.GetComponent<Unit>());
+        Frontline.RegisterDeath(obj.transform.position);
     }
 
     private void Unit_OnKill(Unit arg1, IWeapon arg2, Projectile arg3, IDamagable arg4)
@@ -147,6 +176,7 @@ public class Commander : MonoBehaviour, ITeamComponent
         {
             var killedUnit = component.GetComponentInParent<Unit>();
             Earn(killedUnit.Info.Value);
+            Frontline.RegisterDeath(component.transform.position);
         }
     }
 
@@ -198,10 +228,17 @@ public class Commander : MonoBehaviour, ITeamComponent
         int earned = Mathf.FloorToInt(_incomingCredits);
         _incomingCredits -= earned;
         Credits += earned;
+        _currentIndexEarnings += moneys;
     }
 
     public void SetTeam(TeamInfo faction)
     {
         TeamInfo = faction;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(Frontline.Position, 1f);
+        Gizmos.DrawRay(Frontline.Position, Frontline.Change);
     }
 }

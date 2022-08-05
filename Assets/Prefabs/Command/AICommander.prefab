@@ -53,7 +53,10 @@ MonoBehaviour:
   TeamInfo: {fileID: 0}
   Fortress: {fileID: 0}
   UnitSource: {fileID: 225398836}
+  DefenseFrontlineDistance: 200
   TargetAvarageAPM: 10
+  MaxSaveTime: 10
+  SaveTarget: {fileID: 0}
 --- !u!114 &5667567378679379694
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,10 +69,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1165232148f64fa49b6de8746c270a34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlacementSize: 6
-  SearchStepSize: 7.5
-  SearchStepSizeVariance: 5
-  MaxIters: 200
+  TargetPoints: 100
+  MaxTries: 1000
+  TerrainLayer:
+    serializedVersion: 2
+    m_Bits: 256
+  PositionEvaluators:
+  - id: 0
+  - id: 1
+  - id: 2
+  references:
+    version: 1
+    00000000:
+      type: {class: FortressDistancePositionEvaluator, ns: , asm: Assembly-CSharp}
+    00000001:
+      type: {class: ShieldProjectorPositionEvaluator, ns: , asm: Assembly-CSharp}
+    00000002:
+      type: {class: DefensePositionEvaluator, ns: , asm: Assembly-CSharp}
 --- !u!114 &164316000
 MonoBehaviour:
   m_ObjectHideFlags: 0
