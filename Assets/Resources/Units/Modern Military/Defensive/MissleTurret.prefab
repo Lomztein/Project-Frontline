@@ -77,6 +77,11 @@ PrefabInstance:
       propertyPath: HorizontalSpeed
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 7096287368832426950, guid: ae01bae4f37236d4eabe405e3adf2004,
+        type: 3}
+      propertyPath: Firerate
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae01bae4f37236d4eabe405e3adf2004, type: 3}
 --- !u!1 &8277676515295866638 stripped
@@ -92,6 +97,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 887349562758749624, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.283991
+      objectReference: {fileID: 0}
+    - target: {fileID: 887349562758749624, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.6169955
+      objectReference: {fileID: 0}
     - target: {fileID: 6305933840788071201, guid: 5eef721856967274c80f299c4cc69d23,
         type: 3}
       propertyPath: Turret
@@ -244,10 +259,12 @@ MonoBehaviour:
     Description: Someone thought it might be a good idea to take the rocket launcher
       from Rocket Scouts, install a worryingly dumb AI on it, and slap it on some
       stationary feet, and they were absolutely correct.
+    Tags: []
     Cost: 750
     Value: 15
     UnitRole: 0
     UnitTier: 0
     UnitType: 3
+  Health: {fileID: 0}
   _weapons:
   - {fileID: 8277676515295866638}

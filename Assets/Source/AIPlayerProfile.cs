@@ -12,7 +12,9 @@ public class AIPlayerProfile : ScriptableObject
     [TextArea]
     public string Description;
 
-    public float ActionsPerMinute;
+    public float SaveTime = 10;
+    public float ActionsPerMinute = 10;
+    public float OffenseMargin = 150;
 
     [Header("Unit Weights")]
     public UnitWeightTableBase UnitWeightTable;

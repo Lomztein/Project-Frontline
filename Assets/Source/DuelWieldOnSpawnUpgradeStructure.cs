@@ -9,6 +9,7 @@ public class DuelWieldOnSpawnUpgradeStructure : ChanceOnUnitSpawnUpgradeStructur
     public string SideSplitCharacter = ".";
     public string LeftSideSuffix = "L";
     public string RightSideSuffix = "R";
+    public string EndString = "_end";
 
     protected override void ApplyUpgrade(Unit target)
     {
@@ -61,9 +62,9 @@ public class DuelWieldOnSpawnUpgradeStructure : ChanceOnUnitSpawnUpgradeStructur
 
     private string GetOppositeSideName(string path)
     {
-        if (path.EndsWith(LeftSideSuffix))
+        if (path.EndsWith(LeftSideSuffix) || path.EndsWith(LeftSideSuffix + EndString))
             return path.Replace(SideSplitCharacter + LeftSideSuffix, SideSplitCharacter + RightSideSuffix);
-        else if (path.EndsWith(RightSideSuffix))
+        else if (path.EndsWith(RightSideSuffix) || path.EndsWith(RightSideSuffix + EndString))
             return path.Replace(SideSplitCharacter + RightSideSuffix, SideSplitCharacter + LeftSideSuffix);
         else return null;
     }

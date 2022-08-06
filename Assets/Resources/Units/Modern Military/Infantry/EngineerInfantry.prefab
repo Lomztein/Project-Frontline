@@ -132,9 +132,21 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
+      propertyPath: Info.Tags.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: _weapons.Array.data[0]
       value: 
       objectReference: {fileID: 3342082700522810482}
+    - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
+      propertyPath: Info.Tags.Array.data[0]
+      value: Siege
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
+      propertyPath: Info.Tags.Array.data[1]
+      value: Defense
+      objectReference: {fileID: 0}
     - target: {fileID: 1177128839, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: HoldRange
       value: 60
@@ -166,7 +178,7 @@ PrefabInstance:
     - target: {fileID: 1177128839, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: WeaponObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 3342082700522810482}
     - target: {fileID: 434691834773493002, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -415,7 +427,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00169763ce7d38943b2bae396018d795, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Model: {fileID: 0}
+  Model: {fileID: 3342082700522810482}
 --- !u!1001 &2982435146556845767
 PrefabInstance:
   m_ObjectHideFlags: 0

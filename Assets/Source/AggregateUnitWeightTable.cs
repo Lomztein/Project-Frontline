@@ -11,8 +11,6 @@ public abstract class AggregateUnitWeightTable : UnitWeightTableBase
 
     public override Dictionary<GameObject, float> GetWeights(IEnumerable<GameObject> options)
     {
-        var debug = options.ToArray();
-
         var result = new Dictionary<GameObject, float>();
         foreach (var unit in options)
         {

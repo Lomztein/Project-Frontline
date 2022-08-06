@@ -390,8 +390,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 1000
-  ArmorType: 3
+  ArmorType: 5
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
 --- !u!65 &2215392683337145516
@@ -425,11 +426,14 @@ MonoBehaviour:
     Description: Standing tall above most other structures, this tower can heal and
       repair up to four seperate targets at a very long range. It can help sustain
       against a siege or support nearby units.
+    Tags:
+    - Defense
     Cost: 4000
     Value: 400
     UnitRole: 0
     UnitTier: 2
     UnitType: 4
+  Health: {fileID: 0}
   _weapons: []
 --- !u!1 &8976110392720652172
 GameObject:

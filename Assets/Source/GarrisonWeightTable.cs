@@ -18,7 +18,7 @@ public class GarrisonWeightTable : UnitWeightTable
         Dictionary<GameObject, float> weights = new Dictionary<GameObject, float>();
         foreach (GameObject obj in options)
         {
-            if (obj.GetComponent<InfantryGarrison>())
+            if (obj.GetComponentInChildren<InfantryGarrison>())
                 weights.Add(obj, 1f - Mathf.Clamp01(garrisonUnits / desiredGarrisonUnits));
             else
                 weights.Add(obj, NonGarrisonWeight);

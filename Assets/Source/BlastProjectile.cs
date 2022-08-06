@@ -31,7 +31,7 @@ public class BlastProjectile : Projectile
     {
         Vector3 rel = transform.InverseTransformPoint(obj.position);
         if (rel.z > ConeLength) return false;
-        float angle = Mathf.Abs(Mathf.Atan2(Mathf.Max(rel.x, rel.y), rel.z) * Mathf.Rad2Deg);
+        float angle = Vector3.Angle(Vector3.forward, rel);
         return angle < Mathf.Atan(ConeRadius / ConeLength) * Mathf.Rad2Deg;
     }
 

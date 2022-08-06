@@ -7,7 +7,6 @@ using UnityEngine;
 public class TurtleWeightTable : UnitWeightTable
 {
     public int StructuresPerDefenceStructure = 5;
-    public float NonDefenseWeight = 0f;
 
     public override Dictionary<GameObject, float> GenerateWeights(IEnumerable<GameObject> options)
     {

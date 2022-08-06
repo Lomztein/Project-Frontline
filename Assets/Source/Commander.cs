@@ -35,11 +35,15 @@ public class Commander : MonoBehaviour, ITeamComponent
     public event Action<Commander> OnFortressDestroyed;
     public event Action<Commander> OnEliminated;
 
-    public Frontline Frontline;
-    public float DefenseFrontlineDistance = 200f;
-    public float OffenseFactor => Mathf.Clamp01(Vector3.Distance (Fortress.position, Frontline.Position) / DefenseFrontlineDistance);
-    public float DefenseFactor => 1f - OffenseFactor;
+    private float _mapCenterDistance;
+    public float OffenseFactorMargin = 100;
 
+    public Frontline Frontline;
+
+    public float OffenseFactor => Mathf.InverseLerp(_mapCenterDistance - OffenseFactorMargin, _mapCenterDistance + OffenseFactorMargin, Vector3.Distance(Fortress.position, Frontline.Position)) * 2f - 1f;
+    public float DefenseFactor => -OffenseFactor;
+
+    public float MaxSiegeTime = 60f;
     public float OffensiveSiegeTime { get; private set; }
     public float DefensiveSiegeTime { get; private set; }
 
@@ -72,6 +76,7 @@ public class Commander : MonoBehaviour, ITeamComponent
     {
         Team.GetTeam(TeamInfo).AddCommander(this);
         InvokeRepeating(nameof(MoveNextAverageEarnings), 1f, 1f);
+        _mapCenterDistance = Vector3.Distance(Fortress.position, Vector3.zero);
     }
 
     private void OnDestroy()
@@ -86,6 +91,12 @@ public class Commander : MonoBehaviour, ITeamComponent
         {
             _ded = true;
             OnFortressDestroyed?.Invoke(this);
+        }
+
+        if (!_ded)
+        {
+            OffensiveSiegeTime = Mathf.Clamp(OffensiveSiegeTime + OffenseFactor * Time.fixedDeltaTime, 0f, MaxSiegeTime);
+            DefensiveSiegeTime = Mathf.Clamp(DefensiveSiegeTime + DefenseFactor * Time.fixedDeltaTime, 0f, MaxSiegeTime);
         }
     }
 
@@ -115,6 +126,7 @@ public class Commander : MonoBehaviour, ITeamComponent
         AssignCommander(go);
         _alivePlaced.Add(placed);
         go.GetComponent<Health>().OnDeath += PlacedUnitDeath;
+        placed.OnKill += Unit_OnKill;
 
         void PlacedUnitDeath (Health health)
         {

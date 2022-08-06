@@ -6,8 +6,6 @@ using UnityEngine;
 public class AIProfileEditor : EditorWindow
 {
     Vector2 scrollPos;
-    string t = "This is a string inside a Scroll view!";
-
     [MenuItem("Project Frontline/AI Profile Editor")]
     public static void OpenWindow ()
     {

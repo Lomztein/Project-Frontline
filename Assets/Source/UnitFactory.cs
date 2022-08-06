@@ -40,9 +40,9 @@ public class UnitFactory : MonoBehaviour, ITeamComponent
 
     private void Unit_OnKill(Unit arg1, IWeapon arg2, Projectile arg3, IDamagable arg4)
     {
-        if (arg4 is Health health)
+        if (arg4 is Health health && health.TryGetComponent(out Unit unit))
         {
-            EarnedCredits += health.GetComponent<Unit>().Info.Value;
+            EarnedCredits += unit.Info.Value;
         }
     }
 

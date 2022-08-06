@@ -489,6 +489,7 @@ MonoBehaviour:
   MaxHealth: 2000
   ArmorType: 3
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
 --- !u!65 &3835026811143850779
@@ -502,8 +503,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4, y: 1.5835582, z: 4}
-  m_Center: {x: 0, y: 0.7680146, z: 0}
+  m_Size: {x: 4, y: 2.6721618, z: 4}
+  m_Center: {x: 0, y: 1.3123163, z: 0}
 --- !u!114 &6589151691684863284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,11 +522,13 @@ MonoBehaviour:
     Name: Blaster Turret
     Description: Heavy turret with a short ramge that fires a high energy, incinerating
       blasts, which can take out groups of infantry in one or two blasts.
+    Tags: []
     Cost: 4500
     Value: 450
     UnitRole: 2
     UnitTier: 2
     UnitType: 3
+  Health: {fileID: 0}
   _weapons:
   - {fileID: 863701078200208922}
 --- !u!114 &5987163264221953832

@@ -54,6 +54,7 @@ MonoBehaviour:
     Description: The boss thought we might need some additional weapons on the frontline.
       We didn't, but they were sent anyways. 10% chance for an infantry to dual wield
       an extra weapon, if applicable.
+    Tags: []
     Cost: 2500
     Value: 200
     UnitRole: 1
@@ -76,6 +77,7 @@ MonoBehaviour:
   MaxHealth: 2500
   ArmorType: 5
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
 --- !u!65 &5404113830695882632
@@ -122,9 +124,10 @@ MonoBehaviour:
   ChancePerStack: 0.1
   Filter: {fileID: 11400000, guid: ef5d07d4123da5144b6a26be88370b81, type: 2}
   CommonRootName: spine.003
-  SideSplitCharacter: 46
+  SideSplitCharacter: .
   LeftSideSuffix: L
   RightSideSuffix: R
+  EndString: _end
 --- !u!1001 &6394342962294959101
 PrefabInstance:
   m_ObjectHideFlags: 0

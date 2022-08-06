@@ -134,6 +134,7 @@ MonoBehaviour:
   MaxHealth: 2000
   ArmorType: 3
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
 --- !u!65 &2686270717336435151
@@ -147,8 +148,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 2.6101978, z: 2}
-  m_Center: {x: 0, y: 1.2813345, z: 0}
+  m_Size: {x: 2, y: 2.2154071, z: 2}
+  m_Center: {x: 0, y: 1.0839392, z: 0}
 --- !u!114 &5408280962125623264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,11 +167,13 @@ MonoBehaviour:
     Name: Point Defense Turret
     Description: Rapid pulse laser turret capable of tracking and shooting down slower
       moving projectiles bef
+    Tags: []
     Cost: 2500
     Value: 15
     UnitRole: 2
     UnitTier: 1
     UnitType: 3
+  Health: {fileID: 0}
   _weapons:
   - {fileID: 7553270161911384106}
 --- !u!114 &4857661237212515836
