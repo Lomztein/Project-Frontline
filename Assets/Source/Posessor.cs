@@ -8,13 +8,15 @@ public class Posessor : MonoBehaviour
 {
     private GameObject _currentPosessed;
 
-    public Camera MainCamera;
-    public FreeCameraController MainCameraController;
+    public GameObject MainCamera;
 
     public FollowerCamera CameraController;
     private Camera _followCamera;
 
     public PlayerController Controller;
+
+    public List<ITurret> _turrets;
+    public List<IWeapon> _weapons;
 
     private void Awake()
     {
@@ -24,18 +26,19 @@ public class Posessor : MonoBehaviour
     public void Posess (GameObject target)
     {
         IControllable controllable = target.GetComponentInChildren<IControllable>();
-        ITurret turret = target.GetComponentInChildren<ITurret>();
-        IWeapon weapon = target.GetComponentInChildren<IWeapon>();
+        AIController controller = target.GetComponentInChildren<AIController>();
 
-        if (controllable != null || turret != null || weapon != null)
+        if (controllable != null && controller != null)
         {
-            MainCamera.enabled = false;
+            MainCamera.SetActive(false);
             _followCamera.enabled = true;
             CameraController.Follow(target.transform);
-            MainCameraController.enabled = false;
 
-            Controller.Turret = turret;
-            Controller.Weapon = weapon;
+            if (controller.Turret != null)
+            {
+                Controller.Turrets.Add(controller.Turret);
+            }
+            Controller.Weapons.AddRange(controller.Weapons);
             Controller.Control(target);
 
             _currentPosessed = target;
@@ -51,7 +54,8 @@ public class Posessor : MonoBehaviour
             {
                 if (!IsInvoking())
                 {
-                    Invoke("Reset", 3f);
+                    Controller.Release();
+                    Invoke(nameof(Reset), 3f);
                 }
             }
 
@@ -96,11 +100,10 @@ public class Posessor : MonoBehaviour
             _currentPosessed.GetComponentInChildren<IController>().Enabled = true;
         }
 
-        MainCamera.enabled = true;
+        MainCamera.SetActive(true);
         _followCamera.enabled = false;
         _currentPosessed = null;
         CameraController.StopFollow();
-        MainCameraController.enabled = true;
         Controller.Release();
     }
 

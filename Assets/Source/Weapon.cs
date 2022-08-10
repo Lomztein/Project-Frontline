@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -24,6 +25,7 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
 
     private IObjectPool _pool;
     private LayerMask _hitLayerMask;
+    private TeamInfo _team;
 
     float IWeapon.Damage => Damage * Amount;
     float IWeapon.Firerate => Firerate;
@@ -50,7 +52,7 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
             Fire(intendedTarget);
             _chambered = false;
             _currentBurstAmmo--;
-            Invoke("Rechamber", 1f / Firerate);
+            StartCoroutine(Rechamber((1f / Firerate)));
 
             if (_currentBurstAmmo == 0)
             {
@@ -74,6 +76,7 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
             Quaternion rotation = Muzzle.transform.rotation * Quaternion.Euler (UnityEngine.Random.Range(-Inaccuracy, Inaccuracy), UnityEngine.Random.Range(-Inaccuracy, Inaccuracy), 0f);
             GameObject proj = _pool.GetObject(Muzzle.transform.position, rotation);
 
+            _team.ApplyTeam(proj);
             proj.transform.position = Muzzle.transform.position;
             proj.transform.rotation = Muzzle.transform.rotation;
 
@@ -130,8 +133,9 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
         return _chambered && _currentBurstAmmo > 0;
     }
 
-    private void Rechamber()
+    private IEnumerator Rechamber (float time)
     {
+        yield return new WaitForSeconds(time);
         _chambered = true;
     }
 
@@ -140,8 +144,12 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
         _currentBurstAmmo = BurstAmmo;
     }
 
-    public void SetTeam(TeamInfo faction)
+    public void SetTeam(TeamInfo team)
     {
-        _hitLayerMask = faction.GetOtherLayerMasks();
+        _team = team;
+        SetHitLayerMask(team.GetOtherLayerMasks());
     }
+
+    public void SetHitLayerMask(LayerMask mask)
+        => _hitLayerMask = mask;
 }

@@ -136,8 +136,8 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
             _currentSimultanious.Add(go);
             _currentTrackers.Add(tracker);
 
-            go.GetComponent<AIController>().ForceTarget(intendedTarget);
-            go.GetComponent<Health>().OnDeath += () =>
+            go.GetComponentInChildren<AIController>().ForceTarget(intendedTarget);
+            go.GetComponentInChildren<Health>().OnDeath += (Health health) =>
             {
                 _currentSimultanious.Remove(go);
                 _currentTrackers.Remove(tracker);

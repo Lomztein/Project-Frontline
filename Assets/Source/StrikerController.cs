@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class StrikerController : AttackerController
@@ -7,17 +8,25 @@ public class StrikerController : AttackerController
     private bool _engaging = true;
     public float ReengageRange;
     public bool DisengageAlongWaypoint;
+    public bool DisengageWhileCantFire;
 
     protected override void MoveTowardsTarget()
     {
         float sqrDist = GetTargetSquareDistance();
-        if (sqrDist <= HoldRange * HoldRange)
+        if (!DisengageWhileCantFire)
         {
-            _engaging = false;
+            if (sqrDist <= HoldRange * HoldRange)
+            {
+                _engaging = false;
+            }
+            if (sqrDist >= ReengageRange * ReengageRange)
+            {
+                _engaging = true;
+            }
         }
-        if (sqrDist >= ReengageRange * ReengageRange)
+        else
         {
-            _engaging = true;
+            _engaging = Weapons.Any(x => x.CanFire());
         }
         if (_engaging)
         {
@@ -25,8 +34,17 @@ public class StrikerController : AttackerController
         }
         else
         {
-            Vector3 local = GetTargetLocalPosition();
-            float angle = Mathf.DeltaAngle(transform.eulerAngles.y, Mathf.Atan2(local.x, local.z) * Mathf.Rad2Deg - 180);
+            float angle;
+            if (DisengageAlongWaypoint)
+            {
+                angle = _currentWaypoint.IncomingAngle;
+                angle = Mathf.DeltaAngle(transform.eulerAngles.y, angle);
+            }
+            else
+            {
+                Vector3 local = GetTargetLocalPosition();
+                angle = Mathf.DeltaAngle(transform.eulerAngles.y, Mathf.Atan2(local.x, local.z) * Mathf.Rad2Deg - 180);
+            }
             float speed = 1f;
 
             Controllable.Accelerate(speed);

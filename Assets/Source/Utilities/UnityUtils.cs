@@ -10,6 +10,9 @@ namespace Util
 {
     public static class UnityUtils
     {
+        public const float DEFAULT_FIXED_DELTA_TIME = 0.02f;
+        public static float FixedDeltaTimeFactor => Time.fixedDeltaTime / DEFAULT_FIXED_DELTA_TIME;
+
         public static GameObject InstantiateMockGO (GameObject original)
         {
             // First create object and strip away all non-transform non-renderer components.
@@ -57,6 +60,32 @@ namespace Util
                 bursts[i].maxCount *= (short)(scale);
                 bursts[i].minCount *= (short)(scale);
             }
+        }
+
+        public static float ComputeSimpleDrag(float speed, float dragCoeffecient)
+            => dragCoeffecient * (Mathf.Pow(speed, 2) / 2f);
+
+        public static Vector3 ComputeSimpleDragForce (Vector3 velocity, float dragCoeffecient)
+        {
+            float magnitude = velocity.magnitude;
+            float force = ComputeSimpleDrag(magnitude, dragCoeffecient);
+            Vector3 perp = Vector3.Cross(velocity, Vector3.up);
+            Vector3 refl = Vector3.Reflect(velocity, perp);
+            return refl / magnitude * force * -1f;
+        }
+
+        public static string GetPath(this Transform transform)
+        {
+            Transform current = transform;
+            string path = "";
+            while (current != null)
+            {
+                path = current.name + "/" + path;
+                current = current.parent;
+            }
+            if (string.IsNullOrEmpty(path))
+                return String.Empty;
+            return path.Substring(0, path.Length - 1);
         }
     }
 }

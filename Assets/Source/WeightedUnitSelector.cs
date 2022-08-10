@@ -13,7 +13,7 @@ public class WeightedUnitSelector : MonoBehaviour, IUnitSelector
 
     public Text WeightDebug;
 
-    private void Awake()
+    private void Start()
     {
         WeightTable = WeightTable.DeepCopy();
     }

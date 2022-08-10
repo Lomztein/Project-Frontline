@@ -16,9 +16,9 @@ public class HealerAIControllerModifier : AIControllerModifier
 
         Controller.SetTargetEvaluator((pos, go) =>
         {
-        Health health = go.GetComponentInParent<Health>();
-        if (health)
-        {
+            Health health = go.GetComponentInParent<Health>();
+            if (health)
+            {
                 return 1 - (health.CurrentHealth / health.MaxHealth) + Random.Range(-0.25f, 0.25f);
             }
             return float.MinValue;

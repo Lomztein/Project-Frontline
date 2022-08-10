@@ -1,0 +1,463 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &957687729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 957687730}
+  - component: {fileID: 957687731}
+  - component: {fileID: 8462001736979775215}
+  - component: {fileID: 7903418517396907835}
+  m_Layer: 0
+  m_Name: TeslaCannon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &957687730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957687729}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2152468085196084140}
+  - {fileID: 2055436044}
+  m_Father: {fileID: 2781187886509771215}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &957687731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957687729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bf22f410bab4b44581600fba00ec1ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Base: {fileID: 957687730}
+  VectoringPlatform: {fileID: 2055436044}
+  HorizontalRange: {x: -135, y: 135}
+  VerticalRange: {x: -10, y: 10}
+  VectoringSpeed: 180
+  Instant: 1
+  _targetLocalPosition: {x: 0, y: 0, z: 0}
+--- !u!114 &8462001736979775215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957687729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ad85e42caa7afe45bb1b2c60e93b67e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Damage: 500
+  Firerate: 0.35
+  DamageType: 4
+  Speed: 75
+  Amount: 2
+  BurstReloadTime: 0
+  BurstAmmo: 1
+  FireParticle: {fileID: 0}
+  ProjectilePrefab: {fileID: 2900942430389265080, guid: 1ddf463031b2c8e4a81374d83b295609,
+    type: 3}
+  Muzzle: {fileID: 2055436044}
+  Inaccuracy: 0
+  MaxChargeTime: 1
+  CurrentChargeTime: 0
+  ResetChargeOnFire: 1
+  ChargeOnlyWhenCanFire: 1
+--- !u!114 &7903418517396907835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957687729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 405a347829fb2b246b8aeb2a0ebf3e80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weapon: {fileID: 8462001736979775215}
+  Renderer: {fileID: 3547313529510646785}
+  ColorProperty: _EmissionColor
+  EmissionColor: {r: 0.248, g: 0.9690399, b: 1, a: 1}
+  MaxIntensity: 5
+--- !u!1 &2055436043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2055436044}
+  m_Layer: 0
+  m_Name: Vector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2055436044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055436043}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.566, z: 2.625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 957687730}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1897602230715364423
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 957687730}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4453179
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4453179
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4453179
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.043056488
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.12800002
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.27100003
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6093592463355912122, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c9b957a5e0ec6ca449f7346c88023aca, type: 2}
+    - target: {fileID: -804731622281664130, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+    - target: {fileID: -678588488315902003, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dadf8f7facdf5d849b11618c1b181058, type: 2}
+    - target: {fileID: 919132149155446097, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+        type: 3}
+      propertyPath: m_Name
+      value: TeslaCoil
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8bf4c6186ba9b534b9f1de4c9b861350, type: 3}
+--- !u!4 &2152468085196084140 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+    type: 3}
+  m_PrefabInstance: {fileID: 1897602230715364423}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3547313529510646785 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6093592463355912122, guid: 8bf4c6186ba9b534b9f1de4c9b861350,
+    type: 3}
+  m_PrefabInstance: {fileID: 1897602230715364423}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1897602231079298344
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2445538912635436398, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: HoldRange
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445538912635436398, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: AttackRange
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445538912635436398, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: AimTolerance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445538912635436398, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: TurretObject
+      value: 
+      objectReference: {fileID: 957687729}
+    - target: {fileID: 2445538912635436398, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: WeaponObject
+      value: 
+      objectReference: {fileID: 957687729}
+    - target: {fileID: 2445538912635436398, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: Modifiers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445538912635436398, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: Modifiers.Array.data[0]
+      value: 
+      objectReference: {fileID: -8004302127193368739}
+    - target: {fileID: 2445538912635436398, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: WeaponObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445538912635436398, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: WeaponObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 957687729}
+    - target: {fileID: 5442625256619780080, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: Rigidbody
+      value: 
+      objectReference: {fileID: 7717762485941512618}
+    - target: {fileID: 7413236967939623016, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: Info.Cost
+      value: 5500
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413236967939623016, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: Info.Name
+      value: Tesla Destroyer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413236967939623016, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: Info.Value
+      value: 550
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413236967939623016, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: Info.UnitTier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413236967939623016, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: Info.UnitClass
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413236967939623016, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: Info.Identifier
+      value: Destroyer.Tesla
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413236967939623016, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: Info.Description
+      value: No matter how many millimeters of armor hostile forces claim to have,
+        nothing can stop a few million volts from cooking anything from the inside
+        out.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413236967939623016, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: _weapons.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413236967939623016, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: _weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 957687729}
+    - target: {fileID: 7879884644458380785, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: MaxHealth
+      value: 1250
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212536064758022890, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212536064758022890, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212536064758022890, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212536064758022890, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212536064758022890, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212536064758022890, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212536064758022890, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212536064758022890, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212536064758022890, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212536064758022890, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8212536064758022890, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9198845951950377899, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: m_Name
+      value: TeslaDestroyer
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2962509772813190637, guid: 809019c0ba3607d4ebcaa98d3d42a698, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 809019c0ba3607d4ebcaa98d3d42a698, type: 3}
+--- !u!1 &7349169302436755075 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9198845951950377899, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+    type: 3}
+  m_PrefabInstance: {fileID: 1897602231079298344}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &7717762485941512618 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 8164642652413316226, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+    type: 3}
+  m_PrefabInstance: {fileID: 1897602231079298344}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2781187886509771215 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4381264155662920935, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+    type: 3}
+  m_PrefabInstance: {fileID: 1897602231079298344}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-8004302127193368739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7349169302436755075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 017139dd6b4ce4b4aa7cd8c4ba6d7abc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weapon: {fileID: 8462001736979775215}
+  Shots: 1
+  HealthWeight: 10
+--- !u!114 &8737672366548744509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7349169302436755075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b6cafccd0e61a4ca019c486be74ad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FactoryPrefab: {fileID: 8913899801669703661, guid: b091d99d3a2dced4086ab2fbd438a737,
+    type: 3}
+  ProductionTime: 45

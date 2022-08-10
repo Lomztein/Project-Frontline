@@ -11,7 +11,7 @@ public abstract class AIController : MonoBehaviour, IController
     [HideInInspector] public TeamInfo Team;
     public IControllable Controllable;
 
-    private LayerMask _targetLayer;
+    public LayerMask TargetLayer { get; private set; }
     private TargetFinder _targetFinder = new TargetFinder();
 
     protected ITarget CurrentTarget { get; private set; }
@@ -37,13 +37,14 @@ public abstract class AIController : MonoBehaviour, IController
     private DamageMatrix.Damage _primaryWeaponDamageType;
     private Ticker _targetFindingTicker;
     private float _aimDelta;
+    public float TargetSearchFrequency = 2f;
 
     public AIControllerModifier[] Modifiers;
 
     protected virtual void Awake()
     {
         _targetFinder = new TargetFinder(go => CanEngage(go));
-        _targetFindingTicker = new Ticker(0.5f, FindNewTarget);
+        _targetFindingTicker = new Ticker(1f / TargetSearchFrequency, FindNewTarget);
 
         Controllable = GetComponentInChildren<IControllable>();
         if (TurretObject)
@@ -81,7 +82,7 @@ public abstract class AIController : MonoBehaviour, IController
 
     public void SetTargetEvaluator(Func<Vector3, GameObject, float> evaluator) => _targetFinder.SetEvaluator(evaluator);
     public void SetTargetFilter(Predicate<GameObject> filter) => _targetFinder.SetFilter(filter);
-    public void SetTargetLayerMask(LayerMask mask) => _targetLayer = mask;
+    public void SetTargetLayerMask(LayerMask mask) => TargetLayer = mask;
 
     protected float GetDamageFactor(GameObject target)
     {
@@ -96,7 +97,7 @@ public abstract class AIController : MonoBehaviour, IController
 
     public void FindNewTarget()
     {
-        GameObject target = _targetFinder.FindTarget(transform.position, AcquireTargetRange, _targetLayer);
+        GameObject target = _targetFinder.FindTarget(transform.position, AcquireTargetRange, TargetLayer);
         if (target)
         {
             CurrentTarget = new ColliderTarget(target);
@@ -114,7 +115,7 @@ public abstract class AIController : MonoBehaviour, IController
     public void SetTeam(TeamInfo faction)
     {
         Team = faction;
-        _targetLayer = faction.GetOtherLayerMasks();
+        TargetLayer = faction.GetOtherLayerMasks();
     }
 
     protected Vector3 GetTargetLocalPosition() => CurrentTarget.GetPosition() - transform.position;
@@ -178,16 +179,17 @@ public abstract class AIController : MonoBehaviour, IController
             if ((GetTargetSquareDistance() > LooseTargetRange * LooseTargetRange) && ForcedTarget != true || !CanHitOrNoTurret(CurrentTarget.GetPosition()))
             {
                 CurrentTarget = null;
-            }
-        }
-        else
-        {
-            ForcedTarget = false;
-            if (!CurrentTarget.ExistsAndValid() || !CanHitOrNoTurret(CurrentTarget.GetPosition()))
-            {
                 FindNewTarget();
             }
-
+        }
+        else if (CurrentTarget != null)
+        {
+            ForcedTarget = false;
+            CurrentTarget = null;
+            FindNewTarget();
+        }else
+        {
+            ForcedTarget = false;
             _targetFindingTicker.Tick();
         }
     }

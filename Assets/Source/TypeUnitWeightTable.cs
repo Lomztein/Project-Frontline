@@ -7,6 +7,7 @@ using System.Linq;
 public class TypeUnitWeightTable : UnitWeightTable
 {
     public TypeWeight[] Weights;
+    public float FallbackWeight;
 
     public override Dictionary<GameObject, float> GenerateWeights(IEnumerable<GameObject> options)
     {
@@ -14,7 +15,7 @@ public class TypeUnitWeightTable : UnitWeightTable
         foreach (GameObject go in options)
         {
             Unit unit = go.GetComponent<Unit>();
-            results.Add(go, Weights.FirstOrDefault(x => x.Type == unit.Info.UnitType)?.GetWeight() ?? 0);
+            results.Add(go, Weights.FirstOrDefault(x => x.Type == unit.Info.UnitType)?.GetWeight() ?? FallbackWeight);
         }
         return results;
     }

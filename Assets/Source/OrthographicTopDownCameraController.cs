@@ -5,18 +5,11 @@ using UnityEngine;
 public class OrthographicTopDownCameraController : TopDownCameraController
 {
     public Camera Camera;
-
     public Vector2 SizeMinMax;
-    public float CurrentZoom = 1f;
-    private float _targetZoom = 1f;
-    public float ZoomSpeed;
-    public float ZoomLerpSpeed;
 
-    protected override void Zoom(float amount, float deltaTime)
+    protected override void UpdateZoom(float zoomLevel)
     {
-        _targetZoom += amount * ZoomSpeed * deltaTime;
-        _targetZoom = Mathf.Clamp01(_targetZoom);
-        CurrentZoom = Mathf.Lerp(CurrentZoom, _targetZoom, ZoomLerpSpeed * deltaTime);
-        Camera.orthographicSize = Mathf.Lerp(SizeMinMax.x, SizeMinMax.y, CurrentZoom);
+        Camera.orthographicSize = Mathf.Lerp(SizeMinMax.x, SizeMinMax.y, zoomLevel);
+        transform.rotation = Quaternion.Euler(90f, 0f, -90f);
     }
 }

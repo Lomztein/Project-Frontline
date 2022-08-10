@@ -24,6 +24,7 @@ public class UnitInfo
     public string Name;
     [TextArea]
     public string Description;
+    public string[] Tags;
     public int Cost;
     public int Value;
 

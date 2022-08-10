@@ -12,6 +12,13 @@ public class PersonalShieldProjector : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(DelayedGenerate());
+    }
+
+    private IEnumerator DelayedGenerate ()
+    {
+        yield return new WaitForSeconds(1f);
+
         // TODO: Look into offset centers, eg. the jet
         transform.rotation = transform.parent.rotation;
 

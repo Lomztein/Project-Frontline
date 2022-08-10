@@ -18,12 +18,12 @@ public class RagdollOnDeath : MonoBehaviour
         Health.OnTakeDamage += Health_OnTakeDamage;
     }
 
-    private void Health_OnTakeDamage(DamageInfo obj)
+    private void Health_OnTakeDamage(Health health, DamageInfo obj)
     {
         _lastDamage = obj;
     }
 
-    private void Health_OnDeath()
+    private void Health_OnDeath(Health health)
     {
         Ragdoll.enabled = true;
         RagdollRoot.SetParent(null);

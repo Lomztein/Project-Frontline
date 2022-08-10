@@ -5,9 +5,10 @@ using UnityEngine;
 
 public class Ticker
 {
-    private float TicksPerSecondFixedTime => 1f / Time.fixedDeltaTime;
+    private const float DEFAULT_FIXED_DELTA_TIME = 0.02f;
+    private float TicksPerSecondFixedTime => 1f / DEFAULT_FIXED_DELTA_TIME;
 
-    private int _currentTicks = 0;
+    private float _currentTicks = 0;
     private int _targetTicks;
     private Action _callback;
 
@@ -25,7 +26,8 @@ public class Ticker
 
     public void Tick ()
     {
-        _currentTicks++;
+        float currentFixedDeltaTime = Time.fixedDeltaTime;
+        _currentTicks += currentFixedDeltaTime / DEFAULT_FIXED_DELTA_TIME;
         if (_currentTicks >= _targetTicks)
         {
             _currentTicks = 0;

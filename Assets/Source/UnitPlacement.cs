@@ -44,6 +44,12 @@ public class UnitPlacement : MonoBehaviour
         {
             unitRange = controller.AttackRange;
         }
+        // Refactor to be more generic at some point.
+        UnitFactorySpeedIncreaseStructure upgrader = placementPrefab.GetComponent<UnitFactorySpeedIncreaseStructure>();
+        if (upgrader)
+        {
+            unitRange = upgrader.Range;
+        }
 
         RangeIndicator.transform.localScale = new Vector3(unitRange, unitRange, unitRange);
     }
@@ -122,6 +128,6 @@ public class UnitPlacement : MonoBehaviour
     private bool CanPlace(Vector3 position, Vector3 checkSize)
     {
         Collider[] colliders = Physics.OverlapBox(position, checkSize / 2f, Quaternion.identity, ~TerrainLayer);
-        return !colliders.Any(x => x.CompareTag("StructureUnit"));
+        return !colliders.Any(x => x.CompareTag("StructureUnit")) && MatchSettings.Current.MapInfo.Contains(position) && _commander.IsNearAnyPlaced(position);
     }
 }

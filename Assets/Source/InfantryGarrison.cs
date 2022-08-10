@@ -9,6 +9,7 @@ public class InfantryGarrison : MonoBehaviour
 {
     public Transform[] Slots;
     public bool HideGarrisoned;
+    public bool EvacuateOnDestroy = true;
 
     public int SlotCount => Slots.Length;
     public int GarrisonCount => Slots.Count(x => x.childCount != 0);
@@ -46,7 +47,7 @@ public class InfantryGarrison : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (gameObject.scene.isLoaded) // Check if OnDestroy is called because the object was destroyed or due to scene unloading.
+        if (EvacuateOnDestroy && gameObject.scene.isLoaded) // Check if OnDestroy is called because the object was destroyed or due to scene unloading.
         {
             EvacuateAll();
         }

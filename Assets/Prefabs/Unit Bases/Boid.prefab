@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 4858691864634357441}
   - component: {fileID: 4858691864634357440}
   - component: {fileID: 7180318471842968493}
+  - component: {fileID: 5167422088603789682}
   m_Layer: 0
   m_Name: Boid
   m_TagString: Untagged
@@ -165,6 +166,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.24, y: 0.18, z: 0.57185584}
   m_Center: {x: 0, y: 0, z: -0.022189707}
+--- !u!114 &5167422088603789682
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4858691864634357470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5b68a32df418fa4da69f494c0dbf9ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InitialDamage: 0
+  DamagePerSecond: 0.33333334
+  DamageType: 8
 --- !u!1 &4858691865670415635
 GameObject:
   m_ObjectHideFlags: 0
@@ -215,7 +231,8 @@ MonoBehaviour:
   VectoringPlatform: {fileID: 4858691864292099951}
   HorizontalRange: {x: -180, y: 180}
   VerticalRange: {x: -180, y: 180}
-  VectoringSpeed: 1e+10
+  VectoringSpeed: 0
+  Instant: 1
   _targetLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &4858691865670415637
 MonoBehaviour:
@@ -258,7 +275,8 @@ MonoBehaviour:
   LooseTargetRange: 20
   AttackRange: 20
   TurretObject: {fileID: 4858691865670415635}
-  WeaponObject: {fileID: 4858691865670415635}
+  WeaponObjects:
+  - {fileID: 4858691865670415635}
   AimTolerance: 5
   LeadTarget: 0
   Modifiers: []

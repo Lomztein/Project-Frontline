@@ -10,12 +10,13 @@ public class Health : MonoBehaviour, IDamagable
     private bool _isDead;
     public float CurrentHealth { get; private set; }
     public bool DestroyOnDeath = true;
+    public float DestroyDelay;
     public GameObject Debris;
     public float DebrisLife;
 
-    public event Action<DamageInfo> OnTakeDamage;
-    public event Action<float> OnDamageTaken;
-    public event Action OnDeath;
+    public event Action<Health, DamageInfo> OnTakeDamage;
+    public event Action<Health, float> OnDamageTaken;
+    public event Action<Health> OnDeath;
 
     private void Awake()
     {
@@ -24,14 +25,14 @@ public class Health : MonoBehaviour, IDamagable
 
     public float TakeDamage (DamageInfo info)
     {
-        OnTakeDamage?.Invoke(info);
+        OnTakeDamage?.Invoke(this, info);
         float dmg = info.Damage * DamageMatrix.GetDamageFactor(info.Type, ArmorType);
         CurrentHealth -= dmg;
-        OnDamageTaken?.Invoke(dmg);
+        OnDamageTaken?.Invoke(this, dmg);
         if (CurrentHealth <= 0f && !_isDead)
         {
             Die();
-            OnDeath?.Invoke();
+            OnDeath?.Invoke(this);
             _isDead = true;
         }
         if (CurrentHealth > MaxHealth)
@@ -60,13 +61,13 @@ public class Health : MonoBehaviour, IDamagable
     {
         if (DestroyOnDeath)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, DestroyDelay);
         }
 
         if (Debris)
         {
             GameObject d = Instantiate(Debris, transform.position, transform.rotation);
-            
+
             foreach (ParticleSystem system in d.GetComponentsInChildren<ParticleSystem>())
                 system.Play();
 

@@ -11,8 +11,6 @@ public class TimeScaleAdjuster : MonoBehaviour
     public Slider Slider;
     public Toggle Toggle;
 
-    private bool _enabled = false;
-
     void Update()
     {
         if (Toggle.isOn)

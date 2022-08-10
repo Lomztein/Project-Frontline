@@ -25,6 +25,9 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
 
         foreach (var placed in enemyPlaced)
         {
+            // Disregard structures
+            if (placed.Info.UnitType == UnitInfo.Type.Structure) continue;
+
             // Aggregate enemy damage - lowest damage type is the one we want to build armor against.
             (Unit unit, float productionTime) = GetUnitProductionInfo(placed);
             foreach (IWeapon weapon in unit.GetWeapons())
@@ -40,6 +43,9 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
         // Subtract our damage from enemy armor - highest remaining armor type is the one we need to counter.
         foreach (var placed in alliedPlaced)
         {
+            // Disregard structures
+            if (placed.Info.UnitType == UnitInfo.Type.Structure) continue;
+
             (Unit unit, float productionTime) = GetUnitProductionInfo(placed);
             foreach (IWeapon weapon in unit.GetWeapons())
             {
@@ -87,7 +93,7 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
         {
             foreach (Health health in healths)
             {
-                armorScore -= DamageMatrix.GetDamageFactor(pair.Key, health.ArmorType) * pair.Value / (health.MaxHealth / 1000f) / productionTime;
+                armorScore -= DamageMatrix.GetDamageFactor(pair.Key, health.ArmorType) * pair.Value / (health.MaxHealth / 2000f) / productionTime;
             }
         }
 

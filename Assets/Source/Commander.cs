@@ -7,6 +7,7 @@ using UnityEngine;
 public class Commander : MonoBehaviour, ITeamComponent
 {
     public string Name;
+    public float BuildRadius;
 
     public int Credits;
     private float _incomingCredits;
@@ -14,11 +15,16 @@ public class Commander : MonoBehaviour, ITeamComponent
     public TeamInfo TeamInfo;
 
     public bool CanBuild => Fortress != null;
-    public bool Eliminated => _alivePlaced.Count == 0;
+    public bool Eliminated => _ded;
 
 
     public Transform Fortress;
     private List<Unit> _alivePlaced = new List<Unit>();
+    private List<Unit> _aliveProduced = new List<Unit>();
+
+    public IEnumerable<Unit> AlivePlaced => _alivePlaced;
+    public IEnumerable<Unit> AliveProduced => _aliveProduced;
+    public IEnumerable<Unit> AliveAll => Enumerable.Concat(AlivePlaced, AliveProduced);
 
     private bool _ded = false;
 
@@ -29,15 +35,48 @@ public class Commander : MonoBehaviour, ITeamComponent
     public event Action<Commander> OnFortressDestroyed;
     public event Action<Commander> OnEliminated;
 
+    private float _mapCenterDistance;
+    public float OffenseFactorMargin = 100;
+
+    public Frontline Frontline;
+
+    public float OffenseFactor => Mathf.InverseLerp(_mapCenterDistance - OffenseFactorMargin, _mapCenterDistance + OffenseFactorMargin, Vector3.Distance(Fortress.position, Frontline.Position)) * 2f - 1f;
+    public float DefenseFactor => -OffenseFactor;
+
+    public float MaxSiegeTime = 60f;
+    public float OffensiveSiegeTime { get; private set; }
+    public float DefensiveSiegeTime { get; private set; }
+
+    private float[] _earningsAverageWindow = new float[10];
+    private int _earningsAverageIndex;
+    private float _currentIndexEarnings;
+
+    public float AverageIncomePerSecond => _earningsAverageWindow.Average();
+
     protected virtual void Awake()
     {
         gameObject.name = Name;
+        Frontline = new Frontline(10, 3);
         AssignCommander(gameObject);
+    }
+
+    private void MoveNextAverageEarnings ()
+    {
+        _earningsAverageWindow[_earningsAverageIndex] = _currentIndexEarnings;
+        _currentIndexEarnings = 0f;
+
+        _earningsAverageIndex++;
+        if (_earningsAverageIndex >= _earningsAverageWindow.Length)
+        {
+            _earningsAverageIndex = 0;
+        }
     }
 
     private void Start()
     {
         Team.GetTeam(TeamInfo).AddCommander(this);
+        InvokeRepeating(nameof(MoveNextAverageEarnings), 1f, 1f);
+        _mapCenterDistance = Vector3.Distance(Fortress.position, Vector3.zero);
     }
 
     private void OnDestroy()
@@ -52,6 +91,12 @@ public class Commander : MonoBehaviour, ITeamComponent
         {
             _ded = true;
             OnFortressDestroyed?.Invoke(this);
+        }
+
+        if (!_ded)
+        {
+            OffensiveSiegeTime = Mathf.Clamp(OffensiveSiegeTime + OffenseFactor * Time.fixedDeltaTime, 0f, MaxSiegeTime);
+            DefensiveSiegeTime = Mathf.Clamp(DefensiveSiegeTime + DefenseFactor * Time.fixedDeltaTime, 0f, MaxSiegeTime);
         }
     }
 
@@ -80,11 +125,12 @@ public class Commander : MonoBehaviour, ITeamComponent
         Unit placed = go.GetComponent<Unit>();
         AssignCommander(go);
         _alivePlaced.Add(placed);
-        go.GetComponent<Health>().OnDeath += OnUnitDeath;
+        go.GetComponent<Health>().OnDeath += PlacedUnitDeath;
+        placed.OnKill += Unit_OnKill;
 
-        void OnUnitDeath ()
+        void PlacedUnitDeath (Health health)
         {
-            u.GetComponent<Health>().OnDeath -= OnUnitDeath;
+            u.GetComponent<Health>().OnDeath -= PlacedUnitDeath;
             _alivePlaced.Remove(placed);
             OnPlacedUnitDeath?.Invoke(this, u);
             if (_alivePlaced.Count == 0)
@@ -95,6 +141,12 @@ public class Commander : MonoBehaviour, ITeamComponent
 
 
         return go;
+    }
+
+    public bool IsNearAnyPlaced (Vector3 position)
+    {
+        var toCheck = Enumerable.Concat(Fortress.GetComponent<Unit>().SingleObjectAsEnumerable(), AlivePlaced);
+        return toCheck.Any(x => Vector3.Distance(x.transform.position, position) < BuildRadius);
     }
 
     public bool TryPurchaseAndPlaceUnit(GameObject unitPrefab, Vector3 position, Quaternion rotation)
@@ -120,6 +172,14 @@ public class Commander : MonoBehaviour, ITeamComponent
         Unit unit = arg2.GetComponent<Unit>();
         unit.OnKill += Unit_OnKill;
         OnUnitSpawned?.Invoke(this, arg1, unit);
+        _aliveProduced.Add(unit);
+        unit.GetComponent<Health>().OnDeath += OnProducedUnitDeath;
+    }
+
+    private void OnProducedUnitDeath(Health obj)
+    {
+        _aliveProduced.Remove(obj.GetComponent<Unit>());
+        Frontline.RegisterDeath(obj.transform.position);
     }
 
     private void Unit_OnKill(Unit arg1, IWeapon arg2, Projectile arg3, IDamagable arg4)
@@ -128,6 +188,7 @@ public class Commander : MonoBehaviour, ITeamComponent
         {
             var killedUnit = component.GetComponentInParent<Unit>();
             Earn(killedUnit.Info.Value);
+            Frontline.RegisterDeath(component.transform.position);
         }
     }
 
@@ -179,10 +240,17 @@ public class Commander : MonoBehaviour, ITeamComponent
         int earned = Mathf.FloorToInt(_incomingCredits);
         _incomingCredits -= earned;
         Credits += earned;
+        _currentIndexEarnings += moneys;
     }
 
     public void SetTeam(TeamInfo faction)
     {
         TeamInfo = faction;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawSphere(Frontline.Position, 1f);
+        Gizmos.DrawRay(Frontline.Position, Frontline.Change);
     }
 }

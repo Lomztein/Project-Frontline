@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636e361dde5cf9049983c98bf726fe99, type: 3}
+  m_Name: Rush
+  m_EditorClassIdentifier: 
+  Name: Rush AI
+  Description: This AI is impatient, and while it has no particular preferences for
+    units, it builds them more often and has no patience to save up for better choices.
+  SaveTime: 0
+  ActionsPerMinute: 15
+  OffenseMargin: 150
+  UnitWeightTable: {fileID: 11400000, guid: 3a026d2177fa1264b91bd7629932db5e, type: 2}
+  WeightRandomizer: {x: 0, y: 1}

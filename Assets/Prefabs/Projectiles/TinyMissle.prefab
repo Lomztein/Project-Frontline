@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 1423461652074252363}
   - component: {fileID: 3630212335921609416}
   - component: {fileID: 6896228333867879436}
+  - component: {fileID: -283194046120515068}
+  - component: {fileID: 7551553737248015316}
+  - component: {fileID: -2890676632264776509}
   m_Layer: 0
   m_Name: TinyMissle
   m_TagString: Untagged
@@ -55,6 +58,9 @@ MonoBehaviour:
   HitEffect: {fileID: 6381102607922298007}
   TrailEffect: {fileID: 4944847974628055824}
   EffectRecallTime: 3
+  HitLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &6896228333867879436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,6 +75,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectile: {fileID: 3630212335921609416}
   RotationSpeed: 90
+--- !u!135 &-283194046120515068
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375430243017228703}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7551553737248015316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375430243017228703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 1
+  ArmorType: 0
+  DestroyOnDeath: 0
+  Debris: {fileID: 0}
+  DebrisLife: 0
+--- !u!114 &-2890676632264776509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375430243017228703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0177d1ec70d0929489e9dc9e8f40ce4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: {fileID: 7551553737248015316}
+  Projectile: {fileID: 3630212335921609416}
 --- !u!1 &7183824886719405939
 GameObject:
   m_ObjectHideFlags: 0

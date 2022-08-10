@@ -92,7 +92,7 @@ namespace Util.Editor
                 context.AddItem(new GUIContent("Erase"), false, OnMenuItemClick, new SRAction(property, "Erase"));
                 context.AddSeparator("");
                 for (int i = 0; i < types.Length; ++i) {
-                    string typeName = types[i].Path;
+                    string typeName = types[i].Type.Name;
                     context.AddItem(new GUIContent(typeName), false, OnMenuItemClick, new SRAction(property, types[i].Path));
                 }
             }

@@ -41,7 +41,16 @@ namespace UI
         public void Assign (GameObject prefab, Commander commander, Action<GameObject> onClick)
         {
             Unit unit = prefab.GetComponent<Unit>();
-            UnitImage.sprite = Iconography.GenerateSprite(prefab);
+            IIconOverride iconOverride = unit.GetComponent<IIconOverride>();
+            if (iconOverride != null)
+            {
+                UnitImage.sprite = iconOverride.GetIcon();
+            }
+            else
+            {
+                UnitImage.sprite = Iconography.GenerateSprite(prefab);
+            }
+
             UnitTierImage.sprite = TierSprites[(int)unit.Info.UnitTier];
 
             _unit = unit;

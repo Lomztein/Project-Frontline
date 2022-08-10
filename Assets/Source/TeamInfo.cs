@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Faction", menuName = "Faction")]
+[CreateAssetMenu(fileName = "New Team", menuName = "Team")]
 public class TeamInfo : ScriptableObject
 {
-    private const int LayerMaskStart = 1 << 24;
-    private const int LayerStart = 24;
-    private const int AllTeams =
+    private const int LayerStart = 16;
+    private const int LayerMaskStart = 1 << LayerStart;
+    public const int LayerAllTeams =
         LayerMaskStart
         | LayerMaskStart << 1
         | LayerMaskStart << 2
@@ -16,6 +16,18 @@ public class TeamInfo : ScriptableObject
         | LayerMaskStart << 5
         | LayerMaskStart << 6
         | LayerMaskStart << 7;
+
+    private const int ProjectileLayerStart = 24;
+    private const int ProjectileLayerMaskStart = 1 << ProjectileLayerStart;
+    public const int ProjectileLayerAllTeams =
+    ProjectileLayerMaskStart
+    | ProjectileLayerMaskStart << 1
+    | ProjectileLayerMaskStart << 2
+    | ProjectileLayerMaskStart << 3
+    | ProjectileLayerMaskStart << 4
+    | ProjectileLayerMaskStart << 5
+    | ProjectileLayerMaskStart << 6
+    | ProjectileLayerMaskStart << 7;
 
     public int Id;
     public string Name;
@@ -64,8 +76,16 @@ public class TeamInfo : ScriptableObject
 
 
     public static int GetLayerMask(int factionId) => LayerMaskStart << factionId;
-    public static int Invert(int mask) => AllTeams & ~mask;
+    public static int Invert(int mask) => LayerAllTeams & ~mask;
+
     public int GetLayer() => LayerStart + Id;
     public int GetLayerMask() => GetLayerMask(Id);
-    public int GetOtherLayerMasks() => AllTeams & ~GetLayerMask();
+    public int GetOtherLayerMasks() => LayerAllTeams & ~GetLayerMask();
+
+    public static int ProjectileGetLayerMask(int factionId) => ProjectileLayerMaskStart << factionId;
+    public static int ProjectileInvert(int mask) => ProjectileLayerAllTeams & ~mask;
+
+    public int ProjectileGetLayer() => ProjectileLayerStart + Id;
+    public int ProjectileGetLayerMask() => ProjectileGetLayerMask(Id);
+    public int ProjectileGetOtherLayerMasks() => ProjectileLayerAllTeams & ~ProjectileGetLayerMask();
 }

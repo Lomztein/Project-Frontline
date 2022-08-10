@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 636e361dde5cf9049983c98bf726fe99, type: 3}
+  m_Name: Balanced
+  m_EditorClassIdentifier: 
+  Name: Balanced AI
+  Description: This AI has no particular units it focuses on, and will do whatever
+    seems to be the best option for it at any given point.
+  SaveTime: 10
+  ActionsPerMinute: 10
+  OffenseMargin: 150
+  UnitWeightTable: {fileID: 11400000, guid: 3a026d2177fa1264b91bd7629932db5e, type: 2}
+  WeightRandomizer: {x: 0, y: 1}

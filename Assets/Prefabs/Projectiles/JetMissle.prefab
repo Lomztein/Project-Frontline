@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 1423461652074252363}
   - component: {fileID: 3630212335921609416}
   - component: {fileID: 6896228333867879436}
+  - component: {fileID: -4533379440308260803}
+  - component: {fileID: 5704885500638150464}
+  - component: {fileID: -6351171181290095154}
   m_Layer: 0
   m_Name: JetMissle
   m_TagString: Untagged
@@ -72,6 +75,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectile: {fileID: 3630212335921609416}
   RotationSpeed: 360
+--- !u!135 &-4533379440308260803
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375430243017228703}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5704885500638150464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375430243017228703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 20
+  ArmorType: 2
+  DestroyOnDeath: 0
+  Debris: {fileID: 0}
+  DebrisLife: 0
+--- !u!114 &-6351171181290095154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2375430243017228703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0177d1ec70d0929489e9dc9e8f40ce4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: {fileID: 5704885500638150464}
+  Projectile: {fileID: 3630212335921609416}
 --- !u!1 &2776213378049984963
 GameObject:
   m_ObjectHideFlags: 0

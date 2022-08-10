@@ -19,7 +19,7 @@ public class ColliderTarget : ITarget
         Collider = col;
     }
 
-    public bool IsValid() => Collider;
+    public bool IsValid() => Collider && Collider.gameObject.activeSelf;
 
     public Vector3 GetPosition()
     {

@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae84998ee121eab46a9be32ff95e11cb, type: 3}
+  m_Name: Default
+  m_EditorClassIdentifier: 
+  MapInfo:
+    Width: 500
+    Height: 300
+    Shape:
+      id: 0
+    SceneryGenerator: {fileID: 11400000, guid: 95f688a5978d6bc42bcd84cbb0f9edfd, type: 2}
+  _players:
+  - Name: "Ryland\r Trey\r"
+    Faction: {fileID: 11400000, guid: 7fa686da813f0dc4dbc84b91ddea007b, type: 2}
+    Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
+    Position: {x: 0, y: 0}
+    StartingCredits: 500
+    Handicap: 0
+    AIProfile: {fileID: 11400000, guid: f4f91bde49ae3b546b351a3c22abfd60, type: 2}
+  - Name: "Julissa\r Raine\r"
+    Faction: {fileID: 11400000, guid: 7fa686da813f0dc4dbc84b91ddea007b, type: 2}
+    Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
+    Position: {x: 0, y: 0}
+    StartingCredits: 500
+    Handicap: 0
+    AIProfile: {fileID: 11400000, guid: f4f91bde49ae3b546b351a3c22abfd60, type: 2}
+  - Name: "Miriam\r Joseph\r"
+    Faction: {fileID: 11400000, guid: 7fa686da813f0dc4dbc84b91ddea007b, type: 2}
+    Team: {fileID: 11400000, guid: 59551ab9d676ab942a343bb9c54efd2b, type: 2}
+    Position: {x: 0, y: 0}
+    StartingCredits: 500
+    Handicap: 0
+    AIProfile: {fileID: 11400000, guid: f4f91bde49ae3b546b351a3c22abfd60, type: 2}
+  - Name: "Hadassah\r Rhett\r"
+    Faction: {fileID: 11400000, guid: 7fa686da813f0dc4dbc84b91ddea007b, type: 2}
+    Team: {fileID: 11400000, guid: 59551ab9d676ab942a343bb9c54efd2b, type: 2}
+    Position: {x: 0, y: 0}
+    StartingCredits: 500
+    Handicap: 0
+    AIProfile: {fileID: 11400000, guid: f4f91bde49ae3b546b351a3c22abfd60, type: 2}
+  references:
+    version: 1
+    00000000:
+      type: {class: SquareBattlefieldShape, ns: , asm: Assembly-CSharp}

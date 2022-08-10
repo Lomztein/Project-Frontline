@@ -89,6 +89,7 @@ namespace Util
             Camera.enabled = false;
             _instance.gameObject.SetActive(false);
 
+            model.transform.position += Vector3.right * 9999999f;
             model.SetActive(false);
             DestroyImmediate(model);
             return texture;
