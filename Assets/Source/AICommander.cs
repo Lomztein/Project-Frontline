@@ -49,7 +49,7 @@ public class AICommander : Commander
     {
         SaveTarget = null;
         float maxCost = GetExpectedCreditsAfterMaxSaveTime();
-        GameObject unit = _unitSelector.SelectUnit(UnitSource.GetAvailableUnitPrefabs().Where(x => CanAfford(x, (int)maxCost)));
+        GameObject unit = _unitSelector.SelectUnit(UnitSource.GetAvailableUnitPrefabs(Faction).Where(x => CanAfford(x, (int)maxCost)));
 
         if (unit)
         {

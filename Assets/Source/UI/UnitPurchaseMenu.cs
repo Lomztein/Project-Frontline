@@ -18,12 +18,15 @@ namespace UI
 
         private void Start()
         {
-            UpdateActive();
             if (Commander)
             {
                 Commander.OnEliminated += Commander_OnEliminated;
             }
-            OpenTab(CurrentOpenTab);
+            UpdateActive();
+            if (gameObject.activeSelf)
+            {
+                OpenTab(CurrentOpenTab);
+            }
         }
 
         public void UpdateActive ()
@@ -40,7 +43,7 @@ namespace UI
         {
             ClearButtons();
 
-            GameObject[] units = Commander.UnitSource.GetAvailableUnitPrefabs().Where(x => x.GetComponent<Unit>().Info.UnitType == unitType).ToArray();
+            GameObject[] units = Commander.UnitSource.GetAvailableUnitPrefabs(Commander.Faction).Where(x => x.GetComponent<Unit>().Info.UnitType == unitType).ToArray();
             Array.Sort(units, new Comparison<GameObject>(CompareUnits));
 
             foreach (GameObject unit in units)

@@ -16,6 +16,7 @@ public class Mine : MonoBehaviour, ITeamComponent
 
     public Effect TriggerEffect;
     public Effect ExplodeEffect;
+    public Collider Collider;
 
     public Vector3 Gravity = new Vector3(0f, -9.81f, 0f);
     private bool _flying;
@@ -24,6 +25,7 @@ public class Mine : MonoBehaviour, ITeamComponent
     public void SetTeam(TeamInfo team)
     {
         TargetLayer = team.GetOtherLayerMasks();
+        gameObject.layer = team.ProjectileGetLayer();
     }
 
     private void FixedUpdate()
@@ -42,6 +44,7 @@ public class Mine : MonoBehaviour, ITeamComponent
 
     private IEnumerator JumpAndExplode ()
     {
+        Collider.enabled = true;
         TriggerEffect.Play();
 
         _velocity += Vector3.up * JumpVelocity;

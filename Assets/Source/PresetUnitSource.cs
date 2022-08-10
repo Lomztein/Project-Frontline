@@ -6,7 +6,7 @@ public class PresetUnitSource : UnitSource
 {
     public GameObject[] AvailableUnits;
 
-    public override GameObject[] GetAvailableUnitPrefabs()
+    public override GameObject[] GetAvailableUnitPrefabs(Faction faction)
     {
         return AvailableUnits;
     }

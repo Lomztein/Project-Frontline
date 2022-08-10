@@ -130,6 +130,7 @@ Transform:
   - {fileID: 954483650547012270}
   - {fileID: 954483649823755201}
   - {fileID: 954483651298060802}
+  - {fileID: 697596543926272356}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -162,14 +163,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
+    Identifier: 
     Name: Murderwshroom
     Description: It likes murder.
+    Tags: []
     Cost: 2750
     Value: 275
     UnitRole: 1
     UnitTier: 1
     UnitType: 1
-  _weapons: []
+  Health: {fileID: 0}
+  _weapons:
+  - {fileID: 954483650566011691}
+  - {fileID: 954483649745220675}
+  - {fileID: 954483649935280905}
+  - {fileID: 954483650547012257}
+  - {fileID: 954483649823755200}
+  - {fileID: 954483651298060805}
 --- !u!114 &954483649735373748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,6 +213,7 @@ MonoBehaviour:
   MaxHealth: 750
   ArmorType: 2
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 6309138862387603851, guid: ce8bba28af204f94db7328d615882804, type: 3}
   DebrisLife: 3
 --- !u!114 &954483649735373758
@@ -220,11 +231,18 @@ MonoBehaviour:
   Team: {fileID: 0}
   AcquireTargetRange: 75
   LooseTargetRange: 75
-  AttackRange: 0
-  TurretObject: {fileID: 0}
-  WeaponObject: {fileID: 0}
-  AimTolerance: 0
+  AttackRange: 25
+  TurretObject: {fileID: 4904567958235152610}
+  WeaponObjects:
+  - {fileID: 954483650566011691}
+  - {fileID: 954483649745220675}
+  - {fileID: 954483649935280905}
+  - {fileID: 954483650547012257}
+  - {fileID: 954483649823755200}
+  - {fileID: 954483651298060805}
+  AimTolerance: 1
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 0
 --- !u!114 &-2407386209733416137
@@ -292,6 +310,7 @@ MonoBehaviour:
   HorizontalRange: {x: -180, y: 180}
   VerticalRange: {x: -180, y: 180}
   VectoringSpeed: 90000
+  Instant: 1
   _targetLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &954483649745220686
 MonoBehaviour:
@@ -334,9 +353,10 @@ MonoBehaviour:
   LooseTargetRange: 25
   AttackRange: 25
   TurretObject: {fileID: 954483649745220675}
-  WeaponObject: {fileID: 954483649745220675}
+  WeaponObjects: []
   AimTolerance: 5
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
 --- !u!1 &954483649823755200
 GameObject:
@@ -388,6 +408,7 @@ MonoBehaviour:
   HorizontalRange: {x: -180, y: 180}
   VerticalRange: {x: -180, y: 180}
   VectoringSpeed: 90000
+  Instant: 1
   _targetLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &954483649823755215
 MonoBehaviour:
@@ -430,9 +451,10 @@ MonoBehaviour:
   LooseTargetRange: 25
   AttackRange: 25
   TurretObject: {fileID: 954483649823755200}
-  WeaponObject: {fileID: 954483649823755200}
+  WeaponObjects: []
   AimTolerance: 5
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
 --- !u!1 &954483649935280905
 GameObject:
@@ -484,6 +506,7 @@ MonoBehaviour:
   HorizontalRange: {x: -180, y: 180}
   VerticalRange: {x: -180, y: 180}
   VectoringSpeed: 90000
+  Instant: 1
   _targetLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &954483649935280948
 MonoBehaviour:
@@ -526,9 +549,10 @@ MonoBehaviour:
   LooseTargetRange: 25
   AttackRange: 25
   TurretObject: {fileID: 954483649935280905}
-  WeaponObject: {fileID: 954483649935280905}
+  WeaponObjects: []
   AimTolerance: 5
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
 --- !u!1 &954483650148398545
 GameObject:
@@ -740,6 +764,7 @@ MonoBehaviour:
   HorizontalRange: {x: -180, y: 180}
   VerticalRange: {x: -180, y: 180}
   VectoringSpeed: 90000
+  Instant: 1
   _targetLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &954483650547012268
 MonoBehaviour:
@@ -782,9 +807,10 @@ MonoBehaviour:
   LooseTargetRange: 25
   AttackRange: 25
   TurretObject: {fileID: 954483650547012257}
-  WeaponObject: {fileID: 954483650547012257}
+  WeaponObjects: []
   AimTolerance: 5
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
 --- !u!1 &954483650566011691
 GameObject:
@@ -836,6 +862,7 @@ MonoBehaviour:
   HorizontalRange: {x: -180, y: 180}
   VerticalRange: {x: -180, y: 180}
   VectoringSpeed: 90000
+  Instant: 1
   _targetLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &954483650566012118
 MonoBehaviour:
@@ -878,9 +905,10 @@ MonoBehaviour:
   LooseTargetRange: 25
   AttackRange: 25
   TurretObject: {fileID: 954483650566011691}
-  WeaponObject: {fileID: 954483650566011691}
+  WeaponObjects: []
   AimTolerance: 5
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
 --- !u!1 &954483650792182880
 GameObject:
@@ -1256,6 +1284,7 @@ MonoBehaviour:
   HorizontalRange: {x: -180, y: 180}
   VerticalRange: {x: -180, y: 180}
   VectoringSpeed: 90000
+  Instant: 1
   _targetLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &954483651298060800
 MonoBehaviour:
@@ -1298,9 +1327,10 @@ MonoBehaviour:
   LooseTargetRange: 25
   AttackRange: 25
   TurretObject: {fileID: 954483651298060805}
-  WeaponObject: {fileID: 954483651298060805}
+  WeaponObjects: []
   AimTolerance: 5
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
 --- !u!1 &1030744566095492152
 GameObject:
@@ -1768,6 +1798,56 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4904567958235152610
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 697596543926272356}
+  - component: {fileID: 4317469479774376566}
+  m_Layer: 0
+  m_Name: CompositeTurret
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &697596543926272356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4904567958235152610}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 954483649735373746}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4317469479774376566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4904567958235152610}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1320f0cae5df51249a6f15c30217da54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Turrets:
+  - {fileID: 954483650566011691}
+  - {fileID: 954483649745220675}
+  - {fileID: 954483649935280905}
+  - {fileID: 954483650547012257}
+  - {fileID: 954483649823755200}
+  - {fileID: 954483651298060805}
 --- !u!1 &6058874093861147454
 GameObject:
   m_ObjectHideFlags: 0

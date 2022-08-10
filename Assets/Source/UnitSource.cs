@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class UnitSource : MonoBehaviour
 {
-    public abstract GameObject[] GetAvailableUnitPrefabs();
+    public abstract GameObject[] GetAvailableUnitPrefabs(Faction faction);
 }

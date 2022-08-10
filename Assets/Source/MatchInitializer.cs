@@ -76,6 +76,7 @@ public class MatchInitializer : MonoBehaviour
         commander.Fortress = Instantiate(info.Faction.HeadquartersPrefab, commanderObj.transform).transform;
         commander.Credits = info.StartingCredits;
         commander.Name = info.Name;
+        commander.Faction = info.Faction;
         commander.AssignCommander(commanderObj);
 
         if (info.IsPlayer)

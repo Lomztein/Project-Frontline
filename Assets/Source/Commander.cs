@@ -13,6 +13,7 @@ public class Commander : MonoBehaviour, ITeamComponent
     private float _incomingCredits;
 
     public TeamInfo TeamInfo;
+    public Faction Faction;
 
     public bool CanBuild => Fortress != null;
     public bool Eliminated => _ded;

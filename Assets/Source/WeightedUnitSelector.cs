@@ -23,7 +23,7 @@ public class WeightedUnitSelector : MonoBehaviour, IUnitSelector
         if (!_initialized)
         {
             Commander commander = GetComponent<Commander>();
-            WeightTable.Initialize(commander, commander.UnitSource.GetAvailableUnitPrefabs());
+            WeightTable.Initialize(commander, commander.UnitSource.GetAvailableUnitPrefabs(commander.Faction));
             _initialized = true;
         }
 
