@@ -21,6 +21,7 @@ public class Unit : MonoBehaviour, IPurchasable
     public event Action<Unit, IWeapon, Projectile, IDamagable> OnKill;
 
     private float _lastEngageTime;
+
     public bool IsEngaged => _lastEngageTime + ENGAGE_TIME > Time.time;
 
     public IEnumerable<IWeapon> GetWeapons ()

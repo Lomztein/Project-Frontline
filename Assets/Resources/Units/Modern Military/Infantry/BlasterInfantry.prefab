@@ -48,6 +48,7 @@ MonoBehaviour:
   MaxHealth: 1500
   ArmorType: 4
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 0}
   DebrisLife: 0
 --- !u!114 &4529628589919005194
@@ -202,6 +203,10 @@ PrefabInstance:
       value: 175
       objectReference: {fileID: 0}
     - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
+      propertyPath: DPSOverride
+      value: 
+      objectReference: {fileID: 2754072076088389693}
+    - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: Info.UnitTier
       value: 2
       objectReference: {fileID: 0}
@@ -249,7 +254,17 @@ PrefabInstance:
     - target: {fileID: 434691834773493002, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: 0.001953001
+      value: 0.00200037
+      objectReference: {fileID: 0}
+    - target: {fileID: 434691834773493002, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0017563397
+      objectReference: {fileID: 0}
+    - target: {fileID: 434691834773493002, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.000131077
       objectReference: {fileID: 0}
     - target: {fileID: 651198648701705142, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
@@ -300,12 +315,27 @@ PrefabInstance:
     - target: {fileID: 6214798416334194500, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: m_ConnectedAnchor.x
-      value: -3.929017e-10
+      value: 0.000000003739842
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214798416334194500, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0031239507
       objectReference: {fileID: 0}
     - target: {fileID: 6214798416334194500, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: m_ConnectedAnchor.z
-      value: 0
+      value: 3.4924597e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6773365678922938316, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.0000000028958311
+      objectReference: {fileID: 0}
+    - target: {fileID: 6773365678922938316, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0031239507
       objectReference: {fileID: 0}
     - target: {fileID: 6855995441583310604, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
@@ -566,6 +596,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 8489328766020590292}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8489328765044790610 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707,
+    type: 3}
+  m_PrefabInstance: {fileID: 8489328766020590292}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503965405015008563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955e3746abfe5e14cb56265a34877e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6767053493985322152 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2898419047578615420, guid: 50378c4ca65714b4ebd2928ade59a707,
@@ -597,6 +639,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Model: {fileID: 338817655861301946}
+--- !u!114 &2754072076088389693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503965405015008563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b989d61b1f1c4df4b8401448cb93e737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Unit: {fileID: 8489328765044790610}
+  Multiplier: 4
 --- !u!1001 &8520465714107456837
 PrefabInstance:
   m_ObjectHideFlags: 0

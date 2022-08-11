@@ -624,6 +624,7 @@ GameObject:
   - component: {fileID: 4964351093738814713}
   - component: {fileID: 6144739744911261648}
   - component: {fileID: 4514442581584012209}
+  - component: {fileID: 5042219308555484677}
   m_Layer: 0
   m_Name: Gunship
   m_TagString: Untagged
@@ -677,6 +678,7 @@ MonoBehaviour:
   - {fileID: 5710782334378631605}
   - {fileID: 5710782335347440846}
   - {fileID: 5710782334178748803}
+  DPSOverride: {fileID: 5042219308555484677}
 --- !u!114 &4964351093738814663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,6 +770,7 @@ MonoBehaviour:
   MaxHealth: 5000
   ArmorType: 2
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
 --- !u!114 &4514442581584012209
@@ -784,6 +787,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Movement: {x: 0, y: 30, z: -200}
   Transformed: 1
+--- !u!114 &5042219308555484677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4964351093738814712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b989d61b1f1c4df4b8401448cb93e737, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Unit: {fileID: 4964351093738814716}
+  Multiplier: 0.6
 --- !u!1 &5425705864996947599
 GameObject:
   m_ObjectHideFlags: 0
