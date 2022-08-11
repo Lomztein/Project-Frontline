@@ -530,11 +530,13 @@ MonoBehaviour:
     Description: Armed to the teeth with arguably incredibly unsafe explosives, and
       capable of taking out strong armor with a single volley of rockets. You generally
       do not want to piss these guys off.
+    Tags: []
     Cost: 2500
     Value: 250
     UnitRole: 1
     UnitTier: 1
     UnitType: 2
+  Health: {fileID: 0}
   _weapons:
   - {fileID: 4325982582558911292}
   - {fileID: 4325982582396688272}
@@ -568,6 +570,7 @@ MonoBehaviour:
   MaxHealth: 750
   ArmorType: 2
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
 --- !u!114 &4325982583102194766
@@ -779,7 +782,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4325982584135870505}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.72}
+  m_LocalPosition: {x: 0, y: 0, z: 0.87}
   m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 0.29999998}
   m_Children: []
   m_Father: {fileID: 4325982582569524211}

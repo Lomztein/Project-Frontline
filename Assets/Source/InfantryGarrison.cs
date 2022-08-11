@@ -10,6 +10,7 @@ public class InfantryGarrison : MonoBehaviour
     public Transform[] Slots;
     public bool HideGarrisoned;
     public bool EvacuateOnDestroy = true;
+    public float OccupantRangeMultiplier;
 
     public int SlotCount => Slots.Length;
     public int GarrisonCount => Slots.Count(x => x.childCount != 0);
@@ -27,6 +28,11 @@ public class InfantryGarrison : MonoBehaviour
         if (AvailableCount > 0)
         {
             InfantryBody body = unit.GetComponentInChildren<InfantryBody>();
+            var ai = unit.GetComponent<AIController>();
+            ai.AttackRange *= OccupantRangeMultiplier;
+            ai.AcquireTargetRange *= OccupantRangeMultiplier;
+            ai.LooseTargetRange *= OccupantRangeMultiplier;
+
             Transform slot = GetFirstEmptySlot();
             unit.transform.SetParent(slot);
             unit.transform.position = slot.position;
@@ -58,6 +64,11 @@ public class InfantryGarrison : MonoBehaviour
         if (IsGarrisoned(unit))
         {
             InfantryBody body = unit.GetComponentInChildren<InfantryBody>();
+            var ai = unit.GetComponent<AIController>();
+            ai.AttackRange /= OccupantRangeMultiplier;
+            ai.AcquireTargetRange /= OccupantRangeMultiplier;
+            ai.LooseTargetRange /= OccupantRangeMultiplier;
+
             body.enabled = true;
             unit.transform.SetParent(null);
             unit.transform.SetPositionAndRotation(

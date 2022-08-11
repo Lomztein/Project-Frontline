@@ -21,11 +21,12 @@ public abstract class AggregateUnitWeightTable : UnitWeightTableBase
             var weights = table.GetWeights(options);
             foreach (var weight in weights)
             {
-                result[weight.Key] = Aggregate(result[weight.Key], weight.Value);
+                float value = float.IsNaN(weight.Value) ? 0f : weight.Value;
+                result[weight.Key] = Aggregate(result[weight.Key], value);
             }
         }
 
-        float highest = 0f;
+        float highest = float.Epsilon;
         if (NormalizeOptions)
         {
             foreach (var option in options)

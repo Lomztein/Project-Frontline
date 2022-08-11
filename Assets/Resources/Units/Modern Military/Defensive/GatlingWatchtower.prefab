@@ -140,7 +140,7 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 4052633016328378149}
   Inaccuracy: 0.75
-  MaxChargeTime: 1
+  MaxChargeTime: 0.3
   CurrentChargeTime: 0
   ResetChargeOnFire: 0
   ChargeOnlyWhenCanFire: 0
@@ -807,15 +807,15 @@ PrefabInstance:
       objectReference: {fileID: 1187514992}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c9aeb8aedbb1694485fcc7673507336, type: 3}
---- !u!4 &455416363573266304 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2677312267741564948, guid: 8c9aeb8aedbb1694485fcc7673507336,
-    type: 3}
-  m_PrefabInstance: {fileID: 2555317350688053140}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3604651880949064601 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1256509098192466957, guid: 8c9aeb8aedbb1694485fcc7673507336,
+    type: 3}
+  m_PrefabInstance: {fileID: 2555317350688053140}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &455416363573266304 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2677312267741564948, guid: 8c9aeb8aedbb1694485fcc7673507336,
     type: 3}
   m_PrefabInstance: {fileID: 2555317350688053140}
   m_PrefabAsset: {fileID: 0}
@@ -841,7 +841,21 @@ MonoBehaviour:
   AimTolerance: 60
   LeadTarget: 1
   TargetSearchFrequency: 2
-  Modifiers: []
+  Modifiers:
+  - {fileID: 7809682395510456236}
+--- !u!114 &7809682395510456236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3604651880949064601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513598aae73d30a4e85e41647bc66d29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AppendLayerMask: 1
 --- !u!1001 &7598937987878868510
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -897,12 +911,12 @@ PrefabInstance:
     - target: {fileID: 5857214540084150587, guid: 92a563c3efd2b8344b126e88c4daa3d5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.582
+      value: -3.817
       objectReference: {fileID: 0}
     - target: {fileID: 5857214540084150587, guid: 92a563c3efd2b8344b126e88c4daa3d5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.186
+      value: 0.19
       objectReference: {fileID: 0}
     - target: {fileID: 5857214540084150587, guid: 92a563c3efd2b8344b126e88c4daa3d5,
         type: 3}

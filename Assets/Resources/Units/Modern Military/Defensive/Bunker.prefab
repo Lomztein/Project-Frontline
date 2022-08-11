@@ -207,6 +207,7 @@ MonoBehaviour:
   MaxHealth: 5000
   ArmorType: 5
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 0}
   DebrisLife: 0
 --- !u!114 &8114042654974297428
@@ -222,15 +223,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
+    Identifier: 
     Name: Bunker
     Description: Study defensive structure that can garrison up to four infantry
       units, who can then fire from the safety of the bunker. Infantry is automatically
       ejected on when the bunker is destroyed.
+    Tags: []
     Cost: 1000
     Value: 100
     UnitRole: 2
     UnitTier: 0
     UnitType: 3
+  Health: {fileID: 0}
   _weapons: []
 --- !u!114 &8114042654974297418
 MonoBehaviour:
@@ -265,6 +269,8 @@ MonoBehaviour:
   - {fileID: 8114042654153193485}
   - {fileID: 1277925727243271059}
   HideGarrisoned: 0
+  EvacuateOnDestroy: 1
+  OccupantRangeMultiplier: 1.5
 --- !u!114 &8114042654974297425
 MonoBehaviour:
   m_ObjectHideFlags: 0

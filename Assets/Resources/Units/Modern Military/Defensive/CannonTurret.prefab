@@ -139,6 +139,7 @@ MonoBehaviour:
   - {fileID: 7239507549102304598}
   AimTolerance: 1
   LeadTarget: 1
+  TargetSearchFrequency: 2
   Modifiers: []
 --- !u!114 &4311215863054917944
 MonoBehaviour:
@@ -155,6 +156,7 @@ MonoBehaviour:
   MaxHealth: 2000
   ArmorType: 3
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
 --- !u!65 &6535671796607611735
@@ -187,11 +189,13 @@ MonoBehaviour:
     Name: Cannon Turret
     Description: Stationary cannon turret with a caliber that makes you wonder what
       the designer was compensating for. Can take out enemy armor fairly easily.
+    Tags: []
     Cost: 1500
     Value: 15
     UnitRole: 2
     UnitTier: 1
     UnitType: 3
+  Health: {fileID: 0}
   _weapons:
   - {fileID: 7239507549102304598}
 --- !u!114 &-4855668697756973212
@@ -347,7 +351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7167148866282325212}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.434}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7239507549102304599}

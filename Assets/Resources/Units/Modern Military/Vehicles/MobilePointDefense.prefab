@@ -201,9 +201,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8161709482788567209, guid: 8cd500522f6ce674a9b045047f64181f,
         type: 3}
+      propertyPath: Info.Tags.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8161709482788567209, guid: 8cd500522f6ce674a9b045047f64181f,
+        type: 3}
       propertyPath: _weapons.Array.data[0]
       value: 
       objectReference: {fileID: 7154550939190037039}
+    - target: {fileID: 8161709482788567209, guid: 8cd500522f6ce674a9b045047f64181f,
+        type: 3}
+      propertyPath: Info.Tags.Array.data[0]
+      value: Point Defense
+      objectReference: {fileID: 0}
     - target: {fileID: 8161709482788567223, guid: 8cd500522f6ce674a9b045047f64181f,
         type: 3}
       propertyPath: m_Name
@@ -244,6 +254,7 @@ MonoBehaviour:
   - {fileID: 7154550939190037039}
   AimTolerance: 1
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers:
   - {fileID: 8607970690533793260}
   HoldRange: 75

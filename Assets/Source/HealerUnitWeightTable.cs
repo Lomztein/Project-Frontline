@@ -4,26 +4,18 @@ using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Healer Weight Table", menuName = "Unit Weight Tables/Healer")]
-public class HealerUnitWeightTable : UnitWeightTableBase
+public class HealerUnitWeightTable : UnitWeightTable
 {
     public float HealthPerHPSRatio;
-    public Vector2 HealerWeightMinMax;
     public float DefaultProductionTime = 60f;
 
-    private Commander _commander;
-    private IEnumerable<GameObject> _availableUnits;
-
-    public override UnitWeightTableBase DeepCopy()
-    {
-        return Instantiate(this);
-    }
-
-    public override Dictionary<GameObject, float> GetWeights(IEnumerable<GameObject> options)
+    public override Dictionary<GameObject, float> GenerateWeights(IEnumerable<GameObject> options)
     {
         float currentHeals = 0f;
         float currentMaxHealth = 0f;
 
-        var currentUnits = Team.GetTeam(_commander.TeamInfo).GetCommanders().SelectMany(x => x.GetPlacedUnits());
+        var currentUnits = Team.GetTeam(Commander.TeamInfo).GetCommanders().SelectMany(x => x.GetPlacedUnits());
+
         foreach (Unit u in currentUnits)
         {
             (Unit unit, float productionTime) = GetProducingUnitOrUnit(u);
@@ -41,23 +33,35 @@ public class HealerUnitWeightTable : UnitWeightTableBase
         }
 
         var weights = new Dictionary<GameObject, float>();
+        float highestHps = 0f;
         foreach (var unit in options)
         {
             var weapons = unit.GetComponent<Unit>().GetWeapons();
-            bool anyHeals = false;
+            float hps = float.Epsilon;
+
             foreach (var weapon in weapons)
             {
                 if (weapon.DamageType == DamageMatrix.Damage.Heal)
                 {
-                    weights.Add(unit, Mathf.Lerp(HealerWeightMinMax.x, HealerWeightMinMax.y, currentHeals / (currentMaxHealth * HealthPerHPSRatio)));
-                    anyHeals = true;
-                    continue;
+                    hps += weapon.GetDPS();
                 }
             }
-            if (anyHeals == false)
+            if (hps > 0.1f)
+            {
+                weights.Add(unit, (1f - Mathf.Clamp01(currentHeals / (currentMaxHealth / HealthPerHPSRatio))) * hps);
+            }
+            else
             {
                 weights.Add(unit, 0f);
             }
+
+            if (hps > highestHps) highestHps = hps;
+        }
+
+        // Normalize by highest HPS
+        foreach (var option in options)
+        {
+            weights[option] /= highestHps;
         }
 
         return weights;
@@ -71,11 +75,5 @@ public class HealerUnitWeightTable : UnitWeightTableBase
             return (factory.UnitPrefab.GetComponent<Unit>(), factory.UnitPrefab.GetComponent<ProductionInfo>().ProductionTime);
         }
         return (unit, DefaultProductionTime);
-    }
-
-    public override void Initialize(Commander commander, IEnumerable<GameObject> availableUnits)
-    {
-        _commander = commander;
-        _availableUnits = availableUnits;
     }
 }

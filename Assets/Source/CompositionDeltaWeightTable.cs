@@ -8,6 +8,7 @@ using UnityEngine;
 public class CompositionDeltaWeightTable : UnitWeightTableBase
 {
     public float FallbackProductionTime;
+    public string[] SpecialistTags;
 
     private Commander _commander;
     private static Dictionary<DamageMatrix.Damage, Dictionary<DamageMatrix.Armor, float>> _damageMappingCopy;
@@ -25,11 +26,12 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
 
         foreach (var placed in enemyPlaced)
         {
-            // Disregard structures
-            if (placed.Info.UnitType == UnitInfo.Type.Structure) continue;
-
             // Aggregate enemy damage - lowest damage type is the one we want to build armor against.
             (Unit unit, float productionTime) = GetUnitProductionInfo(placed);
+
+            // Disregard all but factories.
+            if (unit.CompareTag("StructureUnit")) continue;
+
             foreach (IWeapon weapon in unit.GetWeapons())
             {
                 enemyDamage[weapon.DamageType] += weapon.GetDPS() / productionTime;
@@ -43,10 +45,11 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
         // Subtract our damage from enemy armor - highest remaining armor type is the one we need to counter.
         foreach (var placed in alliedPlaced)
         {
-            // Disregard structures
-            if (placed.Info.UnitType == UnitInfo.Type.Structure) continue;
-
             (Unit unit, float productionTime) = GetUnitProductionInfo(placed);
+
+            // Disregard all but factories.
+            if (unit.CompareTag("StructureUnit")) continue;
+
             foreach (IWeapon weapon in unit.GetWeapons())
             {
                 foreach (var value in Enum.GetValues(typeof(DamageMatrix.Armor)))
@@ -87,6 +90,8 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
         float armorScore = 0f;
         float damageScore = 0f;
         (Unit unit, float productionTime) = GetUnitProductionInfo(go.GetComponent<Unit>());
+        var goUnit = go.GetComponent<Unit>(); // bit wierd I know
+
 
         Health[] healths = go.GetComponentsInChildren<Health>();
         foreach (var pair in enemyDamage)
@@ -97,7 +102,7 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
             }
         }
 
-        var weapons = go.GetComponent<Unit>().GetWeapons();
+        var weapons = goUnit.GetWeapons();
         foreach (var pair in enemyArmorMinusAlliedDamage)
         {
             foreach (var weapon in weapons)
@@ -105,8 +110,10 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
                 damageScore += weapon.GetDPS () * DamageMatrix.GetDamageFactor(weapon.DamageType, pair.Key) * Mathf.Max(0f, pair.Value) / productionTime;
             }
         }
+        // Specialists usually do a lot more damage than generalists, and as so half their damage score.
+        if (SpecialistTags.Any(x => goUnit.Info.Tags.Contains(x))) damageScore /= 2f;
 
-        return Mathf.Max (0.1f, armorScore + damageScore);
+        return Mathf.Max (float.Epsilon, armorScore + damageScore);
     }
 
     private (Unit unit, float productionTime) GetUnitProductionInfo (Unit potentialFactory)

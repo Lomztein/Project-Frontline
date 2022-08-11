@@ -629,6 +629,7 @@ MonoBehaviour:
   - {fileID: 3044763199304715828}
   HideGarrisoned: 1
   EvacuateOnDestroy: 0
+  OccupantRangeMultiplier: 1.5
 --- !u!114 &4530473229207738837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1153,11 +1154,13 @@ MonoBehaviour:
     Name: Transport Helicopter
     Description: Armored helicopter that can garrison up to ten soldiers, who can
       then fire from ports. Soldiers parachute out when the helicopter explodes.
+    Tags: []
     Cost: 3500
     Value: 350
     UnitRole: 1
     UnitTier: 1
     UnitType: 2
+  Health: {fileID: 0}
   _weapons: []
 --- !u!114 &7897096464993776626
 MonoBehaviour:
@@ -1189,6 +1192,7 @@ MonoBehaviour:
   MaxHealth: 1500
   ArmorType: 2
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
 --- !u!114 &7897096464993776623

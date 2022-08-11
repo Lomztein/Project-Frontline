@@ -107,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1633063186404691423}
   m_LocalRotation: {x: 0.04361944, y: 0.000000029802322, z: 0.000000040978193, w: 0.99904823}
-  m_LocalPosition: {x: 0, y: 0, z: 3.101}
+  m_LocalPosition: {x: -0, y: -0.03, z: 3.443}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7845691847449935650}
@@ -5007,8 +5007,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 75
-  Firerate: 5
+  Damage: 50
+  Firerate: 6
   DamageType: 5
   Speed: 250
   Amount: 1
@@ -5018,7 +5018,7 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 8181168322404097005, guid: deff900dd2e544e4a8d3899eb3d8fece,
     type: 3}
   Muzzle: {fileID: 8861280582994648404}
-  Inaccuracy: 3
+  Inaccuracy: 1.5
 --- !u!1 &4258488654166747615
 GameObject:
   m_ObjectHideFlags: 0
@@ -5483,6 +5483,7 @@ MonoBehaviour:
   MaxHealth: 2500
   ArmorType: 4
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
 --- !u!65 &8772419971918684382
