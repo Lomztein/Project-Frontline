@@ -74,8 +74,9 @@ GameObject:
   - component: {fileID: 4858691864634357442}
   - component: {fileID: 4858691864634357441}
   - component: {fileID: 4858691864634357440}
-  - component: {fileID: 7180318471842968493}
   - component: {fileID: 5167422088603789682}
+  - component: {fileID: 1256063855161323792}
+  - component: {fileID: 1453107394512352333}
   m_Layer: 0
   m_Name: Boid
   m_TagString: Untagged
@@ -148,24 +149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 10
+  MaxHealth: 1
   ArmorType: 2
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 7291360389459240126, guid: 3c45ca53cbca83c4fa6afdea87ba52f3, type: 3}
   DebrisLife: 1
---- !u!65 &7180318471842968493
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4858691864634357470}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.24, y: 0.18, z: 0.57185584}
-  m_Center: {x: 0, y: 0, z: -0.022189707}
 --- !u!114 &5167422088603789682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,8 +168,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialDamage: 0
-  DamagePerSecond: 0.33333334
+  DamagePerSecond: 0.1
+  DamagePerSecondAcceleration: 0
   DamageType: 8
+--- !u!114 &1256063855161323792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4858691864634357470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 293542c578071ae4d9cbe3533ec28911, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &1453107394512352333
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4858691864634357470}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4858691865670415635
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,6 +294,7 @@ MonoBehaviour:
   - {fileID: 4858691865670415635}
   AimTolerance: 5
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
 --- !u!1 &6694556548085420639
 GameObject:

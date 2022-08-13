@@ -17,6 +17,8 @@ namespace CustomGame
         public InputField Handicap;
         public Dropdown Team;
 
+        public Dictionary<GameObject, bool> UnitAvailable = new Dictionary<GameObject, bool>();
+
         private void Awake()
         {
             Faction.options = GetFactions().Select(x => new Dropdown.OptionData(x.Name)).ToList();
@@ -48,6 +50,14 @@ namespace CustomGame
             playerInfo.Faction = GetFactions().ElementAt(Faction.value);
             playerInfo.StartingCredits = int.Parse(Credits.text);
             playerInfo.Handicap = float.Parse(Handicap.text);
+            playerInfo.UnitAvailable = UnitAvailable;
+            foreach (var unit in playerInfo.Faction.LoadUnits())
+            {
+                if (!playerInfo.UnitAvailable.ContainsKey(unit))
+                {
+                    playerInfo.UnitAvailable.Add(unit, true);
+                }
+            }
             return playerInfo;
         }
 

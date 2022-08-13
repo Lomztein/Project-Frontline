@@ -53,6 +53,7 @@ public class MatchSettings : ScriptableObject
 
         public Faction Faction;
         public TeamInfo Team;
+        public Dictionary<GameObject, bool> UnitAvailable = new Dictionary<GameObject, bool>();
 
         public Vector2 Position;
         public int StartingCredits;

@@ -44,7 +44,7 @@ namespace UI
             ClearButtons();
 
             GameObject[] units = Commander.UnitSource.GetAvailableUnitPrefabs(Commander.Faction).Where(x => x.GetComponent<Unit>().Info.UnitType == unitType).ToArray();
-            Array.Sort(units, new Comparison<GameObject>(CompareUnits));
+            Array.Sort(units, new UnitComparer());
 
             foreach (GameObject unit in units)
             {
@@ -53,15 +53,7 @@ namespace UI
             CurrentOpenTab = unitType;
         }
 
-        private int CompareUnits (GameObject lhs, GameObject rhs)
-        {
-            Unit lhsu = lhs.GetComponent<Unit>();
-            Unit rhsu = rhs.GetComponent<Unit>();
 
-            if (lhsu.Info.UnitTier == rhsu.Info.UnitTier)
-                return lhsu.Cost - rhsu.Cost;
-            return lhsu.Info.UnitTier - rhsu.Info.UnitTier;
-        }
 
         private void ClearButtons()
         {

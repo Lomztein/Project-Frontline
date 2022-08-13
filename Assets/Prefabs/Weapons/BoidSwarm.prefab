@@ -51,6 +51,7 @@ MonoBehaviour:
   WeaponObjects: []
   AimTolerance: 0
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 0
   SwarmCenter: {fileID: 3282090620360119802}
@@ -68,7 +69,6 @@ GameObject:
   - component: {fileID: 3282090621347408218}
   - component: {fileID: 3282090621347408221}
   - component: {fileID: -4380333589024801555}
-  - component: {fileID: 1461346515}
   - component: {fileID: 4068546118847816497}
   m_Layer: 0
   m_Name: BoidSwarm
@@ -137,11 +137,13 @@ MonoBehaviour:
       were found in a crashed meteorite some years ago. They seem to be some sort
       of alien mining equipment, but we managed to hack them and use them for WAR
       instead.
+    Tags: []
     Cost: 4000
-    Value: 66
+    Value: 0
     UnitRole: 1
     UnitTier: 2
     UnitType: 2
+  Health: {fileID: 0}
   _weapons:
   - {fileID: 3282090620644235267}
   - {fileID: 7989911880847964774}
@@ -164,19 +166,6 @@ MonoBehaviour:
   FactoryPrefab: {fileID: 8969075910825353775, guid: 2a10f27787af47449a04809526daf066,
     type: 3}
   ProductionTime: 20
---- !u!114 &1461346515
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3282090621347408217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46fe0a88465a2b94c817b7220b4e3306, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Team: {fileID: 11400000, guid: fd8bd5038244fc345962f8e5c0e829dd, type: 2}
 --- !u!114 &4068546118847816497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +181,7 @@ MonoBehaviour:
   MaxHealth: 60
   ArmorType: 2
   DestroyOnDeath: 0
+  DestroyDelay: 0
   Debris: {fileID: 0}
   DebrisLife: 0
 --- !u!1001 &3282090619795535251

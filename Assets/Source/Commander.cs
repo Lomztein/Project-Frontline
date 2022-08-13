@@ -14,6 +14,7 @@ public class Commander : MonoBehaviour, ITeamComponent
 
     public TeamInfo TeamInfo;
     public Faction Faction;
+    public Dictionary<GameObject, bool> UnitAvailable;
 
     public bool CanBuild => Fortress != null;
     public bool Eliminated => _ded;
@@ -60,6 +61,9 @@ public class Commander : MonoBehaviour, ITeamComponent
         Frontline = new Frontline(10, 3);
         AssignCommander(gameObject);
     }
+
+    public bool IsUnitAvailable(GameObject unit)
+        => UnitAvailable[unit];
 
     private void MoveNextAverageEarnings ()
     {

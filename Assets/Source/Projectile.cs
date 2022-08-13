@@ -38,7 +38,6 @@ public class Projectile : MonoBehaviour, IPoolObject
 
     protected virtual void FixedUpdate()
     {
-        transform.position += Velocity * Time.fixedDeltaTime;
         float dist = Speed * Time.fixedDeltaTime + 0.2f;
         if (Physics.Raycast(transform.position, transform.forward * dist, out RaycastHit hit, dist, HitLayerMask | TerrainLayerMask))
         {
@@ -48,6 +47,7 @@ public class Projectile : MonoBehaviour, IPoolObject
 
             OnHit?.Invoke(this, hit.collider, hit.point, hit.normal);
         }
+        transform.position += Velocity * Time.fixedDeltaTime;
     }
 
     protected virtual void DoDamage (Collider col, Vector3 point)

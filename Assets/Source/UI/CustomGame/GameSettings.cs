@@ -9,6 +9,7 @@ namespace CustomGame
     public class GameSettings : MonoBehaviour
     {
         public MapSettings Map;
+        public UnitSelector UnitSelector;
 
         public GameObject PlayerSettingsPrefab;
         public Transform PlayerSettingsParent;
@@ -26,7 +27,7 @@ namespace CustomGame
             foreach (var player in settings.Players)
             {
                 GameObject newObj = Instantiate(PlayerSettingsPrefab, PlayerSettingsParent);
-                newObj.GetComponent<PlayerSettings>().ApplyPlayerInfo(player);
+                InitializePlayerSettings(newObj.GetComponent<PlayerSettings>(), player);
             }
         }
 
@@ -36,8 +37,22 @@ namespace CustomGame
             MatchSettings.PlayerInfo newPlayer = new MatchSettings.PlayerInfo();
             newPlayer.Name = NameGenerator.GenerateName();
             newPlayer.AIProfile = Resources.Load<AIPlayerProfile>("AIProfiles/Balanced");
+            newPlayer.Faction = Resources.Load<Faction>("Factions/ModernMilitary");
             newPlayer.StartingCredits = 500;
-            newObj.GetComponent<PlayerSettings>().ApplyPlayerInfo(newPlayer);
+
+            var playerSettings = newObj.GetComponent<PlayerSettings>();
+            InitializePlayerSettings(playerSettings, newPlayer);
+        }
+
+        private void InitializePlayerSettings(PlayerSettings settings, MatchSettings.PlayerInfo info)
+        {
+            settings.ApplyPlayerInfo(info);
+            settings.Units.onClick.AddListener(() =>
+            {
+                SetEnabled(false);
+                UnitSelector.SetEnabled(true);
+                UnitSelector.Initialize(settings, info.Faction.LoadUnits());
+            });
         }
 
         private void ClearPlayerSettings ()
@@ -70,6 +85,11 @@ namespace CustomGame
         {
             SetCurrentSettings();
             SceneManager.LoadScene(1);
+        }
+
+        public void SetEnabled (bool value)
+        {
+            gameObject.SetActive(value);
         }
     }
 }
