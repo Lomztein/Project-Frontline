@@ -678,7 +678,6 @@ MonoBehaviour:
   - {fileID: 5710782334378631605}
   - {fileID: 5710782335347440846}
   - {fileID: 5710782334178748803}
-  DPSOverride: {fileID: 5042219308555484677}
 --- !u!114 &4964351093738814663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,7 +1206,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 5
-  Firerate: 30
+  Firerate: 40
   DamageType: 0
   Speed: 240
   Amount: 1
@@ -1217,7 +1216,7 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 4353457072589820952, guid: 96bcadc2b022995429899a109d1414a4,
     type: 3}
   Muzzle: {fileID: 2164480799648896152}
-  Inaccuracy: 1
+  Inaccuracy: 0.5
   MaxChargeTime: 0.5
   CurrentChargeTime: 0
   ResetChargeOnFire: 0
@@ -1236,7 +1235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Weapon: {fileID: 5710782334178748814}
   RotatingTransform: {fileID: 301861650821684497}
-  RotationPerSecond: {x: 1200, y: 0, z: 0}
+  RotationPerSecond: {x: 0, y: 0, z: 2400}
 --- !u!114 &5710782334178748812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1438,7 +1437,7 @@ MonoBehaviour:
   Damage: 300
   Firerate: 0.6
   DamageType: 1
-  Speed: 150
+  Speed: 250
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
@@ -11747,10 +11746,10 @@ MonoBehaviour:
   BurstReloadTime: 1
   BurstAmmo: 32
   FireParticle: {fileID: 5710782335071857936}
-  ProjectilePrefab: {fileID: 2842756162439936608, guid: 5fe0e32f98b205147a1dc210c3b93a8e,
+  ProjectilePrefab: {fileID: 2842756162439936608, guid: f8e7b160ee3ae7442ae6e2cd741d93a9,
     type: 3}
   Muzzle: {fileID: 5710782335071857938}
-  Inaccuracy: 0.5
+  Inaccuracy: 0.25
   MaxChargeTime: 0.2
   CurrentChargeTime: 0
   ResetChargeOnFire: 0
@@ -11769,7 +11768,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Weapon: {fileID: 5710782335347440845}
   RotatingTransform: {fileID: 7951979433448186474}
-  RotationPerSecond: {x: 1440, y: 0, z: 0}
+  RotationPerSecond: {x: 0, y: 0, z: 1440}
 --- !u!114 &5710782335347440843
 MonoBehaviour:
   m_ObjectHideFlags: 0

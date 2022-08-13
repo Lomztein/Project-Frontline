@@ -150,11 +150,13 @@ MonoBehaviour:
     Identifier: Scout
     Name: 
     Description: 
+    Tags: []
     Cost: 500
     Value: 0
     UnitRole: 0
     UnitTier: 0
     UnitType: 0
+  Health: {fileID: 0}
   _weapons: []
 --- !u!114 &-2477253026524029928
 MonoBehaviour:
@@ -171,6 +173,7 @@ MonoBehaviour:
   MaxHealth: 100
   ArmorType: 2
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 6309138862387603851, guid: ce8bba28af204f94db7328d615882804, type: 3}
   DebrisLife: 3
 --- !u!114 &8653570774820491200
@@ -208,9 +211,10 @@ MonoBehaviour:
   LooseTargetRange: 100
   AttackRange: 50
   TurretObject: {fileID: 0}
-  WeaponObject: {fileID: 0}
+  WeaponObjects: []
   AimTolerance: 10
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 50
 --- !u!114 &6103921204354685028

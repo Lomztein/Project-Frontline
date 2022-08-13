@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1423461652074252363}
   - component: {fileID: 3630212335921609416}
-  - component: {fileID: 6896228333867879436}
+  - component: {fileID: -693088486076448923}
   - component: {fileID: 4532166456205282135}
   - component: {fileID: 3057412748817844674}
   - component: {fileID: 6979240468358730372}
@@ -61,7 +61,7 @@ MonoBehaviour:
   HitLayerMask:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &6896228333867879436
+--- !u!114 &-693088486076448923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -70,11 +70,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2375430243017228703}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94374edc04a0379489af681b7eefd8b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 9d838439da8cef64a9a2c1ba369d1f8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Projectile: {fileID: 3630212335921609416}
-  RotationSpeed: 180
+  LerpSpeed: 10
 --- !u!135 &4532166456205282135
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -117,6 +117,7 @@ MonoBehaviour:
   MaxHealth: 1
   ArmorType: 2
   DestroyOnDeath: 0
+  DestroyDelay: 0
   Debris: {fileID: 0}
   DebrisLife: 0
 --- !u!1 &7183824886719405939
