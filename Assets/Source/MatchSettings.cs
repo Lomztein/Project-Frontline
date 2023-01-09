@@ -13,6 +13,16 @@ public class MatchSettings : ScriptableObject
     private static MatchSettings _current;
     public static MatchSettings Current { get => GetCurrent(); set => _current = value; }
 
+    [SerializeField]
+    private List<Mutator> _mutators;
+    public IEnumerable<Mutator> Mutators => _mutators;
+
+    public void AddMutator(Mutator mutator) => _mutators.Add(mutator);
+    public void RemoveMutator(Mutator mutator) => _mutators.Remove(mutator);
+    public void ClearMutators() => _mutators = new List<Mutator>();
+
+
+
     public static MatchSettings GetCurrent ()
     {
         if (_current == null)
@@ -22,7 +32,7 @@ public class MatchSettings : ScriptableObject
 
     public static MatchSettings Default ()
     {
-        var settings = Resources.Load<MatchSettings>(PATH_TO_DEFAULT);
+        var settings = Instantiate(Resources.Load<MatchSettings>(PATH_TO_DEFAULT));
         foreach (var player in settings.Players)
         {
             player.Name = NameGenerator.GenerateName();
@@ -45,6 +55,7 @@ public class MatchSettings : ScriptableObject
     }
 
     public void RemovePlayer(PlayerInfo info) => _players.Remove(info);
+    public void ClearPlayers() => _players.Clear();
 
     [System.Serializable]
     public class PlayerInfo

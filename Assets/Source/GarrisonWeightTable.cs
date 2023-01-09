@@ -34,7 +34,7 @@ public class GarrisonWeightTable : UnitWeightTable
         {
             return factory.UnitPrefab.GetComponentInChildren<InfantryGarrison>();
         }
-        return unit.GetComponentInChildren<InfantryGarrison>();
+        return unit.Info.Tags.Contains("Garrison") || unit.GetComponentInChildren<InfantryGarrison>();
     }
 
     private bool IsInfantryUnit (Unit unit)

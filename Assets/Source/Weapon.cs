@@ -9,15 +9,20 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
     public float Firerate;
     public DamageMatrix.Damage DamageType;
     public float Speed;
+    public float Range;
     public int Amount = 1;
 
     public float BurstReloadTime;
     public int BurstAmmo = 1;
 
     private int _currentBurstAmmo;
-    private bool _chambered;
+    public bool IsChambered = true;
+    private bool _isChambering = false;
 
     public ParticleSystem FireParticle;
+    public LightFlash LightFlash;
+    public AudioClip FireAudioClip;
+    private AudioSource _audioSource;
 
     public GameObject ProjectilePrefab;
     public Transform Muzzle;
@@ -41,8 +46,8 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
     private void Start()
     {
         _pool = ObjectPool.GetPool(ProjectilePrefab);
+        _audioSource = GetComponent<AudioSource>();
         _currentBurstAmmo = BurstAmmo;
-        _chambered = true;
     }
 
     public virtual bool TryFire(ITarget intendedTarget)
@@ -50,7 +55,7 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
         if (CanFire())
         {
             Fire(intendedTarget);
-            _chambered = false;
+            IsChambered = false;
             _currentBurstAmmo--;
             StartCoroutine(Rechamber((1f / Firerate)));
 
@@ -60,6 +65,9 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
             }
 
             return true;
+        }if (!IsChambered && !_isChambering)
+        {
+            StartCoroutine(Rechamber((1f / Firerate)));
         }
         return false;
     }
@@ -69,6 +77,14 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
         if (FireParticle)
         {
             FireParticle.Play();
+        }
+        if (LightFlash)
+        {
+            LightFlash.Play();
+        }
+        if (_audioSource && FireAudioClip)
+        {
+            _audioSource.PlayOneShot(FireAudioClip);
         }
 
         for (int i = 0; i < Amount; i++)
@@ -87,6 +103,7 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
             projectile.Damage = Damage;
             projectile.DamageType = DamageType;
             projectile.Speed = Speed;
+            projectile.Life = Range / Speed;
 
             projectile.Fire(rotation * Vector3.forward);
 
@@ -130,13 +147,15 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
 
     public virtual bool CanFire()
     {
-        return _chambered && _currentBurstAmmo > 0;
+        return IsChambered && _currentBurstAmmo > 0;
     }
 
     private IEnumerator Rechamber (float time)
     {
+        _isChambering = true;
         yield return new WaitForSeconds(time);
-        _chambered = true;
+        _isChambering = false;
+        IsChambered = true;
     }
 
     private void Reload()

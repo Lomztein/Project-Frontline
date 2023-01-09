@@ -6,7 +6,7 @@ public class CommanderApplier : MonoBehaviour
 {
     public Commander Commander;
 
-    void Awake()
+    void Start()
     {
         foreach (var comp in GetComponentsInChildren<ICommanderComponent>())
         {

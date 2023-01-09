@@ -6,7 +6,6 @@ using UnityEngine;
 public class Faction : ScriptableObject
 {
     public const string FACTIONS_RESOURCE_BASE_PATH = "Factions/";
-    public const string DEFAULT_RESOURCE_PATH = "ModernMilitary";
     public const string UNIT_RESOURCE_BASE_PATH = "Units/";
     private GameObject[] _unitCache;
 
@@ -14,6 +13,7 @@ public class Faction : ScriptableObject
     [TextArea]
     public string Description;
     public string UnitsResourcePath;
+    public Texture2D FactionPalette;
 
     public GameObject HeadquartersPrefab;
 
@@ -26,10 +26,11 @@ public class Faction : ScriptableObject
         return _unitCache;
     }
 
+    public void OnValidate()
+    {
+        _unitCache = null;
+    }
+
     public static IEnumerable<Faction> LoadFactions()
         => Resources.LoadAll<Faction>(FACTIONS_RESOURCE_BASE_PATH);
-
-    public static Faction LoadDefault()
-        => Resources.Load<Faction>(FACTIONS_RESOURCE_BASE_PATH + DEFAULT_RESOURCE_PATH);
-
 }

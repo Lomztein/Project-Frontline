@@ -16,9 +16,10 @@ public class Commander : MonoBehaviour, ITeamComponent
     public Faction Faction;
     public Dictionary<GameObject, bool> UnitAvailable;
 
+    public UnitPalette UnitPalette;
+
     public bool CanBuild => Fortress != null;
     public bool Eliminated => _ded;
-
 
     public Transform Fortress;
     private List<Unit> _alivePlaced = new List<Unit>();
@@ -32,8 +33,10 @@ public class Commander : MonoBehaviour, ITeamComponent
 
     public UnitSource UnitSource;
 
-    public event Action<Commander, Unit> OnPlacedUnitDeath;
+    public event Action<Commander, Unit> OnUnitPlaced;
     public event Action<Commander, UnitFactory, Unit> OnUnitSpawned;
+
+    public event Action<Commander, Unit> OnPlacedUnitDeath;
     public event Action<Commander> OnFortressDestroyed;
     public event Action<Commander> OnEliminated;
 
@@ -63,7 +66,13 @@ public class Commander : MonoBehaviour, ITeamComponent
     }
 
     public bool IsUnitAvailable(GameObject unit)
-        => UnitAvailable[unit];
+    {
+        if (UnitAvailable.TryGetValue(unit, out bool value))
+        {
+            return value;
+        }
+        return true; // Default to available.
+    }
 
     private void MoveNextAverageEarnings ()
     {
@@ -166,7 +175,7 @@ public class Commander : MonoBehaviour, ITeamComponent
                 factory.OnUnitSpawned += Factory_OnUnitSpawned;
                 // TODO: Clean up.
             }
-
+            OnUnitPlaced?.Invoke(this, placedUnit.GetComponent<Unit>());
             return true;
         }
         return false;
@@ -179,12 +188,13 @@ public class Commander : MonoBehaviour, ITeamComponent
         OnUnitSpawned?.Invoke(this, arg1, unit);
         _aliveProduced.Add(unit);
         unit.GetComponent<Health>().OnDeath += OnProducedUnitDeath;
+        AssignCommander(arg2);
     }
 
     private void OnProducedUnitDeath(Health obj)
     {
         _aliveProduced.Remove(obj.GetComponent<Unit>());
-        Frontline.RegisterDeath(obj.transform.position);
+        Frontline.Register(obj.transform.position);
     }
 
     private void Unit_OnKill(Unit arg1, IWeapon arg2, Projectile arg3, IDamagable arg4)
@@ -193,7 +203,7 @@ public class Commander : MonoBehaviour, ITeamComponent
         {
             var killedUnit = component.GetComponentInParent<Unit>();
             Earn(killedUnit.Info.Value);
-            Frontline.RegisterDeath(component.transform.position);
+            Frontline.Register(component.transform.position);
         }
     }
 
@@ -251,6 +261,7 @@ public class Commander : MonoBehaviour, ITeamComponent
     public void SetTeam(TeamInfo faction)
     {
         TeamInfo = faction;
+        UnitPalette = UnitPalette.GeneratePalette(Faction.FactionPalette, TeamInfo.TeamPalette);
     }
 
     private void OnDrawGizmos()

@@ -36,7 +36,7 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
     public float Firerate => 1 / Cooldown;
     public float Speed => 0f;
 
-    public DamageMatrix.Damage DamageType => GetUnitPrefabWeapons().First().DamageType;
+    public DamageMatrix.Damage DamageType => GetUnitPrefabWeapons().FirstOrDefault()?.DamageType ?? DamageMatrix.Damage.Gun;
 
     public event Action<UnitFactoryWeapon, GameObject> OnUnitSpawned;
 
@@ -131,17 +131,26 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
         if (CanFire())
         {
             GameObject go = Spawn();
-            EngagedTracker tracker = go.GetComponent<EngagedTracker>();
-
             _currentSimultanious.Add(go);
-            _currentTrackers.Add(tracker);
 
-            go.GetComponentInChildren<AIController>().ForceTarget(intendedTarget);
+            if (go.TryGetComponent(out EngagedTracker tracker))
+            {
+                _currentTrackers.Add(tracker);
+
+                go.GetComponentInChildren<Health>().OnDeath += (Health health) =>
+                {
+                    _currentTrackers.Remove(tracker);
+                };
+            }
+
             go.GetComponentInChildren<Health>().OnDeath += (Health health) =>
             {
                 _currentSimultanious.Remove(go);
-                _currentTrackers.Remove(tracker);
             };
+
+            if (go.TryGetComponent(out AIController controller)) {
+                controller.ForceTarget(intendedTarget);
+            }
 
             _canPlace = false;
             Invoke(nameof(CanPlaceAgain), PlaceDelay);

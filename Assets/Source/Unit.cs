@@ -53,13 +53,18 @@ public class Unit : MonoBehaviour, IPurchasable
     {
         GetWeapons();
         Health = GetComponent<Health>();
+        InvokeRepeating(nameof(CheckBattlefieldBounds), 10f, 10f);
+    }
+
+    private void Start()
+    {
         Health.OnDamageTaken += Health_OnDamageTaken;
+
         foreach (IWeapon weapon in _weaponCache)
         {
             weapon.OnKill += Weapon_OnKill;
             weapon.OnHit += Weapon_OnHit;
         }
-        InvokeRepeating(nameof(CheckBattlefieldBounds), 10f, 10f);
     }
 
     private void Health_OnDamageTaken(Health arg1, float arg2)

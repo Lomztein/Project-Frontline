@@ -33,21 +33,7 @@ public class TeamInfo : ScriptableObject
     public string Name;
     public Color Color;
 
-    public Texture2D Palette;
-    [SerializeField] private Material _baseMaterial;
-
-    private Material _teamMaterialCache;
-    public Material TeamMaterial => GetTeamMaterial ();
-
-    private Material GetTeamMaterial()
-    {
-        if (_teamMaterialCache == null)
-        {
-            _teamMaterialCache = Instantiate(_baseMaterial);
-            _teamMaterialCache.mainTexture = Palette;
-        }
-        return _teamMaterialCache;
-    }
+    public Texture2D TeamPalette;
 
     public static GameObject Instantiate(TeamInfo faction, GameObject prefab, Vector3 position, Quaternion rotation)
     {

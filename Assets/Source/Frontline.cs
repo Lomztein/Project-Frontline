@@ -5,12 +5,10 @@ using UnityEngine;
 
 public class Frontline
 {
-    private Vector3[] _lastKills;
-    private Vector3[] _lastDeaths;
-    private Vector3[] _lastChanges;
+    private Vector3?[] _lastEvents;
+    private Vector3?[] _lastChanges;
 
     private int _killIndex;
-    private int _deathIndex;
     private int _positionWindowSize;
 
     private int _changeIndex;
@@ -23,14 +21,15 @@ public class Frontline
     private bool _dirty;
     private Vector3 _change;
 
+    private int _numRegisters;
+
     public Frontline (int positionWindowSize, int changeWindowSize)
     {
         _positionWindowSize = positionWindowSize;
         _changeWindowSize = changeWindowSize;
 
-        _lastKills = new Vector3[_positionWindowSize];
-        _lastDeaths = new Vector3[_positionWindowSize];
-        _lastChanges = new Vector3[_changeWindowSize];
+        _lastEvents = new Vector3?[_positionWindowSize];
+        _lastChanges = new Vector3?[_changeWindowSize];
     }
 
     public Vector3 GetPosition ()
@@ -47,36 +46,27 @@ public class Frontline
         return _change;
     }
 
-    public void RegisterKill(Vector3 position)
+    public void Register(Vector3 position)
     {
-        _lastKills[_killIndex] = position;
+        _lastEvents[_killIndex] = position;
         _killIndex++;
         if (_killIndex >= _positionWindowSize) _killIndex = 0;
+        _numRegisters++;
         _dirty = true;
     }
-
-    public void RegisterDeath (Vector3 position)
-    {
-        _lastDeaths[_deathIndex] = position;
-        _deathIndex++;
-        if (_deathIndex >= _positionWindowSize) _deathIndex = 0;
-        _dirty = true;
-    }
-
     private void UpdatePosition()
     {
         Vector3 pos = Vector3.zero;
-        foreach (var kill in _lastKills) pos += kill;
-        foreach (var death in _lastDeaths) pos += death;
-        pos /= _positionWindowSize;
+        foreach (var @event in _lastEvents) if (@event.HasValue) pos += @event.Value;
+        pos /= Mathf.Min(_positionWindowSize, _numRegisters);
 
         RegisterChange(pos - _cache);
         _cache = pos;
 
         Vector3 change = Vector3.zero;
-        foreach (var delta in _lastChanges) change += delta;
+        foreach (var delta in _lastChanges) if (delta.HasValue) change += delta.Value;
 
-        _change = change / _changeWindowSize;
+        _change /= Mathf.Min(_positionWindowSize, _numRegisters);
 
         _dirty = false;
     }

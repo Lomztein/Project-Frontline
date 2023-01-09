@@ -1,0 +1,249 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8124651150434441096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8124651150434441091}
+  - component: {fileID: 8124651150434441100}
+  - component: {fileID: 8124651150434441101}
+  - component: {fileID: 8124651150434441102}
+  - component: {fileID: 8310609224741507878}
+  - component: {fileID: 4815261126857433814}
+  m_Layer: 0
+  m_Name: OpticsFacility
+  m_TagString: StructureUnit
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8124651150434441091
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8124651150434441096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -10.530001, y: 0, z: -1.14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 5393774946157700088}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8124651150434441100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8124651150434441096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955e3746abfe5e14cb56265a34877e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Info:
+    Identifier: 
+    Name: Optics Facility
+    Description: Facility where lasers and lenses are tested and optimized for less
+      energy usage, as well as smaller sizes. Adds 20% chance to equip Heavy and
+      Transport heliopters with forward facing Point Defense.
+    Tags: []
+    Cost: 3500
+    Value: 200
+    UnitRole: 1
+    UnitTier: 1
+    UnitType: 4
+  Health: {fileID: 0}
+  _weapons: []
+--- !u!114 &8124651150434441101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8124651150434441096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 3500
+  ArmorType: 5
+  DestroyOnDeath: 1
+  DestroyDelay: 0
+  Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
+  DebrisLife: 3
+--- !u!65 &8124651150434441102
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8124651150434441096}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 10.76, y: 3.4375162, z: 10.76}
+  m_Center: {x: 0, y: 1.5336719, z: 0}
+--- !u!114 &8310609224741507878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8124651150434441096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 8237210528206656220}
+--- !u!114 &4815261126857433814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8124651150434441096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6d5a2228878cc4e8e464bae199ad63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeIdentifier: HeliPointDefense
+  BaseChance: 0.2
+  ChancePerStack: 0.2
+  Filter: {fileID: 11400000, guid: 5bba141fe8dfb52419b7112c7ba9f4b4, type: 2}
+  Object: {fileID: 6395399407065096120, guid: 3161fadf8a3846a4596b2767e4ddc60e, type: 3}
+  UnitTransformInfos:
+  - UnitIdentifier: Helicopter.Heavy
+    Path: Body
+    LocalPosition: {x: 0, y: 0.784, z: 3.343}
+    LocalRotation: {x: 90, y: 0, z: 0}
+  - UnitIdentifier: Helicopter.Transport
+    Path: Body
+    LocalPosition: {x: 0, y: 0.561, z: 3.27}
+    LocalRotation: {x: -0.00012294337, y: -0.000095622636, z: 180}
+  - UnitIdentifier: Jet.Fighter
+    Path: Body
+    LocalPosition: {x: 0, y: 0.986, z: -3.218}
+    LocalRotation: {x: 90, y: 180, z: 0}
+  - UnitIdentifier: Plane.Gunship
+    Path: Body
+    LocalPosition: {x: 0, y: 0.932, z: -9.543}
+    LocalRotation: {x: 315.00015, y: 180, z: 180}
+  - UnitIdentifier: Plane.Bomber
+    Path: Body
+    LocalPosition: {x: 0, y: 0.003, z: -11.332}
+    LocalRotation: {x: 90, y: 180.00006, z: 0}
+  AddWeaponToAI: 0
+--- !u!1001 &5571006344789279763
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8124651150434441091}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: a312a69a0e4a6c345bff5c98c1608b21,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a312a69a0e4a6c345bff5c98c1608b21,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.9199297
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a312a69a0e4a6c345bff5c98c1608b21,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.9199297
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a312a69a0e4a6c345bff5c98c1608b21,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.9199297
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a312a69a0e4a6c345bff5c98c1608b21,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a312a69a0e4a6c345bff5c98c1608b21,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a312a69a0e4a6c345bff5c98c1608b21,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a312a69a0e4a6c345bff5c98c1608b21,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a312a69a0e4a6c345bff5c98c1608b21,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a312a69a0e4a6c345bff5c98c1608b21,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a312a69a0e4a6c345bff5c98c1608b21,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a312a69a0e4a6c345bff5c98c1608b21,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a312a69a0e4a6c345bff5c98c1608b21,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: a312a69a0e4a6c345bff5c98c1608b21,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a312a69a0e4a6c345bff5c98c1608b21,
+        type: 3}
+      propertyPath: m_Name
+      value: OpticsFacility
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074690309442608089, guid: a312a69a0e4a6c345bff5c98c1608b21,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cb2174e8ed21adc4eaf3cadd4beb2cd3, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a312a69a0e4a6c345bff5c98c1608b21, type: 3}
+--- !u!4 &5393774946157700088 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a312a69a0e4a6c345bff5c98c1608b21,
+    type: 3}
+  m_PrefabInstance: {fileID: 5571006344789279763}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8237210528206656220 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: a312a69a0e4a6c345bff5c98c1608b21,
+    type: 3}
+  m_PrefabInstance: {fileID: 5571006344789279763}
+  m_PrefabAsset: {fileID: 0}

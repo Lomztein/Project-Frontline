@@ -25,6 +25,32 @@ public abstract class TopDownCameraController : MonoBehaviour
         _zoomLevel = Mathf.Lerp(_zoomLevel, _targetZoomLevel, ZoomLerpSpeed * Time.deltaTime);
 
         UpdateZoom(_zoomLevel);
+
+        if (MatchController.PlayerCommander)
+        {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                MoveToFrontline();
+            }
+            if (Input.GetKeyDown(KeyCode.H))
+            {
+                MoveToHQ();
+            }
+        }
+    }
+
+    public void MoveToHQ ()
+    {
+        float y = transform.position.y;
+        transform.position = MatchController.PlayerCommander.transform.position;
+        transform.Translate(Vector3.back * y);
+    }
+
+    public void MoveToFrontline ()
+    {
+        float y = transform.position.y;
+        transform.position = MatchController.PlayerCommander.Frontline.Position;
+        transform.Translate(Vector3.back * y);
     }
 
     protected abstract void UpdateZoom(float zoomLevel);
@@ -41,6 +67,6 @@ public abstract class TopDownCameraController : MonoBehaviour
         if (mousePos.y < PanMargin) ver = -1;
         if (mousePos.y > Screen.height - PanMargin) ver = 1;
 
-        return new Vector3(hor, 0f, ver);
+        return new Vector3(hor, 0f, ver) + new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
     }
 }

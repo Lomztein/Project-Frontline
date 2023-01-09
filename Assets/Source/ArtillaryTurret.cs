@@ -14,6 +14,7 @@ public class ArtillaryTurret : MonoBehaviour, ITurret
 
     public float ProjectileSpeed;
     public float ProjectileGravity;
+    public bool HighAngle;
 
     private Vector3 _targetLocalPos;
     private Vector3 _targetHorizontalLocalPos;
@@ -23,7 +24,7 @@ public class ArtillaryTurret : MonoBehaviour, ITurret
     {
         _targetLocalPos = Base.InverseTransformPoint (position);
         _targetHorizontalLocalPos = HorizontalAxis.InverseTransformPoint(position) - HorizontalAxis.InverseTransformPoint(Muzzle.position);
-        _targetLocalAngle = ComputeTrajectoryAngle(_targetHorizontalLocalPos.z, _targetHorizontalLocalPos.y, ProjectileSpeed, ProjectileGravity);
+        _targetLocalAngle = ComputeTrajectoryAngle(_targetHorizontalLocalPos.z, _targetHorizontalLocalPos.y, ProjectileSpeed, ProjectileGravity, HighAngle);
     }
 
     private void FixedUpdate()
@@ -38,7 +39,7 @@ public class ArtillaryTurret : MonoBehaviour, ITurret
 
     public bool CanHit(Vector3 target)
     {
-        return true;
+        return Vector3.Distance(transform.position, target) < GetApproxProjectileRange(45f, 0f, ProjectileSpeed, ProjectileGravity);
     }
 
     public float DeltaAngle(Vector3 target)
@@ -46,18 +47,25 @@ public class ArtillaryTurret : MonoBehaviour, ITurret
         return 0f;
     }
 
-    private float ComputeTrajectoryAngle(float distance, float height, float speed, float gravity)
+    private float ComputeTrajectoryAngle(float distance, float height, float speed, float gravity, bool high)
     {
         float v2 = speed * speed;
         float v4 = speed * speed * speed * speed;
 
         float x2 = distance * distance;
+        int highSign = high ? 1 : -1;
 
-        float num = v2 - Mathf.Sqrt(v4 - gravity * (gravity * x2 + 2f * height * v2));
+        float num = v2 + Mathf.Sqrt(v4 - gravity * (gravity * x2 + 2f * height * v2)) * highSign;
         float dom = gravity * distance;
 
         float res = Mathf.Rad2Deg * Mathf.Atan(num / dom);
 
         return res;
+    }
+
+    public float GetApproxProjectileRange(float angle, float height, float speed, float gravity)
+    {
+        float rads = Mathf.Deg2Rad * angle;
+        return Mathf.Pow(speed, 2f) * Mathf.Sin(2f * rads) / gravity;
     }
 }

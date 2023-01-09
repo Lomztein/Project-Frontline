@@ -15,7 +15,7 @@ public class EconomyWeightTable : UnitWeightTable
     public override Dictionary<GameObject, float> GenerateWeights(IEnumerable<GameObject> options)
     {
         float currentIncome = Commander.AverageIncomePerSecond;
-        float targetIncome = BaseIncomeTarget + IncomeTargetPerMinute * MatchController.MatchTime;
+        float targetIncome = BaseIncomeTarget + IncomeTargetPerMinute * (MatchController.MatchTime / 60f);
        
         Dictionary<GameObject, float> weights = new Dictionary<GameObject, float>();
         foreach (var option in options)

@@ -17,7 +17,7 @@ namespace CustomGame
 
         private void Start()
         {
-            Apply(MatchSettings.Default());
+            Apply(MatchSettings.Current);
         }
 
         public void Apply(MatchSettings settings)
@@ -73,8 +73,9 @@ namespace CustomGame
 
         public void SetCurrentSettings ()
         {
-            MatchSettings.Current = ScriptableObject.CreateInstance<MatchSettings>();
             MatchSettings.Current.MapInfo = Map.CreateMapInfo();
+
+            MatchSettings.Current.ClearPlayers();
             foreach (var info in GetPlayerSettings().Select(x => x.CreatePlayerInfo()))
             {
                 MatchSettings.Current.AddPlayer(info);

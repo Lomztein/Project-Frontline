@@ -208,6 +208,7 @@ GameObject:
   - component: {fileID: 4858691865670415638}
   - component: {fileID: 4858691865670415637}
   - component: {fileID: 2385748329075381309}
+  - component: {fileID: 3786139120570562673}
   m_Layer: 0
   m_Name: BoidLaser
   m_TagString: Untagged
@@ -261,14 +262,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 35
+  Damage: 20
   Firerate: 1
   DamageType: 3
   Speed: 100
+  Range: 20
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
   FireParticle: {fileID: 0}
+  FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 2900942430389265080, guid: 9f599b85aa16ef64597ac21286c5dcd5,
     type: 3}
   Muzzle: {fileID: 4858691864292099951}
@@ -295,7 +298,21 @@ MonoBehaviour:
   AimTolerance: 5
   LeadTarget: 0
   TargetSearchFrequency: 2
-  Modifiers: []
+  Modifiers:
+  - {fileID: 3786139120570562673}
+--- !u!114 &3786139120570562673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4858691865670415635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 513598aae73d30a4e85e41647bc66d29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AppendLayerMask: 1
 --- !u!1 &6694556548085420639
 GameObject:
   m_ObjectHideFlags: 0

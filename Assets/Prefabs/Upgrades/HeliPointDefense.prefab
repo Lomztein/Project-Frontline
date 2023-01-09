@@ -424,6 +424,7 @@ MonoBehaviour:
   VerticalRange: {x: -90, y: 0}
   HorizontalSpeed: 720
   VerticalSpeed: 720
+  Instant: 1
 --- !u!114 &3973909643237675450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,10 +441,12 @@ MonoBehaviour:
   Firerate: 10
   DamageType: 8
   Speed: 75
+  Range: 75
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
   FireParticle: {fileID: 0}
+  FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 2900942430389265080, guid: 046047b1b680bbe40bc081ccb782c610,
     type: 3}
   Muzzle: {fileID: 6046929930563318800}
@@ -469,6 +472,7 @@ MonoBehaviour:
   - {fileID: 6395399407065096120}
   AimTolerance: 1
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers:
   - {fileID: 1224392962671770522}
 --- !u!114 &1224392962671770522
@@ -483,6 +487,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 513598aae73d30a4e85e41647bc66d29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AppendLayerMask: 0
 --- !u!1 &6717177273792447593
 GameObject:
   m_ObjectHideFlags: 0

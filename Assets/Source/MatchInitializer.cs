@@ -45,6 +45,11 @@ public class MatchInitializer : MonoBehaviour
 
             team.TeamInfo.ApplyTeam(team.gameObject); // shrug
         }
+
+        foreach (var mutator in settings.Mutators)
+        {
+            mutator.Start();
+        }
     }
 
     private Team SpawnTeam (TeamInfo teamInfo, Vector3 position, Quaternion rotation)
@@ -83,7 +88,8 @@ public class MatchInitializer : MonoBehaviour
         if (info.IsPlayer)
         {
             AttachPlayerToPurchaseMenu(commander);
-            Camera.main.transform.position = new Vector3(position.x, Camera.main.transform.position.y, position.z);
+            MatchController.SetPlayerCommander(commander);
+            Camera.main.GetComponent<TopDownCameraController>().MoveToHQ();
         }
         return commander;
     }

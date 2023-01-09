@@ -388,6 +388,7 @@ MonoBehaviour:
   VerticalRange: {x: -30, y: 30}
   HorizontalSpeed: 180
   VerticalSpeed: 180
+  Instant: 0
 --- !u!114 &7213944565103281391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,10 +405,14 @@ MonoBehaviour:
   Firerate: 5
   DamageType: 0
   Speed: 250
+  Range: 0
   Amount: 1
   BurstReloadTime: 1.5
   BurstAmmo: 50
+  IsChambered: 1
   FireParticle: {fileID: 0}
+  LightFlash: {fileID: 0}
+  FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 706538927366367410, guid: 02243d61965c5ed499bec10f0188c561,
     type: 3}
   Muzzle: {fileID: 0}
@@ -428,6 +433,8 @@ MonoBehaviour:
     Identifier: 
     Name: Mini Turret (MG)
     Description: 
+    Tags:
+    - CantHeal
     Cost: 500
     Value: 0
     UnitRole: 2
@@ -451,6 +458,7 @@ MonoBehaviour:
   MaxHealth: 150
   ArmorType: 2
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 6309138862387603851, guid: ce8bba28af204f94db7328d615882804, type: 3}
   DebrisLife: 3
 --- !u!65 &6185378209787905339

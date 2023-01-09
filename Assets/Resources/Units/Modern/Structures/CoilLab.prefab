@@ -1,0 +1,271 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8558564917136176589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8558564917136176582}
+  - component: {fileID: 8558564917136176585}
+  - component: {fileID: 8558564917136176584}
+  - component: {fileID: 8558564917136176587}
+  - component: {fileID: 8454269495644909923}
+  - component: {fileID: 8464025219770526676}
+  m_Layer: 0
+  m_Name: CoilLab
+  m_TagString: StructureUnit
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8558564917136176582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8558564917136176589}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 2519061799918775955}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8558564917136176585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8558564917136176589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955e3746abfe5e14cb56265a34877e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Info:
+    Identifier: 
+    Name: Coil Laboratory
+    Description: High-tech laboratory where which experiments with coil-based weaponry.
+      10% chance to upgrade various units to coil weapons, granting hitscan and 3x
+      damage.
+    Tags: []
+    Cost: 6000
+    Value: 800
+    UnitRole: 1
+    UnitTier: 2
+    UnitType: 4
+  Health: {fileID: 0}
+  _weapons: []
+--- !u!114 &8558564917136176584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8558564917136176589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 3500
+  ArmorType: 5
+  DestroyOnDeath: 1
+  DestroyDelay: 0
+  Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
+  DebrisLife: 3
+--- !u!65 &8558564917136176587
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8558564917136176589}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.23, y: 5.1227555, z: 11.274459}
+  m_Center: {x: 0, y: 2.460595, z: -0.73084784}
+--- !u!114 &8454269495644909923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8558564917136176589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 1909380784458178487}
+--- !u!114 &8464025219770526676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8558564917136176589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75365863f4732ca4f848fb290ae79ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeIdentifier: CoilWeapons
+  BaseChance: 0.1
+  ChancePerStack: 0.1
+  Filter: {fileID: 11400000, guid: b0b9c82e5df243b4b8e8022341499794, type: 2}
+  AILeadTargetAfterUpgrade: 0
+  Upgrades:
+  - ProjectileType: {fileID: 706538927366367410, guid: 02243d61965c5ed499bec10f0188c561,
+      type: 3}
+    ReplaceType: {fileID: 2900942430389265080, guid: f4ff58e0522f9124dba6aad8ad2f9f54,
+      type: 3}
+    DamageMultiplier: 3
+    SpeedMultiplier: 1
+    FirerateMultiplier: 1
+    AmountMultiplier: 1
+  - ProjectileType: {fileID: 4353457072589820952, guid: 96bcadc2b022995429899a109d1414a4,
+      type: 3}
+    ReplaceType: {fileID: 2900942430389265080, guid: f4ff58e0522f9124dba6aad8ad2f9f54,
+      type: 3}
+    DamageMultiplier: 3
+    SpeedMultiplier: 1
+    FirerateMultiplier: 1
+    AmountMultiplier: 1
+  - ProjectileType: {fileID: 2842756162439936608, guid: 5fe0e32f98b205147a1dc210c3b93a8e,
+      type: 3}
+    ReplaceType: {fileID: 2900942430389265080, guid: 9d997ba91fc068747831eeacdac14e00,
+      type: 3}
+    DamageMultiplier: 3
+    SpeedMultiplier: 1
+    FirerateMultiplier: 1
+    AmountMultiplier: 1
+  - ProjectileType: {fileID: 706538927366367410, guid: 2303778e9fbc7b64e86de56ea6f3e90b,
+      type: 3}
+    ReplaceType: {fileID: 2900942430389265080, guid: 8848332744eb82245ac6efed32489d62,
+      type: 3}
+    DamageMultiplier: 3
+    SpeedMultiplier: 1
+    FirerateMultiplier: 1
+    AmountMultiplier: 1
+  - ProjectileType: {fileID: 706538927366367410, guid: dde3d1cd4c3ac6842bf8b6bd04de9d38,
+      type: 3}
+    ReplaceType: {fileID: 2900942430389265080, guid: 8848332744eb82245ac6efed32489d62,
+      type: 3}
+    DamageMultiplier: 3
+    SpeedMultiplier: 1
+    FirerateMultiplier: 1
+    AmountMultiplier: 1
+  - ProjectileType: {fileID: 2842756162439936608, guid: f8e7b160ee3ae7442ae6e2cd741d93a9,
+      type: 3}
+    ReplaceType: {fileID: 2900942430389265080, guid: 06dbb5940d3fbab4e99ce28fd50dadb0,
+      type: 3}
+    DamageMultiplier: 3
+    SpeedMultiplier: 1
+    FirerateMultiplier: 1
+    AmountMultiplier: 1
+--- !u!1001 &2701940016801073528
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 8558564917136176582}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4406
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4406
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.4406
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710677
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+        type: 3}
+      propertyPath: m_Name
+      value: CoilLab
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 219b9527a18f5764f8e7a6d90d3db6c9, type: 3}
+--- !u!4 &2519061799918775955 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2701940016801073528}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1909380784458178487 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2701940016801073528}
+  m_PrefabAsset: {fileID: 0}

@@ -16,17 +16,31 @@ public class Turret : MonoBehaviour, ITurret
 
     private Vector3 _baseTargetLocalPosition;
     private Vector3 _horizontalTargetLocalPosition;
+    public bool Instant;
 
     public void AimTowards(Vector3 position)
     {
-        _baseTargetLocalPosition = Base.InverseTransformPoint(position - HorizontalAxis.localPosition);
-        _horizontalTargetLocalPosition = HorizontalAxis.InverseTransformPoint(position - VerticalAxis.localPosition);
+        if (HorizontalAxis)
+        {
+            _baseTargetLocalPosition = Base.InverseTransformPoint(position - HorizontalAxis.localPosition);
+            _horizontalTargetLocalPosition = HorizontalAxis.InverseTransformPoint(position) - VerticalAxis.localPosition;
+        }
+        else
+        {
+            _horizontalTargetLocalPosition = Base.InverseTransformPoint(position) - VerticalAxis.localPosition;
+        }
     }
 
     private void FixedUpdate()
     {
-        RotateHorizontal(_baseTargetLocalPosition, Time.fixedDeltaTime);
-        RotateVertical(_horizontalTargetLocalPosition, Time.fixedDeltaTime);
+        if (HorizontalAxis)
+        {
+            RotateHorizontal(_baseTargetLocalPosition, Time.fixedDeltaTime);
+        }
+        if (VerticalAxis)
+        {
+            RotateVertical(_horizontalTargetLocalPosition, Time.fixedDeltaTime);
+        }
     }
 
     private void RotateHorizontal(Vector3 localPosition, float deltaTime)
@@ -34,7 +48,14 @@ public class Turret : MonoBehaviour, ITurret
         Vector3 baseAngles = Clamp(CalculateAngleTowards(localPosition), HorizontalRange, VerticalRange);
         float angle = baseAngles.y;
 
-        HorizontalAxis.localRotation = Quaternion.RotateTowards(HorizontalAxis.localRotation, Quaternion.Euler(0f, angle, 0f), HorizontalSpeed * deltaTime);
+        if (Instant)
+        {
+            HorizontalAxis.localRotation = Quaternion.Euler(0f, angle, 0f);
+        }
+        else
+        {
+            HorizontalAxis.localRotation = Quaternion.RotateTowards(HorizontalAxis.localRotation, Quaternion.Euler(0f, angle, 0f), HorizontalSpeed * deltaTime);
+        }
     }
 
     private void RotateVertical(Vector3 localPosition, float deltaTime)
@@ -42,7 +63,14 @@ public class Turret : MonoBehaviour, ITurret
         Vector3 baseAngles = Clamp(CalculateAngleTowards(localPosition), HorizontalRange, VerticalRange);
         float angle = baseAngles.x;
 
-        VerticalAxis.localRotation = Quaternion.RotateTowards(VerticalAxis.localRotation, Quaternion.Euler(angle, 0f, 0f), VerticalSpeed * deltaTime);
+        if (Instant)
+        {
+            VerticalAxis.localRotation = Quaternion.Euler(angle, 0f, 0f);
+        }
+        else
+        {
+            VerticalAxis.localRotation = Quaternion.RotateTowards(VerticalAxis.localRotation, Quaternion.Euler(angle, 0f, 0f), VerticalSpeed * deltaTime);
+        }
     }
 
     public float DeltaAngle(Vector3 target)
@@ -86,5 +114,12 @@ public class Turret : MonoBehaviour, ITurret
     public static Vector2 Clamp(Vector2 angles, Vector2 horMinMax, Vector2 verMinMax)
     {
         return new Vector2(Mathf.Clamp(angles.x, verMinMax.x, verMinMax.y), Mathf.Clamp(angles.y, horMinMax.x, horMinMax.y));
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Vector3 targetPos = HorizontalAxis.TransformPoint(_horizontalTargetLocalPosition + VerticalAxis.localPosition);
+        Gizmos.DrawSphere(targetPos, 0.5f);
+        Gizmos.DrawLine(VerticalAxis.position, targetPos);
     }
 }

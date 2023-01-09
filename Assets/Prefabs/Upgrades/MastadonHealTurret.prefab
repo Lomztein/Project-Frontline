@@ -55,6 +55,7 @@ MonoBehaviour:
   - {fileID: 2734766722403114860}
   AimTolerance: 1
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers:
   - {fileID: 8035346942643363014}
 --- !u!114 &8035346942643363014
@@ -78,6 +79,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6098106687263695859}
     m_Modifications:
+    - target: {fileID: 375241613235387305, guid: 77ad8b4733384304da8fe4ef1033ebdc,
+        type: 3}
+      propertyPath: Range
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 375241613235387305, guid: 77ad8b4733384304da8fe4ef1033ebdc,
         type: 3}
       propertyPath: Speed

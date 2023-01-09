@@ -14,7 +14,6 @@ namespace UI
         public Image UnitImage;
         public Image UnitTierImage;
         public Button Button;
-        public GameObject TooltipPrefab;
 
         public Sprite[] TierSprites;
         public Color[] TierColors;
@@ -41,8 +40,7 @@ namespace UI
         public void Assign (GameObject prefab, Commander commander, Action<GameObject> onClick)
         {
             Unit unit = prefab.GetComponent<Unit>();
-            IIconOverride iconOverride = unit.GetComponent<IIconOverride>();
-            if (iconOverride != null)
+            if (unit.TryGetComponent<IIconOverride>(out var iconOverride))
             {
                 UnitImage.sprite = iconOverride.GetIcon();
             }
@@ -69,41 +67,7 @@ namespace UI
 
         public GameObject InstantiateTooltip()
         {
-            GameObject newTooltip = Instantiate(TooltipPrefab);
-            newTooltip.transform.Find("Name").GetComponentInChildren<Text>().text = _unit.Name + " - " + _unit.Cost + "$";
-            newTooltip.transform.Find("Description").GetComponentInChildren<Text>().text = _unit.Description;
-            string weaponInfo = WeaponInfoToString();
-            if (string.IsNullOrEmpty(weaponInfo))
-            {
-                newTooltip.transform.Find("Weapons").gameObject.SetActive(false);
-            }
-            else
-            {
-                newTooltip.transform.Find("Weapons").GetComponentInChildren<Text>().text = WeaponInfoToString();
-            }
-            return newTooltip;
-        }
-
-        private string WeaponInfoToString ()
-        {
-            WeaponInfo[] info = _unit.GetWeaponInfo();
-            if (info.Length > 0)
-            {
-                var groups = info.GroupBy(x => x.Name);
-                StringBuilder builder = new StringBuilder();
-                foreach (var group in groups)
-                {
-                    IWeapon weapon = group.First().GetComponent<IWeapon>();
-
-                    int count = group.Count();
-                    string prefix = count == 1 ? "" : count + "x ";
-                    string suffix = weapon != null ? $" - {weapon.GetDPS()*count} {weapon.DamageType}-type DPS" : ""; 
-                    builder.AppendLine($"<b>{prefix}{group.Key}</b>{suffix}");
-                    builder.AppendLine($"<i>{group.First().Description}</i>");
-                }
-                return builder.ToString().Trim();
-            }
-            return null;
+            return UnitTooltip.Create(_unit);
         }
     }
 }

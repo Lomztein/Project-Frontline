@@ -28,7 +28,10 @@ public class HealerAIControllerModifier : AIControllerModifier
             Health health = go.GetComponentInParent<Health>();
             if (health)
             {
-                return (health.CurrentHealth < health.MaxHealth * StartHealTreshold) && go.transform.root != transform.root && health.ArmorType != DamageMatrix.Armor.Shield;
+                return (health.CurrentHealth < health.MaxHealth * StartHealTreshold)
+                    && go.transform.root != transform.root
+                    && health.ArmorType != DamageMatrix.Armor.Shield
+                    && go.GetComponent<Unit>().Info.Tags.Contains("CantHeal");
             }
             return false;
         });

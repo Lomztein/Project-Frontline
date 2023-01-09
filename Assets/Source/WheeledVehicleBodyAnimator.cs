@@ -10,6 +10,7 @@ public class WheeledVehicleBodyAnimator : MonoBehaviour
 
     public Transform[] TurnWheels;
     public Transform[] Wheels;
+    public float WheelLerpTime = 20f;
 
     private void Start()
     {
@@ -27,7 +28,7 @@ public class WheeledVehicleBodyAnimator : MonoBehaviour
         foreach (Transform wheel in TurnWheels)
         {
             float angle = Body.CurrentTurnAngle * WheelAngleMultiplier;
-            wheel.localRotation = Quaternion.Euler(0f, angle, 0f);
+            wheel.localRotation = Quaternion.Lerp(wheel.localRotation, Quaternion.Euler(0f, angle, 0f), WheelLerpTime * Time.deltaTime);
         }
     }
 }

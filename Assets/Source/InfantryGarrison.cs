@@ -19,6 +19,7 @@ public class InfantryGarrison : MonoBehaviour
     public bool CanGarrison(GameObject unit)
         => unit.GetComponentInChildren<InfantryBody>() != null
         && unit.GetComponentInChildren<Unit>().Info.UnitType == UnitInfo.Type.Infantry
+        && !unit.GetComponentInChildren<Unit>().Info.Tags.Contains("CantGarrison")
         && unit.transform.root != transform.root; // For the time being simply support infantry bodies only. Later perhaps refactor into an IGarrisonable interface.
 
     public void EnterGarrison(GameObject unit)

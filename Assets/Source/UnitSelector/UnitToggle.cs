@@ -44,9 +44,6 @@ public class UnitToggle : MonoBehaviour, IHasTooltip
 
     public GameObject InstantiateTooltip()
     {
-        GameObject newTooltip = Instantiate(TooltipPrefab);
-        newTooltip.transform.Find("Name").GetComponentInChildren<Text>().text = _unit.Name + " - " + _unit.Cost + "$";
-        newTooltip.transform.Find("Description").GetComponentInChildren<Text>().text = _unit.Description;
-        return newTooltip;
+        return UnitTooltip.Create(_unit);
     }
 }

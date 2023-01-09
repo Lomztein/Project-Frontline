@@ -246,7 +246,7 @@ MonoBehaviour:
   VectoringPlatform: {fileID: 4622126579929073530}
   HorizontalRange: {x: -180, y: 180}
   VerticalRange: {x: -180, y: 70}
-  VectoringSpeed: 180
+  VectoringSpeed: 360
   Instant: 0
   _targetLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &3196350384754030666
@@ -265,10 +265,13 @@ MonoBehaviour:
   Firerate: 4
   DamageType: 7
   Speed: 100
+  Range: 125
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
   FireParticle: {fileID: 0}
+  LightFlash: {fileID: 0}
+  FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 8237201204707862353, guid: de4ebd9170cb48d458f4da5f2714b007,
     type: 3}
   Muzzle: {fileID: 4419030068167030568}
@@ -294,6 +297,7 @@ MonoBehaviour:
   - {fileID: 2000255555047774689}
   AimTolerance: 1
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers:
   - {fileID: 2112084378875112006}
 --- !u!114 &2112084378875112006

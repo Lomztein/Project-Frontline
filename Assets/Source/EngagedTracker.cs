@@ -10,7 +10,7 @@ public class EngagedTracker : MonoBehaviour
     private Health[] _healths;
     private IWeapon[] _weapons;
 
-    private void Awake()
+    private void Start()
     {
         LastAttackTime = Time.time;
         LastDamagedTime = Time.time;
