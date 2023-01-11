@@ -145,6 +145,8 @@ public abstract class AIController : MonoBehaviour, IController
         }
     }
 
+    public ITarget GetTarget() => CurrentTarget;
+
     protected virtual void Attack()
     {
         float sqrDist = GetTargetSquareDistance();

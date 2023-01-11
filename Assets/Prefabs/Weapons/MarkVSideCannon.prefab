@@ -5120,6 +5120,7 @@ GameObject:
   - component: {fileID: 7205462923378241085}
   - component: {fileID: 9067334805250807443}
   - component: {fileID: 7070320414790005114}
+  - component: {fileID: 6196506891941075560}
   m_Layer: 0
   m_Name: MarkVSideCannon
   m_TagString: Untagged
@@ -5174,7 +5175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 150
+  Damage: 100
   Firerate: 0.4
   DamageType: 1
   Speed: 200
@@ -5182,9 +5183,34 @@ MonoBehaviour:
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
+  IsChambered: 1
   FireParticle: {fileID: 8854678635886041070}
+  LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 706538927366367410, guid: 2303778e9fbc7b64e86de56ea6f3e90b,
     type: 3}
   Muzzle: {fileID: 4409872496312630934}
   Inaccuracy: 0
+--- !u!114 &6196506891941075560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8325587282745010374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41487ee171311704884c1278dc50ac3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Team: {fileID: 0}
+  AcquireTargetRange: 60
+  LooseTargetRange: 60
+  AttackRange: 60
+  TurretObject: {fileID: 8325587282745010374}
+  WeaponObjects:
+  - {fileID: 8325587282745010374}
+  AimTolerance: 2
+  LeadTarget: 1
+  TargetSearchFrequency: 2
+  Modifiers: []

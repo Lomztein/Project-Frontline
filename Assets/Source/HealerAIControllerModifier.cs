@@ -26,12 +26,13 @@ public class HealerAIControllerModifier : AIControllerModifier
         Controller.SetTargetFilter(go =>
         {
             Health health = go.GetComponentInParent<Health>();
+            Unit unit = go.GetComponentInParent<Unit>();
             if (health)
             {
                 return (health.CurrentHealth < health.MaxHealth * StartHealTreshold)
                     && go.transform.root != transform.root
                     && health.ArmorType != DamageMatrix.Armor.Shield
-                    && go.GetComponent<Unit>().Info.Tags.Contains("CantHeal");
+                    && (unit == null || !unit.Info.Tags.Contains("CantHeal"));
             }
             return false;
         });

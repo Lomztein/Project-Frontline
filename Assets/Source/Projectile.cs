@@ -44,8 +44,6 @@ public class Projectile : MonoBehaviour, IPoolObject
             DoDamage(hit.collider, hit.point);
             Hit(hit.point, hit.normal);
             End();
-
-            OnHit?.Invoke(this, hit.collider, hit.point, hit.normal);
         }
         transform.position += Velocity * Time.fixedDeltaTime;
     }
@@ -53,10 +51,10 @@ public class Projectile : MonoBehaviour, IPoolObject
     protected virtual void DoDamage (Collider col, Vector3 point)
     {
         var damagable = col.GetComponentInParent<IDamagable>();
-        DoDamage(damagable, Damage, DamageType, point, Velocity.normalized);
+        DoDamage(damagable, Damage, DamageType, col, point, Velocity.normalized);
     }
 
-    public void DoDamage (IDamagable damagable, float damage, DamageMatrix.Damage type, Vector3 point, Vector3 direction)
+    public void DoDamage (IDamagable damagable, float damage, DamageMatrix.Damage type, Collider col, Vector3 point, Vector3 direction)
     {
         if (damagable != null)
         {
@@ -64,6 +62,7 @@ public class Projectile : MonoBehaviour, IPoolObject
             {
                 OnKill?.Invoke(this, damagable);
             }
+            OnHit?.Invoke(this, col, point, direction);
         }
     }
 

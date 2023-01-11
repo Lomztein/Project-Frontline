@@ -50,7 +50,7 @@ public class ProjectileExplodeNearTarget : MonoBehaviour
                 float factor = Vector3.Distance(transform.position, col.transform.position) / ExplosiveRange;
                 float damage = DamageFalloff.Evaluate(factor) * ExplosiveDamage;
 
-                Projectile.DoDamage(damagable, damage, DamageType, transform.position, (col.transform.position - transform.position).normalized);
+                Projectile.DoDamage(damagable, damage, DamageType, col, transform.position, (col.transform.position - transform.position).normalized);
             }
         }
 
