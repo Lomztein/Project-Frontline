@@ -166,6 +166,6 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
 
     public float GetDPS()
     {
-        return GetUnitPrefabWeapons().Sum(x => x.GetDPS()) / UnitPrefabs.Length * MaxSimultanious; // It's a very, very rough estimate, but might just work for the AI.
+        return GetUnitPrefabWeapons().Sum(x => x.GetDPSOrOverride()) / UnitPrefabs.Length * MaxSimultanious; // It's a very, very rough estimate, but might just work for the AI.
     }
 }

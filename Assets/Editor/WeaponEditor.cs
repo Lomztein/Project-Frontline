@@ -11,7 +11,7 @@ public class WeaponEditorBase<T> : Editor where T : class
     {
         base.OnInspectorGUI();
         IWeapon weapon = target as IWeapon;
-        EditorGUILayout.LabelField("Raw DPS: " + weapon.GetDPS());
+        EditorGUILayout.LabelField("Raw DPS: " + weapon.GetDPSOrOverride());
         _showAllDamage = EditorGUILayout.BeginFoldoutHeaderGroup(_showAllDamage, "Damage / DPS against armor");
         if (_showAllDamage)
         {
@@ -19,7 +19,7 @@ public class WeaponEditorBase<T> : Editor where T : class
             foreach (var value in values)
             {
                 float factor = DamageMatrix.GetDamageFactor(weapon.DamageType, (DamageMatrix.Armor)value);
-                EditorGUILayout.LabelField("Damage / DPS against " + value.ToString() + ": " + weapon.Damage * factor + " / " + weapon.GetDPS() * factor);
+                EditorGUILayout.LabelField("Damage / DPS against " + value.ToString() + ": " + weapon.Damage * factor + " / " + weapon.GetDPSOrOverride() * factor);
             }
         }
         EditorGUILayout.EndFoldoutHeaderGroup();

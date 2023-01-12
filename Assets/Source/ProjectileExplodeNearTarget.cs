@@ -14,10 +14,10 @@ public class ProjectileExplodeNearTarget : MonoBehaviour
     void Start()
     {
         Projectile.OnFired += Projectile_OnFired;
-        Projectile.OnHit += Projectile_OnHit;
+        Projectile.OnEnd += Projectile_OnEnd;
     }
 
-    private void Projectile_OnHit(Projectile arg1, Collider arg2, Vector3 arg3, Vector3 arg4)
+    private void Projectile_OnEnd(Projectile arg1)
     {
         CancelInvoke();
         Burst();
@@ -30,13 +30,19 @@ public class ProjectileExplodeNearTarget : MonoBehaviour
             float vertVel = Projectile.Velocity.y;
             float dist = Mathf.Abs(transform.position.y - Projectile.Target.GetPosition().y);
             Invoke(nameof(Burst), dist / vertVel);
-            Invoke(nameof(BurstEffect), dist / vertVel); // the jank is real
+            Invoke(nameof(BurstEffect), dist / vertVel);
+            Invoke(nameof(EndProjectile), dist / vertVel); // the jank is real
         }
     }
 
     private void BurstEffect ()
     {
         Projectile.Hit(transform.position, transform.forward);
+    }
+
+    private void EndProjectile ()
+    {
+        Projectile.End();
     }
 
     private void Burst ()
@@ -53,7 +59,5 @@ public class ProjectileExplodeNearTarget : MonoBehaviour
                 Projectile.DoDamage(damagable, damage, DamageType, col, transform.position, (col.transform.position - transform.position).normalized);
             }
         }
-
-        Projectile.End();
     }
 }

@@ -83,7 +83,6 @@ GameObject:
   - component: {fileID: 681589584778586258}
   - component: {fileID: 681589584778586259}
   - component: {fileID: 6109330222044661093}
-  - component: {fileID: 8182457906380863076}
   m_Layer: 0
   m_Name: Bomber
   m_TagString: Untagged
@@ -254,20 +253,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Movement: {x: 0, y: 30, z: -200}
   Transformed: 1
---- !u!114 &8182457906380863076
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 681589584778586269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b989d61b1f1c4df4b8401448cb93e737, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Unit: {fileID: 681589584778586265}
-  Multiplier: 0.5
 --- !u!1 &1068877621232310972
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,7 +1150,9 @@ MonoBehaviour:
   Amount: 1
   BurstReloadTime: 8
   BurstAmmo: 16
+  IsChambered: 1
   FireParticle: {fileID: 0}
+  LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 8742067100785924932, guid: cadc8e0098eb8d042a6637e4f32d86be,
     type: 3}

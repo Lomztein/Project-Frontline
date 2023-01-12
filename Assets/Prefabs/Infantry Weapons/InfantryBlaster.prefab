@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 8152560891312683492}
   - component: {fileID: 7656909446768690147}
   - component: {fileID: 5301482376955558955}
+  - component: {fileID: 2513510962204956267}
   m_Layer: 0
   m_Name: InfantryBlaster
   m_TagString: Untagged
@@ -85,7 +86,9 @@ MonoBehaviour:
   Amount: 1
   BurstReloadTime: 1
   BurstAmmo: 3
+  IsChambered: 1
   FireParticle: {fileID: 0}
+  LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 5374328899955687704, guid: 774cc169879099644b5a4ecb3ed470c9,
     type: 3}
@@ -122,6 +125,19 @@ MonoBehaviour:
   Name: Blaster Rifle
   Description: Handheld blaster than can incinerate infantry targets caught in its
     blast.
+--- !u!114 &2513510962204956267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8254392988960772095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f59b3bd646115c41bdf90aa443bc971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Multiplier: 5
 --- !u!1001 &5028955864837943810
 PrefabInstance:
   m_ObjectHideFlags: 0

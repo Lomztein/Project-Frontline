@@ -54,7 +54,7 @@ public class Builder : MonoBehaviour
     {
         string[] args = new string[] { 
             LocalBuildPath,
-            "StandaloneWindows64", "StandaloneLinux64", "StandaloneOSX"
+            "StandaloneLinux64", "StandaloneOSX", "StandaloneWindows64"
         };
 
         BuildGame(args);

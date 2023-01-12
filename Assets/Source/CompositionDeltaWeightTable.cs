@@ -34,7 +34,7 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
 
             foreach (IWeapon weapon in unit.GetWeapons())
             {
-                enemyDamage[weapon.DamageType] += weapon.GetDPS() / productionTime;
+                enemyDamage[weapon.DamageType] += weapon.GetDPSOrOverride() / productionTime;
             }
 
             // Aggregate enemy armor.
@@ -55,7 +55,7 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
                 foreach (var value in Enum.GetValues(typeof(DamageMatrix.Armor)))
                 {
                     var armorType = (DamageMatrix.Armor)value;
-                    float dpsVsArmor = weapon.GetDPS() * DamageMatrix.GetDamageFactor(weapon.DamageType, armorType);
+                    float dpsVsArmor = weapon.GetDPSOrOverride() * DamageMatrix.GetDamageFactor(weapon.DamageType, armorType);
                     enemyArmorMinusAlliedDamage[armorType] -= dpsVsArmor / productionTime;
                 }
             }
@@ -107,7 +107,7 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
         {
             foreach (var weapon in weapons)
             {
-                damageScore += weapon.GetDPS () * DamageMatrix.GetDamageFactor(weapon.DamageType, pair.Key) * Mathf.Max(0f, pair.Value) / productionTime;
+                damageScore += weapon.GetDPSOrOverride() * DamageMatrix.GetDamageFactor(weapon.DamageType, pair.Key) * Mathf.Max(0f, pair.Value) / productionTime;
             }
         }
         // Specialists usually do a lot more damage than generalists, and as so half their damage score.

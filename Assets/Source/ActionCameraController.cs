@@ -95,7 +95,7 @@ public class ActionCameraController : MonoBehaviour
                 var unitCamera = GetRandomCamera(unit);
                 if (unit != null && unitCamera != null)
                 {
-                    float score = (unit.GetWeapons().Sum(x => x.GetDPS()) + unit.GetComponent<Health>().CurrentHealth) * Random.Range(0f, 1f);
+                    float score = (unit.GetWeapons().Sum(x => x.GetDPSOrOverride()) + unit.GetComponent<Health>().CurrentHealth) * Random.Range(0f, 1f);
                     if (score > highestScore)
                     {
                         highestScore = score;

@@ -39,7 +39,7 @@ public static class UnitTooltip
 
                 int count = group.Count();
                 string prefix = count == 1 ? "" : count + "x ";
-                string suffix = weapon != null ? $" - {weapon.GetDPS() * count} {weapon.DamageType}-type DPS" : "";
+                string suffix = weapon != null ? $" - {weapon.GetDPSOrOverride() * count} {weapon.DamageType}-type DPS" : "";
                 builder.AppendLine($"<b>{prefix}{group.Key}</b>{suffix}");
                 builder.AppendLine($"<i>{group.First().Description}</i>");
             }

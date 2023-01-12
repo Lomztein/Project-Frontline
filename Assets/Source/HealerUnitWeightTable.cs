@@ -27,7 +27,7 @@ public class HealerUnitWeightTable : UnitWeightTable
             {
                 if (weapon.DamageType == DamageMatrix.Damage.Heal)
                 {
-                    currentHeals += weapon.GetDPS() / productionTime;
+                    currentHeals += weapon.GetDPSOrOverride() / productionTime;
                 }
             }
         }
@@ -43,7 +43,7 @@ public class HealerUnitWeightTable : UnitWeightTable
             {
                 if (weapon.DamageType == DamageMatrix.Damage.Heal)
                 {
-                    hps += weapon.GetDPS();
+                    hps += weapon.GetDPSOrOverride();
                 }
             }
             if (hps > 0.1f)

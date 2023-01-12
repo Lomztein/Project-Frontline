@@ -15,26 +15,29 @@ public abstract class TopDownCameraController : MonoBehaviour
 
     private void Update()
     {
-        Vector3 direction = GetPanDirection();
-        float panSpeed = Mathf.Lerp(PanSpeedMinMax.x, PanSpeedMinMax.y, _zoomLevel);
-        transform.position += panSpeed * Time.deltaTime * (Quaternion.Euler(0f, transform.eulerAngles.y, 0f) * direction);
-
-        _targetZoomLevel += Input.GetAxis("Mouse ScrollWheel") * ZoomSpeed * Time.deltaTime;
-        _targetZoomLevel = Mathf.Clamp01(_targetZoomLevel);
-
-        _zoomLevel = Mathf.Lerp(_zoomLevel, _targetZoomLevel, ZoomLerpSpeed * Time.deltaTime);
-
-        UpdateZoom(_zoomLevel);
-
-        if (MatchController.PlayerCommander)
+        if (Application.isFocused)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            Vector3 direction = GetPanDirection();
+            float panSpeed = Mathf.Lerp(PanSpeedMinMax.x, PanSpeedMinMax.y, _zoomLevel);
+            transform.position += panSpeed * Time.deltaTime * (Quaternion.Euler(0f, transform.eulerAngles.y, 0f) * direction);
+
+            _targetZoomLevel += Input.GetAxis("Mouse ScrollWheel") * ZoomSpeed * Time.deltaTime;
+            _targetZoomLevel = Mathf.Clamp01(_targetZoomLevel);
+
+            _zoomLevel = Mathf.Lerp(_zoomLevel, _targetZoomLevel, ZoomLerpSpeed * Time.deltaTime);
+
+            UpdateZoom(_zoomLevel);
+
+            if (MatchController.PlayerCommander)
             {
-                MoveToFrontline();
-            }
-            if (Input.GetKeyDown(KeyCode.H))
-            {
-                MoveToHQ();
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    MoveToFrontline();
+                }
+                if (Input.GetKeyDown(KeyCode.H))
+                {
+                    MoveToHQ();
+                }
             }
         }
     }

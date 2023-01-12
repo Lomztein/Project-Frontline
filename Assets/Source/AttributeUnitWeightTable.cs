@@ -13,7 +13,7 @@ public class AttributeUnitWeightTable : UnitWeightTable
     private static Func<GameObject, float>[] _funcs =
     {
         null,
-        new Func<GameObject, float>(x => x.GetComponent<Unit>().GetWeapons().Sum(x => x.GetDPS()) / ProductionScore(x)),
+        new Func<GameObject, float>(x => x.GetComponent<Unit>().GetWeapons().Sum(x => x.GetDPSOrOverride()) / ProductionScore(x)),
         new Func<GameObject, float>(x => x.GetComponentsInChildren<Health>().Sum(x => x.MaxHealth) / ProductionScore(x)),
         new Func<GameObject, float>(x => x.GetComponent<Unit>().Cost / ProductionScore(x)),
         RangeScore,

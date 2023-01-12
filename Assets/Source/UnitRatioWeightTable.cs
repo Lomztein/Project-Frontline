@@ -10,13 +10,16 @@ public class UnitRatioWeightTable : UnitWeightTable
     public bool CountUseFactoryUnit;
     public UnitFilter DesiredFilter;
     public bool DesiredUseFactoryUnit;
+    public bool CountDesiredFromEnemies;
 
     public float DesiredRatio;
     public float NonDesiredWeight;
 
     public override Dictionary<GameObject, float> GenerateWeights(IEnumerable<GameObject> options)
     {
-        int amountCounted = Commander.AlivePlaced.Count(x => ShouldCount(x));
+        int amountCounted = CountDesiredFromEnemies ?
+            Team.GetOtherTeams(Commander.TeamInfo).SelectMany(x => x.GetCommanders().SelectMany(x => x.AlivePlaced)).Count(x => ShouldCount(x)) : 
+            Commander.AlivePlaced.Count(x => ShouldCount(x));
         int amountDesired = Commander.AlivePlaced.Count(x => IsDesired(x));
 
         float currentRatio = (float)amountDesired / amountCounted;

@@ -135,7 +135,7 @@ public class DeployWeapon : MonoBehaviour, IWeapon, ITurret
 
     public float GetDPS()
     {
-        return ChildWeapon.GetDPS();
+        return ChildWeapon.GetDPSOrOverride();
     }
 
     public bool TryFire(ITarget intendedTarget)

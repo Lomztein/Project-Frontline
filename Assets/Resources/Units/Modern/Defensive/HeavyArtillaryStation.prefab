@@ -5054,6 +5054,7 @@ MonoBehaviour:
   VerRotationSpeed: 45
   ProjectileSpeed: 60
   ProjectileGravity: 20
+  HighAngle: 0
 --- !u!114 &556936880231865811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5068,13 +5069,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 150
   Firerate: 0.15
-  DamageType: 1
+  DamageType: 2
   Speed: 60
   Range: 500
   Amount: 4
   BurstReloadTime: 0
   BurstAmmo: 1
+  IsChambered: 1
   FireParticle: {fileID: 556936879402175991}
+  LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 706538927366367410, guid: 7ce51bc38955d1f418afb21d4a554534,
     type: 3}
