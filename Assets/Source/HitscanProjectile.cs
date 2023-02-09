@@ -13,7 +13,8 @@ public class HitscanProjectile : Projectile
         if (Physics.Raycast(transform.position, direction, out RaycastHit hit, range, HitLayerMask | TerrainLayerMask))
         {
             DoDamage(hit.collider, hit.point);
-            Hit(hit.point, hit.normal);
+            HandleHitEffects(hit.point, hit.normal);
+            InvokeOnHit(hit.collider, hit.point, hit.normal);
             Renderer.SetPositions(transform.position, hit.point);
         }
         else

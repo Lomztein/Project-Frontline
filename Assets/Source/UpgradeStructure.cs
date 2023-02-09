@@ -46,10 +46,13 @@ public abstract class UpgradeStructure : MonoBehaviour, ICommanderComponent
     {
         foreach (var unit in _commander.GetPlacedUnits())
         {
-            UpgradeStructure upgStructure = unit.GetComponent<UpgradeStructure>();
-            if (upgStructure && upgStructure.UpgradeIdentifier == UpgradeIdentifier)
+            var upgStructures = unit.GetComponents<UpgradeStructure>();
+            foreach (var upgStructure in upgStructures)
             {
-                return upgStructure;
+                if (upgStructure && upgStructure.UpgradeIdentifier == UpgradeIdentifier)
+                {
+                    return upgStructure;
+                }
             }
         }
         return null;

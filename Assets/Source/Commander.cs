@@ -45,7 +45,7 @@ public class Commander : MonoBehaviour, ITeamComponent
 
     public Frontline Frontline;
 
-    public float OffenseFactor => Mathf.InverseLerp(_mapCenterDistance - OffenseFactorMargin, _mapCenterDistance + OffenseFactorMargin, Vector3.Distance(Fortress.position, Frontline.Position)) * 2f - 1f;
+    public float OffenseFactor => Eliminated ? 0f : Mathf.InverseLerp(_mapCenterDistance - OffenseFactorMargin, _mapCenterDistance + OffenseFactorMargin, Vector3.Distance(Fortress.position, Frontline.Position)) * 2f - 1f;
     public float DefenseFactor => -OffenseFactor;
 
     public float MaxSiegeTime = 60f;
@@ -202,8 +202,11 @@ public class Commander : MonoBehaviour, ITeamComponent
         if (arg4 is Component component)
         {
             var killedUnit = component.GetComponentInParent<Unit>();
-            Earn(killedUnit.Info.Value);
-            Frontline.Register(component.transform.position);
+            if (killedUnit)
+            {
+                Earn(killedUnit.Info.Value);
+                Frontline.Register(component.transform.position);
+            }
         }
     }
 

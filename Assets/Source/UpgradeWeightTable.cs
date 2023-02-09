@@ -14,10 +14,11 @@ public class UpgradeWeightTable : UnitWeightTable
         var weights = new Dictionary<GameObject, float>();
         foreach (var option in options)
         {
-            if (option.TryGetComponent(out ChanceOnUnitSpawnUpgradeStructure upgrader)) 
+            var upgraders = option.GetComponents<ChanceOnUnitSpawnUpgradeStructure>();
+            if (upgraders.Length > 0) 
             {
-                int affectedCount = Commander.AliveProduced.Count(x => upgrader.CanUpgrade(x.gameObject));
-                int currentCount = Commander.AlivePlaced.Count(x => x.Info.Name == upgrader.GetComponent<Unit>().Name);
+                int affectedCount = upgraders.Sum(y => Commander.AliveProduced.Count(x => y.CanUpgrade(x.gameObject)));
+                int currentCount = upgraders.Sum(y => Commander.AlivePlaced.Count(x => x.Info.Name == y.GetComponent<Unit>().Name));
 
                 float desiredStructures = affectedCount / UnitsPerUpgradeStructure;
                 weights.Add(option, 1f - Mathf.Clamp01(currentCount / desiredStructures));

@@ -1,0 +1,234 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5404113830695882638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5404113830695882629}
+  - component: {fileID: 5404113830695882634}
+  - component: {fileID: 5404113830695882635}
+  - component: {fileID: 5404113830695882632}
+  - component: {fileID: 5290318646985820960}
+  - component: {fileID: 4144239773406810940}
+  m_Layer: 0
+  m_Name: FuelTanks
+  m_TagString: StructureUnit
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5404113830695882629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404113830695882638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 339639662942590473}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5404113830695882634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404113830695882638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955e3746abfe5e14cb56265a34877e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Info:
+    Identifier: 
+    Name: Fuel Tanks
+    Description: Tanks filled with highly flammable fuel, which is supplied to the
+      already volatile medium tanks. 20% chance to add a flamethrower to medium tanks.
+    Tags: []
+    Cost: 4750
+    Value: 475
+    UnitRole: 1
+    UnitTier: 2
+    UnitType: 4
+  Health: {fileID: 0}
+  _weapons: []
+--- !u!114 &5404113830695882635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404113830695882638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 2000
+  ArmorType: 5
+  DestroyOnDeath: 1
+  DestroyDelay: 0
+  Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
+  DebrisLife: 3
+--- !u!65 &5404113830695882632
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404113830695882638}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.23, y: 4.843529, z: 7.141568}
+  m_Center: {x: 0, y: 2.2366784, z: -0.059499264}
+--- !u!114 &5290318646985820960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404113830695882638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 4340448113793673005}
+  - {fileID: 6975942501539465021}
+--- !u!114 &4144239773406810940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404113830695882638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6d5a2228878cc4e8e464bae199ad63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeIdentifier: MarkVFlamethrower
+  BaseChance: 0.2
+  ChancePerStack: 0.2
+  Filter: {fileID: 11400000, guid: 8b0e020f032fce14db0b63582a9e0cf4, type: 2}
+  Object: {fileID: 4998743988389857025, guid: 0b9e2523ac8bc724b8213e45397b7047, type: 3}
+  UnitTransformInfos:
+  - UnitIdentifier: 
+    Path: Body
+    LocalPosition: {x: 0.403, y: 1.55, z: 2.132}
+    LocalRotation: {x: 0, y: 0, z: 0}
+  AddWeaponToAI: 0
+--- !u!1001 &233093184470577634
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5404113830695882629}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 56c7d270a554e554c85880b3b98538df,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56c7d270a554e554c85880b3b98538df,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.600964
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56c7d270a554e554c85880b3b98538df,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.600964
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56c7d270a554e554c85880b3b98538df,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.600964
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56c7d270a554e554c85880b3b98538df,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56c7d270a554e554c85880b3b98538df,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56c7d270a554e554c85880b3b98538df,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56c7d270a554e554c85880b3b98538df,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071079
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56c7d270a554e554c85880b3b98538df,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56c7d270a554e554c85880b3b98538df,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.70710576
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56c7d270a554e554c85880b3b98538df,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56c7d270a554e554c85880b3b98538df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56c7d270a554e554c85880b3b98538df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 56c7d270a554e554c85880b3b98538df,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 56c7d270a554e554c85880b3b98538df,
+        type: 3}
+      propertyPath: m_Name
+      value: FuelTanks
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 56c7d270a554e554c85880b3b98538df, type: 3}
+--- !u!4 &339639662942590473 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 56c7d270a554e554c85880b3b98538df,
+    type: 3}
+  m_PrefabInstance: {fileID: 233093184470577634}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4340448113793673005 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: 56c7d270a554e554c85880b3b98538df,
+    type: 3}
+  m_PrefabInstance: {fileID: 233093184470577634}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6975942501539465021 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7202271454713460447, guid: 56c7d270a554e554c85880b3b98538df,
+    type: 3}
+  m_PrefabInstance: {fileID: 233093184470577634}
+  m_PrefabAsset: {fileID: 0}

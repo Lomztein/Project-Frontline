@@ -40,6 +40,8 @@ namespace CustomGame
             Destroy(gameObject);
         }
 
+        public Faction GetFaction() => GetFactions().ElementAt(Faction.value);
+
         public MatchSettings.PlayerInfo CreatePlayerInfo ()
         {
             var playerInfo = new MatchSettings.PlayerInfo ();
@@ -47,7 +49,7 @@ namespace CustomGame
             playerInfo.Team = GetTeams().ElementAt(Team.value);
             if (Type.value == 1) playerInfo.AIProfile = GetRandomAIProfile();
             if (Type.value > 1) playerInfo.AIProfile = GetAIProfiles().ElementAt(Type.value - 2);
-            playerInfo.Faction = GetFactions().ElementAt(Faction.value);
+            playerInfo.Faction = GetFaction();
             playerInfo.StartingCredits = int.Parse(Credits.text);
             playerInfo.Handicap = float.Parse(Handicap.text);
             playerInfo.UnitAvailable = UnitAvailable;

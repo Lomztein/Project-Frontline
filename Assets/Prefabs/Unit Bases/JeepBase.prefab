@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 6460095528493340735}
   - component: {fileID: 6103921204354685028}
   - component: {fileID: 109671596000499958}
+  - component: {fileID: 2803706129340822342}
   m_Layer: 0
   m_Name: JeepBase
   m_TagString: MobileUnit
@@ -248,6 +249,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2803706129340822342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2421092486902088640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 3706712358110274346}
 --- !u!1 &3429553949404536521
 GameObject:
   m_ObjectHideFlags: 0
@@ -371,6 +386,7 @@ MonoBehaviour:
   - {fileID: 2075283558109491992}
   - {fileID: 7685321999588679741}
   - {fileID: 6556774251572602108}
+  WheelLerpTime: 20
 --- !u!114 &7209007526179547936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -734,6 +750,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 45b73d2ef6fff9440b56c8ac15f68355, type: 2}
+    - target: {fileID: -4684600263410887734, guid: 5af5f5a4532252a4888fdc1e23a88280,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cb2174e8ed21adc4eaf3cadd4beb2cd3, type: 2}
     - target: {fileID: -4683669308469848369, guid: 5af5f5a4532252a4888fdc1e23a88280,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -759,6 +780,12 @@ PrefabInstance:
 --- !u!4 &1681706719744111591 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5af5f5a4532252a4888fdc1e23a88280,
+    type: 3}
+  m_PrefabInstance: {fileID: 1214887937691440140}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3706712358110274346 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6652725513331149018, guid: 5af5f5a4532252a4888fdc1e23a88280,
     type: 3}
   m_PrefabInstance: {fileID: 1214887937691440140}
   m_PrefabAsset: {fileID: 0}

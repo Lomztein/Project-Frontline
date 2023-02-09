@@ -41,6 +41,7 @@ public class BlastProjectile : Projectile
         if (target)
         {
             DoDamage(target, target.transform.position);
+            InvokeOnHit(target, target.transform.position, (target.transform.position - transform.position).normalized);
         }
     }
 }

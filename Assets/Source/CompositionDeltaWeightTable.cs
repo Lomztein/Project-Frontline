@@ -7,6 +7,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Composite Delta Weight Table", menuName = "Unit Weight Tables/Composite Delta")]
 public class CompositionDeltaWeightTable : UnitWeightTableBase
 {
+    public float CountStructures;
     public float FallbackProductionTime;
     public string[] SpecialistTags;
 

@@ -21,8 +21,9 @@ public class HealingBeamProjectile : Projectile
             if (IsValidTarget(hit, out Health health))
             {
                 health.Heal(Damage);
-                Hit(hit.point, hit.normal);
+                HandleHitEffects(hit.point, hit.normal);
                 Renderer.SetPositions(transform.position, hit.point);
+                InvokeOnHit(hit.collider, hit.point, hit.normal);
                 any = true;
                 break;
             }

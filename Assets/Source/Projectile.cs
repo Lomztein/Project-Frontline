@@ -23,10 +23,11 @@ public class Projectile : MonoBehaviour, IPoolObject
     public bool IsAvailable => !gameObject.activeSelf && !AreEffectsPlaying(); 
     public GameObject GameObject => gameObject;
 
-    public event Action<Projectile, Vector3> OnFired;
-    public event Action<Projectile, Collider, Vector3, Vector3> OnHit;
-    public event Action<Projectile, IDamagable> OnKill;
-    public event Action<Projectile> OnEnd;
+    public event Action<Projectile, Vector3> OnFired; // The projectile is fired
+    public event Action<Projectile, Collider, Vector3, Vector3> OnHit; // The projectile hits something directly
+    public event Action<Projectile, IDamagable, DamageInfo> OnDoDamage; // The projectile does damage to something
+    public event Action<Projectile, IDamagable> OnKill; // The projectile kills something
+    public event Action<Projectile> OnEnd; // The projectile is finished and stored for reuse
 
     public virtual void Fire(Vector3 direction)
     {
@@ -42,7 +43,8 @@ public class Projectile : MonoBehaviour, IPoolObject
         if (Physics.Raycast(transform.position, transform.forward * dist, out RaycastHit hit, dist, HitLayerMask | TerrainLayerMask))
         {
             DoDamage(hit.collider, hit.point);
-            Hit(hit.point, hit.normal);
+            HandleHitEffects(hit.point, hit.normal);
+            InvokeOnHit(hit.collider, hit.point, hit.normal);
             End();
         }
         transform.position += Velocity * Time.fixedDeltaTime;
@@ -51,22 +53,28 @@ public class Projectile : MonoBehaviour, IPoolObject
     protected virtual void DoDamage (Collider col, Vector3 point)
     {
         var damagable = col.GetComponentInParent<IDamagable>();
-        DoDamage(damagable, Damage, DamageType, col, point, Velocity.normalized);
+        DoDamage(damagable, Damage, DamageType, point, Velocity.normalized);
     }
 
-    public void DoDamage (IDamagable damagable, float damage, DamageMatrix.Damage type, Collider col, Vector3 point, Vector3 direction)
+    public void DoDamage (IDamagable damagable, float damage, DamageMatrix.Damage type, Vector3 point, Vector3 direction)
     {
         if (damagable != null)
         {
-            if (damagable.TakeDamage(new DamageInfo(damage, type, point, direction)) <= 0f)
+            var info = new DamageInfo(damage, type, point, direction);
+            if (damagable.TakeDamage(info) <= 0f)
             {
                 OnKill?.Invoke(this, damagable);
             }
-            OnHit?.Invoke(this, col, point, direction);
+            OnDoDamage?.Invoke(this, damagable, info);
         }
     }
 
-    public virtual void Hit(Vector3 point, Vector3 normal)
+    protected void InvokeOnHit (Collider hitCollider, Vector3 hitPoint, Vector3 hitDirection)
+    {
+        OnHit?.Invoke(this, hitCollider, hitPoint, hitDirection);
+    }
+
+    public virtual void HandleHitEffects(Vector3 point, Vector3 normal)
     {
         if (HitEffect)
         {

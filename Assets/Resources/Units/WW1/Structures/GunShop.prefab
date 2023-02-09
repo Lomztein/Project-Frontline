@@ -1,0 +1,257 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5404113830695882638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5404113830695882629}
+  - component: {fileID: 5404113830695882634}
+  - component: {fileID: 5404113830695882635}
+  - component: {fileID: 5404113830695882632}
+  - component: {fileID: 5290318646985820960}
+  - component: {fileID: 4144239773406810940}
+  - component: {fileID: -7630587748814031506}
+  m_Layer: 0
+  m_Name: GunShop
+  m_TagString: StructureUnit
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5404113830695882629
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404113830695882638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 8566605790555199696}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5404113830695882634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404113830695882638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955e3746abfe5e14cb56265a34877e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Info:
+    Identifier: 
+    Name: Gun Shop
+    Description: Shop where soldiers can pick up additional firearms for their vehicles.
+      This structure adds a 10% chance of adding additional machine guns to light,
+      medium, and heavy tanks.
+    Tags: []
+    Cost: 3000
+    Value: 300
+    UnitRole: 1
+    UnitTier: 1
+    UnitType: 4
+  Health: {fileID: 0}
+  _weapons: []
+--- !u!114 &5404113830695882635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404113830695882638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 3000
+  ArmorType: 5
+  DestroyOnDeath: 1
+  DestroyDelay: 0
+  Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
+  DebrisLife: 3
+--- !u!65 &5404113830695882632
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404113830695882638}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 12.23, y: 4.843529, z: 7.141568}
+  m_Center: {x: 0, y: 2.2366784, z: -0.059499264}
+--- !u!114 &5290318646985820960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404113830695882638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 5649845435941317108}
+--- !u!114 &4144239773406810940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404113830695882638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6d5a2228878cc4e8e464bae199ad63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeIdentifier: A7VTwinGuns
+  BaseChance: 0.25
+  ChancePerStack: 0.25
+  Filter: {fileID: 11400000, guid: 9f21f8092c6d5c24a846cffd7af898d9, type: 2}
+  Object: {fileID: 2655663344646104377, guid: 3daf79e0cecc27e48a5e572efc71e3fd, type: 3}
+  UnitTransformInfos:
+  - UnitIdentifier: A7V
+    Path: Body
+    LocalPosition: {x: 0, y: 3.395, z: 0.088}
+    LocalRotation: {x: 0, y: 0, z: 0}
+  AddWeaponToAI: 0
+--- !u!114 &-7630587748814031506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404113830695882638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6d5a2228878cc4e8e464bae199ad63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeIdentifier: RenaultCoaxialMG
+  BaseChance: 0.25
+  ChancePerStack: 0.25
+  Filter: {fileID: 11400000, guid: ca3d7366f4cb092478d0c968f4601a31, type: 2}
+  Object: {fileID: 1380006937693839194, guid: 9358b098cdafa534996619b11b642cc5, type: 3}
+  UnitTransformInfos:
+  - UnitIdentifier: RenaultFT.Cannon
+    Path: Body/Turret/Horizontal/Vertical
+    LocalPosition: {x: 0.0574, y: 0.1034, z: -0.172}
+    LocalRotation: {x: 0, y: 0, z: 0}
+  AddWeaponToAI: 1
+--- !u!1001 &8171794620735668027
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5404113830695882629}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.7707
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.7707
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.7707
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1461304994638716399, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cb2174e8ed21adc4eaf3cadd4beb2cd3, type: 2}
+    - target: {fileID: 919132149155446097, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+        type: 3}
+      propertyPath: m_Name
+      value: GunShop
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2fdc2b4db3d7df648aa56ab424b6b12f, type: 3}
+--- !u!4 &8566605790555199696 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8171794620735668027}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5649845435941317108 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: 2fdc2b4db3d7df648aa56ab424b6b12f,
+    type: 3}
+  m_PrefabInstance: {fileID: 8171794620735668027}
+  m_PrefabAsset: {fileID: 0}

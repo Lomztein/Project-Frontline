@@ -279,6 +279,7 @@ GameObject:
   - component: {fileID: 1118208566537510245}
   - component: {fileID: -7435522493268463660}
   - component: {fileID: 4537210662011155107}
+  - component: {fileID: 8637245996842802624}
   m_Layer: 0
   m_Name: IFV
   m_TagString: MobileUnit
@@ -419,6 +420,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8637245996842802624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7553692932367407739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 6518951763367244247}
+  - {fileID: 1067315018449962249}
+  - {fileID: 469535693258478023}
 --- !u!1 &8523417839389160178
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,7 +571,9 @@ MonoBehaviour:
   Amount: 1
   BurstReloadTime: 1
   BurstAmmo: 24
+  IsChambered: 1
   FireParticle: {fileID: 3508970064711202609}
+  LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 706538927366367410, guid: 02243d61965c5ed499bec10f0188c561,
     type: 3}
@@ -1428,9 +1447,27 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 7a2d0979868858a469f37f4248814543, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59e9b2a01893ee64cb8a473db1b2df61, type: 3}
+--- !u!23 &469535693258478023 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7202271454713460447, guid: 59e9b2a01893ee64cb8a473db1b2df61,
+    type: 3}
+  m_PrefabInstance: {fileID: 7311518692383680280}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6518951763367244247 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: 59e9b2a01893ee64cb8a473db1b2df61,
+    type: 3}
+  m_PrefabInstance: {fileID: 7311518692383680280}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7132860675886743795 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 59e9b2a01893ee64cb8a473db1b2df61,
+    type: 3}
+  m_PrefabInstance: {fileID: 7311518692383680280}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1067315018449962249 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1461304994638716399, guid: 59e9b2a01893ee64cb8a473db1b2df61,
     type: 3}
   m_PrefabInstance: {fileID: 7311518692383680280}
   m_PrefabAsset: {fileID: 0}

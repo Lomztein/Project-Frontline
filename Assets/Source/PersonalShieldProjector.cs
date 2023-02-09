@@ -17,25 +17,40 @@ public class PersonalShieldProjector : MonoBehaviour
 
     private IEnumerator DelayedGenerate ()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForFixedUpdate();
 
         // TODO: Look into offset centers, eg. the jet
         transform.rotation = transform.parent.rotation;
+        transform.position = transform.parent.position;
 
         Bounds bounds = new Bounds();
-        Collider[] colliders = transform.root.GetComponentsInChildren<Collider>(false);
+        Collider[] colliders = transform.parent.GetComponentsInChildren<Collider>(false);
         foreach (Collider col in colliders)
         {
             Bounds b = new Bounds(col.bounds.center - col.transform.position, col.bounds.size);
             bounds.Encapsulate(b);
         }
-        transform.position = bounds.center + transform.transform.position;
+        transform.position = bounds.center + transform.parent.position;
 
         Projector.ShieldSize = bounds.size.magnitude * ShieldSizeMultiplier;
-        float unitHealth = transform.root.GetComponentInChildren<Health>().MaxHealth;
+        float unitHealth = transform.parent.GetComponentInChildren<Health>().MaxHealth;
 
         Projector.GetComponentInChildren<Health>().MaxHealth = unitHealth * ShieldHealthFactor;
         Projector.HealRate = unitHealth / TotalHealTime;
         Projector.ForceResetSize();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Bounds bounds = new Bounds();
+        Collider[] colliders = transform.parent.GetComponentsInChildren<Collider>(false);
+        foreach (Collider col in colliders)
+        {
+            Bounds b = new Bounds(col.bounds.center - col.transform.position, col.bounds.size);
+            bounds.Encapsulate(b);
+        }
+
+        Gizmos.DrawWireCube(bounds.center, bounds.size);
+        Gizmos.DrawWireSphere(bounds.center, bounds.size.magnitude * ShieldSizeMultiplier / 2f);
     }
 }

@@ -35,6 +35,7 @@ public class FireProjectile : Projectile
         {
             Damage = BaseDamage * Time.fixedDeltaTime;
             DoDamage(col, transform.position);
+            InvokeOnHit(col, transform.position, (col.transform.position - transform.position).normalized);
         }
         if (Physics.Raycast(transform.position, Velocity, Speed * Time.fixedDeltaTime, HitLayerMask | TerrainLayerMask))
         {

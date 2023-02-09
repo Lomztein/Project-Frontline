@@ -344,7 +344,9 @@ MonoBehaviour:
   Amount: 1
   BurstReloadTime: 2
   BurstAmmo: 12
+  IsChambered: 1
   FireParticle: {fileID: 4325982584135870676}
+  LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 2842756162439936608, guid: f8e7b160ee3ae7442ae6e2cd741d93a9,
     type: 3}
@@ -455,6 +457,7 @@ GameObject:
   - component: {fileID: 4325982583102194753}
   - component: {fileID: 4325982583102194766}
   - component: {fileID: 8555348099755170094}
+  - component: {fileID: 4580879363559203408}
   m_Layer: 0
   m_Name: AttackHelicopter
   m_TagString: Untagged
@@ -613,6 +616,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4580879363559203408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4325982583102194759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 6319852905996440800}
+  - {fileID: 762516186390915733}
+  - {fileID: 338313132915482324}
+  - {fileID: 812750840380241136}
 --- !u!1 &4325982583491187271
 GameObject:
   m_ObjectHideFlags: 0
@@ -6308,15 +6328,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c59b8192261e78478024c66e7c6cbb3, type: 3}
---- !u!1 &2284514691823357261 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2575144465048842060, guid: 6c59b8192261e78478024c66e7c6cbb3,
-    type: 3}
-  m_PrefabInstance: {fileID: 4325982583847805441}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8341232048241149724 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5749680998883452189, guid: 6c59b8192261e78478024c66e7c6cbb3,
+    type: 3}
+  m_PrefabInstance: {fileID: 4325982583847805441}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2284514691823357261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2575144465048842060, guid: 6c59b8192261e78478024c66e7c6cbb3,
     type: 3}
   m_PrefabInstance: {fileID: 4325982583847805441}
   m_PrefabAsset: {fileID: 0}

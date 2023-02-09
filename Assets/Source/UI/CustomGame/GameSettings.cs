@@ -51,7 +51,7 @@ namespace CustomGame
             {
                 SetEnabled(false);
                 UnitSelector.SetEnabled(true);
-                UnitSelector.Initialize(settings, info.Faction.LoadUnits());
+                UnitSelector.Initialize(settings, settings.GetFaction().LoadUnits());
             });
         }
 

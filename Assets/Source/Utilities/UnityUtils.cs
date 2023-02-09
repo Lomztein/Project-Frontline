@@ -87,5 +87,25 @@ namespace Util
                 return String.Empty;
             return path.Substring(0, path.Length - 1);
         }
+
+        // I stole this from the internet because I was too lazy to write it myself lol
+        public static Transform FindRecursive(this Transform self, Predicate<Transform> selector)
+        {
+            foreach (Transform child in self)
+            {
+                if (selector(child))
+                {
+                    return child;
+                }
+                var finding = child.FindRecursive(selector);
+
+                if (finding != null)
+                {
+                    return finding;
+                }
+            }
+
+            return null;
+        }
     }
 }

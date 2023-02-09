@@ -23,20 +23,22 @@ public class AICommander : Commander
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-
-        int randLimit = Mathf.RoundToInt((60 / Time.fixedDeltaTime) / TargetAvarageAPM);
-        if (SaveTarget == null && Random.Range(0, randLimit) == 0)
+        if (!Eliminated)
         {
-            PerformAction();
-        }
-        if (SaveTarget != null && CanAfford(SaveTarget, Credits))
-        {
-            Vector3? position = _positionSelector.SelectPosition(this, SaveTarget.gameObject, GetUnitPlacementCheckSize(SaveTarget.gameObject));
-            if (position.HasValue)
+            int randLimit = Mathf.RoundToInt((60 / Time.fixedDeltaTime) / TargetAvarageAPM);
+            if (SaveTarget == null && Random.Range(0, randLimit) == 0)
             {
-                TryPurchaseAndPlaceUnit(SaveTarget.gameObject, position.Value, transform.rotation);
+                PerformAction();
             }
-            SaveTarget = null;
+            if (SaveTarget != null && CanAfford(SaveTarget, Credits))
+            {
+                Vector3? position = _positionSelector.SelectPosition(this, SaveTarget.gameObject, GetUnitPlacementCheckSize(SaveTarget.gameObject));
+                if (position.HasValue)
+                {
+                    TryPurchaseAndPlaceUnit(SaveTarget.gameObject, position.Value, transform.rotation);
+                }
+                SaveTarget = null;
+            }
         }
     }
 

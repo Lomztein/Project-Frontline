@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 863701078200208923}
   - component: {fileID: 863701078200208997}
   - component: {fileID: 1644729261926999864}
+  - component: {fileID: 4200117246740413534}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -87,6 +88,7 @@ MonoBehaviour:
   VerticalRange: {x: -5, y: 5}
   HorizontalSpeed: 90
   VerticalSpeed: 45
+  Instant: 0
 --- !u!114 &1644729261926999864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,17 +104,32 @@ MonoBehaviour:
   Damage: 100
   Firerate: 0.6
   DamageType: 6
-  Speed: 0.9
-  Range: 50
+  Speed: 1
+  Range: 1
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
+  IsChambered: 1
   FireParticle: {fileID: 0}
+  LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 5374328899955687704, guid: 774cc169879099644b5a4ecb3ed470c9,
     type: 3}
   Muzzle: {fileID: 8276306357512713021}
   Inaccuracy: 0
+--- !u!114 &4200117246740413534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863701078200208922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f59b3bd646115c41bdf90aa443bc971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Multiplier: 5
 --- !u!1 &2395557475437836036
 GameObject:
   m_ObjectHideFlags: 0

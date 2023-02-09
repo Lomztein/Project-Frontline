@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,10 +15,10 @@ public class ProjectileExplodeNearTarget : MonoBehaviour
     void Start()
     {
         Projectile.OnFired += Projectile_OnFired;
-        Projectile.OnEnd += Projectile_OnEnd;
+        Projectile.OnHit += Projectile_OnHit;
     }
 
-    private void Projectile_OnEnd(Projectile arg1)
+    private void Projectile_OnHit(Projectile arg1, Collider arg2, Vector3 arg3, Vector3 arg4)
     {
         CancelInvoke();
         Burst();
@@ -37,7 +38,7 @@ public class ProjectileExplodeNearTarget : MonoBehaviour
 
     private void BurstEffect ()
     {
-        Projectile.Hit(transform.position, transform.forward);
+        Projectile.HandleHitEffects(transform.position, transform.forward);
     }
 
     private void EndProjectile ()
@@ -56,7 +57,7 @@ public class ProjectileExplodeNearTarget : MonoBehaviour
                 float factor = Vector3.Distance(transform.position, col.transform.position) / ExplosiveRange;
                 float damage = DamageFalloff.Evaluate(factor) * ExplosiveDamage;
 
-                Projectile.DoDamage(damagable, damage, DamageType, col, transform.position, (col.transform.position - transform.position).normalized);
+                Projectile.DoDamage(damagable, damage, DamageType, transform.position, (col.transform.position - transform.position).normalized);
             }
         }
     }

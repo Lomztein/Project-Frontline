@@ -5207,13 +5207,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 10
   Firerate: 4
-  DamageType: 6
+  DamageType: 5
   Speed: 200
   Range: 150
   Amount: 1
   BurstReloadTime: 2
   BurstAmmo: 8
+  IsChambered: 1
   FireParticle: {fileID: 5394893689465715563}
+  LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 2842756162439936608, guid: f8e7b160ee3ae7442ae6e2cd741d93a9,
     type: 3}
@@ -5232,8 +5234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Autocannon
-  Description: Fully automatic heavy weapon that can dispatch infantry and vehicles
-    alike.
+  Description: Fully automatic weapon that can dispatch infantry and vehicles alike.
 --- !u!1 &8234215779560532078
 GameObject:
   m_ObjectHideFlags: 0

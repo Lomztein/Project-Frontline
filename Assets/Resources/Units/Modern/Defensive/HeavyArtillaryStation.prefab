@@ -5011,6 +5011,7 @@ GameObject:
   - component: {fileID: 556936880231865813}
   - component: {fileID: 752778836651382636}
   - component: {fileID: 7748798745049271299}
+  - component: {fileID: 1706645889501117826}
   m_Layer: 0
   m_Name: ArtillaryTurret
   m_TagString: StructureUnit
@@ -5069,13 +5070,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 150
   Firerate: 0.15
-  DamageType: 2
+  DamageType: 1
   Speed: 60
   Range: 500
   Amount: 4
   BurstReloadTime: 0
   BurstAmmo: 1
-  IsChambered: 1
+  IsChambered: 0
   FireParticle: {fileID: 556936879402175991}
   LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
@@ -5133,6 +5134,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 5, y: 1.8825486, z: 5}
   m_Center: {x: 0, y: 0.84932816, z: 0}
+--- !u!114 &1706645889501117826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 556936880231865815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f59b3bd646115c41bdf90aa443bc971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Multiplier: 2
 --- !u!1 &556936880805627272
 GameObject:
   m_ObjectHideFlags: 0
@@ -5291,8 +5305,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 1000
-  ArmorType: 5
+  MaxHealth: 2000
+  ArmorType: 3
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -5317,7 +5331,7 @@ MonoBehaviour:
     Tags:
     - Artillary
     Cost: 2500
-    Value: 12
+    Value: 250
     UnitRole: 2
     UnitTier: 1
     UnitType: 3
