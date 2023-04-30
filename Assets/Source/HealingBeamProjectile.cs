@@ -22,7 +22,8 @@ public class HealingBeamProjectile : Projectile
             {
                 health.Heal(Damage);
                 HandleHitEffects(hit.point, hit.normal);
-                Renderer.SetPositions(transform.position, hit.point);
+                if (Renderer)
+                    Renderer.SetPositions(transform.position, hit.point);
                 InvokeOnHit(hit.collider, hit.point, hit.normal);
                 any = true;
                 break;
@@ -30,7 +31,8 @@ public class HealingBeamProjectile : Projectile
         }
         if (!any)
         {
-            Renderer.SetPositions(transform.position, transform.position + direction * range);
+            if (Renderer)
+                Renderer.SetPositions(transform.position, transform.position + direction * range);
         }
     }
 

@@ -2,14 +2,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Util;
 
-public class AttackerController : AIController, ITeamComponent, IController
+public class AttackerController : AIController, ITeamComponent, ICommanderComponent, IController
 {
     private const float HOLD_VARIANCE = 2.5f;
     private const float STEER_DEVIANCE_CLAMP = 5f;
 
     protected Waypoint _currentWaypoint;
+    protected Commander Commander { get; private set; }
+
     public float HoldRange;
+    public bool StayBehindFrontline;
 
     protected override void Awake()
     {
@@ -22,11 +26,31 @@ public class AttackerController : AIController, ITeamComponent, IController
         _currentWaypoint = waypoint;
     }
 
+    protected bool ShouldHoldOnFrontline()
+    {
+        if (StayBehindFrontline && Commander)
+        {
+            float dist = DistToFrontline();
+            return dist < HoldRange / 2f;
+        }
+        return false;
+    }
+
+    protected float DistToFrontline()
+        => VectorUtils.DifferenceAlongDirection(_currentWaypoint.OutgoingVector, Commander.Frontline.Position, transform.position);
+
     protected virtual void MoveAlongWaypoints ()
     {
         if (_currentWaypoint)
         {
-            Controllable.Accelerate(1f);
+            if (ShouldHoldOnFrontline()) 
+            {
+                Controllable.Accelerate(0f);
+            }
+            else
+            {
+                Controllable.Accelerate(1f);
+            }
             float angle = Vector3.SignedAngle(transform.forward, _currentWaypoint.OutgoingVector, Vector3.up);
             SmoothTurnTowardsAngle(angle);
         }
@@ -62,6 +86,21 @@ public class AttackerController : AIController, ITeamComponent, IController
         else
         {
             MoveAlongWaypoints();
+        }
+    }
+
+    public void AssignCommander(Commander commander)
+    {
+        Commander = commander;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (StayBehindFrontline && _currentWaypoint && Commander)
+        {
+            Vector3 margin = _currentWaypoint.OutgoingVector * HoldRange / 2f;
+            Gizmos.DrawSphere(transform.position + margin, 0.5f);
+            Gizmos.DrawLine(transform.position, transform.position + margin);
         }
     }
 }

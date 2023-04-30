@@ -12,49 +12,71 @@ public class StrikerController : AttackerController
 
     protected override void MoveTowardsTarget()
     {
-        float sqrDist = GetTargetSquareDistance();
-        if (!DisengageWhileCantFire)
-        {
-            if (sqrDist <= HoldRange * HoldRange)
-            {
-                _engaging = false;
-            }
-            if (sqrDist >= ReengageRange * ReengageRange)
-            {
-                _engaging = true;
-            }
-        }
-        else
-        {
-            _engaging = Weapons.Any(x => x.CanFire());
-        }
+        _engaging = ShouldEngage(_engaging, GetTargetSquareDistance());
         if (_engaging)
         {
             base.MoveTowardsTarget();
         }
         else
         {
-            float angle;
-            if (DisengageAlongWaypoint)
-            {
-                angle = _currentWaypoint.IncomingAngle;
-                angle = Mathf.DeltaAngle(transform.eulerAngles.y, angle);
-            }
-            else
-            {
-                Vector3 local = GetTargetLocalPosition();
-                angle = Mathf.DeltaAngle(transform.eulerAngles.y, Mathf.Atan2(local.x, local.z) * Mathf.Rad2Deg - 180);
-            }
             float speed = 1f;
 
             Controllable.Accelerate(speed);
-            SmoothTurnTowardsAngle(angle);
+            SmoothTurnTowardsAngle(GetDisengageAngle());
         }
+    }
+
+    private bool ShouldEngage (bool currentlyEngaging, float targetSqrDist)
+    {
+        if (!DisengageWhileCantFire)
+        {
+            if (targetSqrDist <= HoldRange * HoldRange)
+            {
+                currentlyEngaging = false;
+            }
+            if (targetSqrDist >= ReengageRange * ReengageRange)
+            {
+                currentlyEngaging = true;
+            }
+        }
+        else
+        {
+            currentlyEngaging = Weapons.Any(x => x.CanFire());
+        }
+        return currentlyEngaging;
+    }
+
+    private float GetDisengageAngle ()
+    {
+        float angle;
+        if (DisengageAlongWaypoint)
+        {
+            angle = _currentWaypoint.IncomingAngle;
+            angle = Mathf.DeltaAngle(transform.eulerAngles.y, angle);
+        }
+        else
+        {
+            Vector3 local = GetTargetLocalPosition();
+            angle = Mathf.DeltaAngle(transform.eulerAngles.y, Mathf.Atan2(local.x, local.z) * Mathf.Rad2Deg - 180);
+        }
+        return angle;
     }
 
     protected override void MoveAlongWaypoints()
     {
         base.MoveAlongWaypoints();
-        _engaging = true;
+        if (ShouldHoldOnFrontline())
+        {
+            _engaging = ShouldEngage(_engaging, Mathf.Pow(DistToFrontline(), 2f));
+            if (!_engaging)
+            {
+                SmoothTurnTowardsAngle(GetDisengageAngle());
+            }
+        }
+        else
+        {
+            _engaging = true;
+        }
+        Controllable.Accelerate(1f);
     }
 }

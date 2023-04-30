@@ -1,0 +1,233 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7240418504889472326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7240418504889472333}
+  - component: {fileID: 7240418504889472322}
+  - component: {fileID: 7240418504889472323}
+  - component: {fileID: 7240418504889472320}
+  - component: {fileID: 1659341977344805364}
+  - component: {fileID: 610823776629282993}
+  m_Layer: 0
+  m_Name: TungstenMine
+  m_TagString: StructureUnit
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7240418504889472333
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240418504889472326}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 340093099040309028}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7240418504889472322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240418504889472326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955e3746abfe5e14cb56265a34877e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Info:
+    Identifier: 
+    Name: Tungsten Mine
+    Description: A mine from which tungsten can be mined, which is then forged into
+      armor plates for the infantry. Adds a 20% chance for infantry to spawn with
+      a 100 health light armor plate.
+    Tags: []
+    Cost: 3000
+    Value: 300
+    UnitRole: 1
+    UnitTier: 1
+    UnitType: 4
+  Health: {fileID: 0}
+  _weapons: []
+--- !u!114 &7240418504889472323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240418504889472326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 2000
+  ArmorType: 5
+  DestroyOnDeath: 1
+  DestroyDelay: 0
+  Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
+  DebrisLife: 3
+--- !u!65 &7240418504889472320
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240418504889472326}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.8, y: 4.1594334, z: 14.91}
+  m_Center: {x: 0, y: 2.1497169, z: 0}
+--- !u!114 &1659341977344805364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240418504889472326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6d5a2228878cc4e8e464bae199ad63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeIdentifier: InfantryArmor
+  BaseChance: 0.2
+  ChancePerStack: 0.2
+  Filter: {fileID: 11400000, guid: b1dda285cae1aaf4890dcdba8329f957, type: 2}
+  Object: {fileID: 4439249428092566074, guid: 745345c65dbfb5447b7189a43732324d, type: 3}
+  UnitTransformInfos:
+  - UnitIdentifier: 
+    Path: MediumInfantryBody/VerySexyPerson/Rig/spine/spine.001/spine.002/spine.003
+    LocalPosition: {x: 0.00009041547, y: -0.000972409, z: 0.0017593383}
+    LocalRotation: {x: 1.6365917, y: 0, z: 0}
+  AddWeaponToAI: 0
+--- !u!114 &610823776629282993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240418504889472326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 4337734133932871168}
+--- !u!1001 &230521006612453583
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7240418504889472333}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.360782
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.360782
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.360782
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -2.63
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1461304994638716399, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7a2d0979868858a469f37f4248814543, type: 2}
+    - target: {fileID: 919132149155446097, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+        type: 3}
+      propertyPath: m_Name
+      value: TungstenMine
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7096990e89c5108478d1fbdbd8f39cb9, type: 3}
+--- !u!4 &340093099040309028 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+    type: 3}
+  m_PrefabInstance: {fileID: 230521006612453583}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4337734133932871168 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: 7096990e89c5108478d1fbdbd8f39cb9,
+    type: 3}
+  m_PrefabInstance: {fileID: 230521006612453583}
+  m_PrefabAsset: {fileID: 0}

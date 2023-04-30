@@ -114,6 +114,7 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
         // Specialists usually do a lot more damage than generalists, and as so half their damage score.
         if (SpecialistTags.Any(x => goUnit.Info.Tags.Contains(x))) damageScore /= 2f;
 
+        damageScore = Mathf.Pow(damageScore, 2f); // Damage should matter much more than armor.
         return Mathf.Max (float.Epsilon, armorScore + damageScore);
     }
 

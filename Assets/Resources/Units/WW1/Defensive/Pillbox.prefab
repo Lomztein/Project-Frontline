@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4518278122371834884}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2.19}
   m_LocalScale: {x: 0.75757, y: 0.75757, z: 0.75757}
   m_Children: []
   m_Father: {fileID: 5615258737880560170}
@@ -107,7 +107,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6691671026675796498}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.7244496, z: 2.1595254}
+  m_LocalPosition: {x: 0, y: 0.7244496, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5615258737880560170}
@@ -128,8 +128,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Base: {fileID: 527836681037137539}
   VectoringPlatform: {fileID: 5615258737880560170}
-  HorizontalRange: {x: -75, y: 75}
-  VerticalRange: {x: -25, y: 25}
+  HorizontalRange: {x: -45, y: 45}
+  VerticalRange: {x: -2, y: 2}
   VectoringSpeed: 180
   Instant: 0
   _targetLocalPosition: {x: 0, y: 0, z: 0}
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 5
+  Damage: 7.5
   Firerate: 10
   DamageType: 0
   Speed: 250
@@ -232,8 +232,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 750
-  ArmorType: 2
+  MaxHealth: 1500
+  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -266,8 +266,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Pillbox
-    Description: Sturdy structure housing a single machinegunner that shoots out
-      from safety onto incoming infantry.
+    Description: Sturdy structure housing a single heavy machinegunner that shoots
+      out from safety onto incoming infantry.
     Tags: []
     Cost: 500
     Value: 5
@@ -435,7 +435,7 @@ PrefabInstance:
     - target: {fileID: 5857214540084150587, guid: 92a563c3efd2b8344b126e88c4daa3d5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.74300003
+      value: 2.933
       objectReference: {fileID: 0}
     - target: {fileID: 5857214540084150587, guid: 92a563c3efd2b8344b126e88c4daa3d5,
         type: 3}

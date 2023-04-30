@@ -13,4 +13,7 @@ public class BurnController : MonoBehaviour
         Effect.ApplyTo(target.gameObject);
         DamageOverTime.Target = target.GetComponentInParent<Health>();
     }
+
+    public static bool CanBurn(Collider target)
+        => target.GetComponentInParent<Health>() != null;
 }

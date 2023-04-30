@@ -341,10 +341,11 @@ MonoBehaviour:
   Info:
     Identifier: RollsRoyce.MG
     Name: Armored Car
-    Description: 
+    Description: Light car equipped with a machine gun. It's flimsy armor can barely
+      handle light arms fire.
     Tags: []
-    Cost: 550
-    Value: 55
+    Cost: 400
+    Value: 40
     UnitRole: 0
     UnitTier: 0
     UnitType: 1
@@ -363,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 150
+  MaxHealth: 125
   ArmorType: 2
   DestroyOnDeath: 1
   DestroyDelay: 0
@@ -411,6 +412,7 @@ MonoBehaviour:
   TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 50
+  StayBehindFrontline: 0
 --- !u!114 &7159768823265169035
 MonoBehaviour:
   m_ObjectHideFlags: 0
