@@ -121,6 +121,7 @@ MonoBehaviour:
   HorizontalRange: {x: -75, y: 75}
   VerticalRange: {x: -35, y: 35}
   VectoringSpeed: 60
+  Instant: 0
   _targetLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &552552112066152134
 MonoBehaviour:
@@ -138,10 +139,14 @@ MonoBehaviour:
   Firerate: 5
   DamageType: 0
   Speed: 250
+  Range: 0
   Amount: 1
   BurstReloadTime: 1
   BurstAmmo: 24
+  IsChambered: 1
   FireParticle: {fileID: 6979896703080951025}
+  LightFlash: {fileID: 0}
+  FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 2900942430389265080, guid: f4ff58e0522f9124dba6aad8ad2f9f54,
     type: 3}
   Muzzle: {fileID: 1515694391014160305}
@@ -163,9 +168,10 @@ MonoBehaviour:
   LooseTargetRange: 75
   AttackRange: 75
   TurretObject: {fileID: 1426534937712906722}
-  WeaponObject: {fileID: 1426534937712906722}
+  WeaponObjects: []
   AimTolerance: 1
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
 --- !u!1 &1821307901650445512
 GameObject:
@@ -331,15 +337,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
+    Identifier: 
     Name: Coil IFV
     Description: IFV equippedf with a powerful twin coil autocannon, which can dispell
       heavy anti-armor shells at high freqency and even higher speeds. Highly effective
       against medium armor.
+    Tags: []
     Cost: 4000
-    Value: 500
+    Value: 400
     UnitRole: 1
     UnitTier: 2
     UnitType: 1
+  Health: {fileID: 0}
   _weapons:
   - {fileID: 5752419481499270277}
   - {fileID: 1426534937712906722}
@@ -359,6 +368,7 @@ MonoBehaviour:
   MaxHealth: 2000
   ArmorType: 3
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
 --- !u!114 &4744880920650432759
@@ -396,11 +406,14 @@ MonoBehaviour:
   LooseTargetRange: 100
   AttackRange: 60
   TurretObject: {fileID: 5752419481499270277}
-  WeaponObject: {fileID: 5752419481499270277}
+  WeaponObjects:
+  - {fileID: 5752419481499270277}
   AimTolerance: 5
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 55
+  StayBehindFrontline: 0
 --- !u!114 &5826852822179942656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,6 +610,7 @@ MonoBehaviour:
   HorizontalRange: {x: -75, y: 75}
   VerticalRange: {x: -35, y: 35}
   VectoringSpeed: 60
+  Instant: 0
   _targetLocalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &9197402356703373820
 MonoBehaviour:
@@ -614,10 +628,14 @@ MonoBehaviour:
   Firerate: 5
   DamageType: 0
   Speed: 250
+  Range: 0
   Amount: 1
   BurstReloadTime: 1
   BurstAmmo: 24
+  IsChambered: 1
   FireParticle: {fileID: 8692169125941594597}
+  LightFlash: {fileID: 0}
+  FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 2900942430389265080, guid: f4ff58e0522f9124dba6aad8ad2f9f54,
     type: 3}
   Muzzle: {fileID: 969838331508675237}
@@ -639,9 +657,10 @@ MonoBehaviour:
   LooseTargetRange: 75
   AttackRange: 75
   TurretObject: {fileID: 3624773820668074362}
-  WeaponObject: {fileID: 3624773820668074362}
+  WeaponObjects: []
   AimTolerance: 1
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
 --- !u!1 &4493421685542636582
 GameObject:
@@ -5686,10 +5705,14 @@ MonoBehaviour:
   Firerate: 2
   DamageType: 1
   Speed: 75
+  Range: 150
   Amount: 1
   BurstReloadTime: 2
   BurstAmmo: 4
+  IsChambered: 1
   FireParticle: {fileID: 4496058124998641153}
+  LightFlash: {fileID: 0}
+  FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 2900942430389265080, guid: 9d997ba91fc068747831eeacdac14e00,
     type: 3}
   Muzzle: {fileID: 4496058124998641155}
@@ -10658,10 +10681,14 @@ MonoBehaviour:
   Firerate: 10
   DamageType: 1
   Speed: 75
+  Range: 150
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
+  IsChambered: 1
   FireParticle: {fileID: 4496058125753074425}
+  LightFlash: {fileID: 0}
+  FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 2900942430389265080, guid: 9d997ba91fc068747831eeacdac14e00,
     type: 3}
   Muzzle: {fileID: 4496058125753074427}
@@ -10751,6 +10778,7 @@ MonoBehaviour:
   VerticalRange: {x: -10, y: 10}
   HorizontalSpeed: 135
   VerticalSpeed: 135
+  Instant: 0
 --- !u!114 &5752419481499270283
 MonoBehaviour:
   m_ObjectHideFlags: 0

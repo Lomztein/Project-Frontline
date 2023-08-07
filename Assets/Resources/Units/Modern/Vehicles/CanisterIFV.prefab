@@ -5014,13 +5014,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 5
   Firerate: 0.8
-  DamageType: 6
+  DamageType: 0
   Speed: 200
   Range: 80
   Amount: 20
   BurstReloadTime: 2
   BurstAmmo: 3
+  IsChambered: 1
   FireParticle: {fileID: 180717769}
+  LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 4353457072589820952, guid: 96bcadc2b022995429899a109d1414a4,
     type: 3}
@@ -5324,6 +5326,11 @@ PrefabInstance:
       propertyPath: _weapons.Array.data[2]
       value: 
       objectReference: {fileID: 9201459033662925554}
+    - target: {fileID: 4013033669570582312, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      propertyPath: Firerate
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4095960138140975757, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
       propertyPath: Muzzle
@@ -5343,6 +5350,11 @@ PrefabInstance:
         type: 3}
       propertyPath: MaxHealth
       value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 5744793623595235346, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      propertyPath: Firerate
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6622980339607156336, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}

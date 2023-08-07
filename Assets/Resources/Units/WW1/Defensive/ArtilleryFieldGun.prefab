@@ -50,9 +50,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 0}
-  AcquireTargetRange: 150
-  LooseTargetRange: 150
-  AttackRange: 150
+  AcquireTargetRange: 100
+  LooseTargetRange: 100
+  AttackRange: 100
   TurretObject: {fileID: 6677267986770970449}
   WeaponObjects:
   - {fileID: 6677267987578035281}
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Info:
     Identifier: 
-    Name: Field Gu
+    Name: Field Gun
     Description: Light artillery designed to bombard enemy with high-explosive shells
       from a distance.
     Tags: []
@@ -5274,7 +5274,7 @@ MonoBehaviour:
   Muzzle: {fileID: 8497400365521773657}
   HorRotationSpeed: 60
   VerRotationSpeed: 60
-  ProjectileSpeed: 70
+  ProjectileSpeed: 200
   ProjectileGravity: 20
   HighAngle: 0
 --- !u!1 &6677267986934876142
@@ -5357,7 +5357,7 @@ MonoBehaviour:
   Damage: 150
   Firerate: 0.2
   DamageType: 1
-  Speed: 70
+  Speed: 200
   Range: 500
   Amount: 1
   BurstReloadTime: 0

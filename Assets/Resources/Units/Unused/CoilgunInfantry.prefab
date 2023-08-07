@@ -77,6 +77,21 @@ PrefabInstance:
       propertyPath: WeaponObjects.Array.data[0]
       value: 
       objectReference: {fileID: 1334231451413369678}
+    - target: {fileID: 434691834773493002, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.0020003703
+      objectReference: {fileID: 0}
+    - target: {fileID: 434691834773493002, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0017563397
+      objectReference: {fileID: 0}
+    - target: {fileID: 434691834773493002, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.000131077
+      objectReference: {fileID: 0}
     - target: {fileID: 3340765615440518667, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: FactoryPrefab
@@ -296,12 +311,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3194328423807503986}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6880056106692528596 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8299666087550683046, guid: 50378c4ca65714b4ebd2928ade59a707,
-    type: 3}
-  m_PrefabInstance: {fileID: 3194328423807503986}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1857366573615810915 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3860211362352645905, guid: 50378c4ca65714b4ebd2928ade59a707,
@@ -378,6 +387,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2631551732634995703, guid: c1ce087c5fae8d942a72d454826e77f2,
         type: 3}
+      propertyPath: Range
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2631551732634995703, guid: c1ce087c5fae8d942a72d454826e77f2,
+        type: 3}
       propertyPath: BurstReloadTime
       value: 1.3
       objectReference: {fileID: 0}
@@ -390,7 +404,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Pivot
       value: 
-      objectReference: {fileID: 6880056106692528596}
+      objectReference: {fileID: 0}
     - target: {fileID: 4603908238869656048, guid: c1ce087c5fae8d942a72d454826e77f2,
         type: 3}
       propertyPath: AnimatorTurret

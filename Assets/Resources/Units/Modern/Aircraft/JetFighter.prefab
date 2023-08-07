@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FactoryPrefab: {fileID: 3940556133059093292, guid: 19c1d8ac2097cdf48ad8bf4c0e64766d,
     type: 3}
-  ProductionTime: 45
+  ProductionTime: 60
 --- !u!54 &1854339823422044918
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -205,6 +205,7 @@ MonoBehaviour:
   Modifiers:
   - {fileID: 5078028238801753873}
   HoldRange: 75
+  StayBehindFrontline: 0
   ReengageRange: 200
   DisengageAlongWaypoint: 1
   DisengageWhileCantFire: 1
@@ -404,7 +405,9 @@ MonoBehaviour:
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
+  IsChambered: 1
   FireParticle: {fileID: 0}
+  LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 2375430243017228703, guid: 67c2159a830f94d4ba8d9cc6b89bae37,
     type: 3}
@@ -623,7 +626,9 @@ MonoBehaviour:
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
+  IsChambered: 1
   FireParticle: {fileID: 0}
+  LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 2375430243017228703, guid: 67c2159a830f94d4ba8d9cc6b89bae37,
     type: 3}

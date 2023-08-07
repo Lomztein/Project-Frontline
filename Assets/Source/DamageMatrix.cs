@@ -37,6 +37,7 @@ public static class DamageMatrix
             { Armor.Medium, 1.0f },
             { Armor.Heavy, 0.4f },
             { Armor.Shield, 0.4f },
+            { Armor.Structure, 0.7f }
         } },
         { Damage.Gun, new Dictionary<Armor, float>()
         {

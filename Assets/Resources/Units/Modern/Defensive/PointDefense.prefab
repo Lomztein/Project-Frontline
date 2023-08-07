@@ -26,10 +26,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82821343529140705}
   m_LocalRotation: {x: -0.50000083, y: 0.4999992, z: 0.49999925, w: 0.5000007}
-  m_LocalPosition: {x: 0, y: -0.5398827, z: 0}
-  m_LocalScale: {x: 0.15947683, y: 0.15947682, z: 0.15947682}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2883022, y: 0.28830218, z: 0.28830218}
   m_Children: []
-  m_Father: {fileID: 8762761963189793805}
+  m_Father: {fileID: 8395628418800617623}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8784125493907650468
@@ -111,7 +111,7 @@ Transform:
   m_Children:
   - {fileID: 6174904184205707375}
   m_Father: {fileID: 8395628418800617623}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8307319449616986366
 MonoBehaviour:
@@ -324,6 +324,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 8045016087066842576}
   - {fileID: 3617517891994072864}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -375,11 +376,11 @@ MonoBehaviour:
     Identifier: 
     Name: Point Defense Turret
     Description: Rapid pulse laser turret capable of tracking and shooting down slower
-      moving projectiles bef
+      moving projectiles.
     Tags:
     - Point Defense
     Cost: 2500
-    Value: 15
+    Value: 250
     UnitRole: 2
     UnitTier: 1
     UnitType: 3
@@ -469,7 +470,7 @@ Transform:
   m_LocalScale: {x: 0.15947683, y: 0.15947682, z: 0.15947682}
   m_Children: []
   m_Father: {fileID: 8762761963189793805}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &2224531279512515681
 MeshFilter:
@@ -582,7 +583,7 @@ Transform:
   - {fileID: 8565171820156836133}
   - {fileID: 28158375676834671}
   m_Father: {fileID: 8762761963189793805}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3361805016119988324
 MonoBehaviour:
@@ -741,7 +742,6 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8045016087066842576}
   - {fileID: 807433659806340684}
   - {fileID: 5054694724486711427}
   m_Father: {fileID: 6174904184205707375}

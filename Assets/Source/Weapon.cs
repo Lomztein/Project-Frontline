@@ -89,7 +89,8 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
 
         for (int i = 0; i < Amount; i++)
         {
-            Quaternion rotation = Muzzle.transform.rotation * Quaternion.Euler (UnityEngine.Random.Range(-Inaccuracy, Inaccuracy), UnityEngine.Random.Range(-Inaccuracy, Inaccuracy), 0f);
+            Vector2 deviance = GetProjectileInaccuracy();
+            Quaternion rotation = Muzzle.transform.rotation * Quaternion.Euler (deviance.x, deviance.y, 0f);
             GameObject proj = _pool.GetObject(Muzzle.transform.position, rotation);
 
             _team.ApplyTeam(proj);
@@ -102,8 +103,8 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
 
             projectile.Damage = Damage;
             projectile.DamageType = DamageType;
-            projectile.Speed = Speed;
-            projectile.Life = Range / Speed;
+            projectile.Speed = GetProjectileSpeed();
+            projectile.Life = Range / projectile.Speed;
 
             projectile.Fire(rotation * Vector3.forward);
 
@@ -115,6 +116,17 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
         }
 
         OnFire?.Invoke(this);
+    }
+
+    private Vector2 GetProjectileInaccuracy()
+    {
+        return UnityEngine.Random.insideUnitCircle * Inaccuracy;
+    }
+
+    private float GetProjectileSpeed()
+    {
+        float inaccuracyFactor = 1 + (UnityEngine.Random.Range(-Inaccuracy, Inaccuracy) / 10f);
+        return Speed * Mathf.Clamp(inaccuracyFactor, 0.8f, 1.2f);
     }
 
     private void Projectile_OnEnd(Projectile projectile)

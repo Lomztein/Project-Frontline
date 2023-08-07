@@ -21,7 +21,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: Info.Value
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: Info.UnitClass
@@ -49,11 +49,34 @@ PrefabInstance:
       propertyPath: WeaponObject
       value: 
       objectReference: {fileID: 3674396666540146625}
+    - target: {fileID: 1177128839, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
+      propertyPath: WeaponObjects.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177128839, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
+      propertyPath: WeaponObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 3674396666540146625}
+    - target: {fileID: 434691834773493002, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.0020003703
+      objectReference: {fileID: 0}
+    - target: {fileID: 434691834773493002, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0017563397
+      objectReference: {fileID: 0}
+    - target: {fileID: 434691834773493002, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.000131077
+      objectReference: {fileID: 0}
     - target: {fileID: 1049058314154979834, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: Animator
       value: 
-      objectReference: {fileID: 4630581256567493878}
+      objectReference: {fileID: 0}
     - target: {fileID: 1049058314154979834, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: m_Enabled
@@ -79,7 +102,7 @@ PrefabInstance:
         type: 3}
       propertyPath: Pivot
       value: 
-      objectReference: {fileID: 4630581256446121507}
+      objectReference: {fileID: 0}
     - target: {fileID: 4559563055888698999, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: Forward
@@ -584,15 +607,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3705749233902594213}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &4630581256567493878 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 8299666087104560211, guid: 50378c4ca65714b4ebd2928ade59a707,
-    type: 3}
-  m_PrefabInstance: {fileID: 3705749233902594213}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &4630581256446121507 stripped
+--- !u!4 &1969260025265690329 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 8299666087293566598, guid: 50378c4ca65714b4ebd2928ade59a707,
+  m_CorrespondingSourceObject: {fileID: 2898419047578615420, guid: 50378c4ca65714b4ebd2928ade59a707,
     type: 3}
   m_PrefabInstance: {fileID: 3705749233902594213}
   m_PrefabAsset: {fileID: 0}
@@ -620,11 +637,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: InfantryPistol
       objectReference: {fileID: 0}
+    - target: {fileID: 814418638192769833, guid: 69a87c0499c976442a3a617978302d3a,
+        type: 3}
+      propertyPath: Range
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1165338369286979886, guid: 69a87c0499c976442a3a617978302d3a,
         type: 3}
       propertyPath: Pivot
       value: 
-      objectReference: {fileID: 4630581256446121507}
+      objectReference: {fileID: 1969260025265690329}
     - target: {fileID: 1165338369286979886, guid: 69a87c0499c976442a3a617978302d3a,
         type: 3}
       propertyPath: Forward

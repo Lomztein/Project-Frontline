@@ -191,7 +191,7 @@ MonoBehaviour:
       the designer was compensating for. Can take out enemy armor fairly easily.
     Tags: []
     Cost: 1500
-    Value: 15
+    Value: 150
     UnitRole: 2
     UnitTier: 1
     UnitType: 3
@@ -5292,6 +5292,7 @@ MonoBehaviour:
   VerticalRange: {x: -15, y: 15}
   HorizontalSpeed: 135
   VerticalSpeed: 45
+  Instant: 0
 --- !u!1 &7239507548481140457
 GameObject:
   m_ObjectHideFlags: 0
@@ -5376,7 +5377,9 @@ MonoBehaviour:
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
+  IsChambered: 1
   FireParticle: {fileID: 2891936090233365937}
+  LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 706538927366367410, guid: 2303778e9fbc7b64e86de56ea6f3e90b,
     type: 3}

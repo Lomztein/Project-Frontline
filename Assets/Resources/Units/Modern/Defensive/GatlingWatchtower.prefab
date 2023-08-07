@@ -116,6 +116,7 @@ MonoBehaviour:
   VerticalRange: {x: -50, y: 35}
   HorizontalSpeed: 135
   VerticalSpeed: 90
+  Instant: 0
 --- !u!114 &1187514994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,14 +130,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 10
-  Firerate: 20
+  Firerate: 30
   DamageType: 6
   Speed: 500
   Range: 150
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
+  IsChambered: 1
   FireParticle: {fileID: 5613912131783740517}
+  LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 4353457072589820952, guid: 96bcadc2b022995429899a109d1414a4,
     type: 3}
@@ -160,7 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Weapon: {fileID: 1187514994}
   RotatingTransform: {fileID: 3599568919992140579}
-  RotationPerSecond: {x: 0, y: 900, z: 0}
+  RotationPerSecond: {x: 0, y: 1350, z: 0}
 --- !u!1 &290482577431724487
 GameObject:
   m_ObjectHideFlags: 0
@@ -789,6 +792,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Info.Name
       value: Watchtower
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035589861437556256, guid: 8c9aeb8aedbb1694485fcc7673507336,
+        type: 3}
+      propertyPath: Info.Value
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 9035589861437556256, guid: 8c9aeb8aedbb1694485fcc7673507336,
         type: 3}

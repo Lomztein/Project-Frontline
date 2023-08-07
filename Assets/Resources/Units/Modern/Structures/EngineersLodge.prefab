@@ -13,7 +13,10 @@ GameObject:
   - component: {fileID: 3021954094050903090}
   - component: {fileID: 3021954094050903089}
   - component: {fileID: 3055018479370453145}
-  - component: {fileID: 8990618214336036331}
+  - component: {fileID: -2420138530939987500}
+  - component: {fileID: 5003210054986786085}
+  - component: {fileID: -6387447025347406155}
+  - component: {fileID: 4919540233464849811}
   m_Layer: 0
   m_Name: EngineersLodge
   m_TagString: StructureUnit
@@ -53,11 +56,11 @@ MonoBehaviour:
     Name: Engineers Lodge
     Description: Small lodge housing workbenches, sofas, and plenty of coffee for
       engineers to gather around, tinker with their devices, and discuss work. Adds
-      30% chance to equip Reconstructor Infantry, Engineers, and Dronelords with
-      a small shoulder mounted rocket launcher.
+      a 10% chance for tanks, heavy tanks to be equipped with additional turrets.
+      Heavier units get more turrets.
     Tags: []
     Cost: 3500
-    Value: 3500
+    Value: 350
     UnitRole: 1
     UnitTier: 1
     UnitType: 4
@@ -109,7 +112,7 @@ MonoBehaviour:
   _renderersToApplyTo:
   - {fileID: 4069721822106999716}
   - {fileID: 7837014468056362874}
---- !u!114 &8990618214336036331
+--- !u!114 &-2420138530939987500
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,16 +124,85 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca6d5a2228878cc4e8e464bae199ad63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UpgradeIdentifier: ShoulderMountedRocketPod
-  BaseChance: 0.3
-  ChancePerStack: 0.3
-  Filter: {fileID: 11400000, guid: 6daf9863fa6543b4fbd757ba45d7d013, type: 2}
-  Object: {fileID: 5671086606657143550, guid: 3b970989c138dc0418bc52c4830b93bf, type: 3}
+  UpgradeIdentifier: TankEngieTurret_01
+  BaseChance: 0.2
+  ChancePerStack: 0.2
+  Filter: {fileID: 11400000, guid: 0e93cfa7753b0694787b6ae51836aba1, type: 2}
+  Object: {fileID: 1810895093889678491, guid: e853375bafefdc74ab33294daa9d72ba, type: 3}
   UnitTransformInfos:
   - UnitIdentifier: 
-    Path: MediumInfantryBody/VerySexyPerson/Rig/spine/spine.001/spine.002/spine.003/shoulder.R
-    LocalPosition: {x: -0.00031, y: 0.001872, z: 0.000542}
-    LocalRotation: {x: 26.554459, y: 71.234985, z: 81.36376}
+    Path: Body/Turret/TankTurret/Horizontal
+    LocalPosition: {x: 0, y: 0, z: 0}
+    LocalRotation: {x: 0, y: 0, z: 0}
+  AddWeaponToAI: 0
+--- !u!114 &5003210054986786085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021954094050903095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6d5a2228878cc4e8e464bae199ad63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeIdentifier: TankEngieTurret_02
+  BaseChance: 0.2
+  ChancePerStack: 0.2
+  Filter: {fileID: 11400000, guid: 9fea0c2ee96605045b6b9bde80645084, type: 2}
+  Object: {fileID: 9202451039662648653, guid: 07cf960d18f98434281315f8443a4b0f, type: 3}
+  UnitTransformInfos:
+  - UnitIdentifier: 
+    Path: Body/Turret/TankTurret/Horizontal
+    LocalPosition: {x: 0, y: 0, z: 0}
+    LocalRotation: {x: 0, y: 0, z: 0}
+  AddWeaponToAI: 0
+--- !u!114 &-6387447025347406155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021954094050903095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6d5a2228878cc4e8e464bae199ad63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeIdentifier: TankEngieTurret_03
+  BaseChance: 0.2
+  ChancePerStack: 0.2
+  Filter: {fileID: 11400000, guid: bf8f75425da91dd44a334f20dfe784b7, type: 2}
+  Object: {fileID: 7546856959777286860, guid: 3a0418c6ade88484893348caa096845c, type: 3}
+  UnitTransformInfos:
+  - UnitIdentifier: 
+    Path: Body/Turret/TankTurret/Horizontal
+    LocalPosition: {x: 0, y: 0, z: 0}
+    LocalRotation: {x: 0, y: 0, z: 0}
+  AddWeaponToAI: 0
+--- !u!114 &4919540233464849811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3021954094050903095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6d5a2228878cc4e8e464bae199ad63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeIdentifier: TankEngieTurret_04
+  BaseChance: 0.2
+  ChancePerStack: 0.2
+  Filter: {fileID: 11400000, guid: 9988c8470c32a80498f44a8b8e0bab7d, type: 2}
+  Object: {fileID: 4466266222378625537, guid: 15ae142e0ef8b094c918b183cd23b721, type: 3}
+  UnitTransformInfos:
+  - UnitIdentifier: 
+    Path: Threads
+    LocalPosition: {x: 0, y: 0, z: 0}
+    LocalRotation: {x: 0, y: 0, z: 0}
   AddWeaponToAI: 0
 --- !u!1001 &6035642322557467061
 PrefabInstance:

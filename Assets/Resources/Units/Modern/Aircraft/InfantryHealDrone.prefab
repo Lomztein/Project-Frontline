@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 1316603575850636962, guid: c048221778a2618489102fcf028d4127,
         type: 3}
       propertyPath: MaxHealth
-      value: 150
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 1620269070727205509, guid: c048221778a2618489102fcf028d4127,
         type: 3}
@@ -280,6 +280,7 @@ MonoBehaviour:
   Modifiers:
   - {fileID: 2867046805780651650}
   HoldRange: 25
+  StayBehindFrontline: 0
 --- !u!114 &5349481653821435016
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,6 +314,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5734227111496963145}
     m_Modifications:
+    - target: {fileID: 375241613235387305, guid: 77ad8b4733384304da8fe4ef1033ebdc,
+        type: 3}
+      propertyPath: Damage
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 582706406120410760, guid: 77ad8b4733384304da8fe4ef1033ebdc,
         type: 3}
       propertyPath: m_Name

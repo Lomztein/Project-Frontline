@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1897459439676076920}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0353, z: 0.0707}
+  m_LocalPosition: {x: -0.0449, y: -0.0048, z: 0.0707}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4164197535769367218}
@@ -43,14 +43,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 65
+  Damage: 75
   Firerate: 0.2
   DamageType: 5
   Speed: 100
+  Range: 200
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
+  IsChambered: 1
   FireParticle: {fileID: 0}
+  LightFlash: {fileID: 0}
+  FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 2375430243017228703, guid: 01e36b5a96a4dd64d9e5f397ef1b2072,
     type: 3}
   Muzzle: {fileID: 7509638467740160335}
@@ -106,15 +110,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Info:
+    Identifier: 
     Name: Rocket Drone
     Description: Built specifically to take out other drones, these drones wield
       twin rocket launchers that do decent damage against anything lightly armored.
+    Tags: []
     Cost: 2000
-    Value: 20
+    Value: 200
     UnitRole: 0
     UnitTier: 0
     UnitType: 2
-  _weapons: []
+  Health: {fileID: 0}
+  _weapons:
+  - {fileID: 5526408448433154087}
 --- !u!114 &7445248430829633478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +138,7 @@ MonoBehaviour:
   MaxHealth: 200
   ArmorType: 2
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 6309138862387603851, guid: ce8bba28af204f94db7328d615882804, type: 3}
   DebrisLife: 3
 --- !u!114 &7163837056702692321
@@ -149,11 +158,14 @@ MonoBehaviour:
   LooseTargetRange: 100
   AttackRange: 75
   TurretObject: {fileID: 6531918717875616515}
-  WeaponObject: {fileID: 5526408448433154087}
+  WeaponObjects:
+  - {fileID: 5526408448433154087}
   AimTolerance: 900
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 60
+  StayBehindFrontline: 0
 --- !u!114 &7960299815993965498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,7 +351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3232568901669144327}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0385, z: 0.0707}
+  m_LocalPosition: {x: 0.0366, y: -0.0048, z: 0.0707}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4164197535769367218}
@@ -357,14 +369,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 65
+  Damage: 75
   Firerate: 20
   DamageType: 5
   Speed: 100
+  Range: 200
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
+  IsChambered: 1
   FireParticle: {fileID: 0}
+  LightFlash: {fileID: 0}
+  FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 2375430243017228703, guid: 01e36b5a96a4dd64d9e5f397ef1b2072,
     type: 3}
   Muzzle: {fileID: 6019462154797244088}
@@ -846,22 +862,22 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4073375dd48a6f94491ac7d81db5c218,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.7071067
+      value: 0.70710784
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4073375dd48a6f94491ac7d81db5c218,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.7071068
+      value: -0.0000010958197
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4073375dd48a6f94491ac7d81db5c218,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.0000010958164
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4073375dd48a6f94491ac7d81db5c218,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0.70710576
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4073375dd48a6f94491ac7d81db5c218,
         type: 3}
@@ -876,7 +892,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 4073375dd48a6f94491ac7d81db5c218,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4073375dd48a6f94491ac7d81db5c218,
         type: 3}

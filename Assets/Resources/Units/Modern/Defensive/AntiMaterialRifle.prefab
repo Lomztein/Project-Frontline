@@ -255,7 +255,7 @@ MonoBehaviour:
       a better fit for this super long-range sniper turret.'
     Tags: []
     Cost: 2500
-    Value: 0
+    Value: 250
     UnitRole: 2
     UnitTier: 1
     UnitType: 3
@@ -336,7 +336,9 @@ MonoBehaviour:
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
+  IsChambered: 1
   FireParticle: {fileID: 939469369128901222}
+  LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
   ProjectilePrefab: {fileID: 4353457072589820952, guid: 96bcadc2b022995429899a109d1414a4,
     type: 3}
@@ -361,6 +363,7 @@ MonoBehaviour:
   VerticalRange: {x: -10, y: 10}
   HorizontalSpeed: 45
   VerticalSpeed: 45
+  Instant: 0
 --- !u!114 &2996561609964713331
 MonoBehaviour:
   m_ObjectHideFlags: 0

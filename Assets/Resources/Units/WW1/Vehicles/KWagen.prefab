@@ -676,8 +676,11 @@ MonoBehaviour:
   Info:
     Identifier: KWagon
     Name: Landship
-    Description: 
-    Tags: []
+    Description: 'Immense vehicle equipped with four large-caliber cannons and a
+      good handfull of machine guns. Due to the size and complexity of its internals,
+      field repair is unfeasible. '
+    Tags:
+    - CantHeal
     Cost: 12000
     Value: 1200
     UnitRole: 0
@@ -706,7 +709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 9000
+  MaxHealth: 12000
   ArmorType: 4
   DestroyOnDeath: 1
   DestroyDelay: 0

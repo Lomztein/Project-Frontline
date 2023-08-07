@@ -68,6 +68,7 @@ GameObject:
   - component: {fileID: 6208922606456639294}
   - component: {fileID: 371446805670336796}
   - component: {fileID: 2197758364635985125}
+  - component: {fileID: -2684035218032579784}
   m_Layer: 0
   m_Name: HeavyMachineGunner
   m_TagString: Untagged
@@ -102,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
+  MaxHealth: 200
   ArmorType: 0
   DestroyOnDeath: 0
   DestroyDelay: 0
@@ -130,8 +131,8 @@ MonoBehaviour:
     - CantGarrison
     - Siege
     - Defense
-    Cost: 4000
-    Value: 350
+    Cost: 3000
+    Value: 150
     UnitRole: 1
     UnitTier: 2
     UnitType: 0
@@ -151,17 +152,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 0}
-  AcquireTargetRange: 60
-  LooseTargetRange: 60
-  AttackRange: 60
+  AcquireTargetRange: 55
+  LooseTargetRange: 55
+  AttackRange: 55
   TurretObject: {fileID: 8150723386312106452}
   WeaponObjects:
   - {fileID: 8150723386312106452}
   AimTolerance: 10
   LeadTarget: 1
   TargetSearchFrequency: 2
-  Modifiers: []
-  HoldRange: 60
+  Modifiers:
+  - {fileID: -2684035218032579784}
+  HoldRange: 55
   StayBehindFrontline: 0
 --- !u!114 &4707429137107192341
 MonoBehaviour:
@@ -214,7 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FactoryPrefab: {fileID: 6496082389243146588, guid: 2aff6db69e9aede41aebbe48adf87b80,
     type: 3}
-  ProductionTime: 40
+  ProductionTime: 30
 --- !u!54 &2197758364635985125
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -231,6 +233,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-2684035218032579784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6365057502642190576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c59ac0d092345c04a9befbce95a15fcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AltitudeMinMax: {x: -5, y: 5}
 --- !u!1 &8150723386312106452
 GameObject:
   m_ObjectHideFlags: 0
