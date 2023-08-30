@@ -27,12 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5667567378679379699}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5667567378679379697
 MonoBehaviour:
@@ -53,8 +54,12 @@ MonoBehaviour:
   Faction: {fileID: 0}
   Fortress: {fileID: 0}
   UnitSource: {fileID: 225398836}
-  OffenseFactorMargin: 150
-  MaxSiegeTime: 60
+  Target: {fileID: 0}
+  DefenseMargin: 25
+  DefenseThreshold: 75
+  OffenseMargin: 25
+  OffenseThreshold: 100
+  BaseMargin: 50
   TargetAvarageAPM: 10
   MaxSaveTime: 10
   SaveTarget: {fileID: 0}
@@ -76,17 +81,21 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   PositionEvaluators:
-  - id: 0
-  - id: 1
-  - id: 2
+  - rid: 0
+  - rid: 1
+  - rid: 2
   references:
-    version: 1
-    00000000:
+    version: 2
+    RefIds:
+    - rid: 0
       type: {class: FortressDistancePositionEvaluator, ns: , asm: Assembly-CSharp}
-    00000001:
+      data: 
+    - rid: 1
       type: {class: ShieldProjectorPositionEvaluator, ns: , asm: Assembly-CSharp}
-    00000002:
+      data: 
+    - rid: 2
       type: {class: DefensePositionEvaluator, ns: , asm: Assembly-CSharp}
+      data: 
 --- !u!114 &-1274060127916580420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -99,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd8d2890cdc92fb44ba1363ef5aea54f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeightTable: {fileID: 11400000, guid: 7a6bb50f003b77945a2c1af9db286e39, type: 2}
+  WeightTable: {fileID: 0}
   WeightRandomizer: {x: 0, y: 1}
   WeightDebug: {fileID: 0}
 --- !u!114 &225398836

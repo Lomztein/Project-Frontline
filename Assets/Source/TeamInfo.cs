@@ -61,6 +61,7 @@ public class TeamInfo : ScriptableObject
     }
 
 
+    public Team GetTeam() => Team.GetTeam(this);
     public static int GetLayerMask(int factionId) => LayerMaskStart << factionId;
     public static int Invert(int mask) => LayerAllTeams & ~mask;
 

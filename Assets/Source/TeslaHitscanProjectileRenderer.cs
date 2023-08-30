@@ -12,15 +12,18 @@ public class TeslaHitscanProjectileRenderer : HitscanProjectileRenderer
     public float DesturbanceFactor;
     public float UpwardsForce;
     public float ShrinkLerp;
-    public int ResetChance;
     public float Width;
+
+    public float MaxResetTime;
+    public float MinResetTime;
 
     private int _arcDir;
     private Vector3 _start;
     private Vector3 _end;
     private int _sections;
 
-
+    private float _spawnTime;
+    public AnimationCurve WidthByLife;
 
     public override void SetPositions(Vector3 start, Vector3 end)
     {
@@ -29,8 +32,9 @@ public class TeslaHitscanProjectileRenderer : HitscanProjectileRenderer
         _start = start;
         _end = end;
         Renderer.positionCount = _sections + 1;
+        _spawnTime = Time.time;
         ResetLine();
-        UpdateLines();
+        CycleReset();
     }
 
     private void FixedUpdate()
@@ -59,26 +63,37 @@ public class TeslaHitscanProjectileRenderer : HitscanProjectileRenderer
             }
             Renderer.SetPosition(i, newPos + newRandom);
         }
-        Renderer.endWidth = Width;
-        Renderer.startWidth = Width;
+
+        float mult = CalcWidthMult();
+        Renderer.endWidth = Width * mult;
+        Renderer.startWidth = Width * mult;
+    }
+    
+    private float CalcWidthMult ()
+    {
+        float timeFactor = Mathf.InverseLerp(_spawnTime, _spawnTime + Projectile.Life, Time.time);
+        return WidthByLife.Evaluate(timeFactor);
+    }
+
+    private void CycleReset ()
+    {
+        CancelInvoke();
+        Invoke(nameof(CycleReset), Random.Range(MinResetTime, MaxResetTime));
+        ResetLine();
     }
 
     private void UpdateLines()
     {
-        if (Random.Range(0, ResetChance) == 0)
+        for (int i = 0; i < _sections; i++)
         {
-            ResetLine();
+            Vector3 rot = Quaternion.Euler(90f + Random.Range(20f, -20f), 90f + Random.Range(20f, -20f), 0f) * Projectile.Velocity.normalized;
+            Vector3 nextPos = Renderer.GetPosition(i) + ((_end - _start).magnitude / 20f) * ArcSpeed * DesturbanceFactor * Mathf.Sin((float)i / _sections * Mathf.PI) * Random.Range(-2f * _arcDir, 4f * _arcDir) * Time.fixedDeltaTime * rot;
+            nextPos.y = Mathf.Max(nextPos.y, Width / 2f);
+            Renderer.SetPosition(i, nextPos);
         }
-        else
-        {
-            for (int i = 0; i < _sections; i++)
-            {
-                Vector3 rot = Quaternion.Euler(90f + Random.Range(20f, -20f), 90f + Random.Range(20f, -20f), 0f) * Projectile.Velocity.normalized;
-                Vector3 nextPos = Renderer.GetPosition(i) + ((_end - _start).magnitude / 20f) * ArcSpeed * DesturbanceFactor * Mathf.Sin((float)i / _sections * Mathf.PI) * Random.Range(-2f * _arcDir, 4f * _arcDir) * Time.fixedDeltaTime * rot;
-                Renderer.SetPosition(i, nextPos);
-            }
-        }
-        Renderer.endWidth = Mathf.Lerp(Renderer.endWidth, 0f, ShrinkLerp * Time.fixedDeltaTime);
-        Renderer.startWidth = Mathf.Lerp(Renderer.endWidth, 0f, ShrinkLerp * Time.fixedDeltaTime);
+
+        float mult = CalcWidthMult();
+        Renderer.endWidth = Mathf.Lerp(Renderer.endWidth, 0f, ShrinkLerp * Time.fixedDeltaTime) * mult;
+        Renderer.startWidth = Mathf.Lerp(Renderer.endWidth, 0f, ShrinkLerp * Time.fixedDeltaTime) * mult;
     }
 }

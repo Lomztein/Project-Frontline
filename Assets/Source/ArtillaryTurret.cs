@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class ArtillaryTurret : MonoBehaviour, ITurret
 {
@@ -44,7 +46,19 @@ public class ArtillaryTurret : MonoBehaviour, ITurret
 
     public float DeltaAngle(Vector3 target)
     {
-        return 0f;
+        if (!float.IsNaN(_targetLocalAngle))
+        {
+            float horAngle = Mathf.Atan2(_targetLocalPos.x, _targetLocalPos.z) * Mathf.Rad2Deg;
+            float verAngle = _targetLocalAngle;
+            Vector3 dir = Quaternion.Euler(-verAngle, horAngle, 0f) * Vector3.forward;
+            Matrix4x4 matrix = Matrix4x4.TRS(Muzzle.position, Base.rotation, Vector3.one);
+            dir = matrix.MultiplyVector(dir);
+            return Vector3.Angle(dir, Muzzle.forward);
+        }
+        else
+        {
+            return 180f;
+        }
     }
 
     private float ComputeTrajectoryAngle(float distance, float height, float speed, float gravity, bool high)

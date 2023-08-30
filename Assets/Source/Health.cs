@@ -25,13 +25,16 @@ public class Health : MonoBehaviour, IDamagable
 
     public float TakeDamage (DamageInfo info)
     {
+        float h = CurrentHealth;
         OnTakeDamage?.Invoke(this, info);
         float dmg = info.Damage * DamageMatrix.GetDamageFactor(info.Type, ArmorType);
         CurrentHealth -= dmg;
+        info.DamageDone = Mathf.Clamp(h - CurrentHealth, -MaxHealth, MaxHealth);
         OnDamageTaken?.Invoke(this, dmg);
         if (CurrentHealth <= 0f && !_isDead)
         {
             Die();
+            info.KilledTarget = true;
             OnDeath?.Invoke(this);
             _isDead = true;
         }
@@ -67,10 +70,7 @@ public class Health : MonoBehaviour, IDamagable
         if (Debris)
         {
             GameObject d = Instantiate(Debris, transform.position, transform.rotation);
-
-            foreach (ParticleSystem system in d.GetComponentsInChildren<ParticleSystem>())
-                system.Play();
-
+            d.GetComponent<Effect>().Play();
             Destroy(d, DebrisLife);
         }
     }

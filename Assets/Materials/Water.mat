@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0353a89b1f911e48b9e16bdc9f2e058, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  version: 4
+  version: 7
 --- !u!21 &2100000
 Material:
-  serializedVersion: 6
+  serializedVersion: 8
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -23,13 +23,17 @@ Material:
   m_Name: Water
   m_Shader: {fileID: -6465566751694194690, guid: 4b84df79cbd9af846aa5f2459730f850,
     type: 3}
-  m_ShaderKeywords: 
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
+  m_LockedProperties: 
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
@@ -97,8 +101,9 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    m_Ints: []
     m_Floats:
-    - Vector1_35cc679f91ba4709bd9e652f4544a38d: 1
+    - Vector1_35cc679f91ba4709bd9e652f4544a38d: 1.25
     - Vector1_91c3573e1b9b480c844ec508a6fbcc55: -1
     - Vector1_971c3d4823654d378354cf6f698348f7: 0.41
     - Vector1_e42f0b77aee649c1b8bdeaf189c08b1d: 0.25
@@ -119,6 +124,7 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.005
+    - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
@@ -132,7 +138,7 @@ Material:
     - Color_4802571e41bd46669a08b487d9a5a8dc: {r: 0.4038359, g: 0.64412826, b: 0.7075472,
         a: 0.7529412}
     - Color_5a1b2cd928254936988e8524f316e898: {r: 1, g: 1, b: 1, a: 0.4627451}
-    - Vector2_5f503fc7dcab46b4848f1b4cf9191812: {r: 0.1, g: 0.1, b: 0, a: 0}
+    - Vector2_5f503fc7dcab46b4848f1b4cf9191812: {r: 0.2, g: 0.1, b: 0, a: 0}
     - Vector2_a7cc1216236a44ad81d315bdd98f2e77: {r: 15, g: 25, b: 0, a: 0}
     - Vector2_a7cc1216236a44ad81d315bdd98f2e77_1: {r: -25, g: 10, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}

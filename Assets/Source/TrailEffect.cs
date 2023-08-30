@@ -14,6 +14,7 @@ public class TrailEffect : Effect
     public override void Play()
     {
         base.Play();
+        Trail.Clear();
         Trail.emitting = true;
     }
 

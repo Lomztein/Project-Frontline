@@ -31,8 +31,8 @@ public class HealerAIControllerModifier : AIControllerModifier
             {
                 return (health.CurrentHealth < health.MaxHealth * StartHealTreshold)
                     && go.transform.root != transform.root
-                    && health.ArmorType != DamageMatrix.Armor.Shield
-                    && (unit == null || !unit.Info.Tags.Contains("CantHeal"));
+                    && !go.gameObject.CompareTag("Shield")
+                    && (unit == null || !(unit.Info.Tags.Contains("CantHeal") || unit.Info.Tags.Contains("Shield")));
             }
             return false;
         });

@@ -1,28 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class ColorChargingWeaponAnimator : MonoBehaviour
 {
     public ChargingWeapon Weapon;
     public Renderer Renderer;
-    public string ColorProperty;
-    public Color EmissionColor;
-    public float MaxIntensity;
+    public string GlowProperty;
+    public AnimationCurve Remap;
+    public float LerpRate = 50;
+    public float GlowTimeAfterFiring;
 
+    private float _lastFireTime;
     private Material _material;
-    private Vector4 _color;
+    private float _factor;
 
     private void Start()
     {
+        Weapon.OnFire += Weapon_OnFire;
         _material = Instantiate(Renderer.material);
         Renderer.material = _material;
-        _color = new Vector4(EmissionColor.r, EmissionColor.g, EmissionColor.b, EmissionColor.a);
+        _lastFireTime = float.MinValue;
+    }
+
+    private void Weapon_OnFire(IWeapon obj)
+    {
+        _lastFireTime = Time.time;
     }
 
     private void FixedUpdate()
     {
-        float factor = Weapon.CurrentChargeTime / Weapon.MaxChargeTime;
-        _material.SetColor(ColorProperty, _color * MaxIntensity * factor);
+        float bonus = 0f;
+        if ((_lastFireTime + GlowTimeAfterFiring) - Time.time > 0f) 
+        {
+            bonus = 1f;
+        }
+
+        _factor = Mathf.Lerp(_factor, (Weapon.CurrentChargeTime / Weapon.MaxChargeTime) + bonus, LerpRate * Time.fixedDeltaTime);
+        _material.SetFloat(GlowProperty, Remap.Evaluate(Mathf.Clamp01(_factor)));
     }
 }

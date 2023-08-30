@@ -61,7 +61,7 @@ public class Projectile : MonoBehaviour, IPoolObject
         if (damagable != null)
         {
             var info = new DamageInfo(damage, type, point, direction);
-            if (damagable.TakeDamage(info) <= 0f)
+            if (damagable.TakeDamage(info) <= 0f && info.KilledTarget)
             {
                 OnKill?.Invoke(this, damagable);
             }

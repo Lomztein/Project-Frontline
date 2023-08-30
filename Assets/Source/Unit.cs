@@ -42,7 +42,7 @@ public class Unit : MonoBehaviour, IPurchasable
         // Kill the unit if they go way too far out of bounds.
         if (!MatchSettings.Current.MapInfo.Contains(transform.position / 2f))
         {
-            GetComponent<Health>().TakeDamage(new DamageInfo(999999999f, DamageMatrix.Damage.Cannon, transform.position, transform.forward));
+            Health.TakeDamage(new DamageInfo(Health.MaxHealth / 3f, DamageMatrix.Damage.PointDefense, transform.position, transform.forward));
         }
     }
 

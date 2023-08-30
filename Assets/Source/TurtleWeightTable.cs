@@ -4,9 +4,10 @@ using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Turtle Weight Table", menuName = "Unit Weight Tables/Turtle")]
-public class TurtleWeightTable : UnitWeightTable
+public class TurtleWeightTable : UnitGroupWeightTable
 {
     public int StructuresPerDefenceStructure = 5;
+    public int Margin;
 
     public override Dictionary<GameObject, float> GenerateWeights(IEnumerable<GameObject> options)
     {
@@ -18,11 +19,12 @@ public class TurtleWeightTable : UnitWeightTable
         foreach (GameObject obj in options)
         {
             Unit unit = obj.GetComponent<Unit>();
-            float factor = Mathf.Pow(Mathf.Clamp01(defenseStructures / desiredDefenseStructures), 2f);
+            float factor = CalculateDesire(defenseStructures, otherStructures, 1f / StructuresPerDefenceStructure, Margin);
+
             if (unit.Info.UnitType == UnitInfo.Type.Defense)
-                weights.Add(obj, 1f - factor);
-            else
                 weights.Add(obj, factor);
+            else
+                weights.Add(obj, GetOtherWeight(factor));
         }
 
         return weights;

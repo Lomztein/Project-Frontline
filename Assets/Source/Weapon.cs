@@ -23,10 +23,12 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
     public LightFlash LightFlash;
     public AudioClip FireAudioClip;
     private AudioSource _audioSource;
+    public Effect FireEffect;
 
     public GameObject ProjectilePrefab;
     public Transform Muzzle;
     public float Inaccuracy;
+    public float SpeedVariance = 0f;
 
     private IObjectPool _pool;
     private LayerMask _hitLayerMask;
@@ -82,6 +84,10 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
         {
             LightFlash.Play();
         }
+        if (FireEffect)
+        {
+            FireEffect.Play();
+        }
         if (_audioSource && FireAudioClip)
         {
             _audioSource.PlayOneShot(FireAudioClip);
@@ -125,8 +131,7 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
 
     private float GetProjectileSpeed()
     {
-        float inaccuracyFactor = 1 + (UnityEngine.Random.Range(-Inaccuracy, Inaccuracy) / 10f);
-        return Speed * Mathf.Clamp(inaccuracyFactor, 0.8f, 1.2f);
+        return Speed * UnityEngine.Random.Range(1f - SpeedVariance, 1f + SpeedVariance);
     }
 
     private void Projectile_OnEnd(Projectile projectile)

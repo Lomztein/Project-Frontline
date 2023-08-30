@@ -1,8 +1,11 @@
-﻿using System;
+﻿using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Schema;
 using UnityEngine;
+using Util;
 
 public class Commander : MonoBehaviour, ITeamComponent
 {
@@ -25,6 +28,8 @@ public class Commander : MonoBehaviour, ITeamComponent
     private List<Unit> _alivePlaced = new List<Unit>();
     private List<Unit> _aliveProduced = new List<Unit>();
 
+    public OffcenterBounds LocalBaseBounds { get; private set; }
+
     public IEnumerable<Unit> AlivePlaced => _alivePlaced;
     public IEnumerable<Unit> AliveProduced => _aliveProduced;
     public IEnumerable<Unit> AliveAll => Enumerable.Concat(AlivePlaced, AliveProduced);
@@ -40,17 +45,27 @@ public class Commander : MonoBehaviour, ITeamComponent
     public event Action<Commander> OnFortressDestroyed;
     public event Action<Commander> OnEliminated;
 
-    private float _mapCenterDistance;
-    public float OffenseFactorMargin = 100;
-
+    [Header("Frontline")]
+    public Commander Target;
     public Frontline Frontline;
 
-    public float OffenseFactor => Eliminated ? 0f : Mathf.InverseLerp(_mapCenterDistance - OffenseFactorMargin, _mapCenterDistance + OffenseFactorMargin, Vector3.Distance(Fortress.position, Frontline.Position)) * 2f - 1f;
-    public float DefenseFactor => -OffenseFactor;
+    public float DefenseMargin = 50;
+    public float DefenseThreshold = 100;
 
-    public float MaxSiegeTime = 60f;
-    public float OffensiveSiegeTime { get; private set; }
-    public float DefensiveSiegeTime { get; private set; }
+    public float OffenseMargin = 100;
+    public float OffenseThreshold = 200;
+
+    public float BaseMargin = 50;
+    public Vector3 BaseSize => LocalBaseBounds.Size;
+    public Vector3 BaseSizeWithMargin => LocalBaseBounds.Size + new Vector3(BaseMargin, BaseMargin, BaseMargin);
+
+    public Bounds DefenseVolumeLocalBounds
+        => new Bounds(Vector3.forward * (LocalBaseBounds.UpperExtends.z + DefenseMargin + (DefenseThreshold - DefenseMargin) / 2), new Vector3(BaseSizeWithMargin.x, 1f, DefenseThreshold - DefenseMargin)); // mmmhm nice and maintainable
+    public Bounds OffenseVolumeLocalBounds
+        => new Bounds(Vector3.forward * (Target.LocalBaseBounds.UpperExtends.z + OffenseMargin + (OffenseThreshold - OffenseMargin) / 2), new Vector3(Target.BaseSizeWithMargin.x, 1f, OffenseThreshold - OffenseMargin));
+
+    public float OffenseFactor { get; private set; }
+    public float DefenseFactor { get; private set; }
 
     private float[] _earningsAverageWindow = new float[10];
     private int _earningsAverageIndex;
@@ -90,7 +105,7 @@ public class Commander : MonoBehaviour, ITeamComponent
     {
         Team.GetTeam(TeamInfo).AddCommander(this);
         InvokeRepeating(nameof(MoveNextAverageEarnings), 1f, 1f);
-        _mapCenterDistance = Vector3.Distance(Fortress.position, Vector3.zero);
+        UpdateBaseBounds();
     }
 
     private void OnDestroy()
@@ -109,9 +124,42 @@ public class Commander : MonoBehaviour, ITeamComponent
 
         if (!_ded)
         {
-            OffensiveSiegeTime = Mathf.Clamp(OffensiveSiegeTime + OffenseFactor * Time.fixedDeltaTime, 0f, MaxSiegeTime);
-            DefensiveSiegeTime = Mathf.Clamp(DefensiveSiegeTime + DefenseFactor * Time.fixedDeltaTime, 0f, MaxSiegeTime);
+            if (!Target)
+            {
+                Target = UnityUtils.FindBest(Team.GetOtherTeams(TeamInfo).SelectMany(x => x.GetCommanders()), x => -Vector3.SqrMagnitude(transform.position - x.transform.position));
+            }
+
+            DefenseFactor = CalcFrontlineState(transform, LocalBaseBounds, Frontline.Position, DefenseMargin, DefenseThreshold);
+            OffenseFactor = CalcFrontlineState(Target.transform, Target.LocalBaseBounds, Frontline.Position, OffenseMargin, OffenseThreshold);
         }
+    }
+
+    private static float CalcFrontlineState(Transform transform, OffcenterBounds localBaseBounds, Vector3 frontlinePosition, float margin, float threshold)
+    {
+        Vector3 extends = localBaseBounds.UpperExtends;
+        threshold += extends.z;
+        margin += extends.z;
+
+        float frontlineDistFromBase = VectorUtils.DifferenceAlongDirection(Vector3.forward, transform.InverseTransformPoint(frontlinePosition), Vector3.zero);
+        return Mathf.InverseLerp(threshold, margin, frontlineDistFromBase);
+    }
+
+    private void UpdateBaseBounds()
+    {
+        Matrix4x4 local = transform.worldToLocalMatrix;
+        OffcenterBounds bounds = new OffcenterBounds(Vector3.zero, Vector3.zero, Vector3.zero);
+        var structures = Enumerable.Concat(AlivePlaced, GetComponentInChildren<Unit>().SingleObjectAsEnumerable());
+        foreach (var placed in structures)
+        {
+            if (placed)
+            {
+                Bounds objBounds = UnityUtils.ComputeObjectColliderBounds(placed.gameObject); // Objects world space bounds.
+                objBounds.center = local.MultiplyPoint(objBounds.center);
+                objBounds.size = Quaternion.Inverse(local.rotation) * objBounds.size;
+                bounds.Encapsulate(objBounds);
+            }
+        }
+        LocalBaseBounds = bounds;
     }
 
     public Unit[] GetPlacedUnits() => _alivePlaced.ToArray();
@@ -151,8 +199,8 @@ public class Commander : MonoBehaviour, ITeamComponent
             {
                 OnEliminated?.Invoke(this);
             }
+            UpdateBaseBounds();
         }
-
 
         return go;
     }
@@ -176,6 +224,7 @@ public class Commander : MonoBehaviour, ITeamComponent
                 // TODO: Clean up.
             }
             OnUnitPlaced?.Invoke(this, placedUnit.GetComponent<Unit>());
+            UpdateBaseBounds();
             return true;
         }
         return false;
@@ -269,7 +318,19 @@ public class Commander : MonoBehaviour, ITeamComponent
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawSphere(Frontline.Position, 1f);
-        Gizmos.DrawRay(Frontline.Position, Frontline.Change);
+        if (Frontline != null && Target)
+        {
+            Bounds bounds = LocalBaseBounds.ToBounds();
+            Gizmos.DrawSphere(Frontline.Position, 1f);
+            Gizmos.DrawRay(Frontline.Position, Frontline.Change);
+            Gizmos.matrix = transform.localToWorldMatrix;
+            Gizmos.DrawRay(transform.localPosition, Vector3.forward * LocalBaseBounds.UpperExtends.z);
+            Gizmos.DrawWireCube(bounds.center, bounds.size);
+            Gizmos.color = Color.blue;
+            Gizmos.DrawWireCube(DefenseVolumeLocalBounds.center, DefenseVolumeLocalBounds.size);
+            Gizmos.color = Color.red;
+            Gizmos.matrix = Target.transform.localToWorldMatrix;
+            Gizmos.DrawWireCube(OffenseVolumeLocalBounds.center + Vector3.up, OffenseVolumeLocalBounds.size);
+        }
     }
 }

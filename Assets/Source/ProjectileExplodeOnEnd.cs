@@ -23,8 +23,8 @@ public class ProjectileExplodeOnEnd : MonoBehaviour
         {
             if (Physics.Linecast(proj.transform.position, collider.transform.position, out RaycastHit hit, Projectile.HitLayerMask) && hit.collider == collider)
             {
-                IDamagable[] healths = collider.GetComponentsInParent<IDamagable>();
-                foreach (IDamagable health in healths)
+                IDamagable health = collider.GetComponentInParent<IDamagable>();
+                if (health != null)
                 {
                     Projectile.DoDamage(health, ExplosionDamage, ExplosionDamageType, transform.position, (collider.transform.position - transform.position).normalized);
                 }

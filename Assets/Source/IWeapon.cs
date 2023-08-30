@@ -13,6 +13,8 @@ public interface IWeapon
 
     float GetDPS();
 
+    void SetHitLayerMask(LayerMask mask);
+
     DamageMatrix.Damage DamageType { get; }
 
     event Action<IWeapon> OnFire;

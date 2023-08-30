@@ -11,6 +11,8 @@ public class DamageInfo
     public DamageMatrix.Damage Type;
     public Vector3 Point;
     public Vector3 Direction;
+    public float DamageDone;
+    public bool KilledTarget;
 
     public DamageInfo(float damage, DamageMatrix.Damage type, Vector3 point, Vector3 direction)
     {
@@ -18,5 +20,11 @@ public class DamageInfo
         Type = type;
         Point = point;
         Direction = direction;
+    }
+
+    public void SetRecieverInfo(float damageDone, bool killed)
+    {
+        DamageDone = damageDone;
+        KilledTarget = killed;
     }
 }

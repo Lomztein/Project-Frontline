@@ -12,17 +12,17 @@ public class SurgicalFocusAIControllerModifier : AIControllerModifier
 
     public override void OnInitialized(AIController controller)
     {
-        controller.SetTargetEvaluator(EvaluateTarget);
+        controller.AppendTargetEvaluator(EvaluateTarget);
     }
 
     private float EvaluateTarget(Vector3 pos, GameObject obj)
     {
         Health targetHealth = obj.GetComponentInParent<Health>();
         if (CanKillInSingleVolley(targetHealth))
-            return -Vector3.SqrMagnitude(obj.transform.position - pos) + Mathf.Pow(targetHealth.CurrentHealth * HealthWeight, 2);
+            return Mathf.Pow(targetHealth.CurrentHealth * HealthWeight, 2);
         else
         {
-            return float.MinValue;
+            return 0f;
         }
     }
 

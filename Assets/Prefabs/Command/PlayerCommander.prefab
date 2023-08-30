@@ -25,12 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2553977051289648747}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -35, y: 0, z: -0.0001373291}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2553977051289648745
 MonoBehaviour:
@@ -48,10 +49,15 @@ MonoBehaviour:
   BuildRadius: 50
   Credits: 500
   TeamInfo: {fileID: 0}
+  Faction: {fileID: 0}
   Fortress: {fileID: 0}
   UnitSource: {fileID: 2553977051289648744}
-  OffenseFactorMargin: 150
-  MaxSiegeTime: 60
+  Target: {fileID: 0}
+  DefenseMargin: 25
+  DefenseThreshold: 75
+  OffenseMargin: 25
+  OffenseThreshold: 100
+  BaseMargin: 50
 --- !u!114 &2553977051289648744
 MonoBehaviour:
   m_ObjectHideFlags: 0

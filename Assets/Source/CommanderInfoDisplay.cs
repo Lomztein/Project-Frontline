@@ -17,6 +17,6 @@ public class CommanderInfoDisplay : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Text.text = $"{Commander.Name} of Team {Commander.TeamInfo.Name} | Credits: {Commander.Credits} | Income {(int)Commander.AverageIncomePerSecond} | Offense Factor {Commander.OffenseFactor.ToString("0.0")} | Defense Factor {Commander.DefenseFactor.ToString("0.0")}";
+        Text.text = $"{Commander.Name} of Team {Commander.TeamInfo.Name} | Credits: {Commander.Credits} | Income {(int)Commander.AverageIncomePerSecond} | Offense Factor {Commander.OffenseFactor.ToString("0.00")} | Defense Factor {Commander.DefenseFactor.ToString("0.00")}";
     }
 }

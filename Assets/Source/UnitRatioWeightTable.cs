@@ -7,29 +7,50 @@ using UnityEngine;
 public class UnitRatioWeightTable : UnitWeightTable
 {
     public UnitFilter CountFilter;
-    public bool CountUseFactoryUnit;
     public UnitFilter DesiredFilter;
+
+    public bool CountFriendlyPlaced;
+    public bool CountFriendlyAlive;
+
+    public bool CountEnemyPlaced;
+    public bool CountEnemyAlive;
+
+    public bool CountUseFactoryUnit;
     public bool DesiredUseFactoryUnit;
-    public bool CountDesiredFromEnemies;
 
     public float DesiredRatio;
+    public int Margin = 10;
+
     public float NonDesiredWeight;
+
+
 
     public override Dictionary<GameObject, float> GenerateWeights(IEnumerable<GameObject> options)
     {
-        int amountCounted = CountDesiredFromEnemies ?
-            Team.GetOtherTeams(Commander.TeamInfo).SelectMany(x => x.GetCommanders().SelectMany(x => x.AlivePlaced)).Count(x => ShouldCount(x)) : 
-            Commander.AlivePlaced.Count(x => ShouldCount(x));
-        int amountDesired = Commander.AlivePlaced.Count(x => IsDesired(x));
+        int currentAmount = 0;
 
-        float currentRatio = (float)amountDesired / amountCounted;
+        if (CountFriendlyPlaced)
+            currentAmount += Commander.AlivePlaced.Count(x => ShouldCount(x));
+        if (CountFriendlyAlive)
+            currentAmount += Commander.AliveProduced.Count(x => ShouldCount(x));
+
+        if (CountEnemyPlaced || CountEnemyAlive)
+        {
+            var enemyCommanders = Team.GetOtherTeams(Commander.TeamInfo).SelectMany(x => x.GetCommanders());
+            if (CountEnemyPlaced)
+                currentAmount += enemyCommanders.SelectMany(x => x.AlivePlaced).Count(x => ShouldCount(x));
+            if (CountEnemyAlive)
+                currentAmount += enemyCommanders.SelectMany(x => x.AliveProduced).Count(x => ShouldCount(x));
+        }
+            
+        int currentDesiredAmount = Commander.AlivePlaced.Count(x => IsDesired(x));
 
         Dictionary<GameObject, float> weights = new Dictionary<GameObject, float>();
         foreach (GameObject obj in options)
         {
             bool isDesired = DesiredFilter.Check(obj);
             if (isDesired)
-                weights.Add(obj, 1f - Mathf.Clamp01(currentRatio / DesiredRatio));
+                weights.Add(obj, CalculateDesire(currentDesiredAmount, currentAmount, DesiredRatio, Margin));
             else
                 weights.Add(obj, NonDesiredWeight);
         }

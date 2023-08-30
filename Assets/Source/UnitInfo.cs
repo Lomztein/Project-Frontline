@@ -17,7 +17,7 @@ public class UnitInfo
 
     public enum Type
     {
-        Infantry, Vehicle, Aircraft, Defense, Structure
+        Infantry, Vehicle, Aircraft, Defense, Structure, Naval
     }
 
     public string Identifier;

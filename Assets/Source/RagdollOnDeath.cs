@@ -29,7 +29,7 @@ public class RagdollOnDeath : MonoBehaviour
         RagdollRoot.SetParent(null);
         if (_lastDamage != null)
         {
-            Ragdoll.AddForce(_lastDamage.Point, _lastDamage.Direction * _lastDamage.Damage);
+            Ragdoll.AddForce(_lastDamage.Point, _lastDamage.Direction * _lastDamage.Damage / (health.MaxHealth / 50f)); // mmhm magic numbers
         }
         Destroy(Root.gameObject);
         Destroy(RagdollRoot.gameObject, 10f);

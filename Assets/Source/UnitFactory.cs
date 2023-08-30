@@ -32,7 +32,7 @@ public class UnitFactory : MonoBehaviour, ITeamComponent
     {
         Vector3 pos = GetLocalRandomSpawnPosition() + transform.position;
         GameObject go = _team.Instantiate(UnitPrefab, pos, transform.rotation);
-        go.BroadcastMessage("SetWaypoint", _nearestWaypoint);
+        go.BroadcastMessage("SetWaypoint", _nearestWaypoint, SendMessageOptions.DontRequireReceiver);
         OnUnitSpawned?.Invoke(this, go);
         go.GetComponent<Health>().OnDeath += Unit_OnDeath;
         go.GetComponent<Unit>().OnKill += Unit_OnKill;

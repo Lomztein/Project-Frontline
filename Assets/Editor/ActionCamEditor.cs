@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.Experimental.SceneManagement;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using Util;
 
@@ -29,7 +29,7 @@ public class ActionCamEditor : Editor
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
-        if (PrefabStageUtility.GetCurrentPrefabStage() != null)
+        if (UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage() != null)
         {
             _selectedTransform = (Transform)EditorGUILayout.ObjectField(_selectedTransform, typeof(Transform), true);
             if (GUILayout.Button("Sync Identifier"))
@@ -68,7 +68,7 @@ public class ActionCamEditor : Editor
 
     public void OnSceneGUI(SceneView view)
     {
-        if (PrefabStageUtility.GetCurrentPrefabStage() != null)
+        if (UnityEditor.SceneManagement.PrefabStageUtility.GetCurrentPrefabStage() != null)
         {
             Transform selectedParent = GetSelectedParent();
             if (selectedParent)

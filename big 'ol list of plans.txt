@@ -1,0 +1,74 @@
+LONG TERM PLANS
+ - Main menu with a few different buttons.
+	- Skirmish mode which is basically the current mode.
+	- Challenge mode which pits you against certain challenges.
+	- Campaign mode which presents you with a procedurally generated campaign of skirmish missions.
+		- Campaign map could be a board of hexagonal pieces that forms like a country map.
+		- Individual missions could have a variety of rewards.
+			- Unit unlocks, with only the most basic units available from the beginning.
+			- Enemies should also be limited to what sort of units they could produce.
+			- How to spice up individual missions? Mutators? Different enemy factions, map shapes, locations.
+		- Series of connected missions could reward the player with something extraordinary.
+			- Unique unit unlocks only available in the campaign.
+				- Stolen tech, units that use tech from multiple factions.
+			- Permanement upgrades, effectively always granting the effect of an upgrade building.
+			- Select, powerful units from other factions.
+		- Holding certain areas on the campaign could provide powerful bonuses in combat.
+		- Various victory conditions.
+	- AI Editor - Allows for the creation of custom AI weights.
+	- Unit Editor - Allows for the construction of unique units using pre-existing unit bodies and weapons.
+		- Would likely require an overhaul to standardize units and weapons.
+		- Would probably just be better to just support new units through AssetBundles.
+	- Options
+	- Exit
+ - Support for loading AssetBundles or similar for new content such as units, factions, sceneries, whathaveyou
+	- Include support for loading new C# assemblies into memory so that custom code can be used.
+	- Could perhaps be considered to implement a content pack system similar to BFA2, though only through AssetBundles or Addressables.
+
+FACTIONS
+ - Modern Millitary (DONE): Vehicle-oriented faction drawing inspiration from modern millitary forces, with weapons being primarily guns, cannons, rockets, and lasers.
+ - WW1 (DONE): Infantry-oriented faction based on the large variety of experimental forced developed during WW1. Weapons are primarily guns, cannons, and thermite.
+ - Aliens (PLANNING): Aircraft-oriented faction based on both classic B-movie type aliens, while also drawing some inspiration from more modern, eldritch-type aliens. Weapons are rayguns, particle beams, plasma, and more.
+ - Mushroom (PLANNING): Small, mushroom based faction that is only available as an asset bundle.
+ - Commando (CONCEPT): Faction composed of a single unit that is upgraded through the placement of various structures. Style and tech uncertain, might draw from all other factions.
+ - Fantasy (CONCEPT): Melee-oriented faction composed of medieval-type high fantasy units such as knights, archers, wizards, dragons, fantastical devices, ect.
+
+HIGH PRIORITY
+ - Implement circle battlefield shape, one where players are split by teams and one where they are individual.
+	- Abstract Waypoint class to IWaypoint, add "IsValid" function to class.
+	- Implement CascadeSelectorWaypoint, which points to the first valid Waypoint in a list.
+	- Implement HeadingSelectorWaypoint, which points to the waypoint that is most straight ahead in a list.
+	- Waypoints should point to the enemy closest to straight forward.
+ - Begin work on Alien faction, with like 2 units of each type for a prototype, and 4-5 for minimum viable product.
+ - Rework ActionCam a little.
+	- Rename system to UnitCam.
+	- Add options for allowing the player to select how units are chosen.
+		- Filter by unit attributes such as type or tier.
+		- Filter by unit IDs
+		- Filter by team / commander
+	- Implement new ActionCam that periodically switches between FrontlineCam and UnitCam.
+	- Only show units if they are within a certain range of a frontline
+ - Extend FrontlineCam
+	- Rotate towards / against frontline trend.
+	- Implement a few select base camera angles.
+		- Low angle looking towards the frontline.
+		- Basically use existing top-down cams.
+
+MID PRIORITY
+ - Add forest scenery, with green grass, dense trees, and perhaps mountains in the distance.
+ - Add mountain scenery, with white snow, stones, and on top of a mountain.
+ - Add urban scenery, on a street with streetlights, cars, and highrise buildings.
+ - Add farmland scenery, with a farmohouse, a field, and a general fall / october asthetic.
+ - Add moon scenery, inside a big dome on a moon with craters and darkness.
+	- Could also be without the dome, but how does the people breathe? Attach a silly fishbowl helmet to infantry units lol
+	- Should low gravity be a factor? How would that be implemented?
+	- Should aircraft dependant on atmosphere be available?
+ - Jobify physical projectile movement and raycasting.
+ - Jobify unit target finding if possible.
+
+LOW PRIORITY
+ - Improve debris visuals of large units, the current effect just kind of looks dumb.
+ - Look into the feasibility of a reinforcement-learning based AI.
+ - Replay system that allows recording of player actions to then be replayed as an AI.
+ - Neutral units / structures in the middle of the map that does some cool stuff.
+	- Generate extra cash? Produce free units? Maybe just a big wall or turret hostile to everyone that needs to be destroyed.

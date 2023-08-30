@@ -19,6 +19,14 @@ public abstract class UnitWeightTable : UnitWeightTableBase
         }
     }
 
+    public static float CalculateDesire(int currentDesiredAmount, int amountCounted, float desiredRatio, int margin)
+    {
+        float currentTargetThreshold = amountCounted * desiredRatio;
+        float currentTargetMargin = (amountCounted + margin) * desiredRatio;
+        float t = Mathf.InverseLerp(currentTargetMargin, currentTargetThreshold, currentDesiredAmount + 1);
+        return t;
+    }
+
     public override Dictionary<GameObject, float> GetWeights(IEnumerable<GameObject> options)
     {
         if (!Cache)

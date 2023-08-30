@@ -9,8 +9,8 @@ public class TargetFinder
     public static Func<Vector3, GameObject, float> DefaultEvaluator { get; private set; } = (center, go) => -Vector3.SqrMagnitude(go.transform.position - center);
     public static Predicate<GameObject> DefaultFilter { get; private set; } = go => true;
 
-    private Func<Vector3, GameObject, float> _evaluator;
-    private Predicate<GameObject> _filter;
+    private List<Func<Vector3, GameObject, float>> _evaluators = new List<Func<Vector3, GameObject, float>>();
+    private List<Predicate<GameObject>> _filters = new List<Predicate<GameObject>>();
 
     public TargetFinder () : this(DefaultEvaluator, DefaultFilter)
     {
@@ -26,12 +26,31 @@ public class TargetFinder
 
     public TargetFinder (Func<Vector3, GameObject, float> evaluator, Predicate<GameObject> filter)
     {
-        _evaluator = evaluator;
-        _filter = filter;
+        SetEvaluator(evaluator);
+        SetFilter(filter);
     }
 
-    public void SetEvaluator(Func<Vector3, GameObject, float> evaluator) => _evaluator = evaluator;
-    public void SetFilter(Predicate<GameObject> filter) => _filter = filter;
+    public void SetEvaluator(Func<Vector3, GameObject, float> evaluator)
+    {
+        _evaluators.Clear();
+        _evaluators.Add(evaluator);
+    }
+
+    public void AppendEvaluator(Func<Vector3, GameObject, float> evaluator)
+        => _evaluators.Add(evaluator);
+    public void RemoveEvaluator(Func<Vector3, GameObject, float> evaluator)
+        => _evaluators.Remove(evaluator);
+
+    public void SetFilter(Predicate<GameObject> filter)
+    {
+        _filters.Clear();
+        _filters.Add(filter);
+    }
+
+    public void AppendFilter(Predicate<GameObject> filter)
+        => _filters.Add(filter);
+    public void RemoveFilter(Predicate<GameObject> filter)
+        => _filters.Remove(filter);
 
     public GameObject FindTarget (Vector3 center, float range, LayerMask layerMask)
     {
@@ -42,12 +61,12 @@ public class TargetFinder
 
         foreach (Collider col in colliders)
         {
-            if (_filter(col.gameObject) == false)
+            if (_filters.Any(x => x(col.gameObject) == false))
             {
                 continue;
             }
 
-            float value = _evaluator(center, col.gameObject);
+            float value = _evaluators.Sum(x => x(center, col.gameObject));
             if (value > bestValue)
             {
                 bestValue = value;

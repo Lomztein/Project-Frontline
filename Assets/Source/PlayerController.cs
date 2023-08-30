@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public FollowerCamera FollowerCamera;
     public Vector2 CameraDistanceMultiplier;
     public Vector2 MinCameraDistance;
+    public LayerMask TerrainLayer;
     private LayerMask _targetLayer;
 
     public List<ITurret> Turrets = new List<ITurret>();
@@ -47,11 +48,11 @@ public class PlayerController : MonoBehaviour
             AIController controller = obj.GetComponentInChildren<AIController>();
             if (controller)
             {
-                _targetLayer = controller.TargetLayer;
+                _targetLayer = controller.TargetLayer | TerrainLayer;
             }
             else
             {
-                _targetLayer = TeamInfo.LayerAllTeams;
+                _targetLayer = TeamInfo.LayerAllTeams | TerrainLayer;
             }
 
             Bounds bounds = GetObjectVisibleBounds(obj);

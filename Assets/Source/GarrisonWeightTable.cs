@@ -6,21 +6,21 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Garrison Weight Table", menuName = "Unit Weight Tables/Garrison")]
 public class GarrisonWeightTable : UnitWeightTable
 {
-    public int InfantryPerGarrisonUnit = 20;
+    public int InfantryUnitsPerSlot = 6;
     public float NonGarrisonWeight;
+    public int Margin = 6;
 
     public override Dictionary<GameObject, float> GenerateWeights(IEnumerable<GameObject> options)
     {
-        int garrisonUnits = Commander.AlivePlaced.Count(x => IsGarrisonUnit(x));
+        int garrisonSlots = Commander.AlivePlaced.Sum(x => GetGarrisonSlotCount(x));
         int infantryUnits = Commander.AlivePlaced.Count(x => IsInfantryUnit(x));
-        float desiredGarrisonUnits = (float)infantryUnits / InfantryPerGarrisonUnit;
 
         Dictionary<GameObject, float> weights = new Dictionary<GameObject, float>();
         foreach (GameObject obj in options)
         {
             var garrison = obj.GetComponentInChildren<InfantryGarrison>();
             if (garrison != null)
-                weights.Add(obj, 1f - Mathf.Clamp01(garrisonUnits / desiredGarrisonUnits));
+                weights.Add(obj, CalculateDesire(garrisonSlots, infantryUnits, 1f / InfantryUnitsPerSlot, Margin));
             else
                 weights.Add(obj, NonGarrisonWeight);
         }
@@ -28,13 +28,22 @@ public class GarrisonWeightTable : UnitWeightTable
         return weights;
     }
 
-    private bool IsGarrisonUnit (Unit unit)
+    private int GetGarrisonSlotCount (Unit unit)
     {
         if (unit.TryGetComponent(out UnitFactory factory))
         {
-            return factory.UnitPrefab.GetComponentInChildren<InfantryGarrison>();
+            return GetGarrisonSlotCount(factory.UnitPrefab.GetComponent<Unit>());
         }
-        return unit.Info.Tags.Contains("Garrison") || unit.GetComponentInChildren<InfantryGarrison>();
+        InfantryGarrison garrison = unit.GetComponentInChildren<InfantryGarrison>();
+        if (garrison != null)
+        {
+            if (unit.CompareTag("StructureUnit"))
+            {
+                return garrison.SlotCount / 2; // Stationary units such as bunkers shouldn't count for as much.
+            }
+            return garrison.SlotCount;
+        }
+        return 0;
     }
 
     private bool IsInfantryUnit (Unit unit)

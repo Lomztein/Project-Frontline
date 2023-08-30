@@ -43,6 +43,14 @@ public class HealingBeamProjectile : Projectile
         {
             return false;
         }
+        Unit unit = hit.collider.GetComponentInParent<Unit>();
+        if (unit)
+        {
+            if (unit.Info.Tags.Contains("CantHeal"))
+            {
+                return false;
+            }
+        }
 
         if (health)
         {

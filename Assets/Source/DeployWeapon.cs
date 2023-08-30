@@ -1,14 +1,18 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 /// <summary>
 /// A type of weapon that pretty much just deploys another carried weapon, and then works through that.
 /// </summary>
-public class DeployWeapon : MonoBehaviour, IWeapon, ITurret
+public class DeployWeapon : MonoBehaviour, IWeapon, ITurret, IEmplacable
 {
-    public bool IsDeployed { get; private set; }
+    public enum DeployState { NotDeployed, Deployed, Emplaced };
+
+    public DeployState State;
+    public bool IsDeployed => State != DeployState.NotDeployed;
 
     public GameObject ChildWeaponObject;
     private IWeapon _childWeapon;
@@ -104,18 +108,40 @@ public class DeployWeapon : MonoBehaviour, IWeapon, ITurret
     private Vector3 _undeployedLocalRotation;
     private Vector3 _undeployedLocalScale;
 
+
+    public Transform EmplaceParent;
+    public Vector3 EmplaceLocalPosition;
+    public Vector3 EmplaceLocalRotation;
+    public Vector3 EmplaceLocalScale;
+
+    private Transform _unemplaceParent;
+    private Vector3 _unemplaceLocalPosition;
+    private Quaternion _unemplaceLocalRotation;
+    private Vector3 _unemplaceLocalScale;
+
+    public GameObject[] DisableOnEmplace;
+
     private void Awake()
     {
         _undeployedParent = ChildWeaponObject.transform.parent;
         _undeployedLocalPosition = ChildWeaponObject.transform.localPosition;
         _undeployedLocalRotation = ChildWeaponObject.transform.localRotation.eulerAngles;
         _undeployedLocalScale = ChildWeaponObject.transform.localScale;
+
+        if (EmplaceParent)
+        {
+            _unemplaceParent = EmplaceParent.transform.parent;
+            _unemplaceLocalPosition = EmplaceParent.localPosition;
+            _unemplaceLocalRotation = EmplaceParent.localRotation;
+            _unemplaceLocalScale = EmplaceParent.localScale;
+        }
+
         Undeploy();
     }
 
     private void FixedUpdate()
     {
-        if (IsDeployed && Mathf.Max(EngagedTracker.LastAttackTime, _deployTime) + UnengagedUndeployTime < Time.time)
+        if (State == DeployState.Deployed && Mathf.Max(EngagedTracker.LastAttackTime, _deployTime) + UnengagedUndeployTime < Time.time)
         {
             Undeploy();
         }
@@ -166,7 +192,7 @@ public class DeployWeapon : MonoBehaviour, IWeapon, ITurret
         ChildWeaponObject.transform.localPosition = DeployLocalPosition;
         ChildWeaponObject.transform.localEulerAngles = DeployLocalRotation;
         ChildWeaponObject.transform.localScale = DeployLocalScale;
-        IsDeployed = true;
+        State = DeployState.Deployed;
         _deployTime = Time.time;
         if (DisableBodyWhenDeployed)
         {
@@ -182,7 +208,7 @@ public class DeployWeapon : MonoBehaviour, IWeapon, ITurret
         ChildWeaponObject.transform.localPosition = _undeployedLocalPosition;
         ChildWeaponObject.transform.localEulerAngles = _undeployedLocalRotation;
         ChildWeaponObject.transform.localScale = _undeployedLocalScale;
-        IsDeployed = false;
+        State = DeployState.NotDeployed;
         if (DisableBodyWhenDeployed)
         {
             Body.enabled = true;
@@ -215,5 +241,44 @@ public class DeployWeapon : MonoBehaviour, IWeapon, ITurret
             return ChildTurret.DeltaAngle(target);
         }
         return 0f;
+    }
+
+    public void Emplace(Transform parent)
+    {
+        EmplaceParent.SetParent(parent, true);
+        EmplaceParent.localPosition = EmplaceLocalPosition;
+        EmplaceParent.localEulerAngles = EmplaceLocalRotation;
+        EmplaceParent.localScale = EmplaceLocalScale;
+        State = DeployState.Emplaced;
+
+        foreach (GameObject obj in DisableOnEmplace)
+        {
+            obj.SetActive(false);
+        }
+
+        (ChildWeapon as Behaviour).enabled = true;
+        (ChildTurret as Behaviour).enabled = true;
+    }
+
+    public void Detatch()
+    {
+        EmplaceParent.SetParent(_unemplaceParent, true);
+        EmplaceParent.localPosition = _unemplaceLocalPosition;
+        EmplaceParent.localRotation = _unemplaceLocalRotation;
+        EmplaceParent.localScale = _unemplaceLocalScale;
+        State = DeployState.NotDeployed;
+
+        foreach (GameObject obj in DisableOnEmplace)
+        {
+            obj.SetActive(true);
+        }
+
+        (ChildWeapon as Behaviour).enabled = false;
+        (ChildTurret as Behaviour).enabled = false;
+    }
+
+    public void SetHitLayerMask(LayerMask mask)
+    {
+        ChildWeapon.SetHitLayerMask(mask);
     }
 }

@@ -16,12 +16,14 @@ public class StrikerController : AttackerController
         if (_engaging)
         {
             base.MoveTowardsTarget();
+            Debug.DrawRay(transform.position, transform.forward * 10f, Color.red);
         }
         else
         {
             float speed = 1f;
 
             Controllable.Accelerate(speed);
+            Debug.DrawRay(transform.position, transform.forward * 10f, Color.blue);
             SmoothTurnTowardsAngle(GetDisengageAngle());
         }
     }

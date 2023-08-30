@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 using Util;
 
-public class AttackerController : AIController, ITeamComponent, ICommanderComponent, IController
+public class AttackerController : ControllableController, ITeamComponent, ICommanderComponent, IController
 {
     private const float HOLD_VARIANCE = 2.5f;
-    private const float STEER_DEVIANCE_CLAMP = 5f;
+
 
     protected Waypoint _currentWaypoint;
     protected Commander Commander { get; private set; }
@@ -59,21 +60,16 @@ public class AttackerController : AIController, ITeamComponent, ICommanderCompon
     protected virtual void MoveTowardsTarget ()
     {
         Vector3 local = GetTargetLocalPosition();
-        float angle = Mathf.DeltaAngle(transform.eulerAngles.y, Mathf.Atan2(local.x, local.z) * Mathf.Rad2Deg);
-        float speed = 1f;
-
+        Vector3 targetPos = GetTarget().GetPosition();
         if (local.sqrMagnitude < HoldRange * HoldRange)
         {
-            speed = 0f;
+            Stop();
+            TurnTowardsPosition(targetPos);
         }
-
-        Controllable.Accelerate(speed);
-        SmoothTurnTowardsAngle(angle);
-    }
-
-    protected void SmoothTurnTowardsAngle(float angle) {
-        float factor = Mathf.Abs(angle) > STEER_DEVIANCE_CLAMP ? Mathf.Sign(angle) : angle / STEER_DEVIANCE_CLAMP;
-        Controllable.Turn(factor);
+        else
+        {
+            MoveTowardsPosition(targetPos);
+        }
     }
 
     protected override void FixedUpdate()

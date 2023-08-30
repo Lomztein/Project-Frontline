@@ -21,7 +21,11 @@ public class MatchSettings : ScriptableObject
     public void RemoveMutator(Mutator mutator) => _mutators.Remove(mutator);
     public void ClearMutators() => _mutators = new List<Mutator>();
 
-
+    public bool SupportsUnitType(UnitInfo.Type unitType)
+    {
+        if (unitType == UnitInfo.Type.Naval) return false;
+        return true;
+    }
 
     public static MatchSettings GetCurrent ()
     {

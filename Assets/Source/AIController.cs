@@ -9,7 +9,6 @@ public abstract class AIController : MonoBehaviour, IController
     public bool Enabled { get => enabled; set => enabled = value; }
 
     [HideInInspector] public TeamInfo Team;
-    public IControllable Controllable;
 
     public LayerMask TargetLayer { get; private set; }
     private TargetFinder _targetFinder = new TargetFinder();
@@ -46,7 +45,6 @@ public abstract class AIController : MonoBehaviour, IController
         _targetFinder = new TargetFinder(go => CanEngage(go));
         _targetFindingTicker = new Ticker(1f / TargetSearchFrequency, FindNewTarget);
 
-        Controllable = GetComponentInChildren<IControllable>();
         if (TurretObject)
         {
             Turret = TurretObject.GetComponent<ITurret>();
@@ -81,7 +79,11 @@ public abstract class AIController : MonoBehaviour, IController
     }
 
     public void SetTargetEvaluator(Func<Vector3, GameObject, float> evaluator) => _targetFinder.SetEvaluator(evaluator);
+    public void AppendTargetEvaluator(Func<Vector3, GameObject, float> evaluator) => _targetFinder.AppendEvaluator(evaluator);
+
     public void SetTargetFilter(Predicate<GameObject> filter) => _targetFinder.SetFilter(filter);
+    public void AppendTargetFilter(Predicate<GameObject> filter) => _targetFinder.AppendFilter(filter);
+
     public void SetTargetLayerMask(LayerMask mask) => TargetLayer = mask;
 
     protected float GetDamageFactor(GameObject target)
@@ -119,6 +121,7 @@ public abstract class AIController : MonoBehaviour, IController
     }
 
     protected Vector3 GetTargetLocalPosition() => CurrentTarget.GetPosition() - transform.position;
+    protected Vector3 PositionToLocalPosition(Vector3 position) => position - transform.position;
     protected float GetTargetSquareDistance() => Vector3.SqrMagnitude(GetTargetLocalPosition());
 
     protected virtual void Aim()
@@ -130,7 +133,7 @@ public abstract class AIController : MonoBehaviour, IController
             {
                 Vector3 vel = (targetPosition - _targetLastPosition) / Time.fixedDeltaTime;
                 float dist = Vector3.Distance(targetPosition, transform.position);
-                targetPosition += vel * (dist / Weapons[0].Speed);
+                targetPosition += vel * (dist / Weapons[0].Speed + Time.fixedDeltaTime); // Add fixedDeltaTime to offset turrets always being a single tick behind.
 
                 _targetLastPosition = CurrentTarget.GetPosition();
             }

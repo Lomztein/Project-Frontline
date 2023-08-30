@@ -27,13 +27,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706538927366367410}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3.42, z: -9.81}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4350798984794119243}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &3751266253062353309
 MonoBehaviour:
@@ -90,7 +91,7 @@ MonoBehaviour:
   ExplosionDamageType: 2
 --- !u!96 &4710538243649565020
 TrailRenderer:
-  serializedVersion: 2
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -100,6 +101,7 @@ TrailRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 0
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -130,6 +132,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Time: 0.1
+  m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -184,22 +187,27 @@ TrailRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
+      m_ColorSpace: -1
       m_NumColorKeys: 2
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 2
     alignment: 0
     textureMode: 0
+    textureScale: {x: 1, y: 1}
     shadowBias: 0.5
     generateLightingData: 0
   m_MinVertexDistance: 0.1
+  m_MaskInteraction: 0
   m_Autodestruct: 0
   m_Emitting: 1
+  m_ApplyActiveColorSpace: 0
 --- !u!1001 &7035652292309841105
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 8180433780344764018}
     m_Modifications:
     - target: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1,
@@ -263,13 +271,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
---- !u!4 &4350798984794119243 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6756117266313701530, guid: e33a0d2ca448ab6459aab394166264a1,
-    type: 3}
-  m_PrefabInstance: {fileID: 7035652292309841105}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3272617617100414761 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5532958124882717688, guid: e33a0d2ca448ab6459aab394166264a1,
@@ -282,3 +287,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bb1c28bf2dc66644ba94b80a80e6591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &4350798984794119243 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6756117266313701530, guid: e33a0d2ca448ab6459aab394166264a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 7035652292309841105}
+  m_PrefabAsset: {fileID: 0}

@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 503401728, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
@@ -355,7 +356,7 @@ PrefabInstance:
     - target: {fileID: 8299666088126906342, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.0056229
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8299666088126906342, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
@@ -365,7 +366,7 @@ PrefabInstance:
     - target: {fileID: 8299666088126906342, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.013108969
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8299666088126906342, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
@@ -408,37 +409,30 @@ PrefabInstance:
       value: BlasterInfantry
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8299666088126906342, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3509136111846231584}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8299666088126906343, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -450316407327278801}
   m_SourcePrefab: {fileID: 100100000, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
---- !u!1 &503965405015008563 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8299666088126906343, guid: 50378c4ca65714b4ebd2928ade59a707,
-    type: 3}
-  m_PrefabInstance: {fileID: 8489328766020590292}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &503965405015008562 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8299666088126906342, guid: 50378c4ca65714b4ebd2928ade59a707,
     type: 3}
   m_PrefabInstance: {fileID: 8489328766020590292}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6767053493985322152 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2898419047578615420, guid: 50378c4ca65714b4ebd2928ade59a707,
+--- !u!1 &503965405015008563 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8299666088126906343, guid: 50378c4ca65714b4ebd2928ade59a707,
     type: 3}
   m_PrefabInstance: {fileID: 8489328766020590292}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4630296631057407429 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3860211362352645905, guid: 50378c4ca65714b4ebd2928ade59a707,
-    type: 3}
-  m_PrefabInstance: {fileID: 8489328766020590292}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d806c437be696f248a15879293c2c7dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-450316407327278801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -452,11 +446,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Model: {fileID: 338817655861301946}
+--- !u!114 &4630296631057407429 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3860211362352645905, guid: 50378c4ca65714b4ebd2928ade59a707,
+    type: 3}
+  m_PrefabInstance: {fileID: 8489328766020590292}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d806c437be696f248a15879293c2c7dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &6767053493985322152 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2898419047578615420, guid: 50378c4ca65714b4ebd2928ade59a707,
+    type: 3}
+  m_PrefabInstance: {fileID: 8489328766020590292}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8520465714107456837
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 503965405015008562}
     m_Modifications:
     - target: {fileID: 2513510962204956267, guid: 868a3080ebbf2c24cafcaf185d38c711,
@@ -546,10 +559,19 @@ PrefabInstance:
       value: InfantryBlaster
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 868a3080ebbf2c24cafcaf185d38c711, type: 3}
 --- !u!1 &338817655861301946 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8254392988960772095, guid: 868a3080ebbf2c24cafcaf185d38c711,
+    type: 3}
+  m_PrefabInstance: {fileID: 8520465714107456837}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3509136111846231584 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5083494016600904549, guid: 868a3080ebbf2c24cafcaf185d38c711,
     type: 3}
   m_PrefabInstance: {fileID: 8520465714107456837}
   m_PrefabAsset: {fileID: 0}

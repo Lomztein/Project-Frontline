@@ -18,7 +18,7 @@ public class VectorTurret : MonoBehaviour, ITurret
     {
         if (Instant)
         {
-            VectoringPlatform.LookAt(position);
+            VectoringPlatform.LookAt(position, Base.up);
         }
         else
         {

@@ -22,6 +22,9 @@ public class WeaponGroup : MonoBehaviour, IWeapon
     public event Action<IWeapon, Projectile, Collider, Vector3, Vector3> OnHit;
     public event Action<IWeapon, Projectile, IDamagable> OnKill;
 
+    public enum CanFireBehaviour { First, Any, All }
+    public CanFireBehaviour CanFireWhen;
+
     public float GetDPS() => GetWeapons().First().GetDPSOrOverride() * _weapons.Length;
 
     private void Awake()
@@ -71,7 +74,16 @@ public class WeaponGroup : MonoBehaviour, IWeapon
         return _weapons;
     }
 
-    public bool CanFire() => _weapons.First().CanFire();
+    public bool CanFire()
+    {
+        switch (CanFireWhen)
+        {
+            case CanFireBehaviour.First: return _weapons.First().CanFire();
+            case CanFireBehaviour.Any: return _weapons.Any(x => x.CanFire());
+            case CanFireBehaviour.All: return _weapons.All(x => x.CanFire());
+        }
+        return false;
+    }
 
     public bool TryFire(ITarget intendedTarget)
     {
@@ -88,6 +100,13 @@ public class WeaponGroup : MonoBehaviour, IWeapon
         _weapons[index].TryFire(intendedTarget);
     }
 
+    public void SetHitLayerMask(LayerMask mask)
+    {
+        foreach (var weapon in _weapons)
+        {
+            weapon.SetHitLayerMask(mask);
+        }
+    }
 
     private class NoFireControl : IFireControl
     {

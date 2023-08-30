@@ -17,12 +17,12 @@ public class ParachuteGarrisonOnDeath : MonoBehaviour
     {
         foreach (var slot in Garrison.Slots)
         {
-            if (slot.childCount > 0)
+            if (slot.IsOccupied)
             {
-                GameObject obj = slot.GetChild(0).gameObject;
+                GameObject obj = slot.Occupant;
                 Garrison.LeaveGarrison(obj);
 
-                GameObject parachute = Instantiate(ParachutePrefab, slot.transform.position, slot.transform.rotation);
+                GameObject parachute = Instantiate(ParachutePrefab, slot.GarrionParent.position, slot.GarrionParent.rotation);
                 Parachute chute = parachute.GetComponent<Parachute>();
 
                 chute.Garrison.EnterGarrison(obj);

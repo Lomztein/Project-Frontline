@@ -42,14 +42,16 @@ public class ChargingWeapon : Weapon
 
     public override float GetDPS()
     {
+        float offset = 0f;
+        if (ChargeOnlyWhenCanFire)
+        {
+            offset += MaxChargeTime;
+        }
         if (ResetChargeOnFire)
         {
-            return Damage / (1 / Firerate + MaxChargeTime);
+            offset += Mathf.Max(MaxChargeTime - 1f / Firerate, 0);
         }
-        else
-        {
-            return base.GetDPS();
-        }
+        return Damage / (1 / Firerate + offset);
     }
 
     private void FixedUpdate()

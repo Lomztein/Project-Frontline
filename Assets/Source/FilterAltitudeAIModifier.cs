@@ -8,6 +8,6 @@ public class FilterAltitudeAIModifier : AIControllerModifier
 
     public override void OnInitialized(AIController controller)
     {
-        controller.SetTargetFilter(x => x.transform.position.y > AltitudeMinMax.x && x.transform.position.y < AltitudeMinMax.y);
+        controller.AppendTargetFilter(x => x.transform.position.y > AltitudeMinMax.x && x.transform.position.y < AltitudeMinMax.y);
     }
 }

@@ -28,13 +28,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8558564917136176589}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2519061799918775955}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8558564917136176585
 MonoBehaviour:
@@ -55,8 +56,8 @@ MonoBehaviour:
       10% chance to upgrade various units to coil weapons, granting hitscan and doubling
       damage.
     Tags: []
-    Cost: 8000
-    Value: 800
+    Cost: 10000
+    Value: 1000
     UnitRole: 1
     UnitTier: 2
     UnitType: 4
@@ -88,9 +89,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8558564917136176589}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 12.23, y: 5.1227555, z: 11.274459}
   m_Center: {x: 0, y: 2.460595, z: -0.73084784}
 --- !u!114 &8454269495644909923
@@ -178,6 +187,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 8558564917136176582}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
@@ -256,16 +266,19 @@ PrefabInstance:
       value: CoilLab
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 219b9527a18f5764f8e7a6d90d3db6c9, type: 3}
---- !u!4 &2519061799918775955 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
-    type: 3}
-  m_PrefabInstance: {fileID: 2701940016801073528}
-  m_PrefabAsset: {fileID: 0}
 --- !u!23 &1909380784458178487 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2701940016801073528}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2519061799918775955 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
     type: 3}
   m_PrefabInstance: {fileID: 2701940016801073528}
   m_PrefabAsset: {fileID: 0}

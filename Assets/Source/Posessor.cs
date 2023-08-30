@@ -31,7 +31,7 @@ public class Posessor : MonoBehaviour
         if (controllable != null && controller != null)
         {
             MainCamera.SetActive(false);
-            _followCamera.enabled = true;
+            _followCamera.gameObject.SetActive(true);
             CameraController.Follow(target.transform);
 
             if (controller.Turret != null)
@@ -50,7 +50,7 @@ public class Posessor : MonoBehaviour
     {
         if (_currentPosessed == null)
         {
-            if (_followCamera.enabled == true)
+            if (_followCamera.gameObject.activeInHierarchy == true)
             {
                 if (!IsInvoking())
                 {
@@ -101,7 +101,7 @@ public class Posessor : MonoBehaviour
         }
 
         MainCamera.SetActive(true);
-        _followCamera.enabled = false;
+        _followCamera.gameObject.SetActive(false);
         _currentPosessed = null;
         CameraController.StopFollow();
         Controller.Release();

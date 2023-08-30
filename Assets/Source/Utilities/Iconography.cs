@@ -12,14 +12,13 @@ namespace Util
     {
         private static Iconography _instance;
 
-        private const float DIST_FROM_WORLD = 1024f;
-        private static int _index;
+        private const float DIST_FROM_WORLD = 4098f;
 
         private static Camera Camera => _instance.RenderCamera;
-        public const int DEFAULT_RENDER_SIZE = 128;
+        public const int DEFAULT_RENDER_SIZE = 256;
 
         public Camera RenderCamera;
-        public Vector3 RenderOffsetDirection;
+        public Vector3 ModelRotation;
 
         private void Awake()
         {
@@ -29,7 +28,7 @@ namespace Util
 
         private static Vector3 GetPosition()
         {
-            Quaternion rot = Quaternion.Euler(0f, 0f, ++_index);
+            Quaternion rot = Quaternion.Euler(0f, 0f, 0f);
             return rot * (Vector3.one * DIST_FROM_WORLD);
         }
 
@@ -45,6 +44,16 @@ namespace Util
             return sprite;
         }
 
+        public static Vector2 ComputeCameraSize(Bounds bounds, Camera camera)
+        {
+            Matrix4x4 mat = Matrix4x4.TRS(bounds.center, camera.transform.rotation, Vector3.one).inverse;
+            bounds.extents = mat.MultiplyPoint(bounds.extents);
+            Debug.Log(bounds);
+            Vector3 vec = mat.MultiplyPoint(bounds.extents);
+
+            return new Vector3(Mathf.Abs(vec.x), Mathf.Abs(vec.y), Mathf.Abs(vec.z)); ;// new Vector3(xx, yy, zz) / 2f;
+        }
+
         public static Sprite GenerateSprite(GameObject go) => GenerateSprite(go, DEFAULT_RENDER_SIZE);
 
         public static Texture2D GenerateIcon(GameObject obj, int renderSize)
@@ -58,23 +67,32 @@ namespace Util
             GameObject model = InstantiateModel(obj);
 
             model.transform.position = _instance.transform.position;
+            model.transform.rotation = Quaternion.Euler(_instance.ModelRotation);
             model.SetActive(true);
 
+            Bounds bounds = UnityUtils.ComputeMinimallyBoundingBox(model);
+            Debug.Log(bounds);
             RenderTexture renderTexture = RenderTexture.GetTemporary(renderSize, renderSize, 24);
 
-            Bounds bounds = GetObjectBounds(model);
+            Vector3 localCenter = _instance.transform.InverseTransformPoint(bounds.center);
+
+            model.transform.position += -localCenter;
+            //Camera.transform.LookAt(_instance.transform.position);
 
             RenderTexture.active = renderTexture;
             GL.Clear(true, true, Color.clear);
 
             Camera.targetTexture = renderTexture;
             float distance = bounds.size.magnitude;
-            Camera.transform.position = _instance.transform.position + bounds.center + _instance.RenderOffsetDirection * distance;
+            Camera.transform.position = _instance.transform.position + Vector3.back * distance;
 
-            float camSize = Mathf.Max(bounds.extents.y, bounds.extents.x, bounds.extents.z);
+            //Vector3 size = ComputeCameraSize(bounds, Camera);
+            Debug.Log(obj.name);
+            Debug.Log(bounds.extents);
+            float camSize = Mathf.Max(bounds.extents.x, bounds.extents.y, bounds.extents.z);
+
             Camera.orthographicSize = camSize;
 
-            Camera.transform.LookAt(_instance.transform.position + bounds.center);
             Camera.Render();
 
             Texture2D texture = new Texture2D(renderSize, renderSize, TextureFormat.ARGB32, false);
@@ -121,7 +139,7 @@ namespace Util
         private void OnDrawGizmos()
         {
             Gizmos.DrawSphere(transform.position, 0.25f);
-            Gizmos.DrawWireSphere(transform.position + RenderOffsetDirection * 10f, 0.25f);
+            Gizmos.DrawWireSphere(transform.position + Vector3.back * 10f, 0.25f);
         }
     }
 }

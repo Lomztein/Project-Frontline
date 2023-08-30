@@ -29,6 +29,7 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
     private Transform _root;
 
     private TeamInfo _team;
+    private LayerMask _hitLayerMask;
 
     private IEnumerable<IWeapon> GetUnitPrefabWeapons() => UnitPrefabs.SelectMany(x => x.GetComponentsInChildren<IWeapon>());
 
@@ -97,6 +98,7 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
     public void SetTeam(TeamInfo faction)
     {
         _team = faction;
+        _hitLayerMask = faction.GetOtherLayerMasks();
     }
 
     public bool CanFire()
@@ -131,6 +133,7 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
         if (CanFire())
         {
             GameObject go = Spawn();
+            _currentHolding--;
             _currentSimultanious.Add(go);
 
             if (go.TryGetComponent(out EngagedTracker tracker))
@@ -150,6 +153,10 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
 
             if (go.TryGetComponent(out AIController controller)) {
                 controller.ForceTarget(intendedTarget);
+                foreach (var weapon in controller.Weapons)
+                {
+                    weapon.SetHitLayerMask(_hitLayerMask);
+                }
             }
 
             _canPlace = false;
@@ -167,5 +174,10 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
     public float GetDPS()
     {
         return GetUnitPrefabWeapons().Sum(x => x.GetDPSOrOverride()) / UnitPrefabs.Length * MaxSimultanious; // It's a very, very rough estimate, but might just work for the AI.
+    }
+
+    public void SetHitLayerMask(LayerMask mask)
+    {
+        _hitLayerMask = mask;
     }
 }

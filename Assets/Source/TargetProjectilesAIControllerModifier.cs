@@ -12,10 +12,7 @@ public class TargetProjectilesAIControllerModifier : AIControllerModifier
         controller.SetTargetLayerMask(layer);
         foreach (IWeapon weapon in controller.Weapons)
         {
-            if (weapon is Weapon concrete)
-            {
-                concrete.SetHitLayerMask(layer);
-            }
+            weapon.SetHitLayerMask(layer);
         }
     }
 
