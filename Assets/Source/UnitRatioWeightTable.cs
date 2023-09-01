@@ -20,6 +20,7 @@ public class UnitRatioWeightTable : UnitWeightTable
 
     public float DesiredRatio;
     public int Margin = 10;
+    public int Offset = 10;
 
     public float NonDesiredWeight;
 
@@ -50,7 +51,7 @@ public class UnitRatioWeightTable : UnitWeightTable
         {
             bool isDesired = DesiredFilter.Check(obj);
             if (isDesired)
-                weights.Add(obj, CalculateDesire(currentDesiredAmount, currentAmount, DesiredRatio, Margin));
+                weights.Add(obj, CalculateDesire(currentDesiredAmount, currentAmount, DesiredRatio, Margin, Offset));
             else
                 weights.Add(obj, NonDesiredWeight);
         }

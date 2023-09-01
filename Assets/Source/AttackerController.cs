@@ -60,7 +60,7 @@ public class AttackerController : ControllableController, ITeamComponent, IComma
     protected virtual void MoveTowardsTarget ()
     {
         Vector3 local = GetTargetLocalPosition();
-        Vector3 targetPos = GetTarget().GetPosition();
+        Vector3 targetPos = GetTarget().GetCenter();
         if (local.sqrMagnitude < HoldRange * HoldRange)
         {
             Stop();

@@ -21,7 +21,7 @@ public class BoidController : AttackerController
 
     protected override void MoveTowardsTarget()
     {
-        Vector3 pos = CurrentTarget.GetPosition();
+        Vector3 pos = CurrentTarget.GetCenter();
         pos.y = Mathf.Max(TravelHeight, pos.y);
         SwarmCenter.position = pos;
     }

@@ -11,7 +11,7 @@ public class ProjectileLerpHoming : MonoBehaviour
     {
         if (Projectile.Target.ExistsAndValid())
         {
-            Quaternion targetRotation = Quaternion.LookRotation(Projectile.Target.GetPosition() - transform.position);
+            Quaternion targetRotation = Quaternion.LookRotation(Projectile.Target.GetCenter() - transform.position);
             var rot = Quaternion.Lerp(transform.rotation, targetRotation, LerpSpeed * Time.fixedDeltaTime);
             Projectile.transform.rotation = rot;
             Projectile.Velocity = Projectile.transform.forward * Projectile.Speed;

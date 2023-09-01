@@ -7,9 +7,10 @@ using UnityEngine;
 public class DefenseWeightTable : UnitGroupWeightTable
 {
     public string[] DefenderTags = { "Defense", "Trap" };
+    public Vector2 WeightMinMax = new Vector2(0.2f, 0.8f);
     public override Dictionary<GameObject, float> GenerateWeights(IEnumerable<GameObject> options)
     {
-        float factor = Mathf.Clamp01(Commander.DefenseFactor);
+        float factor = Mathf.Lerp(WeightMinMax.x, WeightMinMax.y, Mathf.Clamp01(Commander.DefenseFactor));
 
         var weights = new Dictionary<GameObject, float>();
         foreach (var option in options)

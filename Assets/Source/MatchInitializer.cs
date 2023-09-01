@@ -74,7 +74,8 @@ public class MatchInitializer : MonoBehaviour
             aiCom.TargetAvarageAPM = info.AIProfile.ActionsPerMinute;
             var selector = aiCom.GetComponent<WeightedUnitSelector>();
             selector.WeightTable = info.AIProfile.UnitWeightTable;
-            aiCom.MaxSaveTime = info.AIProfile.SaveTime;
+            aiCom.SaveTimeMinMax = info.AIProfile.SaveTimeMinMax;
+            aiCom.SaveTimeBias = info.AIProfile.SaveTimeBias;
         }
         Commander commander = commanderObj.GetComponent<Commander>();
         commander.Fortress = Instantiate(info.Faction.HeadquartersPrefab, commanderObj.transform).transform;

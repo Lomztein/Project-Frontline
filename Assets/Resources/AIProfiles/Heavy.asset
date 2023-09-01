@@ -15,8 +15,32 @@ MonoBehaviour:
   Name: Heavy AI
   Description: This AI enjoys the utilization of the heaviest units available to
     it, and will prioritize units with as high health as possible.
-  SaveTime: 10
+  SaveTimeMinMax: {x: 10, y: 30}
+  SaveTimeBias:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   ActionsPerMinute: 10
   OffenseMargin: 125
   UnitWeightTable: {fileID: 11400000, guid: 5efb6e360c0b4d341b22fcb4ed2a6434, type: 2}
-  WeightRandomizer: {x: 0, y: 1}
+  WeightRandomizer: {x: 0.5, y: 1}

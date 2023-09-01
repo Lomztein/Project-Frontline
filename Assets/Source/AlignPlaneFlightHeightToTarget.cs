@@ -13,7 +13,7 @@ public class AlignPlaneFlightHeightToTarget : MonoBehaviour
         ITarget target = Controller.GetTarget();
         if (target.ExistsAndValid())
         {
-            Body.FlightHeight = target.GetPosition().y - Offset;
+            Body.FlightHeight = target.GetCenter().y - Offset;
         }
     }
 

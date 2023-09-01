@@ -13,8 +13,13 @@ public class PositionTarget : ITarget
 
     public bool IsValid() => true;
 
-    public Vector3 GetPosition()
+    public Vector3 GetCenter()
     {
         return _position;
+    }
+
+    public Vector3 GetSize()
+    {
+        return Vector3.one;
     }
 }

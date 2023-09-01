@@ -15,8 +15,32 @@ MonoBehaviour:
   Name: Random AI
   Description: This AI is truly chaotic, and has no rules or weights that it uses
     to make decisions, but makes purely random decisions instead.
-  SaveTime: 0
+  SaveTimeMinMax: {x: 10, y: 30}
+  SaveTimeBias:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   ActionsPerMinute: 10
   OffenseMargin: 150
   UnitWeightTable: {fileID: 11400000, guid: 8e39531caa0d94746915480b0f64b272, type: 2}
-  WeightRandomizer: {x: 0, y: 1}
+  WeightRandomizer: {x: 0.5, y: 1}

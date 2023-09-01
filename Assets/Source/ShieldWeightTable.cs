@@ -8,8 +8,8 @@ using Util;
 public class ShieldWeightTable : UnitWeightTable
 {
     public float NonShieldWeight;
-
     public float TargetCoverage = 1.2f;
+    public int Margin = 10;
 
     public override Dictionary<GameObject, float> GenerateWeights(IEnumerable<GameObject> options)
     {
@@ -21,9 +21,10 @@ public class ShieldWeightTable : UnitWeightTable
         foreach (var option in options)
         {
             Transform shieldInOption = ShieldUtils.GetShieldInObj(option);
+            float desire = CalculateDesire(covers, Commander.AlivePlaced.Count(), TargetCoverage, Margin);
             if (shieldInOption != null)
             {
-                weights.Add(option, 1f - Mathf.Clamp01(coverage / TargetCoverage));
+                weights.Add(option, desire);
             }
             else
             {

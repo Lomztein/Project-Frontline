@@ -77,8 +77,8 @@ public static class DamageMatrix
         } },
         { Damage.Energy, new Dictionary<Armor, float>()
         {
-            { Armor.Infantry, 0.6f },
-            { Armor.Light, 0.3f },
+            { Armor.Infantry, 0.4f },
+            { Armor.Light, 0.2f },
             { Armor.Medium, 0.6f },
             { Armor.Heavy, 1.0f },
             { Armor.Structure, 0.8f },
@@ -87,9 +87,9 @@ public static class DamageMatrix
         { Damage.Tesla, new Dictionary<Armor, float>()
         {
             { Armor.Infantry, 1.0f },
-            { Armor.Light, 1.0f },
-            { Armor.Medium, 0.75f },
-            { Armor.Heavy, 0.3f },
+            { Armor.Light, 0.8f },
+            { Armor.Medium, 0.5f },
+            { Armor.Heavy, 0.2f },
             { Armor.Structure, 0.2f },
             { Armor.Shield, 1.5f },
         } },

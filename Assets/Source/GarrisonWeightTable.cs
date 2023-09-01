@@ -20,7 +20,7 @@ public class GarrisonWeightTable : UnitWeightTable
         {
             var garrison = obj.GetComponentInChildren<InfantryGarrison>();
             if (garrison != null)
-                weights.Add(obj, CalculateDesire(garrisonSlots, infantryUnits, 1f / InfantryUnitsPerSlot, Margin));
+                weights.Add(obj, CalculateDesire(garrisonSlots, infantryUnits, 1f / InfantryUnitsPerSlot, Margin, Margin));
             else
                 weights.Add(obj, NonGarrisonWeight);
         }

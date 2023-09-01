@@ -25,7 +25,7 @@ public class CirclerController : AttackerController
         }
         else
         {
-            Vector3 between = (CurrentTarget.GetPosition() - transform.position).normalized;
+            Vector3 between = (CurrentTarget.GetCenter() - transform.position).normalized;
             Vector3 perpendicular = Vector3.Cross(between, Vector3.up);
 
             Controllable.Turn(Vector3.Dot(perpendicular, transform.right * (CircleRight ? 1f : -1f)));

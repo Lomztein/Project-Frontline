@@ -29,7 +29,7 @@ public class ProjectileExplodeNearTarget : MonoBehaviour
         if (Projectile.Target.ExistsAndValid())
         {
             float vertVel = Projectile.Velocity.y;
-            float dist = Mathf.Abs(transform.position.y - Projectile.Target.GetPosition().y);
+            float dist = Mathf.Abs(transform.position.y - Projectile.Target.GetCenter().y);
             Invoke(nameof(Burst), dist / vertVel);
             Invoke(nameof(BurstEffect), dist / vertVel);
             Invoke(nameof(EndProjectile), dist / vertVel); // the jank is real

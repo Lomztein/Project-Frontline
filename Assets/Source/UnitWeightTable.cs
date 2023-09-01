@@ -19,11 +19,11 @@ public abstract class UnitWeightTable : UnitWeightTableBase
         }
     }
 
-    public static float CalculateDesire(int currentDesiredAmount, int amountCounted, float desiredRatio, int margin)
+    public static float CalculateDesire(float current, float target, float ratio, float margin = 0f, float offset = 0f)
     {
-        float currentTargetThreshold = amountCounted * desiredRatio;
-        float currentTargetMargin = (amountCounted + margin) * desiredRatio;
-        float t = Mathf.InverseLerp(currentTargetMargin, currentTargetThreshold, currentDesiredAmount + 1);
+        float currentTargetThreshold = target * ratio;
+        float currentTargetMargin = (target + margin) * ratio;
+        float t = Mathf.InverseLerp(currentTargetMargin, currentTargetThreshold, current + offset);
         return t;
     }
 

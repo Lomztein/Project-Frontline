@@ -6,7 +6,8 @@ using UnityEngine;
 public class AICommander : Commander
 {
     public float TargetAvarageAPM = 20;
-    public float MaxSaveTime;
+    public Vector2 SaveTimeMinMax;
+    public AnimationCurve SaveTimeBias;
 
     private IUnitSelector _unitSelector;
     private IPositionSeletor _positionSelector;
@@ -42,15 +43,16 @@ public class AICommander : Commander
         }
     }
 
-    private float GetExpectedCreditsAfterMaxSaveTime ()
+    private float GetExpectedCreditsAfterSaveTime (float time)
     {
-        return Credits + AverageIncomePerSecond * MaxSaveTime;
+        return Credits + AverageIncomePerSecond * time;
     }
 
     private void PerformAction()
     {
         SaveTarget = null;
-        float maxCost = GetExpectedCreditsAfterMaxSaveTime();
+        float time = Mathf.Lerp(SaveTimeMinMax.x, SaveTimeMinMax.y, SaveTimeBias.Evaluate(Random.Range(0f, 1f)));
+        float maxCost = GetExpectedCreditsAfterSaveTime(time);
         GameObject unit = _unitSelector.SelectUnit(UnitSource.GetAvailableUnitPrefabs(Faction).Where(x => CanAfford(x, (int)maxCost)));
 
         if (unit)

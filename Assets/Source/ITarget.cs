@@ -6,7 +6,9 @@ public interface ITarget
 {
     bool IsValid();
 
-    Vector3 GetPosition();
+    Vector3 GetCenter();
+
+    Vector3 GetSize();
 }
 
 public static class TargetExtensions

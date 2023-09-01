@@ -36,9 +36,6 @@ public class WeightedUnitSelector : MonoBehaviour, IUnitSelector
         GameObject highestUnit = null;
         foreach (var entry in zip)
         {
-            if (entry.weight < 0.000001f) // Weight of 0 means don't.
-                continue;
-
             if (entry.weight > highestWeight)
             {
                 highestWeight = entry.weight;

@@ -8,8 +8,9 @@ public class EconomyWeightTable : UnitWeightTable
 {
     private const string ECONOMY_TAG = "Economy";
 
-    public int BaseIncomeTarget = 50;
+    public float BaseIncomeTarget = 50;
     public float IncomeTargetPerMinute = 20f;
+    public float Margin = 20;
     public float NonEcoUnitWeight = 0f;
 
     public override Dictionary<GameObject, float> GenerateWeights(IEnumerable<GameObject> options)
@@ -22,7 +23,8 @@ public class EconomyWeightTable : UnitWeightTable
         {
             if (option.GetComponent<Unit>().Info.Tags.Contains(ECONOMY_TAG))
             {
-                weights.Add(option, 1f - Mathf.Clamp01(currentIncome / targetIncome));
+                float desire = CalculateDesire(currentIncome, targetIncome, 1f, Margin);
+                weights.Add(option, desire);
             }else
             {
                 weights.Add(option, NonEcoUnitWeight);

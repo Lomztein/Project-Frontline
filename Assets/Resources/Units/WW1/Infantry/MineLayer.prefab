@@ -14916,7 +14916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 200
-  _firerate: 0.2
+  _firerate: 0.1
   _speed: 0
   _damageType: 2
   BuildingPrefab: {fileID: 8604440855157306163, guid: 2ea8c65725c1a39489dcb63a53197f4a,
@@ -15001,9 +15001,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4898b066c8084b342882cb3bb08f60bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Clip: {fileID: 8300000, guid: 5ffc0e3a7177c02469c19bcaac46e072, type: 3}
-  VolumeScale: 1
+  SoundPriority: 128
   Source: {fileID: 555649320405895252}
+  Clip: {fileID: 8300000, guid: 5ffc0e3a7177c02469c19bcaac46e072, type: 3}
+  RandomClips: []
+  VolumeScale: 1
+  PitchVariance: 0
+  LimiterKey: {fileID: 0}
 --- !u!198 &6955343778198651725
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -20050,7 +20054,7 @@ PrefabInstance:
     - target: {fileID: 221871567749722498, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
       propertyPath: Info.Tags.Array.data[0]
-      value: Siege
+      value: Defense
       objectReference: {fileID: 0}
     - target: {fileID: 221871567749722498, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}

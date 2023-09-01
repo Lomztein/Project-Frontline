@@ -104,7 +104,7 @@ public abstract class AIController : MonoBehaviour, IController
         {
             CurrentTarget = new ColliderTarget(target);
             OnTargetAcquired?.Invoke(CurrentTarget);
-            _targetLastPosition = CurrentTarget.GetPosition();
+            _targetLastPosition = CurrentTarget.GetCenter();
         }
     }
 
@@ -120,7 +120,7 @@ public abstract class AIController : MonoBehaviour, IController
         TargetLayer = faction.GetOtherLayerMasks();
     }
 
-    protected Vector3 GetTargetLocalPosition() => CurrentTarget.GetPosition() - transform.position;
+    protected Vector3 GetTargetLocalPosition() => CurrentTarget.GetCenter() - transform.position;
     protected Vector3 PositionToLocalPosition(Vector3 position) => position - transform.position;
     protected float GetTargetSquareDistance() => Vector3.SqrMagnitude(GetTargetLocalPosition());
 
@@ -128,18 +128,18 @@ public abstract class AIController : MonoBehaviour, IController
     {
         if (Turret != null)
         {
-            Vector3 targetPosition = CurrentTarget.GetPosition();
+            Vector3 targetPosition = CurrentTarget.GetCenter();
             if (LeadTarget && Weapons.Count > 0)
             {
                 Vector3 vel = (targetPosition - _targetLastPosition) / Time.fixedDeltaTime;
                 float dist = Vector3.Distance(targetPosition, transform.position);
                 targetPosition += vel * (dist / Weapons[0].Speed + Time.fixedDeltaTime); // Add fixedDeltaTime to offset turrets always being a single tick behind.
 
-                _targetLastPosition = CurrentTarget.GetPosition();
+                _targetLastPosition = CurrentTarget.GetCenter();
             }
 
             Turret.AimTowards(targetPosition);
-            _aimDelta = Turret.DeltaAngle(CurrentTarget.GetPosition());
+            _aimDelta = Turret.DeltaAngle(CurrentTarget.GetCenter());
         }
         else
         {
@@ -181,7 +181,7 @@ public abstract class AIController : MonoBehaviour, IController
             Aim();
             Attack();
 
-            if ((GetTargetSquareDistance() > LooseTargetRange * LooseTargetRange) && ForcedTarget != true || !CanHitOrNoTurret(CurrentTarget.GetPosition()))
+            if ((GetTargetSquareDistance() > LooseTargetRange * LooseTargetRange) && ForcedTarget != true || !CanHitOrNoTurret(CurrentTarget.GetCenter()))
             {
                 CurrentTarget = null;
                 FindNewTarget();

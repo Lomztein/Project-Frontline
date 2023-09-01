@@ -12,7 +12,8 @@ public class AIPlayerProfile : ScriptableObject
     [TextArea]
     public string Description;
 
-    public float SaveTime = 10;
+    public Vector2 SaveTimeMinMax = new Vector2(10, 40);
+    public AnimationCurve SaveTimeBias = AnimationCurve.Linear(0f, 0f, 1f, 1f);
     public float ActionsPerMinute = 10;
     public float OffenseMargin = 150;
 

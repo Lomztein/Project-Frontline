@@ -13,12 +13,17 @@ public class TransformTarget : ITarget
 
     public bool IsValid() => _transform;
 
-    public Vector3 GetPosition()
+    public Vector3 GetCenter()
     {
         if (_transform == null)
         {
             return Vector3.zero;
         }
         return _transform.position;
+    }
+
+    public Vector3 GetSize ()
+    {
+        return Vector3.one;
     }
 }

@@ -11,7 +11,7 @@ public class ProjectileHoming : MonoBehaviour
     {
         if (Projectile.Target.ExistsAndValid())
         {
-            Quaternion targetRotation = Quaternion.LookRotation(Projectile.Target.GetPosition() - transform.position);
+            Quaternion targetRotation = Quaternion.LookRotation(Projectile.Target.GetCenter() - transform.position);
             Projectile.transform.rotation = Quaternion.RotateTowards(Projectile.transform.rotation, targetRotation, RotationSpeed * Time.fixedDeltaTime);
             Projectile.Velocity = Projectile.transform.forward * Projectile.Speed;
         }

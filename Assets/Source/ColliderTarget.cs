@@ -21,12 +21,21 @@ public class ColliderTarget : ITarget
 
     public bool IsValid() => Collider && Collider.gameObject.activeSelf;
 
-    public Vector3 GetPosition()
+    public Vector3 GetCenter()
     {
         if (Collider == null)
         {
             return Vector3.zero;
         }
         return Collider.bounds.center;
+    }
+
+    public Vector3 GetSize()
+    {
+        if (Collider == null)
+        {
+            return Vector3.zero;
+        }
+        return Collider.bounds.size;
     }
 }

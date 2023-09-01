@@ -117,9 +117,21 @@ AudioMixerController:
   - {fileID: 24500006}
   m_StartSnapshot: {fileID: 24500006}
   m_SuspendThreshold: -80
-  m_EnableSuspend: 1
+  m_EnableSuspend: 0
   m_UpdateMode: 0
-  m_ExposedParameters: []
+  m_ExposedParameters:
+  - guid: 7c19530c595636e4c9aa74ad075effaa
+    name: AmbientVolume
+  - guid: 8815c8a0b37ba8d4f87f76b972955473
+    name: DeathVolume
+  - guid: b8760f8c945373b4d905a1f4a8f36368
+    name: EngineVolume
+  - guid: 75644357fa2c73445bba44f491e653f1
+    name: ImpactVolume
+  - guid: c5e3e6e8db650554b80076a434a7bfdd
+    name: MasterVolume
+  - guid: c7eb0fd8816278449a5c2a98cfc10685
+    name: WeaponVolume
   m_AudioMixerGroupViews:
   - guids:
     - 9e9fe889f17cc134e96e23040d9b42f3
@@ -179,7 +191,8 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 392ff25e51a2e6a489bbcc50ef6e1d0f
   m_FloatValues:
-    c7eb0fd8816278449a5c2a98cfc10685: -0.02577656
+    c7eb0fd8816278449a5c2a98cfc10685: 0
+    7c19530c595636e4c9aa74ad075effaa: 0
   m_TransitionOverrides: {}
 --- !u!244 &747468708277626923
 AudioMixerEffectController:
