@@ -25,6 +25,13 @@ public class Unit : MonoBehaviour, IPurchasable
 
     public int BaseCost => Info.Cost;
 
+    [Header("Parts")] // UnitParts are specifically designated parts of the unit that might be of interest to others.
+    public UnitPart[] Parts;
+    public WeakpointUnitPart[] Weakpoints;
+
+    public IEnumerable<T> GetParts<T>() where T : UnitPart
+        => Parts.Where(x => x != null).Select(x => x as T).Where(x => x != null);
+
     public int GetCost (Commander commander)
     {
         int cost = Info.Cost;
@@ -69,6 +76,8 @@ public class Unit : MonoBehaviour, IPurchasable
 
     private void Awake()
     {
+        Weakpoints = GetParts<WeakpointUnitPart>().ToArray();
+
         GetWeapons();
         Health = GetComponent<Health>();
         InvokeRepeating(nameof(CheckBattlefieldBounds), 10f, 10f);

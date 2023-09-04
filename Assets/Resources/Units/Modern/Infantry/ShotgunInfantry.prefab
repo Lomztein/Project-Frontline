@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 1117831273}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.037, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -186,11 +186,6 @@ PrefabInstance:
       propertyPath: Pivot
       value: 
       objectReference: {fileID: 5960457096037355076}
-    - target: {fileID: 5255809123949767241, guid: 853d6b159033c0d4ea3d1271433c1e0a,
-        type: 3}
-      propertyPath: AnimatorTurret
-      value: 
-      objectReference: {fileID: 5700630422142170921}
     - target: {fileID: 5782572096513648213, guid: 853d6b159033c0d4ea3d1271433c1e0a,
         type: 3}
       propertyPath: m_Name
@@ -422,6 +417,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6870369824164450125, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: Turrets.Array.data[1]
+      value: 
+      objectReference: {fileID: 565297748139826946}
     - target: {fileID: 8299666086444987988, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: m_IsKinematic
@@ -639,18 +639,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Model: {fileID: 565297748139826946}
---- !u!114 &5700630422142170921 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3860211362352645905, guid: 50378c4ca65714b4ebd2928ade59a707,
-    type: 3}
-  m_PrefabInstance: {fileID: 8831150822842003512}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d806c437be696f248a15879293c2c7dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &5960457096037355076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2898419047578615420, guid: 50378c4ca65714b4ebd2928ade59a707,

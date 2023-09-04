@@ -102,12 +102,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1177128839, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: Modifiers.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1177128839, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: Modifiers.Array.data[0]
       value: 
       objectReference: {fileID: -950757062312224681}
+    - target: {fileID: 1177128839, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
+      propertyPath: Modifiers.Array.data[1]
+      value: 
+      objectReference: {fileID: 1966386737894511972}
     - target: {fileID: 1177128839, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: WeaponObjects.Array.size
       value: 1
@@ -363,6 +367,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: -950757062312224681}
+    - targetCorrespondingSourceObject: {fileID: 8299666088126906343, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1966386737894511972}
   m_SourcePrefab: {fileID: 100100000, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
 --- !u!4 &2619191674737023011 stripped
 Transform:
@@ -415,6 +423,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Filter: {fileID: 11400000, guid: 10e58586e11c80e4281c3103e0d19589, type: 2}
   Weight: 10000
+--- !u!114 &1966386737894511972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9173316093531560376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5590b4a8020dd348881c407ee5d07f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &9173316093531560377 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8299666088126906342, guid: 50378c4ca65714b4ebd2928ade59a707,

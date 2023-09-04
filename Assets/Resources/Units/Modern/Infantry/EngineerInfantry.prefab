@@ -87,7 +87,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1411579667897651106}
+  m_Father: {fileID: 6969503423178843513}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1411579667782654623
 PrefabInstance:
@@ -230,6 +230,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6870369824164450125, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: Turrets.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8299666086444987988, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
@@ -409,26 +414,20 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8299666088126906342, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6838404719181833189}
     - targetCorrespondingSourceObject: {fileID: 2898419047578615420, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4300479710284328840}
-    - targetCorrespondingSourceObject: {fileID: 997020989, guid: 50378c4ca65714b4ebd2928ade59a707,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6838404719181833189}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8299666088126906343, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5354692114257241058}
   m_SourcePrefab: {fileID: 100100000, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
---- !u!4 &1411579667897651106 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 997020989, guid: 50378c4ca65714b4ebd2928ade59a707,
-    type: 3}
-  m_PrefabInstance: {fileID: 1411579667782654623}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4300850778215507171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2898419047578615420, guid: 50378c4ca65714b4ebd2928ade59a707,
@@ -454,6 +453,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Model: {fileID: 3342082700522810482}
+--- !u!4 &6969503423178843513 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8299666088126906342, guid: 50378c4ca65714b4ebd2928ade59a707,
+    type: 3}
+  m_PrefabInstance: {fileID: 1411579667782654623}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2982435146556845767
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -1,58 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3133217015442543147
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3133217015442543146}
-  - component: {fileID: 2227405560967331846}
-  m_Layer: 0
-  m_Name: TurretBase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3133217015442543146
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3133217015442543147}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.592, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 6365057503310707598}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2227405560967331846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3133217015442543147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d806c437be696f248a15879293c2c7dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Base: {fileID: 3133217015442543146}
-  Muzzle: {fileID: 0}
-  Animator: {fileID: 4704740076902648598}
-  HorAimName: AimHorizontal
-  VerAimName: AimVertical
-  HorMinMax: {x: -180, y: 180}
-  VerMinMax: {x: -75, y: 75}
-  HorSpeed: 180
-  VerSpeed: 180
 --- !u!1 &6365057502642190576
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +89,8 @@ MonoBehaviour:
   Health: {fileID: 3133217014020917394}
   _weapons:
   - {fileID: 8150723386312106452}
+  Parts: []
+  Weakpoints: []
 --- !u!114 &3133217014020917392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,10 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce0c54eb6fa4bb94aa3fd41409f023e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 0
+  MaxSpeed: 3
   Rigidbody: {fileID: 2197758364635985125}
   IsMoving: 0
-  MovementSpeed: 7
   RotateSpeed: 180
 --- !u!114 &6208922606456639294
 MonoBehaviour:
@@ -877,10 +825,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2805987463833109057, guid: eeef3a7deee493a4e993e4622aca8587,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3133217015442543146}
-    - targetCorrespondingSourceObject: {fileID: 2805987463833109057, guid: eeef3a7deee493a4e993e4622aca8587,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 4643682825224782115}
     - targetCorrespondingSourceObject: {fileID: 3350810239616581908, guid: eeef3a7deee493a4e993e4622aca8587,
         type: 3}
@@ -933,6 +877,12 @@ MonoBehaviour:
 --- !u!4 &1705374389667516780 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7570357807372986531, guid: eeef3a7deee493a4e993e4622aca8587,
+    type: 3}
+  m_PrefabInstance: {fileID: 9125951630850406863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3882935912539484901 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5424323018937191210, guid: eeef3a7deee493a4e993e4622aca8587,
     type: 3}
   m_PrefabInstance: {fileID: 9125951630850406863}
   m_PrefabAsset: {fileID: 0}
@@ -1060,7 +1010,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Turrets:
-  - {fileID: 3133217015442543147}
+  - {fileID: 3882935912539484901}
+  - {fileID: 8150723386312106452}
+  UseDeltaAngle: 0
+  UseCanHit: 0
 --- !u!4 &6365057503310707598 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2805987463833109057, guid: eeef3a7deee493a4e993e4622aca8587,

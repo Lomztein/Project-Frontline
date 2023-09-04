@@ -4,11 +4,8 @@ using UnityEngine;
 
 public class InfantryWeaponTurret : MonoBehaviour, ITurret
 {
-    public AnimatorTurret AnimatorTurret;
     public Transform Transform;
-
     public Transform Pivot;
-    public Transform Muzzle;
 
     private void Start()
     {
@@ -19,20 +16,16 @@ public class InfantryWeaponTurret : MonoBehaviour, ITurret
 
     public void AimTowards(Vector3 position)
     {
-        ((ITurret)AnimatorTurret).AimTowards(position);
-        if (CanHit(position))
-        {
-            Transform.LookAt(position);
-        }
+        Transform.LookAt(position);
     }
 
     public bool CanHit(Vector3 target)
     {
-        return ((ITurret)AnimatorTurret).CanHit(target);
+        return true;
     }
 
     public float DeltaAngle(Vector3 target)
     {
-        return ((ITurret)AnimatorTurret).DeltaAngle(target);
+        return 0f;
     }
 }

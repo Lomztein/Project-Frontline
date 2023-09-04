@@ -13,11 +13,6 @@ PrefabInstance:
       propertyPath: Pivot
       value: 
       objectReference: {fileID: 7699908286152628007}
-    - target: {fileID: 91051442625817554, guid: 87050310418a5f44eaa56666f98ac73c,
-        type: 3}
-      propertyPath: AnimatorTurret
-      value: 
-      objectReference: {fileID: 8606634825423793738}
     - target: {fileID: 1841069477840545742, guid: 87050310418a5f44eaa56666f98ac73c,
         type: 3}
       propertyPath: m_Name
@@ -26,7 +21,7 @@ PrefabInstance:
     - target: {fileID: 1883070552863379925, guid: 87050310418a5f44eaa56666f98ac73c,
         type: 3}
       propertyPath: Damage
-      value: 25
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1883070552863379925, guid: 87050310418a5f44eaa56666f98ac73c,
         type: 3}
@@ -208,13 +203,18 @@ PrefabInstance:
     - target: {fileID: 221871567749722499, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
       propertyPath: Modifiers.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 221871567749722499, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
       propertyPath: Modifiers.Array.data[0]
       value: 
       objectReference: {fileID: 4333748108234384797}
+    - target: {fileID: 221871567749722499, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: Modifiers.Array.data[1]
+      value: 
+      objectReference: {fileID: 7981270029116202443}
     - target: {fileID: 221871567749722499, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
       propertyPath: WeaponObjects.Array.size
@@ -247,6 +247,11 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5021201123898071201, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: Turrets.Array.data[1]
+      value: 
+      objectReference: {fileID: 181989385803841010}
+    - target: {fileID: 6650774277835469129, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
       propertyPath: Turrets.Array.data[1]
       value: 
@@ -337,6 +342,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4333748108234384797}
+    - targetCorrespondingSourceObject: {fileID: 8086891902248042979, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7981270029116202443}
   m_SourcePrefab: {fileID: 100100000, guid: 921f14449a56edf44ae71f83ff321a64, type: 3}
 --- !u!1 &3588391829415401148 stripped
 GameObject:
@@ -371,6 +380,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Filter: {fileID: 11400000, guid: 10e58586e11c80e4281c3103e0d19589, type: 2}
   Weight: 10000
+--- !u!114 &7981270029116202443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3588391829415401148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5590b4a8020dd348881c407ee5d07f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3588391829415401149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8086891902248042978, guid: 921f14449a56edf44ae71f83ff321a64,
@@ -401,15 +422,3 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4753248198775166815}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8606634825423793738 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3928835196184852757, guid: 921f14449a56edf44ae71f83ff321a64,
-    type: 3}
-  m_PrefabInstance: {fileID: 4753248198775166815}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d806c437be696f248a15879293c2c7dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

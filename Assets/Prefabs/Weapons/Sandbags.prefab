@@ -180,6 +180,7 @@ MonoBehaviour:
     Description: Sandbags placed by a field engineer.
     Tags:
     - CantHeal
+    - Ignore
     Cost: 0
     Value: 0
     UnitRole: 2
@@ -246,6 +247,8 @@ MonoBehaviour:
   MaxRange: 10
   Garrison: {fileID: 8876911398856622593}
   Repeat: 1
+  PeriodicallyEjectGarrison: 0
+  PrioritizationFunction: 1
 --- !u!65 &9085351093732112156
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -265,8 +268,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 7.821434, y: 3.018505, z: 2.539817}
-  m_Center: {x: 0.14630985, y: 0.7124772, z: 0.45072114}
+  m_Size: {x: 7.821434, y: 2.384585, z: 2.539817}
+  m_Center: {x: 0.14630985, y: 0.3955167, z: 0.45072114}
 --- !u!114 &8801556461038340287
 MonoBehaviour:
   m_ObjectHideFlags: 0

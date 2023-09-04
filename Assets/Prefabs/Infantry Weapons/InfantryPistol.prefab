@@ -51,7 +51,7 @@ MonoBehaviour:
   Firerate: 4
   DamageType: 0
   Speed: 200
-  Range: 0
+  Range: 200
   Amount: 1
   BurstReloadTime: 2
   BurstAmmo: 12
@@ -59,10 +59,12 @@ MonoBehaviour:
   FireParticle: {fileID: 3105142657257099189}
   LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
+  FireEffect: {fileID: 0}
   ProjectilePrefab: {fileID: 706538927366367410, guid: 02243d61965c5ed499bec10f0188c561,
     type: 3}
   Muzzle: {fileID: 6828277121094571253}
   Inaccuracy: 1
+  SpeedVariance: 0
 --- !u!114 &1165338369286979886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -239,7 +241,7 @@ PrefabInstance:
     - target: {fileID: 5857214540084150587, guid: 92a563c3efd2b8344b126e88c4daa3d5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.1213
+      value: 0.1526
       objectReference: {fileID: 0}
     - target: {fileID: 5857214540084150587, guid: 92a563c3efd2b8344b126e88c4daa3d5,
         type: 3}

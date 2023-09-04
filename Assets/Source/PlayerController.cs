@@ -23,23 +23,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private Bounds GetObjectVisibleBounds (GameObject obj)
-    {
-        Bounds result = new Bounds();
-        Collider[] colliders = obj.GetComponentsInChildren<Collider>();
-        if (colliders.Length > 0)
-        {
-           result = colliders[0].bounds;
-            foreach (var collider in colliders)
-            {
-                Bounds bounds = new Bounds(collider.bounds.center, collider.bounds.size);
-                result.Encapsulate(bounds);
-            }
-        }
-
-        return result;
-    }
-
     public void Control (GameObject obj)
     {
         if (obj)
@@ -54,15 +37,6 @@ public class PlayerController : MonoBehaviour
             {
                 _targetLayer = TeamInfo.LayerAllTeams | TerrainLayer;
             }
-
-            Bounds bounds = GetObjectVisibleBounds(obj);
-            Vector3 offset = new Vector3(0f, 
-                Mathf.Max(MinCameraDistance.x, bounds.size.y * CameraDistanceMultiplier.x),
-                Mathf.Max(MinCameraDistance.y, -bounds.size.z * CameraDistanceMultiplier.y))
-                ;
-
-            FollowerCamera.PositionOffset = offset;
-            FollowerCamera.LookPositionOffset = offset + Vector3.forward * -offset.z;
         }
     }
 

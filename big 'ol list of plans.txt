@@ -11,10 +11,11 @@ LONG TERM PLANS
 		- Series of connected missions could reward the player with something extraordinary.
 			- Unique unit unlocks only available in the campaign.
 				- Stolen tech, units that use tech from multiple factions.
+				- Omega-class units that are one-time use, though perhaps kept if not destroyed.
 			- Permanement upgrades, effectively always granting the effect of an upgrade building.
 			- Select, powerful units from other factions.
 		- Holding certain areas on the campaign could provide powerful bonuses in combat.
-		- Various victory conditions.
+		- Various victory conditions. Different endings depending on condition.
 	- AI Editor - Allows for the creation of custom AI weights.
 	- Unit Editor - Allows for the construction of unique units using pre-existing unit bodies and weapons.
 		- Would likely require an overhaul to standardize units and weapons.
@@ -28,8 +29,10 @@ LONG TERM PLANS
 FACTIONS
  - Modern Millitary (DONE): Vehicle-oriented faction drawing inspiration from modern millitary forces, with weapons being primarily guns, cannons, rockets, and lasers.
  - WW1 (DONE): Infantry-oriented faction based on the large variety of experimental forced developed during WW1. Weapons are primarily guns, cannons, and thermite.
- - Aliens (PLANNING): Aircraft-oriented faction based on both classic B-movie type aliens, while also drawing some inspiration from more modern, eldritch-type aliens. Weapons are rayguns, particle beams, plasma, and more.
- - Mushroom (PLANNING): Small, mushroom based faction that is only available as an asset bundle.
+ - Aliens (PLANNING): Aircraft-oriented faction based on both classic B-movie type aliens, while also drawing some inspiration from more modern, eldritch-type aliens. Weapons are rayguns, particle beams, plasma, and more. No traditional guns or cannons.
+
+POTENTIAL FUTURE FACTIONS
+ - Mushroom (CONCEPT): Small, mushroom based faction that is only available as an asset bundle.
  - Commando (CONCEPT): Faction composed of a single unit that is upgraded through the placement of various structures. Style and tech uncertain, might draw from all other factions.
  - Fantasy (CONCEPT): Melee-oriented faction composed of medieval-type high fantasy units such as knights, archers, wizards, dragons, fantastical devices, ect.
 
@@ -65,6 +68,15 @@ MID PRIORITY
 	- Should aircraft dependant on atmosphere be available?
  - Jobify physical projectile movement and raycasting.
  - Jobify unit target finding if possible.
+
+ - Consider converting game simulation to a more controlled Simulation system.
+	- Central "Simulation" class that handles game ticks and physics ticks, maybe even network ticks.
+		- Every fixed update, Tick all objects, update physics, sync network.
+	- Implement "ISimObject" interface with Tick(float dt) method. Simulation contains a list of SimObjects.
+	- Visual effects can still be managed by Unity's built-in ticks.
+ - Experiment with adding multiplayer functionality. What kinds of changes would be needed?
+	- If unit behaviour can be changed to be deterministic, would only player input need to be synchronized?
+	- If nothing else, unit position / health should be enough for basic functionality, though it may be jank if targeting and projectiles aren't otherwise synchronised.
 
 LOW PRIORITY
  - Improve debris visuals of large units, the current effect just kind of looks dumb.

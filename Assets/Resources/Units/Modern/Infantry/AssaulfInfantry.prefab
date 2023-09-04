@@ -133,6 +133,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6870369824164450125, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: Turrets.Array.data[1]
+      value: 
+      objectReference: {fileID: 7160945273264691639}
     - target: {fileID: 8299666086444987988, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: m_IsKinematic
@@ -327,18 +332,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3133647213632057459}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2228941248685324130 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3860211362352645905, guid: 50378c4ca65714b4ebd2928ade59a707,
-    type: 3}
-  m_PrefabInstance: {fileID: 3133647213632057459}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d806c437be696f248a15879293c2c7dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6364331591275548564 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8299666088126906343, guid: 50378c4ca65714b4ebd2928ade59a707,
@@ -377,11 +370,6 @@ PrefabInstance:
       propertyPath: Pivot
       value: 
       objectReference: {fileID: 235791702404124175}
-    - target: {fileID: 670810086591704455, guid: 5a5fd2203481b3e4eb4a88ee932565c7,
-        type: 3}
-      propertyPath: AnimatorTurret
-      value: 
-      objectReference: {fileID: 2228941248685324130}
     - target: {fileID: 1261150945179099547, guid: 5a5fd2203481b3e4eb4a88ee932565c7,
         type: 3}
       propertyPath: m_Name

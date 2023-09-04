@@ -26,7 +26,10 @@ public class PosessorUIWeaponStatus : MonoBehaviour
 
     private void Weapon_OnFire(IWeapon obj)
     {
-        _fireTime = Time.time;
-        _rechaberedTime = _fireTime + (1f / obj.Firerate);
+        if (Time.time > _fireTime - 0.01f)
+        {
+            _fireTime = Time.time;
+            _rechaberedTime = _fireTime + (1f / obj.Firerate);
+        }
     }
 }

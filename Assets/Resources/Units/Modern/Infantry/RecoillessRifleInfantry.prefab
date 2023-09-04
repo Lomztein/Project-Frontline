@@ -174,11 +174,6 @@ PrefabInstance:
       propertyPath: Pivot
       value: 
       objectReference: {fileID: 9139448782203204360}
-    - target: {fileID: 7335505591195485361, guid: 7b1001a9d264e91469aefa6f7e0c3525,
-        type: 3}
-      propertyPath: AnimatorTurret
-      value: 
-      objectReference: {fileID: 4695085006146684991}
     - target: {fileID: 9008117734161582253, guid: 7b1001a9d264e91469aefa6f7e0c3525,
         type: 3}
       propertyPath: m_Name
@@ -400,6 +395,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6870369824164450125, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: Turrets.Array.data[1]
+      value: 
+      objectReference: {fileID: 660233411591733090}
     - target: {fileID: 7651415233274957058, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: m_Enabled
@@ -618,18 +618,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Model: {fileID: 660233411591733090}
---- !u!114 &4695085006146684991 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3860211362352645905, guid: 50378c4ca65714b4ebd2928ade59a707,
-    type: 3}
-  m_PrefabInstance: {fileID: 8411161869155700526}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d806c437be696f248a15879293c2c7dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &9139448782203204360 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 752007787819514918, guid: 50378c4ca65714b4ebd2928ade59a707,

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 public abstract class AIController : MonoBehaviour, IController
@@ -163,15 +164,28 @@ public abstract class AIController : MonoBehaviour, IController
     }
 
     public virtual bool CanEngage(GameObject target)
-        => CanHitOrNoTurret(target.transform.position);
+    {
+        bool canHit = CanHitOrNoTurret(target.transform.position);
+        Unit unit = target.GetComponentInParent<Unit>();
+        if (unit)
+        {
+            return canHit && !unit.Info.Tags.Contains("Ignore");
+        }
+        return canHit;
+    }
 
     public virtual bool CanHitOrNoTurret(Vector3 position)
         => Turret == null || Turret.CanHit(position);
 
     public void ForceTarget (ITarget target)
     {
-        CurrentTarget = target;
+        SetTarget(target);
         ForcedTarget = true;
+    }
+
+    public void SetTarget(ITarget target)
+    {
+        CurrentTarget = target;
     }
 
     protected virtual void FixedUpdate()

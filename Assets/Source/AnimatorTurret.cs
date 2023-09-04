@@ -5,7 +5,6 @@ using UnityEngine;
 public class AnimatorTurret : MonoBehaviour, ITurret
 {
     public Transform Base;
-    public Transform Muzzle;
     public Animator Animator;
 
     public string HorAimName;
@@ -19,6 +18,11 @@ public class AnimatorTurret : MonoBehaviour, ITurret
 
     private Vector2 _currentAim;
     private Vector2 _targetAim;
+
+    private void Awake()
+    {
+        
+    }
 
     private void FixedUpdate()
     {
@@ -49,8 +53,8 @@ public class AnimatorTurret : MonoBehaviour, ITurret
 
     public float DeltaAngle(Vector3 target)
     {
-        Vector3 localPosition = Muzzle.InverseTransformPoint(target);
-        float angle = Vector3.Angle(Vector3.forward, localPosition);
+        Vector3 dir = Quaternion.Euler(_currentAim.x, _currentAim.y, 0f) * Vector3.forward;
+        float angle = Vector3.Angle(Vector3.forward, dir);
         return angle;
     }
     public bool CanHit(Vector3 target)

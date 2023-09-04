@@ -82,7 +82,8 @@ public class Mine : MonoBehaviour, ITeamComponent
         foreach (var hit in hits)
         {
             var health = hit.GetComponentInParent<Health>();
-            health.TakeDamage(new DamageInfo(ExplosionDamage, ExplosionDamageType, hit.transform.position, (hit.transform.position - transform.position).normalized));
+            if (health)
+                health.TakeDamage(new DamageInfo(ExplosionDamage, ExplosionDamageType, hit.transform.position, (hit.transform.position - transform.position).normalized));
         }
         TriggerEffect.transform.SetParent(null);
         ExplodeEffect.transform.SetParent(null);

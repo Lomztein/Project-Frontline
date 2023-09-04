@@ -1708,6 +1708,8 @@ MonoBehaviour:
   MainCamera: {fileID: 980051605}
   CameraController: {fileID: 595732046}
   Controller: {fileID: 300557914}
+  FirstPersonControllerPrefab: {fileID: 7697509625687326418, guid: 73f8e40bb69da4c42a9fc0bf97762a11,
+    type: 3}
 --- !u!4 &300557916
 Transform:
   m_ObjectHideFlags: 0
@@ -3223,12 +3225,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FollowObject: {fileID: 0}
-  PositionOffset: {x: 0, y: 5, z: -10}
-  LookPositionOffset: {x: 0, y: 5, z: 0}
+  BaseObjectSize: {x: 0, y: 1.5, z: 3}
+  PositionOffset: {x: 0, y: 3, z: -4}
+  AngleOffset: 10
   MouseSensitivity: 125
-  TargetImage: {fileID: 1258538936}
-  PositionLerpSpeed: 10
-  RotationLerpSpeed: 10
+  PositionLerpSpeed: 25
 --- !u!114 &595732047
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3324,7 +3325,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -11087,6 +11088,8 @@ MonoBehaviour:
     UnitType: 4
   Health: {fileID: 1851706859}
   _weapons: []
+  Parts: []
+  Weakpoints: []
 --- !u!4 &1862330378 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 34d66606c6b5c164baf29b4707d596c5,
@@ -15141,6 +15144,8 @@ MonoBehaviour:
     UnitType: 4
   Health: {fileID: 3217494700115860374}
   _weapons: []
+  Parts: []
+  Weakpoints: []
 --- !u!1 &8189512500433638150
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Http.Headers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -27,7 +28,7 @@ public class PosessorUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    private void Posessor_OnRelease()
+    private void Posessor_OnRelease(GameObject obj)
     {
         foreach (Transform child in WeaponUIParent)
         {
@@ -53,9 +54,23 @@ public class PosessorUI : MonoBehaviour
     {
         gameObject.SetActive(true);
         PosessedUnit = unit;
-        _health = unit.GetComponent<Health>();
+        _health = unit.GetComponentInChildren<Health>();
         HealthSlider.maxValue = _health.MaxHealth;
-        GenerateWeaponUI(unit.GetComponent<Unit>().GetWeapons());
+        FirstPersonWeaponsController fpw = unit.GetComponentInParent<FirstPersonWeaponsController>();
+        if (fpw != null)
+        {
+            StartCoroutine(DelayedGenerateUI(fpw.Weapons));
+        }
+        else
+        {
+            GenerateWeaponUI(unit.GetComponent<AIController>().Weapons);
+        }
+    }
+
+    private IEnumerator DelayedGenerateUI(IEnumerable<IWeapon> weapons)
+    {
+        yield return new WaitForFixedUpdate();
+        GenerateWeaponUI(weapons);
     }
 
     private void GenerateWeaponUI(IEnumerable<IWeapon> weapons)
