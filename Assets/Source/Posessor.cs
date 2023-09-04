@@ -18,6 +18,9 @@ public class Posessor : MonoBehaviour
     public List<ITurret> _turrets;
     public List<IWeapon> _weapons;
 
+    public event Action<GameObject> OnPosess;
+    public event Action OnRelease;
+
     private void Awake()
     {
         _followCamera = CameraController.GetComponent<Camera>();
@@ -43,6 +46,8 @@ public class Posessor : MonoBehaviour
 
             _currentPosessed = target;
             _currentPosessed.GetComponentInChildren<IController>().Enabled = false;
+
+            OnPosess?.Invoke(target);
         }
     }
 
@@ -54,6 +59,7 @@ public class Posessor : MonoBehaviour
             {
                 if (!IsInvoking())
                 {
+                    OnRelease?.Invoke();
                     Controller.Release();
                     Invoke(nameof(Reset), 3f);
                 }
@@ -105,6 +111,7 @@ public class Posessor : MonoBehaviour
         _currentPosessed = null;
         CameraController.StopFollow();
         Controller.Release();
+        OnRelease?.Invoke();
     }
 
 }

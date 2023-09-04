@@ -144,7 +144,7 @@ public abstract class AIController : MonoBehaviour, IController
         else
         {
             Vector3 local = GetTargetLocalPosition();
-            _aimDelta = Mathf.DeltaAngle(transform.eulerAngles.y, Mathf.Atan2(local.x, local.z) * Mathf.Rad2Deg);
+            _aimDelta = Mathf.Abs(Mathf.DeltaAngle(transform.eulerAngles.y, Mathf.Atan2(local.x, local.z) * Mathf.Rad2Deg));
         }
     }
 

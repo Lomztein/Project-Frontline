@@ -6,4 +6,5 @@ public class WeaponInfo : MonoBehaviour
 {
     public string Name;
     public string Description;
+    public GameObject Root;
 }

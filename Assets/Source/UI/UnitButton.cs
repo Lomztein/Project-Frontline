@@ -59,7 +59,7 @@ namespace UI
 
         private void FixedUpdate()
         {
-            bool interactable = _commander.Credits >= _unit.Cost;
+            bool interactable = _commander.Credits >= _unit.GetCost(_commander);
             Button.interactable = interactable;
             UnitImage.color = interactable ? ImageInteractableColor : ImageUnInteractableColor;
             UnitTierImage.color = TierColors[(int)_unit.Info.UnitTier] * (interactable ? ImageInteractableColor : ImageUnInteractableColor);

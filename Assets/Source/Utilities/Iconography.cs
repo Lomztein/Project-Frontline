@@ -37,9 +37,9 @@ namespace Util
             return UnityUtils.InstantiateMockGO(source);
         }
 
-        public static Sprite GenerateSprite(GameObject obj, int renderSize)
+        public static Sprite GenerateSprite(GameObject obj, Quaternion objRotation, int renderSize)
         {
-            Texture2D tex = GenerateIcon(obj);
+            Texture2D tex = GenerateIcon(obj, objRotation, renderSize);
             Sprite sprite = Sprite.Create(tex, new Rect(0f, 0f, renderSize, renderSize), Vector2.one / 2f);
             return sprite;
         }
@@ -54,9 +54,9 @@ namespace Util
             return new Vector3(Mathf.Abs(vec.x), Mathf.Abs(vec.y), Mathf.Abs(vec.z)); ;// new Vector3(xx, yy, zz) / 2f;
         }
 
-        public static Sprite GenerateSprite(GameObject go) => GenerateSprite(go, DEFAULT_RENDER_SIZE);
+        public static Sprite GenerateSprite(GameObject go) => GenerateSprite(go, Quaternion.Euler(_instance.ModelRotation), DEFAULT_RENDER_SIZE);
 
-        public static Texture2D GenerateIcon(GameObject obj, int renderSize)
+        public static Texture2D GenerateIcon(GameObject obj, Quaternion objRotation, int renderSize)
         {
             _instance.gameObject.SetActive(true);
             _instance.transform.position = GetPosition();
@@ -67,11 +67,11 @@ namespace Util
             GameObject model = InstantiateModel(obj);
 
             model.transform.position = _instance.transform.position;
-            model.transform.rotation = Quaternion.Euler(_instance.ModelRotation);
+            model.transform.rotation = objRotation;
+            model.transform.localScale = Vector3.one;
             model.SetActive(true);
 
             Bounds bounds = UnityUtils.ComputeMinimallyBoundingBox(model);
-            Debug.Log(bounds);
             RenderTexture renderTexture = RenderTexture.GetTemporary(renderSize, renderSize, 24);
 
             Vector3 localCenter = _instance.transform.InverseTransformPoint(bounds.center);
@@ -87,8 +87,6 @@ namespace Util
             Camera.transform.position = _instance.transform.position + Vector3.back * distance;
 
             //Vector3 size = ComputeCameraSize(bounds, Camera);
-            Debug.Log(obj.name);
-            Debug.Log(bounds.extents);
             float camSize = Mathf.Max(bounds.extents.x, bounds.extents.y, bounds.extents.z);
 
             Camera.orthographicSize = camSize;
@@ -113,7 +111,7 @@ namespace Util
             return texture;
         }
 
-        public static Texture2D GenerateIcon(GameObject go) => GenerateIcon(go, DEFAULT_RENDER_SIZE);
+        public static Texture2D GenerateIcon(GameObject go) => GenerateIcon(go, Quaternion.Euler(_instance.ModelRotation), DEFAULT_RENDER_SIZE);
 
         public static Bounds GetObjectBounds(GameObject obj)
         {

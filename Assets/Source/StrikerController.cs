@@ -16,14 +16,12 @@ public class StrikerController : AttackerController
         if (_engaging)
         {
             base.MoveTowardsTarget();
-            Debug.DrawRay(transform.position, transform.forward * 10f, Color.red);
         }
         else
         {
             float speed = 1f;
 
             Controllable.Accelerate(speed);
-            Debug.DrawRay(transform.position, transform.forward * 10f, Color.blue);
             SmoothTurnTowardsAngle(GetDisengageAngle());
         }
     }
@@ -53,7 +51,7 @@ public class StrikerController : AttackerController
         float angle;
         if (DisengageAlongWaypoint)
         {
-            angle = _currentWaypoint.IncomingAngle;
+            angle = _currentWaypoint.IncomingAngle + LaneOffset;
             angle = Mathf.DeltaAngle(transform.eulerAngles.y, angle);
         }
         else
@@ -67,9 +65,12 @@ public class StrikerController : AttackerController
     protected override void MoveAlongWaypoints()
     {
         base.MoveAlongWaypoints();
+        float dist = DistToFrontline();
+        float sign = Mathf.Sign(dist);
         if (ShouldHoldOnFrontline())
         {
-            _engaging = ShouldEngage(_engaging, Mathf.Pow(DistToFrontline(), 2f));
+            _engaging = ShouldEngage(_engaging, Mathf.Pow(dist, 2f) * sign);
+
             if (!_engaging)
             {
                 SmoothTurnTowardsAngle(GetDisengageAngle());

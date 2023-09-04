@@ -47,8 +47,8 @@ MonoBehaviour:
   Base: {fileID: 997020989}
   Muzzle: {fileID: 0}
   Animator: {fileID: 7652165978093472769}
-  HorAimName: AimY
-  VerAimName: AimX
+  HorAimName: AimHorizontal
+  VerAimName: AimVertical
   HorMinMax: {x: -180, y: 180}
   VerMinMax: {x: -75, y: 75}
   HorSpeed: 180
@@ -732,6 +732,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6041258967308905426, guid: eeef3a7deee493a4e993e4622aca8587,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: 0.0020003703
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041258967308905426, guid: eeef3a7deee493a4e993e4622aca8587,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 0.0017563397
+      objectReference: {fileID: 0}
+    - target: {fileID: 6041258967308905426, guid: eeef3a7deee493a4e993e4622aca8587,
+        type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.000131077
+      objectReference: {fileID: 0}
     - target: {fileID: 6237690926912367112, guid: eeef3a7deee493a4e993e4622aca8587,
         type: 3}
       propertyPath: m_Enabled
@@ -906,10 +921,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.4
+  m_Radius: 0.25
   m_Height: 2
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 1, z: -0.06}
 --- !u!114 &503401728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -924,8 +939,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animator: {fileID: 7652165978093472769}
   Body: {fileID: 7651415233274957058}
-  SpeedMultiplier: 1
-  WeaponPoseType: 1
+  WeaponObject: {fileID: 0}
+  Muzzle: {fileID: 0}
+  WeaponRecoil: 0
+  Health: {fileID: 0}
+  RecoilDampening: 0
 --- !u!114 &4613819235908810178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -942,6 +960,8 @@ MonoBehaviour:
   Root: {fileID: 8299666088126906343}
   Ragdoll: {fileID: 4309599958111909958}
   RagdollRoot: {fileID: 4382522225176778363}
+  RootCollider: {fileID: 503401726}
+  Sturdyness: 0
 --- !u!114 &5096628723846620837
 MonoBehaviour:
   m_ObjectHideFlags: 0

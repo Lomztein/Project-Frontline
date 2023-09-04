@@ -79,6 +79,6 @@ public class AICommander : Commander
 
     private bool CanAfford(Unit unit, int credits)
     {
-        return unit.Cost < credits;
+        return unit.GetCost(this) < credits;
     }
 }

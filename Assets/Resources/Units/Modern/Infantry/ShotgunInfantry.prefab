@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 50
+  MaxHealth: 100
   ArmorType: 3
   DestroyOnDeath: 1
   DestroyDelay: 0
@@ -67,6 +67,7 @@ MonoBehaviour:
   Name: Battle Shield
   Description: Heavy shield capable of taking massive damage, but will quickly fall
     to cannon fire.
+  Root: {fileID: 0}
 --- !u!1 &6635622303651444497
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,6 +281,7 @@ MonoBehaviour:
   Name: Shotgun
   Description: Quickly looses effectivenes at range due to spread, but very deadly
     up close.
+  Root: {fileID: 0}
 --- !u!4 &3705843708223732683 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7244683036270346908, guid: 853d6b159033c0d4ea3d1271433c1e0a,

@@ -647,6 +647,7 @@ GameObject:
   - component: {fileID: 4964351093738814713}
   - component: {fileID: 6144739744911261648}
   - component: {fileID: 4514442581584012209}
+  - component: {fileID: 4482750102270464676}
   m_Layer: 0
   m_Name: Gunship
   m_TagString: Untagged
@@ -715,19 +716,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 0}
-  AcquireTargetRange: 150
+  AcquireTargetRange: 500
   LooseTargetRange: 200
-  AttackRange: 150
+  AttackRange: 75
   TurretObject: {fileID: 0}
   WeaponObjects: []
   AimTolerance: 5
   LeadTarget: 1
   TargetSearchFrequency: 2
   Modifiers: []
-  HoldRange: 70
+  HoldRange: 60
   StayBehindFrontline: 0
   CircleRight: 0
   ChanceToCircleRight: 0
+  Speed: 50
+  Turnrate: 60
+  Margin: 10
 --- !u!114 &4964351093738814719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -822,6 +826,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Movement: {x: 0, y: 30, z: -200}
   Transformed: 1
+--- !u!114 &4482750102270464676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4964351093738814712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46fe0a88465a2b94c817b7220b4e3306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
 --- !u!1 &5425705864996947599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1237,7 +1254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 5
-  Firerate: 20
+  Firerate: 30
   DamageType: 0
   Speed: 240
   Range: 200
@@ -1257,7 +1274,7 @@ MonoBehaviour:
   MaxChargeTime: 0.5
   CurrentChargeTime: 0
   ResetChargeOnFire: 0
-  ChargeOnlyWhenCanFire: 1
+  ChargeOnlyWhenCanFire: 0
 --- !u!114 &5710782334178748801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1310,6 +1327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Gatling Cannon
   Description: 
+  Root: {fileID: 0}
 --- !u!1 &5710782334328814192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1529,6 +1547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Heavy Cannon
   Description: 
+  Root: {fileID: 0}
 --- !u!1 &5710782334424547443
 GameObject:
   m_ObjectHideFlags: 0
@@ -2031,7 +2050,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 10
-  Firerate: 12
+  Firerate: 10
   DamageType: 6
   Speed: 200
   Range: 200
@@ -2051,7 +2070,7 @@ MonoBehaviour:
   MaxChargeTime: 0.2
   CurrentChargeTime: 0
   ResetChargeOnFire: 0
-  ChargeOnlyWhenCanFire: 1
+  ChargeOnlyWhenCanFire: 0
 --- !u!114 &5710782335347440844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2104,6 +2123,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Auotcannon
   Description: 
+  Root: {fileID: 0}
 --- !u!1 &5710782335364941268
 GameObject:
   m_ObjectHideFlags: 0

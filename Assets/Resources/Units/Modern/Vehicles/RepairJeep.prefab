@@ -66,7 +66,15 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 582706406120410760, guid: 77ad8b4733384304da8fe4ef1033ebdc,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6184013628575651990}
+    - targetCorrespondingSourceObject: {fileID: 582706406120410760, guid: 77ad8b4733384304da8fe4ef1033ebdc,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8517310869229427586}
   m_SourcePrefab: {fileID: 100100000, guid: 77ad8b4733384304da8fe4ef1033ebdc, type: 3}
 --- !u!1 &1717094314083872716 stripped
 GameObject:
@@ -74,6 +82,44 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2288506243899793732}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6184013628575651990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717094314083872716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41487ee171311704884c1278dc50ac3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Team: {fileID: 0}
+  AcquireTargetRange: 35
+  LooseTargetRange: 35
+  AttackRange: 35
+  TurretObject: {fileID: 1717094314083872716}
+  WeaponObjects:
+  - {fileID: 8678983231403155809}
+  AimTolerance: 5
+  LeadTarget: 0
+  TargetSearchFrequency: 2
+  Modifiers:
+  - {fileID: 8517310869229427586}
+--- !u!114 &8517310869229427586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717094314083872716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb75235e4a7e6174782481a599531108, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Controller: {fileID: 6184013628575651990}
+  StartHealTreshold: 0.75
 --- !u!4 &8338429428089639262 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7816671355928801306, guid: 77ad8b4733384304da8fe4ef1033ebdc,
@@ -211,7 +257,7 @@ PrefabInstance:
     - target: {fileID: 6460095528493340735, guid: 8cde096bc4044aa43969fa0883258089,
         type: 3}
       propertyPath: HoldRange
-      value: 25
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 6460095528493340735, guid: 8cde096bc4044aa43969fa0883258089,
         type: 3}
@@ -227,7 +273,7 @@ PrefabInstance:
         type: 3}
       propertyPath: TurretObject
       value: 
-      objectReference: {fileID: 1717094314083872716}
+      objectReference: {fileID: 0}
     - target: {fileID: 6460095528493340735, guid: 8cde096bc4044aa43969fa0883258089,
         type: 3}
       propertyPath: LooseTargetRange
@@ -246,23 +292,18 @@ PrefabInstance:
     - target: {fileID: 6460095528493340735, guid: 8cde096bc4044aa43969fa0883258089,
         type: 3}
       propertyPath: Modifiers.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6460095528493340735, guid: 8cde096bc4044aa43969fa0883258089,
         type: 3}
-      propertyPath: Modifiers.Array.data[0]
-      value: 
-      objectReference: {fileID: 5081010733904615578}
-    - target: {fileID: 6460095528493340735, guid: 8cde096bc4044aa43969fa0883258089,
-        type: 3}
       propertyPath: WeaponObjects.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6460095528493340735, guid: 8cde096bc4044aa43969fa0883258089,
         type: 3}
       propertyPath: WeaponObjects.Array.data[0]
       value: 
-      objectReference: {fileID: 8678983231403155809}
+      objectReference: {fileID: 0}
     - target: {fileID: 8666043346284543018, guid: 8cde096bc4044aa43969fa0883258089,
         type: 3}
       propertyPath: m_RootOrder
@@ -320,7 +361,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3817131376503336587, guid: 8cde096bc4044aa43969fa0883258089, type: 3}
-    - {fileID: 6460095528493340735, guid: 8cde096bc4044aa43969fa0883258089, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6016930153181062389, guid: 8cde096bc4044aa43969fa0883258089,
@@ -332,14 +372,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2261583585457571674}
-    - targetCorrespondingSourceObject: {fileID: 2421092486902088640, guid: 8cde096bc4044aa43969fa0883258089,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5081010733904615578}
-    - targetCorrespondingSourceObject: {fileID: 2421092486902088640, guid: 8cde096bc4044aa43969fa0883258089,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8148375664958676261}
   m_SourcePrefab: {fileID: 100100000, guid: 8cde096bc4044aa43969fa0883258089, type: 3}
 --- !u!4 &1833301988532351839 stripped
 Transform:
@@ -366,43 +398,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
---- !u!114 &5081010733904615578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7739487226260083818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb75235e4a7e6174782481a599531108, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Controller: {fileID: 8148375664958676261}
-  StartHealTreshold: 0.75
---- !u!114 &8148375664958676261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7739487226260083818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12d7c56d6db96f6469baca41915a6a8f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Team: {fileID: 0}
-  AcquireTargetRange: 500
-  LooseTargetRange: 500
-  AttackRange: 40
-  TurretObject: {fileID: 1717094314083872716}
-  WeaponObjects:
-  - {fileID: 8678983231403155809}
-  AimTolerance: 1
-  LeadTarget: 0
-  TargetSearchFrequency: 2
-  Modifiers:
-  - {fileID: 5081010733904615578}
-  HoldRange: 35
-  StayBehindFrontline: 1

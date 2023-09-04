@@ -1068,7 +1068,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Team: {fileID: 0}
   AcquireTargetRange: 200
-  LooseTargetRange: 200
+  LooseTargetRange: 400
   AttackRange: 100
   TurretObject: {fileID: 0}
   WeaponObjects:
@@ -1118,6 +1118,8 @@ MonoBehaviour:
   Root: {fileID: 848953599095047606}
   Ragdoll: {fileID: 4839266017366311447}
   RagdollRoot: {fileID: 4915564811604716586}
+  RootCollider: {fileID: 0}
+  Sturdyness: 0
 --- !u!114 &5107284976161941682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2899,8 +2901,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 5
-  Firerate: 10
+  Damage: 3
+  Firerate: 15
   DamageType: 6
   Speed: 300
   Range: 100

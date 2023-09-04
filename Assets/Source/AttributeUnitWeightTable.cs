@@ -10,20 +10,20 @@ public class AttributeUnitWeightTable : UnitWeightTable
     public enum Function { Custom, Damage, Health, Cost, Range, Speed, ProductionTime }
     public Function AttributeGetter;
 
-    private static Func<GameObject, float>[] _funcs =
+    private static Func<GameObject, Commander, float>[] _funcs =
     {
         null,
-        new Func<GameObject, float>(x => x.GetComponent<Unit>().GetWeapons().Sum(x => x.GetDPSOrOverride()) / ProductionScore(x)),
-        new Func<GameObject, float>(x => x.GetComponentsInChildren<Health>().Sum(x => x.MaxHealth) / ProductionScore(x)),
-        new Func<GameObject, float>(x => x.GetComponent<Unit>().Cost / ProductionScore(x)),
+        new Func<GameObject, Commander, float>((x, c) => x.GetComponent<Unit>().GetWeapons().Sum(x => x.GetDPSOrOverride()) / ProductionScore(x, c)),
+        new Func<GameObject, Commander, float>((x, c) => x.GetComponentsInChildren<Health>().Sum(x => x.MaxHealth) / ProductionScore(x, c)),
+        new Func<GameObject, Commander, float>((x, c) => x.GetComponent<Unit>().GetCost(c) / ProductionScore(x, c)),
         RangeScore,
         SpeedScore,
         ProductionScore,
     };
 
-    private Func<GameObject, float> _function;
+    private Func<GameObject, Commander, float> _function;
 
-    private static float RangeScore(GameObject obj)
+    private static float RangeScore(GameObject obj, Commander com)
     {
         AttackerController atc = obj.GetComponent<AttackerController>();
         SentryController sc = obj.GetComponent<SentryController>();
@@ -38,7 +38,7 @@ public class AttributeUnitWeightTable : UnitWeightTable
         return 0f;
     }
 
-    private static float SpeedScore(GameObject obj)
+    private static float SpeedScore(GameObject obj, Commander com)
     {
         MobileBody mb = obj.GetComponentInChildren<MobileBody>();
         if (mb)
@@ -48,7 +48,7 @@ public class AttributeUnitWeightTable : UnitWeightTable
         return 0;
     }
 
-    private static float ProductionScore (GameObject go)
+    private static float ProductionScore (GameObject go, Commander com)
     {
         ProductionInfo info = go.GetComponent<ProductionInfo>();
         if (info)
@@ -58,7 +58,7 @@ public class AttributeUnitWeightTable : UnitWeightTable
         return 120f; // magic numbers cause fuck you
     }
 
-    protected void SetCustomFunction (Func<GameObject, float> func)
+    protected void SetCustomFunction (Func<GameObject, Commander, float> func)
     {
         _function = func;
         AttributeGetter = Function.Custom;
@@ -75,7 +75,7 @@ public class AttributeUnitWeightTable : UnitWeightTable
         float highest = 0f;
         foreach (GameObject go in options)
         {
-            float weight = _function(go);
+            float weight = _function(go, Commander);
             if (weight > highest)
             {
                 highest = weight;

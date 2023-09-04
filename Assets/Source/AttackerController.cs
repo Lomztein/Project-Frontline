@@ -11,6 +11,9 @@ public class AttackerController : ControllableController, ITeamComponent, IComma
 
 
     protected Waypoint _currentWaypoint;
+    public float Lane { get; private set; } // x-position relative to commander.
+    public float LaneOffset => Commander.transform.InverseTransformPoint(transform.position).x - Lane;
+
     protected Commander Commander { get; private set; }
 
     public float HoldRange;
@@ -88,6 +91,7 @@ public class AttackerController : ControllableController, ITeamComponent, IComma
     public void AssignCommander(Commander commander)
     {
         Commander = commander;
+        Lane = commander.transform.InverseTransformPoint(transform.position).x;
     }
 
     private void OnDrawGizmosSelected()

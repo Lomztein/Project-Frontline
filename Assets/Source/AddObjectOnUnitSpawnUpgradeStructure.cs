@@ -24,9 +24,14 @@ public class AddObjectOnUnitSpawnUpgradeStructure : ChanceOnUnitSpawnUpgradeStru
         _commander.TeamInfo.ApplyTeam(newObject);
         _commander.AssignCommander(newObject);
 
-        if (AddWeaponToAI)
+        IWeapon wep = newObject.GetComponentInChildren<IWeapon>();
+        if (wep != null)
         {
-            target.GetComponent<AIController>().AddWeapon(newObject.GetComponentInChildren<IWeapon>());
+            target.GetComponent<Unit>().AddWeapon(wep);
+            if (AddWeaponToAI)
+            {
+                target.GetComponent<AIController>().AddWeapon(newObject.GetComponentInChildren<IWeapon>());
+            }
         }
     }
 

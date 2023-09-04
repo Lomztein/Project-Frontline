@@ -8,5 +8,5 @@ public interface IPurchasable
     string Name { get; }
     string Description { get; }
     Sprite Sprite { get; }
-    int Cost { get; }
+    int GetCost(Commander commander);
 }

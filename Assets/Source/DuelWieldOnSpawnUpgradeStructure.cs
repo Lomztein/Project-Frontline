@@ -44,6 +44,7 @@ public class DuelWieldOnSpawnUpgradeStructure : ChanceOnUnitSpawnUpgradeStructur
         }
         AIController controller = unit.GetComponent<AIController>();
         controller.AddWeapon(newWeapon.GetComponent<IWeapon>());
+        unit.AddWeapon(newWeapon.GetComponent<IWeapon>());
         controller.Team.ApplyTeam(newWeapon);
     }
 

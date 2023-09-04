@@ -77,7 +77,7 @@ public class UnitPlacement : MonoBehaviour
             {
                 transform.position = hit.point;
 
-                if (_commander.HasCredits(_unit.Cost))
+                if (_commander.HasCredits(_unit.GetCost(_commander)))
                 {
                     if (CanPlace(hit.point, _placementCheckSize))
                     {

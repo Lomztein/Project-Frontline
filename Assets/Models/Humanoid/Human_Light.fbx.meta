@@ -17,14 +17,20 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
+      does not match position in animation file:\n\t'mixamorig:LeftUpLeg' : position
+      error = 4.987093 mm\n\t'mixamorig:LeftLeg' : position error = 23.288092 mm\n\t'mixamorig:LeftFoot'
+      : position error = 22.141439 mm\n\t'mixamorig:LeftToeBase' : position error
+      = 5.380229 mm\n\t'mixamorig:RightUpLeg' : position error = 4.987195 mm\n\t'mixamorig:RightLeg'
+      : position error = 23.288309 mm\n\t'mixamorig:RightFoot' : position error =
+      22.136942 mm\n\t'mixamorig:RightToeBase' : position error = 5.307889 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 0
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -60,7 +66,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     - serializedVersion: 16
       name: Aim_Left
       takeName: Armature|Aim_Left
@@ -89,7 +95,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     - serializedVersion: 16
       name: Aim_Right
       takeName: Armature|Aim_Right
@@ -118,7 +124,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     - serializedVersion: 16
       name: Aim_Up
       takeName: Armature|Aim_Up
@@ -147,7 +153,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     - serializedVersion: 16
       name: Armature|Armature|mixamo.com|Layer0
       takeName: Armature|Armature|mixamo.com|Layer0
@@ -362,7 +368,7 @@ ModelImporter:
       level: 0
       cycleOffset: 0
       loop: 0
-      hasAdditiveReferencePose: 0
+      hasAdditiveReferencePose: 1
       loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
@@ -379,7 +385,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 1
     - serializedVersion: 16
       name: Rifle_Fire
       takeName: Armature|Rifle_Fire

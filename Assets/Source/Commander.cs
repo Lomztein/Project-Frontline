@@ -214,7 +214,7 @@ public class Commander : MonoBehaviour, ITeamComponent
     public bool TryPurchaseAndPlaceUnit(GameObject unitPrefab, Vector3 position, Quaternion rotation)
     {
         Unit unit = unitPrefab.GetComponent<Unit>();
-        if (TrySpend(unit.Cost) && CanBuild)
+        if (TrySpend(unit.GetCost(this)) && CanBuild)
         {
             GameObject placedUnit = PlaceUnit(GeneratePrefab(unitPrefab), position, rotation);
             UnitFactory factory = placedUnit.GetComponent<UnitFactory>();
@@ -243,7 +243,17 @@ public class Commander : MonoBehaviour, ITeamComponent
     private void OnProducedUnitDeath(Health obj)
     {
         _aliveProduced.Remove(obj.GetComponent<Unit>());
-        Frontline.Register(obj.transform.position);
+        if (IsValidFrontlineRegister(obj.transform.position))
+        {
+            Frontline.Register(obj.transform.position);
+        }
+    }
+
+    private bool IsValidFrontlineRegister(Vector3 pos)
+    {
+        float dist = Vector3.SqrMagnitude(pos - transform.position);
+        float targetDist = Vector3.SqrMagnitude(Target.transform.position - transform.position);
+        return dist < targetDist;
     }
 
     private void Unit_OnKill(Unit arg1, IWeapon arg2, Projectile arg3, IDamagable arg4)
@@ -254,7 +264,10 @@ public class Commander : MonoBehaviour, ITeamComponent
             if (killedUnit)
             {
                 Earn(killedUnit.Info.Value);
-                Frontline.Register(component.transform.position);
+                if (IsValidFrontlineRegister(component.transform.position))
+                {
+                    Frontline.Register(component.transform.position);
+                }
             }
         }
     }

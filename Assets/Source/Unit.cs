@@ -12,7 +12,6 @@ public class Unit : MonoBehaviour, IPurchasable
     public string Name => Info.Name;
     public string Description => Info.Description;
     public Sprite Sprite => null;
-    public int Cost => Info.Cost;
     public Health Health;
 
     [SerializeField] private GameObject[] _weapons;
@@ -23,6 +22,25 @@ public class Unit : MonoBehaviour, IPurchasable
     private float _lastEngageTime;
 
     public bool IsEngaged => _lastEngageTime + ENGAGE_TIME > Time.time;
+
+    public int BaseCost => Info.Cost;
+
+    public int GetCost (Commander commander)
+    {
+        int cost = Info.Cost;
+        IUnitCostModifier[] modifiers = GetComponents<IUnitCostModifier>();
+        foreach (var modifier in modifiers)
+        {
+            cost = modifier.Modify(cost, this, commander);
+        }
+        return cost;
+    }
+
+    public bool CanPurchase(Commander commander)
+    {
+        IUnitPurchasePredicate[] predicates = GetComponents<IUnitPurchasePredicate>();
+        return predicates.All(x => x.CanPurchase(this, commander));
+    }
 
     public IEnumerable<IWeapon> GetWeapons ()
     {

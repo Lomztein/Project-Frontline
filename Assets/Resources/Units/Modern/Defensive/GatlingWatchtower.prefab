@@ -296,8 +296,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad85e42caa7afe45bb1b2c60e93b67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 10
-  Firerate: 20
+  Damage: 5
+  Firerate: 30
   DamageType: 6
   Speed: 500
   Range: 150
@@ -312,7 +312,7 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 4353457072589820952, guid: 96bcadc2b022995429899a109d1414a4,
     type: 3}
   Muzzle: {fileID: 2294313490951480653}
-  Inaccuracy: 0.75
+  Inaccuracy: 0.5
   SpeedVariance: 0
   MaxChargeTime: 0.3
   CurrentChargeTime: 0
@@ -1172,10 +1172,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1256509098192466957, guid: 8c9aeb8aedbb1694485fcc7673507336,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7809682395510456236}
-    - targetCorrespondingSourceObject: {fileID: 1256509098192466957, guid: 8c9aeb8aedbb1694485fcc7673507336,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 3098977898190338878}
   m_SourcePrefab: {fileID: 100100000, guid: 8c9aeb8aedbb1694485fcc7673507336, type: 3}
 --- !u!4 &455416363573266304 stripped
@@ -1212,21 +1208,7 @@ MonoBehaviour:
   AimTolerance: 60
   LeadTarget: 1
   TargetSearchFrequency: 2
-  Modifiers:
-  - {fileID: 7809682395510456236}
---- !u!114 &7809682395510456236
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3604651880949064601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 513598aae73d30a4e85e41647bc66d29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AppendLayerMask: 1
+  Modifiers: []
 --- !u!114 &3098977898190338878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1248,6 +1230,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 431688219}
     m_Modifications:
+    - target: {fileID: 414155188863852351, guid: 8714b8964d88e5d429afaee7d1feef27,
+        type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 3101050678785442528, guid: 8714b8964d88e5d429afaee7d1feef27,
         type: 3}
       propertyPath: m_Name

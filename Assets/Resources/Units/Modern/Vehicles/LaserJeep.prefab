@@ -174,11 +174,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SoundPriority: 128
+  Source: {fileID: 4703154011622260600}
   Clip: {fileID: 8300000, guid: 4992b708889951f418fca359a61d4f4c, type: 3}
+  RandomClips: []
   VolumeScale: 1
   PitchVariance: 0.1
-  Source: {fileID: 4703154011622260600}
-  Looping: 0
+  LimiterKey: {fileID: 0}
 --- !u!1001 &5387023453085635325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -421,6 +422,30 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  PitchOverCharge:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   AudioTriggerThresholdMinMax: {x: 0.1, y: 1}
 --- !u!82 &5458173325288709502
 AudioSource:
@@ -536,7 +561,7 @@ PrefabInstance:
     - target: {fileID: -2477253026524029928, guid: 8cde096bc4044aa43969fa0883258089,
         type: 3}
       propertyPath: MaxHealth
-      value: 200
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 2421092486902088640, guid: 8cde096bc4044aa43969fa0883258089,
         type: 3}

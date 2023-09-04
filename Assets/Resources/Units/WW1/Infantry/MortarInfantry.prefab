@@ -47,8 +47,8 @@ MonoBehaviour:
   Base: {fileID: 3133217015442543146}
   Muzzle: {fileID: 0}
   Animator: {fileID: 4704740076902648598}
-  HorAimName: AimY
-  VerAimName: AimX
+  HorAimName: AimHorizontal
+  VerAimName: AimVertical
   HorMinMax: {x: -180, y: 180}
   VerMinMax: {x: -75, y: 75}
   HorSpeed: 180
@@ -966,8 +966,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Animator: {fileID: 4704740076902648598}
   Body: {fileID: 4707429137107192341}
-  SpeedMultiplier: 1
-  WeaponPoseType: 0
+  WeaponObject: {fileID: 0}
+  Muzzle: {fileID: 0}
+  WeaponRecoil: 0
+  Health: {fileID: 0}
+  RecoilDampening: 0
 --- !u!114 &7745338551259214549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -984,6 +987,8 @@ MonoBehaviour:
   Root: {fileID: 6365057502642190576}
   Ragdoll: {fileID: 1204055471582396241}
   RagdollRoot: {fileID: 1705374389667516780}
+  RootCollider: {fileID: 0}
+  Sturdyness: 0
 --- !u!114 &7908796572189254066
 MonoBehaviour:
   m_ObjectHideFlags: 0

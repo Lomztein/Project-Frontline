@@ -28,13 +28,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7240418504889472326}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 340093099040309028}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7240418504889472322
 MonoBehaviour:
@@ -55,10 +56,10 @@ MonoBehaviour:
       armor plates for the infantry. Adds a 20% chance for infantry to spawn with
       a 100 health light armor plate.
     Tags: []
-    Cost: 3000
-    Value: 300
+    Cost: 5000
+    Value: 500
     UnitRole: 1
-    UnitTier: 1
+    UnitTier: 2
     UnitType: 4
   Health: {fileID: 0}
   _weapons: []
@@ -88,9 +89,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7240418504889472326}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 8.8, y: 4.1594334, z: 14.91}
   m_Center: {x: 0, y: 2.1497169, z: 0}
 --- !u!114 &1659341977344805364
@@ -135,6 +144,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 7240418504889472333}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
@@ -170,12 +180,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.17
+      value: -2.33
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.00000058114523
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
         type: 3}
@@ -185,7 +195,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0.000003561377
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
         type: 3}
@@ -200,7 +210,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 360
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7096990e89c5108478d1fbdbd8f39cb9,
         type: 3}
@@ -218,6 +228,9 @@ PrefabInstance:
       value: TungstenMine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7096990e89c5108478d1fbdbd8f39cb9, type: 3}
 --- !u!4 &340093099040309028 stripped
 Transform:

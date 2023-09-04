@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 768130308140545992}
   - component: {fileID: 9184175481159873814}
   - component: {fileID: 3143754761335416089}
+  - component: {fileID: -2986802625149236299}
   m_Layer: 0
   m_Name: Miner
   m_TagString: StructureUnit
@@ -55,7 +56,8 @@ MonoBehaviour:
     Identifier: 
     Name: Miner
     Description: Mines whatever ground you're fighting on, and generates 10 credits
-      per second, forever and ever, well untill it is destroyed of course.
+      per second, forever and ever, well untill it is destroyed of course. Becomes
+      exponentially more expensive the more you have.
     Tags:
     - Economy
     - Siege
@@ -150,6 +152,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &-2986802625149236299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 824351823039844084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a27e69367be9c024a88b22bdb68b40a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Coeffecient: 1.25
 --- !u!1 &4981892804719246189
 GameObject:
   m_ObjectHideFlags: 0

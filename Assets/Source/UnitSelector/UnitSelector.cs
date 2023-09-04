@@ -96,8 +96,8 @@ public class UnitSelector : MonoBehaviour
 
     private string GetCostGroup (Unit unit, int groupRange)
     {
-        int start = Mathf.FloorToInt(unit.Cost / (float)groupRange) * groupRange;
-        int end = Mathf.CeilToInt(unit.Cost / (float)groupRange) * groupRange;
+        int start = Mathf.FloorToInt(unit.BaseCost / (float)groupRange) * groupRange;
+        int end = Mathf.CeilToInt(unit.BaseCost / (float)groupRange) * groupRange;
         return $"{start} - {end}";
     }
 

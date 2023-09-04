@@ -12,7 +12,7 @@ public static class UnitTooltip
     public static GameObject Create(Unit unit)
     {
         GameObject newTooltip = Object.Instantiate(Resources.Load<GameObject>(RESOURCE_PATH));
-        newTooltip.transform.Find("Name").GetComponentInChildren<Text>().text = unit.Name + " - " + unit.Cost + "$";
+        newTooltip.transform.Find("Name").GetComponentInChildren<Text>().text = unit.Name + " - " + unit.GetCost(MatchController.PlayerCommander) + "$";
         newTooltip.transform.Find("Description").GetComponentInChildren<Text>().text = unit.Description;
         string weaponInfo = WeaponInfoToString(unit);
         if (string.IsNullOrEmpty(weaponInfo))

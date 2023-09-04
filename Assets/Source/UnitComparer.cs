@@ -10,7 +10,7 @@ public class UnitComparer : IComparer<GameObject>
         Unit rhsu = y.GetComponent<Unit>();
 
         if (lhsu.Info.UnitTier == rhsu.Info.UnitTier)
-            return lhsu.Cost - rhsu.Cost;
+            return lhsu.BaseCost - rhsu.BaseCost;
         return lhsu.Info.UnitTier - rhsu.Info.UnitTier;
     }
 }

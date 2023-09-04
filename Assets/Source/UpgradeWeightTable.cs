@@ -8,6 +8,7 @@ public class UpgradeWeightTable : UnitWeightTable
 {
     public float UnitsPerUpgradeStructure = 3;
     public int DesiredMargin = 5;
+    public int DesiredOffset = 1;
     public float NonUpgradeWeight;
 
     public override Dictionary<GameObject, float> GenerateWeights(IEnumerable<GameObject> options)
@@ -21,7 +22,7 @@ public class UpgradeWeightTable : UnitWeightTable
                 int affectedCount = upgraders.Sum(y => Commander.AlivePlaced.Count(x => y.CanUpgrade(GetProducedUnitIfFactory(x.gameObject))));
                 int currentCount = upgraders.Sum(y => Commander.AlivePlaced.Count(x => x.Info.Name == y.GetComponent<Unit>().Name));
 
-                float val = CalculateDesire(currentCount, affectedCount, 1f / UnitsPerUpgradeStructure, DesiredMargin, DesiredMargin);
+                float val = CalculateDesire(currentCount, affectedCount, 1f / UnitsPerUpgradeStructure, DesiredMargin, DesiredOffset);
                 weights.Add(option, val);
             }
             else

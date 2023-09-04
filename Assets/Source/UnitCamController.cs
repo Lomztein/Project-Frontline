@@ -31,7 +31,7 @@ public class UnitCamController : MonoBehaviour
     {
         { EvaluatorFunction.Constant, (x) => 1f },
         { EvaluatorFunction.Power, (x) => x.Health.MaxHealth * x.GetWeapons().Sum(y => y.GetDPS()) },
-        { EvaluatorFunction.Cost, (x) => x.Cost },
+        { EvaluatorFunction.Cost, (x) => x.BaseCost },
         { EvaluatorFunction.Health, (x) => x.Health.MaxHealth },
         { EvaluatorFunction.DPS, (x) =>  x.GetWeapons().Sum(y => y.GetDPS()) },
         { EvaluatorFunction.Tier, (x) => (int)x.Info.UnitTier }

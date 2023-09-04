@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Util
 {
@@ -97,6 +98,43 @@ namespace Util
             Vector3 perp = Vector3.Cross(velocity, Vector3.up);
             Vector3 refl = Vector3.Reflect(velocity, perp);
             return refl / magnitude * force * -1f;
+        }
+
+        public static Texture2D TrimTransparent(Texture2D tex)
+        {
+            int x = tex.width;
+            int y = tex.height;
+            int w = 0;
+            int h = 0;
+            for (int yy = 0; yy < tex.height; yy++)
+            {
+                for (int xx = 0; xx < tex.width; xx++)
+                {
+                    Color col = tex.GetPixel(xx, yy);
+                    if (col.a > 0.01f)
+                    {
+                        x = Mathf.Min(x, xx);
+                        y = Mathf.Min(y, yy);
+                        w = Mathf.Max(w, xx);
+                        h = Mathf.Max(h, yy);
+                    }
+                }
+            }
+
+            w -= x;
+            h -= y;
+
+            try
+            {
+                Texture2D newTex = new Texture2D(w, h);
+                newTex.SetPixels(tex.GetPixels(x, y, w, h));
+                newTex.Apply();
+                return newTex;
+            } catch (Exception ex)
+            {
+                Debug.LogError(ex);
+                return tex;
+            }
         }
 
         public static string GetPath(this Transform transform)
@@ -194,13 +232,21 @@ namespace Util
             foreach (var filter in filters)
             {
                 var mesh = filter.sharedMesh;
-                if (mesh != null)
+                if (mesh.isReadable)
                 {
-                    foreach (var vert in mesh.vertices)
+                    if (mesh != null)
                     {
-                        Vector3 worldPos = filter.transform.TransformPoint(vert);
-                        bounds.Encapsulate(worldPos);
+                        foreach (var vert in mesh.vertices)
+                        {
+                            Vector3 worldPos = filter.transform.TransformPoint(vert);
+                            bounds.Encapsulate(worldPos);
+                        }
                     }
+                }
+                else
+                {
+                    Bounds worldBounds = new Bounds(filter.transform.TransformPoint(mesh.bounds.center), filter.transform.TransformVector(mesh.bounds.size));
+                    bounds.Encapsulate(worldBounds);
                 }
             }
 
