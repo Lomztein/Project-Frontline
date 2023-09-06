@@ -3,16 +3,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Windows;
+using Util;
 
 public class FirstPersonWeaponsController : MonoBehaviour, ITeamComponent
 {
     public GameObject[] WeaponSlots;
     public IWeapon[] Weapons;
+    public WeaponInfo[] WeaponsInfo;
     public GameObject[] WeaponPrefabs;
 
     public StarterAssetsInputs Inputs;
     private TeamInfo _team;
     private LayerMask _targetLayer;
+
+    [SerializeReference, SR]
+    public WeaponAimBehaviour DefaultAimBehaviour;
+
+    public int WeaponLayer;
+    public AnimationCurve AimCurve;
+    public float AimTime;
+    private float _aimFactor;
 
     private void Awake()
     {
@@ -33,9 +43,11 @@ public class FirstPersonWeaponsController : MonoBehaviour, ITeamComponent
         newWeapon.transform.localPosition = Vector3.zero;
         newWeapon.transform.localRotation = Quaternion.identity;
         newWeapon.transform.localScale = Vector3.one;
+        newWeapon.transform.SetLayerRecursively(WeaponLayer);
         Destroy(newWeapon.GetComponent<InfantryWeaponTurret>());
 
         Weapons[index] = newWeapon.GetComponent<IWeapon>();
+        WeaponsInfo[index] = newWeapon.GetComponent<WeaponInfo>();
     }
 
     private void FixedUpdate()
@@ -65,11 +77,27 @@ public class FirstPersonWeaponsController : MonoBehaviour, ITeamComponent
                 Weapons[i].TryFire(target);
             }
         }
+
+        if (Weapons.Length == 1)
+        {
+            WeaponAimBehaviour behaviour = DefaultAimBehaviour;
+            if (WeaponsInfo[0] && WeaponsInfo[0].AimBehaviour != null) behaviour = WeaponsInfo[0].AimBehaviour;
+
+            if (fire[1])
+                _aimFactor += Time.fixedDeltaTime / AimTime;
+            else
+                _aimFactor -= Time.fixedDeltaTime / AimTime;
+            _aimFactor = Mathf.Clamp01(_aimFactor);
+
+            float t = AimCurve.Evaluate(_aimFactor);
+            behaviour.SetAim(Weapons[0], t);
+        }
     }
 
     public void UpdateWeapons ()
     {
         Weapons = new IWeapon[WeaponPrefabs.Length];
+        WeaponsInfo = new WeaponInfo[WeaponPrefabs.Length];
         int min = Mathf.Min(Weapons.Length, WeaponSlots.Length);
         for (int i = 0; i < min; i++)
         {

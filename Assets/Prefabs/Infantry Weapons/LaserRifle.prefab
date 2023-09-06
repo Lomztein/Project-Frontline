@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 2113747557630348015}
   - component: {fileID: 447248660493512936}
   - component: {fileID: 4066578688189285990}
+  - component: {fileID: -8612198047796639146}
   m_Layer: 0
   m_Name: LaserRifle
   m_TagString: Untagged
@@ -115,10 +116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d00108eea1266a4da21e65c40f2f089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorTurret: {fileID: 0}
   Transform: {fileID: 3096803106132140142}
   Pivot: {fileID: 0}
-  Muzzle: {fileID: 5249515491474744627}
 --- !u!114 &4066578688189285990
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -160,6 +159,56 @@ MonoBehaviour:
     m_RotationOrder: 4
   LerpRate: 10
   GlowTimeAfterFiring: 0
+--- !u!114 &-8612198047796639146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2232451067797077236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: 
+  Description: 
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: 4802883546229506064
+  references:
+    version: 2
+    RefIds:
+    - rid: 4802883546229506064
+      type: {class: ADSWeaponAimBehaviour, ns: , asm: Assembly-CSharp}
+      data:
+        ZoomFactor: 2
+        ZoomWeaponCam: 0
+        ZoomCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 1
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 1
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        ADSLocalPosition: {x: -0.321, y: 0.015, z: 0}
 --- !u!1001 &148180124947277139
 PrefabInstance:
   m_ObjectHideFlags: 0

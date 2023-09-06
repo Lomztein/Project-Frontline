@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1883070552863379925}
   - component: {fileID: 91051442625817554}
   - component: {fileID: 8799927393517006700}
+  - component: {fileID: 8707579251574852552}
   m_Layer: 0
   m_Name: WW1MachineGun
   m_TagString: Untagged
@@ -78,10 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d00108eea1266a4da21e65c40f2f089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorTurret: {fileID: 0}
   Transform: {fileID: 3282427591953660756}
   Pivot: {fileID: 0}
-  Muzzle: {fileID: 7101711519655933215}
 --- !u!82 &8799927393517006700
 AudioSource:
   m_ObjectHideFlags: 0
@@ -178,6 +177,55 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8707579251574852552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841069477840545742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Machine Gun
+  Description: Single-person machine gun capable of laying down heavy fire.
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: 4802883546229506062
+  references:
+    version: 2
+    RefIds:
+    - rid: 4802883546229506062
+      type: {class: ADSWeaponAimBehaviour, ns: , asm: Assembly-CSharp}
+      data:
+        ZoomFactor: 2
+        ZoomCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 1
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 1
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
+        ADSLocalPosition: {x: -0.321, y: 0.05, z: -0.02}
 --- !u!1001 &3107274063539411674
 PrefabInstance:
   m_ObjectHideFlags: 0

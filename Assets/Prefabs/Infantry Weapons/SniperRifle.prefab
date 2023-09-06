@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7833541547398106274}
   - component: {fileID: 6564507423595341347}
   - component: {fileID: 4645648582232546340}
+  - component: {fileID: 1792425286019150519}
   m_Layer: 0
   m_Name: SniperRifle
   m_TagString: Untagged
@@ -77,10 +78,58 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d00108eea1266a4da21e65c40f2f089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorTurret: {fileID: 0}
   Transform: {fileID: 7833541547398106274}
   Pivot: {fileID: 0}
-  Muzzle: {fileID: 3856409644240742766}
+--- !u!114 &1792425286019150519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6392605580313546808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Sniper Rifle
+  Description: High-caliber rifle equipped with a scope that allows incredible accuracy
+    from long range.
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: 4802883546229506068
+  references:
+    version: 2
+    RefIds:
+    - rid: 4802883546229506068
+      type: {class: ZoomWeaponAimBehaviour, ns: , asm: Assembly-CSharp}
+      data:
+        ZoomFactor: 6
+        ZoomWeaponCam: 1
+        ZoomCurve:
+          serializedVersion: 2
+          m_Curve:
+          - serializedVersion: 3
+            time: 0
+            value: 0
+            inSlope: 0
+            outSlope: 1
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          - serializedVersion: 3
+            time: 1
+            value: 1
+            inSlope: 1
+            outSlope: 0
+            tangentMode: 0
+            weightedMode: 0
+            inWeight: 0
+            outWeight: 0
+          m_PreInfinity: 2
+          m_PostInfinity: 2
+          m_RotationOrder: 4
 --- !u!1001 &7795338650094890930
 PrefabInstance:
   m_ObjectHideFlags: 0

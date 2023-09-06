@@ -44,6 +44,15 @@ namespace Util
             return model;
         }
 
+        public static void SetLayerRecursively(this Transform transform, int layer)
+        {
+            transform.gameObject.layer = layer;
+            foreach (Transform child in transform)
+            {
+                SetLayerRecursively(child, layer);
+            }
+        }
+
         public static IEnumerator WaitForFixedSeconds(float seconds)
         {
             int frames = Mathf.RoundToInt(seconds / Time.fixedDeltaTime);

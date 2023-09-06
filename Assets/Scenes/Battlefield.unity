@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.43667564, g: 0.48427135, b: 0.56452316, a: 1}
+  m_IndirectSpecularColor: {r: 0.4366756, g: 0.48427194, b: 0.5645252, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1014,6 +1014,7 @@ MonoBehaviour:
   WeaponUIParent: {fileID: 547512901}
   WeaponUIPrefab: {fileID: 2058814418990721008, guid: c2bc52835580c014ea878db87e152499,
     type: 3}
+  TargetingImage: {fileID: 1258538938}
 --- !u!1001 &223974226
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1710,6 +1711,8 @@ MonoBehaviour:
   Controller: {fileID: 300557914}
   FirstPersonControllerPrefab: {fileID: 7697509625687326418, guid: 73f8e40bb69da4c42a9fc0bf97762a11,
     type: 3}
+  MainPosessedCamera: {fileID: 0}
+  WeaponPosessedCamera: {fileID: 0}
 --- !u!4 &300557916
 Transform:
   m_ObjectHideFlags: 0

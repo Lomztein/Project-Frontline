@@ -166,6 +166,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6870369824164450125, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: Turrets.Array.data[1]
+      value: 
+      objectReference: {fileID: 6113465866922393171}
     - target: {fileID: 8299666086444987988, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: m_IsKinematic
@@ -378,18 +383,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 891849302261524063}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4175476766926610766 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3860211362352645905, guid: 50378c4ca65714b4ebd2928ade59a707,
-    type: 3}
-  m_PrefabInstance: {fileID: 891849302261524063}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d806c437be696f248a15879293c2c7dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &9173316093531560376 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8299666088126906343, guid: 50378c4ca65714b4ebd2928ade59a707,
@@ -459,11 +452,6 @@ PrefabInstance:
       propertyPath: Fulcrum
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 4645648582232546340, guid: fc56745a5ba27c746a99d9bc63bd2a83,
-        type: 3}
-      propertyPath: AnimatorTurret
-      value: 
-      objectReference: {fileID: 4175476766926610766}
     - target: {fileID: 5747528794745267017, guid: fc56745a5ba27c746a99d9bc63bd2a83,
         type: 3}
       propertyPath: Clip

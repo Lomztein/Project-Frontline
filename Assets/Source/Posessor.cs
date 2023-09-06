@@ -9,6 +9,13 @@ using UnityTemplateProjects;
 
 public class Posessor : MonoBehaviour
 {
+    public static Posessor Instance { get; private set; }
+
+    public static float ThirdPersonBaseFoV = 60f;
+    public static float FirstPersonBaseFoV = 90f;
+    public static float CameraBaseSensivity = 1f;
+    public static float CameraSensitivity = 1f;
+
     private GameObject _currentPosessed;
     private GameObject _currentFirstPersonController;
 
@@ -26,9 +33,13 @@ public class Posessor : MonoBehaviour
     public event Action<GameObject> OnPosess;
     public event Action<GameObject> OnRelease;
 
+    public Camera MainPosessedCamera;
+    public Camera WeaponPosessedCamera;
+
     private void Awake()
     {
         _followCamera = CameraController.GetComponent<Camera>();
+        Instance = this;
     }
 
     public void Posess (GameObject target)
@@ -74,6 +85,8 @@ public class Posessor : MonoBehaviour
         Array.ForEach(unit.GetWeapons().ToArray(), x => x.OnDamageDone += Weapon_OnDamageDone);
         Controller.Control(target);
 
+        MainPosessedCamera = _followCamera;
+
         _currentPosessed.GetComponentInChildren<IController>().Enabled = false;
         return true;
     }
@@ -100,12 +113,16 @@ public class Posessor : MonoBehaviour
             fpc.SprintSpeed = inf.MaxSpeed * 1.25f;
 
             FirstPersonWeaponsController fpw = _currentFirstPersonController.GetComponentInChildren<FirstPersonWeaponsController>();
+            controller.Team.ApplyTeam(_currentFirstPersonController);
+
+            MainPosessedCamera = fpc.Camera;
+            WeaponPosessedCamera = fpc.WeaponsCamera;
+
             fpw.WeaponPrefabs = controller.WeaponObjects.ToArray();
             fpw.UpdateWeapons();
 
             Array.ForEach(fpw.Weapons, x => x.OnDamageDone += Weapon_OnDamageDone);
 
-            controller.Team.ApplyTeam(_currentFirstPersonController);
             _currentPosessed = target;
 
             return true;
@@ -117,7 +134,7 @@ public class Posessor : MonoBehaviour
     {
         FirstPersonController fpc = health.GetComponentInParent<FirstPersonController>();
         fpc.Camera.transform.SetParent(null);
-        Destroy(fpc.Camera, 3f);
+        Destroy(fpc.Camera.gameObject, 3f);
         Reset();
     }
 
@@ -225,6 +242,10 @@ public class Posessor : MonoBehaviour
                 controller.Enabled = true;
             }
         }
+
+        MainPosessedCamera = null;
+        WeaponPosessedCamera = null;
+        PosessorUI.Instance.TargetingImage.color = Color.white;
 
         MainCamera.SetActive(true);
         _followCamera.gameObject.SetActive(false);

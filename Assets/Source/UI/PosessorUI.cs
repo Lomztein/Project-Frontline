@@ -8,6 +8,8 @@ using Util;
 
 public class PosessorUI : MonoBehaviour
 {
+    public static PosessorUI Instance;
+
     public Posessor Posessor;
 
     public GameObject PosessedUnit;
@@ -16,6 +18,12 @@ public class PosessorUI : MonoBehaviour
     public Slider HealthSlider;
     public Transform WeaponUIParent;
     public GameObject WeaponUIPrefab;
+    public Image TargetingImage;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     private void Start()
     {
@@ -85,9 +93,9 @@ public class PosessorUI : MonoBehaviour
                 Texture2D tex;
                 if (comp.TryGetComponent(out WeaponInfo info))
                 {
-                    if (info.Root)
+                    if (info.Model)
                     {
-                        tex = Iconography.GenerateIcon(info.Root, Quaternion.Euler(0f, 90f, 0f), 512);
+                        tex = Iconography.GenerateIcon(info.Model, Quaternion.Euler(0f, 90f, 0f), 512);
                     }
                     else
                     {
