@@ -21,6 +21,8 @@ public class WeaponGroup : MonoBehaviour, IWeapon
     public event Action<IWeapon, Projectile> OnProjectile;
     public event Action<IWeapon, Projectile, Collider, Vector3, Vector3> OnHit;
     public event Action<IWeapon, Projectile, IDamagable> OnKill;
+    public event Action<IWeapon, Projectile, IDamagable, DamageInfo> OnDoDamage;
+    public event Action<IWeapon, Projectile, IDamagable, DamageInfo> OnDamageDone;
 
     public enum CanFireBehaviour { First, Any, All }
     public CanFireBehaviour CanFireWhen;
@@ -42,7 +44,19 @@ public class WeaponGroup : MonoBehaviour, IWeapon
             weapon.OnProjectile += Weapon_OnProjectile;
             weapon.OnHit += Weapon_OnHit;
             weapon.OnKill += Weapon_OnKill;
+            weapon.OnDoDamage += Weapon_OnDoDamage;
+            weapon.OnDamageDone += Weapon_OnDamageDone;
         }
+    }
+
+    private void Weapon_OnDamageDone(IWeapon arg1, Projectile proj, IDamagable arg2, DamageInfo arg3)
+    {
+        OnDamageDone?.Invoke(arg1, proj, arg2, arg3);
+    }
+
+    private void Weapon_OnDoDamage(IWeapon arg1, Projectile proj, IDamagable arg2, DamageInfo arg3)
+    {
+        OnDoDamage?.Invoke(arg1, proj, arg2, arg3);
     }
 
     private void Weapon_OnKill(IWeapon arg1, Projectile arg2, IDamagable arg3)

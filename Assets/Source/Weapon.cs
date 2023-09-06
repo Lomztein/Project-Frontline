@@ -44,6 +44,8 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
     public event Action<IWeapon, Projectile> OnProjectile;
     public event Action<IWeapon, Projectile, Collider, Vector3, Vector3> OnHit;
     public event Action<IWeapon, Projectile, IDamagable> OnKill;
+    public event Action<IWeapon, Projectile, IDamagable, DamageInfo> OnDoDamage;
+    public event Action<IWeapon, Projectile, IDamagable, DamageInfo> OnDamageDone;
 
     private void Start()
     {
@@ -117,11 +119,23 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
             projectile.OnHit += Projectile_OnHit;
             projectile.OnKill += Projectile_OnKill;
             projectile.OnEnd += Projectile_OnEnd;
+            projectile.OnDoDamage += Projectile_OnDoDamage;
+            projectile.OnDamageDone += Projectile_OnDamageDone;
 
             OnProjectile?.Invoke(this, projectile);
         }
 
         OnFire?.Invoke(this);
+    }
+
+    private void Projectile_OnDamageDone(Projectile arg1, IDamagable arg2, DamageInfo arg3)
+    {
+        OnDamageDone?.Invoke(this, arg1, arg2, arg3);
+    }
+
+    private void Projectile_OnDoDamage(Projectile arg1, IDamagable arg2, DamageInfo arg3)
+    {
+        OnDoDamage?.Invoke(this, arg1, arg2, arg3);
     }
 
     private Vector2 GetProjectileInaccuracy()
@@ -139,6 +153,8 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
         projectile.OnHit -= Projectile_OnHit;
         projectile.OnKill -= Projectile_OnKill;
         projectile.OnEnd -= Projectile_OnEnd;
+        projectile.OnDoDamage -= Projectile_OnDoDamage;
+        projectile.OnDamageDone -= Projectile_OnDamageDone;
     }
 
     private void Projectile_OnKill(Projectile projectile, IDamagable damagable)

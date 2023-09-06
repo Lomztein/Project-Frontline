@@ -16,7 +16,6 @@ public class FirstPersonWeaponsController : MonoBehaviour, ITeamComponent
 
     private void Awake()
     {
-        Weapons = new IWeapon[WeaponSlots.Length];
         UpdateWeapons();
     }
 
@@ -46,7 +45,8 @@ public class FirstPersonWeaponsController : MonoBehaviour, ITeamComponent
             Inputs.PrimaryFire, Inputs.SecondaryFire,
         };
 
-        for (int i = 0; i < fire.Length; i++)
+        float len = Mathf.Min(fire.Length, Weapons.Length);
+        for (int i = 0; i < len; i++)
         {
             if (Weapons[i] != null && fire[i])
             {
@@ -69,7 +69,8 @@ public class FirstPersonWeaponsController : MonoBehaviour, ITeamComponent
 
     public void UpdateWeapons ()
     {
-        int min = Mathf.Min(Weapons.Length, WeaponPrefabs.Length, Weapons.Length);
+        Weapons = new IWeapon[WeaponPrefabs.Length];
+        int min = Mathf.Min(Weapons.Length, WeaponSlots.Length);
         for (int i = 0; i < min; i++)
         {
             if (WeaponPrefabs[i])

@@ -98,6 +98,32 @@ public class DeployWeapon : MonoBehaviour, IWeapon, ITurret, IEmplacable
         }
     }
 
+    public event Action<IWeapon, Projectile, IDamagable, DamageInfo> OnDoDamage
+    {
+        add
+        {
+            ChildWeapon.OnDoDamage += value;
+        }
+
+        remove
+        {
+            ChildWeapon.OnDoDamage -= value;
+        }
+    }
+
+    public event Action<IWeapon, Projectile, IDamagable, DamageInfo> OnDamageDone
+    {
+        add
+        {
+            ChildWeapon.OnDamageDone += value;
+        }
+
+        remove
+        {
+            ChildWeapon.OnDamageDone -= value;
+        }
+    }
+
     public Transform DeployParent;
     public Vector3 DeployLocalPosition;
     public Vector3 DeployLocalRotation;

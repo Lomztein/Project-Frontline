@@ -26,6 +26,7 @@ public class Projectile : MonoBehaviour, IPoolObject
     public event Action<Projectile, Vector3> OnFired; // The projectile is fired
     public event Action<Projectile, Collider, Vector3, Vector3> OnHit; // The projectile hits something directly
     public event Action<Projectile, IDamagable, DamageInfo> OnDoDamage; // The projectile does damage to something
+    public event Action<Projectile, IDamagable, DamageInfo> OnDamageDone; // The projectile is done doing damage to something
     public event Action<Projectile, IDamagable> OnKill; // The projectile kills something
     public event Action<Projectile> OnEnd; // The projectile is finished and stored for reuse
 
@@ -61,11 +62,12 @@ public class Projectile : MonoBehaviour, IPoolObject
         if (damagable != null)
         {
             var info = new DamageInfo(damage, type, point, direction);
+            OnDoDamage?.Invoke(this, damagable, info);
             if (damagable.TakeDamage(info) <= 0f && info.KilledTarget)
             {
                 OnKill?.Invoke(this, damagable);
             }
-            OnDoDamage?.Invoke(this, damagable, info);
+            OnDamageDone?.Invoke(this, damagable, info);
         }
     }
 

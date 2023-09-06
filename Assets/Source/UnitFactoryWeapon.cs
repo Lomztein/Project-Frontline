@@ -45,6 +45,8 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
     public event Action<IWeapon, Projectile> OnProjectile;
     public event Action<IWeapon, Projectile, Collider, Vector3, Vector3> OnHit;
     public event Action<IWeapon, Projectile, IDamagable> OnKill;
+    public event Action<IWeapon, Projectile, IDamagable, DamageInfo> OnDoDamage;
+    public event Action<IWeapon, Projectile, IDamagable, DamageInfo> OnDamageDone;
 
     private GameObject SelectUnitPrefab ()
     {

@@ -26,7 +26,8 @@ public class ProjectileExplodeOnEnd : MonoBehaviour
                 IDamagable health = collider.GetComponentInParent<IDamagable>();
                 if (health != null)
                 {
-                    Projectile.DoDamage(health, ExplosionDamage, ExplosionDamageType, transform.position, (collider.transform.position - transform.position).normalized);
+                    Vector3 hitPoint = collider.ClosestPoint(point);
+                    Projectile.DoDamage(health, ExplosionDamage, ExplosionDamageType, hitPoint, (collider.transform.position - transform.position).normalized);
                 }
             } 
         }

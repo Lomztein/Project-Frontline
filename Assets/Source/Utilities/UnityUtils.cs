@@ -16,6 +16,17 @@ namespace Util
         public const float DEFAULT_FIXED_DELTA_TIME = 0.02f;
         public static float FixedDeltaTimeFactor => Time.fixedDeltaTime / DEFAULT_FIXED_DELTA_TIME;
 
+        public const string MAIN_CANVAS_NAME = "MainCanvas";
+        public static Canvas MainCanvas => GetMainCanvas();
+        private static Canvas _mainCanvas;
+
+        private static Canvas GetMainCanvas()
+        {
+            if (_mainCanvas == null || !_mainCanvas.isActiveAndEnabled)
+                _mainCanvas = GameObject.Find(MAIN_CANVAS_NAME).GetComponent<Canvas>();
+            return _mainCanvas;
+        }
+
         public static GameObject InstantiateMockGO (GameObject original)
         {
             // First create object and strip away all non-transform non-renderer components.

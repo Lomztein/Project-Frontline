@@ -20,6 +20,8 @@ public interface IWeapon
     event Action<IWeapon> OnFire;
     event Action<IWeapon, Projectile> OnProjectile;
     event Action<IWeapon, Projectile, Collider, Vector3, Vector3> OnHit;
+    event Action<IWeapon, Projectile, IDamagable, DamageInfo> OnDoDamage;
+    event Action<IWeapon, Projectile, IDamagable, DamageInfo> OnDamageDone;
     event Action<IWeapon, Projectile, IDamagable> OnKill;
 }
 

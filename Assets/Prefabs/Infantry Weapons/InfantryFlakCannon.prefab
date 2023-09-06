@@ -79,10 +79,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d00108eea1266a4da21e65c40f2f089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorTurret: {fileID: 0}
   Transform: {fileID: 1924133014072981696}
   Pivot: {fileID: 0}
-  Muzzle: {fileID: 1749505504352078789}
 --- !u!114 &8721965451783326238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -98,6 +96,7 @@ MonoBehaviour:
   Name: Bazooka
   Description: Launches fire-and-forget missiles that can track all but the fastest
     targets.
+  Root: {fileID: 0}
 --- !u!114 &1741113655589631114
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +135,7 @@ Transform:
   m_GameObject: {fileID: 5739219566226020873}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.19199997, z: 0.916}
+  m_LocalPosition: {x: 0, y: 0.156, z: 0.916}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -260,12 +259,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 967d4b212976c6a409029c6bf5456032,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 967d4b212976c6a409029c6bf5456032,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.191
+      value: 0.1550001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 967d4b212976c6a409029c6bf5456032,
         type: 3}

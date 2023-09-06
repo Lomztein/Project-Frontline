@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 using UnityTemplateProjects;
@@ -69,10 +70,17 @@ public class Posessor : MonoBehaviour
             Controller.Turrets.Add(controller.Turret);
         }
         Controller.Weapons.AddRange(controller.Weapons);
+        Unit unit = target.GetComponent<Unit>();
+        Array.ForEach(unit.GetWeapons().ToArray(), x => x.OnDamageDone += Weapon_OnDamageDone);
         Controller.Control(target);
 
         _currentPosessed.GetComponentInChildren<IController>().Enabled = false;
         return true;
+    }
+
+    private void Weapon_OnDamageDone(IWeapon arg1, Projectile arg2, IDamagable arg3, DamageInfo arg4)
+    {
+        Hitmarker.Create(arg4.Point, arg4.BaseDamage, arg4.DamageDone);
     }
 
     private bool TryPosessAsFirstPerson(GameObject target, AIController controller, InfantryBody inf)
@@ -94,6 +102,8 @@ public class Posessor : MonoBehaviour
             FirstPersonWeaponsController fpw = _currentFirstPersonController.GetComponentInChildren<FirstPersonWeaponsController>();
             fpw.WeaponPrefabs = controller.WeaponObjects.ToArray();
             fpw.UpdateWeapons();
+
+            Array.ForEach(fpw.Weapons, x => x.OnDamageDone += Weapon_OnDamageDone);
 
             controller.Team.ApplyTeam(_currentFirstPersonController);
             _currentPosessed = target;
@@ -199,14 +209,20 @@ public class Posessor : MonoBehaviour
                 _currentPosessed.transform.SetParent(_currentFirstPersonController.transform.parent);
                 Destroy(_currentFirstPersonController);
                 _currentFirstPersonController.transform.SetParent(null);
-                _currentFirstPersonController = null;
                 _currentPosessed.GetComponent<Health>().OnDeath -= DeathCam;
 
+                FirstPersonWeaponsController fpw = _currentFirstPersonController.GetComponentInChildren<FirstPersonWeaponsController>();
+                Array.ForEach(fpw.Weapons, x => x.OnDamageDone -= Weapon_OnDamageDone);
+
+                _currentFirstPersonController = null;
                 TryConvertFromFirstPerson(_currentPosessed, _currentPosessed.GetComponent<AIController>(), inf);
             }
             else
             {
-                _currentPosessed.GetComponentInChildren<IController>().Enabled = true;
+                AIController controller = _currentPosessed.GetComponentInChildren<AIController>();
+                Unit unit = _currentPosessed.GetComponent<Unit>();
+                Array.ForEach(unit.GetWeapons().ToArray(), x => x.OnDamageDone -= Weapon_OnDamageDone);
+                controller.Enabled = true;
             }
         }
 

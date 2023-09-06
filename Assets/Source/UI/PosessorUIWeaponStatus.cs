@@ -18,7 +18,6 @@ public class PosessorUIWeaponStatus : MonoBehaviour
         _fireTime = 0f;
         _rechaberedTime = 1f;
     }
-
     private void FixedUpdate()
     {
         ReloadBar.value = Mathf.InverseLerp(_fireTime, _rechaberedTime, Time.time);
