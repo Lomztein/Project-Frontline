@@ -38,6 +38,11 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
     float IWeapon.Firerate => Firerate;
     float IWeapon.Speed => Speed;
 
+    int IWeapon.Ammo => BurstAmmo == 1 ? 
+        (CanFire() ? 1 : 0)
+        : _currentBurstAmmo;
+    int IWeapon.MaxAmmo => BurstAmmo;
+
     DamageMatrix.Damage IWeapon.DamageType => DamageType;
 
     public event Action<IWeapon> OnFire;
@@ -49,6 +54,7 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
 
     private void Start()
     {
+        if (!IsChambered) Rechamber(1f / Firerate);
         _pool = ObjectPool.GetPool(ProjectilePrefab);
         _audioSource = GetComponent<AudioSource>();
         _currentBurstAmmo = BurstAmmo;
@@ -101,7 +107,8 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
             Quaternion rotation = Muzzle.transform.rotation * Quaternion.Euler (deviance.x, deviance.y, 0f);
             GameObject proj = _pool.GetObject(Muzzle.transform.position, rotation);
 
-            _team.ApplyTeam(proj);
+            if (_team)
+                _team.ApplyTeam(proj);
             proj.transform.position = Muzzle.transform.position;
             proj.transform.rotation = Muzzle.transform.rotation;
 
@@ -114,14 +121,13 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
             projectile.Speed = GetProjectileSpeed();
             projectile.Life = Range / projectile.Speed;
 
-            projectile.Fire(rotation * Vector3.forward);
-
             projectile.OnHit += Projectile_OnHit;
             projectile.OnKill += Projectile_OnKill;
             projectile.OnEnd += Projectile_OnEnd;
             projectile.OnDoDamage += Projectile_OnDoDamage;
             projectile.OnDamageDone += Projectile_OnDamageDone;
 
+            projectile.Fire(rotation * Vector3.forward);
             OnProjectile?.Invoke(this, projectile);
         }
 

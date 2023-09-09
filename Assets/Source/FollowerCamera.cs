@@ -7,10 +7,10 @@ using Util;
 public class FollowerCamera : MonoBehaviour
 {
     public Transform FollowObject;
-    public Vector3 BaseObjectSize;
 
-    public Vector3 PositionOffset;
-    public float AngleOffset = 15;
+    public float AngleToObject = 20;
+    public float DistanceMultiplier = 2f;
+    public float SizeMin = 4f;
 
     public float MouseSensitivity = 10f;
     public float PositionLerpSpeed;
@@ -20,6 +20,7 @@ public class FollowerCamera : MonoBehaviour
     private Vector3 _size;
     private Vector3 _colCenter;
     private Vector3 _center;
+    private Vector3 _targetPosition;
 
     private Collider _collider;
 
@@ -29,16 +30,22 @@ public class FollowerCamera : MonoBehaviour
         {
             Quaternion rot = Quaternion.Euler(_orbitLocalRotation);
 
-            Vector3 rotated = rot * GetBoundsOffset(PositionOffset);
-            Vector3 position = _center + rotated;
+            _targetPosition = _center + rot * ComputeLocalOffset();
+            transform.position = _targetPosition;
+            transform.rotation = rot;
 
-            float mult = BaseObjectSize.z > 0.01f ? _size.z / BaseObjectSize.z : 0f;
-
-            transform.position = position;
-            transform.rotation = rot * Quaternion.Euler(new Vector3(AngleOffset / mult, 0f, 0f));
-
-            _center = Vector3.Lerp(_center, _collider.transform.position + _colCenter, PositionLerpSpeed * Time.fixedDeltaTime);
+            _center = Vector3.Lerp(_center, _collider.transform.position + _collider.transform.rotation * _colCenter, PositionLerpSpeed * Time.fixedDeltaTime);
         }
+    }
+
+    private Vector3 ComputeLocalOffset()
+    {
+        float x = 0f;
+        float y = Mathf.Sin(AngleToObject * Mathf.Deg2Rad);
+        float z = Mathf.Cos(AngleToObject * Mathf.Deg2Rad);
+
+        float sizeMax = Mathf.Max(_size.x, _size.y, _size.z, SizeMin);
+        return new Vector3(x, y, -z) * DistanceMultiplier * sizeMax;
     }
 
     private void Update()
@@ -47,23 +54,16 @@ public class FollowerCamera : MonoBehaviour
         _orbitLocalRotation += input * MouseSensitivity * Time.unscaledDeltaTime;
 
         _orbitLocalRotation = new Vector3(
-            Mathf.Clamp(_orbitLocalRotation.x, -85f - AngleOffset, 85f - AngleOffset),
+            Mathf.Clamp(_orbitLocalRotation.x, -85f, 85f),
             _orbitLocalRotation.y,
             _orbitLocalRotation.z);
-    }
-
-    private Vector3 GetBoundsOffset(Vector3 offset)
-    {
-        float xFactor = BaseObjectSize.x > 0.01f ? _size.x / BaseObjectSize.x : 0f;
-        float yFactor = BaseObjectSize.y > 0.01f ? _size.y / BaseObjectSize.y : 0f;
-        float zFactor = BaseObjectSize.z > 0.01f ? _size.z / BaseObjectSize.z : 0f;
-        return new Vector3(offset.x * xFactor, offset.y * yFactor, offset.z * zFactor);
     }
 
     public void Follow(Transform obj)
     {
         FollowObject = obj;
         SetMouseStatus(false);
+        _orbitLocalRotation = obj.transform.rotation.eulerAngles;
         
         _collider = obj.GetComponentInChildren<Collider>();
         if (_collider is BoxCollider box)
@@ -97,14 +97,14 @@ public class FollowerCamera : MonoBehaviour
 
     protected virtual void OnDrawGizmos()
     {
-        if (FollowObject)
+        if (_collider)
         {
             Quaternion rot = Quaternion.Euler(_orbitLocalRotation);
-
-            Vector3 rotated = rot * GetBoundsOffset(PositionOffset);
-            Vector3 position = _colCenter + rotated;
-
+            Vector3 position = _collider.transform.position + _collider.transform.rotation * _colCenter + rot * ComputeLocalOffset();
+            Gizmos.DrawLine(_collider.transform.position + _collider.transform.rotation * _colCenter, _collider.transform.position + _collider.transform.rotation * _colCenter + rot * ComputeLocalOffset());
             Gizmos.DrawSphere(position, 0.5f);
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(transform.position, Quaternion.Euler(-AngleToObject, 0f, 0f) * transform.forward * 5f);
         }
     }
 }

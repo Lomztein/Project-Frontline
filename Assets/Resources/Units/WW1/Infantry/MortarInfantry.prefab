@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2197758364635985125}
   - component: {fileID: 4726252616097994505}
   - component: {fileID: 6118108388280353875}
+  - component: {fileID: 1376441837653897052}
   m_Layer: 0
   m_Name: MortarInfantry
   m_TagString: Untagged
@@ -215,6 +216,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AltitudeMinMax: {x: -5, y: 10}
+--- !u!114 &1376441837653897052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6365057502642190576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00169763ce7d38943b2bae396018d795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 1857487047268247526}
 --- !u!1 &8150723386312106452
 GameObject:
   m_ObjectHideFlags: 0
@@ -541,6 +555,11 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: 0.000000001047738
       objectReference: {fileID: 0}
+    - target: {fileID: 758570776732004757, guid: eeef3a7deee493a4e993e4622aca8587,
+        type: 3}
+      propertyPath: Turrets.Array.data[1]
+      value: 
+      objectReference: {fileID: 8150723386312106452}
     - target: {fileID: 791484999860599252, guid: eeef3a7deee493a4e993e4622aca8587,
         type: 3}
       propertyPath: m_ConnectedAnchor.z

@@ -29,6 +29,9 @@ public class BuilderWeapon : MonoBehaviour, IWeapon, ITeamComponent, ICommanderC
 
     public GameObject BuildingPrefab;
 
+    public int Ammo => _canFire ? 1 : 0;
+    public int MaxAmmo => 1;
+
     public void AssignCommander(Commander commander)
     {
         _commander = commander;
@@ -58,10 +61,30 @@ public class BuilderWeapon : MonoBehaviour, IWeapon, ITeamComponent, ICommanderC
             if (_teamInfo != null) _teamInfo.ApplyTeam(newBuilding);
             _canFire = false;
             Invoke(nameof(Recharge), 1f / Firerate);
+            Unit unit = newBuilding.GetComponent<Unit>();
+            if (unit)
+            {
+                var weapons = unit.GetWeapons();
+                foreach (var weapon in weapons)
+                {
+                    weapon.OnProjectile += Weapon_OnProjectile;
+                    weapon.OnHit += Weapon_OnHit;
+                    weapon.OnKill += Weapon_OnKill;
+                    weapon.OnDoDamage += Weapon_OnDoDamage;
+                    weapon.OnDamageDone += Weapon_OnDamageDone;
+                }
+            }
+            OnFire?.Invoke(this);
             return true;
         }
         return false;
     }
+
+    private void Weapon_OnProjectile(IWeapon arg1, Projectile arg2) => OnProjectile?.Invoke(arg1, arg2);
+    private void Weapon_OnDoDamage(IWeapon arg1, Projectile arg2, IDamagable arg3, DamageInfo arg4) => OnDoDamage?.Invoke(arg1, arg2, arg3, arg4);
+    private void Weapon_OnDamageDone(IWeapon arg1, Projectile arg2, IDamagable arg3, DamageInfo arg4) => OnDamageDone?.Invoke(arg1, arg2, arg3, arg4);
+    private void Weapon_OnKill(IWeapon arg1, Projectile arg2, IDamagable arg3) => OnKill?.Invoke(arg1, arg2, arg3);
+    private void Weapon_OnHit(IWeapon arg1, Projectile arg2, Collider arg3, Vector3 arg4, Vector3 arg5) => OnHit?.Invoke(arg1, arg2, arg3, arg4, arg5);
 
     private void Recharge()
     {

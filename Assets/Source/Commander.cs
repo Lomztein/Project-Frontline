@@ -101,6 +101,13 @@ public class Commander : MonoBehaviour, ITeamComponent
         }
     }
 
+    public GameObject GetProducedUnitIfFactory(GameObject unit)
+    {
+        if (unit.TryGetComponent(out UnitFactory factory))
+            return factory.UnitPrefab;
+        return unit;
+    }
+
     private void Start()
     {
         Team.GetTeam(TeamInfo).AddCommander(this);
@@ -346,4 +353,22 @@ public class Commander : MonoBehaviour, ITeamComponent
             Gizmos.DrawWireCube(OffenseVolumeLocalBounds.center + Vector3.up, OffenseVolumeLocalBounds.size);
         }
     }
+
+    public bool CanAfford(GameObject prefab)
+        => Credits > prefab.GetComponent<Unit>().GetCost(this);
+
+    public bool CanPurchase(GameObject unit)
+    => unit.GetComponent<Unit>().CanPurchase(this);
+
+    public bool CanAffordAndPurchase(GameObject prefab)
+        => CanAfford(prefab) && CanPurchase(prefab);
+
+    public string GetCanAffordDescription(GameObject prefab)
+        => prefab.GetComponent<Unit>().GetCostModifierDesription(this);
+
+    public string GetCanPurchaseDescription(GameObject prefab)
+        => prefab.GetComponent<Unit>().GetCanPurchaseDesription(this);
+
+    public string GetCanAffordAndPurchaseDescription(GameObject prefab)
+        => (GetCanAffordDescription(prefab) + "\n" + GetCanPurchaseDescription(prefab)).Trim();
 }

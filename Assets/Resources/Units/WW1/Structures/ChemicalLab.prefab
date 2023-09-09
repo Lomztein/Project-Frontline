@@ -159,6 +159,8 @@ MonoBehaviour:
     UnitType: 4
   Health: {fileID: 0}
   _weapons: []
+  Parts: []
+  Weakpoints: []
 --- !u!114 &2970405115108224907
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,7 +192,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:
-  - {fileID: 0}
+  - {fileID: 5880999377903488329}
+  - {fileID: 1731890308401642571}
+  - {fileID: 370883464548088215}
 --- !u!65 &986250928452252424
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -529,6 +533,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1764494b7e2bc154d87113fb002c3e14, type: 3}
+--- !u!23 &370883464548088215 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1461304994638716399, guid: 1764494b7e2bc154d87113fb002c3e14,
+    type: 3}
+  m_PrefabInstance: {fileID: 7970740574090845062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1731890308401642571 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -678588488315902003, guid: 1764494b7e2bc154d87113fb002c3e14,
+    type: 3}
+  m_PrefabInstance: {fileID: 7970740574090845062}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5880999377903488329 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: 1764494b7e2bc154d87113fb002c3e14,
+    type: 3}
+  m_PrefabInstance: {fileID: 7970740574090845062}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7572656741276925037 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 1764494b7e2bc154d87113fb002c3e14,

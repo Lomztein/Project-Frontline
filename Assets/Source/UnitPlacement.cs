@@ -30,8 +30,10 @@ public class UnitPlacement : MonoBehaviour
         GameObject placementPrefab = commander.GeneratePrefab(prefab);
 
         _model = UnityUtils.InstantiateMockGO(placementPrefab);
+
         _model.transform.SetParent(transform);
         _model.transform.position = transform.position;
+        _model.transform.rotation = Quaternion.Euler(0f, Waypoint.GetNearest(commander.transform.position).OutgoingAngle, 0f);
 
         _prefab = prefab;
         _commander = commander;

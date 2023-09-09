@@ -46,7 +46,7 @@ namespace UI
             }
             else
             {
-                UnitImage.sprite = Iconography.GenerateSprite(prefab);
+                UnitImage.sprite = Iconography.GenerateSprite(prefab, Iconography.DefaultRotation, 64, x => commander.AssignCommander(x));
             }
 
             UnitTierImage.sprite = TierSprites[(int)unit.Info.UnitTier];
@@ -59,7 +59,7 @@ namespace UI
 
         private void FixedUpdate()
         {
-            bool interactable = _commander.Credits >= _unit.GetCost(_commander);
+            bool interactable = _commander.CanAfford(_prefab) && _commander.CanPurchase(_prefab);
             Button.interactable = interactable;
             UnitImage.color = interactable ? ImageInteractableColor : ImageUnInteractableColor;
             UnitTierImage.color = TierColors[(int)_unit.Info.UnitTier] * (interactable ? ImageInteractableColor : ImageUnInteractableColor);

@@ -11,6 +11,9 @@ public interface IWeapon
     float Firerate { get; }
     float Speed { get; }
 
+    int Ammo { get; }
+    int MaxAmmo { get; }
+
     float GetDPS();
 
     void SetHitLayerMask(LayerMask mask);

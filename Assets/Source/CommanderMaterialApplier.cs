@@ -8,7 +8,11 @@ public class CommanderMaterialApplier : MonoBehaviour, ICommanderComponent
 
     public void AssignCommander(Commander commander)
     {
-        StartCoroutine(WaitAndPaint(commander));
+        foreach (Renderer renderer in _renderersToApplyTo)
+        {
+            renderer.material = commander.UnitPalette.UnitBodyMaterial;
+        }
+        //StartCoroutine(WaitAndPaint(commander));
     }
 
     private IEnumerator WaitAndPaint(Commander cmd)

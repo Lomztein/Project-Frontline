@@ -312,7 +312,7 @@ MonoBehaviour:
   FireParticle: {fileID: 0}
   LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
-  FireEffect: {fileID: 9064507801947728365}
+  FireEffect: {fileID: 0}
   ProjectilePrefab: {fileID: 2842756162439936608, guid: f8e7b160ee3ae7442ae6e2cd741d93a9,
     type: 3}
   Muzzle: {fileID: 6227988914959554232}
@@ -332,7 +332,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Autocannon
   Description: Fully automatic weapon that can dispatch infantry and vehicles alike.
-  Root: {fileID: 2221574693083941954}
+  Model: {fileID: 2221574693083941954}
+  AimBehaviour:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!114 &1975762035036247026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -505,18 +512,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6073615347082335969}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9064507801947728365 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2991033553706155788, guid: 8b466a8c0a21eb54ca1d57054999530d,
-    type: 3}
-  m_PrefabInstance: {fileID: 6073615347082335969}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4bb1c28bf2dc66644ba94b80a80e6591, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &8927630501266658685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -649,6 +644,11 @@ PrefabInstance:
       propertyPath: Muzzle
       value: 
       objectReference: {fileID: 6227988914959554232}
+    - target: {fileID: 4095960138140975757, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      propertyPath: Weapon
+      value: 
+      objectReference: {fileID: 4032986858683841818}
     - target: {fileID: 4095960138140975757, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
       propertyPath: WeaponObject
@@ -801,7 +801,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Machine Gun
   Description: Side-mounted machine guns which can assist against lighter infantry.
-  Root: {fileID: 0}
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &1382969094849056518 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7553692932367407739, guid: 33f5a0aae17b39244abe6fcfea9db228,
@@ -841,7 +848,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Machine Gun
   Description: Side-mounted machine guns which can assist against lighter infantry.
-  Root: {fileID: 0}
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!4 &8306340213301872522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 622443194761057015, guid: 33f5a0aae17b39244abe6fcfea9db228,

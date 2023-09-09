@@ -648,6 +648,7 @@ GameObject:
   - component: {fileID: 6144739744911261648}
   - component: {fileID: 4514442581584012209}
   - component: {fileID: 4482750102270464676}
+  - component: {fileID: 3471064318615009461}
   m_Layer: 0
   m_Name: Gunship
   m_TagString: Untagged
@@ -703,6 +704,8 @@ MonoBehaviour:
   - {fileID: 5710782334378631605}
   - {fileID: 5710782335347440846}
   - {fileID: 5710782334178748803}
+  Parts: []
+  Weakpoints: []
 --- !u!114 &4964351093738814663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -724,7 +727,8 @@ MonoBehaviour:
   AimTolerance: 5
   LeadTarget: 1
   TargetSearchFrequency: 2
-  Modifiers: []
+  Modifiers:
+  - {fileID: 3471064318615009461}
   HoldRange: 60
   StayBehindFrontline: 0
   CircleRight: 0
@@ -839,6 +843,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
+--- !u!114 &3471064318615009461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4964351093738814712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c59ac0d092345c04a9befbce95a15fcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AltitudeMinMax: {x: -5, y: 5}
 --- !u!1 &5425705864996947599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,7 +1344,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Gatling Cannon
   Description: 
-  Root: {fileID: 0}
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &5710782334328814192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1547,7 +1571,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Heavy Cannon
   Description: 
-  Root: {fileID: 0}
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &5710782334424547443
 GameObject:
   m_ObjectHideFlags: 0
@@ -2123,7 +2154,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Auotcannon
   Description: 
-  Root: {fileID: 0}
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &5710782335364941268
 GameObject:
   m_ObjectHideFlags: 0

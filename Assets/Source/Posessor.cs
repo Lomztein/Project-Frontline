@@ -220,8 +220,7 @@ public class Posessor : MonoBehaviour
     {
         if (_currentPosessed)
         {
-            InfantryBody inf = _currentPosessed.GetComponentInChildren<InfantryBody>(true);
-            if (inf)
+            if (_currentFirstPersonController)
             {
                 _currentPosessed.transform.SetParent(_currentFirstPersonController.transform.parent);
                 Destroy(_currentFirstPersonController);
@@ -232,6 +231,7 @@ public class Posessor : MonoBehaviour
                 Array.ForEach(fpw.Weapons, x => x.OnDamageDone -= Weapon_OnDamageDone);
 
                 _currentFirstPersonController = null;
+                InfantryBody inf = _currentPosessed.GetComponentInChildren<InfantryBody>(true);
                 TryConvertFromFirstPerson(_currentPosessed, _currentPosessed.GetComponent<AIController>(), inf);
             }
             else

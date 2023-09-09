@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public abstract class ChanceOnUnitSpawnUpgradeStructure : UpgradeStructure
@@ -49,4 +50,16 @@ public abstract class ChanceOnUnitSpawnUpgradeStructure : UpgradeStructure
     }
 
     protected abstract void ApplyUpgrade(Unit target);
+
+    public override bool CanPurchase(Unit unit, Commander commander)
+        => commander.AlivePlaced.Select(x => commander.GetProducedUnitIfFactory(x.gameObject)).Any(x => CanUpgrade(x));
+
+    public override string GetDescription(Unit unit, Commander commander)
+    {
+        if (!CanPurchase(unit, commander))
+        {
+            return "Unavailable: No affected units on field.";
+        }
+        return null;
+    }
 }

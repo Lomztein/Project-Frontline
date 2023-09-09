@@ -48,6 +48,9 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
     public event Action<IWeapon, Projectile, IDamagable, DamageInfo> OnDoDamage;
     public event Action<IWeapon, Projectile, IDamagable, DamageInfo> OnDamageDone;
 
+    public int Ammo => _currentHolding;
+    public int MaxAmmo => MaxHolding;
+
     private GameObject SelectUnitPrefab ()
     {
         switch (SelectionBehaviour)
@@ -121,7 +124,7 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
         }
         if (toDestroy)
         {
-            toDestroy.TakeDamage(new DamageInfo(toDestroy.MaxHealth, DamageMatrix.Damage.Heal, transform.position, transform.forward));
+            toDestroy.TakeDamage(new DamageInfo(toDestroy.MaxHealth, DamageMatrix.Damage.Heal, transform.position, transform.forward, this, toDestroy));
         }
     }
 
@@ -137,6 +140,21 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
             GameObject go = Spawn();
             _currentHolding--;
             _currentSimultanious.Add(go);
+
+            OnFire?.Invoke(this);
+            Unit unit = go.GetComponent<Unit>();
+            if (unit)
+            {
+                var weapons = unit.GetWeapons();
+                foreach (var weapon in weapons)
+                {
+                    weapon.OnProjectile += Weapon_OnProjectile;
+                    weapon.OnHit += Weapon_OnHit;
+                    weapon.OnKill += Weapon_OnKill;
+                    weapon.OnDoDamage += Weapon_OnDoDamage;
+                    weapon.OnDamageDone += Weapon_OnDamageDone;
+                }
+            }
 
             if (go.TryGetComponent(out EngagedTracker tracker))
             {
@@ -154,7 +172,7 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
             };
 
             if (go.TryGetComponent(out AIController controller)) {
-                controller.ForceTarget(intendedTarget);
+                controller.SetTarget(intendedTarget);
                 foreach (var weapon in controller.Weapons)
                 {
                     weapon.SetHitLayerMask(_hitLayerMask);
@@ -182,4 +200,10 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
     {
         _hitLayerMask = mask;
     }
+
+    private void Weapon_OnProjectile(IWeapon arg1, Projectile arg2) => OnProjectile?.Invoke(arg1, arg2);
+    private void Weapon_OnDoDamage(IWeapon arg1, Projectile arg2, IDamagable arg3, DamageInfo arg4) => OnDoDamage?.Invoke(arg1, arg2, arg3, arg4);
+    private void Weapon_OnDamageDone(IWeapon arg1, Projectile arg2, IDamagable arg3, DamageInfo arg4) => OnDamageDone?.Invoke(arg1, arg2, arg3, arg4);
+    private void Weapon_OnKill(IWeapon arg1, Projectile arg2, IDamagable arg3) => OnKill?.Invoke(arg1, arg2, arg3);
+    private void Weapon_OnHit(IWeapon arg1, Projectile arg2, Collider arg3, Vector3 arg4, Vector3 arg5) => OnHit?.Invoke(arg1, arg2, arg3, arg4, arg5);
 }

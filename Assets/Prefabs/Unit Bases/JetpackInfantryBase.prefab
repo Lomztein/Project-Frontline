@@ -59,6 +59,8 @@ MonoBehaviour:
     UnitType: 0
   Health: {fileID: 0}
   _weapons: []
+  Parts: []
+  Weakpoints: []
 --- !u!114 &3068688912037162775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -744,7 +746,19 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: -0.0068392428
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7930925506108884638, guid: eeef3a7deee493a4e993e4622aca8587,
+        type: 3}
+      propertyPath: Animator
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8225378046533307445, guid: eeef3a7deee493a4e993e4622aca8587,
+        type: 3}
+      propertyPath: Animator
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8901339289696188001, guid: eeef3a7deee493a4e993e4622aca8587, type: 3}
+    - {fileID: 4607037852322083545, guid: eeef3a7deee493a4e993e4622aca8587, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2805987463833109057, guid: eeef3a7deee493a4e993e4622aca8587,

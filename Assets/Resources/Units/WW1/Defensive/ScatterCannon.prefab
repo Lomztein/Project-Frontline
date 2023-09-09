@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7550819955814352945}
   - component: {fileID: 5925986868824185024}
   - component: {fileID: 733990127577491969}
+  - component: {fileID: 2068916904065578614}
   m_Layer: 0
   m_Name: ScatterCannon
   m_TagString: StructureUnit
@@ -127,6 +128,8 @@ MonoBehaviour:
   Health: {fileID: 0}
   _weapons:
   - {fileID: 3921579209090571301}
+  Parts: []
+  Weakpoints: []
 --- !u!114 &733990127577491969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -140,6 +143,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 8f8059ce28c7c4f458cd46ae5320cd22, type: 2}
+--- !u!114 &2068916904065578614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733990127577491970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 621082979525308582}
+  - {fileID: 484816199989036263}
+  - {fileID: 7725729306823772132}
+  - {fileID: 533695491668499074}
 --- !u!1 &1350173138738810222
 GameObject:
   m_ObjectHideFlags: 0

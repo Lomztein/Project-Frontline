@@ -15,9 +15,13 @@ namespace Util
         private const float DIST_FROM_WORLD = 4098f;
 
         private static Camera Camera => _instance.RenderCamera;
-        public const int DEFAULT_RENDER_SIZE = 256;
+
+        public static int DefaultRenderSize => _instance.RenderSize;
+        public static Quaternion DefaultRotation => Quaternion.Euler(_instance.ModelRotation);
 
         public Camera RenderCamera;
+
+        public int RenderSize = 256;
         public Vector3 ModelRotation;
 
         private void Awake()
@@ -37,9 +41,9 @@ namespace Util
             return UnityUtils.InstantiateMockGO(source);
         }
 
-        public static Sprite GenerateSprite(GameObject obj, Quaternion objRotation, int renderSize)
+        public static Sprite GenerateSprite(GameObject obj, Quaternion objRotation, int renderSize, Action<GameObject> onModelInstantiated)
         {
-            Texture2D tex = GenerateIcon(obj, objRotation, renderSize);
+            Texture2D tex = GenerateIcon(obj, objRotation, renderSize, onModelInstantiated);
             Sprite sprite = Sprite.Create(tex, new Rect(0f, 0f, renderSize, renderSize), Vector2.one / 2f);
             return sprite;
         }
@@ -54,9 +58,9 @@ namespace Util
             return new Vector3(Mathf.Abs(vec.x), Mathf.Abs(vec.y), Mathf.Abs(vec.z)); ;// new Vector3(xx, yy, zz) / 2f;
         }
 
-        public static Sprite GenerateSprite(GameObject go) => GenerateSprite(go, Quaternion.Euler(_instance.ModelRotation), DEFAULT_RENDER_SIZE);
+        public static Sprite GenerateSprite(GameObject go) => GenerateSprite(go, Quaternion.Euler(_instance.ModelRotation), DefaultRenderSize, null);
 
-        public static Texture2D GenerateIcon(GameObject obj, Quaternion objRotation, int renderSize)
+        public static Texture2D GenerateIcon(GameObject obj, Quaternion objRotation, int renderSize, Action<GameObject> onModelInstantiated)
         {
             _instance.gameObject.SetActive(true);
             _instance.transform.position = GetPosition();
@@ -65,6 +69,7 @@ namespace Util
             Camera.aspect = 1f;
 
             GameObject model = InstantiateModel(obj);
+            if (onModelInstantiated != null) onModelInstantiated(model); 
 
             model.transform.position = _instance.transform.position;
             model.transform.rotation = objRotation;
@@ -111,7 +116,7 @@ namespace Util
             return texture;
         }
 
-        public static Texture2D GenerateIcon(GameObject go) => GenerateIcon(go, Quaternion.Euler(_instance.ModelRotation), DEFAULT_RENDER_SIZE);
+        public static Texture2D GenerateIcon(GameObject go) => GenerateIcon(go, Quaternion.Euler(_instance.ModelRotation), DefaultRenderSize, null);
 
         public static Bounds GetObjectBounds(GameObject obj)
         {

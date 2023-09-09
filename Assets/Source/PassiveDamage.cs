@@ -14,12 +14,12 @@ public class PassiveDamage : MonoBehaviour
     private void Start()
     {
         _health = GetComponent<Health>();
-        _health.TakeDamage(new DamageInfo(InitialDamage, DamageType, transform.position, transform.forward));
+        _health.TakeDamage(new DamageInfo(InitialDamage, DamageType, transform.position, transform.forward, this, _health));
     }
 
     private void FixedUpdate()
     {
-        _health.TakeDamage(new DamageInfo(DamagePerSecond * Time.fixedDeltaTime, DamageType, transform.position, transform.forward));
+        _health.TakeDamage(new DamageInfo(DamagePerSecond * Time.fixedDeltaTime, DamageType, transform.position, transform.forward, this, _health));
         DamagePerSecond += DamagePerSecondAcceleration * Time.fixedDeltaTime;
     }
 }

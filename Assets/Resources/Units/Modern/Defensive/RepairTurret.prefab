@@ -195,6 +195,8 @@ MonoBehaviour:
     UnitType: 3
   Health: {fileID: 0}
   _weapons: []
+  Parts: []
+  Weakpoints: []
 --- !u!4 &6250299455017629230 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 17051153543322937, guid: 5eef721856967274c80f299c4cc69d23,
@@ -217,7 +219,12 @@ PrefabInstance:
     - target: {fileID: 375241613235387305, guid: 77ad8b4733384304da8fe4ef1033ebdc,
         type: 3}
       propertyPath: Damage
-      value: 5
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 375241613235387305, guid: 77ad8b4733384304da8fe4ef1033ebdc,
+        type: 3}
+      propertyPath: Firerate
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 582706406120410760, guid: 77ad8b4733384304da8fe4ef1033ebdc,
         type: 3}

@@ -15,7 +15,7 @@ public class Health : MonoBehaviour, IDamagable
     public float DebrisLife;
 
     public event Action<Health, DamageInfo> OnTakeDamage;
-    public event Action<Health, float> OnDamageTaken;
+    public event Action<Health, DamageInfo> OnDamageTaken;
     public event Action<Health> OnDeath;
 
     private void Awake()
@@ -30,7 +30,7 @@ public class Health : MonoBehaviour, IDamagable
         float dmg = info.Damage * DamageMatrix.GetDamageFactor(info.Type, ArmorType);
         CurrentHealth -= dmg;
         info.DamageDone = Mathf.Clamp(h - CurrentHealth, -MaxHealth, MaxHealth);
-        OnDamageTaken?.Invoke(this, dmg);
+        OnDamageTaken?.Invoke(this, info);
         if (CurrentHealth <= 0f && !_isDead)
         {
             Die();

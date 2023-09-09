@@ -30,6 +30,9 @@ public class DeployWeapon : MonoBehaviour, IWeapon, ITurret, IEmplacable
     public float Firerate => ChildWeapon.Firerate;
     public float Speed => ChildWeapon.Speed;
 
+    public int Ammo => ChildWeapon.Ammo;
+    public int MaxAmmo => ChildWeapon.MaxAmmo;
+
     public bool DisableBodyWhenDeployed;
     public MobileBody Body;
 

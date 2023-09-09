@@ -12,7 +12,7 @@ public class StrikerController : AttackerController
 
     protected override void MoveTowardsTarget()
     {
-        _engaging = ShouldEngage(_engaging, GetTargetSquareDistance());
+        _engaging = ShouldEngage(_engaging, GetTargetSquareDistance(), HoldRange * HoldRange, ReengageRange * ReengageRange);
         if (_engaging)
         {
             base.MoveTowardsTarget();
@@ -26,15 +26,15 @@ public class StrikerController : AttackerController
         }
     }
 
-    private bool ShouldEngage (bool currentlyEngaging, float targetSqrDist)
+    private bool ShouldEngage (bool currentlyEngaging, float targetSqrDist, float sqrHoldRange, float sqrReengageRange)
     {
         if (!DisengageWhileCantFire)
         {
-            if (targetSqrDist <= HoldRange * HoldRange)
+            if (targetSqrDist <= sqrHoldRange)
             {
                 currentlyEngaging = false;
             }
-            if (targetSqrDist >= ReengageRange * ReengageRange)
+            if (targetSqrDist >= sqrReengageRange)
             {
                 currentlyEngaging = true;
             }
@@ -65,20 +65,22 @@ public class StrikerController : AttackerController
     protected override void MoveAlongWaypoints()
     {
         base.MoveAlongWaypoints();
-        float dist = DistToFrontline();
-        float sign = Mathf.Sign(dist);
-        if (ShouldHoldOnFrontline())
+        float sqrDist;
+        if (StayBehindFrontline)
         {
-            _engaging = ShouldEngage(_engaging, Mathf.Pow(dist, 2f) * sign);
-
-            if (!_engaging)
-            {
-                SmoothTurnTowardsAngle(GetDisengageAngle());
-            }
+            float dist = DistToFrontline();
+            float sign = Mathf.Sign(dist);
+            sqrDist = dist * dist * sign;
         }
         else
         {
-            _engaging = true;
+            sqrDist = 9999;
+        }
+        _engaging = ShouldEngage(_engaging, sqrDist, HoldRange * HoldRange, ReengageRange * ReengageRange);
+
+        if (!_engaging)
+        {
+            SmoothTurnTowardsAngle(GetDisengageAngle());
         }
         Controllable.Accelerate(1f);
     }

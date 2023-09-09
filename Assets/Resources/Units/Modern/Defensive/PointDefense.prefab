@@ -131,6 +131,8 @@ MonoBehaviour:
   Turrets:
   - {fileID: 7553270161911384106}
   - {fileID: 7112704339086794289}
+  UseDeltaAngle: 0
+  UseCanHit: 0
 --- !u!1 &1637278763027276339
 GameObject:
   m_ObjectHideFlags: 0
@@ -404,6 +406,8 @@ MonoBehaviour:
   Health: {fileID: 0}
   _weapons:
   - {fileID: 7553270161911384106}
+  Parts: []
+  Weakpoints: []
 --- !u!114 &4857661237212515836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -417,9 +421,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 5795162613357394238}
+  - {fileID: 6352169847964904944}
+  - {fileID: 909539795261872430}
 --- !u!114 &5161620381060537336
 MonoBehaviour:
   m_ObjectHideFlags: 0

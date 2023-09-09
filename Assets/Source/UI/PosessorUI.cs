@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http.Headers;
 using TMPro;
 using UnityEngine;
@@ -19,6 +20,7 @@ public class PosessorUI : MonoBehaviour
     public Transform WeaponUIParent;
     public GameObject WeaponUIPrefab;
     public Image TargetingImage;
+    public Text[] WeaponAmmoTexts;
 
     private void Awake()
     {
@@ -83,6 +85,10 @@ public class PosessorUI : MonoBehaviour
 
     private void GenerateWeaponUI(IEnumerable<IWeapon> weapons)
     {
+        foreach (var text in WeaponAmmoTexts)
+            text.text = "";
+
+        int index = 0;
         foreach (var weapon in weapons)
         {
             if (weapon is Component comp)
@@ -91,24 +97,29 @@ public class PosessorUI : MonoBehaviour
                 string desc = "";
                 string stats = $"{weapon.GetDPSOrOverride()} {weapon.DamageType}-type DPS";
                 Texture2D tex;
+                GameObject model;
+
                 if (comp.TryGetComponent(out WeaponInfo info))
                 {
                     if (info.Model)
                     {
-                        tex = Iconography.GenerateIcon(info.Model, Quaternion.Euler(0f, 90f, 0f), 512);
+                        model = info.Model;
                     }
                     else
                     {
-                        tex = Iconography.GenerateIcon(comp.gameObject, Quaternion.Euler(0f, 90f, 0f), 512);
+                        model = comp.gameObject;
                     }
+
                     desc = info.Description;
                     name = info.Name;
                 }
                 else
                 {
-                    tex = Iconography.GenerateIcon(comp.gameObject, Quaternion.Euler(0f, 90f, 0f), 512);
+                    model = comp.gameObject;
                 }
-                
+
+                tex = Iconography.GenerateIcon(model, Quaternion.Euler(0f, 90f, 0f), 256, null);
+
                 GameObject newWeaponUI = Instantiate(WeaponUIPrefab, WeaponUIParent);
                 tex = UnityUtils.TrimTransparent(tex);
                 Sprite sprite = Sprite.Create(tex, new Rect(0f, 0f, tex.width, tex.height), Vector2.one / 2f);
@@ -117,7 +128,8 @@ public class PosessorUI : MonoBehaviour
                 newWeaponUI.transform.Find("Info/Description/Name").GetComponent<TextMeshProUGUI>().text = name;
                 newWeaponUI.transform.Find("Info/Description/Description").GetComponent<TextMeshProUGUI>().text = desc;
                 newWeaponUI.transform.Find("Info/Description/Stats").GetComponent<TextMeshProUGUI>().text = stats;
-                newWeaponUI.transform.Find("Status").GetComponent<PosessorUIWeaponStatus>().Assign(weapon);
+                newWeaponUI.transform.Find("Status").GetComponent<PosessorUIWeaponStatus>().Assign(weapon, index);
+                index++;
             }
         }
     }

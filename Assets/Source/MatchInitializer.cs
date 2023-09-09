@@ -83,6 +83,8 @@ public class MatchInitializer : MonoBehaviour
         commander.Name = info.Name;
         commander.UnitAvailable = info.UnitAvailable;
         commander.Faction = info.Faction;
+
+        info.Team.ApplyTeam(commanderObj);
         commander.AssignCommander(commanderObj);
 
         if (info.IsPlayer)

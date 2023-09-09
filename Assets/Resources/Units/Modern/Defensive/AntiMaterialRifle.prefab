@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 2996561609964713338}
   - component: {fileID: 2996561609964713331}
   - component: {fileID: 2726443102629586329}
-  - component: {fileID: 6409077188274332149}
+  - component: {fileID: 8548780513891731636}
   m_Layer: 0
   m_Name: AntiMaterialRifle
   m_TagString: StructureUnit
@@ -259,7 +259,8 @@ MonoBehaviour:
     Description: '"Death from long range" is an inadaqute description, rather something
       along the lines of "all your memories scattered across the battlefield" is
       a better fit for this super long-range sniper turret.'
-    Tags: []
+    Tags:
+    - Harasser
     Cost: 2000
     Value: 200
     UnitRole: 2
@@ -293,7 +294,7 @@ MonoBehaviour:
   LeadTarget: 1
   TargetSearchFrequency: 2
   Modifiers:
-  - {fileID: 6409077188274332149}
+  - {fileID: 8548780513891731636}
 --- !u!65 &2996561609964713335
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -413,7 +414,7 @@ MonoBehaviour:
   - {fileID: 4029099572149331}
   - {fileID: 6104195247142357133}
   - {fileID: 2099554789985614223}
---- !u!114 &6409077188274332149
+--- !u!114 &8548780513891731636
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -422,9 +423,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2996561609964713339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5590b4a8020dd348881c407ee5d07f2, type: 3}
+  m_Script: {fileID: 11500000, guid: 02f5e45afc1f82b42bc78257019e4139, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Filter: {fileID: 11400000, guid: a26308058bb5fb84c888ceb9461d5fcb, type: 2}
+  Weight: 10000
 --- !u!1 &2996561610042921427
 GameObject:
   m_ObjectHideFlags: 0

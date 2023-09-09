@@ -27,6 +27,9 @@ public class WeaponGroup : MonoBehaviour, IWeapon
     public enum CanFireBehaviour { First, Any, All }
     public CanFireBehaviour CanFireWhen;
 
+    public int Ammo => GetWeapons().Sum(x => x.Ammo);
+    public int MaxAmmo => GetWeapons().Sum(x => x.MaxAmmo);
+
     public float GetDPS() => GetWeapons().First().GetDPSOrOverride() * _weapons.Length;
 
     private void Awake()

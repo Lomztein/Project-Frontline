@@ -19,6 +19,7 @@ public class Ragdoll : MonoBehaviour
             _layer = LayerMask.NameToLayer("Ragdoll");
             _rigidbodies = GetComponentsInChildren<Rigidbody>();
             _colliders = GetComponentsInChildren<Collider>();
+            _cached = true;
         }
     }
 

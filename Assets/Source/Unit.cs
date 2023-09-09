@@ -43,11 +43,17 @@ public class Unit : MonoBehaviour, IPurchasable
         return cost;
     }
 
+    public string GetCostModifierDesription(Commander commander)
+        => string.Join("\n", GetComponents<IUnitCostModifier>().Select(x => x.GetDescription(BaseCost, this, commander)).Where(x => !string.IsNullOrWhiteSpace(x))).Trim();
+
     public bool CanPurchase(Commander commander)
     {
         IUnitPurchasePredicate[] predicates = GetComponents<IUnitPurchasePredicate>();
         return predicates.All(x => x.CanPurchase(this, commander));
     }
+
+    public string GetCanPurchaseDesription(Commander commander)
+        => string.Join("\n", GetComponents<IUnitPurchasePredicate>().Select(x => x.GetDescription(this, commander)).Where(x => !string.IsNullOrWhiteSpace(x)).Distinct()).Trim();
 
     public IEnumerable<IWeapon> GetWeapons ()
     {
@@ -67,7 +73,7 @@ public class Unit : MonoBehaviour, IPurchasable
         // Kill the unit if they go way too far out of bounds.
         if (!MatchSettings.Current.MapInfo.Contains(transform.position / 2f))
         {
-            Health.TakeDamage(new DamageInfo(Health.MaxHealth / 3f, DamageMatrix.Damage.PointDefense, transform.position, transform.forward));
+            Health.TakeDamage(new DamageInfo(Health.MaxHealth / 3f, DamageMatrix.Damage.PointDefense, transform.position, transform.forward, this, Health));
         }
     }
 
@@ -94,7 +100,7 @@ public class Unit : MonoBehaviour, IPurchasable
         }
     }
 
-    private void Health_OnDamageTaken(Health arg1, float arg2)
+    private void Health_OnDamageTaken(Health arg1, DamageInfo info)
     {
         _lastEngageTime = Time.time;
     }

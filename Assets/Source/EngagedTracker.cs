@@ -29,13 +29,16 @@ public class EngagedTracker : MonoBehaviour
 
     private void OnDestroy()
     {
-        foreach (Health health in _healths)
+        if (_healths != null && _weapons != null)
         {
-            health.OnDamageTaken -= Health_OnDamageTaken;
-        }
-        foreach (IWeapon weapon in _weapons)
-        {
-            weapon.OnFire -= Weapon_OnFire;
+            foreach (Health health in _healths)
+            {
+                health.OnDamageTaken -= Health_OnDamageTaken;
+            }
+            foreach (IWeapon weapon in _weapons)
+            {
+                weapon.OnFire -= Weapon_OnFire;
+            }
         }
     }
 
@@ -44,7 +47,7 @@ public class EngagedTracker : MonoBehaviour
         LastAttackTime = Time.time;
     }
 
-    private void Health_OnDamageTaken(Health health, float obj)
+    private void Health_OnDamageTaken(Health health, DamageInfo info)
     {
         LastDamagedTime = Time.time;
     }

@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 2197758364635985125}
   - component: {fileID: -2684035218032579784}
   - component: {fileID: 3848388346364606503}
+  - component: {fileID: 4869191507464491839}
   m_Layer: 0
   m_Name: HeavyMachineGunner
   m_TagString: Untagged
@@ -53,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 200
+  MaxHealth: 150
   ArmorType: 0
   DestroyOnDeath: 0
   DestroyDelay: 0
@@ -221,6 +222,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
+--- !u!114 &4869191507464491839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6365057502642190576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00169763ce7d38943b2bae396018d795, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Model: {fileID: 2528032039789341487}
 --- !u!1 &8150723386312106452
 GameObject:
   m_ObjectHideFlags: 0

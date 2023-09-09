@@ -55,7 +55,7 @@ public static class DamageMatrix
             { Armor.Medium, 0.05f },
             { Armor.Heavy, 0f },
             { Armor.Structure, 0.7f },
-            { Armor.Shield, 1.0f },
+            { Armor.Shield, 0.5f },
         } },
         { Damage.Rocket, new Dictionary<Armor, float>()
         {
@@ -68,8 +68,8 @@ public static class DamageMatrix
         } },
         { Damage.APGun, new Dictionary<Armor, float>()
         {
-            { Armor.Infantry, 1.0f },
-            { Armor.Light, 0.6f },
+            { Armor.Infantry, 0.75f },
+            { Armor.Light, 0.75f },
             { Armor.Medium, 0.3f },
             { Armor.Heavy, 0.1f },
             { Armor.Structure, 0.4f },

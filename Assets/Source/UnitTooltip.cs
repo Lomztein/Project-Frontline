@@ -11,9 +11,21 @@ public static class UnitTooltip
 
     public static GameObject Create(Unit unit)
     {
+        var com = MatchController.PlayerCommander;
+
         GameObject newTooltip = Object.Instantiate(Resources.Load<GameObject>(RESOURCE_PATH));
-        newTooltip.transform.Find("Name").GetComponentInChildren<Text>().text = unit.Name + " - " + unit.GetCost(MatchController.PlayerCommander) + "$";
+        newTooltip.transform.Find("Name").GetComponentInChildren<Text>().text = unit.Name + " - " + unit.GetCost(com) + "$";
         newTooltip.transform.Find("Description").GetComponentInChildren<Text>().text = unit.Description;
+        string purchaseNotes = com.GetCanAffordAndPurchaseDescription(unit.gameObject);
+        var notes = newTooltip.transform.Find("PurchaseNotes");
+        if (string.IsNullOrWhiteSpace(purchaseNotes))
+        {
+            notes.gameObject.SetActive(false);
+        }
+        else
+        {
+            notes.Find("Text").GetComponent<Text>().text = purchaseNotes;
+        }
         string weaponInfo = WeaponInfoToString(unit);
         if (string.IsNullOrEmpty(weaponInfo))
         {

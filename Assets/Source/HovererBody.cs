@@ -5,6 +5,8 @@ using Util;
 
 public class HovererBody : MobileBody, IControllable
 {
+    public float MaxAngularSpeed;
+
     public float AccelerationSpeed;
     public float AngularAccelerationSpeed;
 
@@ -23,6 +25,9 @@ public class HovererBody : MobileBody, IControllable
 
     private Vector3 _velocity;
 
+    private Vector3 _lastVelErr;
+    private float _lastAngularErr;
+
     public override float CurrentSpeed { get; protected set; }
 
     public Vector3 Accelerate(float factor)
@@ -35,6 +40,11 @@ public class HovererBody : MobileBody, IControllable
     {
         TurnFactor = Mathf.Lerp(TurnFactor, factor, TurnFactorLeap * Time.fixedDeltaTime);
         return Velocity;
+    }
+
+    public void Impact(Vector3 force)
+    {
+        _velocity += force * Time.fixedDeltaTime;
     }
 
     private void FixedUpdate()
@@ -60,11 +70,25 @@ public class HovererBody : MobileBody, IControllable
 
     private void Turn ()
     {
-        AngularVelocity += AngularAccelerationSpeed * TurnFactor * Time.fixedDeltaTime;
+        float mult = AngularAccelerationSpeed / MaxAngularSpeed;
+
+        float targetAngularVel = TurnFactor * MaxAngularSpeed;
+        float error = targetAngularVel - AngularVelocity;
+
+        float p = error;
+        float d = (error - _lastAngularErr) / Time.fixedDeltaTime;
+
+        float f = Mathf.Clamp(p * mult + d * mult, -MaxAngularSpeed, MaxAngularSpeed);
+
+        AngularVelocity += f * Time.fixedDeltaTime;
+        _lastAngularErr = error;
     }
 
     private void Accelerate ()
     {
-        _velocity += transform.forward * AccelerationSpeed * AccFactor * Time.fixedDeltaTime;
+        float mult = AccelerationSpeed / MaxSpeed;
+        Vector3 targetVel = AccFactor * MaxSpeed * transform.forward;
+        Vector3 diff = ((targetVel - _velocity) * mult).ForEachComponent(x => Mathf.Clamp(x, -AccelerationSpeed, AccelerationSpeed));
+        _velocity += diff * Time.fixedDeltaTime;
     }
 }

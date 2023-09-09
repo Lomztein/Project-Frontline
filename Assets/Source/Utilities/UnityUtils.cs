@@ -29,19 +29,53 @@ namespace Util
 
         public static GameObject InstantiateMockGO (GameObject original)
         {
-            // First create object and strip away all non-transform non-renderer components.
             GameObject model = UnityEngine.Object.Instantiate(original);
+            DestroyNonVisualComponents(model);
+            model.SetActive(true);
+            return model;
+        }
 
-            var transforms = model.GetComponentsInChildren<Transform>(true);
+        public static void DestroyNonVisualComponents(GameObject gameObject, params Type[] ignore)
+        {
+            List<Type> typesToKeep = new List<Type>()
+            {
+                typeof(Transform), typeof(Renderer), typeof(MeshFilter), typeof(Rigidbody), typeof(ParticleSystem), typeof(CommanderMaterialApplier), typeof(Light)
+            };
+            typesToKeep.AddRange(ignore);
 
-            List<Component> nonVitals = model.GetComponentsInChildren<Component>().Where(x => !(x is Transform) && !(x is Renderer) && !(x is MeshFilter) && !(x is Rigidbody)).ToList();
+            var nonVitals = gameObject.GetComponentsInChildren<Component>().Where(x => !typesToKeep.Any(y => y.IsAssignableFrom(x.GetType())));
             foreach (Component comp in nonVitals)
             {
                 UnityEngine.Object.Destroy(comp); // Might not be neccesary, test sometime.
             }
-            model.SetActive(true);
+        }
 
-            return model;
+        public static IEnumerable<Quaternion> ResetRotationRecursively(this Transform transform)
+        {
+            yield return transform.localRotation;
+            transform.localRotation = Quaternion.identity;
+            foreach (Transform child in transform)
+            {
+                var rots = ResetRotationRecursively(child);
+                foreach (var rot in rots)
+                    yield return rot;
+            }
+        }
+
+        public static void SetRotationRecursively(this Transform transform, IEnumerable<Quaternion> rots)
+        {
+            var enumerator = rots.GetEnumerator();
+            SetRotationRecursively_Intern(transform, enumerator);
+        }
+
+        private static void SetRotationRecursively_Intern(this Transform transform, IEnumerator<Quaternion> iterator)
+        {
+            iterator.MoveNext();
+            transform.rotation = iterator.Current;
+            foreach (Transform child in transform)
+            {
+                SetRotationRecursively_Intern(child, iterator);
+            }
         }
 
         public static void SetLayerRecursively(this Transform transform, int layer)
@@ -60,6 +94,36 @@ namespace Util
             {
                 yield return new WaitForFixedUpdate();
             }
+        }
+
+        public static Vector3 AggregateComponents(Func<float, float, float> func, params Vector3[] vecs)
+        {
+            if (vecs.Any())
+            {
+                Vector3 first = vecs.FirstOrDefault();
+                float x = first.x;
+                float y = first.y;
+                float z = first.z;
+
+                foreach (Vector3 vec in vecs)
+                {
+                    x = func(x, vec.x);
+                    y = func(y, vec.y);
+                    z = func(z, vec.z);
+                }
+
+                return new Vector3(x, y, z);
+            }
+            throw new InvalidOperationException("Input array is empty.");
+        }
+
+        public static Vector3 ForEachComponent(this Vector3 vec, Func<float, float> func)
+        {
+            return new Vector3(
+                func(vec.x),
+                func(vec.y),
+                func(vec.z)
+                );
         }
 
         public static void Scale(this ParticleSystem system, float scale)
@@ -252,9 +316,9 @@ namespace Util
             foreach (var filter in filters)
             {
                 var mesh = filter.sharedMesh;
-                if (mesh.isReadable)
+                if (mesh != null)
                 {
-                    if (mesh != null)
+                    if (mesh.isReadable)
                     {
                         foreach (var vert in mesh.vertices)
                         {
@@ -262,11 +326,11 @@ namespace Util
                             bounds.Encapsulate(worldPos);
                         }
                     }
-                }
-                else
-                {
-                    Bounds worldBounds = new Bounds(filter.transform.TransformPoint(mesh.bounds.center), filter.transform.TransformVector(mesh.bounds.size));
-                    bounds.Encapsulate(worldBounds);
+                    else
+                    {
+                        Bounds worldBounds = new Bounds(filter.transform.TransformPoint(mesh.bounds.center), filter.transform.TransformVector(mesh.bounds.size));
+                        bounds.Encapsulate(worldBounds);
+                    }
                 }
             }
 

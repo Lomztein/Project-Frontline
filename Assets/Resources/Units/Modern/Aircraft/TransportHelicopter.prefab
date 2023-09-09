@@ -1070,6 +1070,7 @@ GameObject:
   - component: {fileID: 7897096464993771594}
   - component: {fileID: 7897096464993777699}
   - component: {fileID: 7897096464993775875}
+  - component: {fileID: 796637620006167335}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -1134,6 +1135,24 @@ MonoBehaviour:
   BaseTransform: {fileID: 7897096464993771595}
   BodyTransform: {fileID: 7897096464993771594}
   MaxDelta: 30
+--- !u!114 &796637620006167335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7897096464993775576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e9b50b903d8734880c4f1e21a6aed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Body: {fileID: 7897096464993776623}
+  Health: {fileID: 7897096464993776627}
+  Sturdyness: 1
+  WeaponObject: {fileID: 0}
+  Muzzle: {fileID: 0}
+  Recoil: 10
 --- !u!1 &7897096464993775577
 GameObject:
   m_ObjectHideFlags: 0
@@ -1222,6 +1241,8 @@ MonoBehaviour:
     UnitType: 2
   Health: {fileID: 0}
   _weapons: []
+  Parts: []
+  Weakpoints: []
 --- !u!114 &7897096464993776626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1267,14 +1288,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eacb87c274841e438873d7e7d275697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 7.5
+  MaxSpeed: 6
   Rigidbody: {fileID: 0}
-  AccelerationSpeed: 50
-  AngularAccelerationSpeed: 120
+  MaxAngularSpeed: 60
+  AccelerationSpeed: 6
+  AngularAccelerationSpeed: 90
   HoverHeight: 20
   HoverSpeed: 10
-  DragCoeffecient: 0.7
-  AngularDragCoeffecient: 0.2
+  DragCoeffecient: 0
+  AngularDragCoeffecient: 0
   AccFactorLerp: 10
   TurnFactorLeap: 10
 --- !u!54 &7897096464993778124

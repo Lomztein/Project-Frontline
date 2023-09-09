@@ -53,7 +53,7 @@ public class AICommander : Commander
         SaveTarget = null;
         float time = Mathf.Lerp(SaveTimeMinMax.x, SaveTimeMinMax.y, SaveTimeBias.Evaluate(Random.Range(0f, 1f)));
         float maxCost = GetExpectedCreditsAfterSaveTime(time);
-        GameObject unit = _unitSelector.SelectUnit(UnitSource.GetAvailableUnitPrefabs(Faction).Where(x => CanAfford(x, (int)maxCost)));
+        GameObject unit = _unitSelector.SelectUnit(UnitSource.GetAvailableUnitPrefabs(Faction).Where(x => CanAfford(x, (int)maxCost) && CanPurchase(x)));
 
         if (unit)
         {

@@ -213,12 +213,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxSpeed: 5
   Rigidbody: {fileID: 0}
-  AccelerationSpeed: 10
-  AngularAccelerationSpeed: 80
+  MaxAngularSpeed: 30
+  AccelerationSpeed: 2.5
+  AngularAccelerationSpeed: 15
   HoverHeight: 20
   HoverSpeed: 10
-  DragCoeffecient: 0.97
-  AngularDragCoeffecient: 0.85
+  DragCoeffecient: 0
+  AngularDragCoeffecient: 0
   AccFactorLerp: 10
   TurnFactorLeap: 10
 --- !u!54 &2063965065709647722
@@ -319,6 +320,7 @@ GameObject:
   - component: {fileID: 888244253264789686}
   - component: {fileID: 1534605339792174654}
   - component: {fileID: 2004539182959198618}
+  - component: {fileID: 4311683884633584581}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -383,6 +385,24 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2, y: 1.5989583, z: 2}
   m_Center: {x: -0, y: 0.6467012, z: -0}
+--- !u!114 &4311683884633584581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5894702184253392994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e9b50b903d8734880c4f1e21a6aed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Body: {fileID: 3925931362492525584}
+  Health: {fileID: 1955367782294897551}
+  Sturdyness: 1
+  WeaponObject: {fileID: 0}
+  Muzzle: {fileID: 0}
+  Recoil: 10
 --- !u!1 &6895663599521061184
 GameObject:
   m_ObjectHideFlags: 0

@@ -296,7 +296,14 @@ MonoBehaviour:
   Name: Quad Missle Rack
   Description: Powerful air-to-everything missles that fire in bursts but take a
     while to reload.
-  Root: {fileID: 0}
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &4325982582558911292
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +428,14 @@ MonoBehaviour:
   Name: Autocannon
   Description: Heavy nose gun firing explosive shells effective against infantry
     and lighter vehicles.
-  Root: {fileID: 0}
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!114 &6501005243046994660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -576,6 +590,8 @@ MonoBehaviour:
   _weapons:
   - {fileID: 4325982582558911292}
   - {fileID: 4325982582396688272}
+  Parts: []
+  Weakpoints: []
 --- !u!114 &4325982583102194754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -623,12 +639,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxSpeed: 10
   Rigidbody: {fileID: 0}
+  MaxAngularSpeed: 120
   AccelerationSpeed: 50
-  AngularAccelerationSpeed: 120
+  AngularAccelerationSpeed: 180
   HoverHeight: 20
   HoverSpeed: 10
-  DragCoeffecient: 0.5
-  AngularDragCoeffecient: 0.2
+  DragCoeffecient: 0
+  AngularDragCoeffecient: 0
   AccFactorLerp: 10
   TurnFactorLeap: 10
 --- !u!54 &8555348099755170094
@@ -699,6 +716,7 @@ GameObject:
   - component: {fileID: 4325982583491187268}
   - component: {fileID: 4325982583491187266}
   - component: {fileID: 7915256418694349857}
+  - component: {fileID: 1857580951883575075}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -765,6 +783,24 @@ MonoBehaviour:
   BaseTransform: {fileID: 4325982583102194756}
   BodyTransform: {fileID: 4325982583491187268}
   MaxDelta: 30
+--- !u!114 &1857580951883575075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4325982583491187271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e9b50b903d8734880c4f1e21a6aed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Body: {fileID: 4325982583102194766}
+  Health: {fileID: 4325982583102194753}
+  Sturdyness: 1
+  WeaponObject: {fileID: 4325982582558911292}
+  Muzzle: {fileID: 5148155947436476983}
+  Recoil: 10
 --- !u!1 &4325982583555590060
 GameObject:
   m_ObjectHideFlags: 0

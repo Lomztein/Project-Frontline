@@ -1,0 +1,69 @@
+ArmorDamageTypeBase? May be unneccesary
+	float Coeffecient
+
+DamageType
+	public float ModifyDamage(DamageInfo info, ArmorType armor)
+
+ArmorType
+	public float MitigateDamage(DamageInfo info, DamageType damage)
+
+Damage attributes?
+	Penetration - reduces effectiveness of armor.
+
+Armor attributes?
+	Hardness - reduces damage from damage?
+
+Attributes could be combined into a coeffecient.
+	High damage coeffecient = armor has less effect.
+	High armor coeffecient = damage has less effect.
+	Coeffecients should (approximately) cancel out.
+	If 30% of damage is mitigated with a coeffecient of 1, then 60% should be mitigated at 2. Either caps at 100% or is applied hyperbolically.
+
+Implementation details:
+	Can optionally have a base damage / armor type that the effect is added on top of. Whole families of types possible.
+	Basic types (ex: MultiplierDamageType) contains a list of damage / armor types and multipliers.
+	Composite (ex: CompositeDamageType) types that combine damage / armor types and aggregates results with min, max, multiply, or avarage.
+	Has identifier and display name. Printing name of type combines names through three. Ex Anti-Armor gun = "Gun, Anti-Armor" or Heavy armor = "Armor, Heavy"
+	Increased complexity could lead to performance issues, consider caching options.
+		Damage, Armor types could be marked as cacheable, if both in interaction is cachable, then cache. This should be all described here.
+		Cache stored somewhere common as a dict, but which key should be used? For optimal performance, key should have a good hash. Perhaps use HashCode.Combine(field1, field2); 
+		
+	Perhaps create a simple conversion script from current dict-based approach to new system.
+
+ComputeDamage(DamageInfo info, DamageType damage, ArmorType armor) {
+	damage.ModifyDamage(info)
+	armor.MitigateDamage(info)
+}
+
+armor types:
+	Infantry - Low resistance against gun. Analogous to fabrics, thin metals, generally person-carriable materials.
+		Kevlar - Increased resistance against gun.
+		Flak - Increased resistance against rocket, cannon, particularily explosive.
+		Ceramic - Increased coeffecient.
+	Armor - Resistance against gun damage. Analogous to thick panels of steel or other metals.
+		Light - Vulnurable to rocket, but resistent against energy. Less resistent to gun.
+		Medium - Vulnurable to cannon, but highly resistent to gun.
+		Heavy - Vulnurable to energy, but impervious to gun, resistent to cannon, and highly resistent to to rocket.
+	Shield - Resistance against energy damage, but vulnurable to kinetic particularily gun.
+
+damage types: 
+	Gun - High damage against infantry, low against armor.
+		Hollow-Point - Bonus against infantry, but worse against armor.
+		Full Metal Jacket - Mid against inf, mid against armor.
+		Anti-Armor - Decreased damage against infantry, but stronger against armor.
+		Explosive - Bonus damage to light armor.
+
+	Rocket - High damage against light armor.
+		Flak - Bonus damage against aircraft.
+
+	Cannon - High damage against medium armor.
+		Squash Head - Reduced damage against armor, but increased against infantry and light.
+		Armor Piercing - Incresed coeffecient.
+
+	Explosive - High damage against infantry, structures, low against armor. This is the current "Grenade" damage.
+	Fire - High damage against infantry, structures, extremely low against armor.
+		Plasma - Combination of Fire and Energy
+
+	Energy - Effective against heavy armor, reduced damage against lighter armors. Neglible damage to shields.
+		Tesla - Swap damage between infantry and heavy. Bonus damage to shields.
+

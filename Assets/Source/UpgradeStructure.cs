@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class UpgradeStructure : MonoBehaviour, ICommanderComponent
+public abstract class UpgradeStructure : MonoBehaviour, ICommanderComponent, IUnitPurchasePredicate
 {
     public string UpgradeIdentifier;
     protected Commander _commander;
@@ -66,4 +66,6 @@ public abstract class UpgradeStructure : MonoBehaviour, ICommanderComponent
 
     protected abstract void RemoveStack(UpgradeStructure initial);
 
+    public abstract bool CanPurchase(Unit unit, Commander commander);
+    public abstract string GetDescription(Unit unit, Commander commander);
 }

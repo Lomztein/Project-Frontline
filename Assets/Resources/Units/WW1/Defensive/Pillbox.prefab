@@ -326,6 +326,7 @@ GameObject:
   - component: {fileID: 7142589462985280617}
   - component: {fileID: 177978382247566854}
   - component: {fileID: 4074910436805005047}
+  - component: {fileID: 770568765636859211}
   m_Layer: 0
   m_Name: Pillbox
   m_TagString: StructureUnit
@@ -438,6 +439,22 @@ MonoBehaviour:
   Health: {fileID: 0}
   _weapons:
   - {fileID: 6691671026675796498}
+  Parts: []
+  Weakpoints: []
+--- !u!114 &770568765636859211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6962003151734455349}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 3125762484964275176}
 --- !u!1 &8802919102460136247
 GameObject:
   m_ObjectHideFlags: 0
