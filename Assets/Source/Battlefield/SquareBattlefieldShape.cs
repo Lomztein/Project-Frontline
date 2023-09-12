@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class SquareBattlefieldShape : IBattlefieldShape
 {
-    public IEnumerable<SpawnLine> GenerateSpawnLines(MapInfo info)
+    public string DisplayName => "Square";
+    public int MaxTeams => 2;
+
+    public IEnumerable<ISpawnVolume> GenerateSpawnVolumes(MapInfo info)
     {
         float halfWidth = info.Width / 2f;
         float halfHeight = info.Height / 2f;
@@ -21,17 +24,19 @@ public class SquareBattlefieldShape : IBattlefieldShape
         return lines;
     }
 
-    public IEnumerable<Waypoint> GenerateWaypoints(MapInfo info)
+    public IEnumerable<IWaypoint> GenerateWaypoints(MapInfo info)
     {
         float halfWidth = info.Width / 2f;
         var list = new List<Waypoint>
         {
             // Left side
-            Waypoint.Create(new Vector3(0f, 0f, halfWidth), Vector3.forward, Vector3.back),
+            Waypoint.Create(new Vector3(0f, 0f, halfWidth), null, null),
             // Right side
-            Waypoint.Create(new Vector3(0f, 0f, -halfWidth), Vector3.back, Vector3.forward)
+            Waypoint.Create(new Vector3(0f, 0f, -halfWidth), null, null)
         };
 
+        list[0].Next = list[1];
+        list[1].Next = list[0];
         return list;
     }
 

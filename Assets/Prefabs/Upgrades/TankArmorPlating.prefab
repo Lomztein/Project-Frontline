@@ -23,16 +23,17 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3748025188000014448}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5231992084107376608}
   - {fileID: 7600123438777099358}
   - {fileID: 2420618759154607609}
   - {fileID: 2115195163523107772}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4222398005467457822
 GameObject:
@@ -59,13 +60,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4222398005467457822}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.953, y: 0.606, z: 2.387}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5974509915000623225}
   m_Father: {fileID: 5331205790168148023}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8449151412456669598
 MonoBehaviour:
@@ -80,8 +82,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 750
+  Modifier: {fileID: 11400000, guid: 998fc5c61550d024286c252cfab30310, type: 2}
   ArmorType: 3
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 0}
   DebrisLife: 0
 --- !u!65 &2764508614865190380
@@ -92,9 +96,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4222398005467457822}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1.88, y: 1.08, z: 0.34}
   m_Center: {x: 0, y: 0, z: 0.01}
 --- !u!1 &4252004561700562172
@@ -122,13 +134,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4252004561700562172}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 1.965, y: 0.606, z: 1.315}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1544650743639862666}
   m_Father: {fileID: 5331205790168148023}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &5368201663779062799
 MonoBehaviour:
@@ -143,8 +156,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 750
+  Modifier: {fileID: 11400000, guid: 998fc5c61550d024286c252cfab30310, type: 2}
   ArmorType: 3
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 0}
   DebrisLife: 0
 --- !u!65 &7805453613481724457
@@ -155,9 +170,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4252004561700562172}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1.88, y: 1.08, z: 0.34}
   m_Center: {x: 0, y: 0, z: 0.01}
 --- !u!1 &5167916396740949529
@@ -185,13 +208,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5167916396740949529}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.70710576, z: -0, w: 0.70710784}
   m_LocalPosition: {x: -1.965, y: 0.606, z: 1.315}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2647022549727893817}
   m_Father: {fileID: 5331205790168148023}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!114 &4230153722449393364
 MonoBehaviour:
@@ -206,8 +230,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 750
+  Modifier: {fileID: 11400000, guid: 998fc5c61550d024286c252cfab30310, type: 2}
   ArmorType: 3
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 0}
   DebrisLife: 0
 --- !u!65 &7814690916938746598
@@ -218,9 +244,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5167916396740949529}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1.88, y: 1.08, z: 0.34}
   m_Center: {x: 0, y: 0, z: 0.01}
 --- !u!1 &5901695243264280477
@@ -248,13 +282,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5901695243264280477}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.953, y: 0.606, z: 2.387}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6290869803815452617}
   m_Father: {fileID: 5331205790168148023}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8117523396793974947
 MonoBehaviour:
@@ -269,8 +304,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 750
+  Modifier: {fileID: 11400000, guid: 998fc5c61550d024286c252cfab30310, type: 2}
   ArmorType: 3
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 0}
   DebrisLife: 0
 --- !u!65 &8686074280514053842
@@ -281,9 +318,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5901695243264280477}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 1.88, y: 1.08, z: 0.34}
   m_Center: {x: 0, y: 0, z: 0.01}
 --- !u!1001 &1361506383602584161
@@ -291,6 +336,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2115195163523107772}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b2be9ce81ea194f429e1b5a5e36e9c90,
@@ -359,6 +405,9 @@ PrefabInstance:
       value: TankArmorPlate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2be9ce81ea194f429e1b5a5e36e9c90, type: 3}
 --- !u!4 &1544650743639862666 stripped
 Transform:
@@ -371,6 +420,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 2420618759154607609}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b2be9ce81ea194f429e1b5a5e36e9c90,
@@ -439,6 +489,9 @@ PrefabInstance:
       value: TankArmorPlate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2be9ce81ea194f429e1b5a5e36e9c90, type: 3}
 --- !u!4 &2647022549727893817 stripped
 Transform:
@@ -451,6 +504,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 7600123438777099358}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b2be9ce81ea194f429e1b5a5e36e9c90,
@@ -519,6 +573,9 @@ PrefabInstance:
       value: TankArmorPlate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2be9ce81ea194f429e1b5a5e36e9c90, type: 3}
 --- !u!4 &6290869803815452617 stripped
 Transform:
@@ -531,6 +588,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 5231992084107376608}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b2be9ce81ea194f429e1b5a5e36e9c90,
@@ -599,6 +657,9 @@ PrefabInstance:
       value: TankArmorPlate
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2be9ce81ea194f429e1b5a5e36e9c90, type: 3}
 --- !u!4 &5974509915000623225 stripped
 Transform:

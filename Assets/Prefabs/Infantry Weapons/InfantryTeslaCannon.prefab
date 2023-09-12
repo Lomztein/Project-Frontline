@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 600
   Firerate: 0.15
+  Modifier: {fileID: 11400000, guid: 4e6dfbdd1b990f6418e7e7f343649e7c, type: 2}
   DamageType: 4
   Speed: 75
   Range: 75
@@ -83,10 +84,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d00108eea1266a4da21e65c40f2f089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorTurret: {fileID: 0}
   Transform: {fileID: 1996277234534427633}
   Pivot: {fileID: 0}
-  Muzzle: {fileID: 1819641879106115828}
 --- !u!114 &8650695835135383855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +101,14 @@ MonoBehaviour:
   Name: Personal Tesla Cannon
   Description: Scaled down version of a tesla coil, but none-the-less capable of
     outputting at least a million volts.
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!114 &5172139324321429339
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -418,6 +418,8 @@ MonoBehaviour:
   - {fileID: 2937365157333169760}
   - {fileID: 158228952087942745}
   - {fileID: 7830310449161444360}
+  Parts: []
+  Weakpoints: []
 --- !u!114 &6196506893677585591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,7 +433,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 1000
-  ArmorType: 3
+  Modifier: {fileID: 11400000, guid: 998fc5c61550d024286c252cfab30310, type: 2}
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -730,6 +732,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6196506893320500356}
     m_Modifications:
+    - target: {fileID: 2096449486050881025, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
+        type: 3}
+      propertyPath: Modifier
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c89b0a4afb2193448b413f4230870cb,
+        type: 2}
     - target: {fileID: 4203030372693752130, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
         type: 3}
       propertyPath: m_RootOrder
@@ -1056,6 +1064,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2096449486050881025, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
+        type: 3}
+      propertyPath: Modifier
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c89b0a4afb2193448b413f4230870cb,
+        type: 2}
     - target: {fileID: 4203030372693752130, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
         type: 3}
       propertyPath: m_RootOrder
@@ -1172,6 +1186,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6196506893320500356}
     m_Modifications:
+    - target: {fileID: 2096449486050881025, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
+        type: 3}
+      propertyPath: Modifier
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c89b0a4afb2193448b413f4230870cb,
+        type: 2}
     - target: {fileID: 4203030372693752130, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
         type: 3}
       propertyPath: m_RootOrder

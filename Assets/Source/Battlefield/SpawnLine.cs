@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnLine
+public class SpawnLine : ISpawnVolume
 {
     public Vector3 Center;
     public Vector3 ExtendDirection;
 
     public float DistanceBetween;
+
+    public int Max => int.MaxValue;
+    public Vector3 Position => Center;
 
     public SpawnLine (Vector3 center, Vector3 extendDirection, float distanceBetween)
     {

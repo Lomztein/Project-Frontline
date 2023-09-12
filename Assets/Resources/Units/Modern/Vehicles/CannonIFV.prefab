@@ -302,7 +302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 5
   Firerate: 3
-  DamageType: 6
+  Modifier: {fileID: 11400000, guid: 9f5e8a2752d9caa42a1fa065d6b74da1, type: 2}
   Speed: 200
   Range: 150
   Amount: 1
@@ -312,7 +312,7 @@ MonoBehaviour:
   FireParticle: {fileID: 0}
   LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
-  FireEffect: {fileID: 0}
+  FireEffect: {fileID: 9064507801947728365}
   ProjectilePrefab: {fileID: 2842756162439936608, guid: f8e7b160ee3ae7442ae6e2cd741d93a9,
     type: 3}
   Muzzle: {fileID: 6227988914959554232}
@@ -512,6 +512,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6073615347082335969}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9064507801947728365 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2991033553706155788, guid: 8b466a8c0a21eb54ca1d57054999530d,
+    type: 3}
+  m_PrefabInstance: {fileID: 6073615347082335969}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb1c28bf2dc66644ba94b80a80e6591, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8927630501266658685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -664,6 +676,12 @@ PrefabInstance:
       propertyPath: m_IsKinematic
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5620488823234584247, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      propertyPath: Modifier
+      value: 
+      objectReference: {fileID: 11400000, guid: 998fc5c61550d024286c252cfab30310,
+        type: 2}
     - target: {fileID: 5620488823234584247, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
       propertyPath: MaxHealth

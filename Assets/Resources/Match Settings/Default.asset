@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MapInfo:
     Width: 500
-    Height: 300
+    Height: 500
     Shape:
-      rid: 0
+      rid: 4802883678010081280
     SceneryGenerator: {fileID: 11400000, guid: 95f688a5978d6bc42bcd84cbb0f9edfd, type: 2}
   _mutators: []
   _players:
@@ -34,9 +34,16 @@ MonoBehaviour:
     StartingCredits: 500
     Handicap: 0
     AIProfile: {fileID: 11400000, guid: f4f91bde49ae3b546b351a3c22abfd60, type: 2}
+  - Name: "Hadassah\r Rhett\r"
+    Faction: {fileID: 11400000, guid: 16d79b0748bf2bf46a0af3127401ad5d, type: 2}
+    Team: {fileID: 11400000, guid: 8f8059ce28c7c4f458cd46ae5320cd22, type: 2}
+    Position: {x: 0, y: 0}
+    StartingCredits: 500
+    Handicap: 0
+    AIProfile: {fileID: 11400000, guid: f4f91bde49ae3b546b351a3c22abfd60, type: 2}
   references:
     version: 2
     RefIds:
-    - rid: 0
-      type: {class: SquareBattlefieldShape, ns: , asm: Assembly-CSharp}
+    - rid: 4802883678010081280
+      type: {class: EllipsoidBattlefieldShape, ns: , asm: Assembly-CSharp}
       data: 

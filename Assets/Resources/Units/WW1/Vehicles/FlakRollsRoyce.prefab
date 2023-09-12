@@ -68,6 +68,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 25
   Firerate: 1.2
+  Modifier: {fileID: 11400000, guid: 9974e4778fc971144a67e48006632fd0, type: 2}
   DamageType: 5
   Speed: 250
   Range: 100
@@ -366,6 +367,8 @@ MonoBehaviour:
   Health: {fileID: 7671573337690868471}
   _weapons:
   - {fileID: 1648604567964808}
+  Parts: []
+  Weakpoints: []
 --- !u!114 &7671573337690868471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,6 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 200
+  Modifier: {fileID: 11400000, guid: 48edd60faee51d246a8009cd399ac2f2, type: 2}
   ArmorType: 2
   DestroyOnDeath: 1
   DestroyDelay: 0

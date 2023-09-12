@@ -8,7 +8,7 @@ public class ProjectileExplodeOnEnd : MonoBehaviour
 
     public float ExplosionRange;
     public float ExplosionDamage;
-    public DamageMatrix.Damage ExplosionDamageType;
+    public DamageModifier ExplosionDamageModifier;
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +27,7 @@ public class ProjectileExplodeOnEnd : MonoBehaviour
                 if (health != null)
                 {
                     Vector3 hitPoint = collider.ClosestPoint(point);
-                    Projectile.DoDamage(health, ExplosionDamage, ExplosionDamageType, hitPoint, (collider.transform.position - transform.position).normalized);
+                    Projectile.DoDamage(health, ExplosionDamage, ExplosionDamageModifier, hitPoint, (collider.transform.position - transform.position).normalized);
                 }
             } 
         }

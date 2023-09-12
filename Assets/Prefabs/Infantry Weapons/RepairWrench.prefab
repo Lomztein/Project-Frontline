@@ -23,12 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7048567009502495203}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.2071, z: 0.0338}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4627592138263012740}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8374952475427862814
 GameObject:
@@ -55,14 +56,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8374952475427862814}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.04279749, y: 1.6632283, z: -0.71895427}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7750639086688756630}
   - {fileID: 2240709189852552126}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8617363800342105861
 MonoBehaviour:
@@ -78,6 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 10
   Firerate: 8
+  Modifier: {fileID: 11400000, guid: 9ece2036ec44c35438efa26b50c23625, type: 2}
   DamageType: 7
   Speed: 10
   Range: 10
@@ -88,10 +91,12 @@ MonoBehaviour:
   FireParticle: {fileID: 0}
   LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
+  FireEffect: {fileID: 0}
   ProjectilePrefab: {fileID: 8237201204707862353, guid: 1fe161a29ddcff94e985062de7f5a198,
     type: 3}
   Muzzle: {fileID: 7750639086688756630}
   Inaccuracy: 1
+  SpeedVariance: 0
 --- !u!114 &7851602385345950978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -104,15 +109,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d00108eea1266a4da21e65c40f2f089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorTurret: {fileID: 0}
   Transform: {fileID: 4627592138263012740}
   Pivot: {fileID: 0}
-  Muzzle: {fileID: 7750639086688756630}
 --- !u!1001 &1770513198397537365
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4627592138263012740}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 21b7a50b5f520294e9d8c4b2938d2835,
@@ -191,6 +195,9 @@ PrefabInstance:
       value: PipeWrench
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21b7a50b5f520294e9d8c4b2938d2835, type: 3}
 --- !u!4 &2240709189852552126 stripped
 Transform:

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c6dc995eb499d45a14801e42ae08b3, type: 3}
+  m_Name: AntiAIr
+  m_EditorClassIdentifier: 
+  Base: {fileID: 11400000, guid: 314342fc66eec6d48825ca07dec91c8c, type: 2}
+  Name: Anti-Air
+  Description: Explosive projectiles designed specifically for anti-aircraft roles,
+    using air busts, fragmentation, or just plain willpower.
+  Options:
+  - Name: Aircraft
+    AnyOf:
+    - {fileID: 11400000, guid: 4bdea23464958bb4fb9f42f36ef1819e, type: 2}
+    Value: 1.33
+  Fallback: 1

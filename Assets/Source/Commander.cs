@@ -133,7 +133,7 @@ public class Commander : MonoBehaviour, ITeamComponent
         {
             if (!Target)
             {
-                Target = UnityUtils.FindBest(Team.GetOtherTeams(TeamInfo).SelectMany(x => x.GetCommanders()), x => -Vector3.SqrMagnitude(transform.position - x.transform.position));
+                Target = FindTarget();
             }
 
             DefenseFactor = CalcFrontlineState(transform, LocalBaseBounds, Frontline.Position, DefenseMargin, DefenseThreshold);
@@ -149,6 +149,19 @@ public class Commander : MonoBehaviour, ITeamComponent
 
         float frontlineDistFromBase = VectorUtils.DifferenceAlongDirection(Vector3.forward, transform.InverseTransformPoint(frontlinePosition), Vector3.zero);
         return Mathf.InverseLerp(threshold, margin, frontlineDistFromBase);
+    }
+
+    private Commander FindTarget ()
+    {
+        IWaypoint next = Waypoint.GetNearest(Fortress.position);
+        while (next.GetNext() != null)
+        {
+            next = next.GetNext();
+        }
+        return Team.GetOtherTeams(TeamInfo).
+            SelectMany(x => x.GetCommanders()).
+            Where(x => !x.Eliminated).
+            FirstOrDefault(x => Vector3.Distance(next.Position, x.Fortress.position) < 100);
     }
 
     private void UpdateBaseBounds()

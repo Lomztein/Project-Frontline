@@ -27,13 +27,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8787944311351607097}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3082787254423504209}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1132483688014671616
 MonoBehaviour:
@@ -60,6 +61,8 @@ MonoBehaviour:
     UnitType: 4
   Health: {fileID: 6019159588090584689}
   _weapons: []
+  Parts: []
+  Weakpoints: []
 --- !u!114 &6019159588090584689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 25000
+  Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
   ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
@@ -100,9 +104,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8787944311351607097}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 12.29, y: 16.403633, z: 13}
   m_Center: {x: 0, y: 7.7018123, z: 0}
 --- !u!1001 &3261445958671442618
@@ -110,6 +122,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 6049266115377348407}
     m_Modifications:
     - target: {fileID: -8923771204839217787, guid: 7d59a653f34d49a43991d3a8ceb84c32,
@@ -203,6 +216,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: dadf8f7facdf5d849b11618c1b181058, type: 2}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7d59a653f34d49a43991d3a8ceb84c32, type: 3}
 --- !u!4 &3082787254423504209 stripped
 Transform:

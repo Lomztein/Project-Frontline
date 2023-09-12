@@ -37,8 +37,6 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
     public float Firerate => 1 / Cooldown;
     public float Speed => 0f;
 
-    public DamageMatrix.Damage DamageType => GetUnitPrefabWeapons().FirstOrDefault()?.DamageType ?? DamageMatrix.Damage.Gun;
-
     public event Action<UnitFactoryWeapon, GameObject> OnUnitSpawned;
 
     public event Action<IWeapon> OnFire;
@@ -50,6 +48,8 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
 
     public int Ammo => _currentHolding;
     public int MaxAmmo => MaxHolding;
+
+    public DamageModifier Modifier => CompositeDamageModifier.CreateFrom(CompositeDamageModifier.AggregationFunction.Average, UnitPrefabs.SelectMany(x => x.GetComponent<Unit>().GetWeapons().Select(y => y.Modifier)).ToArray());
 
     private GameObject SelectUnitPrefab ()
     {
@@ -124,7 +124,7 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
         }
         if (toDestroy)
         {
-            toDestroy.TakeDamage(new DamageInfo(toDestroy.MaxHealth, DamageMatrix.Damage.Heal, transform.position, transform.forward, this, toDestroy));
+            toDestroy.TakeDamage(new DamageInfo(toDestroy.MaxHealth, DamageModifier.One, transform.position, transform.forward, this, toDestroy));
         }
     }
 

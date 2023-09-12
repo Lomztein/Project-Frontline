@@ -7,7 +7,7 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
 {
     public float Damage;
     public float Firerate;
-    public DamageMatrix.Damage DamageType;
+    public DamageModifier Modifier;
     public float Speed;
     public float Range;
     public int Amount = 1;
@@ -37,13 +37,13 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
     float IWeapon.Damage => Damage * Amount;
     float IWeapon.Firerate => Firerate;
     float IWeapon.Speed => Speed;
+    DamageModifier IWeapon.Modifier => Modifier;
 
     int IWeapon.Ammo => BurstAmmo == 1 ? 
         (CanFire() ? 1 : 0)
         : _currentBurstAmmo;
     int IWeapon.MaxAmmo => BurstAmmo;
 
-    DamageMatrix.Damage IWeapon.DamageType => DamageType;
 
     public event Action<IWeapon> OnFire;
     public event Action<IWeapon, Projectile> OnProjectile;
@@ -117,7 +117,7 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
             projectile.Target = intendedTarget;
 
             projectile.Damage = Damage;
-            projectile.DamageType = DamageType;
+            projectile.Modifier = Modifier;
             projectile.Speed = GetProjectileSpeed();
             projectile.Life = Range / projectile.Speed;
 

@@ -4,30 +4,7 @@ using UnityEngine;
 
 public static class DamageMatrix
 {
-    public enum Damage
-    {
-        Gun, Cannon, Grenade, Energy, Tesla, Rocket, APGun, Heal, PointDefense
-    }
-
-    public enum Armor
-    {
-        Infantry = 0, Light = 2, Medium = 3, Heavy = 4, Structure = 5, Shield = 6
-    }
-
-    private static float _fallbackDamageFactor = 1f;
-
-    public static float GetDamageFactor (Damage damage, Armor armor)
-    {
-        if (_mapping.TryGetValue(damage, out var armorTable))
-        {
-            if (armorTable.TryGetValue(armor, out float value))
-            {
-                return value;
-            }
-        }
-        return _fallbackDamageFactor;
-    }
-
+    /*
     private static Dictionary<Damage, Dictionary<Armor, float>> _mapping = new Dictionary<Damage, Dictionary<Armor, float>>
     {
         { Damage.Cannon, new Dictionary<Armor, float>()
@@ -96,4 +73,5 @@ public static class DamageMatrix
     };
 
     public static Dictionary<Damage, Dictionary<Armor, float>> CopyMapping() => new Dictionary<Damage, Dictionary<Armor, float>>(_mapping);
+    */
 }

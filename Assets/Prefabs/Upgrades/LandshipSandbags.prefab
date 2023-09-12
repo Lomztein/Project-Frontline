@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 2000
+  Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
   ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
@@ -186,6 +187,8 @@ MonoBehaviour:
     UnitType: 3
   Health: {fileID: 0}
   _weapons: []
+  Parts: []
+  Weakpoints: []
 --- !u!114 &8876911398856622619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +248,8 @@ MonoBehaviour:
   MaxRange: 10
   Garrison: {fileID: 8876911398856622593}
   Repeat: 1
+  PeriodicallyEjectGarrison: 0
+  PrioritizationFunction: 1
 --- !u!65 &9085351093732112156
 BoxCollider:
   m_ObjectHideFlags: 0

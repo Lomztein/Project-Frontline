@@ -33,7 +33,7 @@ public class UnitPlacement : MonoBehaviour
 
         _model.transform.SetParent(transform);
         _model.transform.position = transform.position;
-        _model.transform.rotation = Quaternion.Euler(0f, Waypoint.GetNearest(commander.transform.position).OutgoingAngle, 0f);
+        _model.transform.rotation = Quaternion.Euler(0f, Waypoint.OutgoingAngle(Waypoint.GetNearest(commander.transform.position)), 0f);
 
         _prefab = prefab;
         _commander = commander;

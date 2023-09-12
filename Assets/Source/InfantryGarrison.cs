@@ -151,7 +151,7 @@ public class InfantryGarrison : MonoBehaviour
             {
                 GameObject child = slot.Occupant;
                 Health health = child.GetComponent<Unit>().Health;
-                health.TakeDamage(new DamageInfo(health.CurrentHealth * 2f, DamageMatrix.Damage.Heal, transform.position, transform.forward, this, health));
+                health.TakeDamage(new DamageInfo(health.CurrentHealth * 2f, DamageModifier.One, transform.position, transform.forward, this, health));
             }
         }
     }

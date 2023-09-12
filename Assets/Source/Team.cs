@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Team : MonoBehaviour, ITeamComponent
@@ -25,6 +27,8 @@ public class Team : MonoBehaviour, ITeamComponent
     }
 
     public static Team GetTeam(TeamInfo info) => _teams.Find(x => x.TeamInfo == info);
+    public static Team FindTeam(Func<Team, bool> predicate) => _teams.FirstOrDefault(predicate);
+
     public static IEnumerable<Team> GetOtherTeams(TeamInfo info) => _teams.FindAll(x => x.TeamInfo != info);
 
     public void AddCommander(Commander commander) => _commanders.Add(commander);

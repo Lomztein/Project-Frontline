@@ -6,10 +6,10 @@ public class DamageOverTime : MonoBehaviour
 {
     public Health Target;
     public float DamagePerSecond;
-    public DamageMatrix.Damage DamageType;
+    public DamageModifier Modifier;
 
     private void FixedUpdate()
     {
-        Target.TakeDamage(new DamageInfo(DamagePerSecond * Time.fixedDeltaTime, DamageType, transform.position, Vector3.forward, this, Target));
+        Target.TakeDamage(new DamageInfo(DamagePerSecond * Time.fixedDeltaTime, Modifier, transform.position, Vector3.forward, this, Target));
     }
 }

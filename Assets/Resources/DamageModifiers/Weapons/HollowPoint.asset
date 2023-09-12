@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c6dc995eb499d45a14801e42ae08b3, type: 3}
+  m_Name: HollowPoint
+  m_EditorClassIdentifier: 
+  Base: {fileID: 11400000, guid: 88f33b5a78a4c7546ae7cf53174bf833, type: 2}
+  Name: Hollow-Point
+  Description: Soft small-caliber rounds that fragment inside soft, squishy meat,
+    but almost useless against armor.
+  Abstract: 0
+  Options:
+  - Name: Infantry
+    AnyOf:
+    - {fileID: 11400000, guid: 031f975c30ac3b540b530e64c86956f3, type: 2}
+    Value: 1.25
+  - Name: Armor
+    AnyOf:
+    - {fileID: 11400000, guid: 8df7328b0debbf4459f417f29405ceed, type: 2}
+    Value: 0.5
+  Fallback: 1

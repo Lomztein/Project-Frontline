@@ -83,6 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 50
   Firerate: 0.4
+  Modifier: {fileID: 11400000, guid: f896246902e65654daa0c58f1102a940, type: 2}
   DamageType: 6
   Speed: 1
   Range: 1
@@ -111,10 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d00108eea1266a4da21e65c40f2f089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorTurret: {fileID: 0}
   Transform: {fileID: 5083494016600904549}
   Pivot: {fileID: 0}
-  Muzzle: {fileID: 637757549003210343}
 --- !u!114 &5301482376955558955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,6 +129,14 @@ MonoBehaviour:
   Name: Blaster Rifle
   Description: Handheld blaster than can incinerate infantry targets caught in its
     blast.
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!114 &2513510962204956267
 MonoBehaviour:
   m_ObjectHideFlags: 0

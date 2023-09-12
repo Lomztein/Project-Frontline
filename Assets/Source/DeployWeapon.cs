@@ -50,7 +50,7 @@ public class DeployWeapon : MonoBehaviour, IWeapon, ITurret, IEmplacable
         return _childTurret;
     }
 
-    public DamageMatrix.Damage DamageType => ChildWeapon.DamageType;
+    public DamageModifier Modifier => GetChildWeapon().Modifier;
 
     public event Action<IWeapon> OnFire
     {

@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 100
   Firerate: 0.2
+  Modifier: {fileID: 11400000, guid: 92e6b21166c648b45b3686dd2030c041, type: 2}
   DamageType: 1
   Speed: 150
   Range: 100
@@ -110,6 +111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 100
   Firerate: 1
+  Modifier: {fileID: 11400000, guid: 92e6b21166c648b45b3686dd2030c041, type: 2}
   DamageType: 1
   Speed: 150
   Range: 100
@@ -5080,6 +5082,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 100
   Firerate: 1
+  Modifier: {fileID: 11400000, guid: 92e6b21166c648b45b3686dd2030c041, type: 2}
   DamageType: 1
   Speed: 150
   Range: 100
@@ -10050,6 +10053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 100
   Firerate: 1
+  Modifier: {fileID: 11400000, guid: 92e6b21166c648b45b3686dd2030c041, type: 2}
   DamageType: 1
   Speed: 150
   Range: 100
@@ -19965,10 +19969,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d00108eea1266a4da21e65c40f2f089, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AnimatorTurret: {fileID: 0}
   Transform: {fileID: 5260784036467463223}
   Pivot: {fileID: 0}
-  Muzzle: {fileID: 4315789447047885799}
 --- !u!114 &8196084910756931438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19986,6 +19988,7 @@ MonoBehaviour:
   - {fileID: 4859777722009119752}
   - {fileID: 4408372433560454043}
   - {fileID: 6306435435008582554}
+  CanFireWhen: 0
 --- !u!114 &3956647460320134524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20000,6 +20003,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Quad-Barreled Recoilless Rifle
   Description: If one barrel is enough for many, would four not be enough for all?
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!114 &2932631282293275926
 MonoBehaviour:
   m_ObjectHideFlags: 0

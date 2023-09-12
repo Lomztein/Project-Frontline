@@ -304,6 +304,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 600
   Firerate: 0.65
+  Modifier: {fileID: 11400000, guid: 945d88c08db340144ab265835acf69ca, type: 2}
   DamageType: 3
   Speed: 200
   Range: 100
@@ -801,6 +802,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7599231597128654091, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
+      propertyPath: Modifier
+      value: 
+      objectReference: {fileID: 11400000, guid: 998fc5c61550d024286c252cfab30310,
+        type: 2}
     - target: {fileID: -7599231597128654091, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}
       propertyPath: MaxHealth

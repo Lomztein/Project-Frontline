@@ -50,6 +50,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 60
   Damage: 200
+  Modifier: {fileID: 0}
   DamageType: 1
   Velocity: {x: 0, y: 0, z: 0}
   Life: 5
@@ -88,6 +89,8 @@ MonoBehaviour:
   Projectile: {fileID: 3751266253062353309}
   ExplosionRange: 5
   ExplosionDamage: 25
+  ExplosionDamageModifier: {fileID: 11400000, guid: c005ea8f0e75e674d92d114853d418cd,
+    type: 2}
   ExplosionDamageType: 2
 --- !u!96 &4710538243649565020
 TrailRenderer:

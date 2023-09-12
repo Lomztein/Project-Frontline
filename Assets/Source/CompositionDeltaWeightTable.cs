@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 [CreateAssetMenu(fileName = "New Composite Delta Weight Table", menuName = "Unit Weight Tables/Composite Delta")]
 public class CompositionDeltaWeightTable : UnitWeightTableBase
@@ -10,6 +12,8 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
     public float FallbackProductionTime;
     public float DamageWeight = 1f;
     public float HealthWeight = 1f;
+    public float CostWeight = 1f;
+    public float RangeWeight = 1f;
 
     public string[] SpecialistTags; // Should be ignored as they are handled by other tables.
 
@@ -30,14 +34,26 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
 
         IEnumerable<float> damageScores = Map(options.Select(x => ComputeUnitDamageScore(x, enemyArmor)), 0f, 1f);
         IEnumerable<float> armorScores = Map(options.Select(x => ComputeUnitHealthScore(x, enemyDamage)), 0f, 1f);
-        var scores = options.Zip(damageScores, (o, d) => new { Option = o, Damage = d }).Zip(armorScores, (od, a) => new { od.Option, od.Damage, Armor = a });
+        IEnumerable<float> costScores = Map(options.Select(x => (float)x.GetComponent<Unit>().GetCost(_commander)), 0f, 1f);
+        IEnumerable<float> rangeScores = Map(options.Select(x => ComputeUnitRangeScore(x)), 0f, 1f);
+
+        var scores = options.Zip(damageScores, (o, d) => new { Option = o, Damage = d })
+            .Zip(armorScores, (od, a) => new { od.Option, od.Damage, Armor = a })
+            .Zip(costScores, (oda, c) => new { oda.Option, oda.Damage, oda.Armor, Cost = c })
+            .Zip(rangeScores, (odac, r) => new { odac.Option, odac.Damage, odac.Armor, odac.Cost, Range = r });
         
         foreach (var score in scores)
         {
             Unit unit = score.Option.GetComponent<Unit>();
             if (unit.GetWeapons().Any() && !SpecialistTags.Any(x => unit.Info.Tags.Contains(x)))
             {
-                float avg = (score.Damage * DamageWeight + score.Armor * HealthWeight) / (DamageWeight + HealthWeight);
+                float total = DamageWeight + HealthWeight + CostWeight + RangeWeight;
+                float avg = (
+                    score.Damage * DamageWeight + 
+                    score.Armor * HealthWeight + 
+                    score.Cost * CostWeight +
+                    score.Range * HealthWeight
+                    ) / total;
                 results.Add(score.Option, avg);
             }
             else
@@ -56,11 +72,25 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
 
     public override UnitWeightTableBase DeepCopy() => Instantiate(this);
 
+    // Under the assumption that it becomes exponentially more dangerous the closer you are to the target,
+    // It follows to reason that it should be logarithmically less dangerous the further you are. What should the base be? idk lol, I guess growth is the same for all bases.'
+    // This may be completely wrong lol i'm not a math guy.
+    private float ComputeUnitRangeScore(GameObject prefab)
+    {
+        float def = Mathf.Log(50, 2f); // 50 is conventionally the "default" range in this game.
+        var controller = prefab.GetComponent<AttackerController>();
+        if (controller != null)
+        {
+            return Mathf.Log(controller.HoldRange, 2f);
+        }
+        return def;
+    }
+
     // Unit damage score indicates how much the units particular damage type(s) is needed at the moment.
     // High score indicates that the unit does high damage against enemy units which are not countered.
     // Score is computed from our current damage produced subtracted from enemy health produced, then multiplied by the weapons DPS against the enemy armor.
     // Scores for all weapons for each enemy armor type is summed. This should result in units whose effective DPS against uncountered units having higher scores.
-    private float ComputeUnitDamageScore (GameObject prefab, Dictionary<DamageMatrix.Armor, float> enemyArmor)
+    private float ComputeUnitDamageScore (GameObject prefab, Dictionary<DamageModifier, float> enemyArmor)
     {
         Unit unit = prefab.GetComponent<Unit>();
         float productionTime = GetUnitProductionTime(prefab);
@@ -68,11 +98,14 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
         float score = 0f;
         foreach (var weapon in weapons)
         {
-            var type = weapon.DamageType;
+            var type = weapon.Modifier;
             float dpsps = weapon.GetDPSOrOverride() / productionTime;
+            if (type == null)
+                Debug.Log(prefab, prefab);
+
             foreach (var ak in enemyArmor.Keys)
             {
-                score += dpsps * DamageMatrix.GetDamageFactor(type, ak) * Mathf.Max(enemyArmor[ak], 0f);
+                score += dpsps * DamageModifier.Combine(ak, type) * Mathf.Max(enemyArmor[ak], 0f);
             }
         }
         return score;
@@ -82,40 +115,42 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
     // Higher scores indicate that the particular unit is more resistent to what is produced by the enemy.
     // Computed from unit health multiplied by one minus enemy DPS effeciency against armor.
     // Scores for all healths for each enemy damage type is summed. This should result in armor that is less countered getting higher scores.
-    private float ComputeUnitHealthScore (GameObject prefab, Dictionary<DamageMatrix.Damage, float> enemyDamage)
+    private float ComputeUnitHealthScore (GameObject prefab, Dictionary<DamageModifier, float> enemyDamage)
     {
         float productionTime = GetUnitProductionTime(prefab);
         var healths = prefab.GetComponentsInChildren<Health>();
         float score = 0f;
         foreach (var health in healths)
         {
-            var type = health.ArmorType;
+            var type = health.Modifier;
             float aps = health.MaxHealth / productionTime;
             foreach (var dk in enemyDamage.Keys)
             {
-                score += aps * (1-DamageMatrix.GetDamageFactor(dk, type) * enemyDamage[dk]);
+                score += aps * (1-DamageModifier.Combine(type, dk) * enemyDamage[dk]);
             }
         }
         return score;
     }
 
-    private Dictionary<DamageMatrix.Armor, float> SubtractDamageFromArmor(Dictionary<DamageMatrix.Armor, float> armor, Dictionary<DamageMatrix.Damage, float> damage)
+    private Dictionary<DamageModifier, float> SubtractDamageFromArmor(Dictionary<DamageModifier, float> armor, Dictionary<DamageModifier, float> damage)
     {
-        Dictionary<DamageMatrix.Armor, float> result = new Dictionary<DamageMatrix.Armor, float>(armor);
+        Dictionary<DamageModifier, float> result = new Dictionary<DamageModifier, float>(armor);
         foreach (var ak in armor.Keys)
         {
             foreach (var dk in damage.Keys)
             {
-                float factor = DamageMatrix.GetDamageFactor(dk, ak);
+                float factor = DamageModifier.Combine(ak, dk);
+                if (!result.ContainsKey(ak))
+                    result.Add(ak, 0f);
                 result[ak] -= factor * damage[dk];
             }
         }
         return result;
     }
 
-    private Dictionary<DamageMatrix.Damage, float> ComputeTeamDamageProducedPerSecond(IEnumerable<Commander> team)
+    private Dictionary<DamageModifier, float> ComputeTeamDamageProducedPerSecond(IEnumerable<Commander> team)
     {
-        Dictionary<DamageMatrix.Damage, float> result = NewDamageAccum();
+        Dictionary<DamageModifier, float> result = new Dictionary<DamageModifier, float>();
         var types = result.Keys.ToList();
         var factories = team.SelectMany(x => x.AlivePlaced).Select(x => x.GetComponent<UnitFactory>()).Where(x => x != null);
         foreach (var factory in factories)
@@ -127,8 +162,11 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
 
             foreach (var weapon in weapons)
             {
-                var type = weapon.DamageType;
+                var type = weapon.Modifier;
                 var dpsps = weapon.GetDPSOrOverride() / productionTime;
+
+                if (!result.ContainsKey(type))
+                    result.Add(type, 0f);
                 result[type] += dpsps;
             }
         }
@@ -136,9 +174,9 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
         return result;
     }
 
-    private Dictionary<DamageMatrix.Armor, float> ComputeTeamArmorProducedPerSecond(IEnumerable<Commander> team)
+    private Dictionary<DamageModifier, float> ComputeTeamArmorProducedPerSecond(IEnumerable<Commander> team)
     {
-        Dictionary<DamageMatrix.Armor, float> result = NewArmorAccum();
+        Dictionary<DamageModifier, float> result = new Dictionary<DamageModifier, float>();
         var factories = team.SelectMany(x => x.AlivePlaced).Select(x => x.GetComponent<UnitFactory>()).Where(x => x != null);
         foreach (var factory in factories)
         {
@@ -149,8 +187,14 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
 
             foreach (var health in healths)
             {
-                var type = health.ArmorType;
+                var type = health.Modifier;
                 var hps = health.MaxHealth / productionTime;
+                if (type == null) {
+                    Debug.Log(health.transform.root.name);
+                }
+
+                if (!result.ContainsKey(type))
+                    result.Add(type, 0f);
                 result[type] += hps;
             }
         }
@@ -164,9 +208,4 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
             return info.ProductionTime;
         return FallbackProductionTime;
     }
-
-    private Dictionary<DamageMatrix.Damage, float> NewDamageAccum ()
-        => Enum.GetValues(typeof(DamageMatrix.Damage)).Cast<int>().ToDictionary(x => (DamageMatrix.Damage)x, y => 0f);
-    private Dictionary<DamageMatrix.Armor, float> NewArmorAccum()
-    => Enum.GetValues(typeof(DamageMatrix.Armor)).Cast<int>().ToDictionary(x => (DamageMatrix.Armor)x, y => 0f);
 }

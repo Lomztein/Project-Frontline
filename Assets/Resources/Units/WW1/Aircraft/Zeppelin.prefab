@@ -489,7 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 9000
-  ArmorType: 2
+  Modifier: {fileID: 11400000, guid: 4bdea23464958bb4fb9f42f36ef1819e, type: 2}
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -508,8 +508,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxSpeed: 10
   Rigidbody: {fileID: 0}
+  MaxAngularSpeed: 30
   AccelerationSpeed: 30
-  AngularAccelerationSpeed: 80
+  AngularAccelerationSpeed: 10
   HoverHeight: 28
   HoverSpeed: 10
   DragCoeffecient: 0.95
@@ -916,7 +917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 2.5
   Firerate: 20
-  DamageType: 2
+  Modifier: {fileID: 11400000, guid: f896246902e65654daa0c58f1102a940, type: 2}
   Speed: 50
   Range: 50
   Amount: 1

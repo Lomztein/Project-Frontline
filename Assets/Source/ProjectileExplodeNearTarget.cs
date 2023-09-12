@@ -9,7 +9,7 @@ public class ProjectileExplodeNearTarget : MonoBehaviour
     public float ExplosiveDamage;
     public float ExplosiveRange;
     public AnimationCurve DamageFalloff;
-    public DamageMatrix.Damage DamageType;
+    public DamageModifier DamageModifier;
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +58,7 @@ public class ProjectileExplodeNearTarget : MonoBehaviour
                 float damage = DamageFalloff.Evaluate(factor) * ExplosiveDamage;
 
                 Vector3 hitPoint = col.ClosestPoint(transform.position);
-                Projectile.DoDamage(damagable, damage, DamageType, hitPoint, (col.transform.position - transform.position).normalized);
+                Projectile.DoDamage(damagable, damage, DamageModifier, hitPoint, (col.transform.position - transform.position).normalized);
             }
         }
     }

@@ -137,6 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Speed: 60
   Damage: 200
+  Modifier: {fileID: 0}
   DamageType: 1
   Velocity: {x: 0, y: 0, z: 0}
   Life: 10
@@ -175,6 +176,8 @@ MonoBehaviour:
   Projectile: {fileID: 4941295505354261099}
   ExplosionRange: 10
   ExplosionDamage: 100
+  ExplosionDamageModifier: {fileID: 11400000, guid: c005ea8f0e75e674d92d114853d418cd,
+    type: 2}
   ExplosionDamageType: 2
 --- !u!114 &952144036856581342
 MonoBehaviour:
@@ -224,6 +227,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 10
+  Modifier: {fileID: 11400000, guid: 998fc5c61550d024286c252cfab30310, type: 2}
   ArmorType: 3
   DestroyOnDeath: 0
   DestroyDelay: 0

@@ -389,7 +389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 3000
   Firerate: 0.1
-  DamageType: 3
+  Modifier: {fileID: 11400000, guid: 32965504936dc044792ab332d71adaea, type: 2}
   Speed: 1337
   Range: 1337
   Amount: 1
@@ -5674,13 +5674,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 401246402849022399, guid: d9117cde3af7c7e49b48839c2fef3f80,
         type: 3}
+      propertyPath: Modifier
+      value: 
+      objectReference: {fileID: 11400000, guid: 9aced94021235b843a137515da87937a,
+        type: 2}
+    - target: {fileID: 401246402849022399, guid: d9117cde3af7c7e49b48839c2fef3f80,
+        type: 3}
       propertyPath: MaxHealth
       value: 8000
       objectReference: {fileID: 0}
     - target: {fileID: 1020735542546060326, guid: d9117cde3af7c7e49b48839c2fef3f80,
         type: 3}
       propertyPath: Info.Cost
-      value: 8000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 1020735542546060326, guid: d9117cde3af7c7e49b48839c2fef3f80,
         type: 3}
@@ -5690,7 +5696,7 @@ PrefabInstance:
     - target: {fileID: 1020735542546060326, guid: d9117cde3af7c7e49b48839c2fef3f80,
         type: 3}
       propertyPath: Info.Value
-      value: 800
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 1020735542546060326, guid: d9117cde3af7c7e49b48839c2fef3f80,
         type: 3}

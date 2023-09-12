@@ -6,7 +6,7 @@ using UnityEngine;
 public class Health : MonoBehaviour, IDamagable
 {
     public float MaxHealth;
-    public DamageMatrix.Armor ArmorType;
+    public DamageModifier Modifier;
     private bool _isDead;
     public float CurrentHealth { get; private set; }
     public bool DestroyOnDeath = true;
@@ -27,7 +27,7 @@ public class Health : MonoBehaviour, IDamagable
     {
         float h = CurrentHealth;
         OnTakeDamage?.Invoke(this, info);
-        float dmg = info.Damage * DamageMatrix.GetDamageFactor(info.Type, ArmorType);
+        float dmg = info.GetDamage(Modifier);
         CurrentHealth -= dmg;
         info.DamageDone = Mathf.Clamp(h - CurrentHealth, -MaxHealth, MaxHealth);
         OnDamageTaken?.Invoke(this, info);

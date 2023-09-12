@@ -542,6 +542,8 @@ MonoBehaviour:
   - {fileID: 3243259975173464634}
   - {fileID: 5766240198231936118}
   - {fileID: 8161615378945950485}
+  Parts: []
+  Weakpoints: []
 --- !u!114 &2601907707314372027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,7 +557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 3000
-  ArmorType: 3
+  Modifier: {fileID: 11400000, guid: 998fc5c61550d024286c252cfab30310, type: 2}
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -979,9 +981,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 300
+  Damage: 200
   Firerate: 0.4
-  DamageType: 1
+  Modifier: {fileID: 11400000, guid: 92e6b21166c648b45b3686dd2030c041, type: 2}
   Speed: 200
   Range: 150
   Amount: 1

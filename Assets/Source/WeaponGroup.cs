@@ -15,8 +15,6 @@ public class WeaponGroup : MonoBehaviour, IWeapon
     public float Firerate => GetWeapons().First().Firerate * _weapons.Length;
     public float Speed => GetWeapons().First().Speed;
 
-    public DamageMatrix.Damage DamageType => GetWeapons().First().DamageType;
-
     public event Action<IWeapon> OnFire;
     public event Action<IWeapon, Projectile> OnProjectile;
     public event Action<IWeapon, Projectile, Collider, Vector3, Vector3> OnHit;
@@ -29,6 +27,8 @@ public class WeaponGroup : MonoBehaviour, IWeapon
 
     public int Ammo => GetWeapons().Sum(x => x.Ammo);
     public int MaxAmmo => GetWeapons().Sum(x => x.MaxAmmo);
+
+    public DamageModifier Modifier => GetWeapons().First().Modifier;
 
     public float GetDPS() => GetWeapons().First().GetDPSOrOverride() * _weapons.Length;
 

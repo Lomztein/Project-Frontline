@@ -18,7 +18,7 @@ public interface IWeapon
 
     void SetHitLayerMask(LayerMask mask);
 
-    DamageMatrix.Damage DamageType { get; }
+    DamageModifier Modifier { get; }
 
     event Action<IWeapon> OnFire;
     event Action<IWeapon, Projectile> OnProjectile;

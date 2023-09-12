@@ -23,17 +23,17 @@ public class MatchInitializer : MonoBehaviour
     public void InitializeMatch (MatchSettings settings)
     {
         settings.MapInfo.SceneryGenerator.Generate(settings.MapInfo);
-        settings.MapInfo.Shape.GenerateWaypoints(settings.MapInfo);
+        settings.MapInfo.Shape.GenerateWaypoints(settings.MapInfo).ToArray();
 
         var teams = settings.Players.GroupBy(x => x.Team).ToArray();
-        var spawnLines = settings.MapInfo.Shape.GenerateSpawnLines(settings.MapInfo).ToArray();
+        var spawnLines = settings.MapInfo.Shape.GenerateSpawnVolumes(settings.MapInfo).ToArray();
 
         for (int i = 0; i < teams.Length; i++)
         {
             var players = teams[i].ToArray();
 
-            Vector3 teamPosition = spawnLines[i].Center;
-            Quaternion rotation = Quaternion.Euler(0f, Waypoint.GetNearest(teamPosition).OutgoingAngle, 0f);
+            Vector3 teamPosition = spawnLines[i].Position;
+            Quaternion rotation = Quaternion.Euler(0f, Waypoint.OutgoingAngle(Waypoint.GetNearest(teamPosition)), 0f);
             Team team = SpawnTeam(teams[i].Key, teamPosition, rotation);
 
             for (int j = 0; j < players.Length; j++)
@@ -102,5 +102,14 @@ public class MatchInitializer : MonoBehaviour
         menu.Commander = player;
         menu.UpdateActive();
         Object.FindObjectOfType<CreditsDisplay>().Commander = player;
+    }
+
+    private void OnDrawGizmos()
+    {
+        var parimiter = MatchSettings.Current.MapInfo.GetPerimeterPolygon().ToArray();
+        for (int i = 0; i < parimiter.Length - 1; i++)
+        {
+            Gizmos.DrawLine(parimiter[i] + Vector3.up, parimiter[i + 1] + Vector3.up);
+        }
     }
 }

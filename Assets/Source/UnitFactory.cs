@@ -12,7 +12,7 @@ public class UnitFactory : MonoBehaviour, ITeamComponent
     public float SpawnRange;
 
     private TeamInfo _team;
-    private Waypoint _nearestWaypoint;
+    private IWaypoint _nearestWaypoint;
 
     public float EarnedCredits; // The amount of money the units from this factory has earned.
     public float GivenCredits; // The amount of money the units from this factory has given by being killed by enemies.

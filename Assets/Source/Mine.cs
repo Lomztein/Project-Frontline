@@ -13,7 +13,7 @@ public class Mine : MonoBehaviour, ITeamComponent
 
     public float ExplosionRange;
     public float ExplosionDamage;
-    public DamageMatrix.Damage ExplosionDamageType;
+    public DamageModifier ExplosionDamageModifier;
 
     public Effect TriggerEffect;
     public Effect ExplodeEffect;
@@ -83,7 +83,7 @@ public class Mine : MonoBehaviour, ITeamComponent
         {
             var health = hit.GetComponentInParent<Health>();
             if (health)
-                health.TakeDamage(new DamageInfo(ExplosionDamage, ExplosionDamageType, hit.transform.position, (hit.transform.position - transform.position).normalized, this, hit));
+                health.TakeDamage(new DamageInfo(ExplosionDamage, ExplosionDamageModifier, hit.transform.position, (hit.transform.position - transform.position).normalized, this, hit));
         }
         TriggerEffect.transform.SetParent(null);
         ExplodeEffect.transform.SetParent(null);

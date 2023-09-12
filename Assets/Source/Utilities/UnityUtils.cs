@@ -221,6 +221,18 @@ namespace Util
             }
         }
 
+        public static T[] Shift<T>(T[] array, int amount)
+        {
+            int size = array.Length;
+            T[] shiftNums = new T[size];
+
+            for (int i = 0; i < size; i++)
+            {
+                shiftNums[i] = array[(i + amount) % size];
+            }
+            return shiftNums;
+        }
+
         public static string GetPath(this Transform transform)
         {
             Transform current = transform;

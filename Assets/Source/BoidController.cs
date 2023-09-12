@@ -11,9 +11,9 @@ public class BoidController : AttackerController
 
     protected override void MoveAlongWaypoints()
     {
-        if (_currentWaypoint)
+        if (_currentWaypoint != null)
         {
-            Vector3 pos = SwarmCenter.position + _currentWaypoint.OutgoingVector * WaypointSpeed * Time.fixedDeltaTime;
+            Vector3 pos = SwarmCenter.position + Waypoint.OutgoingVector(_currentWaypoint) * WaypointSpeed * Time.fixedDeltaTime;
             pos.y = TravelHeight;
             SwarmCenter.position = pos;
         }

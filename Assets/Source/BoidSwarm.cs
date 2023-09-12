@@ -30,7 +30,7 @@ public class BoidSwarm : MonoBehaviour, IEnumerable<Boid>
         Boids.Remove(boid);
         if (Boids.Count <= 0)
         {
-            Health.TakeDamage(new DamageInfo(Health.MaxHealth * 2f, DamageMatrix.Damage.Heal, Vector3.forward, Vector3.forward, this, Health));
+            //Health.TakeDamage(new DamageInfo(Health.MaxHealth * 2f, DamageMatrix.Damage.Heal, Vector3.forward, Vector3.forward, this, Health));
         }
     }
 

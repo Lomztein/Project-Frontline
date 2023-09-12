@@ -12,8 +12,8 @@ public class BuilderWeapon : MonoBehaviour, IWeapon, ITeamComponent, ICommanderC
     [SerializeField] private float _speed;
     public float Speed => _speed;
 
-    [SerializeField] private DamageMatrix.Damage _damageType;
-    public DamageMatrix.Damage DamageType => _damageType;
+    [SerializeField] private DamageModifier _modifier;
+    public DamageModifier Modifier => _modifier;
 
     public event Action<IWeapon> OnFire;
     public event Action<IWeapon, Projectile> OnProjectile;
@@ -31,6 +31,7 @@ public class BuilderWeapon : MonoBehaviour, IWeapon, ITeamComponent, ICommanderC
 
     public int Ammo => _canFire ? 1 : 0;
     public int MaxAmmo => 1;
+
 
     public void AssignCommander(Commander commander)
     {

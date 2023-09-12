@@ -5308,7 +5308,14 @@ MonoBehaviour:
   Name: Rocket Battery
   Description: Contains 4 high-explosive rockets that can lay waste to structures
     from afar.
-  Root: {fileID: 5640369136892039193}
+  Model: {fileID: 5640369136892039193}
+  AimBehaviour:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &5640369136722788493
 GameObject:
   m_ObjectHideFlags: 0
@@ -5357,6 +5364,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 200
   Firerate: 0.1
+  Modifier: {fileID: 11400000, guid: 314342fc66eec6d48825ca07dec91c8c, type: 2}
   DamageType: 5
   Speed: 50
   Range: 300
@@ -5524,6 +5532,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 200
   Firerate: 0.1
+  Modifier: {fileID: 11400000, guid: 314342fc66eec6d48825ca07dec91c8c, type: 2}
   DamageType: 5
   Speed: 50
   Range: 300
@@ -10667,6 +10676,8 @@ MonoBehaviour:
   Health: {fileID: 0}
   _weapons:
   - {fileID: 5640369136630403019}
+  Parts: []
+  Weakpoints: []
 --- !u!114 &5640369137628400754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10680,6 +10691,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 250
+  Modifier: {fileID: 11400000, guid: 48edd60faee51d246a8009cd399ac2f2, type: 2}
   ArmorType: 2
   DestroyOnDeath: 1
   DestroyDelay: 0
@@ -15769,6 +15781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 200
   Firerate: 0.1
+  Modifier: {fileID: 11400000, guid: 314342fc66eec6d48825ca07dec91c8c, type: 2}
   DamageType: 5
   Speed: 50
   Range: 300
@@ -15850,6 +15863,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 200
   Firerate: 0.1
+  Modifier: {fileID: 11400000, guid: 314342fc66eec6d48825ca07dec91c8c, type: 2}
   DamageType: 5
   Speed: 50
   Range: 300

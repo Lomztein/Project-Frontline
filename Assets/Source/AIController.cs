@@ -34,7 +34,7 @@ public abstract class AIController : MonoBehaviour, IController
     public bool LeadTarget;
     private Vector3 _targetLastPosition;
 
-    private DamageMatrix.Damage _primaryWeaponDamageType;
+    private DamageModifier _primaryWeaponDamageModifier;
     private Ticker _targetFindingTicker;
     private float _aimDelta;
     public float TargetSearchFrequency = 2f;
@@ -67,7 +67,7 @@ public abstract class AIController : MonoBehaviour, IController
     {
         if (Weapons.Count > 0)
         {
-            _primaryWeaponDamageType = Weapons[0].DamageType;
+            _primaryWeaponDamageModifier = Weapons[0].Modifier;
             _targetFinder.SetEvaluator((pos, go) =>
                 TargetFinder.DefaultEvaluator(pos, go) +
                 GetDamageFactor(go) * 1000000f);
@@ -92,7 +92,7 @@ public abstract class AIController : MonoBehaviour, IController
         Health health = target.GetComponentInParent<Health>();
         if (health)
         {
-            return DamageMatrix.GetDamageFactor(_primaryWeaponDamageType, health.ArmorType);
+            return _primaryWeaponDamageModifier.GetValue(health.Modifier);
         }
         return 1f;
     }

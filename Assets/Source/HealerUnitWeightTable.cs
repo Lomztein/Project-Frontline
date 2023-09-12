@@ -9,6 +9,8 @@ public class HealerUnitWeightTable : UnitWeightTable
     public float HealthPerHPSRatio;
     public float DefaultProductionTime = 60f;
 
+    public string[] HealerUnitTags = new string[] { "Heal", "Repair" };
+
     public override Dictionary<GameObject, float> GenerateWeights(IEnumerable<GameObject> options)
     {
         float currentHeals = 0f;
@@ -21,11 +23,11 @@ public class HealerUnitWeightTable : UnitWeightTable
             (Unit unit, float productionTime) = GetProducingUnitOrUnit(u);
             Health health = unit.GetComponent<Health>();
             currentMaxHealth += health.MaxHealth / productionTime;
-
             var weapons = unit.GetWeapons();
-            foreach (var weapon in weapons)
+
+            if (HealerUnitTags.Any(x => unit.Info.Tags.Contains(x)))
             {
-                if (weapon.DamageType == DamageMatrix.Damage.Heal)
+                foreach (var weapon in weapons)
                 {
                     currentHeals += weapon.GetDPSOrOverride() / productionTime;
                 }
@@ -36,26 +38,27 @@ public class HealerUnitWeightTable : UnitWeightTable
         float highestHps = 0f;
         foreach (var unit in options)
         {
-            var weapons = unit.GetComponent<Unit>().GetWeapons();
-            float hps = float.Epsilon;
-
-            foreach (var weapon in weapons)
+            Unit u = unit.GetComponent<Unit>();
+            if (HealerUnitTags.Any(x => u.Info.Tags.Contains(x)))
             {
-                if (weapon.DamageType == DamageMatrix.Damage.Heal)
+                var weapons = u.GetWeapons();
+                float hps = float.Epsilon;
+
+                foreach (var weapon in weapons)
                 {
                     hps += weapon.GetDPSOrOverride();
                 }
-            }
-            if (hps > 0.1f)
-            {
-                weights.Add(unit, (1f - Mathf.Clamp01(currentHeals / (currentMaxHealth / HealthPerHPSRatio))) * hps);
+                if (hps > 0.1f)
+                {
+                    weights.Add(unit, (1f - Mathf.Clamp01(currentHeals / (currentMaxHealth / HealthPerHPSRatio))) * hps);
+                }
+
+                if (hps > highestHps) highestHps = hps;
             }
             else
             {
                 weights.Add(unit, 0f);
             }
-
-            if (hps > highestHps) highestHps = hps;
         }
 
         // Normalize by highest HPS

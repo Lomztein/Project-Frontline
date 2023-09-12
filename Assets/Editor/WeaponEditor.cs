@@ -15,11 +15,14 @@ public class WeaponEditorBase<T> : Editor where T : class
         _showAllDamage = EditorGUILayout.BeginFoldoutHeaderGroup(_showAllDamage, "Damage / DPS against armor");
         if (_showAllDamage)
         {
-            var values = System.Enum.GetValues(typeof(DamageMatrix.Armor));
+            var values = Resources.LoadAll<DamageModifier>("DamageModifiers/Health");
             foreach (var value in values)
             {
-                float factor = DamageMatrix.GetDamageFactor(weapon.DamageType, (DamageMatrix.Armor)value);
-                EditorGUILayout.LabelField("Damage / DPS against " + value.ToString() + ": " + weapon.Damage * factor + " / " + weapon.GetDPSOrOverride() * factor);
+                if (!value.Abstract)
+                {
+                    float factor = DamageModifier.Combine(value, weapon.Modifier);
+                    EditorGUILayout.LabelField("Damage / DPS against " + value.ToString() + ": " + weapon.Damage * factor + " / " + weapon.GetDPSOrOverride() * factor);
+                }
             }
         }
         EditorGUILayout.EndFoldoutHeaderGroup();

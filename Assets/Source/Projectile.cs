@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour, IPoolObject
 {
     [HideInInspector] public float Speed;
     [HideInInspector] public float Damage;
-    [HideInInspector] public DamageMatrix.Damage DamageType;
+    [HideInInspector] public DamageModifier Modifier;
     [HideInInspector] public Vector3 Velocity;
     public ITarget Target;
 
@@ -54,14 +54,14 @@ public class Projectile : MonoBehaviour, IPoolObject
     protected virtual void DoDamage (Collider col, Vector3 point)
     {
         var damagable = col.GetComponentInParent<IDamagable>();
-        DoDamage(damagable, Damage, DamageType, point, Velocity.normalized);
+        DoDamage(damagable, Damage, Modifier, point, Velocity.normalized);
     }
 
-    public void DoDamage (IDamagable damagable, float damage, DamageMatrix.Damage type, Vector3 point, Vector3 direction)
+    public void DoDamage (IDamagable damagable, float damage, DamageModifier modifier, Vector3 point, Vector3 direction)
     {
         if (damagable != null)
         {
-            var info = new DamageInfo(damage, type, point, direction, this, damagable);
+            var info = new DamageInfo(damage, modifier, point, direction, this, damagable);
             OnDoDamage?.Invoke(this, damagable, info);
             if (damagable.TakeDamage(info) <= 0f && info.KilledTarget)
             {

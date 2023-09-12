@@ -18,7 +18,7 @@ public class SurgicalFocusAIControllerModifier : AIControllerModifier
     private float EvaluateTarget(Vector3 pos, GameObject obj)
     {
         Health targetHealth = obj.GetComponentInParent<Health>();
-        if (CanKillInSingleVolley(targetHealth))
+        if (targetHealth && CanKillInSingleVolley(targetHealth))
             return Mathf.Pow(targetHealth.CurrentHealth * HealthWeight, 2);
         else
         {
@@ -28,7 +28,7 @@ public class SurgicalFocusAIControllerModifier : AIControllerModifier
 
     private bool CanKillInSingleVolley(Health health)
     {
-        float expectedDamage = DamageMatrix.GetDamageFactor(Weapon.DamageType, health.ArmorType) * Shots * Weapon.Amount * Weapon.Damage;
+        float expectedDamage = DamageModifier.Combine(health.Modifier, Weapon.Modifier) * Shots * Weapon.Amount * Weapon.Damage;
         return expectedDamage > health.CurrentHealth;
     }
 

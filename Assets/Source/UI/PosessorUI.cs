@@ -95,7 +95,7 @@ public class PosessorUI : MonoBehaviour
             {
                 string name = comp.name;
                 string desc = "";
-                string stats = $"{weapon.GetDPSOrOverride()} {weapon.DamageType}-type DPS";
+                string stats = $"{weapon.GetDPSOrOverride()} {weapon.Modifier} DPS";
                 Texture2D tex;
                 GameObject model;
 

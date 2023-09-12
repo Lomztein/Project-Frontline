@@ -73,7 +73,9 @@ public class Unit : MonoBehaviour, IPurchasable
         // Kill the unit if they go way too far out of bounds.
         if (!MatchSettings.Current.MapInfo.Contains(transform.position / 2f))
         {
-            Health.TakeDamage(new DamageInfo(Health.MaxHealth / 3f, DamageMatrix.Damage.PointDefense, transform.position, transform.forward, this, Health));
+            Debug.DrawRay(transform.position / 2f, Vector3.up, Color.black, 10f);
+            Debug.Log("OUT OF BOUNDS", this);
+            Health.TakeDamage(new DamageInfo(Health.MaxHealth / 3f, DamageModifier.One, transform.position, transform.forward, this, Health));
         }
     }
 

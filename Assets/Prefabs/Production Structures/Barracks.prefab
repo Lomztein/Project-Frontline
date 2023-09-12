@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1568255785295421517, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
@@ -40,13 +41,13 @@ PrefabInstance:
     - target: {fileID: 5633914085120568949, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
         type: 3}
       propertyPath: SpawnDelay
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5633914085120568949, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
         type: 3}
       propertyPath: UnitPrefab
       value: 
-      objectReference: {fileID: 5392427408549977929, guid: 842cea45b547e6045bb9176bc5ce4c96,
+      objectReference: {fileID: 6364331591275548564, guid: ba41715f419efa54b8b0d44e8977b735,
         type: 3}
     - target: {fileID: 6650765120204559775, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
         type: 3}
@@ -124,6 +125,13 @@ PrefabInstance:
       value: 2000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6650765120204559775, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1311816215717242083}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5920c77dd156fa84d9ef20fc112bf9b9, type: 3}
 --- !u!4 &6343550323798264381 stripped
 Transform:
@@ -136,6 +144,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 6343550323798264381}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: bcf1f5b9821ffbf4b991d90cc0c3f4cb,
@@ -214,10 +223,19 @@ PrefabInstance:
       value: Barracks
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcf1f5b9821ffbf4b991d90cc0c3f4cb, type: 3}
 --- !u!23 &180052972329475980 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: bcf1f5b9821ffbf4b991d90cc0c3f4cb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1566751948589302536}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1311816215717242083 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bcf1f5b9821ffbf4b991d90cc0c3f4cb,
     type: 3}
   m_PrefabInstance: {fileID: 1566751948589302536}
   m_PrefabAsset: {fileID: 0}

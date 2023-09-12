@@ -718,7 +718,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 2.5
   Firerate: 10
-  DamageType: 0
+  Modifier: {fileID: 11400000, guid: 1c89b0a4afb2193448b413f4230870cb, type: 2}
   Speed: 250
   Range: 100
   Amount: 1
@@ -792,7 +792,14 @@ MonoBehaviour:
   Name: 50. Machine Gun
   Description: Heacy caliber machine gun that can dispatch infantry quickly, but
     does little against armor.
-  Root: {fileID: 8530490600597396632}
+  Model: {fileID: 8530490600597396632}
+  AimBehaviour:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &8840328975211844015
 GameObject:
   m_ObjectHideFlags: 0

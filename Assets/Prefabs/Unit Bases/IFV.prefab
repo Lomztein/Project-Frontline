@@ -356,6 +356,8 @@ MonoBehaviour:
     UnitType: 0
   Health: {fileID: 0}
   _weapons: []
+  Parts: []
+  Weakpoints: []
 --- !u!114 &5620488823234584247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -369,6 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 250
+  Modifier: {fileID: 0}
   ArmorType: 3
   DestroyOnDeath: 1
   DestroyDelay: 0
@@ -606,6 +609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 5
   Firerate: 5
+  Modifier: {fileID: 11400000, guid: 88f33b5a78a4c7546ae7cf53174bf833, type: 2}
   DamageType: 0
   Speed: 250
   Range: 75
@@ -1077,6 +1081,12 @@ PrefabInstance:
       propertyPath: Muzzle
       value: 
       objectReference: {fileID: 6392583496088103950}
+    - target: {fileID: 7801628969060506553, guid: f814dc166d6e30742a83610383d63732,
+        type: 3}
+      propertyPath: Modifier
+      value: 
+      objectReference: {fileID: 11400000, guid: 88f33b5a78a4c7546ae7cf53174bf833,
+        type: 2}
     - target: {fileID: 7801628969060506553, guid: f814dc166d6e30742a83610383d63732,
         type: 3}
       propertyPath: FireEffect

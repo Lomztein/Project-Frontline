@@ -12,20 +12,20 @@ public class DamageInfo
 
     public float Damage;
     public float BaseDamage;
-    public DamageMatrix.Damage Type;
+    public DamageModifier Modifier;
     public Vector3 Point;
     public Vector3 Direction;
     public float DamageDone;
     public bool KilledTarget;
 
-    public DamageInfo(float damage, DamageMatrix.Damage type, Vector3 point, Vector3 direction, object source, object target)
+    public DamageInfo(float damage, DamageModifier modifier, Vector3 point, Vector3 direction, object source, object target)
     {
         Source = source;
         Target = target;
 
         Damage = damage;
         BaseDamage = damage;
-        Type = type;
+        Modifier = modifier;
         Point = point;
         Direction = direction;
     }
@@ -36,15 +36,9 @@ public class DamageInfo
         KilledTarget = killed;
     }
 
+    public float GetDamage(DamageModifier target)
+        => Damage * DamageModifier.Combine(target, Modifier);
+
     public T SourceAs<T>() where T : class => Source as T;
     public T TargetAs<T>() where T : class => Target as T;
-
-    public float ComputeDamage(ArmorType target)
-    {
-        float damage = Damage;
-        DamageType type = null;
-        damage = type.ModifyDamage(damage, this, target);
-        damage = target.MitigateDamage(damage, this, type);
-        return damage;
-    }
 }

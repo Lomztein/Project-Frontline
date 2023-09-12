@@ -51,7 +51,7 @@ public class StrikerController : AttackerController
         float angle;
         if (DisengageAlongWaypoint)
         {
-            angle = _currentWaypoint.IncomingAngle + LaneOffset;
+            angle = Waypoint.IncomingAngle(_currentWaypoint) + LaneOffset;
             angle = Mathf.DeltaAngle(transform.eulerAngles.y, angle);
         }
         else

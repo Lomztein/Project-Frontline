@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 50
   Firerate: 0.7
+  Modifier: {fileID: 11400000, guid: 9974e4778fc971144a67e48006632fd0, type: 2}
   DamageType: 5
   Speed: 250
   Range: 200
@@ -96,7 +97,14 @@ MonoBehaviour:
   Name: Flak Cannon
   Description: '"Man-portable" flak cannon that fires explosive shells effective
     against aircraft and light vehicles.'
-  Root: {fileID: 0}
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!114 &1741113655589631114
 MonoBehaviour:
   m_ObjectHideFlags: 0

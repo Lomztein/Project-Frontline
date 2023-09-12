@@ -28,13 +28,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4156094089172380452}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8879204589657585118}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4156094089172380448
 MonoBehaviour:
@@ -62,6 +63,8 @@ MonoBehaviour:
     UnitType: 4
   Health: {fileID: 0}
   _weapons: []
+  Parts: []
+  Weakpoints: []
 --- !u!114 &4156094089172380449
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,6 +78,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 4000
+  Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
   ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
@@ -88,9 +92,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4156094089172380452}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 9.197736, y: 4.9895434, z: 10.0555}
   m_Center: {x: 1.7381625, y: 1.9947722, z: -0.030265808}
 --- !u!114 &4156094089172380451
@@ -135,6 +147,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 4156094089172380463}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 349e9b3afe80a25449ae68b3bd9f998c,
@@ -218,16 +231,19 @@ PrefabInstance:
       value: EngineeringBay
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 349e9b3afe80a25449ae68b3bd9f998c, type: 3}
---- !u!4 &8879204589657585118 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 349e9b3afe80a25449ae68b3bd9f998c,
-    type: 3}
-  m_PrefabInstance: {fileID: 8985803835430900277}
-  m_PrefabAsset: {fileID: 0}
 --- !u!23 &4878453304825398522 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: 349e9b3afe80a25449ae68b3bd9f998c,
+    type: 3}
+  m_PrefabInstance: {fileID: 8985803835430900277}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8879204589657585118 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 349e9b3afe80a25449ae68b3bd9f998c,
     type: 3}
   m_PrefabInstance: {fileID: 8985803835430900277}
   m_PrefabAsset: {fileID: 0}
