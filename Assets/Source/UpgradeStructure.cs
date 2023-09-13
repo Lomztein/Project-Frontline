@@ -7,6 +7,8 @@ public abstract class UpgradeStructure : MonoBehaviour, ICommanderComponent, IUn
     public string UpgradeIdentifier;
     protected Commander _commander;
 
+    public IUnitPurchasePredicate.AnyAll Behaviour => IUnitPurchasePredicate.AnyAll.Any;
+
     public void AssignCommander(Commander commander)
     {
         _commander = commander;

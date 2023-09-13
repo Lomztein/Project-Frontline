@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEngine.UI.CanvasScaler;
 
 public class AICommander : Commander
 {
     public float TargetAvarageAPM = 20;
+    public float ActionCooldown = 1f;
+    public float QuickPlaceTime = 0.25f;
+    private float _actionCooldownTime;
     public Vector2 SaveTimeMinMax;
     public AnimationCurve SaveTimeBias;
 
     private IUnitSelector _unitSelector;
     private IPositionSeletor _positionSelector;
+    private int _highestUnitCost;
 
     public Unit SaveTarget;
+    public int MaxPurchaseAtOnce = 8;
 
     protected override void Awake()
     {
@@ -21,13 +27,19 @@ public class AICommander : Commander
         _positionSelector = GetComponent<IPositionSeletor>();
     }
 
+    protected override void Start()
+    {
+        base.Start();
+        _highestUnitCost = UnitSource.GetAvailableUnitPrefabs(Faction).Max(x => x.GetComponent<Unit>().BaseCost);
+    }
+
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
-        if (!Eliminated)
+        if (!Eliminated && _actionCooldownTime < 0f)
         {
             int randLimit = Mathf.RoundToInt((60 / Time.fixedDeltaTime) / TargetAvarageAPM);
-            if (SaveTarget == null && Random.Range(0, randLimit) == 0)
+            if (SaveTarget == null && Random.Range(0, randLimit) == 0 || Credits >= _highestUnitCost)
             {
                 PerformAction();
             }
@@ -41,6 +53,7 @@ public class AICommander : Commander
                 SaveTarget = null;
             }
         }
+        _actionCooldownTime -= Time.fixedDeltaTime;
     }
 
     private float GetExpectedCreditsAfterSaveTime (float time)
@@ -59,15 +72,26 @@ public class AICommander : Commander
         {
             if (CanAfford(unit, Credits))
             {
-                Vector3? position = _positionSelector.SelectPosition(this, unit, GetUnitPlacementCheckSize(unit));
-                if (position.HasValue)
-                {
-                    TryPurchaseAndPlaceUnit(unit, position.Value, transform.rotation);
-                }
+                int affordableCount = Mathf.FloorToInt(Credits / (float)GetCost(unit));
+                StartCoroutine(PurchaseMultiple(unit, affordableCount));
             }
             else
             {
                 SaveTarget = unit.GetComponent<Unit>();
+            }
+            _actionCooldownTime = ActionCooldown;
+        }
+    }
+
+    private IEnumerator PurchaseMultiple(GameObject unit, int amount)
+    {
+        for (int i = 0; i < Mathf.Min(amount, MaxPurchaseAtOnce); i++)
+        {
+            Vector3? position = _positionSelector.SelectPosition(this, unit, GetUnitPlacementCheckSize(unit));
+            if (position.HasValue)
+            {
+                TryPurchaseAndPlaceUnit(unit, position.Value, transform.rotation);
+                yield return new WaitForSeconds(QuickPlaceTime);
             }
         }
     }

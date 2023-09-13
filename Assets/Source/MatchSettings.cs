@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,10 @@ public class MatchSettings : ScriptableObject
 
     private static MatchSettings _current;
     public static MatchSettings Current { get => GetCurrent(); set => _current = value; }
+
+    public static event Action<MatchSettings> OnUpdated;
+    public static void NotifyUpdate(MatchSettings matchSettings) 
+        => OnUpdated?.Invoke(matchSettings);
 
     [SerializeField]
     private List<Mutator> _mutators;
@@ -70,6 +75,7 @@ public class MatchSettings : ScriptableObject
         public TeamInfo Team;
         public Dictionary<GameObject, bool> UnitAvailable = new Dictionary<GameObject, bool>();
 
+        public int SpawnIndex;
         public Vector2 Position;
         public int StartingCredits;
         public float Handicap;

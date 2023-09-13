@@ -5,16 +5,19 @@ using UnityEngine;
 public class SpawnLine : ISpawnVolume
 {
     public Vector3 Center;
+    public Quaternion Heading;
     public Vector3 ExtendDirection;
 
     public float DistanceBetween;
 
     public int Max => int.MaxValue;
     public Vector3 Position => Center;
+    public Quaternion Rotation => Heading;
 
-    public SpawnLine (Vector3 center, Vector3 extendDirection, float distanceBetween)
+    public SpawnLine (Vector3 center, Quaternion heading, Vector3 extendDirection, float distanceBetween)
     {
         Center = center;
+        Heading = heading;
         ExtendDirection = extendDirection;
         DistanceBetween = distanceBetween;
     }

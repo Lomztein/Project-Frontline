@@ -251,7 +251,6 @@ MonoBehaviour:
   Damage: 30
   Firerate: 1.1
   Modifier: {fileID: 11400000, guid: 9974e4778fc971144a67e48006632fd0, type: 2}
-  DamageType: 5
   Speed: 250
   Range: 200
   Amount: 1
@@ -555,7 +554,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 1000
   Modifier: {fileID: 11400000, guid: 998fc5c61550d024286c252cfab30310, type: 2}
-  ArmorType: 3
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -591,16 +589,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 0}
-  AcquireTargetRange: 100
-  LooseTargetRange: 100
-  AttackRange: 75
+  AcquireTargetRange: 70
+  LooseTargetRange: 70
+  AttackRange: 65
   TurretObject: {fileID: 0}
   WeaponObjects: []
   AimTolerance: 2
   LeadTarget: 1
   TargetSearchFrequency: 2
   Modifiers: []
-  HoldRange: 55
+  HoldRange: 60
   StayBehindFrontline: 0
 --- !u!54 &3111065244020195713
 Rigidbody:
@@ -741,7 +739,6 @@ MonoBehaviour:
   Damage: 30
   Firerate: 1.1
   Modifier: {fileID: 11400000, guid: 9974e4778fc971144a67e48006632fd0, type: 2}
-  DamageType: 5
   Speed: 250
   Range: 200
   Amount: 1

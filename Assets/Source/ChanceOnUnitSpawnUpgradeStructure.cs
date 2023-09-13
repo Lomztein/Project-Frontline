@@ -56,7 +56,7 @@ public abstract class ChanceOnUnitSpawnUpgradeStructure : UpgradeStructure
 
     public override string GetDescription(Unit unit, Commander commander)
     {
-        if (!CanPurchase(unit, commander))
+        if (!commander.CanPurchase(unit.gameObject))
         {
             return "Unavailable: No affected units on field.";
         }

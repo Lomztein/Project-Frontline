@@ -9,6 +9,6 @@ public interface ISpawnVolume
 {
     public int Max { get; }
     public Vector3 Position { get; }
-
+    public Quaternion Rotation { get; }
     public Vector3 GetSpawnPoint(int index, int total);
 }

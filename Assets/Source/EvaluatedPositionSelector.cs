@@ -17,15 +17,9 @@ public class EvaluatedPositionSelector : MonoBehaviour, IPositionSeletor
 
     public Vector3? SelectPosition(Commander commander, GameObject unit, Vector3 checkSize)
     {
-        float maxSqrDist = 0f;
-        if (commander.AlivePlaced.Any())
-        {
-            maxSqrDist = commander.AlivePlaced.Max(x => Vector3.SqrMagnitude(commander.Fortress.position - x.transform.position));
-        }
-        float maxDist = Mathf.Sqrt(maxSqrDist) + commander.BuildRadius;
-
         int tries = MaxTries;
         Vector3[] targetPoints = new Vector3[TargetPoints];
+        var placed = Enumerable.Concat(commander.Fortress.ObjectToEnumerable(), commander.AlivePlaced.Select(x => x.transform)).ToArray();
 
         int points = 0;
         for (points = 0; points < TargetPoints; points++)
@@ -34,7 +28,8 @@ public class EvaluatedPositionSelector : MonoBehaviour, IPositionSeletor
             Vector3 point = Vector3.zero;
             while (!success)
             {
-                point = commander.Fortress.position + Random.insideUnitSphere * maxDist;
+                Transform buildFrom = placed[Random.Range(0, placed.Length)].transform;
+                point = buildFrom.position + commander.BuildRadius * Random.insideUnitSphere;
                 point.y = 0;
 
                 if (IsWithinRange(point, commander) && CanPlace(point, checkSize))

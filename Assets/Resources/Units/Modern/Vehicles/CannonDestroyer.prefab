@@ -84,7 +84,6 @@ MonoBehaviour:
   Damage: 500
   Firerate: 0.2
   Modifier: {fileID: 11400000, guid: 8362a96e7109932438e1fb9e35348ed8, type: 2}
-  DamageType: 1
   Speed: 300
   Range: 150
   Amount: 1
@@ -10419,6 +10418,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2445538912635436398, guid: 809019c0ba3607d4ebcaa98d3d42a698,
         type: 3}
+      propertyPath: AttackRange
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445538912635436398, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
       propertyPath: TurretObject
       value: 
       objectReference: {fileID: 1379412215}
@@ -10427,6 +10431,16 @@ PrefabInstance:
       propertyPath: WeaponObject
       value: 
       objectReference: {fileID: 1379412215}
+    - target: {fileID: 2445538912635436398, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: LooseTargetRange
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 2445538912635436398, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: AcquireTargetRange
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 2445538912635436398, guid: 809019c0ba3607d4ebcaa98d3d42a698,
         type: 3}
       propertyPath: WeaponObjects.Array.size
@@ -10512,7 +10526,7 @@ PrefabInstance:
     - target: {fileID: 7879884644458380785, guid: 809019c0ba3607d4ebcaa98d3d42a698,
         type: 3}
       propertyPath: MaxHealth
-      value: 500
+      value: 750
       objectReference: {fileID: 0}
     - target: {fileID: 8212536064758022890, guid: 809019c0ba3607d4ebcaa98d3d42a698,
         type: 3}

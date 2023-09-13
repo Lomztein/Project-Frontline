@@ -18,18 +18,18 @@ public class MapSettings : MonoBehaviour
     public Dropdown Shape;
     public Dropdown Scenery;
 
-    private IBattlefieldShape[] _shapeCache;
+    private BattlefieldShape[] _shapeCache;
 
-    private IBattlefieldShape[] GetShapes ()
+    private BattlefieldShape[] GetShapes ()
     {
         if (_shapeCache == null)
         {
-            _shapeCache = ReflectionUtils.InstantiateAllOfType<IBattlefieldShape>().ToArray();
+            _shapeCache = Resources.LoadAll<BattlefieldShape>("BattlefieldShapes");
         }
         return _shapeCache;
     }
 
-    public IBattlefieldShape GetShape ()
+    public BattlefieldShape GetShape ()
     {
         return GetShapes()[Shape.value];
     }
@@ -49,8 +49,37 @@ public class MapSettings : MonoBehaviour
 
     private void Awake()
     {
-        Shape.options = GetShapes().Select(x => new Dropdown.OptionData (x.GetType().Name)).ToList();
+        Shape.options = GetShapes().Select(x => new Dropdown.OptionData (x.Name)).ToList();
         Scenery.options = GetSceneries().Select(x => new Dropdown.OptionData (x.Name)).ToList();
+
+        MapWidthSlider.onValueChanged.AddListener(OnWidthChanged);
+        MapHeightSlider.onValueChanged.AddListener(OnHeightChanged);
+        Shape.onValueChanged.AddListener(OnShapeChanged);
+        Scenery.onValueChanged.AddListener(OnSceneryChanged);
+    }
+
+    private void OnWidthChanged (float val)
+    {
+        MatchSettings.Current.MapInfo.Width = Mathf.Lerp(MapWidthMinMax.x, MapWidthMinMax.y, val);
+        MatchSettings.NotifyUpdate(MatchSettings.Current);
+    }
+
+    private void OnHeightChanged(float val)
+    {
+        MatchSettings.Current.MapInfo.Height = Mathf.Lerp(MapHeightMinMax.x, MapHeightMinMax.y, val);
+        MatchSettings.NotifyUpdate(MatchSettings.Current);
+    }
+
+    private void OnShapeChanged(int val)
+    {
+        MatchSettings.Current.MapInfo.Shape = GetShapes()[val];
+        MatchSettings.NotifyUpdate(MatchSettings.Current);
+    }
+
+    private void OnSceneryChanged(int val)
+    {
+        MatchSettings.Current.MapInfo.SceneryGenerator = GetSceneries()[val];
+        MatchSettings.NotifyUpdate(MatchSettings.Current);
     }
 
     public MapInfo CreateMapInfo()

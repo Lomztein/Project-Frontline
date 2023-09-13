@@ -49,7 +49,9 @@ public class Unit : MonoBehaviour, IPurchasable
     public bool CanPurchase(Commander commander)
     {
         IUnitPurchasePredicate[] predicates = GetComponents<IUnitPurchasePredicate>();
-        return predicates.All(x => x.CanPurchase(this, commander));
+        var any = predicates.Where(x => x.Behaviour == IUnitPurchasePredicate.AnyAll.Any);
+        var all = predicates.Where(x => x.Behaviour == IUnitPurchasePredicate.AnyAll.All);
+        return all.All(x => x.CanPurchase(this, commander)) && (!any.Any() || any.Any(x => x.CanPurchase(this, commander)));
     }
 
     public string GetCanPurchaseDesription(Commander commander)

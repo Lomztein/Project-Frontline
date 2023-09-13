@@ -108,7 +108,7 @@ public class Commander : MonoBehaviour, ITeamComponent
         return unit;
     }
 
-    private void Start()
+    protected virtual void Start()
     {
         Team.GetTeam(TeamInfo).AddCommander(this);
         InvokeRepeating(nameof(MoveNextAverageEarnings), 1f, 1f);
@@ -136,8 +136,11 @@ public class Commander : MonoBehaviour, ITeamComponent
                 Target = FindTarget();
             }
 
-            DefenseFactor = CalcFrontlineState(transform, LocalBaseBounds, Frontline.Position, DefenseMargin, DefenseThreshold);
-            OffenseFactor = CalcFrontlineState(Target.transform, Target.LocalBaseBounds, Frontline.Position, OffenseMargin, OffenseThreshold);
+            if (Target)
+            {
+                DefenseFactor = CalcFrontlineState(transform, LocalBaseBounds, Frontline.Position, DefenseMargin, DefenseThreshold);
+                OffenseFactor = CalcFrontlineState(Target.transform, Target.LocalBaseBounds, Frontline.Position, OffenseMargin, OffenseThreshold);
+            }
         }
     }
 
@@ -153,15 +156,17 @@ public class Commander : MonoBehaviour, ITeamComponent
 
     private Commander FindTarget ()
     {
-        IWaypoint next = Waypoint.GetNearest(Fortress.position);
-        while (next.GetNext() != null)
-        {
-            next = next.GetNext();
-        }
-        return Team.GetOtherTeams(TeamInfo).
+        return UnityUtils.FindBest(Team.GetOtherTeams(TeamInfo).
             SelectMany(x => x.GetCommanders()).
-            Where(x => !x.Eliminated).
-            FirstOrDefault(x => Vector3.Distance(next.Position, x.Fortress.position) < 100);
+            Where(x => !x.Eliminated), x => CalcTargetScore(x));
+    }
+
+    private float CalcTargetScore(Commander target)
+    {
+        Vector3 localPos = transform.InverseTransformPoint(target.transform.position);
+        float result = 180f - (Mathf.Rad2Deg * Mathf.Atan2(localPos.z, localPos.x));
+        Debug.Log(result);
+        return result;
     }
 
     private void UpdateBaseBounds()
@@ -367,21 +372,18 @@ public class Commander : MonoBehaviour, ITeamComponent
         }
     }
 
+    public int GetCost(GameObject prefab)
+        => prefab.GetComponent<Unit>().GetCost(this);
     public bool CanAfford(GameObject prefab)
-        => Credits > prefab.GetComponent<Unit>().GetCost(this);
-
+        => Credits >= GetCost(prefab);
     public bool CanPurchase(GameObject unit)
-    => unit.GetComponent<Unit>().CanPurchase(this);
-
+        => unit.GetComponent<Unit>().CanPurchase(this);
     public bool CanAffordAndPurchase(GameObject prefab)
         => CanAfford(prefab) && CanPurchase(prefab);
-
     public string GetCanAffordDescription(GameObject prefab)
         => prefab.GetComponent<Unit>().GetCostModifierDesription(this);
-
     public string GetCanPurchaseDescription(GameObject prefab)
         => prefab.GetComponent<Unit>().GetCanPurchaseDesription(this);
-
     public string GetCanAffordAndPurchaseDescription(GameObject prefab)
         => (GetCanAffordDescription(prefab) + "\n" + GetCanPurchaseDescription(prefab)).Trim();
 }

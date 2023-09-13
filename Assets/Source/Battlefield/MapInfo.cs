@@ -9,8 +9,7 @@ public class MapInfo
     public float Width;
     public float Height;
 
-    [SerializeReference, SR]
-    public IBattlefieldShape Shape;
+    public BattlefieldShape Shape;
     public SceneryGenerator SceneryGenerator;
 
     public IEnumerable<Vector3> GetPerimeterPolygon()

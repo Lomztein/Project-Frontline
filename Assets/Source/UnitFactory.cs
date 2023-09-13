@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class UnitFactory : MonoBehaviour, ITeamComponent
+public class UnitFactory : MonoBehaviour, ITeamComponent, ICommanderComponent
 {
     public GameObject UnitPrefab;
     private Unit _unit;
@@ -12,7 +13,8 @@ public class UnitFactory : MonoBehaviour, ITeamComponent
     public float SpawnRange;
 
     private TeamInfo _team;
-    private IWaypoint _nearestWaypoint;
+    private NavigationNode _nearestWaypoint;
+    private Commander _commander;
 
     public float EarnedCredits; // The amount of money the units from this factory has earned.
     public float GivenCredits; // The amount of money the units from this factory has given by being killed by enemies.
@@ -24,7 +26,7 @@ public class UnitFactory : MonoBehaviour, ITeamComponent
     {
         InvokeRepeating("Spawn", SpawnDelay, SpawnDelay);
         _unit = UnitPrefab.GetComponent<Unit>();
-        _nearestWaypoint = Waypoint.GetNearest(transform.position);
+        _nearestWaypoint = Navigation.GetNearestNode(transform.position);
         EarnedCredits -= _unit.Info.Cost;
     }
 
@@ -32,7 +34,8 @@ public class UnitFactory : MonoBehaviour, ITeamComponent
     {
         Vector3 pos = GetLocalRandomSpawnPosition() + transform.position;
         GameObject go = _team.Instantiate(UnitPrefab, pos, transform.rotation);
-        go.BroadcastMessage("SetWaypoint", _nearestWaypoint, SendMessageOptions.DontRequireReceiver);
+        NavigationNode targetNode = Navigation.GetNearestNode(_commander.Target.transform.position);
+        go.BroadcastMessage("SetPath", Navigation.GetPath(_nearestWaypoint, targetNode).ToArray(), SendMessageOptions.DontRequireReceiver);
         OnUnitSpawned?.Invoke(this, go);
         go.GetComponent<Health>().OnDeath += Unit_OnDeath;
         go.GetComponent<Unit>().OnKill += Unit_OnKill;
@@ -62,5 +65,10 @@ public class UnitFactory : MonoBehaviour, ITeamComponent
     public void SetTeam(TeamInfo faction)
     {
         _team = faction;
+    }
+
+    public void AssignCommander(Commander commander)
+    {
+        _commander = commander;
     }
 }

@@ -12,6 +12,7 @@ namespace CustomGame
         public InputField Name;
         public Dropdown Faction;
         public Dropdown Type;
+        public Dropdown Spawn;
         public Button Units;
         public InputField Credits;
         public InputField Handicap;
@@ -21,11 +22,24 @@ namespace CustomGame
 
         private void Awake()
         {
+            MatchSettings.OnUpdated += MatchSettings_OnUpdated;
+            MatchSettings_OnUpdated(MatchSettings.Current);
+
             Faction.options = GetFactions().Select(x => new Dropdown.OptionData(x.Name)).ToList();
             Type.options.Add(new Dropdown.OptionData("Meatbag (You)"));
             Type.options.Add(new Dropdown.OptionData("Any AI"));
             Type.options.AddRange(GetAIProfiles().Select(x => new Dropdown.OptionData(x.Name)));
             Team.options = GetTeams().Select(x => new Dropdown.OptionData(x.Name)).ToList();
+        }
+
+        private void OnDestroy()
+        {
+            MatchSettings.OnUpdated -= MatchSettings_OnUpdated;
+        }
+
+        private void MatchSettings_OnUpdated(MatchSettings obj)
+        {
+            Spawn.options = Enumerable.Range(0, obj.MapInfo.Shape.Spawns).Select(x => new Dropdown.OptionData(x.ToString())).ToList();
         }
 
         private IEnumerable<Faction> GetFactions ()
@@ -49,6 +63,7 @@ namespace CustomGame
             playerInfo.Team = GetTeams().ElementAt(Team.value);
             if (Type.value == 1) playerInfo.AIProfile = GetRandomAIProfile();
             if (Type.value > 1) playerInfo.AIProfile = GetAIProfiles().ElementAt(Type.value - 2);
+            playerInfo.SpawnIndex = Spawn.value;
             playerInfo.Faction = GetFaction();
             playerInfo.StartingCredits = int.Parse(Credits.text);
             playerInfo.Handicap = float.Parse(Handicap.text);
@@ -68,6 +83,7 @@ namespace CustomGame
             Name.text = info.Name;
             Team.value = GetTeams().ToList().IndexOf(info.Team);
             Faction.value = GetFactions().ToList().IndexOf(info.Faction);
+            Spawn.value = info.SpawnIndex;
             if (info.AIProfile != null)
             {
                 int val = GetAIProfiles().ToList().FindIndex(x => x.Name == info.AIProfile.Name) + 2;

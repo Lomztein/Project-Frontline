@@ -9,8 +9,14 @@ public class AttackerController : ControllableController, ITeamComponent, IComma
 {
     private const float HOLD_VARIANCE = 2.5f;
 
+    protected NavigationNode[] MovementPath;
+    protected int MovementPathIndex;
 
-    protected IWaypoint _currentWaypoint;
+    protected NavigationNode NextNode
+        => MovementPathIndex == MovementPath.Length - 1 ? null : MovementPath[MovementPathIndex + 1];
+    protected NavigationNode PrevNode
+        => MovementPath[MovementPathIndex];
+
     public float Lane { get; private set; } // x-position relative to commander.
     public float LaneOffset => Commander.transform.InverseTransformPoint(transform.position).x - Lane;
 
@@ -25,9 +31,10 @@ public class AttackerController : ControllableController, ITeamComponent, IComma
         HoldRange = Math.Min(HoldRange, HoldRange + UnityEngine.Random.Range(-HOLD_VARIANCE, 0f));
     }
 
-    public void SetWaypoint (IWaypoint waypoint)
+    public void SetPath (NavigationNode[] path)
     {
-        _currentWaypoint = waypoint;
+        MovementPath = path;
+        MovementPathIndex = 0;
     }
 
     protected bool ShouldHoldOnFrontline()
@@ -41,11 +48,14 @@ public class AttackerController : ControllableController, ITeamComponent, IComma
     }
 
     protected float DistToFrontline()
-        => VectorUtils.DifferenceAlongDirection(Waypoint.OutgoingVector(_currentWaypoint), Commander.Frontline.Position, transform.position);
+    {
+        return VectorUtils.DifferenceAlongDirection(Navigation.OutgoingVector(PrevNode, NextNode), Commander.Frontline.Position, transform.position);
+    }
+
 
     protected virtual void MoveAlongWaypoints ()
     {
-        if (_currentWaypoint != null)
+        if (MovementPath != null)
         {
             if (ShouldHoldOnFrontline()) 
             {
@@ -55,15 +65,14 @@ public class AttackerController : ControllableController, ITeamComponent, IComma
             {
                 Controllable.Accelerate(1f);
             }
-            float angle = Vector3.SignedAngle(transform.forward, Waypoint.OutgoingVector(_currentWaypoint), Vector3.up);
+            float angle = Vector3.SignedAngle(transform.forward, Navigation.OutgoingVector(PrevNode, NextNode), Vector3.up);
             SmoothTurnTowardsAngle(angle);
 
-            IWaypoint next = _currentWaypoint.GetNext();
-            if (next != null)
+            if (MovementPathIndex < MovementPath.Length - 2)
             {
-                Vector3 dir = (Waypoint.OutgoingVector(_currentWaypoint) + Waypoint.OutgoingVector(next)) / 2f;
-                if (Vector3.Dot((next.Position - transform.position).normalized, dir) < 0f)
-                    _currentWaypoint = next;
+                Vector3 dir = (Navigation.OutgoingVector(PrevNode, NextNode) + Navigation.OutgoingVector(MovementPath[MovementPathIndex + 1], MovementPath[MovementPathIndex + 2])) / 2f;
+                if (Vector3.Dot((NextNode.Position - transform.position).normalized, dir) < 0f)
+                    MovementPathIndex++;
             }
         }
     }
@@ -100,15 +109,5 @@ public class AttackerController : ControllableController, ITeamComponent, IComma
     {
         Commander = commander;
         Lane = commander.transform.InverseTransformPoint(transform.position).x;
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        if (StayBehindFrontline && _currentWaypoint != null && Commander)
-        {
-            Vector3 margin = Waypoint.OutgoingVector(_currentWaypoint) * HoldRange / 2f;
-            Gizmos.DrawSphere(transform.position + margin, 0.5f);
-            Gizmos.DrawLine(transform.position, transform.position + margin);
-        }
     }
 }

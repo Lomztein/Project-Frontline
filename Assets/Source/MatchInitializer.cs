@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,28 +24,40 @@ public class MatchInitializer : MonoBehaviour
     public void InitializeMatch (MatchSettings settings)
     {
         settings.MapInfo.SceneryGenerator.Generate(settings.MapInfo);
-        settings.MapInfo.Shape.GenerateWaypoints(settings.MapInfo).ToArray();
+        settings.MapInfo.Shape.GenerateNodes(settings.MapInfo).ToArray();
 
-        var teams = settings.Players.GroupBy(x => x.Team).ToArray();
+        var teams = settings.Players.Select(x => x.Team).ToArray();
+        var teamObjects = new Team[teams.Length];
+        var players = settings.Players.ToArray();
+
         var spawnLines = settings.MapInfo.Shape.GenerateSpawnVolumes(settings.MapInfo).ToArray();
 
         for (int i = 0; i < teams.Length; i++)
         {
-            var players = teams[i].ToArray();
-
-            Vector3 teamPosition = spawnLines[i].Position;
-            Quaternion rotation = Quaternion.Euler(0f, Waypoint.OutgoingAngle(Waypoint.GetNearest(teamPosition)), 0f);
-            Team team = SpawnTeam(teams[i].Key, teamPosition, rotation);
-
-            for (int j = 0; j < players.Length; j++)
-            {
-                Vector3 playerPosition = spawnLines[i].GetSpawnPoint(j, players.Length);
-                Commander com = SpawnCommander(players[j], playerPosition, rotation);
-                com.transform.SetParent(team.transform, true);
-            }
-
-            team.TeamInfo.ApplyTeam(team.gameObject); // shrug
+            Team team = SpawnTeam(teams[i], Vector3.zero, Quaternion.identity);
+            teamObjects[i] = team;
         }
+
+        for (int i = 0; i < players.Length; i++)
+        {
+            int spawn = players[i].SpawnIndex;
+            int team = Array.IndexOf(teams, players[i].Team);
+            var cospawns = players.Where(x => x.SpawnIndex == spawn).ToArray();
+            int spawnIndex = Array.IndexOf(cospawns, players[i]);
+
+            Vector3 position = spawnLines[spawn].Position;
+            Quaternion rotation = spawnLines[spawn].Rotation;
+
+            Vector3 playerPosition = spawnLines[spawn].GetSpawnPoint(spawnIndex, cospawns.Length);
+            Commander com = SpawnCommander(players[i], playerPosition, rotation);
+            com.transform.SetParent(transform, true);
+        }
+
+        for (int i = 0; i < teams.Length; i++)
+        {
+            teams[i].ApplyTeam(teamObjects[i].gameObject);
+        }
+
 
         foreach (var mutator in settings.Mutators)
         {
@@ -101,7 +114,7 @@ public class MatchInitializer : MonoBehaviour
         UnitPurchaseMenu menu = GameObject.Find("PurchaseMenu").GetComponent<UnitPurchaseMenu>();
         menu.Commander = player;
         menu.UpdateActive();
-        Object.FindObjectOfType<CreditsDisplay>().Commander = player;
+        FindObjectOfType<CreditsDisplay>().Commander = player;
     }
 
     private void OnDrawGizmos()
