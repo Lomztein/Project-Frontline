@@ -140,6 +140,7 @@ public class Commander : MonoBehaviour, ITeamComponent
             {
                 DefenseFactor = CalcFrontlineState(transform, LocalBaseBounds, Frontline.Position, DefenseMargin, DefenseThreshold);
                 OffenseFactor = CalcFrontlineState(Target.transform, Target.LocalBaseBounds, Frontline.Position, OffenseMargin, OffenseThreshold);
+                if (Target.Eliminated) Target = null;
             }
         }
     }
@@ -158,15 +159,14 @@ public class Commander : MonoBehaviour, ITeamComponent
     {
         return UnityUtils.FindBest(Team.GetOtherTeams(TeamInfo).
             SelectMany(x => x.GetCommanders()).
-            Where(x => !x.Eliminated), x => CalcTargetScore(x));
+            Where(x => !x.Eliminated), x => CalcTargetScore(x.transform.position));
     }
 
-    private float CalcTargetScore(Commander target)
+    private float CalcTargetScore(Vector3 target)
     {
-        Vector3 localPos = transform.InverseTransformPoint(target.transform.position);
-        float result = 180f - (Mathf.Rad2Deg * Mathf.Atan2(localPos.z, localPos.x));
-        Debug.Log(result);
-        return result;
+        Vector3 localPos = transform.InverseTransformPoint(target);
+        float vecAngle = Mathf.Atan2(localPos.x, localPos.z) * Mathf.Rad2Deg;
+        return -Mathf.Abs(vecAngle - 0.1f); // Prioritize most directly ahead with a slight clockwise bias to break stalemates.
     }
 
     private void UpdateBaseBounds()
@@ -307,15 +307,19 @@ public class Commander : MonoBehaviour, ITeamComponent
         return null;
     }
 
-    public Vector3 GetUnitPlacementCheckSize (GameObject unit) // This should not be unique to Commander.
+    public OverlapUtils.OverlapShape GetUnitPlacementOverlapShape (GameObject unit) // This should not be unique to Commander.
     {
         GameObject factory = GetUnitFactoryPrefab(unit);
         if (factory)
         {
-            // TODO: Create strategy-based size getter thing
-            return factory.GetComponentInChildren<BoxCollider>().size;
+            return OverlapUtils.CreateFromCollidersIn(factory, OverlapShapeFilter);
         }
-        return unit.GetComponentInChildren<BoxCollider>().size;
+        return OverlapUtils.CreateFromCollidersIn(unit, OverlapShapeFilter);
+    }
+
+    private bool OverlapShapeFilter(Collider col)
+    {
+        return !col.CompareTag("Shield");
     }
 
     public bool TrySpend (int credits)
@@ -354,6 +358,13 @@ public class Commander : MonoBehaviour, ITeamComponent
         UnitPalette = UnitPalette.GeneratePalette(Faction.FactionPalette, TeamInfo.TeamPalette);
     }
 
+    public bool CanPlace(Vector3 position, Quaternion rotation, OverlapUtils.OverlapShape unitOverlapGroup)
+    {
+        LayerMask terrainLayer = LayerMask.NameToLayer("Terrain");
+        Collider[] colliders = unitOverlapGroup.Overlap(position, rotation, ~terrainLayer);
+        return !colliders.Any(x => x.CompareTag("StructureUnit")) && MatchSettings.Current.MapInfo.Contains(position);
+    }
+
     private void OnDrawGizmos()
     {
         if (Frontline != null && Target)
@@ -369,6 +380,14 @@ public class Commander : MonoBehaviour, ITeamComponent
             Gizmos.color = Color.red;
             Gizmos.matrix = Target.transform.localToWorldMatrix;
             Gizmos.DrawWireCube(OffenseVolumeLocalBounds.center + Vector3.up, OffenseVolumeLocalBounds.size);
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out RaycastHit hit))
+            {
+                Debug.Log(Name + ": " + CalcTargetScore(hit.point));
+            }
+            Gizmos.matrix = Matrix4x4.identity;
+            Gizmos.color = Color.red;
+            Gizmos.DrawLine(transform.position, Target.transform.position + Vector3.up * 10);
         }
     }
 

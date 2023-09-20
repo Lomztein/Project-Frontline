@@ -315,7 +315,6 @@ GameObject:
   - component: {fileID: 4325982582558911293}
   - component: {fileID: 4325982582558911288}
   - component: {fileID: 4325982582558911291}
-  - component: {fileID: 4325982582558911290}
   - component: {fileID: 3112912025015692450}
   - component: {fileID: 6501005243046994660}
   m_Layer: 0
@@ -355,8 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 10
   Firerate: 5
-  Modifier: {fileID: 11400000, guid: f75d5f910f7de0d48ab5cab93d6c821d, type: 2}
-  DamageType: 6
+  Modifier: {fileID: 11400000, guid: 9f5e8a2752d9caa42a1fa065d6b74da1, type: 2}
   Speed: 200
   Range: 100
   Amount: 1
@@ -391,29 +389,6 @@ MonoBehaviour:
   VectoringSpeed: 180
   Instant: 0
   _targetLocalPosition: {x: 0, y: 0, z: 0}
---- !u!114 &4325982582558911290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4325982582558911292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41487ee171311704884c1278dc50ac3f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Team: {fileID: 0}
-  AcquireTargetRange: 75
-  LooseTargetRange: 75
-  AttackRange: 75
-  TurretObject: {fileID: 4325982582558911292}
-  WeaponObjects:
-  - {fileID: 4325982582558911292}
-  AimTolerance: 5
-  LeadTarget: 1
-  TargetSearchFrequency: 2
-  Modifiers: []
 --- !u!114 &3112912025015692450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,8 +529,9 @@ MonoBehaviour:
   AcquireTargetRange: 100
   LooseTargetRange: 125
   AttackRange: 85
-  TurretObject: {fileID: 0}
+  TurretObject: {fileID: 4325982582558911292}
   WeaponObjects:
+  - {fileID: 4325982582558911292}
   - {fileID: 4325982582396688272}
   AimTolerance: 60
   LeadTarget: 0
@@ -622,7 +598,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 750
   Modifier: {fileID: 11400000, guid: 4bdea23464958bb4fb9f42f36ef1819e, type: 2}
-  ArmorType: 2
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}

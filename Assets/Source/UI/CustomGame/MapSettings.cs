@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,24 +8,17 @@ using Util;
 
 public class MapSettings : MonoBehaviour
 {
-    public Text MapWidthText;
-    public Slider MapWidthSlider;
-    public Text MapHeightText;
-    public Slider MapHeightSlider;
-
-    public Vector2 MapWidthMinMax;
-    public Vector2 MapHeightMinMax;
-
     public Dropdown Shape;
     public Dropdown Scenery;
 
     private BattlefieldShape[] _shapeCache;
+    public Transform PropertyParent;
 
     private BattlefieldShape[] GetShapes ()
     {
         if (_shapeCache == null)
         {
-            _shapeCache = Resources.LoadAll<BattlefieldShape>("BattlefieldShapes");
+            _shapeCache = Resources.LoadAll<BattlefieldShape>("BattlefieldShapes").Select(x => Instantiate(x)).ToArray();
         }
         return _shapeCache;
     }
@@ -41,38 +35,44 @@ public class MapSettings : MonoBehaviour
 
     public SceneryGenerator GetScenery() => GetSceneries()[Scenery.value];
 
-    private void Update()
-    {
-        MapWidthText.text = "Map Width: " + Mathf.Lerp(MapWidthMinMax.x, MapWidthMinMax.y, MapWidthSlider.value).ToString("0");
-        MapHeightText.text = "Map Height: " + Mathf.Lerp(MapHeightMinMax.x, MapHeightMinMax.y, MapHeightSlider.value).ToString("0");
-    }
-
     private void Awake()
     {
         Shape.options = GetShapes().Select(x => new Dropdown.OptionData (x.Name)).ToList();
         Scenery.options = GetSceneries().Select(x => new Dropdown.OptionData (x.Name)).ToList();
 
-        MapWidthSlider.onValueChanged.AddListener(OnWidthChanged);
-        MapHeightSlider.onValueChanged.AddListener(OnHeightChanged);
         Shape.onValueChanged.AddListener(OnShapeChanged);
         Scenery.onValueChanged.AddListener(OnSceneryChanged);
-    }
 
-    private void OnWidthChanged (float val)
-    {
-        MatchSettings.Current.MapInfo.Width = Mathf.Lerp(MapWidthMinMax.x, MapWidthMinMax.y, val);
-        MatchSettings.NotifyUpdate(MatchSettings.Current);
-    }
-
-    private void OnHeightChanged(float val)
-    {
-        MatchSettings.Current.MapInfo.Height = Mathf.Lerp(MapHeightMinMax.x, MapHeightMinMax.y, val);
-        MatchSettings.NotifyUpdate(MatchSettings.Current);
+        UpdateProperties();
     }
 
     private void OnShapeChanged(int val)
     {
         MatchSettings.Current.MapInfo.Shape = GetShapes()[val];
+        MatchSettings.NotifyUpdate(MatchSettings.Current);
+        UpdateProperties();
+    }
+
+    private void UpdateProperties()
+    {
+        foreach (Transform trans in PropertyParent)
+        {
+            PropertyControl pc = trans.GetComponent<PropertyControl>();
+            Destroy(trans.gameObject);
+            pc.OnPropertyChanged -= OnPropertyChanged;
+        }
+        var properties = MatchSettings.Current.MapInfo.Shape.GetProperties();
+        foreach (var property in properties)
+        {
+            var control = PropertyControl.GetControlPrefab(property);
+            PropertyControl pc = Instantiate(control, PropertyParent).GetComponent<PropertyControl>();
+            pc.Assign(property, MatchSettings.Current.MapInfo.Shape);
+            pc.OnPropertyChanged += OnPropertyChanged;
+        }
+    }
+
+    private void OnPropertyChanged(IProperty arg1, IHasProperties arg2, object arg3)
+    {
         MatchSettings.NotifyUpdate(MatchSettings.Current);
     }
 
@@ -87,8 +87,6 @@ public class MapSettings : MonoBehaviour
         MapInfo info = new MapInfo();
         info.Shape = GetShape();
         info.SceneryGenerator = GetScenery();
-        info.Width = Mathf.Lerp(MapWidthMinMax.x, MapWidthMinMax.y, MapWidthSlider.value);
-        info.Height = Mathf.Lerp(MapHeightMinMax.x, MapHeightMinMax.y, MapHeightSlider.value);
         return info;
     }
 
@@ -96,7 +94,5 @@ public class MapSettings : MonoBehaviour
     {
         Shape.value = GetShapes().ToList().IndexOf(info.Shape); // As you can tell, I litteraly don't care about poor performance when it matters this little.
         Scenery.value = GetSceneries().ToList().IndexOf(info.SceneryGenerator);
-        MapWidthSlider.value = Mathf.InverseLerp(MapWidthMinMax.x, MapWidthMinMax.y, info.Width);
-        MapHeightSlider.value = Mathf.InverseLerp(MapHeightMinMax.x, MapHeightMinMax.y, info.Height);
     }
 }

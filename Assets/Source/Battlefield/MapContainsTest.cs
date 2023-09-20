@@ -18,7 +18,7 @@ public class MapContainsTest : MonoBehaviour
             NavigationNode[] navNodes = Navigation.GetPath(StartPos, hit.point).ToArray();
             for (int i = 0; i < navNodes.Length - 1; i++)
             {
-                Debug.DrawLine(navNodes[i].Position + Vector3.up * (i + 5), navNodes[i + 1].Position + Vector3.up * (i + 5), Color.black);
+                Debug.DrawLine(navNodes[i].Position + Vector3.up, navNodes[i + 1].Position + Vector3.up, Color.black);
             }
         }
     }

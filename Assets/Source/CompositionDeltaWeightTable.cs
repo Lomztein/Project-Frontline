@@ -34,7 +34,7 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
 
         IEnumerable<float> damageScores = Map(options.Select(x => ComputeUnitDamageScore(x, enemyArmor)), 0f, 1f);
         IEnumerable<float> armorScores = Map(options.Select(x => ComputeUnitHealthScore(x, enemyDamage)), 0f, 1f);
-        IEnumerable<float> costScores = Map(options.Select(x => (float)x.GetComponent<Unit>().GetCost(_commander)), 0f, 1f);
+        IEnumerable<float> costScores = Map(options.Select(x => (float)x.GetComponent<Unit>().GetCost(_commander)), 1f, 0f);
         IEnumerable<float> rangeScores = Map(options.Select(x => ComputeUnitRangeScore(x)), 0f, 1f);
 
         var scores = options.Zip(damageScores, (o, d) => new { Option = o, Damage = d })

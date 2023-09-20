@@ -7,6 +7,12 @@ using UnityEngine;
 
 public abstract class DamageModifier : ScriptableObject
 {
+    public static IEnumerable<DamageModifier> DamageModifiers => GetEnumerableCache(ref _damageModifiers, "DamageModifiers/Weapons");
+    public static IEnumerable<DamageModifier> ArmorModifiers => GetEnumerableCache(ref _armorModifiers, "DamageModifiers/Armor");
+
+    private static DamageModifier[] _damageModifiers;
+    private static DamageModifier[] _armorModifiers;
+
     public DamageModifier Base;
 
     public string Name;
@@ -65,5 +71,12 @@ public abstract class DamageModifier : ScriptableObject
         if (Abstract)
             return string.Empty;
         else return Name;
+    }
+
+    private static T[] GetEnumerableCache<T>(ref T[] cacheObj, string resourcePath) where T : UnityEngine.Object
+    {
+        if (cacheObj == null)
+            cacheObj = Resources.LoadAll<T>(resourcePath);
+        return cacheObj;
     }
 }

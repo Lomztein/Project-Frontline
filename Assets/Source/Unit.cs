@@ -25,6 +25,12 @@ public class Unit : MonoBehaviour, IPurchasable
 
     public int BaseCost => Info.Cost;
 
+    private float _effeciencyScore;
+    private float _effeciencyTarget;
+    public float Effeciency => _effeciencyScore / _effeciencyTarget;
+
+    private Dictionary<string, float> _stats = new Dictionary<string, float>();
+
     [Header("Parts")] // UnitParts are specifically designated parts of the unit that might be of interest to others.
     public UnitPart[] Parts;
     public WeakpointUnitPart[] Weakpoints;
@@ -75,8 +81,6 @@ public class Unit : MonoBehaviour, IPurchasable
         // Kill the unit if they go way too far out of bounds.
         if (!MatchSettings.Current.MapInfo.Contains(transform.position / 2f))
         {
-            Debug.DrawRay(transform.position / 2f, Vector3.up, Color.black, 10f);
-            Debug.Log("OUT OF BOUNDS", this);
             Health.TakeDamage(new DamageInfo(Health.MaxHealth / 3f, DamageModifier.One, transform.position, transform.forward, this, Health));
         }
     }
@@ -92,6 +96,12 @@ public class Unit : MonoBehaviour, IPurchasable
         Health = GetComponent<Health>();
         InvokeRepeating(nameof(CheckBattlefieldBounds), 10f, 10f);
     }
+
+    public float AddToEffeciencyScore(float score) 
+        => _effeciencyScore += score;
+
+    public float AddToEffeciencyTarget(float score)
+        => _effeciencyTarget += score;
 
     private void Start()
     {
@@ -109,6 +119,27 @@ public class Unit : MonoBehaviour, IPurchasable
         _lastEngageTime = Time.time;
     }
 
+    public Dictionary<string, float> GetStats()
+        => new Dictionary<string, float>(_stats);
+
+    public float SetStat(string stat, float value)
+    {
+        _stats[stat] = value;
+        return _stats[stat];
+    }
+
+    public float? GetStat(string stat)
+    {
+        if (_stats.TryGetValue(stat, out var value)) return value;
+        return null;
+    }
+
+    public float ChangeStat(string stat, float value)
+    {
+        float val = GetStat(stat) ?? 0;
+        return SetStat(stat, val + value);
+    }
+
     private void Weapon_OnHit(IWeapon arg1, Projectile arg2, Collider arg3, Vector3 arg4, Vector3 arg5)
     {
         _lastEngageTime = Time.time;
@@ -117,6 +148,7 @@ public class Unit : MonoBehaviour, IPurchasable
     private void Weapon_OnKill(IWeapon arg1, Projectile arg2, IDamagable arg3)
     {
         OnKill?.Invoke(this, arg1, arg2, arg3);
+        ChangeStat("Kills", 1);
     }
 
     public WeaponInfo[] GetWeaponInfo()

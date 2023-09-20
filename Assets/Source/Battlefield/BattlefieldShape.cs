@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class BattlefieldShape : ScriptableObject
+public abstract class BattlefieldShape : ScriptableObject, IHasProperties
 {
     [SerializeField] private string _name;
     public string Name => _name;
@@ -13,4 +13,8 @@ public abstract class BattlefieldShape : ScriptableObject
     public abstract IEnumerable<NavigationNode> GenerateNodes(MapInfo info);
     public abstract IEnumerable<ISpawnVolume> GenerateSpawnVolumes(MapInfo info);
     public abstract IEnumerable<Vector3> GetPerimeterPolygon(MapInfo info);
+
+    public abstract IEnumerable<IProperty> GetProperties();
+    public abstract bool SetProperty(IProperty property, object value);
+    public abstract object GetProperty(IProperty property);
 }

@@ -15,7 +15,7 @@ public class EvaluatedPositionSelector : MonoBehaviour, IPositionSeletor
     [SerializeReference, SR]
     public IPositionEvaluator[] PositionEvaluators;
 
-    public Vector3? SelectPosition(Commander commander, GameObject unit, Vector3 checkSize)
+    public Vector3? SelectPosition(Commander commander, GameObject unit, OverlapUtils.OverlapShape shape)
     {
         int tries = MaxTries;
         Vector3[] targetPoints = new Vector3[TargetPoints];
@@ -32,7 +32,7 @@ public class EvaluatedPositionSelector : MonoBehaviour, IPositionSeletor
                 point = buildFrom.position + commander.BuildRadius * Random.insideUnitSphere;
                 point.y = 0;
 
-                if (IsWithinRange(point, commander) && CanPlace(point, checkSize))
+                if (IsWithinRange(point, commander) && commander.CanPlace(point, commander.transform.rotation, shape))
                 {
                     success = true;
                     targetPoints[points] = point;
@@ -83,11 +83,5 @@ public class EvaluatedPositionSelector : MonoBehaviour, IPositionSeletor
     private bool IsWithinRange (Vector3 pos, Commander commander)
     {
         return commander.IsNearAnyPlaced(pos);
-    }
-
-    private bool CanPlace (Vector3 position, Vector3 checkSize)
-    {
-        Collider[] colliders = Physics.OverlapBox(position, checkSize / 2f, Quaternion.identity, ~TerrainLayer);
-        return !colliders.Any(x => x.CompareTag(StructTag)) && MatchSettings.Current.MapInfo.Contains(position);
     }
 }

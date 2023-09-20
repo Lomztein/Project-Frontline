@@ -146,6 +146,7 @@ MonoBehaviour:
   SelectionBehaviour: 0
   Cooldown: 6
   PlaceDelay: 1
+  SetPath: 1
   MaxHolding: 1
   MaxSimultanious: 2
   DestroyUnengagedUnits: 0
@@ -994,7 +995,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b6cafccd0e61a4ca019c486be74ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FactoryPrefab: {fileID: 3940556133059093292, guid: 19c1d8ac2097cdf48ad8bf4c0e64766d,
+  FactoryPrefab: {fileID: 5933526610876931780, guid: 5611cddb9bb97f940843e65b3ab205de,
     type: 3}
   ProductionTime: 60
 --- !u!54 &2977313167760143601
@@ -1038,6 +1039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxSpeed: 50
   Rigidbody: {fileID: 2977313167760143601}
+  MinSpeed: 40
   AccelerationSpeed: 20
   RaiseSpeed: 25
   FlightHeight: 25
@@ -1087,7 +1089,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 1500
   Modifier: {fileID: 11400000, guid: 4bdea23464958bb4fb9f42f36ef1819e, type: 2}
-  ArmorType: 2
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -2110,6 +2111,7 @@ MonoBehaviour:
   SelectionBehaviour: 0
   Cooldown: 6
   PlaceDelay: 1
+  SetPath: 1
   MaxHolding: 1
   MaxSimultanious: 2
   DestroyUnengagedUnits: 0
@@ -2491,6 +2493,7 @@ MonoBehaviour:
   SelectionBehaviour: 0
   Cooldown: 6
   PlaceDelay: 1
+  SetPath: 1
   MaxHolding: 1
   MaxSimultanious: 2
   DestroyUnengagedUnits: 0
@@ -2677,6 +2680,7 @@ MonoBehaviour:
   SelectionBehaviour: 0
   Cooldown: 6
   PlaceDelay: 1
+  SetPath: 1
   MaxHolding: 1
   MaxSimultanious: 2
   DestroyUnengagedUnits: 0
@@ -2748,6 +2752,7 @@ MonoBehaviour:
   SelectionBehaviour: 0
   Cooldown: 6
   PlaceDelay: 1
+  SetPath: 1
   MaxHolding: 1
   MaxSimultanious: 2
   DestroyUnengagedUnits: 0
@@ -2819,6 +2824,7 @@ MonoBehaviour:
   SelectionBehaviour: 0
   Cooldown: 6
   PlaceDelay: 1
+  SetPath: 1
   MaxHolding: 1
   MaxSimultanious: 2
   DestroyUnengagedUnits: 0

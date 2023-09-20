@@ -13,11 +13,18 @@ namespace CustomGame
 
         public GameObject PlayerSettingsPrefab;
         public Transform PlayerSettingsParent;
-
+        public GameObject PlayerCountWarning;
+        public int PlayerCountWarningThreshold = 4;
 
         private void Start()
         {
             Apply(MatchSettings.Current);
+        }
+
+        private void Update()
+        {
+            PlayerCountWarning.SetActive(PlayerSettingsParent.childCount > PlayerCountWarningThreshold);
+
         }
 
         public void Apply(MatchSettings settings)

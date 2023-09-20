@@ -10,7 +10,14 @@ public class CommanderMaterialApplier : MonoBehaviour, ICommanderComponent
     {
         foreach (Renderer renderer in _renderersToApplyTo)
         {
-            renderer.material = commander.UnitPalette.UnitBodyMaterial;
+            if (renderer)
+            {
+                renderer.material = commander.UnitPalette.UnitBodyMaterial;
+            }
+            else
+            {
+                Debug.LogWarning("Renderer missing in material applier.");
+            }
         }
         //StartCoroutine(WaitAndPaint(commander));
     }

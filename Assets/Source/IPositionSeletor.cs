@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IPositionSeletor
 {
-    Vector3? SelectPosition(Commander commander, GameObject unit, Vector3 checkSize);
+    Vector3? SelectPosition(Commander commander, GameObject unit, OverlapUtils.OverlapShape shape);
 }

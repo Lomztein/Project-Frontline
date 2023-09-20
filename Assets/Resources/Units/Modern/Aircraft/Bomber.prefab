@@ -204,6 +204,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxSpeed: 50
   Rigidbody: {fileID: 681589584778586267}
+  MinSpeed: 50
   AccelerationSpeed: 25
   RaiseSpeed: 25
   FlightHeight: 30
@@ -224,7 +225,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 3500
   Modifier: {fileID: 11400000, guid: 4bdea23464958bb4fb9f42f36ef1819e, type: 2}
-  ArmorType: 2
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -1222,7 +1222,6 @@ MonoBehaviour:
   Damage: 200
   Firerate: 10
   Modifier: {fileID: 11400000, guid: 92e6b21166c648b45b3686dd2030c041, type: 2}
-  DamageType: 1
   Speed: 50
   Range: 200
   Amount: 1

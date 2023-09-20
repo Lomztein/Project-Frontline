@@ -126,7 +126,7 @@ public static class Navigation
         {
             float us = (_endNode.Position - x.Position).sqrMagnitude;
             float them = (_endNode.Position - y.Position).sqrMagnitude;
-            return Comparer.Default.Compare(us, them);
+            return Comparer.Default.Compare(them, us);
         }
     }
 }

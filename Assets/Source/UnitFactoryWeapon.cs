@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
+public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, ICommanderComponent, IWeapon
 {
     public GameObject[] UnitPrefabs;
     public enum UnitSelectionBehaviour { Random }
@@ -14,6 +14,7 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
     private float _currentCooldown;
     public float PlaceDelay;
     private bool _canPlace = true;
+    public bool SetPath;
 
     private int _currentHolding;
     public int MaxHolding = 1;
@@ -29,7 +30,9 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
     private Transform _root;
 
     private TeamInfo _team;
+    private Commander _commander;
     private LayerMask _hitLayerMask;
+    private Vector3 _spawnLocation;
 
     private IEnumerable<IWeapon> GetUnitPrefabWeapons() => UnitPrefabs.SelectMany(x => x.GetComponentsInChildren<IWeapon>());
 
@@ -65,6 +68,7 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
     private void Start()
     {
         _root = transform.root;
+        _spawnLocation = transform.position;
     }
 
     private void FixedUpdate()
@@ -90,6 +94,12 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
         Quaternion baseRot = SpawnRelativeToRoot ? _root.rotation : transform.rotation;
         Vector3 pos = GetLocalRandomSpawnPosition() + basePos;
         GameObject go = _team.Instantiate(SelectUnitPrefab(), pos, baseRot);
+        if (SetPath && _commander && _commander.Target)
+        {
+            NavigationNode spawnNode = Navigation.GetNearestNode(_spawnLocation);
+            NavigationNode targetNode = Navigation.GetNearestNode(_commander.Target.transform.position);
+            go.BroadcastMessage("SetPath", Navigation.GetPath(spawnNode, targetNode).ToArray(), SendMessageOptions.DontRequireReceiver);
+        }
         OnUnitSpawned?.Invoke(this, go);
         return go;
     }
@@ -206,4 +216,9 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, IWeapon
     private void Weapon_OnDamageDone(IWeapon arg1, Projectile arg2, IDamagable arg3, DamageInfo arg4) => OnDamageDone?.Invoke(arg1, arg2, arg3, arg4);
     private void Weapon_OnKill(IWeapon arg1, Projectile arg2, IDamagable arg3) => OnKill?.Invoke(arg1, arg2, arg3);
     private void Weapon_OnHit(IWeapon arg1, Projectile arg2, Collider arg3, Vector3 arg4, Vector3 arg5) => OnHit?.Invoke(arg1, arg2, arg3, arg4, arg5);
+
+    public void AssignCommander(Commander commander)
+    {
+        _commander = commander;
+    }
 }

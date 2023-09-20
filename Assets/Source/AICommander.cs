@@ -45,7 +45,7 @@ public class AICommander : Commander
             }
             if (SaveTarget != null && CanAfford(SaveTarget, Credits))
             {
-                Vector3? position = _positionSelector.SelectPosition(this, SaveTarget.gameObject, GetUnitPlacementCheckSize(SaveTarget.gameObject));
+                Vector3? position = _positionSelector.SelectPosition(this, SaveTarget.gameObject, GetUnitPlacementOverlapShape(SaveTarget.gameObject));
                 if (position.HasValue)
                 {
                     TryPurchaseAndPlaceUnit(SaveTarget.gameObject, position.Value, transform.rotation);
@@ -87,7 +87,7 @@ public class AICommander : Commander
     {
         for (int i = 0; i < Mathf.Min(amount, MaxPurchaseAtOnce); i++)
         {
-            Vector3? position = _positionSelector.SelectPosition(this, unit, GetUnitPlacementCheckSize(unit));
+            Vector3? position = _positionSelector.SelectPosition(this, unit, GetUnitPlacementOverlapShape(unit));
             if (position.HasValue)
             {
                 TryPurchaseAndPlaceUnit(unit, position.Value, transform.rotation);

@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Commander: {fileID: 0}
+  Unit: {fileID: 0}
   IncomePerSecond: 25
 --- !u!65 &5462264894719349773
 BoxCollider:
@@ -608,15 +609,38 @@ PrefabInstance:
     - target: {fileID: 2772477570969109761, guid: d294f7f297ea0834fa9746bd89c1559b,
         type: 3}
       propertyPath: ShieldSize
-      value: 150
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2772477570969109762, guid: d294f7f297ea0834fa9746bd89c1559b,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2772477570969109762, guid: d294f7f297ea0834fa9746bd89c1559b,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[1]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 2772477570969109767, guid: d294f7f297ea0834fa9746bd89c1559b,
         type: 3}
       propertyPath: m_Name
       value: ShieldGenerator
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    - target: {fileID: 2772477570969109820, guid: d294f7f297ea0834fa9746bd89c1559b,
+        type: 3}
+      propertyPath: Info.Tags.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2772477570969109820, guid: d294f7f297ea0834fa9746bd89c1559b,
+        type: 3}
+      propertyPath: Info.Tags.Array.data[1]
+      value: Ignore
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 3078413173793392371, guid: d294f7f297ea0834fa9746bd89c1559b, type: 3}
+    - {fileID: 2772477570969109762, guid: d294f7f297ea0834fa9746bd89c1559b, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 3078413173793392370, guid: d294f7f297ea0834fa9746bd89c1559b, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d294f7f297ea0834fa9746bd89c1559b, type: 3}

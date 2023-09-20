@@ -40,7 +40,7 @@ public class MatchInitializer : MonoBehaviour
 
         for (int i = 0; i < players.Length; i++)
         {
-            int spawn = players[i].SpawnIndex;
+            int spawn = Mathf.Min(players[i].SpawnIndex, spawnLines.Length - 1);
             int team = Array.IndexOf(teams, players[i].Team);
             var cospawns = players.Where(x => x.SpawnIndex == spawn).ToArray();
             int spawnIndex = Array.IndexOf(cospawns, players[i]);

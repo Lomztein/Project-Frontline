@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlaneBody : MobileBody, IControllable
 {
     public override float CurrentSpeed { get; protected set; }
+    public float MinSpeed;
 
     public float AccelerationSpeed;
     public float RaiseSpeed;
@@ -29,7 +30,7 @@ public class PlaneBody : MobileBody, IControllable
     private void FixedUpdate()
     {
         Fly();
-        CurrentSpeed = Mathf.MoveTowards(CurrentSpeed, MaxSpeed * AccFactor, AccelerationSpeed * Time.fixedDeltaTime);
+        CurrentSpeed = Mathf.MoveTowards(CurrentSpeed, Mathf.Lerp(MinSpeed, MaxSpeed, AccFactor), AccelerationSpeed * Time.fixedDeltaTime);
         Vector3 velocity = CurrentSpeed * Time.fixedDeltaTime * transform.forward + Fly() * Time.fixedDeltaTime * Vector3.up;
         Move(velocity);
 

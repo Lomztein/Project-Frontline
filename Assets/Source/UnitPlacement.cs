@@ -20,13 +20,14 @@ public class UnitPlacement : MonoBehaviour
     private GameObject _model;
     private Commander _commander;
     private Unit _unit;
-    private Vector3 _placementCheckSize;
+    private OverlapUtils.OverlapShape _unitOverlapShape;
 
     public void TakeUnit (GameObject prefab, Commander commander)
     {
         Cancel();
         Reset();
 
+        _unitOverlapShape = commander.GetUnitPlacementOverlapShape(prefab);
         GameObject placementPrefab = commander.GeneratePrefab(prefab);
 
         _model = UnityUtils.InstantiateMockGO(placementPrefab);
@@ -37,7 +38,6 @@ public class UnitPlacement : MonoBehaviour
 
         _prefab = prefab;
         _commander = commander;
-        _placementCheckSize = _commander.GetUnitPlacementCheckSize(_prefab);
         _unit = prefab.GetComponent<Unit>();
 
         AIController controller = placementPrefab.GetComponent<AIController>();
@@ -81,7 +81,7 @@ public class UnitPlacement : MonoBehaviour
 
                 if (_commander.HasCredits(_unit.GetCost(_commander)))
                 {
-                    if (CanPlace(hit.point, _placementCheckSize))
+                    if (_commander.CanPlace(hit.point, _commander.transform.rotation, _unitOverlapShape))
                     {
                         SetModelColor(CanPlaceColor);
                         if (Input.GetMouseButtonDown(0) && !UIHoverChecker.IsOverUI(Input.mousePosition))
@@ -125,11 +125,5 @@ public class UnitPlacement : MonoBehaviour
         RangeIndicator.transform.localScale = Vector3.zero;
         if (_model)
             Destroy(_model);
-    }
-
-    private bool CanPlace(Vector3 position, Vector3 checkSize)
-    {
-        Collider[] colliders = Physics.OverlapBox(position, checkSize / 2f, Quaternion.identity, ~TerrainLayer);
-        return !colliders.Any(x => x.CompareTag("StructureUnit")) && MatchSettings.Current.MapInfo.Contains(position) && _commander.IsNearAnyPlaced(position);
     }
 }

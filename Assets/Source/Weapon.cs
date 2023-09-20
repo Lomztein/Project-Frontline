@@ -181,7 +181,13 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
     public virtual float GetDPS()
     {
         float shotDamage = Damage * Amount;
-        return Mathf.Min(shotDamage * Firerate, shotDamage * (BurstAmmo / BurstReloadTime));
+        if (BurstReloadTime > 0)
+        {
+            float burstDamage = shotDamage * BurstAmmo;
+            float burstTime = (BurstAmmo - 1) * (1f / Firerate);
+            return burstDamage / (BurstReloadTime + burstTime);
+        }
+        return shotDamage * Firerate;
     }
 
     public virtual bool CanFire()

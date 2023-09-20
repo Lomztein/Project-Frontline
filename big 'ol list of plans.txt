@@ -29,28 +29,15 @@ LONG TERM PLANS
 FACTIONS
  - Modern Millitary (DONE): Vehicle-oriented faction drawing inspiration from modern millitary forces, with weapons being primarily guns, cannons, rockets, and lasers.
  - WW1 (DONE): Infantry-oriented faction based on the large variety of experimental forced developed during WW1. Weapons are primarily guns, cannons, and thermite.
- - Aliens (PLANNING): Aircraft-oriented faction based on both classic B-movie type aliens, while also drawing some inspiration from more modern, eldritch-type aliens. Weapons are rayguns, particle beams, plasma, and more. No traditional guns or cannons.
+ - Aliens (WIP): Aircraft-oriented faction based on both classic B-movie type aliens, while also drawing some inspiration from more modern, eldritch-type aliens. Weapons are rayguns, particle beams, plasma, and more. No traditional guns or cannons.
 
 POTENTIAL FUTURE FACTIONS
  - Mushroom (CONCEPT): Small, mushroom based faction that is only available as an asset bundle.
  - Commando (CONCEPT): Faction composed of a single unit that is upgraded through the placement of various structures. Style and tech uncertain, might draw from all other factions.
- - Fantasy (CONCEPT): Melee-oriented faction composed of medieval-type high fantasy units such as knights, archers, wizards, dragons, fantastical devices, ect.
+ - Fantasy (CONCEPT): Melee-oriented faction composed of medieval-type high fantasy units such as knights, archers, wizards, dragons, fantastical devices, ect. Higher tier units draw from later time periods.
 
 HIGH PRIORITY
- - Implement circle battlefield shape, one where players are split by teams and one where they are individual.
-	- Abstract Waypoint class to IWaypoint, add "IsValid" function to class.
-	- Implement CascadeSelectorWaypoint, which points to the first valid Waypoint in a list.
-	- Implement HeadingSelectorWaypoint, which points to the waypoint that is most straight ahead in a list.
-	- Waypoints should point to the enemy closest to straight forward.
  - Begin work on Alien faction, with like 2 units of each type for a prototype, and 4-5 for minimum viable product.
- - Rework ActionCam a little.
-	- Rename system to UnitCam.
-	- Add options for allowing the player to select how units are chosen.
-		- Filter by unit attributes such as type or tier.
-		- Filter by unit IDs
-		- Filter by team / commander
-	- Implement new ActionCam that periodically switches between FrontlineCam and UnitCam.
-	- Only show units if they are within a certain range of a frontline
  - Extend FrontlineCam
 	- Rotate towards / against frontline trend.
 	- Implement a few select base camera angles.
