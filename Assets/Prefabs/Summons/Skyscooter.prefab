@@ -551,8 +551,8 @@ MonoBehaviour:
       to hit, but the thin armor is very vulnurable to anti-air.
     Tags:
     - Harasser
-    Cost: 1250
-    Value: 125
+    Cost: 0
+    Value: 0
     UnitRole: 1
     UnitTier: 0
     UnitType: 2
@@ -620,7 +620,7 @@ MonoBehaviour:
   MinSpeed: 40
   AccelerationSpeed: 50
   RaiseSpeed: 50
-  FlightHeight: 20
+  FlightHeight: 25
   AccFactor: 0
   TurnFactor: 0
   TurnRate: 120
@@ -983,7 +983,55 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 4639441060202389535}
   Inaccuracy: 0.5
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &2624337444692643664
 MonoBehaviour:
   m_ObjectHideFlags: 0

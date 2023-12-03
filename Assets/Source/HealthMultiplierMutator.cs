@@ -36,7 +36,7 @@ public class HealthMultiplierMutator : Mutator
             float prev = health.MaxHealth;
             health.MaxHealth *= Multiplier;
             float gained = health.MaxHealth - prev;
-            health.Heal(gained);
+            health.Heal(new DamageInfo(gained, DamageModifier.One, health.transform.position, Vector3.forward, this, health));
             // I'm sure there is a smarter way but I'm caveman brain.
         }
     }

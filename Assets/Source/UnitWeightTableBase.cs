@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,5 +28,12 @@ public abstract class UnitWeightTableBase : ScriptableObject
             return ts.Select(x => Mathf.Lerp(min, max, x));
         }
         else return values;
+    }
+
+    public virtual UnitWeightTableBase FindTable(Predicate<UnitWeightTableBase> predicate)
+    {
+        if (predicate(this))
+            return this;
+        return null;
     }
 }

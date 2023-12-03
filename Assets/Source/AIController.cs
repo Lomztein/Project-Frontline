@@ -14,7 +14,7 @@ public abstract class AIController : MonoBehaviour, IController
     public LayerMask TargetLayer { get; private set; }
     private TargetFinder _targetFinder = new TargetFinder();
 
-    protected ITarget CurrentTarget { get; private set; }
+    public ITarget CurrentTarget { get; private set; }
     protected bool ForcedTarget { get; private set; }
 
     public float AcquireTargetRange;
@@ -135,7 +135,6 @@ public abstract class AIController : MonoBehaviour, IController
                 Vector3 vel = (targetPosition - _targetLastPosition) / Time.fixedDeltaTime;
                 float dist = Vector3.Distance(targetPosition, transform.position);
                 targetPosition += vel * (dist / Weapons[0].Speed + Time.fixedDeltaTime); // Add fixedDeltaTime to offset turrets always being a single tick behind.
-
                 _targetLastPosition = CurrentTarget.GetCenter();
             }
 

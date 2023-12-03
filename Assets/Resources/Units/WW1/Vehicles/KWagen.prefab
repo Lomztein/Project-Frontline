@@ -689,11 +689,10 @@ MonoBehaviour:
   Info:
     Identifier: KWagon
     Name: Landship
-    Description: 'Immense vehicle equipped with four large-caliber cannons and a
-      good handfull of machine guns. Due to the size and complexity of its internals,
-      field repair is unfeasible. '
+    Description: Immense vehicle equipped with four large-caliber cannons and a good
+      handfull of machine guns. Capable of both breaking a siege and sieging an enemy
+      base, this massive war machine is the apex of tank warfare.
     Tags:
-    - CantHeal
     - Defense
     - Siege
     Cost: 12000
@@ -726,7 +725,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 12000
   Modifier: {fileID: 11400000, guid: 9aced94021235b843a137515da87937a, type: 2}
-  ArmorType: 4
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -815,7 +813,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FactoryPrefab: {fileID: 8602111571912869181, guid: 8262f74429dab07418333b3810bc5ca6,
     type: 3}
-  ProductionTime: 90
+  ProductionTime: 80
 --- !u!114 &2256070013968973893
 MonoBehaviour:
   m_ObjectHideFlags: 0

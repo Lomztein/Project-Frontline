@@ -92,7 +92,8 @@ public class MapSettings : MonoBehaviour
 
     public void ApplyMapInfo (MapInfo info)
     {
-        Shape.value = GetShapes().ToList().IndexOf(info.Shape); // As you can tell, I litteraly don't care about poor performance when it matters this little.
-        Scenery.value = GetSceneries().ToList().IndexOf(info.SceneryGenerator);
+        // Yes, I know this could be done better. No, I don't particularily care.
+        Shape.value = Array.IndexOf(GetShapes(), GetShapes().FirstOrDefault(x => x.Name == info.Shape.Name));
+        Scenery.value = Array.IndexOf(GetSceneries(), GetSceneries().ToList().IndexOf(info.SceneryGenerator));
     }
 }

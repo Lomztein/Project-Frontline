@@ -52,6 +52,8 @@ public class WeightedUnitSelector : MonoBehaviour, IUnitSelector
     {
         if (WeightDebug && weights.Count > 0)
         {
+            var compTable = WeightTable.FindTable(x => x is CompositionDeltaWeightTable) as CompositionDeltaWeightTable;
+
             var values = weights.Values.ToArray();
             var keys = weights.Keys.ToArray();
             Array.Sort(values, keys);
@@ -59,7 +61,7 @@ public class WeightedUnitSelector : MonoBehaviour, IUnitSelector
             Array.Reverse(values);
             Array.Reverse(keys);
 
-            WeightDebug.text = string.Empty;
+            WeightDebug.text = compTable.DebugText + "\n";
             for (int i = 0; i < values.Length; i++)
             {
                 if (keys[i] == selected)

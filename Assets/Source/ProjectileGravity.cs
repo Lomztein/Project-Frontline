@@ -9,7 +9,7 @@ public class ProjectileGravity : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Projectile.Velocity += Vector3.down * Gravity * Time.fixedDeltaTime;
+        Projectile.Velocity += Gravity * Time.fixedDeltaTime * Vector3.down;
         Projectile.transform.LookAt(Projectile.transform.position + Projectile.Velocity);
     }
 }

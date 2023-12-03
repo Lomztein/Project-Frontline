@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.SymbolStore;
 using System.Linq;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
@@ -18,6 +20,7 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
     public string[] SpecialistTags; // Should be ignored as they are handled by other tables.
 
     private Commander _commander;
+    public string DebugText;
 
     public override Dictionary<GameObject, float> GetWeights(IEnumerable<GameObject> options)
     {
@@ -31,6 +34,10 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
         var ourDamage = ComputeTeamDamageProducedPerSecond(us);
 
         enemyArmor = SubtractDamageFromArmor(enemyArmor, ourDamage);
+
+        DebugText =
+            "Enemy armor: \n" + DictSortedAndToString(enemyArmor) + "\n" +
+            "Enemy damage: \n" + DictSortedAndToString(enemyDamage);
 
         IEnumerable<float> damageScores = Map(options.Select(x => ComputeUnitDamageScore(x, enemyArmor)), 0f, 1f);
         IEnumerable<float> armorScores = Map(options.Select(x => ComputeUnitHealthScore(x, enemyDamage)), 0f, 1f);
@@ -63,6 +70,23 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
         }
 
         return results;
+    }
+
+    public static string DictSortedAndToString<T>(Dictionary<T, float> dict)
+    {
+        var values = dict.Values.ToArray();
+        var keys = dict.Keys.ToArray();
+        StringBuilder builder = new StringBuilder();
+        Array.Sort(values, keys);
+
+        Array.Reverse(values);
+        Array.Reverse(keys);
+
+        for (int i = 0; i < values.Length; i++)
+        {
+            builder.AppendLine(keys[i] + ": " + values[i]);
+        }
+        return builder.ToString();
     }
 
     public override void Initialize(Commander commander, IEnumerable<GameObject> availableUnits)
@@ -126,7 +150,7 @@ public class CompositionDeltaWeightTable : UnitWeightTableBase
             float aps = health.MaxHealth / productionTime;
             foreach (var dk in enemyDamage.Keys)
             {
-                score += aps * (1-DamageModifier.Combine(type, dk) * enemyDamage[dk]);
+                score += aps * ((1f-DamageModifier.Combine(type, dk)) * enemyDamage[dk]);
             }
         }
         return score;

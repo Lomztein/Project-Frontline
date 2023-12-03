@@ -60,7 +60,7 @@ public class ShieldProjector : MonoBehaviour
     private void ReviveShield ()
     {
         ShieldHealth.Revive();
-        ShieldHealth.Heal(ShieldHealth.MaxHealth * (1-HealthOnReviveMult) * -1);
+        ShieldHealth.Heal(new DamageInfo(ShieldHealth.MaxHealth * (1 - HealthOnReviveMult) * -1, DamageModifier.One, ShieldHealth.transform.position, Vector3.forward, this, ShieldHealth));
         _shieldTargetSize = ShieldSize;
     }
 
@@ -86,7 +86,7 @@ public class ShieldProjector : MonoBehaviour
 
         if (Time.time > _lastDamageTime + HealDelay)
         {
-            ShieldHealth.Heal(HealRate * Time.fixedDeltaTime);
+            ShieldHealth.Heal(new DamageInfo(HealRate * Time.fixedDeltaTime, DamageModifier.One, ShieldHealth.transform.position, Vector3.forward, this, ShieldHealth));
         }
     }
 }

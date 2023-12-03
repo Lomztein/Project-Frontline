@@ -18,13 +18,18 @@ MonoBehaviour:
     weapons, though it's slightly worse at withstandinging small-arms fire.
   Abstract: 0
   Options:
-  - Name: Grenade
+  - Name: High Resistance
     AnyOf:
     - {fileID: 11400000, guid: c005ea8f0e75e674d92d114853d418cd, type: 2}
+    - {fileID: 11400000, guid: 314342fc66eec6d48825ca07dec91c8c, type: 2}
+    - {fileID: 11400000, guid: 945d88c08db340144ab265835acf69ca, type: 2}
     Value: 0.5
+  - Name: Weakness
+    AnyOf:
+    - {fileID: 11400000, guid: f75d5f910f7de0d48ab5cab93d6c821d, type: 2}
+    Value: 1.25
   - Name: Resistance
     AnyOf:
     - {fileID: 11400000, guid: 92e6b21166c648b45b3686dd2030c041, type: 2}
-    - {fileID: 11400000, guid: 314342fc66eec6d48825ca07dec91c8c, type: 2}
     Value: 0.75
   Fallback: 1

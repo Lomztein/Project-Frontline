@@ -20,7 +20,7 @@ public class HealingBeamProjectile : Projectile
         {
             if (IsValidTarget(hit, out Health health))
             {
-                health.Heal(Damage);
+                health.Heal(new DamageInfo(Damage, Modifier, hit.point, direction, this, health));
                 HandleHitEffects(hit.point, hit.normal);
                 if (Renderer)
                     Renderer.SetPositions(transform.position, hit.point);

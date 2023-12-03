@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class ArtillaryTurret : MonoBehaviour, ITurret
 {
@@ -21,6 +22,8 @@ public class ArtillaryTurret : MonoBehaviour, ITurret
     private Vector3 _targetHorizontalLocalPos;
     private float _targetLocalAngle;
 
+    public Vector2 ElevationRangeMinMax = new Vector2(-90, 90);
+
     public void AimTowards(Vector3 position)
     {
         _targetLocalPos = Base.InverseTransformPoint (position);
@@ -33,6 +36,7 @@ public class ArtillaryTurret : MonoBehaviour, ITurret
         if (!float.IsNaN(_targetLocalAngle))
         {
             float horAngle = Mathf.Atan2(_targetLocalPos.x, _targetLocalPos.z) * Mathf.Rad2Deg;
+            _targetLocalAngle = Mathf.Clamp(_targetLocalAngle, -ElevationRangeMinMax.y, -ElevationRangeMinMax.x);
             HorizontalAxis.localRotation = Quaternion.RotateTowards(HorizontalAxis.localRotation, Quaternion.Euler(0f, horAngle, 0f), HorRotationSpeed * Time.fixedDeltaTime);
             VerticalAxis.localRotation = Quaternion.RotateTowards(VerticalAxis.localRotation, Quaternion.Euler(-_targetLocalAngle, 0f, 0f), VerRotationSpeed * Time.fixedDeltaTime);
         }
@@ -40,7 +44,11 @@ public class ArtillaryTurret : MonoBehaviour, ITurret
 
     public bool CanHit(Vector3 target)
     {
-        return Vector3.Distance(transform.position, target) < GetApproxProjectileRange(45f, 0f, ProjectileSpeed, ProjectileGravity);
+        Vector3 loc = Base.InverseTransformPoint(target);
+        float angle = -ComputeTrajectoryAngle(loc.z, loc.y, ProjectileSpeed, ProjectileGravity, HighAngle);
+
+        return Vector3.Distance(transform.position, target) < GetApproxProjectileRange(45f, 0f, ProjectileSpeed, ProjectileGravity)
+            && (angle > ElevationRangeMinMax.x && angle < ElevationRangeMinMax.y);
     }
 
     public float DeltaAngle(Vector3 target)

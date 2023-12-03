@@ -28,7 +28,9 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
     public GameObject ProjectilePrefab;
     public Transform Muzzle;
     public float Inaccuracy;
+    public AnimationCurve InaccuracyCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
     public float SpeedVariance = 0f;
+    public AnimationCurve SpeedVarianceCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
 
     private IObjectPool _pool;
     private LayerMask _hitLayerMask;
@@ -146,12 +148,22 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
 
     private Vector2 GetProjectileInaccuracy()
     {
-        return UnityEngine.Random.insideUnitCircle * Inaccuracy;
+        // This feels like there must be a better way to do this.
+        Vector2 degs = new Vector2(
+            InaccuracyCurve.Evaluate(UnityEngine.Random.Range(0f, 1f)),
+            InaccuracyCurve.Evaluate(UnityEngine.Random.Range(0f, 1f)))
+            * Inaccuracy;
+
+        if (UnityEngine.Random.Range(0, 2) == 1) degs.x = -degs.x;
+        if (UnityEngine.Random.Range(0, 2) == 1) degs.y = -degs.y;
+
+        return degs;
     }
 
     private float GetProjectileSpeed()
     {
-        return Speed * UnityEngine.Random.Range(1f - SpeedVariance, 1f + SpeedVariance);
+        float factor = SpeedVarianceCurve.Evaluate(UnityEngine.Random.Range(0f, 1f));
+        return Speed * UnityEngine.Random.Range(1f - SpeedVariance * factor, 1f + SpeedVariance * factor);
     }
 
     private void Projectile_OnEnd(Projectile projectile)
@@ -179,15 +191,17 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
     }
 
     public virtual float GetDPS()
+        => ComputeDPS(Damage * Amount, Firerate, BurstAmmo, BurstReloadTime);
+
+    public static float ComputeDPS(float shotDamage, float firerate, int burstAmmo, float burstReloadTime)
     {
-        float shotDamage = Damage * Amount;
-        if (BurstReloadTime > 0)
+        if (burstReloadTime > 0)
         {
-            float burstDamage = shotDamage * BurstAmmo;
-            float burstTime = (BurstAmmo - 1) * (1f / Firerate);
-            return burstDamage / (BurstReloadTime + burstTime);
+            float burstDamage = shotDamage * burstAmmo;
+            float burstTime = (burstAmmo - 1) * (1f / firerate);
+            return burstDamage / (burstReloadTime + burstTime);
         }
-        return shotDamage * Firerate;
+        return shotDamage * firerate;
     }
 
     public virtual bool CanFire()

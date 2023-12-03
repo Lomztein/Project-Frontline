@@ -1,9 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public abstract class AggregateUnitWeightTable : UnitWeightTableBase
+public abstract class AggregateUnitWeightTable : UnitWeightTableBase, IEnumerable<UnitWeightTableBase>
 {
     public List<UnitWeightTableBase> ChildTables;
     public float StartingValue;
@@ -58,4 +59,28 @@ public abstract class AggregateUnitWeightTable : UnitWeightTableBase
     }
 
     protected abstract float Aggregate(float aggregator, float value);
+
+    public IEnumerator<UnitWeightTableBase> GetEnumerator()
+    {
+        return ((IEnumerable<UnitWeightTableBase>)ChildTables).GetEnumerator();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return ((IEnumerable)ChildTables).GetEnumerator();
+    }
+
+    public override UnitWeightTableBase FindTable(Predicate<UnitWeightTableBase> predicate)
+    {
+        var b = base.FindTable(predicate);
+        if (b != null) return b;
+
+        foreach (var table in ChildTables)
+        {
+            var res = table.FindTable(predicate);
+            if (res) return res;
+        }
+
+        return null;
+    }
 }

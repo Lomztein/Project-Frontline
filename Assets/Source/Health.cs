@@ -16,6 +16,7 @@ public class Health : MonoBehaviour, IDamagable
 
     public event Action<Health, DamageInfo> OnTakeDamage;
     public event Action<Health, DamageInfo> OnDamageTaken;
+    public event Action<Health, DamageInfo> OnHeal;
     public event Action<Health> OnDeath;
 
     private void Awake()
@@ -45,13 +46,17 @@ public class Health : MonoBehaviour, IDamagable
         return CurrentHealth;
     }
 
-    public void Heal (float amount)
+    public void Heal (DamageInfo info)
     {
-        CurrentHealth += amount;
+        float h = CurrentHealth;
+        float dmg = info.GetDamage(Modifier);
+        CurrentHealth += dmg;
+        info.DamageDone = Mathf.Clamp(h - CurrentHealth, -MaxHealth, MaxHealth);
         if (CurrentHealth > MaxHealth)
         {
             CurrentHealth = MaxHealth;
         }
+        OnHeal?.Invoke(this, info);
     }
 
     public void Revive ()

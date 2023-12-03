@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1423461652074252363}
   - component: {fileID: 3630212335921609416}
-  - component: {fileID: -693088486076448923}
+  - component: {fileID: 288531154973159275}
   - component: {fileID: 4532166456205282135}
   - component: {fileID: 3057412748817844674}
   - component: {fileID: 6979240468358730372}
@@ -54,7 +54,6 @@ MonoBehaviour:
   Speed: 55
   Damage: 75
   Modifier: {fileID: 0}
-  DamageType: 1
   Velocity: {x: 0, y: 0, z: 0}
   Life: 5
   HitEffect: {fileID: 6381102607922298007}
@@ -63,7 +62,7 @@ MonoBehaviour:
   HitLayerMask:
     serializedVersion: 2
     m_Bits: 0
---- !u!114 &-693088486076448923
+--- !u!114 &288531154973159275
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,11 +71,69 @@ MonoBehaviour:
   m_GameObject: {fileID: 2375430243017228703}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d838439da8cef64a9a2c1ba369d1f8e, type: 3}
+  m_Script: {fileID: 11500000, guid: 75300d5181d82df459342a109da2e176, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Projectile: {fileID: 3630212335921609416}
-  LerpSpeed: 10
+  SpeedMin: 50
+  SpeedByDeviance:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.520813
+      value: 0.0971756
+      inSlope: -0.37652993
+      outSlope: -0.37652993
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.7226811
+      outWeight: 0.350905
+    - serializedVersion: 3
+      time: 0.99583334
+      value: -0.002024291
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  TurnrateMinMax: {x: 0, y: 1440}
+  TurnrateByDeviance:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.99583334
+      value: -0.002024291
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!135 &4532166456205282135
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -126,7 +183,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 1
   Modifier: {fileID: 11400000, guid: 48edd60faee51d246a8009cd399ac2f2, type: 2}
-  ArmorType: 2
   DestroyOnDeath: 0
   DestroyDelay: 0
   Debris: {fileID: 0}

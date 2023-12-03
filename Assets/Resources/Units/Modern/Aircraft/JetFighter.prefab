@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 583668082125912536}
   - component: {fileID: 5078028238801753873}
   - component: {fileID: 10478241959556929}
+  - component: {fileID: -5278097122815548714}
   m_Layer: 0
   m_Name: JetFighter
   m_TagString: Untagged
@@ -130,8 +131,8 @@ MonoBehaviour:
     Identifier: Jet.Fighter
     Name: Fighter Jet
     Description: Incredibly fast hit-and-run jet, capable of outmaneuvering all but
-      the fastest missiles. Armed with powerful surface-to-everything missles with
-      enough explosives to demolish all you've ever loved.
+      the fastest missiles. Armed with powerful air-to-air missles with enough explosives
+      to demolish all you've ever loved.
     Tags:
     - Anti-Air
     Cost: 3000
@@ -231,8 +232,9 @@ MonoBehaviour:
   TargetSearchFrequency: 2
   Modifiers:
   - {fileID: 5078028238801753873}
+  - {fileID: -5278097122815548714}
   HoldRange: 55
-  StayBehindFrontline: 0
+  StayBehindFrontline: 1
   ReengageRange: 200
   DisengageAlongWaypoint: 1
   DisengageWhileCantFire: 1
@@ -282,6 +284,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
+--- !u!114 &-5278097122815548714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1854339823422044912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c59ac0d092345c04a9befbce95a15fcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AltitudeMinMax: {x: 10, y: 70}
 --- !u!1 &1854339823547716753
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,7 +459,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 400
   Firerate: 1
-  Modifier: {fileID: 11400000, guid: 628eda4319e55a945b6a99ea8f8ce754, type: 2}
+  Modifier: {fileID: 11400000, guid: 9974e4778fc971144a67e48006632fd0, type: 2}
   Speed: 150
   Range: 500
   Amount: 1
@@ -673,7 +688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Damage: 400
   Firerate: 0.25
-  Modifier: {fileID: 11400000, guid: 628eda4319e55a945b6a99ea8f8ce754, type: 2}
+  Modifier: {fileID: 11400000, guid: 9974e4778fc971144a67e48006632fd0, type: 2}
   Speed: 150
   Range: 500
   Amount: 1

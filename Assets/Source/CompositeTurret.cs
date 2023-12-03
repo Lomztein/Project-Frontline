@@ -8,8 +8,8 @@ public class CompositeTurret : MonoBehaviour, ITurret
     public GameObject[] Turrets;
     private List<ITurret> _turrets;
 
-    public enum DeltaAngleAggregation { Min, Max }
-    public enum CanHitAggregation { Any, All }
+    public enum DeltaAngleAggregation { Min, Max, Zero }
+    public enum CanHitAggregation { Any, All, Always }
 
     public DeltaAngleAggregation UseDeltaAngle;
     public CanHitAggregation UseCanHit;
@@ -26,6 +26,8 @@ public class CompositeTurret : MonoBehaviour, ITurret
             return _turrets.Any(x => x.CanHit(target));
         if (UseCanHit == CanHitAggregation.All)
             return _turrets.All(x => x.CanHit(target));
+        if (UseCanHit == CanHitAggregation.Always)
+            return true;
         return false;
     }
 
@@ -35,6 +37,8 @@ public class CompositeTurret : MonoBehaviour, ITurret
             return _turrets.Min(x => x.DeltaAngle(target));
         if (UseDeltaAngle== DeltaAngleAggregation.Max)
             return _turrets.Max(x => x.DeltaAngle(target));
+        if (UseDeltaAngle == DeltaAngleAggregation.Zero)
+            return 0f;
         return 180f;
     }
 

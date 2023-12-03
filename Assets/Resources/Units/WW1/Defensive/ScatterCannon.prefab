@@ -77,7 +77,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 3000
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -376,7 +375,6 @@ MonoBehaviour:
   Damage: 20
   Firerate: 0.3
   Modifier: {fileID: 11400000, guid: 1c89b0a4afb2193448b413f4230870cb, type: 2}
-  DamageType: 0
   Speed: 300
   Range: 100
   Amount: 32
@@ -391,7 +389,64 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 470438939686046470}
   Inaccuracy: 1
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.8330676
+      value: 0.23674297
+      inSlope: 0.76910084
+      outSlope: 0.76910084
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.16373898
+      outWeight: 0.47124928
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 7.2878513
+      outSlope: 7.2878513
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.099840716
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0.2
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &3921579209090571300
 MonoBehaviour:
   m_ObjectHideFlags: 0

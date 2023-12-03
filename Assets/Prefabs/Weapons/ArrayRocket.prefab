@@ -49,7 +49,6 @@ MonoBehaviour:
   Damage: 150
   Firerate: 0.08
   Modifier: {fileID: 11400000, guid: 314342fc66eec6d48825ca07dec91c8c, type: 2}
-  DamageType: 5
   Speed: 55
   Range: 500
   Amount: 1
@@ -64,7 +63,64 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 5474002899262176888}
   Inaccuracy: 3
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.84310627
+      value: 0.25871772
+      inSlope: 0.9618196
+      outSlope: 0.9618196
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 12.388678
+      outSlope: 12.388678
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.05311446
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4030252413491700876
 GameObject:
   m_ObjectHideFlags: 0

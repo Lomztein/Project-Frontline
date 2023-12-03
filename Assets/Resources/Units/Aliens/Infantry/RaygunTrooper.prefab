@@ -1,0 +1,254 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &1469543274217464850
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 8541460827170104}
+    m_Modifications:
+    - target: {fileID: 640545997662686514, guid: e14c3b617b9c0d14fb33506307377ad5,
+        type: 3}
+      propertyPath: m_Name
+      value: AlienPistol
+      objectReference: {fileID: 0}
+    - target: {fileID: 1165338369286979886, guid: e14c3b617b9c0d14fb33506307377ad5,
+        type: 3}
+      propertyPath: Pivot
+      value: 
+      objectReference: {fileID: 8779567635760971447}
+    - target: {fileID: 4387316787815043496, guid: e14c3b617b9c0d14fb33506307377ad5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.04279749
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387316787815043496, guid: e14c3b617b9c0d14fb33506307377ad5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.287
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387316787815043496, guid: e14c3b617b9c0d14fb33506307377ad5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.338
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387316787815043496, guid: e14c3b617b9c0d14fb33506307377ad5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387316787815043496, guid: e14c3b617b9c0d14fb33506307377ad5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387316787815043496, guid: e14c3b617b9c0d14fb33506307377ad5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387316787815043496, guid: e14c3b617b9c0d14fb33506307377ad5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387316787815043496, guid: e14c3b617b9c0d14fb33506307377ad5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387316787815043496, guid: e14c3b617b9c0d14fb33506307377ad5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4387316787815043496, guid: e14c3b617b9c0d14fb33506307377ad5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e14c3b617b9c0d14fb33506307377ad5, type: 3}
+--- !u!1 &2055735873117382944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 640545997662686514, guid: e14c3b617b9c0d14fb33506307377ad5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1469543274217464850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2920087988830025146 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4387316787815043496, guid: e14c3b617b9c0d14fb33506307377ad5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1469543274217464850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7297122948166711209
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: HoldRange
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: LeadTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: AttackRange
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: WeaponObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 2055735873117382944}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.Cost
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.Name
+      value: Ray Trooper
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.Value
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.Identifier
+      value: AlienInfantry.Basic.Raygunner
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.Description
+      value: Dimunitive little guys cloned en-masse for front-line combat. They wield
+        a handheld raygun for anti-infantry use that fires slowly but does sagnificant
+        damage per shot. While their bodies are frail and squishy, the advanced technology
+        of the body suits grants them some sturdyness.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: _weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 2055735873117382944}
+    - target: {fileID: 1618085928270947058, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: MaxHealth
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046572453330662268, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: ProductionTime
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706238921359540305, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Turrets.Array.data[1]
+      value: 
+      objectReference: {fileID: 2055735873117382944}
+    - target: {fileID: 7303377074153362064, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_Name
+      value: RaygunTrooper
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799830675548848500, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799830675548848500, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799830675548848500, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2920087988830025146}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f1db2eb8f4738f9408419eb4695ae6ee, type: 3}
+--- !u!4 &8541460827170104 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 7297122948166711209}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8779567635760971447 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2059231997697427742, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 7297122948166711209}
+  m_PrefabAsset: {fileID: 0}

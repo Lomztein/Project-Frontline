@@ -1,0 +1,21 @@
+This is a document detailing some ideas and notes on migrating unit metadata over to ScriptableObjects rather than enums.
+Each type should have a name and a description, maybe an identifier.
+
+Could all three types of metadata be combined into a single list of UnitTag or UnitMetadata objects?
+	Various systems are dependant on tiers and types. Roles aren't really used though. These dependent systems would need to be modified to support no tier or type tag.
+	A unified system would allow for UnitInfo to contain a single array of tags, and maybe another list of tags which the unit counters.
+		Helper methods such as HasTag<>, HasRole, HasTier, HasType, as well as Counters and Get variants could streamline interaction with this.
+			HasRole, HasTier, HasType and variants are shortcuts to genenric HasTag<>
+		Helper methods should be able to take both an identifier string or a UnitTag object.
+		Helper methods should just return null if no match is found. Dependent systems must support null returns.
+	UnitTag objects could also themselves contain a list of tags which they counter.
+		Examples: Role "Anti-Air" counters type "Aircraft". Role "Aircraft" counters "Low Elevation". "Siege" counters "Defense", "Harasser" "Siege", "Marksman" "Priority"
+	Counter list would allow counters to be integrated into CompositionDeltaWeightTable. Implementation details uncertain.
+		Adding as another factor could muddle the current weight calculation further.
+		Adding as a multiplier may be preferrable.
+	A tag could have a meta tag that replaces current Type, Tier, Role definitions.
+		List of tags could be cached as a dictionary, using the meta tag as a key.
+
+Type - Current = enum { Infantry, Vechicle, Aircraft, Navel, Defense, Structures }
+Tier - Current = enum { Basic, Intermediate, Advanced, Omega }
+Role - Current = enum { Vanguard, Support, Defense, Production }

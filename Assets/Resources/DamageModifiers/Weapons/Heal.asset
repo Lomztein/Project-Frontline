@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4c6dc995eb499d45a14801e42ae08b3, type: 3}
   m_Name: Heal
   m_EditorClassIdentifier: 
+  Base: {fileID: 0}
   Name: Heal
   Description: 
-  Base: {fileID: 0}
+  Abstract: 0
   Options:
   - Name: Infantry
     AnyOf:
@@ -24,6 +25,10 @@ MonoBehaviour:
     AnyOf:
     - {fileID: 11400000, guid: 9aced94021235b843a137515da87937a, type: 2}
     Value: 0.33
+  - Name: Light
+    AnyOf:
+    - {fileID: 11400000, guid: 48edd60faee51d246a8009cd399ac2f2, type: 2}
+    Value: 1
   - Name: Armor
     AnyOf:
     - {fileID: 11400000, guid: 8df7328b0debbf4459f417f29405ceed, type: 2}

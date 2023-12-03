@@ -94,6 +94,7 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, ICommanderCompon
         Quaternion baseRot = SpawnRelativeToRoot ? _root.rotation : transform.rotation;
         Vector3 pos = GetLocalRandomSpawnPosition() + basePos;
         GameObject go = _team.Instantiate(SelectUnitPrefab(), pos, baseRot);
+        if (_commander) _commander.AssignCommander(go);
         if (SetPath && _commander && _commander.Target)
         {
             NavigationNode spawnNode = Navigation.GetNearestNode(_spawnLocation);

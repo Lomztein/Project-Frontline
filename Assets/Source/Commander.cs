@@ -380,11 +380,6 @@ public class Commander : MonoBehaviour, ITeamComponent
             Gizmos.color = Color.red;
             Gizmos.matrix = Target.transform.localToWorldMatrix;
             Gizmos.DrawWireCube(OffenseVolumeLocalBounds.center + Vector3.up, OffenseVolumeLocalBounds.size);
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out RaycastHit hit))
-            {
-                Debug.Log(Name + ": " + CalcTargetScore(hit.point));
-            }
             Gizmos.matrix = Matrix4x4.identity;
             Gizmos.color = Color.red;
             Gizmos.DrawLine(transform.position, Target.transform.position + Vector3.up * 10);

@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 679070578592695152}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.4985497, y: -0.0018224716, z: 0.320122}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -480,6 +480,56 @@ Transform:
   - {fileID: 4276110527142221578}
   m_Father: {fileID: 8860895943892769599}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1997210272853029281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 344522291980838818}
+  - component: {fileID: 904516583479395871}
+  m_Layer: 0
+  m_Name: Weakspot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &344522291980838818
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997210272853029281}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 1.169, z: -0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5269984234042742730}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &904516583479395871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1997210272853029281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09952cb0e3f6ac64e875fc91c23de161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Head
+  Description: Alien head full of alien dreams and memories.
+  RangeThreshold: 0.32
+  Transform: {fileID: 344522291980838818}
+  Health: {fileID: 0}
+  DamageMultiplier: 2
 --- !u!1 &2784865053776817006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1169,5 +1219,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6952416101906895652}
+  - {fileID: 344522291980838818}
   m_Father: {fileID: 4803335846343638704}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public class WeaponGroup : MonoBehaviour, IWeapon
 {
@@ -27,6 +28,7 @@ public class WeaponGroup : MonoBehaviour, IWeapon
 
     public int Ammo => GetWeapons().Sum(x => x.Ammo);
     public int MaxAmmo => GetWeapons().Sum(x => x.MaxAmmo);
+    public PositionTarget _lastTargetPosition;
 
     public DamageModifier Modifier => GetWeapons().First().Modifier;
 
@@ -104,6 +106,10 @@ public class WeaponGroup : MonoBehaviour, IWeapon
 
     public bool TryFire(ITarget intendedTarget)
     {
+        // Target should always be valid when TryFire is first called.
+        Assert.IsTrue(intendedTarget.ExistsAndValid());
+        _lastTargetPosition = new PositionTarget(intendedTarget.GetCenter());
+
         if (CanFire())
         {
             _fireControl.Fire(_weapons.Length, (index) => FireControlCallback(index, intendedTarget));
@@ -114,7 +120,15 @@ public class WeaponGroup : MonoBehaviour, IWeapon
 
     private void FireControlCallback(int index, ITarget intendedTarget)
     {
-        _weapons[index].TryFire(intendedTarget);
+        if (intendedTarget.ExistsAndValid())
+        {
+            _lastTargetPosition = new PositionTarget(intendedTarget.GetCenter());
+            _weapons[index].TryFire(intendedTarget);
+        }
+        else
+        {
+            _weapons[index].TryFire(_lastTargetPosition);
+        }
     }
 
     public void SetHitLayerMask(LayerMask mask)

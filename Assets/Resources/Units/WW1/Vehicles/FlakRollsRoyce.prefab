@@ -69,7 +69,6 @@ MonoBehaviour:
   Damage: 25
   Firerate: 1.2
   Modifier: {fileID: 11400000, guid: 9974e4778fc971144a67e48006632fd0, type: 2}
-  DamageType: 5
   Speed: 250
   Range: 100
   Amount: 1
@@ -84,7 +83,55 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 517525752715032557}
   Inaccuracy: 0.75
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &633223817021489569
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,7 +430,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 200
   Modifier: {fileID: 11400000, guid: 48edd60faee51d246a8009cd399ac2f2, type: 2}
-  ArmorType: 2
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 6309138862387603851, guid: b8bdcc7c31cf2bc48b7fca9ea3c1d88e, type: 3}
@@ -420,8 +466,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Team: {fileID: 0}
   AcquireTargetRange: 75
-  LooseTargetRange: 100
-  AttackRange: 50
+  LooseTargetRange: 75
+  AttackRange: 75
   TurretObject: {fileID: 1648604567964808}
   WeaponObjects:
   - {fileID: 1648604567964808}
@@ -430,7 +476,7 @@ MonoBehaviour:
   TargetSearchFrequency: 2
   Modifiers:
   - {fileID: 5506906118945775706}
-  HoldRange: 50
+  HoldRange: 75
   StayBehindFrontline: 1
 --- !u!114 &7159768823265169035
 MonoBehaviour:
