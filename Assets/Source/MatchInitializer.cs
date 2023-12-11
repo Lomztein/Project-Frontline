@@ -13,7 +13,7 @@ public class MatchInitializer : MonoBehaviour
     public GameObject AIPrefab;
     public GameObject PlayerPrefab;
 
-    private void Awake()
+    private void Start()
     {
         if (InitializeCurrentSettingsOnAwake)
         {
@@ -63,6 +63,8 @@ public class MatchInitializer : MonoBehaviour
         {
             mutator.Start();
         }
+
+        StartCoroutine(PostInit());
     }
 
     private Team SpawnTeam (TeamInfo teamInfo, Vector3 position, Quaternion rotation)
@@ -107,6 +109,12 @@ public class MatchInitializer : MonoBehaviour
             Camera.main.GetComponent<TopDownCameraController>().MoveToHQ();
         }
         return commander;
+    }
+
+    IEnumerator PostInit ()
+    {
+        yield return new WaitForFixedUpdate();
+        MatchSettings.Current.ProductionBehaviour.OnMatchInitialized();
     }
 
     private void AttachPlayerToPurchaseMenu (Commander player)

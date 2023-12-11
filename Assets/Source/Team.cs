@@ -7,6 +7,7 @@ using UnityEngine;
 public class Team : MonoBehaviour, ITeamComponent
 {
     private static List<Team> _teams = new List<Team>();
+    public static IEnumerable<Team> AllTeams => _teams;
 
     public TeamInfo TeamInfo;
     private List<Commander> _commanders = new List<Commander>();

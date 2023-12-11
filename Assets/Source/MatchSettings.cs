@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Assertions;
 
+
 [CreateAssetMenu(fileName = "New Match Settings", menuName = "Match Settings")]
 public class MatchSettings : ScriptableObject
 {
@@ -21,6 +22,9 @@ public class MatchSettings : ScriptableObject
     [SerializeField]
     private List<Mutator> _mutators;
     public IEnumerable<Mutator> Mutators => _mutators;
+
+    public UnitProductionBehaviour ProductionBehaviour;
+    public VictoryChecker VictoryChecker;
 
     public void AddMutator(Mutator mutator) => _mutators.Add(mutator);
     public void RemoveMutator(Mutator mutator) => _mutators.Remove(mutator);

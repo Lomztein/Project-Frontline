@@ -54,6 +54,12 @@ public class RangeMultiplierMutator : Mutator
         {
             at.ProjectileSpeed *= ProjectileSpeedMultiplier;
         }
+
+        var infAts = unit.GetComponentsInChildren<ArtilleryTurretAdapter>();
+        foreach (var inf in infAts)
+        {
+            inf.ProjectileSpeed *= ProjectileSpeedMultiplier;
+        }
     }
 
     public override void Stop()

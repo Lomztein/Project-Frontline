@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CustomGame;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,13 +22,24 @@ public class UnitFactory : MonoBehaviour, ITeamComponent, ICommanderComponent
     public float Effeciency => EarnedCredits / GivenCredits;
 
     public event Action<UnitFactory, GameObject> OnUnitSpawned;
+    private UnitProductionBehaviour.UnitProductionCallback _callback;
 
     public void Start()
     {
-        InvokeRepeating("Spawn", SpawnDelay, SpawnDelay);
+        _callback = MatchSettings.GetCurrent().ProductionBehaviour.CreateCallback();
+        _callback.Initialize(_commander, SpawnDelay, Spawn);
+
         _unit = UnitPrefab.GetComponent<Unit>();
         _nearestWaypoint = Navigation.GetNearestNode(transform.position);
         EarnedCredits -= _unit.Info.Cost;
+    }
+
+    private void OnDestroy()
+    {
+        if (Application.isPlaying && _callback != null)
+        {
+            _callback.Stop();
+        }
     }
 
     private void Spawn ()

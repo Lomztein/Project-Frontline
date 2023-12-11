@@ -31,7 +31,7 @@ public class CirclerController : AttackerController
         float ts = Mathf.Pow(dist, 2f);
         if (ts > hs + ms)
         {
-            MoveTowardsPosition(CalcEntrancePoint(transform.position.Flat(), CurrentTarget.GetCenter()));
+            MoveTowardsPosition(CurrentTarget.GetCenter().Flat() + CalcEntrancePoint(transform.position.Flat(), CurrentTarget.GetCenter().Flat()));
         }
         else
         {
@@ -81,7 +81,7 @@ public class CirclerController : AttackerController
     {
         if (CurrentTarget.ExistsAndValid())
         {
-            Vector3 circleEntrancePoint = CalcEntrancePoint(transform.position.Flat(), CurrentTarget.GetCenter());
+            Vector3 circleEntrancePoint = CurrentTarget.GetCenter().Flat() + CalcEntrancePoint(transform.position.Flat(), CurrentTarget.GetCenter().Flat());
             Gizmos.DrawSphere(circleEntrancePoint, 0.5f);
             Gizmos.DrawLine(transform.position.Flat(), circleEntrancePoint);
             Gizmos.DrawWireSphere(CurrentTarget.GetCenter().Flat(), HoldRange);

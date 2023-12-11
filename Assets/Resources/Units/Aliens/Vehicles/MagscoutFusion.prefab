@@ -167,7 +167,55 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 6624253780861510767}
   Inaccuracy: 0.25
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   MaxChargeTime: 1.5
   CurrentChargeTime: 0
   ResetChargeOnFire: 0
@@ -5622,8 +5670,8 @@ MonoBehaviour:
     Tags: []
     Cost: 4000
     Value: 400
-    UnitRole: 0
-    UnitTier: 0
+    UnitRole: 1
+    UnitTier: 2
     UnitType: 1
   Health: {fileID: 0}
   _weapons:

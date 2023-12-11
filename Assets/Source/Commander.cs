@@ -71,6 +71,18 @@ public class Commander : MonoBehaviour, ITeamComponent
     private int _earningsAverageIndex;
     private float _currentIndexEarnings;
 
+    private List<IUnitCostModifier> _globalUnitCostModifiers = new List<IUnitCostModifier>();
+    private List<IUnitPurchasePredicate> _globalUnitPurchasePredicate = new List<IUnitPurchasePredicate>();
+
+    public void AddGlobalUnitCostModifier(IUnitCostModifier modifier) => _globalUnitCostModifiers.Add(modifier);
+    public void RemoveGLobalUnitCostModifier(IUnitCostModifier modifier) => _globalUnitCostModifiers.Remove(modifier);
+
+    public void AddGlobalUnitPurchasePredicate(IUnitCostModifier modifier) => _globalUnitCostModifiers.Add(modifier);
+    public void RemoveGlobalUnitPurchasePredicate(IUnitCostModifier modifier) => _globalUnitCostModifiers.Remove(modifier);
+
+    public IEnumerable<IUnitCostModifier> GlobalUnitCostModifiers => _globalUnitCostModifiers;
+    public IEnumerable<IUnitPurchasePredicate> GlobalUnitPurchasePredicates => _globalUnitPurchasePredicate;
+
     public float AverageIncomePerSecond => _earningsAverageWindow.Average();
 
     protected virtual void Awake()
@@ -387,17 +399,25 @@ public class Commander : MonoBehaviour, ITeamComponent
     }
 
     public int GetCost(GameObject prefab)
-        => prefab.GetComponent<Unit>().GetCost(this);
+        => GetCost(prefab.GetComponent<Unit>());
+    public int GetCost(Unit unit)
+        => PurchasingUtils.GetCost(unit, unit.BaseCost, Enumerable.Concat(GlobalUnitCostModifiers, unit.GetCostModifiers()), this);
     public bool CanAfford(GameObject prefab)
         => Credits >= GetCost(prefab);
     public bool CanPurchase(GameObject unit)
-        => unit.GetComponent<Unit>().CanPurchase(this);
+        => CanPurchase(unit.GetComponent<Unit>());
+    public bool CanPurchase(Unit unit)
+        => PurchasingUtils.CanPurchase(unit, Enumerable.Concat(GlobalUnitPurchasePredicates, unit.GetPurchasePredicates()), this);
     public bool CanAffordAndPurchase(GameObject prefab)
         => CanAfford(prefab) && CanPurchase(prefab);
     public string GetCanAffordDescription(GameObject prefab)
-        => prefab.GetComponent<Unit>().GetCostModifierDesription(this);
-    public string GetCanPurchaseDescription(GameObject prefab)
-        => prefab.GetComponent<Unit>().GetCanPurchaseDesription(this);
+        => GetCanAffordDescription(prefab.GetComponent<Unit>());
+    public string GetCanAffordDescription(Unit unit)
+        => PurchasingUtils.GetCostModifierDesription(unit, unit.BaseCost, Enumerable.Concat(GlobalUnitCostModifiers, unit.GetCostModifiers()), this);
+    public string GetCanPurchaseDescription(GameObject unit)
+        => GetCanPurchaseDescription(unit.GetComponent<Unit>());
+    public string GetCanPurchaseDescription(Unit unit)
+        => PurchasingUtils.GetCanPurchaseDesription(unit, Enumerable.Concat(GlobalUnitPurchasePredicates, unit.GetPurchasePredicates()), this);
     public string GetCanAffordAndPurchaseDescription(GameObject prefab)
         => (GetCanAffordDescription(prefab) + "\n" + GetCanPurchaseDescription(prefab)).Trim();
 }

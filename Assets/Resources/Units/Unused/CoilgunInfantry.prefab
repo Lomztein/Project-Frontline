@@ -5,6 +5,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 503401728, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
@@ -123,6 +124,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6870369824164450125, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: Turrets.Array.data[1]
+      value: 
+      objectReference: {fileID: 1334231451413369678}
     - target: {fileID: 7651415233274957058, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: IsMoving
@@ -304,30 +310,32 @@ PrefabInstance:
       value: CoilgunInfantry
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8299666088126906342, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2775739098572034004}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
+--- !u!4 &319131062110056462 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2898419047578615420, guid: 50378c4ca65714b4ebd2928ade59a707,
+    type: 3}
+  m_PrefabInstance: {fileID: 3194328423807503986}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6880056106351210900 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8299666088126906342, guid: 50378c4ca65714b4ebd2928ade59a707,
     type: 3}
   m_PrefabInstance: {fileID: 3194328423807503986}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1857366573615810915 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3860211362352645905, guid: 50378c4ca65714b4ebd2928ade59a707,
-    type: 3}
-  m_PrefabInstance: {fileID: 3194328423807503986}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d806c437be696f248a15879293c2c7dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3868533167949639330
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
+    serializedVersion: 3
     m_TransformParent: {fileID: 6880056106351210900}
     m_Modifications:
     - target: {fileID: 1381094818653462902, guid: c1ce087c5fae8d942a72d454826e77f2,
@@ -404,17 +412,21 @@ PrefabInstance:
         type: 3}
       propertyPath: Pivot
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4603908238869656048, guid: c1ce087c5fae8d942a72d454826e77f2,
-        type: 3}
-      propertyPath: AnimatorTurret
-      value: 
-      objectReference: {fileID: 1857366573615810915}
+      objectReference: {fileID: 319131062110056462}
     m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c1ce087c5fae8d942a72d454826e77f2, type: 3}
 --- !u!1 &1334231451413369678 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2822611296196869612, guid: c1ce087c5fae8d942a72d454826e77f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 3868533167949639330}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2775739098572034004 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1381094818653462902, guid: c1ce087c5fae8d942a72d454826e77f2,
     type: 3}
   m_PrefabInstance: {fileID: 3868533167949639330}
   m_PrefabAsset: {fileID: 0}

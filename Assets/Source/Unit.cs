@@ -29,6 +29,8 @@ public class Unit : MonoBehaviour, IPurchasable
     private float _effeciencyTarget;
     public float Effeciency => _effeciencyScore / _effeciencyTarget;
 
+    public int GetCost(Commander commander) => commander.GetCost(gameObject);
+
     private Dictionary<string, float> _stats = new Dictionary<string, float>();
 
     [Header("Parts")] // UnitParts are specifically designated parts of the unit that might be of interest to others.
@@ -37,31 +39,6 @@ public class Unit : MonoBehaviour, IPurchasable
 
     public IEnumerable<T> GetParts<T>() where T : UnitPart
         => Parts.Where(x => x != null).Select(x => x as T).Where(x => x != null);
-
-    public int GetCost (Commander commander)
-    {
-        int cost = Info.Cost;
-        IUnitCostModifier[] modifiers = GetComponents<IUnitCostModifier>();
-        foreach (var modifier in modifiers)
-        {
-            cost = modifier.Modify(cost, this, commander);
-        }
-        return cost;
-    }
-
-    public string GetCostModifierDesription(Commander commander)
-        => string.Join("\n", GetComponents<IUnitCostModifier>().Select(x => x.GetDescription(BaseCost, this, commander)).Where(x => !string.IsNullOrWhiteSpace(x))).Trim();
-
-    public bool CanPurchase(Commander commander)
-    {
-        IUnitPurchasePredicate[] predicates = GetComponents<IUnitPurchasePredicate>();
-        var any = predicates.Where(x => x.Behaviour == IUnitPurchasePredicate.AnyAll.Any);
-        var all = predicates.Where(x => x.Behaviour == IUnitPurchasePredicate.AnyAll.All);
-        return all.All(x => x.CanPurchase(this, commander)) && (!any.Any() || any.Any(x => x.CanPurchase(this, commander)));
-    }
-
-    public string GetCanPurchaseDesription(Commander commander)
-        => string.Join("\n", GetComponents<IUnitPurchasePredicate>().Select(x => x.GetDescription(this, commander)).Where(x => !string.IsNullOrWhiteSpace(x)).Distinct()).Trim();
 
     public IEnumerable<IWeapon> GetWeapons ()
     {
@@ -75,6 +52,11 @@ public class Unit : MonoBehaviour, IPurchasable
         }
         return _weaponCache;
     }
+
+    public IEnumerable<IUnitCostModifier> GetCostModifiers()
+        => GetComponents<IUnitCostModifier>();
+    public IEnumerable<IUnitPurchasePredicate> GetPurchasePredicates()
+        => GetComponents<IUnitPurchasePredicate>();
 
     private void CheckBattlefieldBounds()
     {

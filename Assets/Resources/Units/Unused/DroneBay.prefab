@@ -25,12 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2030605724974093569}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
   m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2962730571765316842}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7273154174735737668
 MeshFilter:
@@ -51,6 +52,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -104,14 +106,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043356362552036163}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2120101770943260559}
   - {fileID: 2043356363127008672}
   m_Father: {fileID: 2204827652812617034}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2043356363127008673
 GameObject:
@@ -136,12 +139,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043356363127008673}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2043356362552036162}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2204827652812617619
 GameObject:
@@ -171,14 +175,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2204827652812617619}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -13.660999, y: 0.00000023841858, z: 0.5809468}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2204827652812617034}
   - {fileID: 2962730571765316842}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2204827652812613469
 MonoBehaviour:
@@ -201,6 +206,7 @@ MonoBehaviour:
   - {fileID: 2204827652812618637}
   AimTolerance: 30
   LeadTarget: 0
+  TargetSearchFrequency: 2
   Modifiers: []
 --- !u!114 &2204827652812612905
 MonoBehaviour:
@@ -215,8 +221,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 3000
-  ArmorType: 3
+  Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
   DestroyOnDeath: 1
+  DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
 --- !u!65 &2204827652812614828
@@ -227,9 +234,17 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2204827652812617619}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_Size: {x: 2.45, y: 2.484382, z: 2.45}
   m_Center: {x: 0, y: 1.2184263, z: 0}
 --- !u!114 &2204827652812612898
@@ -249,13 +264,17 @@ MonoBehaviour:
     Name: Drone Bay
     Description: Self-contained factory and targeting computer allows this unit to
       dispatch tiny drones for defense.
+    Tags: []
     Cost: 5000
     Value: 12
     UnitRole: 2
     UnitTier: 2
     UnitType: 3
+  Health: {fileID: 0}
   _weapons:
   - {fileID: 2204827652812618637}
+  Parts: []
+  Weakpoints: []
 --- !u!114 &2204827652812612880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -297,13 +316,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2204827652812618637}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2043356362552036162}
   m_Father: {fileID: 2204827652812616678}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2204827652812613532
 MonoBehaviour:
@@ -324,6 +344,7 @@ MonoBehaviour:
   VerticalRange: {x: -5, y: 5}
   HorizontalSpeed: 90
   VerticalSpeed: 90
+  Instant: 0
 --- !u!114 &2204827652812613197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,6 +375,7 @@ MonoBehaviour:
   SelectionBehaviour: 0
   Cooldown: 20
   PlaceDelay: 5
+  SetPath: 0
   MaxHolding: 2
   MaxSimultanious: 2
   DestroyUnengagedUnits: 0
@@ -383,13 +405,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2474283162892674640}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.73, y: 0.73, z: 0.73}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8263462336182386992}
   m_Father: {fileID: 2204827652812616678}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &2673837664783673701
 GameObject:
@@ -416,12 +439,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2673837664783673701}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.50000006, y: 0.49999997, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: -0.58, z: 0}
   m_LocalScale: {x: 0.73, y: 0.72999996, z: 0.72999996}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2043356362552036162}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7246657676990648593
 MeshFilter:
@@ -442,6 +466,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1

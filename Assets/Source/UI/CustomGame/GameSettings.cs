@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace CustomGame
 {
@@ -16,15 +18,24 @@ namespace CustomGame
         public GameObject PlayerCountWarning;
         public int PlayerCountWarningThreshold = 4;
 
+        public Dropdown ProductionModeDropdown;
+        public Dropdown VictoryCheckerDropdown;
+
         private void Start()
         {
+            Initialize();
             Apply(MatchSettings.Current);
+        }
+
+        private void Initialize()
+        {
+            ProductionModeDropdown.options = UnitProductionBehaviour.LoadAll().Select(x => new Dropdown.OptionData(x.Name)).ToList();
+            VictoryCheckerDropdown.options = VictoryChecker.LoadAll().Select(x => new Dropdown.OptionData(x.Name)).ToList();
         }
 
         private void Update()
         {
             PlayerCountWarning.SetActive(PlayerSettingsParent.childCount > PlayerCountWarningThreshold);
-
         }
 
         public void Apply(MatchSettings settings)
@@ -36,6 +47,9 @@ namespace CustomGame
                 GameObject newObj = Instantiate(PlayerSettingsPrefab, PlayerSettingsParent);
                 InitializePlayerSettings(newObj.GetComponent<PlayerSettings>(), player);
             }
+
+            ProductionModeDropdown.value = Array.IndexOf(UnitProductionBehaviour.LoadAll(), settings.ProductionBehaviour);
+            VictoryCheckerDropdown.value = Array.IndexOf(VictoryChecker.LoadAll(), settings.VictoryChecker);
         }
 
         public void AddNewPlayer ()
@@ -87,6 +101,9 @@ namespace CustomGame
             {
                 MatchSettings.Current.AddPlayer(info);
             }
+
+            MatchSettings.Current.ProductionBehaviour = UnitProductionBehaviour.LoadAll()[ProductionModeDropdown.value];
+            MatchSettings.Current.VictoryChecker = VictoryChecker.LoadAll()[VictoryCheckerDropdown.value];
         }
 
         public void StartGame ()
