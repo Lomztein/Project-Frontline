@@ -40,6 +40,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6305933840788071201, guid: 5eef721856967274c80f299c4cc69d23,
         type: 3}
+      propertyPath: CheckTargetLineOfSight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305933840788071201, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
       propertyPath: Modifiers.Array.data[0]
       value: 
       objectReference: {fileID: 4333549595461714213}
@@ -172,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 72682910483269686}
-  StartHealTreshold: 0.75
+  StartHealTreshold: 0.95
 --- !u!114 &7705632488707539443
 MonoBehaviour:
   m_ObjectHideFlags: 0

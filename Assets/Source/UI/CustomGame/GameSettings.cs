@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 namespace CustomGame
 {
@@ -20,6 +21,7 @@ namespace CustomGame
 
         public Dropdown ProductionModeDropdown;
         public Dropdown VictoryCheckerDropdown;
+        public Dropdown DayNightCycleDropdown;
 
         private void Start()
         {
@@ -31,6 +33,7 @@ namespace CustomGame
         {
             ProductionModeDropdown.options = UnitProductionBehaviour.LoadAll().Select(x => new Dropdown.OptionData(x.Name)).ToList();
             VictoryCheckerDropdown.options = VictoryChecker.LoadAll().Select(x => new Dropdown.OptionData(x.Name)).ToList();
+            DayNightCycleDropdown.onValueChanged.AddListener(SetDayNightCycle);
         }
 
         private void Update()
@@ -42,6 +45,7 @@ namespace CustomGame
         {
             ClearPlayerSettings();
             Map.ApplyMapInfo(settings.MapInfo);
+
             foreach (var player in settings.Players)
             {
                 GameObject newObj = Instantiate(PlayerSettingsPrefab, PlayerSettingsParent);
@@ -50,6 +54,7 @@ namespace CustomGame
 
             ProductionModeDropdown.value = Array.IndexOf(UnitProductionBehaviour.LoadAll(), settings.ProductionBehaviour);
             VictoryCheckerDropdown.value = Array.IndexOf(VictoryChecker.LoadAll(), settings.VictoryChecker);
+            DayNightCycleDropdown.value = (int)settings.DayNightBehaviour;
         }
 
         public void AddNewPlayer ()
@@ -90,6 +95,11 @@ namespace CustomGame
             {
                 yield return trans.GetComponent<PlayerSettings>();
             }
+        }
+
+        public void SetDayNightCycle (int value)
+        {
+            MatchSettings.GetCurrent().DayNightBehaviour = (DayNightCycle.DayNightBehaviour)value;
         }
 
         public void SetCurrentSettings ()

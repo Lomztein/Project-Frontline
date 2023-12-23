@@ -52,6 +52,7 @@ MonoBehaviour:
   SelectionBehaviour: 0
   Cooldown: 10
   PlaceDelay: 2
+  SetPath: 0
   MaxHolding: 2
   MaxSimultanious: 3
   DestroyUnengagedUnits: 1
@@ -164,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1177128839, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: AttackRange
-      value: 60
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 1177128839, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: AimTolerance
@@ -176,11 +177,15 @@ PrefabInstance:
       objectReference: {fileID: 6969503423178843512}
     - target: {fileID: 1177128839, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: LooseTargetRange
-      value: 60
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 1177128839, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: AcquireTargetRange
-      value: 60
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177128839, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
+      propertyPath: CheckTargetLineOfSight
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1177128839, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: WeaponObjects.Array.size

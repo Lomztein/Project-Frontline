@@ -29,6 +29,7 @@ public class Commander : MonoBehaviour, ITeamComponent
     private List<Unit> _aliveProduced = new List<Unit>();
 
     public OffcenterBounds LocalBaseBounds { get; private set; }
+    public float MaxBuildDistanceFromBounds;
 
     public IEnumerable<Unit> AlivePlaced => _alivePlaced;
     public IEnumerable<Unit> AliveProduced => _aliveProduced;
@@ -48,6 +49,7 @@ public class Commander : MonoBehaviour, ITeamComponent
     [Header("Frontline")]
     public Commander Target;
     public Frontline Frontline;
+    public float FrontlineBuildDistance = 75f;
 
     public float DefenseMargin = 50;
     public float DefenseThreshold = 100;
@@ -370,8 +372,20 @@ public class Commander : MonoBehaviour, ITeamComponent
         UnitPalette = UnitPalette.GeneratePalette(Faction.FactionPalette, TeamInfo.TeamPalette);
     }
 
+    public float DistanceFromBase(Vector3 position)
+    {
+        float distSqr = 0f;
+        foreach (var unit in AlivePlaced)
+        {
+            distSqr = Mathf.Max(distSqr, Vector3.SqrMagnitude(unit.transform.position - position));
+        }
+        return Mathf.Sqrt(distSqr);
+    }
+
     public bool CanPlace(Vector3 position, Quaternion rotation, OverlapUtils.OverlapShape unitOverlapGroup)
     {
+        if (Vector3.Distance(position, Frontline.Position) < FrontlineBuildDistance)
+            return false;
         LayerMask terrainLayer = LayerMask.NameToLayer("Terrain");
         Collider[] colliders = unitOverlapGroup.Overlap(position, rotation, ~terrainLayer);
         return !colliders.Any(x => x.CompareTag("StructureUnit")) && MatchSettings.Current.MapInfo.Contains(position);

@@ -49,7 +49,10 @@ public class ContinuousUnitProductionBehaviour : UnitProductionBehaviour
 
         public override void Stop()
         {
-            _owner.StopCoroutine(_coroutine);
+            if (_owner && _coroutine != null)
+            {
+                _owner.StopCoroutine(_coroutine);
+            }
         }
     }
 }

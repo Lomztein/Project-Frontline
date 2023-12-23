@@ -9,6 +9,8 @@ public interface ITarget
     Vector3 GetCenter();
 
     Vector3 GetSize();
+
+    GameObject GetGameObject();
 }
 
 public static class TargetExtensions

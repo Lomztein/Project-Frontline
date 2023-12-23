@@ -148,9 +148,14 @@ MonoBehaviour:
   Swarm: {fileID: 0}
   Center: {fileID: 0}
   SeperationDistance: 3
+  AvoidanceDistance: 3
+  AvoidanceLayer:
+    serializedVersion: 2
+    m_Bits: 16711936
   SeperationStrength: 50
   CohesionStrength: 50
   AccelerationStrength: 50
+  AvoidanceStrength: 50
   Drag: 0.92
 --- !u!114 &4858691864634357440
 MonoBehaviour:
@@ -183,7 +188,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InitialDamage: 0
-  DamagePerSecond: 0.01
+  DamagePerSecond: 0.03333334
   DamagePerSecondAcceleration: 0
   Modifier: {fileID: 11400000, guid: 77768380fa4b6344b8a524a345cf8c62, type: 2}
 --- !u!114 &1256063855161323792
@@ -290,7 +295,7 @@ MonoBehaviour:
   Firerate: 20
   Modifier: {fileID: 11400000, guid: 945d88c08db340144ab265835acf69ca, type: 2}
   Speed: 100
-  Range: 20
+  Range: 10
   Amount: 1
   BurstReloadTime: 0.3
   BurstAmmo: 6
@@ -367,7 +372,7 @@ MonoBehaviour:
   Team: {fileID: 0}
   AcquireTargetRange: 20
   LooseTargetRange: 20
-  AttackRange: 20
+  AttackRange: 10
   TurretObject: {fileID: 4858691865670415635}
   WeaponObjects:
   - {fileID: 4858691865670415635}

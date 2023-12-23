@@ -105,6 +105,8 @@ MonoBehaviour:
   AcquireTargetRange: 150
   LooseTargetRange: 150
   AttackRange: 125
+  CheckTargetLineOfSight: 0
+  LineOfSightCheckOrigin: {x: 0, y: 1, z: 0}
   TurretObject: {fileID: 8150723386312106452}
   WeaponObjects:
   - {fileID: 8150723386312106452}
@@ -981,6 +983,8 @@ MonoBehaviour:
   Ragdoll: {fileID: 1204055471582396241}
   RagdollRoot: {fileID: 1705374389667516780}
   RootCollider: {fileID: 0}
+  ExternalParts: []
+  PartsToSeperate: []
   Sturdyness: 0
 --- !u!114 &7908796572189254066
 MonoBehaviour:

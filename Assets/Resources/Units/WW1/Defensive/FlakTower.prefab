@@ -130,7 +130,6 @@ MonoBehaviour:
   Damage: 50
   Firerate: 3
   Modifier: {fileID: 11400000, guid: 9974e4778fc971144a67e48006632fd0, type: 2}
-  DamageType: 5
   Speed: 250
   Range: 200
   Amount: 1
@@ -145,7 +144,55 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 8861280582994648404}
   Inaccuracy: 1.5
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4258488654166747615
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,6 +599,8 @@ MonoBehaviour:
   AcquireTargetRange: 100
   LooseTargetRange: 100
   AttackRange: 100
+  CheckTargetLineOfSight: 1
+  LineOfSightCheckOrigin: {x: 0, y: 0, z: 0}
   TurretObject: {fileID: 8812851661045825632}
   WeaponObjects:
   - {fileID: 1920049887410062088}
@@ -623,7 +672,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 2000
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}

@@ -53,16 +53,27 @@ MonoBehaviour:
   TeamInfo: {fileID: 0}
   Faction: {fileID: 0}
   Fortress: {fileID: 0}
+  MaxBuildDistanceFromBounds: 0
   UnitSource: {fileID: 225398836}
   Target: {fileID: 0}
+  FrontlineBuildDistance: 50
   DefenseMargin: 25
   DefenseThreshold: 75
   OffenseMargin: 25
   OffenseThreshold: 100
   BaseMargin: 50
   TargetAvarageAPM: 10
-  MaxSaveTime: 10
+  ActionCooldown: 1
+  QuickPlaceTime: 0.25
+  SaveTimeMinMax: {x: 0, y: 0}
+  SaveTimeBias:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SaveTarget: {fileID: 0}
+  MaxPurchaseAtOnce: 8
 --- !u!114 &5667567378679379694
 MonoBehaviour:
   m_ObjectHideFlags: 0

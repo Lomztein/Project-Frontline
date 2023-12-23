@@ -38,4 +38,13 @@ public class ColliderTarget : ITarget
         }
         return Collider.bounds.size;
     }
+
+    public GameObject GetGameObject()
+    {
+        if (Collider)
+        {
+            return Collider.gameObject;
+        }
+        return null;
+    }
 }

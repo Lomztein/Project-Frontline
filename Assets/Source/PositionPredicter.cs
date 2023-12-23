@@ -9,7 +9,7 @@ public class PositionPredicter
 
     public void Tick(Vector3 targetPosition, float deltaTime)
     {
-        _targetVelocity= (targetPosition - _targetPrevPosition) / deltaTime;
+        _targetVelocity = (targetPosition - _targetPrevPosition) / deltaTime;
         _targetPrevPosition = targetPosition;
     }
 

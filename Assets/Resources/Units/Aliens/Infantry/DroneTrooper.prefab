@@ -127,7 +127,7 @@ MonoBehaviour:
   SelectionBehaviour: 0
   Cooldown: 20
   PlaceDelay: 20
-  SetPath: 0
+  SetPath: 1
   MaxHolding: 1
   MaxSimultanious: 1
   DestroyUnengagedUnits: 0
@@ -151,7 +151,7 @@ PrefabInstance:
     - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}
       propertyPath: HoldRange
-      value: 55
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}
@@ -161,12 +161,17 @@ PrefabInstance:
     - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}
       propertyPath: AttackRange
-      value: 55
+      value: 75
       objectReference: {fileID: 0}
     - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}
       propertyPath: AcquireTargetRange
-      value: 55
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: CheckTargetLineOfSight
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}
@@ -223,7 +228,7 @@ PrefabInstance:
     - target: {fileID: 4046572453330662268, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}
       propertyPath: ProductionTime
-      value: 25
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 4706238921359540305, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}

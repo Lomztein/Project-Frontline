@@ -11,7 +11,7 @@ public class BoidController : AttackerController
 
     protected override void MoveAlongWaypoints()
     {
-        if (NextNode != null)
+        if (PrevNode && NextNode)
         {
             Vector3 pos = SwarmCenter.position + Navigation.OutgoingVector(PrevNode, NextNode) * WaypointSpeed * Time.fixedDeltaTime;
             pos.y = TravelHeight;
@@ -22,7 +22,7 @@ public class BoidController : AttackerController
     protected override void MoveTowardsTarget()
     {
         Vector3 pos = CurrentTarget.GetCenter();
-        pos.y = Mathf.Max(TravelHeight, pos.y);
+        //pos.y = Mathf.Max(TravelHeight, pos.y);
         SwarmCenter.position = pos;
     }
 }

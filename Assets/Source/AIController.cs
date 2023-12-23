@@ -43,7 +43,7 @@ public abstract class AIController : MonoBehaviour, IController
 
     protected virtual void Awake()
     {
-        _targetFinder = new TargetFinder(go => CanEngage(go));
+        _targetFinder = new TargetFinder(CanEngage);
         _targetFindingTicker = new Ticker(1f / TargetSearchFrequency, FindNewTarget);
 
         if (TurretObject)
@@ -77,6 +77,17 @@ public abstract class AIController : MonoBehaviour, IController
         {
             modifier.OnInitialized(this);
         }
+    }
+
+    public bool HasLineOfSight(GameObject toObject, Vector3 localOrigin, Vector3 targetLocalOrigin)
+    {
+        Vector3 origin = transform.TransformPoint(localOrigin);
+        Vector3 target = toObject.transform.TransformPoint(targetLocalOrigin);
+        if (Physics.Raycast(origin, target - origin, out RaycastHit hit, float.MaxValue, TargetLayer))
+        {
+            return (hit.collider.gameObject == toObject);
+        }
+        return false;
     }
 
     public void SetTargetEvaluator(Func<Vector3, GameObject, float> evaluator) => _targetFinder.SetEvaluator(evaluator);
@@ -194,10 +205,13 @@ public abstract class AIController : MonoBehaviour, IController
             Aim();
             Attack();
 
-            if ((GetTargetSquareDistance() > LooseTargetRange * LooseTargetRange) && ForcedTarget != true || !CanHitOrNoTurret(CurrentTarget.GetCenter()))
+            if (CurrentTarget.ExistsAndValid())
             {
-                CurrentTarget = null;
-                FindNewTarget();
+                if ((GetTargetSquareDistance() > LooseTargetRange * LooseTargetRange) && ForcedTarget != true || !CanHitOrNoTurret(CurrentTarget.GetCenter()))
+                {
+                    CurrentTarget = null;
+                    FindNewTarget();
+                }
             }
         }
         else if (CurrentTarget != null)

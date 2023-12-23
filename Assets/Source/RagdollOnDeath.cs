@@ -10,6 +10,8 @@ public class RagdollOnDeath : MonoBehaviour
     public Ragdoll Ragdoll;
     public Transform RagdollRoot;
     public Collider RootCollider;
+    public Transform[] ExternalParts;
+    public Transform[] PartsToSeperate;
 
     public float Sturdyness;
 
@@ -31,6 +33,10 @@ public class RagdollOnDeath : MonoBehaviour
     {
         Ragdoll.enabled = true;
         RagdollRoot.SetParent(null);
+        foreach (Transform external in ExternalParts)
+        {
+            external.SetParent(RagdollRoot);
+        }
         if (RootCollider)
         {
             RootCollider.enabled = false;
@@ -38,6 +44,11 @@ public class RagdollOnDeath : MonoBehaviour
         if (_lastDamage != null)
         {
             Ragdoll.AddForce(_lastDamage.Point, _lastDamage.Direction * _lastDamage.Damage / Sturdyness);
+        }
+        foreach (Transform toSeperate in PartsToSeperate)
+        {
+            toSeperate.SetParent(null);
+            Destroy(toSeperate.gameObject, 10f);
         }
         Destroy(Root.gameObject);
         Destroy(RagdollRoot.gameObject, 10f);

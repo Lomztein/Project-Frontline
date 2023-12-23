@@ -5041,7 +5041,7 @@ GameObject:
   - component: {fileID: 3766787608414428378}
   - component: {fileID: 8170161625251896119}
   - component: {fileID: 8097648140912424590}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5128,7 +5128,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 926625633058823850}
-  m_Layer: 0
+  - component: {fileID: 1945193074142411094}
+  - component: {fileID: 720290818292097571}
+  - component: {fileID: 7871914129330206163}
+  - component: {fileID: 7765316437880498389}
+  m_Layer: 10
   m_Name: Alien_Watcher
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5149,9 +5153,92 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4540625259953002649}
-  - {fileID: 4779426311286868939}
   m_Father: {fileID: 2980460131399178693}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!135 &1945193074142411094
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717459397207597004}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &720290818292097571
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717459397207597004}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 1
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!114 &7871914129330206163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717459397207597004}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50532b1efa2123d4287e5dfeb728d056, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 0}
+--- !u!114 &7765316437880498389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2717459397207597004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a41aa19b8669b6429116a475bac7c62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: {fileID: 1853550875623168228}
+  Root: {fileID: 7378487300522752732}
+  Ragdoll: {fileID: 7871914129330206163}
+  RagdollRoot: {fileID: 926625633058823850}
+  RootCollider: {fileID: 8097648140912424590}
+  ExternalParts:
+  - {fileID: 232816054275842227}
+  - {fileID: 4899634592490671827}
+  - {fileID: 391281114622180320}
+  PartsToSeperate: []
+  Sturdyness: 3
 --- !u!1 &3196900988062692594
 GameObject:
   m_ObjectHideFlags: 0
@@ -5364,7 +5451,7 @@ GameObject:
   - component: {fileID: 4779426311286868939}
   - component: {fileID: 8448003628076756647}
   - component: {fileID: 990913921163119126}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Torus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5379,12 +5466,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4620109242963984285}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-  m_LocalPosition: {x: -0, y: -0.79428566, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0.50000006, y: 0.49999997, z: 0.5, w: 0.5}
+  m_LocalPosition: {x: 0, y: -0.20217526, z: 0}
+  m_LocalScale: {x: 0.2545372, y: 0.25453717, z: 0.25453717}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 926625633058823850}
+  m_Father: {fileID: 2980460131399178693}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8448003628076756647
 MeshFilter:
@@ -5709,6 +5796,7 @@ Transform:
   m_Children:
   - {fileID: 926625633058823850}
   - {fileID: 2240020833008084122}
+  - {fileID: 4779426311286868939}
   - {fileID: 1017396331825698905}
   - {fileID: 6632542827039505215}
   m_Father: {fileID: 0}
@@ -5798,7 +5886,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 10
   Modifier: {fileID: 11400000, guid: 4a550da09889e3d428b0cdf1d3cde176, type: 2}
-  DestroyOnDeath: 1
+  DestroyOnDeath: 0
   DestroyDelay: 0
   Debris: {fileID: 0}
   DebrisLife: 3

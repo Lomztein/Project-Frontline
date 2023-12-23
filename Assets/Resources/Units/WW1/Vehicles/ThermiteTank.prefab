@@ -170,7 +170,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 5000
   Modifier: {fileID: 11400000, guid: 9aced94021235b843a137515da87937a, type: 2}
-  ArmorType: 4
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -209,6 +208,7 @@ MonoBehaviour:
   AcquireTargetRange: 100
   LooseTargetRange: 100
   AttackRange: 65
+  CheckTargetLineOfSight: 0
   TurretObject: {fileID: 7016691291410656262}
   WeaponObjects:
   - {fileID: 6714867770501613236}
@@ -582,7 +582,6 @@ MonoBehaviour:
   Damage: 90
   Firerate: 0.2
   Modifier: {fileID: 11400000, guid: 945d88c08db340144ab265835acf69ca, type: 2}
-  DamageType: 3
   Speed: 100
   Range: 300
   Amount: 12
@@ -597,7 +596,55 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 8280527897980289173}
   Inaccuracy: 3
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0.2
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &6136030172316824854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,6 +666,7 @@ MonoBehaviour:
   ProjectileSpeed: 100
   ProjectileGravity: 20
   HighAngle: 0
+  ElevationRangeMinMax: {x: -90, y: 90}
 --- !u!1 &7016691291410656262
 GameObject:
   m_ObjectHideFlags: 0

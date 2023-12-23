@@ -56,6 +56,7 @@ MonoBehaviour:
   ProjectileSpeed: 60
   ProjectileGravity: 20
   HighAngle: 0
+  ElevationRangeMinMax: {x: -90, y: 90}
 --- !u!114 &36447727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85,7 +86,55 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 6016083938044352874}
   Inaccuracy: 1.5
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &6816693909459658858
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -784,6 +833,11 @@ PrefabInstance:
       propertyPath: WeaponObject
       value: 
       objectReference: {fileID: 36447726}
+    - target: {fileID: 1118208566537510245, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      propertyPath: CheckTargetLineOfSight
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1118208566537510245, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
       propertyPath: WeaponObjects.Array.size

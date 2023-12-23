@@ -10,15 +10,14 @@ public class ProjectileExplodeOnEnd : MonoBehaviour
     public float ExplosionDamage;
     public DamageModifier ExplosionDamageModifier;
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         Projectile.OnHit += Explode;
     }
 
     private void Explode(Projectile proj, Collider col, Vector3 point, Vector3 norm)
     {
-        Collider[] colliders = Physics.OverlapSphere(transform.position, ExplosionRange, proj.HitLayerMask);
+        Collider[] colliders = Physics.OverlapSphere(point, ExplosionRange, proj.HitLayerMask);
         foreach (Collider collider in colliders)
         {
             if (Physics.Linecast(proj.transform.position, collider.transform.position, out RaycastHit hit, Projectile.HitLayerMask) && hit.collider == collider)

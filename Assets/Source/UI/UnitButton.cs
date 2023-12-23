@@ -24,8 +24,9 @@ namespace UI
         private Action<GameObject> _onClick;
         private Commander _commander;
 
-        public Color ImageInteractableColor;
-        public Color ImageUnInteractableColor;
+        public Color InteractableImageColor;
+        public Color NotInteractableImageColor;
+        public Color UnavailableImageColor;
 
         private void Awake()
         {
@@ -59,10 +60,23 @@ namespace UI
 
         private void FixedUpdate()
         {
-            bool interactable = _commander.CanAfford(_prefab) && _commander.CanPurchase(_prefab);
+            bool canAfford = _commander.CanAfford(_prefab);
+            bool canPurchase = _commander.CanPurchase(_prefab);
+            bool interactable = canAfford && canPurchase;
             Button.interactable = interactable;
-            UnitImage.color = interactable ? ImageInteractableColor : ImageUnInteractableColor;
-            UnitTierImage.color = TierColors[(int)_unit.Info.UnitTier] * (interactable ? ImageInteractableColor : ImageUnInteractableColor);
+            if (interactable)
+            {
+                UnitImage.color = InteractableImageColor;
+            }else if (!canPurchase)
+            {
+                UnitImage.color = UnavailableImageColor;
+            }
+            else
+            {
+                UnitImage.color = NotInteractableImageColor;
+            }
+
+            UnitTierImage.color = TierColors[(int)_unit.Info.UnitTier] * (interactable ? InteractableImageColor : NotInteractableImageColor);
         }
 
         public GameObject InstantiateTooltip()

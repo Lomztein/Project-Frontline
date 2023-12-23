@@ -64,6 +64,7 @@ public class MatchInitializer : MonoBehaviour
             mutator.Start();
         }
 
+        GameObject.Find("Sun").GetComponent<DayNightCycle>().Behaviour = settings.DayNightBehaviour;
         StartCoroutine(PostInit());
     }
 

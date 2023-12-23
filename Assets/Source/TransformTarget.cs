@@ -26,4 +26,13 @@ public class TransformTarget : ITarget
     {
         return Vector3.one;
     }
+
+    public GameObject GetGameObject()
+    {
+        if (_transform)
+        {
+            return _transform.gameObject;
+        }
+        return null;
+    }
 }

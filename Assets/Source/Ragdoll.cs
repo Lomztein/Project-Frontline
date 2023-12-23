@@ -65,13 +65,19 @@ public class Ragdoll : MonoBehaviour
     {
         foreach (Rigidbody rigidbody in _rigidbodies)
         {
-            rigidbody.isKinematic = !value;
-            rigidbody.detectCollisions = value;
+            if (rigidbody)
+            {
+                rigidbody.isKinematic = !value;
+                rigidbody.detectCollisions = value;
+            }
         }
         foreach (Collider collider in _colliders)
         {
-            collider.enabled = value;
-            collider.gameObject.layer = _layer;
+            if (collider)
+            {
+                collider.enabled = value;
+                collider.gameObject.layer = _layer;
+            }
         }
     }
 }

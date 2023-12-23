@@ -437,7 +437,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Body: {fileID: 5322509346237236365}
   Health: {fileID: 5322509346237236354}
-  Sturdyness: 2
+  Sturdyness: 2.5
   WeaponObject: {fileID: 0}
   Muzzle: {fileID: 0}
   Recoil: 10
@@ -503,7 +503,8 @@ MonoBehaviour:
   LeadTarget: 0
   TargetSearchFrequency: 2
   Modifiers: []
-  HoldRange: 60
+  HoldRange: 55
+  HoldVariance: 5
   StayBehindFrontline: 0
 --- !u!114 &5322509346237236352
 MonoBehaviour:
@@ -525,8 +526,8 @@ MonoBehaviour:
       with easy.
     Tags:
     - Siege
-    Cost: 5000
-    Value: 500
+    Cost: 7500
+    Value: 750
     UnitRole: 1
     UnitTier: 2
     UnitType: 2
@@ -562,7 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 1500
+  MaxHealth: 2500
   Modifier: {fileID: 11400000, guid: 4bdea23464958bb4fb9f42f36ef1819e, type: 2}
   DestroyOnDeath: 1
   DestroyDelay: 0

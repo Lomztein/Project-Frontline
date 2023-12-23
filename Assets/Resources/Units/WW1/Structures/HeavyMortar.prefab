@@ -173,6 +173,7 @@ MonoBehaviour:
   ProjectileSpeed: 150
   ProjectileGravity: 30
   HighAngle: 1
+  ElevationRangeMinMax: {x: -90, y: 90}
 --- !u!114 &835560189604165040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,7 +189,6 @@ MonoBehaviour:
   Damage: 1000
   Firerate: 0.1
   Modifier: {fileID: 11400000, guid: 92e6b21166c648b45b3686dd2030c041, type: 2}
-  DamageType: 1
   Speed: 150
   Range: 5000
   Amount: 1
@@ -203,7 +203,55 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 56908918534929178}
   Inaccuracy: 1.5
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &5226911492694726194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -556,7 +604,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 3000
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -629,6 +676,7 @@ MonoBehaviour:
   AcquireTargetRange: 750
   LooseTargetRange: 750
   AttackRange: 750
+  CheckTargetLineOfSight: 0
   TurretObject: {fileID: 1244591003029453303}
   WeaponObjects:
   - {fileID: 1244591003029453303}

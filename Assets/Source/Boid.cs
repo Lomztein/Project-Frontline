@@ -9,18 +9,30 @@ public class Boid : MobileBody
 
     private Vector3 _velocity;
     public float SeperationDistance = 1;
+    public float AvoidanceDistance = 3;
+    public LayerMask AvoidanceLayer;
+
     public float SeperationStrength = 1;
     public float CohesionStrength = 1;
     public float AccelerationStrength = 1;
+    public float AvoidanceStrength = 1;
 
     public float Drag = 0.95f;
+
+    private Vector3[] _avoidanceCheckDirs =
+    {
+        Vector3.up, Vector3.down, Vector3.left, Vector3.right, Vector3.forward, Vector3.back,
+    };
 
     public override float CurrentSpeed { get; protected set; }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        _velocity += Seperation() * Time.fixedDeltaTime + Cohesion() * Time.fixedDeltaTime + Acceleration() * Time.fixedDeltaTime;
+        _velocity += Seperation() * Time.fixedDeltaTime
+            + Cohesion() * Time.fixedDeltaTime
+            + Acceleration() * Time.fixedDeltaTime
+            + Avoidance() * Time.fixedDeltaTime;
         _velocity *= Drag;
 
         if (_velocity.sqrMagnitude > MaxSpeed * MaxSpeed)
@@ -54,6 +66,18 @@ public class Boid : MobileBody
     private Vector3 Acceleration()
     {
         return transform.forward * AccelerationStrength;
+    }
+
+    private Vector3 Avoidance()
+    {
+        foreach (Vector3 dir in _avoidanceCheckDirs)
+        {
+            if (Physics.Raycast(transform.position, dir, out RaycastHit hit, AvoidanceDistance, AvoidanceLayer))
+            {
+                return (transform.position - hit.point).normalized * AvoidanceStrength;
+            }
+        }
+        return Vector3.zero;
     }
 
     private void OnDestroy()

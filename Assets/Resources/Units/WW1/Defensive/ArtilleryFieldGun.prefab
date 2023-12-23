@@ -54,6 +54,8 @@ MonoBehaviour:
   AcquireTargetRange: 100
   LooseTargetRange: 100
   AttackRange: 100
+  CheckTargetLineOfSight: 1
+  LineOfSightCheckOrigin: {x: 0, y: 1, z: 0}
   TurretObject: {fileID: 6677267986770970449}
   WeaponObjects:
   - {fileID: 6677267987578035281}
@@ -75,7 +77,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 1000
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -412,6 +413,7 @@ MonoBehaviour:
   ProjectileSpeed: 200
   ProjectileGravity: 20
   HighAngle: 0
+  ElevationRangeMinMax: {x: -90, y: 90}
 --- !u!1 &6677267986934876142
 GameObject:
   m_ObjectHideFlags: 0
@@ -494,7 +496,6 @@ MonoBehaviour:
   Damage: 125
   Firerate: 0.4
   Modifier: {fileID: 11400000, guid: 9f5e8a2752d9caa42a1fa065d6b74da1, type: 2}
-  DamageType: 1
   Speed: 200
   Range: 500
   Amount: 1
@@ -509,7 +510,55 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 143017768158646526}
   Inaccuracy: 1
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &8017853288545813266
 MonoBehaviour:
   m_ObjectHideFlags: 0

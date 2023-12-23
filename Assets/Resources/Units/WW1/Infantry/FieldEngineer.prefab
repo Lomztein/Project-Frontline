@@ -127,6 +127,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 221871567749722499, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
+      propertyPath: CheckTargetLineOfSight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 221871567749722499, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
       propertyPath: Modifiers.Array.data[0]
       value: 
       objectReference: {fileID: 8851517583713537185}
@@ -135,6 +140,11 @@ PrefabInstance:
       propertyPath: Modifiers.Array.data[1]
       value: 
       objectReference: {fileID: -6793485997185477490}
+    - target: {fileID: 221871567749722499, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: LineOfSightCheckOrigin.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 221871567749722499, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
       propertyPath: WeaponObjects.Array.size
@@ -296,7 +306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Controller: {fileID: 4819644411383736028}
-  StartHealTreshold: 0.75
+  StartHealTreshold: 0.95
 --- !u!114 &-6793485997185477490
 MonoBehaviour:
   m_ObjectHideFlags: 0

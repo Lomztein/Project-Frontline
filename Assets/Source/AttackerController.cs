@@ -7,8 +7,6 @@ using Util;
 
 public class AttackerController : ControllableController, ITeamComponent, ICommanderComponent, IController
 {
-    private const float HOLD_VARIANCE = 2.5f;
-
     protected NavigationNode[] MovementPath;
     protected int MovementPathIndex;
 
@@ -23,12 +21,13 @@ public class AttackerController : ControllableController, ITeamComponent, IComma
     protected Commander Commander { get; private set; }
 
     public float HoldRange;
+    public float HoldVariance = 2.5f;
     public bool StayBehindFrontline;
 
     protected override void Awake()
     {
         base.Awake();
-        HoldRange = Math.Min(HoldRange, HoldRange + UnityEngine.Random.Range(-HOLD_VARIANCE, 0f));
+        HoldRange = Math.Min(HoldRange, HoldRange + UnityEngine.Random.Range(-HoldVariance, 0f));
     }
 
     public void SetPath (NavigationNode[] path)

@@ -50,8 +50,9 @@ MonoBehaviour:
   SelectionBehaviour: 0
   Cooldown: 20
   PlaceDelay: 10
+  SetPath: 0
   MaxHolding: 1
-  MaxSimultanious: 2
+  MaxSimultanious: 1
   DestroyUnengagedUnits: 1
   DestroyUnengagedTimeTreshold: 10
   SpawnRange: 10
@@ -248,12 +249,32 @@ PrefabInstance:
     - target: {fileID: 221871567749722499, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
       propertyPath: HoldRange
-      value: 35
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 221871567749722499, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
       propertyPath: AttackRange
-      value: 35
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 221871567749722499, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: LooseTargetRange
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 221871567749722499, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: AcquireTargetRange
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 221871567749722499, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: CheckTargetLineOfSight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 221871567749722499, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: LineOfSightCheckOrigin.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 221871567749722499, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}

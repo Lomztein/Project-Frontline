@@ -25,6 +25,7 @@ public class MatchSettings : ScriptableObject
 
     public UnitProductionBehaviour ProductionBehaviour;
     public VictoryChecker VictoryChecker;
+    public DayNightCycle.DayNightBehaviour DayNightBehaviour;
 
     public void AddMutator(Mutator mutator) => _mutators.Add(mutator);
     public void RemoveMutator(Mutator mutator) => _mutators.Remove(mutator);

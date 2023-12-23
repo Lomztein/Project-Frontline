@@ -22,4 +22,9 @@ public class PositionTarget : ITarget
     {
         return Vector3.one;
     }
+
+    public GameObject GetGameObject()
+    {
+        return null;
+    }
 }
