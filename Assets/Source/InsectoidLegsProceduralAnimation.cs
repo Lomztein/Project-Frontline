@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,6 +21,8 @@ public class InsectoidLegsProceduralAnimation : MonoBehaviour
     private Vector3 _prevPosition;
     private Vector3 _direction;
     private float _lastStepTime;
+
+    public event Action<Leg, Vector3, Vector3, float> OnLegMovement;
 
     void Awake()
     {
@@ -86,7 +89,9 @@ public class InsectoidLegsProceduralAnimation : MonoBehaviour
         for (int i = 0; i < ticks; i++)
         {
             float progress = ((float)i / ticks);
+            Vector3 prev = leg.CurrentWorldPosition;
             leg.CurrentWorldPosition = ComputeLegPosition(startPosition, BaseTransform.TransformPoint(targetLocalPosition), progress);
+            OnLegMovement?.Invoke(leg, prev, leg.CurrentWorldPosition, Time.fixedDeltaTime);
             yield return new WaitForFixedUpdate();
         }
         leg.CurrentWorldPosition = BaseTransform.TransformPoint(targetLocalPosition);

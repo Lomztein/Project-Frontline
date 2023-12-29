@@ -35,9 +35,10 @@ public class CompositeDamageModifier : DamageModifier
         }
     }
 
-    public static CompositeDamageModifier CreateFrom(AggregationFunction func, params DamageModifier[] modifiers) 
+    public static CompositeDamageModifier CreateFrom(string name, AggregationFunction func, params DamageModifier[] modifiers) 
     {
         CompositeDamageModifier newModifier = CreateInstance<CompositeDamageModifier>();
+        newModifier.Name = name;
         newModifier.Modifiers = modifiers;
         newModifier.Function = func;
         return newModifier;

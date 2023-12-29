@@ -27,7 +27,7 @@ public abstract class DamageModifier : ScriptableObject
         => IsExactly(other) || (Base != null && Base.Is(other));
 
     public virtual bool IsExactly(DamageModifier other)
-        => this == other;
+        => Name == other.Name;
 
     public float GetValue(DamageModifier target)
     {
@@ -78,5 +78,23 @@ public abstract class DamageModifier : ScriptableObject
         if (cacheObj == null)
             cacheObj = Resources.LoadAll<T>(resourcePath);
         return cacheObj;
+    }
+
+    public override bool Equals(object other)
+    {
+        if (other is DamageModifier modifier)
+        {
+            if (string.IsNullOrEmpty(Name) || string.IsNullOrEmpty(modifier.Name))
+            {
+                throw new InvalidOperationException("Modifier name cannot be empty, as they are used for identification.");
+            }
+            return modifier.Name == Name;
+        }
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return Name.GetHashCode();
     }
 }

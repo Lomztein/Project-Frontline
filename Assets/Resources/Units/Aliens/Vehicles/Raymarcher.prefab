@@ -727,8 +727,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 1000
-  Modifier: {fileID: 11400000, guid: 998fc5c61550d024286c252cfab30310, type: 2}
+  MaxHealth: 1250
+  Modifier: {fileID: 11400000, guid: 48edd60faee51d246a8009cd399ac2f2, type: 2}
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -747,9 +747,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxSpeed: 6
   Rigidbody: {fileID: 0}
-  AccelerationSpeed: 2.5
+  AccelerationSpeed: 12
   BrakeDrag: 10
-  MaxTurnAngle: 15
+  MaxTurnAngle: 60
   Threaded: 0
 --- !u!114 &1870233015701062809
 MonoBehaviour:
@@ -771,7 +771,7 @@ MonoBehaviour:
   WeaponObjects:
   - {fileID: 2816134478033345030}
   AimTolerance: 2
-  LeadTarget: 1
+  LeadTarget: 0
   TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 55
@@ -1499,7 +1499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 25
-  Firerate: 2
+  Firerate: 3
   Modifier: {fileID: 11400000, guid: 1c89b0a4afb2193448b413f4230870cb, type: 2}
   Speed: 150
   Range: 75
@@ -1514,7 +1514,7 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 2900942430389265080, guid: 31685393a9de4314783541f261bcdfc1,
     type: 3}
   Muzzle: {fileID: 1680795151831965797}
-  Inaccuracy: 0.25
+  Inaccuracy: 0.35
   InaccuracyCurve:
     serializedVersion: 2
     m_Curve:
@@ -1862,6 +1862,7 @@ GameObject:
   - component: {fileID: 781288534123374998}
   - component: {fileID: 8607341912954351771}
   - component: {fileID: 456871945609550789}
+  - component: {fileID: 8115899871617858622}
   m_Layer: 0
   m_Name: LegsRig
   m_TagString: Untagged
@@ -1937,14 +1938,14 @@ MonoBehaviour:
       BaseLocalPosition: {x: 0, y: 0, z: 0}
       CurrentWorldPosition: {x: 0, y: 0, z: 0}
       IsMoving: 0
-    - LegTarget: {fileID: 3018194028587455824}
+    - LegTarget: {fileID: 6665395944601631461}
       BaseLocalPosition: {x: 0, y: 0, z: 0}
       CurrentWorldPosition: {x: 0, y: 0, z: 0}
       IsMoving: 0
     MaxSimultaniousMovements: 1
     CurrentSimultanious: 0
   - Legs:
-    - LegTarget: {fileID: 6665395944601631461}
+    - LegTarget: {fileID: 3018194028587455824}
       BaseLocalPosition: {x: 0, y: 0, z: 0}
       CurrentWorldPosition: {x: 0, y: 0, z: 0}
       IsMoving: 0
@@ -1983,7 +1984,22 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  MinTimeBetweenSteps: 0.05
+  MinTimeBetweenSteps: 0.1
+--- !u!114 &8115899871617858622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5052700064173878701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9abaf7f176e0f7d439af7c48be60ad8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LegsAnimator: {fileID: 456871945609550789}
+  RecoilAnimator: {fileID: 3464563007894195179}
+  ForceMultiplier: 2
 --- !u!1 &5079029944782285808
 GameObject:
   m_ObjectHideFlags: 0
@@ -2297,8 +2313,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BodyPivot: {fileID: 8502159578592286053}
   RecoilAnimMult: {x: 1, y: 1, z: 1}
-  Dampening: 0.7
-  SpringStrength: 1.5
+  Dampening: 0.6
+  SpringStrength: 3
 --- !u!114 &4661075707271945053
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2461,7 +2477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 25
-  Firerate: 2
+  Firerate: 3
   Modifier: {fileID: 11400000, guid: 1c89b0a4afb2193448b413f4230870cb, type: 2}
   Speed: 150
   Range: 75
@@ -2476,7 +2492,7 @@ MonoBehaviour:
   ProjectilePrefab: {fileID: 2900942430389265080, guid: 31685393a9de4314783541f261bcdfc1,
     type: 3}
   Muzzle: {fileID: 3937295308770508577}
-  Inaccuracy: 0.25
+  Inaccuracy: 0.35
   InaccuracyCurve:
     serializedVersion: 2
     m_Curve:

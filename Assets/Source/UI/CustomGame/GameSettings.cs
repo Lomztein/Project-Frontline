@@ -61,7 +61,7 @@ namespace CustomGame
         {
             GameObject newObj = Instantiate(PlayerSettingsPrefab, PlayerSettingsParent);
             MatchSettings.PlayerInfo newPlayer = new MatchSettings.PlayerInfo();
-            newPlayer.Name = NameGenerator.GenerateName();
+            newPlayer.Name = newPlayer.GenerateDefaultName();
             newPlayer.AIProfile = Resources.Load<AIPlayerProfile>("AIProfiles/Balanced");
             newPlayer.Faction = Resources.Load<Faction>("Factions/ModernMilitary");
             newPlayer.StartingCredits = 500;

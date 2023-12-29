@@ -189,6 +189,12 @@ public class UnitCamController : MonoBehaviour
     private bool Matches(Unit unit, UnitCam cam)
     {
         string id = cam.UnitIdentifier;
+        if (!string.IsNullOrEmpty(cam.TransformPath))
+        {
+            // Check if cam parent exists, and return false if not. This should allow us to attach cameras to things that aren't always there such as upgrades.
+            if (unit.transform.root.Find(cam.TransformPath) == null)
+                return false;
+        }
         return unit.Info.Identifier.StartsWith(id);
     }
 

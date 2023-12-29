@@ -52,7 +52,9 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, ICommanderCompon
     public int Ammo => _currentHolding;
     public int MaxAmmo => MaxHolding;
 
-    public DamageModifier Modifier => CompositeDamageModifier.CreateFrom(CompositeDamageModifier.AggregationFunction.Average, UnitPrefabs.SelectMany(x => x.GetComponent<Unit>().GetWeapons().Select(y => y.Modifier)).ToArray());
+    // Perfectly readable code I don't know what you're crying about.
+    public DamageModifier Modifier => CompositeDamageModifier.CreateFrom(ModifierName, CompositeDamageModifier.AggregationFunction.Average, UnitPrefabs.SelectMany(x => x.GetComponent<Unit>().GetWeapons().Select(y => y.Modifier)).ToArray());
+    private string ModifierName => $"Avg({string.Join("/", UnitPrefabs.SelectMany(x => x.GetComponent<Unit>().GetWeapons().Select(y => y.Modifier.Name)))})";
 
     private GameObject SelectUnitPrefab ()
     {

@@ -55,7 +55,6 @@ MonoBehaviour:
   Speed: 55
   Damage: 75
   Modifier: {fileID: 0}
-  DamageType: 1
   Velocity: {x: 0, y: 0, z: 0}
   Life: 5
   HitEffect: {fileID: 6381102607922298007}
@@ -78,6 +77,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectile: {fileID: 3630212335921609416}
   RotationSpeed: 360
+  PredictTargetPosition: 0
 --- !u!135 &-4533379440308260803
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -111,9 +111,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 20
+  MaxHealth: 5
   Modifier: {fileID: 11400000, guid: 48edd60faee51d246a8009cd399ac2f2, type: 2}
-  ArmorType: 2
   DestroyOnDeath: 0
   DestroyDelay: 0
   Debris: {fileID: 0}

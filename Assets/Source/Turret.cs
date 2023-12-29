@@ -115,11 +115,4 @@ public class Turret : MonoBehaviour, ITurret
     {
         return new Vector2(Mathf.Clamp(angles.x, verMinMax.x, verMinMax.y), Mathf.Clamp(angles.y, horMinMax.x, horMinMax.y));
     }
-
-    private void OnDrawGizmosSelected()
-    {
-        Vector3 targetPos = HorizontalAxis.TransformPoint(_horizontalTargetLocalPosition + VerticalAxis.localPosition);
-        Gizmos.DrawSphere(targetPos, 0.5f);
-        Gizmos.DrawLine(VerticalAxis.position, targetPos);
-    }
 }

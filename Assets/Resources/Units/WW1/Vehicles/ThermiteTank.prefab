@@ -144,8 +144,7 @@ MonoBehaviour:
     Description: This heavy tank is essentially a large cannon on threads. The cannon
       on this has been retrofitted to fire blasts of thermite pelltes at enemy armor,
       melting heavy armor.
-    Tags:
-    - Siege
+    Tags: []
     Cost: 6000
     Value: 600
     UnitRole: 0
@@ -208,7 +207,6 @@ MonoBehaviour:
   AcquireTargetRange: 100
   LooseTargetRange: 100
   AttackRange: 65
-  CheckTargetLineOfSight: 0
   TurretObject: {fileID: 7016691291410656262}
   WeaponObjects:
   - {fileID: 6714867770501613236}
@@ -218,6 +216,7 @@ MonoBehaviour:
   Modifiers:
   - {fileID: 8739588452404636795}
   HoldRange: 55
+  HoldVariance: 5
   StayBehindFrontline: 0
 --- !u!54 &4250751124971361378
 Rigidbody:

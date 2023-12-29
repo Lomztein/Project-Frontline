@@ -1,0 +1,244 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4401255727389395804
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5981635765061545748}
+  - component: {fileID: 6268934409733628681}
+  - component: {fileID: 8069719143216127850}
+  - component: {fileID: 1409767883040543803}
+  - component: {fileID: 1742077697740717135}
+  - component: {fileID: 4608135569581189675}
+  m_Layer: 0
+  m_Name: AlienPlasmaContainer
+  m_TagString: StructureUnit
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5981635765061545748
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4401255727389395804}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 38.61123, y: -0.0018024445, z: 12.478594}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8722889130835846221}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6268934409733628681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4401255727389395804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955e3746abfe5e14cb56265a34877e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Info:
+    Identifier: 
+    Name: Plasma Container
+    Description: Structure that contains and maintains volatile plasma at extremely
+      high temperatures, for use in the field. Adds a 20% chance for Hovertank units
+      to be equipped with plasma missile launchers.
+    Tags: []
+    Cost: 5500
+    Value: 550
+    UnitRole: 1
+    UnitTier: 1
+    UnitType: 4
+  Health: {fileID: 0}
+  _weapons: []
+  Parts: []
+  Weakpoints: []
+--- !u!114 &8069719143216127850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4401255727389395804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 5000
+  Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
+  DestroyOnDeath: 1
+  DestroyDelay: 0
+  Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
+  DebrisLife: 3
+--- !u!114 &1409767883040543803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4401255727389395804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 2122549701601064313}
+--- !u!114 &1742077697740717135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4401255727389395804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6d5a2228878cc4e8e464bae199ad63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeIdentifier: AddedPlasmaMissileTubes
+  BaseChance: 0.2
+  ChancePerStack: 0.2
+  Filter: {fileID: 11400000, guid: 2ea6c7f6bba301c43b5bd966a4ba634b, type: 2}
+  UpgradeDelay: 1
+  Object: {fileID: 5634688427506115852, guid: e20baedfe5e2d6945aa030409ccaf47b, type: 3}
+  UnitTransformInfos:
+  - UnitIdentifier: 
+    Path: Body/Turret/Horizontal
+    LocalPosition: {x: 0, y: 0, z: 0}
+    LocalRotation: {x: 0, y: 0, z: 0}
+  AddWeaponToAI: 1
+--- !u!65 &4608135569581189675
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4401255727389395804}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 11.93, y: 10.486613, z: 11.93}
+  m_Center: {x: 0, y: 5.0582204, z: 0}
+--- !u!1001 &9117348396790399910
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5981635765061545748}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 6dffeefad50715849b39e7b6170e1f1b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.4209907
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6dffeefad50715849b39e7b6170e1f1b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.4209907
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6dffeefad50715849b39e7b6170e1f1b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.4209907
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6dffeefad50715849b39e7b6170e1f1b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6dffeefad50715849b39e7b6170e1f1b,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6dffeefad50715849b39e7b6170e1f1b,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6dffeefad50715849b39e7b6170e1f1b,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6dffeefad50715849b39e7b6170e1f1b,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6dffeefad50715849b39e7b6170e1f1b,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6dffeefad50715849b39e7b6170e1f1b,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6dffeefad50715849b39e7b6170e1f1b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6dffeefad50715849b39e7b6170e1f1b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 6dffeefad50715849b39e7b6170e1f1b,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 6dffeefad50715849b39e7b6170e1f1b,
+        type: 3}
+      propertyPath: m_Name
+      value: AlienPlasmaContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071182760956848314, guid: 6dffeefad50715849b39e7b6170e1f1b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 43a31f6b776efde43b90b9fb808e3a00, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6dffeefad50715849b39e7b6170e1f1b, type: 3}
+--- !u!23 &2122549701601064313 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7202271454713460447, guid: 6dffeefad50715849b39e7b6170e1f1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 9117348396790399910}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8722889130835846221 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6dffeefad50715849b39e7b6170e1f1b,
+    type: 3}
+  m_PrefabInstance: {fileID: 9117348396790399910}
+  m_PrefabAsset: {fileID: 0}

@@ -5606,7 +5606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 2
+  Damage: 2.5
   Firerate: 25
   Modifier: {fileID: 11400000, guid: 945d88c08db340144ab265835acf69ca, type: 2}
   Speed: 1337
@@ -6480,7 +6480,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 2
+  Damage: 2.5
   Firerate: 25
   Modifier: {fileID: 11400000, guid: 945d88c08db340144ab265835acf69ca, type: 2}
   Speed: 1337
@@ -6694,6 +6694,7 @@ GameObject:
   - component: {fileID: 3715692433815093917}
   - component: {fileID: 6220346540138120606}
   - component: {fileID: 7486767968767845575}
+  - component: {fileID: 4866006796233932335}
   m_Layer: 0
   m_Name: LegsRig
   m_TagString: Untagged
@@ -7079,10 +7080,10 @@ MonoBehaviour:
       IsMoving: 0
     MaxSimultaniousMovements: 1
     CurrentSimultanious: 0
-  StepSize: 1
+  StepSize: 1.15
   StepMargin: 0.1
-  StepHeight: 0.25
-  StepDuration: 0.3
+  StepHeight: 0.35
+  StepDuration: 0.2
   StepLerp: 0
   StepCurveY:
     serializedVersion: 2
@@ -7109,6 +7110,21 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   MinTimeBetweenSteps: 0.15
+--- !u!114 &4866006796233932335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3540796596647656921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9abaf7f176e0f7d439af7c48be60ad8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LegsAnimator: {fileID: 7486767968767845575}
+  RecoilAnimator: {fileID: 4159804163312391413}
+  ForceMultiplier: 0.5
 --- !u!1 &3593717544877017387
 GameObject:
   m_ObjectHideFlags: 0
@@ -7376,12 +7392,10 @@ MonoBehaviour:
     Identifier: HeavyWalker.Assault
     Name: Assault Walker
     Description: Heavy assault walker loaded with guns and cannons, and fit to take
-      on nearly any opponent and emerge victorious.
-    Tags:
-    - Siege
-    - Defense
-    Cost: 5000
-    Value: 650
+      on nearly any opponent and hold the line against them.
+    Tags: []
+    Cost: 6000
+    Value: 600
     UnitRole: 0
     UnitTier: 2
     UnitType: 1
@@ -7404,7 +7418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 3000
+  MaxHealth: 4000
   Modifier: {fileID: 11400000, guid: 9aced94021235b843a137515da87937a, type: 2}
   DestroyOnDeath: 1
   DestroyDelay: 0
@@ -7441,9 +7455,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 0}
-  AcquireTargetRange: 100
-  LooseTargetRange: 150
-  AttackRange: 100
+  AcquireTargetRange: 75
+  LooseTargetRange: 100
+  AttackRange: 75
   TurretObject: {fileID: 5705679524576003970}
   WeaponObjects:
   - {fileID: 5705679524576003970}
@@ -7486,8 +7500,6 @@ MonoBehaviour:
   - {fileID: 5176538739921941147}
   - {fileID: 2095305109032522332}
   - {fileID: 3580107288416607460}
-  - {fileID: 0}
-  - {fileID: 0}
   - {fileID: 6233818697509215692}
   - {fileID: 262381294860193726}
   - {fileID: 8643163859625278214}
@@ -14175,8 +14187,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BodyPivot: {fileID: 4616588154246112428}
   RecoilAnimMult: {x: 1, y: 1, z: 1}
-  Dampening: 0.7
-  SpringStrength: 1.5
+  Dampening: 0.6
+  SpringStrength: 2
 --- !u!114 &4525269714727861182
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14224,7 +14236,7 @@ MonoBehaviour:
   Weapon: {fileID: 0}
   WeaponObject: {fileID: 5705679524576003970}
   Animator: {fileID: 4159804163312391413}
-  RecoilStrength: 50
+  RecoilStrength: 150
 --- !u!95 &5293886543327785155
 Animator:
   serializedVersion: 5

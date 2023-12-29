@@ -39,7 +39,7 @@ public class AICommander : Commander
         if (!Eliminated && _actionCooldownTime < 0f)
         {
             int randLimit = Mathf.RoundToInt((60 / Time.fixedDeltaTime) / TargetAvarageAPM);
-            if (SaveTarget == null && Random.Range(0, randLimit) == 0 || Credits >= _highestUnitCost)
+            if (SaveTarget == null && Random.Range(0, randLimit) == 0)
             {
                 PerformAction();
             }

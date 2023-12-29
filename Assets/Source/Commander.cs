@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Xml.Schema;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using Util;
 
 public class Commander : MonoBehaviour, ITeamComponent
@@ -382,9 +383,15 @@ public class Commander : MonoBehaviour, ITeamComponent
         return Mathf.Sqrt(distSqr);
     }
 
+    public float DistanceFromFrontlineAlongBaseForward(Vector3 position)
+    {
+        float diff = VectorUtils.DifferenceAlongDirection(transform.forward, position, Frontline.Position);
+        return Mathf.Abs(diff);
+    }
+
     public bool CanPlace(Vector3 position, Quaternion rotation, OverlapUtils.OverlapShape unitOverlapGroup)
     {
-        if (Vector3.Distance(position, Frontline.Position) < FrontlineBuildDistance)
+        if (DistanceFromFrontlineAlongBaseForward(position) < FrontlineBuildDistance)
             return false;
         LayerMask terrainLayer = LayerMask.NameToLayer("Terrain");
         Collider[] colliders = unitOverlapGroup.Overlap(position, rotation, ~terrainLayer);

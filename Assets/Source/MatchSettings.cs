@@ -49,7 +49,7 @@ public class MatchSettings : ScriptableObject
         var settings = Instantiate(Resources.Load<MatchSettings>(PATH_TO_DEFAULT));
         foreach (var player in settings.Players)
         {
-            player.Name = NameGenerator.GenerateName();
+            player.Name = player.GenerateDefaultName();
         }
         return settings;
     }
@@ -57,7 +57,7 @@ public class MatchSettings : ScriptableObject
     [SerializeField]
     private List<PlayerInfo> _players = new List<PlayerInfo>();
     public PlayerInfo[] Players => _players.ToArray();
-
+    
     public void AddPlayer(PlayerInfo info)
     {
         if (info.IsPlayer == true)
@@ -87,5 +87,14 @@ public class MatchSettings : ScriptableObject
 
         public AIPlayerProfile AIProfile;
         public bool IsPlayer => AIProfile == null;
+
+        public string GenerateDefaultName()
+        {
+            if (IsPlayer)
+            {
+                return "Player";
+            }
+            return AIProfile.Name + " " + Faction.Name;
+        }
     }
 }

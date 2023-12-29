@@ -16,21 +16,22 @@ public class AddObjectOnUnitSpawnUpgradeStructure : ChanceOnUnitSpawnUpgradeStru
         if (_infoCache == null) BakePathCache(UnitTransformInfos);
 
         (Transform parent, Vector3 localPos, Vector3 localRot) = FindUnitTransform(target);
-
-        Assert.IsNotNull(parent, "Upgrade parent is null.");
-        GameObject newObject = Instantiate(Object, parent, false);
-        newObject.transform.localPosition = localPos;
-        newObject.transform.localRotation = Quaternion.Euler(localRot);
-        _commander.TeamInfo.ApplyTeam(newObject);
-        _commander.AssignCommander(newObject);
-
-        IWeapon wep = newObject.GetComponentInChildren<IWeapon>();
-        if (wep != null)
+        if (parent != null)
         {
-            target.GetComponent<Unit>().AddWeapon(wep);
-            if (AddWeaponToAI)
+            GameObject newObject = Instantiate(Object, parent, false);
+            newObject.transform.localPosition = localPos;
+            newObject.transform.localRotation = Quaternion.Euler(localRot);
+            _commander.TeamInfo.ApplyTeam(newObject);
+            _commander.AssignCommander(newObject);
+
+            IWeapon wep = newObject.GetComponentInChildren<IWeapon>();
+            if (wep != null)
             {
-                target.GetComponent<AIController>().AddWeapon(newObject.GetComponentInChildren<IWeapon>());
+                target.GetComponent<Unit>().AddWeapon(wep);
+                if (AddWeaponToAI)
+                {
+                    target.GetComponent<AIController>().AddWeapon(newObject.GetComponentInChildren<IWeapon>());
+                }
             }
         }
     }

@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 25
+  Damage: 20
   Firerate: 1.2
   Modifier: {fileID: 11400000, guid: 9974e4778fc971144a67e48006632fd0, type: 2}
   Speed: 250
@@ -360,7 +360,6 @@ GameObject:
   - component: {fileID: 7159768823265169035}
   - component: {fileID: 3921581449708654105}
   - component: {fileID: 3532775504822701343}
-  - component: {fileID: 5506906118945775706}
   m_Layer: 0
   m_Name: FlakRollsRoyce
   m_TagString: MobileUnit
@@ -405,7 +404,6 @@ MonoBehaviour:
       with enemy aircraft.
     Tags:
     - Anti-Air
-    - Point Defense
     Cost: 750
     Value: 75
     UnitRole: 0
@@ -474,9 +472,9 @@ MonoBehaviour:
   AimTolerance: 10
   LeadTarget: 1
   TargetSearchFrequency: 2
-  Modifiers:
-  - {fileID: 5506906118945775706}
+  Modifiers: []
   HoldRange: 75
+  HoldVariance: 2.5
   StayBehindFrontline: 1
 --- !u!114 &7159768823265169035
 MonoBehaviour:
@@ -542,19 +540,6 @@ MonoBehaviour:
   - {fileID: 3079179320040058699}
   - {fileID: 8732460501497699272}
   - {fileID: 7375900368963633574}
---- !u!114 &5506906118945775706
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1616953874168452399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 513598aae73d30a4e85e41647bc66d29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AppendLayerMask: 1
 --- !u!1 &1702524982041008571
 GameObject:
   m_ObjectHideFlags: 0

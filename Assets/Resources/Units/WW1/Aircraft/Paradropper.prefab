@@ -972,7 +972,8 @@ MonoBehaviour:
     Description: Heavy triplane filled to the brim with troopers ready to be dropped
       directly on top of the battlefield. How do they get so many troopers in there?
       Clown magic.
-    Tags: []
+    Tags:
+    - Siege
     Cost: 6000
     Value: 600
     UnitRole: 1
@@ -1062,7 +1063,6 @@ MonoBehaviour:
   AcquireTargetRange: 200
   LooseTargetRange: 400
   AttackRange: 60
-  CheckTargetLineOfSight: 0
   TurretObject: {fileID: 0}
   WeaponObjects:
   - {fileID: 4521990491645353274}
@@ -1072,6 +1072,7 @@ MonoBehaviour:
   Modifiers:
   - {fileID: 6274288770152103032}
   HoldRange: 25
+  HoldVariance: 5
   StayBehindFrontline: 0
   ReengageRange: 200
   DisengageAlongWaypoint: 1

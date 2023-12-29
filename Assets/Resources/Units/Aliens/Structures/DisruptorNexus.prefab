@@ -1,0 +1,250 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1769109693647990259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2108924908564841635}
+  - component: {fileID: 1231885524419893182}
+  - component: {fileID: 3477924835519288961}
+  - component: {fileID: 6748033396613200690}
+  - component: {fileID: 3557642036227573473}
+  - component: {fileID: 6639905333820411301}
+  m_Layer: 0
+  m_Name: DisruptorNexus
+  m_TagString: StructureUnit
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2108924908564841635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769109693647990259}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 38.61123, y: -0.0018024445, z: 12.478594}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4523070052464908625}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1231885524419893182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769109693647990259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955e3746abfe5e14cb56265a34877e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Info:
+    Identifier: 
+    Name: Disruption Nexus
+    Description: Facility used to produce disruptor particles, through a very complicated
+      process using exotic particles and fox urine. Adds 25% chance for light voidcraft
+      and magscouts to spawn with light disruptor drives.
+    Tags: []
+    Cost: 2500
+    Value: 250
+    UnitRole: 1
+    UnitTier: 0
+    UnitType: 4
+  Health: {fileID: 0}
+  _weapons: []
+  Parts: []
+  Weakpoints: []
+--- !u!114 &3477924835519288961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769109693647990259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 5000
+  Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
+  DestroyOnDeath: 1
+  DestroyDelay: 0
+  Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
+  DebrisLife: 3
+--- !u!114 &6748033396613200690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769109693647990259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 454818305666771061}
+  - {fileID: 6538117219362801765}
+--- !u!114 &3557642036227573473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769109693647990259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6d5a2228878cc4e8e464bae199ad63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeIdentifier: AddedDisruptorDrive
+  BaseChance: 0.25
+  ChancePerStack: 0.25
+  Filter: {fileID: 11400000, guid: fcd6a786351ec3943b96d41e09ce1384, type: 2}
+  UpgradeDelay: 0
+  Object: {fileID: 3359721783325851235, guid: c3e42925e2be1fd4c95708ce88ec3bef, type: 3}
+  UnitTransformInfos:
+  - UnitIdentifier: Voidcraft.Assault
+    Path: Body
+    LocalPosition: {x: 0, y: 1.274, z: -0.889}
+    LocalRotation: {x: 330.00006, y: 0, z: 0}
+  - UnitIdentifier: 
+    Path: Body
+    LocalPosition: {x: 0, y: 1.229, z: -1.61}
+    LocalRotation: {x: 285, y: 0, z: 0}
+  AddWeaponToAI: 0
+--- !u!65 &6639905333820411301
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769109693647990259}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 9.72, y: 5.7620254, z: 9.72}
+  m_Center: {x: 0, y: 2.6959255, z: 0}
+--- !u!1001 &4129683497878929082
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2108924908564841635}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.4584
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.4584
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.4584
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+        type: 3}
+      propertyPath: m_Name
+      value: AlienDisruptionNexus
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bc45967dfd16a3248bdbd627b8ff59fe, type: 3}
+--- !u!23 &454818305666771061 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 4129683497878929082}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &4523070052464908625 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 4129683497878929082}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6538117219362801765 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7202271454713460447, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 4129683497878929082}
+  m_PrefabAsset: {fileID: 0}

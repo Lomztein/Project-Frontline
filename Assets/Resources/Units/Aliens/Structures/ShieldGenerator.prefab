@@ -28,7 +28,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.70710576, y: -0, z: -0, w: 0.7071079}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 22.5, y: 22.5, z: 22.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2772477570969109760}
@@ -4899,6 +4899,7 @@ GameObject:
   - component: {fileID: 2772477570969109820}
   - component: {fileID: 2772477570969109763}
   - component: {fileID: 2772477570969109762}
+  - component: {fileID: 9201059215708206590}
   m_Layer: 0
   m_Name: ShieldGenerator
   m_TagString: StructureUnit
@@ -4946,10 +4947,10 @@ MonoBehaviour:
   ShieldMaterialStrenghtMinMax: {x: 0.1, y: 1}
   DamageFlashTime: 0.3
   DamageFlashAmount: 0.7
-  HealDelay: 5
-  HealRate: 300
-  ReviveTime: 60
-  HealthOnReviveMult: 0.5
+  HealDelay: 3
+  HealRate: 500
+  ReviveTime: 35
+  HealthOnReviveMult: 0.75
   ShieldLerpTime: 10
 --- !u!114 &2772477570969109820
 MonoBehaviour:
@@ -4968,8 +4969,8 @@ MonoBehaviour:
     Name: Shield Generator
     Description: Shield generator that generates an energy shield. The shield can
       take a considerable amount of punishment, but will eventually fall to sustained
-      fire. Stronger and slightly larger than contemporary shields, but takes longer
-      to recharge.
+      fire. Not quite as powerful as contemporary shields, but recharges much faster
+      and with more health.
     Tags:
     - Shield
     Cost: 3000
@@ -5014,6 +5015,19 @@ MonoBehaviour:
   _renderersToApplyTo:
   - {fileID: 5106549624362952410}
   - {fileID: 5119575903463913663}
+--- !u!114 &9201059215708206590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2772477570969109767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46fe0a88465a2b94c817b7220b4e3306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Team: {fileID: 11400000, guid: 259fba658c064ef4db94ec85f060efd0, type: 2}
 --- !u!1 &2772477571419030472
 GameObject:
   m_ObjectHideFlags: 0
@@ -5133,7 +5147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 35000
+  MaxHealth: 15000
   Modifier: {fileID: 11400000, guid: c668d32288c060c42914f60bf75360a2, type: 2}
   DestroyOnDeath: 0
   DestroyDelay: 0
@@ -5353,8 +5367,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1.82, y: 4.8800344, z: 1.82}
-  m_Center: {x: 0, y: 2.3424845, z: 0}
+  m_Size: {x: 1.82, y: 4.7413836, z: 1.82}
+  m_Center: {x: 0, y: 2.4118078, z: 0}
 --- !u!23 &5106549624362952410 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7202271454713460447, guid: 0ee1992ce10f3f5428c141c5208e253d,

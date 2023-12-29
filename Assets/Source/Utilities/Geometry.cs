@@ -166,4 +166,45 @@ public class GeometryXZ
         }
         return minDist;
     }
-}
+
+    public static Vector3 NearestPointOnLine(Vector3 lineOrigin, Vector3 lineDirection, Vector3 point)
+    {
+        lineDirection.Normalize();
+        var v = point - lineOrigin;
+        var d = Vector3.Dot(v, lineDirection);
+        return lineOrigin + lineDirection * d;
+    }
+
+    public static (Vector3 point, Line line) NearestPointAndLine(IEnumerable<Line> lines, Vector3 point)
+    {
+        float closestDistance = float.MaxValue;
+        Vector3 closestPoint = Vector3.zero;
+        Line closestLine = null;
+        foreach (var line in lines)
+        {
+            Vector3 p = NearestPointOnLine(line.From, (line.To - line.From), point);
+            float d = Vector3.SqrMagnitude(p - point);
+            if (d < closestDistance)
+            {
+                closestDistance = d;
+                closestPoint = p;
+                closestLine = line;
+            }
+        }
+        return (closestPoint, closestLine);
+    }
+
+    public static Vector3 NearestPointOnLines(IEnumerable<Line> lines, Vector3 point)
+        => NearestPointAndLine(lines, point).point;
+
+    public static Line NearestLineToPoint(IEnumerable<Line> lines, Vector3 point)
+        => NearestPointAndLine(lines, point).line;
+
+    public static float InverseLerp(Vector3 a, Vector3 b, Vector3 value)
+    {
+        Vector3 AB = b - a;
+        Vector3 AV = value - a;
+        return Vector3.Dot(AV, AB) / Vector3.Dot(AB, AB);
+    }
+
+} 

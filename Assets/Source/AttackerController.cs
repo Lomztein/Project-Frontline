@@ -13,7 +13,7 @@ public class AttackerController : ControllableController, ITeamComponent, IComma
     protected NavigationNode NextNode
         => MovementPathIndex == MovementPath.Length - 1 ? null : MovementPath[MovementPathIndex + 1];
     protected NavigationNode PrevNode
-        => MovementPath[MovementPathIndex];
+        => MovementPathIndex < MovementPath.Length ? MovementPath[MovementPathIndex] : null;
 
     public float Lane { get; private set; } // x-position relative to commander.
     public float LaneOffset => Commander.transform.InverseTransformPoint(transform.position).x - Lane;

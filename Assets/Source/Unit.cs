@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Unit : MonoBehaviour, IPurchasable
+public class Unit : MonoBehaviour, IPurchasable, ICommanderComponent, ITeamComponent
 {
     public const float ENGAGE_TIME = 10f;
     public UnitInfo Info;
@@ -16,6 +16,7 @@ public class Unit : MonoBehaviour, IPurchasable
 
     [SerializeField] private GameObject[] _weapons;
     private List<IWeapon> _weaponCache;
+    public IEnumerable<IWeapon> GetWeapons() => GetWeaponCache(ref _weaponCache);
 
     public event Action<Unit, IWeapon, Projectile, IDamagable> OnKill;
 
@@ -40,23 +41,13 @@ public class Unit : MonoBehaviour, IPurchasable
     public IEnumerable<T> GetParts<T>() where T : UnitPart
         => Parts.Where(x => x != null).Select(x => x as T).Where(x => x != null);
 
-    public IEnumerable<IWeapon> GetWeapons ()
-    {
-        if (_weaponCache == null)
-        {
-            _weaponCache = new List<IWeapon>();
-            for (int i = 0; i < _weapons.Length; i++)
-            {
-                _weaponCache.Add(_weapons[i].GetComponent<IWeapon>());
-            }
-        }
-        return _weaponCache;
-    }
-
     public IEnumerable<IUnitCostModifier> GetCostModifiers()
         => GetComponents<IUnitCostModifier>();
     public IEnumerable<IUnitPurchasePredicate> GetPurchasePredicates()
         => GetComponents<IUnitPurchasePredicate>();
+
+    public Commander Commander { get; private set; }
+    public TeamInfo TeamInfo { get; private set; }
 
     private void CheckBattlefieldBounds()
     {
@@ -68,15 +59,43 @@ public class Unit : MonoBehaviour, IPurchasable
     }
 
     public void AddWeapon(IWeapon weapon)
-        => _weaponCache.Add(weapon);
+    {
+        _weaponCache.Add(weapon);
+        weapon.OnKill += Weapon_OnKill;
+        weapon.OnHit += Weapon_OnHit;
+    }
+
+    public void RemoveWeapon(IWeapon weapon)
+    {
+        _weaponCache.Remove(weapon);
+        weapon.OnKill -= Weapon_OnKill;
+        weapon.OnHit -= Weapon_OnHit;
+    }
 
     private void Awake()
     {
         Weakpoints = GetParts<WeakpointUnitPart>().ToArray();
+        GetWeaponCache(ref _weaponCache);
 
-        GetWeapons();
         Health = GetComponent<Health>();
         InvokeRepeating(nameof(CheckBattlefieldBounds), 10f, 10f);
+    }
+
+    private IEnumerable<IWeapon> GetWeaponCache(ref List<IWeapon> cache)
+    {
+        if (cache == null)
+        {
+            cache = new List<IWeapon>();
+            foreach (GameObject weaponObj in _weapons)
+            {
+                IWeapon weapon = weaponObj.GetComponent<IWeapon>();
+                if (weapon != null)
+                {
+                    AddWeapon(weapon);
+                }
+            }
+        }
+        return cache;
     }
 
     public float AddToEffeciencyScore(float score) 
@@ -88,12 +107,6 @@ public class Unit : MonoBehaviour, IPurchasable
     private void Start()
     {
         Health.OnDamageTaken += Health_OnDamageTaken;
-
-        foreach (IWeapon weapon in _weaponCache)
-        {
-            weapon.OnKill += Weapon_OnKill;
-            weapon.OnHit += Weapon_OnHit;
-        }
     }
 
     private void Health_OnDamageTaken(Health arg1, DamageInfo info)
@@ -136,5 +149,15 @@ public class Unit : MonoBehaviour, IPurchasable
     public WeaponInfo[] GetWeaponInfo()
     {
         return GetComponentsInChildren<WeaponInfo>();
+    }
+
+    public void AssignCommander(Commander commander)
+    {
+        Commander = commander;
+    }
+
+    public void SetTeam(TeamInfo team)
+    {
+        TeamInfo = team;
     }
 }

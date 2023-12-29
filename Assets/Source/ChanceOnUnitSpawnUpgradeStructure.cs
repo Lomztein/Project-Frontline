@@ -9,6 +9,8 @@ public abstract class ChanceOnUnitSpawnUpgradeStructure : UpgradeStructure
     public float ChancePerStack;
     private float _currentStack = 0f; // Should only tracked by the inital structure.
     public GameObjectFilter Filter;
+    [Tooltip("Delay upgrade application by the given number of frames, so that certain upgrades may be applied after others.")]
+    public int UpgradeDelay;
 
     public float ComputeChance()
         => 1 - ((1 - BaseChance) * 1 / (_currentStack + 1));
@@ -16,11 +18,13 @@ public abstract class ChanceOnUnitSpawnUpgradeStructure : UpgradeStructure
     protected override void ApplyInitial()
     {
         _commander.OnUnitSpawned += Commander_OnUnitSpawned;
+        Debug.Log("Initial applied: " + UpgradeIdentifier);
     }
 
     protected override void ApplyStack(UpgradeStructure initial)
     {
         (initial as ChanceOnUnitSpawnUpgradeStructure)._currentStack += ChancePerStack;
+        Debug.Log("Stack applied: " + UpgradeIdentifier);
     }
 
     protected override void RemoveInitial()
@@ -45,8 +49,17 @@ public abstract class ChanceOnUnitSpawnUpgradeStructure : UpgradeStructure
 
         if (rand < chance && CheckFilter(arg3.gameObject))
         {
-            ApplyUpgrade(arg3);
+            StartCoroutine(DelayedApplyUpgrade(UpgradeDelay, arg3));
         }
+    }
+
+    private IEnumerator DelayedApplyUpgrade(int frames, Unit target)
+    {
+        for (int i = 0; i < UpgradeDelay; i++)
+        {
+            yield return new WaitForFixedUpdate();
+        }
+        ApplyUpgrade(target);
     }
 
     protected abstract void ApplyUpgrade(Unit target);
@@ -56,7 +69,7 @@ public abstract class ChanceOnUnitSpawnUpgradeStructure : UpgradeStructure
 
     public override string GetDescription(Unit unit, Commander commander)
     {
-        if (!commander.CanPurchase(unit.gameObject))
+        if (!CanPurchase(unit, commander))
         {
             return "Unavailable: No affected units on field.";
         }

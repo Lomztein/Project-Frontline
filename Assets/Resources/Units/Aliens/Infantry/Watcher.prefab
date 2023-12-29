@@ -5537,6 +5537,7 @@ GameObject:
   - component: {fileID: 271155900814307125}
   - component: {fileID: 8682497266196693590}
   - component: {fileID: 1952505413808100613}
+  - component: {fileID: 1012462813607777314}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -5591,8 +5592,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad85e42caa7afe45bb1b2c60e93b67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 50
-  Firerate: 0.15
+  Damage: 45
+  Firerate: 0.2
   Modifier: {fileID: 11400000, guid: 88f33b5a78a4c7546ae7cf53174bf833, type: 2}
   Speed: 200
   Range: 100
@@ -5756,6 +5757,28 @@ MonoBehaviour:
     m_RotationOrder: 4
   LerpRate: 20
   GlowTimeAfterFiring: 0.1
+--- !u!114 &1012462813607777314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6582258009220316151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Psychic Blast
+  Description: 'A '
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &7378487300522752732
 GameObject:
   m_ObjectHideFlags: 0
@@ -5826,6 +5849,7 @@ MonoBehaviour:
   Modifiers:
   - {fileID: 4577853647497667733}
   HoldRange: 100
+  HoldVariance: 2.5
   StayBehindFrontline: 0
 --- !u!114 &213768201147107745
 MonoBehaviour:

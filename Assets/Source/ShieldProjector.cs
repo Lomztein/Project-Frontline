@@ -37,6 +37,7 @@ public class ShieldProjector : MonoBehaviour
         ShieldHealth.OnDeath += ShieldHealth_OnDeath;
 
         _shieldTargetSize = ShieldSize;
+        BreakEffect.transform.localScale = Vector3.one * _shieldTargetSize * ShieldSizeMultiplier;
     }
 
     private void ShieldHealth_OnDeath(Health health)
@@ -82,11 +83,10 @@ public class ShieldProjector : MonoBehaviour
         _shieldMaterial.SetFloat("Health", ShieldHealth.CurrentHealth / ShieldHealth.MaxHealth);
 
         ShieldTransform.localScale = Vector3.Lerp(ShieldTransform.localScale, Vector3.one * _shieldTargetSize * ShieldSizeMultiplier, ShieldLerpTime * Time.fixedDeltaTime);
-        BreakEffect.transform.localScale = ShieldTransform.localScale;
 
         if (Time.time > _lastDamageTime + HealDelay)
         {
             ShieldHealth.Heal(new DamageInfo(HealRate * Time.fixedDeltaTime, DamageModifier.One, ShieldHealth.transform.position, Vector3.forward, this, ShieldHealth));
         }
-    }
+    } 
 }

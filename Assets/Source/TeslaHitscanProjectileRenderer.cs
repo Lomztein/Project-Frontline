@@ -72,7 +72,7 @@ public class TeslaHitscanProjectileRenderer : HitscanProjectileRenderer
     private float CalcWidthMult ()
     {
         float timeFactor = Mathf.InverseLerp(_spawnTime, _spawnTime + Projectile.Life, Time.time);
-        return WidthByLife.Evaluate(timeFactor);
+        return Mathf.Clamp01(WidthByLife.Evaluate(timeFactor));
     }
 
     private void CycleReset ()
@@ -94,6 +94,6 @@ public class TeslaHitscanProjectileRenderer : HitscanProjectileRenderer
 
         float mult = CalcWidthMult();
         Renderer.endWidth = Mathf.Lerp(Renderer.endWidth, 0f, ShrinkLerp * Time.fixedDeltaTime) * mult;
-        Renderer.startWidth = Mathf.Lerp(Renderer.endWidth, 0f, ShrinkLerp * Time.fixedDeltaTime) * mult;
+        Renderer.startWidth = Mathf.Lerp(Renderer.startWidth, 0f, ShrinkLerp * Time.fixedDeltaTime) * mult;
     }
 }

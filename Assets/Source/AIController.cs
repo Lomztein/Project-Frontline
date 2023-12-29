@@ -145,7 +145,7 @@ public abstract class AIController : MonoBehaviour, IController
             {
                 Vector3 vel = (targetPosition - _targetLastPosition) / Time.fixedDeltaTime;
                 float dist = Vector3.Distance(targetPosition, transform.position);
-                targetPosition += vel * (dist / Weapons[0].Speed + Time.fixedDeltaTime); // Add fixedDeltaTime to offset turrets always being a single tick behind.
+                targetPosition += vel * (dist / Weapons[0].Speed);
                 _targetLastPosition = CurrentTarget.GetCenter();
             }
 
@@ -168,7 +168,10 @@ public abstract class AIController : MonoBehaviour, IController
         {
             foreach (var weapon in Weapons)
             {
-                weapon.TryFire(CurrentTarget);
+                if (weapon != null)
+                {
+                    weapon.TryFire(CurrentTarget);
+                }
             }
         }
     }
