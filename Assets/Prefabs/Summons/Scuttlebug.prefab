@@ -314,7 +314,55 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 7872125497167827441}
   Inaccuracy: 0
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5314018989130260859
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +420,8 @@ MonoBehaviour:
     Name: Scuttlebug
     Description: Tiny, annoying little drone built and deployed by a Drone Nest.
       Drives up to enemy forces and zaps them with an electric jolt.
-    Tags: []
+    Tags:
+    - CantHeal
     Cost: 0
     Value: 0
     UnitRole: 1
@@ -443,6 +492,7 @@ MonoBehaviour:
   TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 50
+  HoldVariance: 5
   StayBehindFrontline: 0
 --- !u!54 &1019079266981119523
 Rigidbody:

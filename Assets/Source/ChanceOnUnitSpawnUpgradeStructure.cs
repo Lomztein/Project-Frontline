@@ -18,13 +18,11 @@ public abstract class ChanceOnUnitSpawnUpgradeStructure : UpgradeStructure
     protected override void ApplyInitial()
     {
         _commander.OnUnitSpawned += Commander_OnUnitSpawned;
-        Debug.Log("Initial applied: " + UpgradeIdentifier);
     }
 
     protected override void ApplyStack(UpgradeStructure initial)
     {
         (initial as ChanceOnUnitSpawnUpgradeStructure)._currentStack += ChancePerStack;
-        Debug.Log("Stack applied: " + UpgradeIdentifier);
     }
 
     protected override void RemoveInitial()
@@ -55,7 +53,7 @@ public abstract class ChanceOnUnitSpawnUpgradeStructure : UpgradeStructure
 
     private IEnumerator DelayedApplyUpgrade(int frames, Unit target)
     {
-        for (int i = 0; i < UpgradeDelay; i++)
+        for (int i = 0; i < frames; i++)
         {
             yield return new WaitForFixedUpdate();
         }

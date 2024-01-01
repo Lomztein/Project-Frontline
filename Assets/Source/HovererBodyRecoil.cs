@@ -13,6 +13,8 @@ public class HovererBodyRecoil : MonoBehaviour
     public Transform Muzzle;
     public float Recoil;
 
+    private IWeapon _weapon;
+
     private void Start()
     {
         if (!Body)
@@ -20,7 +22,17 @@ public class HovererBodyRecoil : MonoBehaviour
         if (Health)
             Health.OnDamageTaken += Health_OnTakeDamage;
         if (WeaponObject)
-            WeaponObject.GetComponent<IWeapon>().OnFire += HovererBodyRecoil_OnFire;
+            SetWeapon(WeaponObject.GetComponent<IWeapon>());
+    }
+
+    public void SetWeapon(IWeapon weapon)
+    {
+        if (_weapon != null)
+        {
+            _weapon.OnFire -= HovererBodyRecoil_OnFire;
+        }
+        _weapon = weapon;
+        _weapon.OnFire += HovererBodyRecoil_OnFire;
     }
 
     private void Health_OnTakeDamage(Health arg1, DamageInfo arg2)

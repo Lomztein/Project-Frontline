@@ -74,7 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 1000
+  MaxHealth: 1500
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
   DestroyOnDeath: 1
   DestroyDelay: 0
@@ -116,9 +116,9 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Photon Cannon
-    Description: We stole some technology from some high-and-mighty nerds, and developed
-      this powerful anti-armor defensive cannon using it. Though it is most effective
-      against armor, it is able to shoot down aircraft as well.
+    Description: We stole this photon-condensing tech from some high and mighty nerds,
+      and found that it performs excellently against lightly armored targets, which
+      lead to the development of this.
     Tags: []
     Cost: 1500
     Value: 150
@@ -144,7 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _renderersToApplyTo:
   - {fileID: 3501233616282449895}
-  - {fileID: 3211573328655854221}
+  - {fileID: 6036846595274438746}
 --- !u!114 &2943333056548400230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -356,7 +356,7 @@ MonoBehaviour:
   HorizontalAxis: {fileID: 7239507547836584735}
   VerticalAxis: {fileID: 7239507548481140458}
   HorizontalRange: {x: -180, y: 180}
-  VerticalRange: {x: -75, y: 15}
+  VerticalRange: {x: -30, y: 15}
   HorizontalSpeed: 135
   VerticalSpeed: 45
   Instant: 0
@@ -438,8 +438,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 200
-  Firerate: 0.4
-  Modifier: {fileID: 11400000, guid: 92e6b21166c648b45b3686dd2030c041, type: 2}
+  Firerate: 0.3
+  Modifier: {fileID: 11400000, guid: 314342fc66eec6d48825ca07dec91c8c, type: 2}
   Speed: 175
   Range: 100
   Amount: 1
@@ -503,7 +503,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  MaxChargeTime: 0.2
+  MaxChargeTime: 0.5
   CurrentChargeTime: 0
   ResetChargeOnFire: 1
   ChargeOnlyWhenCanFire: 1

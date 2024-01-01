@@ -150,8 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ad85e42caa7afe45bb1b2c60e93b67e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 4.5
-  Firerate: 35
+  Damage: 2
+  Firerate: 20
   Modifier: {fileID: 11400000, guid: 945d88c08db340144ab265835acf69ca, type: 2}
   Speed: 100
   Range: 100
@@ -5669,9 +5669,9 @@ MonoBehaviour:
       that can melt the heaviest of armors with its million-degree beam.
     Tags: []
     Cost: 4000
-    Value: 400
+    Value: 109
     UnitRole: 1
-    UnitTier: 2
+    UnitTier: 1
     UnitType: 1
   Health: {fileID: 0}
   _weapons:
@@ -5690,7 +5690,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 750
+  MaxHealth: 400
   Modifier: {fileID: 11400000, guid: 48edd60faee51d246a8009cd399ac2f2, type: 2}
   DestroyOnDeath: 1
   DestroyDelay: 0
@@ -5743,6 +5743,7 @@ MonoBehaviour:
   TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 60
+  HoldVariance: 5
   StayBehindFrontline: 0
 --- !u!114 &735426194120849910
 MonoBehaviour:
@@ -5756,7 +5757,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b6cafccd0e61a4ca019c486be74ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FactoryPrefab: {fileID: 8913899801669703661, guid: b091d99d3a2dced4086ab2fbd438a737,
+  FactoryPrefab: {fileID: 8913899801669703661, guid: de257cb88af93994c81ba85e40c0efb5,
     type: 3}
   ProductionTime: 35
 --- !u!54 &3173943289603908737

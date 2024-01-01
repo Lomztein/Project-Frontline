@@ -5410,7 +5410,6 @@ MonoBehaviour:
   AcquireTargetRange: 75
   LooseTargetRange: 75
   AttackRange: 75
-  CheckTargetLineOfSight: 0
   TurretObject: {fileID: 0}
   WeaponObjects:
   - {fileID: 6155841048861673308}
@@ -5420,6 +5419,7 @@ MonoBehaviour:
   Modifiers:
   - {fileID: 3972628831883336080}
   HoldRange: 75
+  HoldVariance: 5
   StayBehindFrontline: 1
 --- !u!114 &7553636284871315035
 MonoBehaviour:
@@ -5433,7 +5433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b6cafccd0e61a4ca019c486be74ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FactoryPrefab: {fileID: 8913899801669703661, guid: b091d99d3a2dced4086ab2fbd438a737,
+  FactoryPrefab: {fileID: 8913899801669703661, guid: de257cb88af93994c81ba85e40c0efb5,
     type: 3}
   ProductionTime: 30
 --- !u!54 &6689945818107146596

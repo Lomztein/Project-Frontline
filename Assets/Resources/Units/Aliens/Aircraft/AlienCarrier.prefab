@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 1167326796111377896}
   - component: {fileID: 7846306337514832092}
   - component: {fileID: 6314576633711653591}
+  - component: {fileID: 4457355531900005561}
   m_Layer: 0
   m_Name: AlienCarrier
   m_TagString: Untagged
@@ -55,7 +56,6 @@ MonoBehaviour:
   AcquireTargetRange: 125
   LooseTargetRange: 150
   AttackRange: 125
-  CheckTargetLineOfSight: 0
   TurretObject: {fileID: 0}
   WeaponObjects:
   - {fileID: 7601997393862631984}
@@ -64,6 +64,7 @@ MonoBehaviour:
   TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 125
+  HoldVariance: 5
   StayBehindFrontline: 0
 --- !u!114 &4740322061635826446
 MonoBehaviour:
@@ -107,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b6cafccd0e61a4ca019c486be74ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FactoryPrefab: {fileID: 1858560341678210657, guid: 6def6305dfea79341a14ea69ebd3e000,
+  FactoryPrefab: {fileID: 1858560341678210657, guid: a15ff2d9a9ecf9242a30c05bae5059ef,
     type: 3}
   ProductionTime: 80
 --- !u!114 &6786692741952318879
@@ -191,6 +192,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 8f8059ce28c7c4f458cd46ae5320cd22, type: 2}
+--- !u!114 &4457355531900005561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122439784772549124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 7682315357390541651}
+  - {fileID: 5760873886590697732}
+  - {fileID: 2288061518573529294}
+  - {fileID: 769644300336443904}
 --- !u!1 &4769373350818423269
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,6 +675,30 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e8eb1f14df3dfe0418f74dd33a0b8db4, type: 3}
+--- !u!23 &769644300336443904 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7417475085731284002, guid: e8eb1f14df3dfe0418f74dd33a0b8db4,
+    type: 3}
+  m_PrefabInstance: {fileID: 7808811998017746466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2288061518573529294 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -892087695160434964, guid: e8eb1f14df3dfe0418f74dd33a0b8db4,
+    type: 3}
+  m_PrefabInstance: {fileID: 7808811998017746466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5760873886590697732 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -6652725513331149018, guid: e8eb1f14df3dfe0418f74dd33a0b8db4,
+    type: 3}
+  m_PrefabInstance: {fileID: 7808811998017746466}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7682315357390541651 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -8736024233409419919, guid: e8eb1f14df3dfe0418f74dd33a0b8db4,
+    type: 3}
+  m_PrefabInstance: {fileID: 7808811998017746466}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7770046770655695305 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e8eb1f14df3dfe0418f74dd33a0b8db4,

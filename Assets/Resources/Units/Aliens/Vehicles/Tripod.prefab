@@ -2139,7 +2139,7 @@ MonoBehaviour:
       target it.
     Tags: []
     Cost: 12000
-    Value: 1200
+    Value: 3150
     UnitRole: 0
     UnitTier: 2
     UnitType: 1
@@ -2222,9 +2222,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b6cafccd0e61a4ca019c486be74ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FactoryPrefab: {fileID: 8602111571912869181, guid: 8262f74429dab07418333b3810bc5ca6,
+  FactoryPrefab: {fileID: 8602111571912869181, guid: 14061487db186fa47a15b069b80d67dc,
     type: 3}
-  ProductionTime: 90
+  ProductionTime: 80
 --- !u!114 &1045138766884431919
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2237,7 +2237,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderersToApplyTo: []
+  _renderersToApplyTo:
+  - {fileID: 4170415207674209294}
+  - {fileID: 7481918559069565883}
+  - {fileID: 1084305354506356728}
+  - {fileID: 1895008557271573096}
 --- !u!54 &8671868782450789914
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2553,7 +2557,7 @@ MonoBehaviour:
   Range: 200
   Amount: 1
   BurstReloadTime: 1.5
-  BurstAmmo: 35
+  BurstAmmo: 65
   IsChambered: 1
   FireParticle: {fileID: 0}
   LightFlash: {fileID: 0}
@@ -2669,7 +2673,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f59b3bd646115c41bdf90aa443bc971, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Multiplier: 2
+  Multiplier: 1.5
 --- !u!1 &8525545110877080513
 GameObject:
   m_ObjectHideFlags: 0

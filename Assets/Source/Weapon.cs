@@ -57,9 +57,15 @@ public class Weapon : MonoBehaviour, ITeamComponent, IWeapon
     private void Start()
     {
         if (!IsChambered) Rechamber(1f / Firerate);
-        _pool = ObjectPool.GetPool(ProjectilePrefab);
         _audioSource = GetComponent<AudioSource>();
+        SetProjectilePrefab(ProjectilePrefab);
         _currentBurstAmmo = BurstAmmo;
+    }
+
+    public void SetProjectilePrefab(GameObject newPrefab)
+    {
+        _pool = ObjectPool.GetPool(newPrefab);
+        ProjectilePrefab = newPrefab;
     }
 
     public virtual bool TryFire(ITarget intendedTarget)

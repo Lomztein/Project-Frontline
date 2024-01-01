@@ -404,9 +404,8 @@ MonoBehaviour:
   Info:
     Identifier: MarkV.Female
     Name: Medium Tank (Female)
-    Description: Female variant of the Mark V tank, featuring three heavy and two
-      light machine guns. This heavily armored tank can take on multiple opponents
-      at once.
+    Description: Female variant of the Mark V tank, featuring three heavy machine.
+      This heavily armored tank can take on multiple opponents at once.
     Tags: []
     Cost: 2000
     Value: 200
@@ -432,7 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 1000
+  MaxHealth: 1250
   Modifier: {fileID: 11400000, guid: 998fc5c61550d024286c252cfab30310, type: 2}
   DestroyOnDeath: 1
   DestroyDelay: 0
@@ -481,6 +480,7 @@ MonoBehaviour:
   Modifiers:
   - {fileID: 5364264205738522024}
   HoldRange: 40
+  HoldVariance: 2.5
   StayBehindFrontline: 0
 --- !u!54 &6196506893677585586
 Rigidbody:
@@ -732,6 +732,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6196506893320500356}
     m_Modifications:
+    - target: {fileID: 2096449486050881025, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
+        type: 3}
+      propertyPath: Damage
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2096449486050881025, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
         type: 3}
       propertyPath: Modifier
@@ -1066,6 +1071,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2096449486050881025, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
         type: 3}
+      propertyPath: Damage
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2096449486050881025, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
+        type: 3}
       propertyPath: Modifier
       value: 
       objectReference: {fileID: 11400000, guid: 1c89b0a4afb2193448b413f4230870cb,
@@ -1186,6 +1196,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6196506893320500356}
     m_Modifications:
+    - target: {fileID: 2096449486050881025, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
+        type: 3}
+      propertyPath: Damage
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2096449486050881025, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
         type: 3}
       propertyPath: Modifier

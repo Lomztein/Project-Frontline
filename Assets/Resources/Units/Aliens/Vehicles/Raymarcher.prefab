@@ -727,7 +727,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 1250
+  MaxHealth: 700
   Modifier: {fileID: 11400000, guid: 48edd60faee51d246a8009cd399ac2f2, type: 2}
   DestroyOnDeath: 1
   DestroyDelay: 0
@@ -789,7 +789,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0b6cafccd0e61a4ca019c486be74ad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FactoryPrefab: {fileID: 8913899801669703661, guid: b091d99d3a2dced4086ab2fbd438a737,
+  FactoryPrefab: {fileID: 8913899801669703661, guid: de257cb88af93994c81ba85e40c0efb5,
     type: 3}
   ProductionTime: 30
 --- !u!114 &7943332398950995689
@@ -804,7 +804,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderersToApplyTo: []
+  _renderersToApplyTo:
+  - {fileID: 9037830578395502125}
+  - {fileID: 5230892056815854769}
+  - {fileID: 1872895264244226682}
+  - {fileID: 6843217075074353873}
+  - {fileID: 2376643643809131290}
 --- !u!54 &7957725760880190125
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1499,7 +1504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 25
-  Firerate: 3
+  Firerate: 2
   Modifier: {fileID: 11400000, guid: 1c89b0a4afb2193448b413f4230870cb, type: 2}
   Speed: 150
   Range: 75
@@ -2477,7 +2482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 25
-  Firerate: 3
+  Firerate: 2
   Modifier: {fileID: 11400000, guid: 1c89b0a4afb2193448b413f4230870cb, type: 2}
   Speed: 150
   Range: 75

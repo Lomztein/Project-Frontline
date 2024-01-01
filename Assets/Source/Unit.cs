@@ -88,8 +88,7 @@ public class Unit : MonoBehaviour, IPurchasable, ICommanderComponent, ITeamCompo
             cache = new List<IWeapon>();
             foreach (GameObject weaponObj in _weapons)
             {
-                IWeapon weapon = weaponObj.GetComponent<IWeapon>();
-                if (weapon != null)
+                if (weaponObj.TryGetComponent<IWeapon>(out var weapon))
                 {
                     AddWeapon(weapon);
                 }

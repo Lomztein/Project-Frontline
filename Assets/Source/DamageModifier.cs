@@ -8,7 +8,7 @@ using UnityEngine;
 public abstract class DamageModifier : ScriptableObject
 {
     public static IEnumerable<DamageModifier> DamageModifiers => GetEnumerableCache(ref _damageModifiers, "DamageModifiers/Weapons");
-    public static IEnumerable<DamageModifier> ArmorModifiers => GetEnumerableCache(ref _armorModifiers, "DamageModifiers/Armor");
+    public static IEnumerable<DamageModifier> HealthModifiers => GetEnumerableCache(ref _armorModifiers, "DamageModifiers/Health");
 
     private static DamageModifier[] _damageModifiers;
     private static DamageModifier[] _armorModifiers;

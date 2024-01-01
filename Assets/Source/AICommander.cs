@@ -73,7 +73,8 @@ public class AICommander : Commander
             if (CanAfford(unit, Credits))
             {
                 int affordableCount = Mathf.FloorToInt(Credits / (float)GetCost(unit));
-                StartCoroutine(PurchaseMultiple(unit, affordableCount));
+                int toPlace = Mathf.Min(Random.Range(1, affordableCount + 1), MaxPurchaseAtOnce);
+                StartCoroutine(PurchaseMultiple(unit, toPlace));
             }
             else
             {
@@ -85,7 +86,7 @@ public class AICommander : Commander
 
     private IEnumerator PurchaseMultiple(GameObject unit, int amount)
     {
-        for (int i = 0; i < Mathf.Min(amount, MaxPurchaseAtOnce); i++)
+        for (int i = 0; i < amount; i++)
         {
             Vector3? position = _positionSelector.SelectPosition(this, unit, GetUnitPlacementOverlapShape(unit));
             if (position.HasValue)

@@ -36,18 +36,36 @@ public class ReplaceObjectOnSpawnUpgradeStructure : ChanceOnUnitSpawnUpgradeStru
             if (newWeapon != null) target.AddWeapon(newWeapon);
 
             WeaponRecoil recoil = target.GetComponentInChildren<WeaponRecoil>();
+            HovererBodyRecoil hRecoil = target.GetComponentInChildren<HovererBodyRecoil>();
             if (newWeapon != null && recoil.Weapon as IWeapon == weapon)
             {
-                recoil.SetWeapon(newWeapon);
-                if (newWeapon is Weapon wep)
+                if (recoil)
                 {
-                    recoil.Muzzle = wep.Muzzle;
+                    recoil.SetWeapon(newWeapon);
+                    if (newWeapon is Weapon wep)
+                    {
+                        recoil.Muzzle = wep.Muzzle;
+                    }
+                    if (newWeapon is WeaponGroup wepGroup)
+                    {
+                        recoil.Muzzle = wepGroup.transform;
+                    }
                 }
-                if (newWeapon is WeaponGroup wepGroup)
+
+                if (hRecoil)
                 {
-                    recoil.Muzzle = wepGroup.transform;
+                    hRecoil.SetWeapon(newWeapon);
+                    if (newWeapon is Weapon wep)
+                    {
+                        hRecoil.Muzzle = wep.Muzzle;
+                    }
+                    if (newWeapon is WeaponGroup wepGroup)
+                    {
+                        hRecoil.Muzzle = wepGroup.transform;
+                    }
                 }
             }
+
 
             if (target.Commander)
             {

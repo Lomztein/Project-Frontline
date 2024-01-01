@@ -28,7 +28,7 @@ public class WeaponProjectileChangeOnSpawnUpgradeStructure : ChanceOnUnitSpawnUp
 
     private void ApplyWeaponUpgrade(Weapon weapon, WeaponProjectileUpgrade upgrade)
     {
-        weapon.ProjectilePrefab = upgrade.ReplaceType;
+        weapon.SetProjectilePrefab(upgrade.ReplaceType);
         weapon.Damage *= upgrade.DamageMultiplier;
         weapon.Speed *= upgrade.SpeedMultiplier;
         weapon.Firerate *= upgrade.FirerateMultiplier;
