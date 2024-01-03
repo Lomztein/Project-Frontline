@@ -30,10 +30,10 @@ namespace UI
 
         private void Awake()
         {
-            Button.onClick.AddListener(OnClick);
+            Button.onClick.AddListener(Click);
         }
 
-        private void OnClick()
+        public void Click()
         {
             _onClick?.Invoke(_prefab);
         }
@@ -81,7 +81,7 @@ namespace UI
 
         public GameObject InstantiateTooltip()
         {
-            return UnitTooltip.Create(_unit);
+            return UnitTooltip.Create(_unit, _commander);
         }
     }
 }

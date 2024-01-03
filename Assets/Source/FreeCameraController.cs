@@ -5,54 +5,39 @@
 #endif
 
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace UnityTemplateProjects
 {
-    public class FreeCameraController : MonoBehaviour
+    public class FreeCameraController : MonoBehaviour, ICameraController
     {
         class CameraState
         {
-            public float yaw;
-            public float pitch;
-            public float roll;
-            public float x;
-            public float y;
-            public float z;
+            public Vector3 position;
+            public Quaternion rotation;
 
             public void SetFromTransform(Transform t)
             {
-                pitch = t.eulerAngles.x;
-                yaw = t.eulerAngles.y;
-                roll = t.eulerAngles.z;
-                x = t.position.x;
-                y = t.position.y;
-                z = t.position.z;
+                position = t.position;
+                rotation = t.rotation;
             }
 
             public void Translate(Vector3 translation)
             {
-                Vector3 rotatedTranslation = Quaternion.Euler(pitch, yaw, roll) * translation;
-
-                x += rotatedTranslation.x;
-                y += rotatedTranslation.y;
-                z += rotatedTranslation.z;
+                Vector3 rotatedTranslation = rotation * translation;
+                position += rotatedTranslation;
             }
 
             public void LerpTowards(CameraState target, float positionLerpPct, float rotationLerpPct)
             {
-                yaw = Mathf.Lerp(yaw, target.yaw, rotationLerpPct);
-                pitch = Mathf.Lerp(pitch, target.pitch, rotationLerpPct);
-                roll = Mathf.Lerp(roll, target.roll, rotationLerpPct);
-
-                x = Mathf.Lerp(x, target.x, positionLerpPct);
-                y = Mathf.Lerp(y, target.y, positionLerpPct);
-                z = Mathf.Lerp(z, target.z, positionLerpPct);
+                rotation = Quaternion.Slerp(rotation, target.rotation, rotationLerpPct);
+                position = Vector3.Lerp(position, target.position, positionLerpPct);
             }
 
             public void UpdateTransform(Transform t)
             {
-                t.eulerAngles = new Vector3(pitch, yaw, roll);
-                t.position = new Vector3(x, y, z);
+                t.rotation = rotation;
+                t.position = position;
             }
         }
 
@@ -67,8 +52,7 @@ namespace UnityTemplateProjects
         public float positionLerpTime = 0.2f;
 
         [Header("Rotation Settings")]
-        [Tooltip("X = Change in mouse position.\nY = Multiplicative factor for camera rotation.")]
-        public AnimationCurve mouseSensitivityCurve = new AnimationCurve(new Keyframe(0f, 0.5f, 0f, 5f), new Keyframe(1f, 2.5f, 0f, 0f));
+        public float mouseSensitivity = 3;
 
         [Tooltip("Time it takes to interpolate camera rotation 99% of the way to the target."), Range(0.001f, 1f)]
         public float rotationLerpTime = 0.01f;
@@ -82,85 +66,10 @@ namespace UnityTemplateProjects
             m_InterpolatingCameraState.SetFromTransform(transform);
         }
 
-        Vector3 GetInputTranslationDirection()
-        {
-            Vector3 direction = new Vector3();
-            if (Input.GetKey(KeyCode.W))
-            {
-                direction += Vector3.forward;
-            }
-            if (Input.GetKey(KeyCode.S))
-            {
-                direction += Vector3.back;
-            }
-            if (Input.GetKey(KeyCode.A))
-            {
-                direction += Vector3.left;
-            }
-            if (Input.GetKey(KeyCode.D))
-            {
-                direction += Vector3.right;
-            }
-            if (Input.GetKey(KeyCode.Q))
-            {
-                direction += Vector3.down;
-            }
-            if (Input.GetKey(KeyCode.E))
-            {
-                direction += Vector3.up;
-            }
-            return direction;
-        }
-
         void Update()
         {
             if (Application.isFocused)
             {
-                Vector3 translation = Vector3.zero;
-#if ENABLE_LEGACY_INPUT_MANAGER
-                // Hide and lock cursor when right mouse button pressed
-                if (Input.GetMouseButtonDown(1))
-                {
-                    Cursor.lockState = CursorLockMode.Locked;
-                }
-
-                // Unlock and show cursor when right mouse button released
-                if (Input.GetMouseButtonUp(1))
-                {
-                    Cursor.visible = true;
-                    Cursor.lockState = CursorLockMode.None;
-                }
-
-                // Rotation
-                if (Input.GetMouseButton(1))
-                {
-                    var mouseMovement = new Vector2(Input.GetAxis("Mouse X"), Input.GetAxis("Mouse Y") * (invertY ? 1 : -1));
-
-                    var mouseSensitivityFactor = mouseSensitivityCurve.Evaluate(mouseMovement.magnitude);
-
-                    m_TargetCameraState.yaw += mouseMovement.x * mouseSensitivityFactor;
-                    m_TargetCameraState.pitch += mouseMovement.y * mouseSensitivityFactor;
-                }
-
-                // Translation
-                translation = GetInputTranslationDirection() * Time.unscaledDeltaTime;
-
-                // Speed up movement when shift key held
-                if (Input.GetKey(KeyCode.LeftShift))
-                {
-                    translation *= 10.0f;
-                }
-
-                // Modify movement by a boost factor (defined in Inspector and modified in play mode through the mouse scroll wheel)
-                boost += Input.mouseScrollDelta.y * 0.2f;
-                translation *= Mathf.Pow(2.0f, boost);
-
-#elif USE_INPUT_SYSTEM
-            // TODO: make the new input system work
-#endif
-
-                m_TargetCameraState.Translate(translation);
-
                 // Framerate-independent interpolation
                 // Calculate the lerp amount, such that we get 99% of the way to our target in the specified time
                 var positionLerpPct = 1f - Mathf.Exp((Mathf.Log(1f - 0.99f) / positionLerpTime) * Time.unscaledDeltaTime);
@@ -169,6 +78,36 @@ namespace UnityTemplateProjects
 
                 m_InterpolatingCameraState.UpdateTransform(transform);
             }
+        }
+
+        public void Pan(Vector2 movement)
+        {
+            movement *= Mathf.Pow(2.0f, boost);
+            m_TargetCameraState.Translate(new Vector3(movement.x, 0f, movement.y));
+        }
+
+        public void Rotate(Vector2 rotation)
+        {
+            rotation *= mouseSensitivity;
+            m_TargetCameraState.rotation *= Quaternion.Euler(-rotation.y, rotation.x, 0f);
+            Vector3 euler = m_TargetCameraState.rotation.eulerAngles;
+            m_TargetCameraState.rotation = Quaternion.Euler(euler.x, euler.y, 0f);
+        }
+
+        public void Zoom(float amount)
+        {
+            boost += amount * 0.05f;
+        }
+
+        public void LookAt(Vector3 position)
+        {
+            m_TargetCameraState.rotation = Quaternion.LookRotation(m_TargetCameraState.position - position);
+        }
+
+        public void TransitionFrom(Vector3 position, Quaternion rotation)
+        {
+            m_TargetCameraState.position = position;
+            m_TargetCameraState.rotation = rotation;
         }
     }
 }

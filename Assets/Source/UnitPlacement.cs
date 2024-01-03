@@ -2,12 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Windows;
 using Util;
 
 public class UnitPlacement : MonoBehaviour
 {
     public bool Active => _prefab;
 
+    public PlayerHandler Handler;
     public Color CanPlaceColor;
     public Color CannotAffordColor;
     public Color CannotPlaceColor;
@@ -16,11 +19,29 @@ public class UnitPlacement : MonoBehaviour
     public Transform RangeIndicator;
     public float RangeIndicatorAlpha = .5f;
 
+    public GameObject CurrentPlacement => _prefab;
     private GameObject _prefab;
     private GameObject _model;
     private Commander _commander;
     private Unit _unit;
     private OverlapUtils.OverlapShape _unitOverlapShape;
+
+    private InputAction SelectAction;
+    private InputAction CancelAction;
+    private InputAction QuickPlaceAction;
+
+    private void Start()
+    {
+        Handler.PlayerInput.onControlsChanged += OnUpdated;
+        OnUpdated(Handler.PlayerInput);
+    }
+
+    private void OnUpdated(PlayerInput input)
+    {
+        SelectAction = input.actions["Select"];
+        CancelAction = input.actions["Cancel"];
+        QuickPlaceAction = input.actions["QuickPlace"];
+    }
 
     public void TakeUnit (GameObject prefab, Commander commander)
     {
@@ -74,7 +95,7 @@ public class UnitPlacement : MonoBehaviour
     {
         if (Active)
         {
-            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            Ray mouseRay = Handler.PointerToWorldRay();
             if (Physics.Raycast(mouseRay, out RaycastHit hit, Mathf.Infinity, TerrainLayer))
             {
                 transform.position = hit.point;
@@ -84,11 +105,11 @@ public class UnitPlacement : MonoBehaviour
                     if (_commander.CanPlace(hit.point, _commander.transform.rotation, _unitOverlapShape))
                     {
                         SetModelColor(CanPlaceColor);
-                        if (Input.GetMouseButtonDown(0) && !UIHoverChecker.IsOverUI(Input.mousePosition))
+                        if (SelectAction.triggered && !UIHoverChecker.IsOverUI(Handler.GetPointerScreenPosition()))
                         {
                             _commander.TryPurchaseAndPlaceUnit(_prefab, hit.point, _commander.transform.rotation);
 
-                            if (!Input.GetKey(KeyCode.LeftShift))
+                            if (!(QuickPlaceAction.ReadValue<float>() > 0.5f))
                             {
                                 Cancel();
                             }
@@ -104,7 +125,7 @@ public class UnitPlacement : MonoBehaviour
                     SetModelColor(CannotAffordColor);
                 }
             }
-            if (Input.GetKeyDown(KeyCode.Escape))
+            if (CancelAction.triggered)
             {
                 Cancel();
             }

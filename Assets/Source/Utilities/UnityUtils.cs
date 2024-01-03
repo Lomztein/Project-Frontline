@@ -7,6 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
 namespace Util
@@ -27,7 +28,7 @@ namespace Util
             return _mainCanvas;
         }
 
-        public static GameObject InstantiateMockGO (GameObject original)
+        public static GameObject InstantiateMockGO(GameObject original)
         {
             GameObject model = UnityEngine.Object.Instantiate(original);
             DestroyNonVisualComponents(model);
@@ -175,7 +176,7 @@ namespace Util
         public static float ComputeSimpleDrag(float speed, float dragCoeffecient)
             => dragCoeffecient * (Mathf.Pow(speed, 2) / 2f);
 
-        public static Vector3 ComputeSimpleDragForce (Vector3 velocity, float dragCoeffecient)
+        public static Vector3 ComputeSimpleDragForce(Vector3 velocity, float dragCoeffecient)
         {
             float magnitude = velocity.magnitude;
             float force = ComputeSimpleDrag(magnitude, dragCoeffecient);
@@ -214,7 +215,8 @@ namespace Util
                 newTex.SetPixels(tex.GetPixels(x, y, w, h));
                 newTex.Apply();
                 return newTex;
-            } catch (Exception ex)
+            }
+            catch (Exception ex)
             {
                 Debug.LogError(ex);
                 return tex;
@@ -362,7 +364,7 @@ namespace Util
             return bounds;
         }
 
-        public static Vector3 Flat(this Vector3 vec)
-            => new Vector3(vec.x, 0f, vec.z);
+        public static Gamepad[] GetGamepads()
+            => Gamepad.all.ToArray();
     }
 }

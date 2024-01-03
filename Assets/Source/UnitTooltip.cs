@@ -9,14 +9,12 @@ public static class UnitTooltip
 {
     private const string RESOURCE_PATH = "Tooltips/Unit";
 
-    public static GameObject Create(Unit unit)
+    public static GameObject Create(Unit unit, Commander owner)
     {
-        var com = MatchController.PlayerCommander;
-
         GameObject newTooltip = Object.Instantiate(Resources.Load<GameObject>(RESOURCE_PATH));
-        newTooltip.transform.Find("Name").GetComponentInChildren<Text>().text = unit.Name + " - " + unit.GetCost(com) + "$";
+        newTooltip.transform.Find("Name").GetComponentInChildren<Text>().text = unit.Name + " - " + owner == null ? unit.BaseCost.ToString() : unit.GetCost(owner) + "$";
         newTooltip.transform.Find("Description").GetComponentInChildren<Text>().text = unit.Description;
-        string purchaseNotes = com.GetCanAffordAndPurchaseDescription(unit.gameObject);
+        string purchaseNotes = owner == null ? null : owner.GetCanAffordAndPurchaseDescription(unit.gameObject);
         var notes = newTooltip.transform.Find("PurchaseNotes");
         if (string.IsNullOrWhiteSpace(purchaseNotes))
         {

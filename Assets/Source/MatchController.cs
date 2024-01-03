@@ -10,8 +10,6 @@ public class MatchController : MonoBehaviour
     public static float MatchStartTime => _matchStartTime;
     public static float MatchTime => Time.time - _matchStartTime;
 
-    public static Commander PlayerCommander { get; private set; }
-
     public static MatchController GetInstance()
     {
         if (_instance == null)
@@ -23,6 +21,4 @@ public class MatchController : MonoBehaviour
     {
         _matchStartTime = Time.time;
     }
-
-    public static void SetPlayerCommander(Commander cmd) => PlayerCommander = cmd;
 }

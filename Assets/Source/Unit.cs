@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Unit : MonoBehaviour, IPurchasable, ICommanderComponent, ITeamComponent
 {
@@ -79,6 +80,11 @@ public class Unit : MonoBehaviour, IPurchasable, ICommanderComponent, ITeamCompo
 
         Health = GetComponent<Health>();
         InvokeRepeating(nameof(CheckBattlefieldBounds), 10f, 10f);
+
+        if (TryGetComponent(out Rigidbody body))
+        {
+            Destroy(body);
+        }
     }
 
     private IEnumerable<IWeapon> GetWeaponCache(ref List<IWeapon> cache)

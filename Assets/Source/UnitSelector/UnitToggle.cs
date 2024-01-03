@@ -44,6 +44,6 @@ public class UnitToggle : MonoBehaviour, IHasTooltip
 
     public GameObject InstantiateTooltip()
     {
-        return UnitTooltip.Create(_unit);
+        return UnitTooltip.Create(_unit, null);
     }
 }

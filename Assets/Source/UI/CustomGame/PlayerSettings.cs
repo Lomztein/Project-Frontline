@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Util;
 
 namespace CustomGame
 {
@@ -11,11 +13,12 @@ namespace CustomGame
     {
         public InputField Name;
         public Dropdown Faction;
+        public Dropdown Player;
         public Dropdown Type;
         public Dropdown Spawn;
         public Button Units;
         public InputField Credits;
-        public InputField Handicap;
+        public Dropdown Difficulty;
         public Dropdown Team;
 
         public Dictionary<GameObject, bool> UnitAvailable = new Dictionary<GameObject, bool>();
@@ -25,8 +28,15 @@ namespace CustomGame
             MatchSettings.OnUpdated += MatchSettings_OnUpdated;
             MatchSettings_OnUpdated(MatchSettings.Current);
 
-            Faction.options = GetFactions().Select(x => new Dropdown.OptionData(x.Name)).ToList();
-            Type.options.Add(new Dropdown.OptionData("Meatbag (You)"));
+            Faction.options.Add(new Dropdown.OptionData("Random Faction"));
+            Faction.options.AddRange(GetFactions().Select(x => new Dropdown.OptionData(x.Name)).ToList());
+            Faction.options.Add(new Dropdown.OptionData("Observer"));
+
+            Player.options.Add(new Dropdown.OptionData("AI Player"));
+            Player.options.Add(new Dropdown.OptionData("Mouse + KB"));
+            Player.options.AddRange(UnityUtils.GetGamepads().Select(x => new Dropdown.OptionData($"Gamepad {GetPlayerDropdownValue(x.deviceId) - 1}")));
+
+            Type.options.Add(new Dropdown.OptionData("No AI"));
             Type.options.Add(new Dropdown.OptionData("Any AI"));
             Type.options.AddRange(GetAIProfiles().Select(x => new Dropdown.OptionData(x.Name)));
             Team.options = GetTeams().Select(x => new Dropdown.OptionData(x.Name)).ToList();
@@ -49,30 +59,67 @@ namespace CustomGame
         private IEnumerable<TeamInfo> GetTeams()
             => Resources.LoadAll<TeamInfo>("Teams");
 
+
         public void Remove()
         {
             Destroy(gameObject);
         }
 
-        public Faction GetFaction() => GetFactions().ElementAt(Faction.value);
+        public Faction GetFaction()
+        {
+            var factions = GetFactions().ToArray();
+            if (Faction.value == factions.Length + 1)
+            {
+                return null;
+            }
+            return factions[Faction.value - 1];
+        }
+
+        public int GetInputDeviceId()
+        {
+            if (Player.value == 1) return 0;
+            if (Player.value < 2) return -1;
+            int value = Player.value - 2;
+            return UnityUtils.GetGamepads()[value].deviceId;
+        }
+
+        public int GetPlayerDropdownValue(int deviceId)
+        {
+            var gamepads = UnityUtils.GetGamepads();
+
+            if (deviceId == -1) return 0;
+            if (deviceId == 0) return 1;
+            return Array.IndexOf(gamepads, gamepads.First(x => x.deviceId == deviceId)) + 2;
+        }
+
+        public PlayerHandler.InputType GetInputType()
+        {
+            var value = (PlayerHandler.InputType)(Player.value - 1);
+            return value;
+        }
 
         public MatchSettings.PlayerInfo CreatePlayerInfo ()
         {
             var playerInfo = new MatchSettings.PlayerInfo ();
             playerInfo.Name = Name.text;
             playerInfo.Team = GetTeams().ElementAt(Team.value);
+            if (Type.value == 0) playerInfo.AIProfile = null;
             if (Type.value == 1) playerInfo.AIProfile = GetRandomAIProfile();
             if (Type.value > 1) playerInfo.AIProfile = GetAIProfiles().ElementAt(Type.value - 2);
             playerInfo.SpawnIndex = Spawn.value;
             playerInfo.Faction = GetFaction();
+            playerInfo.PlayerInputType = GetInputType();
+            playerInfo.PlayerInputDeviceId = GetInputDeviceId();
             playerInfo.StartingCredits = int.Parse(Credits.text);
-            playerInfo.Handicap = float.Parse(Handicap.text);
             playerInfo.UnitAvailable = UnitAvailable;
-            foreach (var unit in playerInfo.Faction.LoadUnits())
+            if (playerInfo.Faction)
             {
-                if (!playerInfo.UnitAvailable.ContainsKey(unit))
+                foreach (var unit in playerInfo.Faction.LoadUnits())
                 {
-                    playerInfo.UnitAvailable.Add(unit, true);
+                    if (!playerInfo.UnitAvailable.ContainsKey(unit))
+                    {
+                        playerInfo.UnitAvailable.Add(unit, true);
+                    }
                 }
             }
             return playerInfo;
@@ -82,7 +129,8 @@ namespace CustomGame
         {
             Name.text = info.Name;
             Team.value = GetTeams().ToList().IndexOf(info.Team);
-            Faction.value = GetFactions().ToList().IndexOf(info.Faction);
+            Faction.value = GetFactions().ToList().IndexOf(info.Faction) + 1;
+            Player.value = GetPlayerDropdownValue(info.PlayerInputDeviceId);
             Spawn.value = info.SpawnIndex;
             if (info.AIProfile != null)
             {
@@ -90,7 +138,6 @@ namespace CustomGame
                 Type.value = val;
             }
             Credits.text = info.StartingCredits.ToString();
-            Handicap.text = info.Handicap.ToString();
         }
 
         private AIPlayerProfile GetRandomAIProfile()

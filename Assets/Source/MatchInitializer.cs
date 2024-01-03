@@ -28,7 +28,6 @@ public class MatchInitializer : MonoBehaviour
 
         var teams = settings.Players.Select(x => x.Team).ToArray();
         var teamObjects = new Team[teams.Length];
-        var players = settings.Players.ToArray();
 
         var spawnLines = settings.MapInfo.Shape.GenerateSpawnVolumes(settings.MapInfo).ToArray();
 
@@ -38,20 +37,37 @@ public class MatchInitializer : MonoBehaviour
             teamObjects[i] = team;
         }
 
+        if (!settings.Players.Any(x => x.IsPlayer))
+        {
+            var defaultPlayer = new MatchSettings.PlayerInfo();
+            defaultPlayer.PlayerInputType = PlayerHandler.InputType.MouseAndKeyboard;
+            defaultPlayer.PlayerInputDeviceId = 0;
+            defaultPlayer.Id = uint.MaxValue - 1;
+            settings.AddPlayer(defaultPlayer);
+        }
+
+        var players = settings.Players.ToArray();
+        List<Commander> commanders = new List<Commander>();
         for (int i = 0; i < players.Length; i++)
         {
-            int spawn = Mathf.Min(players[i].SpawnIndex, spawnLines.Length - 1);
-            int team = Array.IndexOf(teams, players[i].Team);
-            var cospawns = players.Where(x => x.SpawnIndex == spawn).ToArray();
-            int spawnIndex = Array.IndexOf(cospawns, players[i]);
+            if (!players[i].IsObserver)
+            {
+                int spawn = Mathf.Min(players[i].SpawnIndex, spawnLines.Length - 1);
+                int team = Array.IndexOf(teams, players[i].Team);
+                var cospawns = players.Where(x => x.SpawnIndex == spawn).ToArray();
+                int spawnIndex = Array.IndexOf(cospawns, players[i]);
 
-            Vector3 position = spawnLines[spawn].Position;
-            Quaternion rotation = spawnLines[spawn].Rotation;
+                Vector3 position = spawnLines[spawn].Position;
+                Quaternion rotation = spawnLines[spawn].Rotation;
 
-            Vector3 playerPosition = spawnLines[spawn].GetSpawnPoint(spawnIndex, cospawns.Length);
-            Commander com = SpawnCommander(players[i], playerPosition, rotation);
-            com.transform.SetParent(transform, true);
+                Vector3 playerPosition = spawnLines[spawn].GetSpawnPoint(spawnIndex, cospawns.Length);
+                Commander com = SpawnCommander(players[i], playerPosition, rotation);
+                com.transform.SetParent(transform, true);
+                commanders.Add(com);
+            }
         }
+
+        InitializePlayers(settings, commanders);
 
         for (int i = 0; i < teams.Length; i++)
         {
@@ -68,6 +84,27 @@ public class MatchInitializer : MonoBehaviour
         StartCoroutine(PostInit());
     }
 
+    public void InitializePlayers (MatchSettings settings, IEnumerable<Commander> commanders)
+    {
+        var players = settings.Players.Where(x => x.IsPlayer).ToList();
+        var viewPorts = CameraUtils.ComputeViewportRects(players.Count).ToArray();
+        var playerCommanders = players.Select(x => commanders.FirstOrDefault(y => y.OwnerId == x.Id)).ToArray();
+        var playerPositions = playerCommanders.Select(x => x == null ? Vector3.zero : x.Fortress.position).Select(x => new Vector3(-x.z, x.y)).ToArray();
+        viewPorts = CameraUtils.MatchPositions(viewPorts, playerPositions);
+
+        PlayerHandler[] handlers = new PlayerHandler[players.Count];
+        handlers[0] = GameObject.Find("DefaultPlayerHandler").GetComponent<PlayerHandler>();
+        for (int i = 1; i < players.Count; i++)
+        {
+            handlers[i] = PlayerHandler.CreateNewPlayer();
+        }
+
+        for (int i = 0; i < handlers.Length; i++)
+        {
+            handlers[i].Assign(playerCommanders[i], players[i].PlayerInputType, players[i].PlayerInputDeviceId, viewPorts[i]);
+        }
+    }
+
     private Team SpawnTeam (TeamInfo teamInfo, Vector3 position, Quaternion rotation)
     {
         GameObject teamObj = Instantiate(TeamPrefab, position, rotation);
@@ -79,7 +116,7 @@ public class MatchInitializer : MonoBehaviour
     private Commander SpawnCommander(MatchSettings.PlayerInfo info, Vector3 position, Quaternion rotation)
     {
         GameObject commanderObj;
-        if (info.IsPlayer)
+        if (info.AIProfile == null)
         {
             commanderObj = Instantiate(PlayerPrefab, position, rotation);
         }
@@ -94,6 +131,7 @@ public class MatchInitializer : MonoBehaviour
             aiCom.SaveTimeBias = info.AIProfile.SaveTimeBias;
         }
         Commander commander = commanderObj.GetComponent<Commander>();
+        commander.OwnerId = info.Id;
         commander.Fortress = Instantiate(info.Faction.HeadquartersPrefab, commanderObj.transform).transform;
         commander.Credits = info.StartingCredits;
         commander.Name = info.Name;
@@ -103,12 +141,6 @@ public class MatchInitializer : MonoBehaviour
         info.Team.ApplyTeam(commanderObj);
         commander.AssignCommander(commanderObj);
 
-        if (info.IsPlayer)
-        {
-            AttachPlayerToPurchaseMenu(commander);
-            MatchController.SetPlayerCommander(commander);
-            Camera.main.GetComponent<TopDownCameraController>().MoveToHQ();
-        }
         return commander;
     }
 
@@ -116,14 +148,6 @@ public class MatchInitializer : MonoBehaviour
     {
         yield return new WaitForFixedUpdate();
         MatchSettings.Current.ProductionBehaviour.OnMatchInitialized();
-    }
-
-    private void AttachPlayerToPurchaseMenu (Commander player)
-    {
-        UnitPurchaseMenu menu = GameObject.Find("PurchaseMenu").GetComponent<UnitPurchaseMenu>();
-        menu.Commander = player;
-        menu.UpdateActive();
-        FindObjectOfType<CreditsDisplay>().Commander = player;
     }
 
     private void OnDrawGizmos()

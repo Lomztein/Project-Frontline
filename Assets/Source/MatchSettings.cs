@@ -10,6 +10,7 @@ using UnityEngine.Assertions;
 public class MatchSettings : ScriptableObject
 {
     public const string PATH_TO_DEFAULT = "Match Settings/Default";
+    private static uint _playerIndex;
     public MapInfo MapInfo;
 
     private static MatchSettings _current;
@@ -60,11 +61,7 @@ public class MatchSettings : ScriptableObject
     
     public void AddPlayer(PlayerInfo info)
     {
-        if (info.IsPlayer == true)
-        {
-            // Assert that there isn't already a profile for the actual player.
-            Assert.IsNull(_players.FirstOrDefault(x => x.IsPlayer == true));
-        }
+        info.Id = _playerIndex++;
         _players.Add(info);
     }
 
@@ -75,26 +72,27 @@ public class MatchSettings : ScriptableObject
     public class PlayerInfo
     {
         public string Name;
+        public uint Id;
 
         public Faction Faction;
         public TeamInfo Team;
         public Dictionary<GameObject, bool> UnitAvailable = new Dictionary<GameObject, bool>();
+        public bool IsObserver => Faction == null;
 
-        public int SpawnIndex;
-        public Vector2 Position;
+        public int SpawnIndex { get => IsObserver ? -1 : _spawnIndex; set => _spawnIndex = value; }
+        [SerializeField] private int _spawnIndex;
+
         public int StartingCredits;
         public float Handicap;
 
         public AIPlayerProfile AIProfile;
-        public bool IsPlayer => AIProfile == null;
+        public bool HasAI => AIProfile != null;
+
+        public bool IsPlayer => PlayerInputDeviceId != -1;
+        public PlayerHandler.InputType PlayerInputType = PlayerHandler.InputType.MouseAndKeyboard;
+        public int PlayerInputDeviceId = -1;
 
         public string GenerateDefaultName()
-        {
-            if (IsPlayer)
-            {
-                return "Player";
-            }
-            return AIProfile.Name + " " + Faction.Name;
-        }
+            => "{Type} of {Faction}";
     }
 }

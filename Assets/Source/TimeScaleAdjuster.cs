@@ -5,23 +5,49 @@ using UnityEngine.UI;
 
 public class TimeScaleAdjuster : MonoBehaviour
 {
+    public static float TimeScale
+    {
+        get => Time.timeScale;
+        set => Time.timeScale = value;
+    }
+
     private const int BASE_FIXED_TIME_STEP_FREQUENCY = 50;
 
+    public TMPro.TMP_Dropdown ModeDropdown;
     public Text PercentText;
     public Slider Slider;
-    public Toggle Toggle;
+
+    private FloatMovingWindow FramerateTracker = new FloatMovingWindow(10);
+    public float TargetMinFramerate;
+    public float TargetMaxFrameTime => 1f / TargetMinFramerate;
+    public float AutoAdjustP;
 
     void Update()
     {
-        if (Toggle.isOn)
+        FramerateTracker.Register(Time.deltaTime);
+
+        if (ModeDropdown.value == 0)
         {
-            Time.timeScale = Slider.value;
+            TimeScale = 1f;
         }
-        else
+        if (ModeDropdown.value == 1)
         {
-            Time.timeScale = 1f;
+            TimeScale = Slider.value;
         }
-        Time.fixedDeltaTime = Mathf.Max(Time.timeScale / BASE_FIXED_TIME_STEP_FREQUENCY, 0.00001f);
-        PercentText.text = Slider.value.ToString("P0");
+        if (ModeDropdown.value == 2)
+        {
+            AutoAdjust(FramerateTracker.Average());
+        }
+
+
+        Slider.value = TimeScale;
+        PercentText.text = TimeScale.ToString("P0");
+    }
+
+    private void AutoAdjust(float dt)
+    {
+        float error = dt - TargetMaxFrameTime;
+        TimeScale -= error * AutoAdjustP;
+        TimeScale = Mathf.Clamp(TimeScale, 0.1f, 1f);
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class TopDownCameraController : MonoBehaviour
+public abstract class TopDownCameraController : MonoBehaviour, ICameraController
 {
     public Vector2 PanSpeedMinMax;
     public float PanMargin;
@@ -13,63 +13,67 @@ public abstract class TopDownCameraController : MonoBehaviour
     public float ZoomSpeed;
     public float ZoomLerpSpeed;
 
+    public PlayerHandler Handler;
+
     private void Update()
     {
         if (Application.isFocused)
         {
             Vector3 direction = GetPanDirection();
-            float panSpeed = Mathf.Lerp(PanSpeedMinMax.x, PanSpeedMinMax.y, _zoomLevel);
-            transform.position += panSpeed * Time.deltaTime * (Quaternion.Euler(0f, transform.eulerAngles.y, 0f) * direction);
-
-            _targetZoomLevel += Input.GetAxis("Mouse ScrollWheel") * ZoomSpeed * Time.deltaTime;
-            _targetZoomLevel = Mathf.Clamp01(_targetZoomLevel);
-
-            _zoomLevel = Mathf.Lerp(_zoomLevel, _targetZoomLevel, ZoomLerpSpeed * Time.deltaTime);
-
+            Pan(direction * Time.deltaTime);
             UpdateZoom(_zoomLevel);
-
-            if (MatchController.PlayerCommander)
-            {
-                if (Input.GetKeyDown(KeyCode.F))
-                {
-                    MoveToFrontline();
-                }
-                if (Input.GetKeyDown(KeyCode.H))
-                {
-                    MoveToHQ();
-                }
-            }
         }
-    }
-
-    public void MoveToHQ ()
-    {
-        float y = transform.position.y;
-        transform.position = MatchController.PlayerCommander.transform.position;
-        transform.Translate(Vector3.back * y);
-    }
-
-    public void MoveToFrontline ()
-    {
-        float y = transform.position.y;
-        transform.position = MatchController.PlayerCommander.Frontline.Position;
-        transform.Translate(Vector3.back * y);
     }
 
     protected abstract void UpdateZoom(float zoomLevel);
 
     private Vector3 GetPanDirection ()
     {
-        Vector2 mousePos = Input.mousePosition;
+        Vector2 mousePos = Handler.GetPointerScreenPosition();
         float hor = 0f;
         float ver = 0f;
 
-        if (mousePos.x < PanMargin) hor = -1;
-        if (mousePos.x > Screen.width - PanMargin) hor = 1;
+        Rect screenRect = Handler.ViewportRectToScreenSpace();
 
-        if (mousePos.y < PanMargin) ver = -1;
-        if (mousePos.y > Screen.height - PanMargin) ver = 1;
+        if (mousePos.x < screenRect.x + PanMargin) hor = -1;
+        if (mousePos.x > screenRect.x + screenRect.width - PanMargin) hor = 1;
 
-        return new Vector3(hor, 0f, ver) + new Vector3(Input.GetAxis("Horizontal"), 0f, Input.GetAxis("Vertical"));
+        if (mousePos.y < screenRect.y + PanMargin) ver = -1;
+        if (mousePos.y > screenRect.y + screenRect.height - PanMargin) ver = 1;
+
+        return new Vector3(hor, ver, 0f);
+    }
+
+    public void Pan(Vector2 movement)
+    {
+        float panSpeed = Mathf.Lerp(PanSpeedMinMax.x, PanSpeedMinMax.y, _zoomLevel);
+        Vector3 xzMovement = new Vector3(movement.x, 0f, movement.y);
+        xzMovement = panSpeed * (Quaternion.Euler(0f, transform.eulerAngles.y, 0f) * xzMovement);
+        transform.position += xzMovement;
+    }
+
+    public void Rotate(Vector2 rotation)
+    {
+    }
+
+    public void Zoom(float amount)
+    {
+        _targetZoomLevel += amount * ZoomSpeed;
+        _targetZoomLevel = Mathf.Clamp01(_targetZoomLevel);
+
+        _zoomLevel = Mathf.Lerp(_zoomLevel, _targetZoomLevel, ZoomLerpSpeed * Time.deltaTime);
+    }
+
+    public void LookAt(Vector3 position)
+    {
+        float y = transform.position.y;
+        transform.position = position;
+        transform.Translate(Vector3.back * y);
+    }
+
+    public void TransitionFrom(Vector3 position, Quaternion rotation)
+    {
+        transform.position = position;
+        transform.rotation = rotation;
     }
 }

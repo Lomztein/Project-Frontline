@@ -11,6 +11,7 @@ using Util;
 public class Commander : MonoBehaviour, ITeamComponent
 {
     public string Name;
+    public uint OwnerId;
     public float BuildRadius;
 
     public int Credits;

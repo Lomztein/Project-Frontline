@@ -42,29 +42,6 @@ public class ArtilleryTurretAdapter : MonoBehaviour, ITurret
             Vector3 point = matrix.MultiplyPoint(dir * 10);
 
             _turret.AimTowards(point);
-
-            DebugDrawTrajectory(Muzzle.position, matrix.MultiplyVector(dir), ProjectileSpeed, ProjectileGravity);
-        }
-    }
-
-    private void DebugDrawTrajectory(Vector3 start, Vector3 dir, float speed, float gravity)
-    {
-        int iters = 50000;
-        float distPerIter = 0.1f;
-        float timePerIter = distPerIter / speed;
-
-        Vector3 pos = start;
-        Vector3 vel = dir * speed;
-        Vector3 prevPos = pos;
-
-        while(true && iters-- > 0)
-        {
-            vel += gravity * timePerIter * Vector3.down;
-            pos += vel * timePerIter;
-            Debug.DrawLine(pos, prevPos);
-            if (pos.y < 0f)
-                break;
-            prevPos = pos;
         }
     }
 
