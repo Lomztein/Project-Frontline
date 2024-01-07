@@ -17,6 +17,7 @@ public class UnitPurchaseMenuGamepadAdapter : MonoBehaviour
     public UnitButton[] UnitButtons;
 
     public InputAction SelectAction;
+    public InputAction CancelAction;
     public InputAction SwitchTabAction;
     public InputAction SwitchChangeSelectionAction;
 
@@ -47,6 +48,7 @@ public class UnitPurchaseMenuGamepadAdapter : MonoBehaviour
     private void OnUpdated(PlayerInput input)
     {
         SelectAction = input.actions["Select"];
+        CancelAction = input.actions["Cancel"];
         SwitchTabAction = input.actions["ChangeTab"];
         SwitchChangeSelectionAction = input.actions["ChangeSelection"];
     }
@@ -56,6 +58,11 @@ public class UnitPurchaseMenuGamepadAdapter : MonoBehaviour
         if (SelectAction.triggered)
         {
             ForceClickUnitButton(UnitButtons[UnitIndex]);
+            ForceTooltipToCurrentUnitButton();
+        }
+        if (CancelAction.triggered)
+        {
+            Handler.Tooltip.ResetForcedTooltip();
         }
 
         if (SwitchTabAction.triggered)
@@ -69,6 +76,13 @@ public class UnitPurchaseMenuGamepadAdapter : MonoBehaviour
             int direction = Mathf.RoundToInt(SwitchChangeSelectionAction.ReadValue<float>());
             SwitchUnit(direction);
         }
+    }
+
+    private void ForceTooltipToCurrentUnitButton()
+    {
+        Vector3 buttonPosition = Handler.UICamera.WorldToScreenPoint(UnitButtons[UnitIndex].transform.position);
+        buttonPosition = Handler.ScreenPointToPlayerScreenPoint(buttonPosition);
+        Handler.Tooltip.ForceTooltip(UnitButtons[UnitIndex], buttonPosition + new Vector3(-(256/2+12), 32));
     }
 
     public void SwitchTab(int direction)
@@ -96,6 +110,7 @@ public class UnitPurchaseMenuGamepadAdapter : MonoBehaviour
         if (Placement.CurrentPlacement)
         {
             ForceClickUnitButton(UnitButtons[UnitIndex]);
+            ForceTooltipToCurrentUnitButton();
         }
     }
 

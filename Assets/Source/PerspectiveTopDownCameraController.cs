@@ -7,13 +7,15 @@ public class PerspectiveTopDownCameraController : TopDownCameraController
     public Vector2 HeightMinMax;
     public Vector2 PitchMinMax;
 
-    protected override void UpdateZoom(float zoomLevel)
+    protected override void UpdateCamera(float df)
     {
-        Vector3 position = transform.position;
-        position.y = Mathf.Lerp(HeightMinMax.x, HeightMinMax.y, zoomLevel);
-        transform.position = position;
+        Vector3 position = CurrentPosition;
+        float height = Mathf.Lerp(HeightMinMax.x, HeightMinMax.y, ZoomLevel);
+        float pitch = Mathf.Lerp(PitchMinMax.x, PitchMinMax.y, ZoomLevel);
+        Quaternion rotation = Quaternion.Euler(pitch, CurrentAngle + 90f, 0f);
+        Vector3 direction = rotation * (Vector3.back * height);
 
-        float pitch = Mathf.Lerp(PitchMinMax.x, PitchMinMax.y, zoomLevel);
-        transform.rotation = Quaternion.Euler(pitch, 90f, 0f);
+        transform.position = position + direction;
+        transform.rotation = rotation;
     }
 }

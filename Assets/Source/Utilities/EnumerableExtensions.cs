@@ -12,5 +12,20 @@ namespace Util
         {
             yield return obj;
         }
+
+        public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> collection)
+        {
+            Random random = new Random();
+            var array = collection.ToArray();
+            int n = array.Length;
+            while (n > 1)
+            {
+                int k = random.Next(n--);
+                T temp = array[n];
+                array[n] = array[k];
+                array[k] = temp;
+            }
+            return array;
+        }
     }
 }

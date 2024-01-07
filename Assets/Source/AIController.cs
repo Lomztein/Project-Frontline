@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public abstract class AIController : MonoBehaviour, IController
 {
@@ -16,6 +17,7 @@ public abstract class AIController : MonoBehaviour, IController
 
     public ITarget CurrentTarget { get; private set; }
     protected bool ForcedTarget { get; private set; }
+
 
     public float AcquireTargetRange;
     public float LooseTargetRange;
@@ -130,6 +132,7 @@ public abstract class AIController : MonoBehaviour, IController
     {
         Team = faction;
         TargetLayer = faction.GetOtherLayerMasks();
+        LooseTarget();
     }
 
     protected Vector3 GetTargetLocalPosition() => CurrentTarget.GetCenter() - transform.position;
@@ -201,16 +204,42 @@ public abstract class AIController : MonoBehaviour, IController
         CurrentTarget = target;
     }
 
+    public bool IsCurrentTargetValid()
+    {
+        if (!CurrentTarget.ExistsAndValid())
+        {
+            return false;
+        }
+        GameObject targetObject = CurrentTarget.GetGameObject();
+        if (targetObject != null)
+        {
+            if ((TargetLayer & (1 << targetObject.layer)) == 0)
+            {
+                return false;
+            }
+            if (_targetFinder.Filter(targetObject))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private bool IsCurrentTargetOutOfRangeOrForced()
+    {
+        return (GetTargetSquareDistance() > LooseTargetRange * LooseTargetRange) || ForcedTarget;
+    }
+
     protected virtual void FixedUpdate()
     {
-        if (CurrentTarget.ExistsAndValid())
+        if (IsCurrentTargetValid())
         {
             Aim();
             Attack();
 
-            if (CurrentTarget.ExistsAndValid())
+            if (IsCurrentTargetValid())
             {
-                if ((GetTargetSquareDistance() > LooseTargetRange * LooseTargetRange) && ForcedTarget != true || !CanHitOrNoTurret(CurrentTarget.GetCenter()))
+                if (IsCurrentTargetOutOfRangeOrForced() || !CanHitOrNoTurret(CurrentTarget.GetCenter()))
                 {
                     CurrentTarget = null;
                     FindNewTarget();

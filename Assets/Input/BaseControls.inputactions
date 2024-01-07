@@ -42,6 +42,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "CameraReset",
+                    "type": "Button",
+                    "id": "cb7ae3c1-7b6f-40bf-a594-1aa16e0cc5dc",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=2)",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Select",
                     "type": "Button",
                     "id": "2afe1642-2df0-4a53-bd0a-a7b47a67018d",
@@ -175,29 +184,51 @@
                     "id": "d101e11f-ec87-4a57-b723-5eedd45548ed",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "StickDeadzone",
                     "groups": "",
                     "action": "CameraPan",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "9e389850-b5bc-4496-a595-ea0c734c9c04",
+                    "name": "Mouse",
+                    "id": "f28d8cb9-ee39-47c2-93c8-8f77758e1642",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraRotate",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "21db2a20-3a26-4836-9727-716bef695cda",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraRotate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "0f338402-3f74-4f5d-a452-7b78ead1c4f5",
                     "path": "<Mouse>/delta",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "CameraRotate",
                     "isComposite": false,
-                    "isPartOfComposite": false
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
                     "id": "f77be112-57d5-4043-a24d-450f322f221b",
                     "path": "<Gamepad>/leftStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "StickDeadzone,ScaleVector2(x=12,y=12)",
                     "groups": "",
                     "action": "CameraRotate",
                     "isComposite": false,
@@ -406,7 +437,7 @@
                     "id": "7f0af6da-d149-4555-8011-cc7678b0b88c",
                     "path": "1DAxis",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "Scale(factor=5)",
                     "groups": "",
                     "action": "CameraZoom",
                     "isComposite": true,
@@ -585,6 +616,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "SnapToGrid",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "baefedff-f1d5-446b-8152-934b165bb424",
+                    "path": "<Mouse>/middleButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraReset",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8d302250-ac3a-4b50-ad5c-119492873f92",
+                    "path": "<Gamepad>/leftStickPress",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CameraReset",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

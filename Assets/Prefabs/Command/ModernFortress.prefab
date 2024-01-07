@@ -80,7 +80,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 25000
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -98,6 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Commander: {fileID: 0}
+  Unit: {fileID: 0}
   IncomePerSecond: 25
 --- !u!65 &5462264894719349773
 BoxCollider:
@@ -557,6 +557,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3616443299717698607}
     m_Modifications:
+    - target: {fileID: 72682910483269686, guid: 382bdb9c6fbfd5f4c93c7e9af6923193,
+        type: 3}
+      propertyPath: AllowAlliedTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 798725960484653047, guid: 382bdb9c6fbfd5f4c93c7e9af6923193,
         type: 3}
       propertyPath: m_RootOrder
@@ -651,6 +656,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3616443299717698607}
     m_Modifications:
+    - target: {fileID: 72682910483269686, guid: 382bdb9c6fbfd5f4c93c7e9af6923193,
+        type: 3}
+      propertyPath: AllowAlliedTarget
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 798725960484653047, guid: 382bdb9c6fbfd5f4c93c7e9af6923193,
         type: 3}
       propertyPath: m_RootOrder

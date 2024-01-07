@@ -15,8 +15,12 @@ public class CameraControl : MonoBehaviour
     public InputAction CameraRotate;
     public InputAction CameraZoom;
     public InputAction CameraChange;
+    public InputAction CameraReset;
     public InputAction CameraToHQ;
     public InputAction CameraToFrontline;
+
+    private float _cameraResetBeginTime;
+    public float CameraResetTapLimit = 0.1f;
 
     private void Start()
     {
@@ -26,12 +30,45 @@ public class CameraControl : MonoBehaviour
 
     private void OnUpdate(PlayerInput input)
     {
+        if (CameraPan != null)
+        {
+            CameraReset.performed -= CameraReset_Action;
+            CameraReset.canceled -= CameraReset_Action;
+        }
+
         CameraPan = input.actions["CameraPan"];
         CameraRotate = input.actions["CameraRotate"];
         CameraZoom = input.actions["CameraZoom"];
         CameraChange = input.actions["CameraChange"];
+        CameraReset = input.actions["CameraReset"];
         CameraToHQ = input.actions["CameraToHQ"];
         CameraToFrontline = input.actions["CameraToFrontline"];
+
+        CameraReset.performed += CameraReset_Action;
+        CameraReset.canceled += CameraReset_Action;
+    }
+
+    private void CameraReset_Action(InputAction.CallbackContext ctx)
+    {
+        if (ctx.phase == InputActionPhase.Canceled && ctx.duration < CameraResetTapLimit)
+        {
+            CameraSelector.CurrentCameraController.Reset();
+        }
+
+        Debug.Log(ctx.phase);
+        if (PlayerHandler.PlayerInputType == PlayerHandler.InputType.MouseAndKeyboard)
+        {
+            if (ctx.phase == InputActionPhase.Performed)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            if (ctx.phase == InputActionPhase.Canceled)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+        }
     }
 
     private void Update()
@@ -40,7 +77,8 @@ public class CameraControl : MonoBehaviour
         Vector2 rotate = CameraRotate.ReadValue<Vector2>() * Time.deltaTime;
         float zoom = CameraZoom.ReadValue<float>() * Time.deltaTime;
 
-        bool change = CameraChange.triggered && CameraChange.ReadValue<float>() > 0.5f;
+        bool change = CameraChange.triggered;
+        bool reset = CameraReset.triggered;
         bool toHq = CameraToHQ.triggered;
         bool toFrontline = CameraToFrontline.triggered;
 
@@ -66,6 +104,10 @@ public class CameraControl : MonoBehaviour
         {
             int value = Mathf.RoundToInt(Mathf.Sign(CameraChange.ReadValue<float>()));
             CameraSelector.SelectCamera(CameraSelector.SelectedIndex + value);
+        }
+
+        if (reset && Time.time > _cameraResetBeginTime + CameraResetTapLimit)
+        {
         }
 
     }

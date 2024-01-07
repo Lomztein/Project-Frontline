@@ -26,15 +26,14 @@ namespace CustomGame
         private void Awake()
         {
             MatchSettings.OnUpdated += MatchSettings_OnUpdated;
+            InputSystem.onDeviceChange += InputSystem_OnDeviceChange;
             MatchSettings_OnUpdated(MatchSettings.Current);
 
             Faction.options.Add(new Dropdown.OptionData("Random Faction"));
             Faction.options.AddRange(GetFactions().Select(x => new Dropdown.OptionData(x.Name)).ToList());
             Faction.options.Add(new Dropdown.OptionData("Observer"));
 
-            Player.options.Add(new Dropdown.OptionData("AI Player"));
-            Player.options.Add(new Dropdown.OptionData("Mouse + KB"));
-            Player.options.AddRange(UnityUtils.GetGamepads().Select(x => new Dropdown.OptionData($"Gamepad {GetPlayerDropdownValue(x.deviceId) - 1}")));
+            InputSystem_OnDeviceChange(null, InputDeviceChange.Added);
 
             Type.options.Add(new Dropdown.OptionData("No AI"));
             Type.options.Add(new Dropdown.OptionData("Any AI"));
@@ -42,9 +41,19 @@ namespace CustomGame
             Team.options = GetTeams().Select(x => new Dropdown.OptionData(x.Name)).ToList();
         }
 
+        private void InputSystem_OnDeviceChange(InputDevice arg1, InputDeviceChange arg2)
+        {
+            Player.options.Clear();
+            Player.options.Add(new Dropdown.OptionData("AI Player"));
+            Player.options.Add(new Dropdown.OptionData("Mouse + KB"));
+            Player.options.AddRange(UnityUtils.GetGamepads().Select(x => new Dropdown.OptionData($"Gamepad {GetPlayerDropdownValue(x.deviceId) - 1}")));
+            Player.value = Mathf.Min(Player.value, Player.options.Count - 1);
+        }
+
         private void OnDestroy()
         {
             MatchSettings.OnUpdated -= MatchSettings_OnUpdated;
+            InputSystem.onDeviceChange -= InputSystem_OnDeviceChange;
         }
 
         private void MatchSettings_OnUpdated(MatchSettings obj)
@@ -68,6 +77,10 @@ namespace CustomGame
         public Faction GetFaction()
         {
             var factions = GetFactions().ToArray();
+            if (Faction.value == 0)
+            {
+                return factions[UnityEngine.Random.Range(0, factions.Length)];
+            }
             if (Faction.value == factions.Length + 1)
             {
                 return null;
@@ -94,8 +107,9 @@ namespace CustomGame
 
         public PlayerHandler.InputType GetInputType()
         {
-            var value = (PlayerHandler.InputType)(Player.value - 1);
-            return value;
+            if (Player.value == 0) return PlayerHandler.InputType.MouseAndKeyboard;
+            if (Player.value == 1) return PlayerHandler.InputType.MouseAndKeyboard;
+            return PlayerHandler.InputType.Gamepad;
         }
 
         public MatchSettings.PlayerInfo CreatePlayerInfo ()

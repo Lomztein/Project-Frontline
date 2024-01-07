@@ -72,13 +72,20 @@ public static class UnitPowerUtil
 
     private static float GetUnitRange(Unit unit)
     {
-        AIController controller = unit.GetComponent<AIController>();
-        if (controller != null)
+        AIController[] controllers = unit.GetComponentsInChildren<AIController>();
+        float sum = 0f;
+
+        foreach (var controller in controllers)
         {
             if (controller is AttackerController attacker)
-                return attacker.HoldRange;
-            return controller.AttackRange;
+            {
+                sum += attacker.HoldRange;
+            }
+            else
+            {
+                sum += controller.AttackRange;
+            }
         }
-        return 0f;
+        return sum / controllers.Length;
     }
 }

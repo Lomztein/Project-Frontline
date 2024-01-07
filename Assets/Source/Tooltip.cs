@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Tooltip : MonoBehaviour
@@ -12,15 +13,18 @@ public class Tooltip : MonoBehaviour
 
     public GraphicRaycaster Raycaster;
     public EventSystem EventSystem;
+    public PlayerHandler PlayerHandler;
 
     private IHasTooltip _currentTooltip;
+    private IHasTooltip _forcedTooltip;
+    private Vector2 _forcedTooltipPosition;
 
     void Update()
     {
         UpdateTooltip();
 
         Vector2 flip = new Vector2();
-        Vector2 pos = Input.mousePosition;
+        Vector2 pos = GetTooltipPosition();
         Rect rect = TooltipTransform.rect;
 
         if (pos.x + rect.width > Screen.width)
@@ -32,13 +36,45 @@ public class Tooltip : MonoBehaviour
             flip.y = rect.height + Offset.y * 2;
         }
 
-        TooltipTransform.position = pos + Offset + flip;
+        TooltipTransform.localPosition = pos + Offset + flip;
+    }
+
+    public void ForceTooltip(IHasTooltip tooltip)
+        => ForceTooltip(tooltip, GetTooltipPosition());
+
+    public void ForceTooltip(IHasTooltip tooltip, Vector2 screenPosition)
+    {
+        _forcedTooltip = tooltip;
+        _forcedTooltipPosition = screenPosition;
+    }
+
+    public void ResetForcedTooltip()
+    {
+        _forcedTooltip = null;
+        _forcedTooltipPosition = Vector2.zero;
+    }
+
+    private Vector2 GetTooltipPosition()
+    {
+        if (_forcedTooltip != null)
+        {
+            return _forcedTooltipPosition;
+        }
+
+        if (PlayerHandler)
+        {
+            return PlayerHandler.ScreenPointToPlayerScreenPoint(PlayerHandler.GetPointerScreenPosition());
+        }
+        else
+        {
+            return Mouse.current.position.ReadValue();
+        }
     }
 
     private void UpdateTooltip ()
     {
         PointerEventData data = new PointerEventData(EventSystem);
-        data.position = Input.mousePosition;
+        data.position = Mouse.current.position.ReadValue();
 
         List<RaycastResult> results = new List<RaycastResult>();
 
@@ -49,8 +85,7 @@ public class Tooltip : MonoBehaviour
 
         foreach (RaycastResult result in results)
         {
-            IHasTooltip tooltip = result.gameObject.GetComponent<IHasTooltip>();
-            if (tooltip != null)
+            if (result.gameObject.TryGetComponent<IHasTooltip>(out var tooltip))
             {
                 any = true;
                 if (tooltip != _currentTooltip)
@@ -60,6 +95,17 @@ public class Tooltip : MonoBehaviour
                 }
                 _currentTooltip = tooltip;
             }
+        }
+
+        if (_forcedTooltip != null)
+        {
+            if (_currentTooltip != _forcedTooltip)
+            {
+                changed = true;
+                ClearTooltip();
+            }
+            any = true;
+            _currentTooltip = _forcedTooltip;
         }
 
         if (any == false)
@@ -75,6 +121,8 @@ public class Tooltip : MonoBehaviour
         {
             GameObject newTooltip = _currentTooltip.InstantiateTooltip();
             newTooltip.transform.SetParent(TooltipParent);
+            newTooltip.transform.localScale = Vector3.one;
+            newTooltip.transform.localPosition = Vector3.zero;
         }
     }
 

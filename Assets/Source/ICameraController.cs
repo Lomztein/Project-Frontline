@@ -12,5 +12,7 @@ public interface ICameraController
 
     void LookAt(Vector3 position);
 
+    void Reset();
+
     void TransitionFrom(Vector3 position, Quaternion rotation);
 }

@@ -52,6 +52,12 @@ public class TargetFinder
     public void RemoveFilter(Predicate<GameObject> filter)
         => _filters.Remove(filter);
 
+    public bool Filter(GameObject target)
+        => _filters.Any(x => x(target) == false);
+
+    public float Evaluate(Vector3 center, GameObject target)
+        => _evaluators.Sum(x => x(center, target));
+
     public GameObject FindTarget (Vector3 center, float range, LayerMask layerMask)
     {
         Collider[] colliders = Physics.OverlapSphere(center, range, layerMask);
@@ -61,12 +67,12 @@ public class TargetFinder
 
         foreach (Collider col in colliders)
         {
-            if (_filters.Any(x => x(col.gameObject) == false))
+            if (Filter(col.gameObject))
             {
                 continue;
             }
 
-            float value = _evaluators.Sum(x => x(center, col.gameObject));
+            float value = Evaluate(center, col.gameObject);
             if (value > bestValue)
             {
                 bestValue = value;

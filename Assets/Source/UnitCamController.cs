@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Util;
 using static UnityEngine.UI.CanvasScaler;
 
 public class UnitCamController : MonoBehaviour
@@ -103,7 +104,7 @@ public class UnitCamController : MonoBehaviour
 
             Unit highest = null;
             float highestScore = float.MinValue;
-            var units = commander.AliveAll.Where(x => Filter(x.gameObject, commander));
+            var units = commander.AliveAll.Where(x => Filter(x.gameObject, commander)).Shuffle();
 
             foreach (var unit in units)
             {

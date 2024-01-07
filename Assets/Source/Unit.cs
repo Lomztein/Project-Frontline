@@ -48,7 +48,13 @@ public class Unit : MonoBehaviour, IPurchasable, ICommanderComponent, ITeamCompo
         => GetComponents<IUnitPurchasePredicate>();
 
     public Commander Commander { get; private set; }
+    private bool _initialCommanderSet = false;
+    public Commander InitialCommander { get; private set; }
+
     public TeamInfo TeamInfo { get; private set; }
+    private bool _initialTeamSet = false;
+    public TeamInfo InitialTeamInfo { get; private set; }
+
 
     private void CheckBattlefieldBounds()
     {
@@ -159,10 +165,20 @@ public class Unit : MonoBehaviour, IPurchasable, ICommanderComponent, ITeamCompo
     public void AssignCommander(Commander commander)
     {
         Commander = commander;
+        if (!_initialCommanderSet)
+        {
+            InitialCommander = commander;
+            _initialCommanderSet = true;
+        }
     }
 
     public void SetTeam(TeamInfo team)
     {
         TeamInfo = team;
+        if (!_initialTeamSet)
+        {
+            InitialTeamInfo = team;
+            _initialTeamSet = true;
+        }
     }
 }

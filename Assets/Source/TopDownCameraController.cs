@@ -6,12 +6,22 @@ public abstract class TopDownCameraController : MonoBehaviour, ICameraController
 {
     public Vector2 PanSpeedMinMax;
     public float PanMargin;
+    public float RotateSpeed;
+
+    private Vector3 _targetPosition;
+    public Vector3 CurrentPosition { get; private set; }
+    public float PositionLerpSpeed = 10f;
+
+    private float _targetAngle;
+    protected float CurrentAngle { get; private set; }
+    public float AngleLerpSpeed = 10f;
 
     private float _targetZoomLevel = 1f;
-    private float _zoomLevel = 1f;
+    protected float ZoomLevel { get; private set; }
 
     public float ZoomSpeed;
     public float ZoomLerpSpeed;
+
 
     public PlayerHandler Handler;
 
@@ -21,11 +31,15 @@ public abstract class TopDownCameraController : MonoBehaviour, ICameraController
         {
             Vector3 direction = GetPanDirection();
             Pan(direction * Time.deltaTime);
-            UpdateZoom(_zoomLevel);
+            UpdateCamera(Time.deltaTime);
+
+            ZoomLevel = Mathf.Lerp(ZoomLevel, _targetZoomLevel, ZoomLerpSpeed * Time.deltaTime);
+            CurrentPosition = Vector3.Lerp(CurrentPosition, _targetPosition, PositionLerpSpeed * Time.deltaTime);
+            CurrentAngle = Mathf.Lerp(CurrentAngle, _targetAngle, AngleLerpSpeed * Time.deltaTime);
         }
     }
 
-    protected abstract void UpdateZoom(float zoomLevel);
+    protected abstract void UpdateCamera(float dt);
 
     private Vector3 GetPanDirection ()
     {
@@ -46,34 +60,36 @@ public abstract class TopDownCameraController : MonoBehaviour, ICameraController
 
     public void Pan(Vector2 movement)
     {
-        float panSpeed = Mathf.Lerp(PanSpeedMinMax.x, PanSpeedMinMax.y, _zoomLevel);
+        float panSpeed = Mathf.Lerp(PanSpeedMinMax.x, PanSpeedMinMax.y, ZoomLevel);
         Vector3 xzMovement = new Vector3(movement.x, 0f, movement.y);
         xzMovement = panSpeed * (Quaternion.Euler(0f, transform.eulerAngles.y, 0f) * xzMovement);
-        transform.position += xzMovement;
+        _targetPosition += xzMovement;
     }
 
     public void Rotate(Vector2 rotation)
     {
+        _targetAngle += -rotation.x * RotateSpeed;
     }
 
     public void Zoom(float amount)
     {
         _targetZoomLevel += amount * ZoomSpeed;
         _targetZoomLevel = Mathf.Clamp01(_targetZoomLevel);
-
-        _zoomLevel = Mathf.Lerp(_zoomLevel, _targetZoomLevel, ZoomLerpSpeed * Time.deltaTime);
     }
 
     public void LookAt(Vector3 position)
     {
-        float y = transform.position.y;
-        transform.position = position;
-        transform.Translate(Vector3.back * y);
+        _targetPosition = position;
     }
 
     public void TransitionFrom(Vector3 position, Quaternion rotation)
     {
-        transform.position = position;
-        transform.rotation = rotation;
+        _targetPosition = position.Flat();
+        _targetAngle = 0f;
+    }
+
+    public void Reset()
+    {
+        _targetAngle = 0f;
     }
 }

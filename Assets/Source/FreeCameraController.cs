@@ -1,9 +1,3 @@
-#if ENABLE_INPUT_SYSTEM && ENABLE_INPUT_SYSTEM_PACKAGE
-#define USE_INPUT_SYSTEM
-    using UnityEngine.InputSystem;
-    using UnityEngine.InputSystem.Controls;
-#endif
-
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -14,29 +8,33 @@ namespace UnityTemplateProjects
         class CameraState
         {
             public Vector3 position;
-            public Quaternion rotation;
+            public float pitch;
+            public float yaw;
+            public Quaternion Rotation => Quaternion.Euler(pitch, yaw, 0f);
 
             public void SetFromTransform(Transform t)
             {
                 position = t.position;
-                rotation = t.rotation;
+                pitch = t.rotation.eulerAngles.x;
+                yaw = t.rotation.eulerAngles.y;
             }
 
             public void Translate(Vector3 translation)
             {
-                Vector3 rotatedTranslation = rotation * translation;
+                Vector3 rotatedTranslation = Rotation * translation;
                 position += rotatedTranslation;
             }
 
             public void LerpTowards(CameraState target, float positionLerpPct, float rotationLerpPct)
             {
-                rotation = Quaternion.Slerp(rotation, target.rotation, rotationLerpPct);
+                pitch = Mathf.Lerp(pitch, target.pitch, rotationLerpPct);
+                yaw = Mathf.Lerp(yaw, target.yaw, rotationLerpPct);
                 position = Vector3.Lerp(position, target.position, positionLerpPct);
             }
 
             public void UpdateTransform(Transform t)
             {
-                t.rotation = rotation;
+                t.rotation = Rotation;
                 t.position = position;
             }
         }
@@ -89,9 +87,8 @@ namespace UnityTemplateProjects
         public void Rotate(Vector2 rotation)
         {
             rotation *= mouseSensitivity;
-            m_TargetCameraState.rotation *= Quaternion.Euler(-rotation.y, rotation.x, 0f);
-            Vector3 euler = m_TargetCameraState.rotation.eulerAngles;
-            m_TargetCameraState.rotation = Quaternion.Euler(euler.x, euler.y, 0f);
+            m_TargetCameraState.pitch -= rotation.y;
+            m_TargetCameraState.yaw += rotation.x;
         }
 
         public void Zoom(float amount)
@@ -101,13 +98,20 @@ namespace UnityTemplateProjects
 
         public void LookAt(Vector3 position)
         {
-            m_TargetCameraState.rotation = Quaternion.LookRotation(m_TargetCameraState.position - position);
+            Quaternion rot = Quaternion.LookRotation(m_TargetCameraState.position - position);
+            m_TargetCameraState.pitch = rot.eulerAngles.x;
+            m_TargetCameraState.yaw = rot.eulerAngles.y;
         }
 
         public void TransitionFrom(Vector3 position, Quaternion rotation)
         {
             m_TargetCameraState.position = position;
-            m_TargetCameraState.rotation = rotation;
+            m_TargetCameraState.pitch = rotation.eulerAngles.x;
+            m_TargetCameraState.yaw = rotation.eulerAngles.y;
+        }
+
+        public void Reset()
+        {
         }
     }
 }

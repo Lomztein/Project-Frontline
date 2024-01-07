@@ -1,0 +1,478 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2915535834913011597
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3389088011859867078}
+  - component: {fileID: 3014335048958130404}
+  - component: {fileID: 7968044792215016487}
+  m_Layer: 0
+  m_Name: MindControlWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3389088011859867078
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915535834913011597}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.21, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8541460827170104}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3014335048958130404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915535834913011597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa726e9e9d184fd40a52dde773b426d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RechargeTime: 1
+  MaxChannelTime: 10
+  ChannelState: 0
+  ChannelEndDelay: 0.1
+  ProgressPerSecond: 175
+  ProgressModifier: {fileID: 11400000, guid: 0b0564e67ef17ee4793c0b51406c7d80, type: 2}
+  Unit: {fileID: 8300149768357025112}
+  ControlProgress: 0
+  ControlProgressTarget: 0
+  PermanentControl: 0
+  CurrentControllingUnit: {fileID: 0}
+  LineRenderer: {fileID: 7968044792215016487}
+  LineOrigin: {fileID: 8962601895883539583}
+  LineHeight: 5
+  CurveWidth: 0.1
+  CurveBurstWidth: 0.1
+  CurveBurstTime: 0.15
+  CurveBurstAnim:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 11.659919
+      outSlope: 11.659919
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.008510727
+    - serializedVersion: 3
+      time: 0.25093585
+      value: 0.99769115
+      inSlope: -0.12755488
+      outSlope: -0.12755488
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 1
+      outWeight: 0.19986065
+    - serializedVersion: 3
+      time: 0.9749756
+      value: 0.0020256042
+      inSlope: -0.06587584
+      outSlope: -0.06587584
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.5042611
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  CurveLerpTime: 25
+--- !u!120 &7968044792215016487
+LineRenderer:
+  serializedVersion: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2915535834913011597}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 0
+  m_LightProbeUsage: 0
+  m_ReflectionProbeUsage: 0
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 22099b7674dc8564181b71eb9f44ef74, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Positions:
+  - {x: 0, y: 1.07, z: 0}
+  - {x: 0, y: 1.43, z: 1}
+  - {x: 0, y: 1.43, z: 1}
+  - {x: 0, y: 1.43, z: 1}
+  - {x: 0, y: 1.43, z: 1}
+  - {x: 0, y: 1.43, z: 1}
+  - {x: 0, y: 1.43, z: 1}
+  - {x: 0, y: 1.43, z: 1}
+  - {x: 0, y: 1.43, z: 1}
+  - {x: 0, y: 1.43, z: 1}
+  m_Parameters:
+    serializedVersion: 3
+    widthMultiplier: 1
+    widthCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.093980536
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    colorGradient:
+      serializedVersion: 2
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 1, g: 1, b: 1, a: 1}
+      key2: {r: 0, g: 0, b: 0, a: 0}
+      key3: {r: 0, g: 0, b: 0, a: 0}
+      key4: {r: 0, g: 0, b: 0, a: 0}
+      key5: {r: 0, g: 0, b: 0, a: 0}
+      key6: {r: 0, g: 0, b: 0, a: 0}
+      key7: {r: 0, g: 0, b: 0, a: 0}
+      ctime0: 0
+      ctime1: 65535
+      ctime2: 0
+      ctime3: 0
+      ctime4: 0
+      ctime5: 0
+      ctime6: 0
+      ctime7: 0
+      atime0: 0
+      atime1: 65535
+      atime2: 0
+      atime3: 0
+      atime4: 0
+      atime5: 0
+      atime6: 0
+      atime7: 0
+      m_Mode: 0
+      m_ColorSpace: -1
+      m_NumColorKeys: 2
+      m_NumAlphaKeys: 2
+    numCornerVertices: 0
+    numCapVertices: 0
+    alignment: 0
+    textureMode: 0
+    textureScale: {x: 1, y: 1}
+    shadowBias: 0.5
+    generateLightingData: 0
+  m_MaskInteraction: 0
+  m_UseWorldSpace: 1
+  m_Loop: 0
+  m_ApplyActiveColorSpace: 1
+--- !u!1001 &7297122948166711209
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 192750024470892861, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1943166
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: HoldRange
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: LeadTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: AttackRange
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: AllowAlliedTarget
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: AcquireTargetRange
+      value: 70
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Modifiers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Modifiers.Array.data[0]
+      value: 
+      objectReference: {fileID: 7721061607988080372}
+    - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: WeaponObjects.Array.data[0]
+      value: 
+      objectReference: {fileID: 2915535834913011597}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.Cost
+      value: 3750
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.Name
+      value: Psychic Trooper
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.Value
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.UnitRole
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.UnitTier
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.Identifier
+      value: AlienInfantry.Lanky.Psychic
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.Description
+      value: Lanky, mutated variants of the smaller troopers, with hightened synaptic
+        sensitivity that provides them with psychic powers. These psychic powers
+        allow them to mind control hostile targets, though heavier targets are more
+        difficult to control.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.Tags.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: _weapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 2915535834913011597}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.Tags.Array.data[0]
+      value: Harasser
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.Tags.Array.data[1]
+      value: Priority
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947058, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: MaxHealth
+      value: 75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3118375092181662073, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_Height
+      value: 2.4424398
+      objectReference: {fileID: 0}
+    - target: {fileID: 3118375092181662073, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 1.2212199
+      objectReference: {fileID: 0}
+    - target: {fileID: 4046572453330662268, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: FactoryPrefab
+      value: 
+      objectReference: {fileID: 6496082389243146588, guid: 9560dd25f701ff44aa3e7243d4b8a25f,
+        type: 3}
+    - target: {fileID: 4046572453330662268, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: ProductionTime
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706238921359540305, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Turrets.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362064, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_Name
+      value: PsychicTrooper
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799830675548848500, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799830675548848500, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8799830675548848500, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3389088011859867078}
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7303377074153362064, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7721061607988080372}
+  m_SourcePrefab: {fileID: 100100000, guid: f1db2eb8f4738f9408419eb4695ae6ee, type: 3}
+--- !u!4 &8541460827170104 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7303377074153362065, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 7297122948166711209}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8541460827170105 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7303377074153362064, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 7297122948166711209}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7721061607988080372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8541460827170105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc8d63ca493c05349b2cb093f476fbab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weapon: {fileID: 3014335048958130404}
+--- !u!114 &8300149768357025112 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 7297122948166711209}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8541460827170105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955e3746abfe5e14cb56265a34877e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &8962601895883539583 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1811881195293799382, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 7297122948166711209}
+  m_PrefabAsset: {fileID: 0}

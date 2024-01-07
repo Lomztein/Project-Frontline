@@ -7,6 +7,7 @@ using System;
 using UI;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
+using UnityEngine.UIElements;
 
 public class PlayerHandler : MonoBehaviour
 {
@@ -24,6 +25,7 @@ public class PlayerHandler : MonoBehaviour
     public Rect CameraViewport;
     public Commander PlayerCommander;
     public UnitPurchaseMenu PurchaseMenu;
+    public Tooltip Tooltip;
 
     public bool IsObserver => PlayerCommander == null;
     public bool IsDefault => name == "DefaultPlayerHandler";
@@ -86,6 +88,13 @@ public class PlayerHandler : MonoBehaviour
     public Ray PointerToWorldRay()
         => CameraSelector.CurrentCamera.ScreenPointToRay(GetPointerScreenPosition());
 
+    public Vector2 ScreenPointToPlayerScreenPoint(Vector3 point)
+    {
+        point = CameraSelector.CurrentCamera.ScreenToViewportPoint(point);
+        Rect playerScreenRect = ViewportRectToScreenSpace();
+        return point * new Vector2(playerScreenRect.width, playerScreenRect.height);
+    }
+
     public Rect ViewportRectToScreenSpace()
     {
         return new Rect(
@@ -112,13 +121,11 @@ public class PlayerHandler : MonoBehaviour
         }
         if (PlayerInputType == InputType.Gamepad)
         {
-            SetDevices(InputSystem.GetDeviceById(InputDeviceId));
+            Debug.Log(PlayerCommander.Name + ": " + InputDeviceId);
+            SetDevices(Gamepad.all.First(x => x.deviceId == InputDeviceId));
             PurchaseMenu.gameObject.AddComponent<UnitPurchaseMenuGamepadAdapter>().Assign(PurchaseMenu, this, GetComponentInChildren<UnitPlacement>());
         }
-        foreach (var device in InputSystem.devices)
-        {
-            Debug.Log($"{device}: {device.deviceId}");
-        }
+
         CameraSelector.SetViewport(CameraViewport);
         UICamera.rect = CameraViewport;
         if (!IsDefault)
