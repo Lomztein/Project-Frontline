@@ -18,11 +18,8 @@ public class WeaponEditorBase<T> : Editor where T : class
             var values = Resources.LoadAll<DamageModifier>("DamageModifiers/Health");
             foreach (var value in values)
             {
-                if (!value.Abstract)
-                {
-                    float factor = DamageModifier.Combine(value, weapon.Modifier);
-                    EditorGUILayout.LabelField("Damage / DPS against " + value.ToString() + ": " + weapon.Damage * factor + " / " + weapon.GetDPSOrOverride() * factor);
-                }
+                float factor = DamageModifier.Combine(value, weapon.Modifier);
+                EditorGUILayout.LabelField("Damage / DPS against " + value.ToString() + ": " + weapon.Damage * factor + " / " + weapon.GetDPSOrOverride() * factor);
             }
         }
         EditorGUILayout.EndFoldoutHeaderGroup();

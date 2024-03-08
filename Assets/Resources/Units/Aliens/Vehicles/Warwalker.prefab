@@ -2215,9 +2215,9 @@ GameObject:
   - component: {fileID: 2458024664236499327}
   - component: {fileID: 2119290256767246385}
   - component: {fileID: 6167193571802970868}
-  - component: {fileID: 577860507603443528}
   - component: {fileID: 770395088416375096}
   - component: {fileID: 7070710655441564339}
+  - component: {fileID: 7852618677445456906}
   m_Layer: 0
   m_Name: Warwalker
   m_TagString: MobileUnit
@@ -2256,6 +2256,7 @@ MonoBehaviour:
   Info:
     Identifier: HeavyWalker.Assault
     Name: Assault Walker
+    ShortDescription: 
     Description: Heavy assault walker loaded with guns and cannons, and fit to take
       on nearly any opponent and hold the line against them.
     Tags: []
@@ -2302,7 +2303,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 2.5
-  Rigidbody: {fileID: 0}
   AccelerationSpeed: 2.5
   BrakeDrag: 10
   MaxTurnAngle: 15
@@ -2348,44 +2348,6 @@ MonoBehaviour:
   FactoryPrefab: {fileID: 8602111571912869181, guid: 14061487db186fa47a15b069b80d67dc,
     type: 3}
   ProductionTime: 60
---- !u!114 &577860507603443528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4032169529702278100}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 6545674062589021181}
-  - {fileID: 5176538739921941147}
-  - {fileID: 2095305109032522332}
-  - {fileID: 3580107288416607460}
-  - {fileID: 6233818697509215692}
-  - {fileID: 262381294860193726}
-  - {fileID: 8643163859625278214}
-  - {fileID: 1589183013864691593}
-  - {fileID: 2999570448346476982}
-  - {fileID: 1745349875071997960}
-  - {fileID: 6147189859624974713}
-  - {fileID: 5760056429998065052}
-  - {fileID: 179033740727651970}
-  - {fileID: 6776389880550179277}
-  - {fileID: 9074175034017137840}
-  - {fileID: 3765755775605733281}
-  - {fileID: 4692812166729252534}
-  - {fileID: 3499224403795719575}
-  - {fileID: 8493916893539424941}
-  - {fileID: 2220988292168231708}
-  - {fileID: 6333158123907110419}
-  - {fileID: 1304737060901068380}
-  - {fileID: 8736885037934906101}
-  - {fileID: 4224219719438842442}
-  - {fileID: 3977845411695566349}
 --- !u!54 &770395088416375096
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2426,6 +2388,44 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 259fba658c064ef4db94ec85f060efd0, type: 2}
+--- !u!114 &7852618677445456906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4032169529702278100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 1589183013864691593}
+  - {fileID: 2999570448346476982}
+  - {fileID: 1745349875071997960}
+  - {fileID: 6147189859624974713}
+  - {fileID: 5760056429998065052}
+  - {fileID: 179033740727651970}
+  - {fileID: 6776389880550179277}
+  - {fileID: 9074175034017137840}
+  - {fileID: 3765755775605733281}
+  - {fileID: 4692812166729252534}
+  - {fileID: 3499224403795719575}
+  - {fileID: 8493916893539424941}
+  - {fileID: 2220988292168231708}
+  - {fileID: 6333158123907110419}
+  - {fileID: 1304737060901068380}
+  - {fileID: 8736885037934906101}
+  - {fileID: 4224219719438842442}
+  - {fileID: 3977845411695566349}
+  - {fileID: 6233818697509215692}
+  - {fileID: 2095305109032522332}
+  - {fileID: 3580107288416607460}
+  - {fileID: 6545674062589021181}
+  - {fileID: 5176538739921941147}
+  - {fileID: 262381294860193726}
+  - {fileID: 8643163859625278214}
 --- !u!1 &4302168973317482760
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,276 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6093098337350478245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2634479059218096647}
+  - component: {fileID: 2306011290207378920}
+  - component: {fileID: 2372091024851006584}
+  - component: {fileID: 8628612630060680899}
+  - component: {fileID: 421750062573104114}
+  - component: {fileID: 5030250656112920657}
+  - component: {fileID: 3640943429932082101}
+  m_Layer: 0
+  m_Name: AlienLegScrapyard
+  m_TagString: StructureUnit
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2634479059218096647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093098337350478245}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 38.61123, y: -0.0018024445, z: 12.478594}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3763297092935720572}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2306011290207378920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093098337350478245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955e3746abfe5e14cb56265a34877e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Info:
+    Identifier: 
+    Name: Leg Scrapyard
+    ShortDescription: +20% chance for walker units to be equipped with additional
+      anti-infantry firepower.
+    Description: Scrapyard with the molten down remains of legs from Raymarchers
+      that didn't make it through production. Who would have thought overly complex
+      mechanical machinery would be unreliable? Adds +20% chance for walker units
+      to be equipped with a raymarcher turret.
+    Tags: []
+    Cost: 2000
+    Value: 100
+    UnitRole: 1
+    UnitTier: 0
+    UnitType: 4
+  Health: {fileID: 0}
+  _weapons: []
+  Parts: []
+  Weakpoints: []
+--- !u!114 &2372091024851006584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093098337350478245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 4000
+  Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
+  DestroyOnDeath: 1
+  DestroyDelay: 0
+  Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
+  DebrisLife: 3
+--- !u!114 &8628612630060680899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093098337350478245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6d5a2228878cc4e8e464bae199ad63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeIdentifier: AddedRaymarcherCannons
+  BaseChance: 0.2
+  ChancePerStack: 0.2
+  Filter: {fileID: 11400000, guid: 9528d6484e14e1648959e01f207e45c6, type: 2}
+  UpgradeDelay: 0
+  Object: {fileID: 3190320089539524611, guid: 42e8ab8ea8868c5428f4811dc8c1f827, type: 3}
+  UnitTransformInfos:
+  - UnitIdentifier: Walker.Raymarcher
+    Path: Body
+    LocalPosition: {x: 0, y: -0.073, z: 0}
+    LocalRotation: {x: 0, y: 0, z: 180}
+  AddWeaponToAI: 0
+--- !u!114 &421750062573104114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093098337350478245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6d5a2228878cc4e8e464bae199ad63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeIdentifier: AddedRaymarcherCannonsWarwalker
+  BaseChance: 0.2
+  ChancePerStack: 0.2
+  Filter: {fileID: 11400000, guid: d74a604f9b7c86f4ab6c8f29c4e72657, type: 2}
+  UpgradeDelay: 0
+  Object: {fileID: 7802180008453472830, guid: 0a1e2199bf3680c47b1463b3d274278c, type: 3}
+  UnitTransformInfos:
+  - UnitIdentifier: HeavyWalker
+    Path: Body
+    LocalPosition: {x: 0, y: 0, z: 0}
+    LocalRotation: {x: 0, y: 0, z: 0}
+  AddWeaponToAI: 0
+--- !u!114 &5030250656112920657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093098337350478245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6d5a2228878cc4e8e464bae199ad63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeIdentifier: AddedRaymarcherCannonsTripod
+  BaseChance: 0.2
+  ChancePerStack: 0.2
+  Filter: {fileID: 11400000, guid: 64ab04dcc9ae4324b96c887f58df49de, type: 2}
+  UpgradeDelay: 0
+  Object: {fileID: 3969313579068957978, guid: ba02964bdbdac0e42bcfaae3025318f1, type: 3}
+  UnitTransformInfos:
+  - UnitIdentifier: Tripod
+    Path: Body
+    LocalPosition: {x: 0, y: 0, z: 0}
+    LocalRotation: {x: 0, y: 0, z: 0}
+  AddWeaponToAI: 0
+--- !u!65 &3640943429932082101
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093098337350478245}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10.72, y: 3.5684705, z: 10.72}
+  m_Center: {x: 0, y: 1.5991483, z: 0}
+--- !u!1001 &3725413371169536407
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2634479059218096647}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: c71554f1f8da8ab4e84608393b16cd62,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3.2804
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c71554f1f8da8ab4e84608393b16cd62,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3.2804
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c71554f1f8da8ab4e84608393b16cd62,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 3.2804
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c71554f1f8da8ab4e84608393b16cd62,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c71554f1f8da8ab4e84608393b16cd62,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c71554f1f8da8ab4e84608393b16cd62,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c71554f1f8da8ab4e84608393b16cd62,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c71554f1f8da8ab4e84608393b16cd62,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c71554f1f8da8ab4e84608393b16cd62,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c71554f1f8da8ab4e84608393b16cd62,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c71554f1f8da8ab4e84608393b16cd62,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c71554f1f8da8ab4e84608393b16cd62,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: c71554f1f8da8ab4e84608393b16cd62,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -2571118854743697038, guid: c71554f1f8da8ab4e84608393b16cd62,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8d21f8df5eb9df14891f3957b295cfe9, type: 2}
+    - target: {fileID: 919132149155446097, guid: c71554f1f8da8ab4e84608393b16cd62,
+        type: 3}
+      propertyPath: m_Name
+      value: AlienLegScrapyard
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c71554f1f8da8ab4e84608393b16cd62, type: 3}
+--- !u!4 &3763297092935720572 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c71554f1f8da8ab4e84608393b16cd62,
+    type: 3}
+  m_PrefabInstance: {fileID: 3725413371169536407}
+  m_PrefabAsset: {fileID: 0}

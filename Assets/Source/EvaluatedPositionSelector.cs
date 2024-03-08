@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class EvaluatedPositionSelector : MonoBehaviour, IPositionSeletor
 {
     public int TargetPoints = 100;
     public int MaxTries = 1000;
+    public int TriesPerFrame = 10;
 
     private const string StructTag = "StructureUnit";
     public LayerMask TerrainLayer;
@@ -15,37 +17,47 @@ public class EvaluatedPositionSelector : MonoBehaviour, IPositionSeletor
     [SerializeReference, SR]
     public IPositionEvaluator[] PositionEvaluators;
 
-    public Vector3? SelectPosition(Commander commander, GameObject unit, OverlapUtils.OverlapShape shape)
+    public IEnumerator SelectPosition(Commander commander, GameObject unit, OverlapUtils.OverlapShape shape, Action<Vector3> onPositionFound)
     {
         int tries = MaxTries;
         Vector3[] targetPoints = new Vector3[TargetPoints];
         var placed = Enumerable.Concat(commander.Fortress.ObjectToEnumerable(), commander.AlivePlaced.Select(x => x.transform)).ToArray();
 
         int points = 0;
+        int loopIndex = 0;
+
         for (points = 0; points < TargetPoints; points++)
         {
             bool success = false;
             Vector3 point = Vector3.zero;
             while (!success)
             {
-                Transform buildFrom = placed[Random.Range(0, placed.Length)].transform;
-                point = buildFrom.position + commander.BuildRadius * Random.insideUnitSphere;
-                point.y = 0;
-
-                if (IsWithinRange(point, commander) && commander.CanPlace(point, commander.transform.rotation, shape))
+                if (loopIndex++ % TriesPerFrame == 0)
                 {
-                    success = true;
-                    targetPoints[points] = point;
-                    points++;
-                }
-                else
-                {
-                    tries--;
+                    yield return new WaitForFixedUpdate();
                 }
 
-                if (tries < 0)
+                Transform buildFrom = placed[UnityEngine.Random.Range(0, placed.Length)];
+                if (buildFrom != null)
                 {
-                    break;
+                    point = buildFrom.position + commander.BuildRadius * UnityEngine.Random.insideUnitSphere;
+                    point.y = 0;
+
+                    if (commander.CanPlace(point, commander.transform.rotation, shape))
+                    {
+                        success = true;
+                        targetPoints[points] = point;
+                        points++;
+                    }
+                    else
+                    {
+                        tries--;
+                    }
+
+                    if (tries < 0)
+                    {
+                        break;
+                    }
                 }
             }
 
@@ -63,7 +75,7 @@ public class EvaluatedPositionSelector : MonoBehaviour, IPositionSeletor
             {
                 Vector3 position = targetPoints[i];
                 float score = PositionEvaluators.Sum(x => x.Evaluate(commander, unit, position));
-                Debug.DrawRay(position, Vector3.up * score, Color.white, 1f);
+                Debug.DrawRay(position, Vector3.down * score, Color.black, 1f);
 
                 if (score > bestScore)
                 {
@@ -72,16 +84,7 @@ public class EvaluatedPositionSelector : MonoBehaviour, IPositionSeletor
                 }
             }
 
-            return bestPoint;
+            onPositionFound(bestPoint);
         }
-        else
-        {
-            return null;
-        }
-    }
-
-    private bool IsWithinRange (Vector3 pos, Commander commander)
-    {
-        return commander.IsNearAnyPlaced(pos);
     }
 }

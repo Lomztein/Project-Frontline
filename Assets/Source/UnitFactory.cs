@@ -24,6 +24,9 @@ public class UnitFactory : MonoBehaviour, ITeamComponent, ICommanderComponent
     public event Action<UnitFactory, GameObject> OnUnitSpawned;
     private UnitProductionBehaviour.UnitProductionCallback _callback;
 
+    public float NextProductionTime => _callback.NextProductionTime;
+    public float ProductionTime => _callback.ProductionTime;
+
     public void Start()
     {
         _callback = MatchSettings.GetCurrent().ProductionBehaviour.CreateCallback();
@@ -32,6 +35,9 @@ public class UnitFactory : MonoBehaviour, ITeamComponent, ICommanderComponent
         _unit = UnitPrefab.GetComponent<Unit>();
         _nearestWaypoint = Navigation.GetNearestNode(transform.position);
         EarnedCredits -= _unit.Info.Cost;
+        GetComponent<Unit>().AddStat("Effeciency", Effeciency);
+        GetComponent<Unit>().AddStat("Units spawned", 0);
+        GetComponent<Unit>().AddStat("Kills", 0);
     }
 
     private void OnDestroy()
@@ -51,21 +57,31 @@ public class UnitFactory : MonoBehaviour, ITeamComponent, ICommanderComponent
         OnUnitSpawned?.Invoke(this, go);
         go.GetComponent<Health>().OnDeath += Unit_OnDeath;
         go.GetComponent<Unit>().OnKill += Unit_OnKill;
+        GetComponent<Unit>().ChangeStat("Units spawned", 1);
     }
 
     private void Unit_OnKill(Unit arg1, IWeapon arg2, Projectile arg3, IDamagable arg4)
     {
-        if (arg4 is Health health && health.TryGetComponent(out Unit unit))
+        if (this != null && TryGetComponent(out Unit unit))
         {
-            EarnedCredits += unit.Info.Value;
+            if (arg4 is Health health && health.TryGetComponent(out Unit killedUnit))
+            {
+                EarnedCredits += killedUnit.Info.Value;
+                unit.SetStat("Effeciency", Effeciency);
+                unit.ChangeStat("Kills", 1);
+            }
         }
     }
 
     private void Unit_OnDeath(Health obj)
     {
-        GivenCredits += obj.GetComponent<Unit>().Info.Value;
-        obj.OnDeath -= Unit_OnDeath;
-        obj.GetComponent<Unit>().OnKill -= Unit_OnKill;
+        if (this != null && TryGetComponent(out Unit unit))
+        {
+            GivenCredits += obj.GetComponent<Unit>().Info.Value;
+            obj.OnDeath -= Unit_OnDeath;
+            unit.OnKill -= Unit_OnKill;
+            GetComponent<Unit>().SetStat("Effeciency", Effeciency);
+        }
     }
 
     private Vector3 GetLocalRandomSpawnPosition ()

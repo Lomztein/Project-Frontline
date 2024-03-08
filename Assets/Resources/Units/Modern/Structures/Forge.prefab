@@ -53,9 +53,9 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Forge
-    Description: Forge equipped with powerful furnaces capable of melting dense metals
-      and forming armor plating. 20% chance to equip Tank-type units with additional
-      armor plating.
+    ShortDescription: 20% chance to equip Tank-type units with additional armor plating.
+    Description: 'Forge equipped with powerful furnaces capable of melting dense
+      metals and forming armor plating. '
     Tags: []
     Cost: 3000
     Value: 300
@@ -80,7 +80,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 2500
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -122,6 +121,7 @@ MonoBehaviour:
   BaseChance: 0.2
   ChancePerStack: 0.2
   Filter: {fileID: 11400000, guid: 195c56ae6f65e764fa812f5e79e1719a, type: 2}
+  UpgradeDelay: 0
   Object: {fileID: 3748025188000014448, guid: 41b4a6bb6d80a9843aac6fd77968873e, type: 3}
   UnitTransformInfos:
   - UnitIdentifier: 

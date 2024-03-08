@@ -576,7 +576,7 @@ MonoBehaviour:
   Team: {fileID: 0}
   AcquireTargetRange: 100
   LooseTargetRange: 125
-  AttackRange: 85
+  AttackRange: 65
   TurretObject: {fileID: 4325982582558911292}
   WeaponObjects:
   - {fileID: 4325982582558911292}
@@ -585,7 +585,7 @@ MonoBehaviour:
   LeadTarget: 1
   TargetSearchFrequency: 2
   Modifiers: []
-  HoldRange: 65
+  HoldRange: 55
   HoldVariance: 5
   StayBehindFrontline: 0
 --- !u!114 &4325982583102194755
@@ -603,6 +603,7 @@ MonoBehaviour:
   Info:
     Identifier: Helicopter.Attack
     Name: Attack Helicopter
+    ShortDescription: Assault helicoptor armed to the teeth with anti-armor weapons.
     Description: Armed to the teeth with arguably incredibly unsafe explosives, and
       capable of taking out strong armor with a single volley of rockets. You generally
       do not want to piss these guys off.
@@ -632,7 +633,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FactoryPrefab: {fileID: 3940556133059093292, guid: 19c1d8ac2097cdf48ad8bf4c0e64766d,
     type: 3}
-  ProductionTime: 30
+  ProductionTime: 40
 --- !u!114 &4325982583102194753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -664,7 +665,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 10
-  Rigidbody: {fileID: 0}
   MaxAngularSpeed: 120
   AccelerationSpeed: 50
   AngularAccelerationSpeed: 180
@@ -1334,11 +1334,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MissleRack
-      objectReference: {fileID: 0}
-    - target: {fileID: 4264672590885527510, guid: 6c59b8192261e78478024c66e7c6cbb3,
-        type: 3}
-      propertyPath: Damage
-      value: 125
       objectReference: {fileID: 0}
     - target: {fileID: 4264672590885527510, guid: 6c59b8192261e78478024c66e7c6cbb3,
         type: 3}

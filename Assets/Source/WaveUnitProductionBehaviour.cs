@@ -53,7 +53,10 @@ public class WaveUnitProductionBehaviour : UnitProductionBehaviour
             _parent = parent;
         }
 
-        public override float NextProductionTime => _parent._nextTime;
+        public override float NextProductionTime => _parent.RoundRobin
+            ? _parent._nextTime * MaxCommanders - CommanderIndex * _parent.WaveTime
+            : _parent._nextTime;
+        public override float ProductionTime => _parent.RoundRobin ? _parent.WaveTime : _parent.WaveTime * MaxCommanders;
 
         public override void Initialize(Commander owner, float baseProductionTime, Action callback)
         {

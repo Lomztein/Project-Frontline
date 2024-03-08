@@ -1464,7 +1464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &300557914
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2084,6 +2084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Text: {fileID: 375851188}
+  TMPText: {fileID: 0}
 --- !u!1 &388792185
 GameObject:
   m_ObjectHideFlags: 0
@@ -9696,10 +9697,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 687523181}
-  - {fileID: 141591913}
-  - {fileID: 1927657602}
 --- !u!65 &1851706857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9769,6 +9766,7 @@ MonoBehaviour:
   Info:
     Identifier: Fortress
     Name: Fortress
+    ShortDescription: 
     Description: Your fortress, the heart of your operations. Don't loose it, or
       you will be eliminated.
     Tags: []
@@ -13061,6 +13059,16 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1469886539000667753, guid: 3193114ab06a0aa4c8e59fea03da5c70,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1469886539000667753, guid: 3193114ab06a0aa4c8e59fea03da5c70,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1597708606931715500, guid: 3193114ab06a0aa4c8e59fea03da5c70,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -13934,10 +13942,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 5155664723799532613}
-  - {fileID: 2656375365049871352}
-  - {fileID: 1981374854585484373}
 --- !u!4 &7829577706379524953
 Transform:
   m_ObjectHideFlags: 0
@@ -13985,6 +13989,7 @@ MonoBehaviour:
   Info:
     Identifier: Fortress
     Name: Fortress
+    ShortDescription: 
     Description: Your fortress, the heart of your operations. Don't loose it, or
       you will be eliminated.
     Tags: []

@@ -39,8 +39,10 @@ public class Builder : MonoBehaviour
 
     private static readonly string[] buildScenes =
         {
-            "Assets/Scenes/Menu.unity",
-            "Assets/Scenes/Battlefield.unity"
+            "Assets/Scenes/MainMenu.unity",
+            "Assets/Scenes/SkirmishSetup.unity",
+            "Assets/Scenes/Battlefield.unity",
+            "Assets/Scenes/UnitDatabase.unity",
         };
 
     [MenuItem("Project Frontline/Build")]

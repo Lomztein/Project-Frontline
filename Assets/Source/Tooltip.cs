@@ -18,6 +18,7 @@ public class Tooltip : MonoBehaviour
     private IHasTooltip _currentTooltip;
     private IHasTooltip _forcedTooltip;
     private Vector2 _forcedTooltipPosition;
+    public bool IsForced => _forcedTooltip != null;
 
     void Update()
     {

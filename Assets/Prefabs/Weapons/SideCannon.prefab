@@ -211,6 +211,8 @@ GameObject:
   - component: {fileID: 3948594696306842295}
   - component: {fileID: 461367837297264381}
   - component: {fileID: 2096449486050881025}
+  - component: {fileID: 626903222640636710}
+  - component: {fileID: 7832674385579874881}
   m_Layer: 0
   m_Name: SideCannon
   m_TagString: Untagged
@@ -355,6 +357,58 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &626903222640636710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9024637768550655067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Machine Gun Port
+  Description: Machine gun port that allows some aiming towards targets.
+  MainComponent: {fileID: 3948594696306842295}
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  EquipmentRenderers:
+  - {fileID: 854637694679129990}
+  ParentOverride: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+--- !u!114 &7832674385579874881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9024637768550655067}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Machine Gun
+  Description: Machine gun that fires at enemy targets.
+  MainComponent: {fileID: 2096449486050881025}
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  EquipmentRenderers:
+  - {fileID: 6282398722070609814}
+  ParentOverride: {fileID: 7558938390272693112}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1001 &9098044951366950715
 PrefabInstance:
   m_ObjectHideFlags: 0

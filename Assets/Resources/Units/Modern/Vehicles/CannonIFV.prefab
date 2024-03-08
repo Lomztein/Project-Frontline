@@ -380,9 +380,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Autocannon
   Description: Fully automatic weapon that can dispatch infantry and vehicles alike.
+  MainComponent: {fileID: 0}
   Model: {fileID: 2221574693083941954}
   AimBehaviour:
     rid: -2
+  EquipmentRenderers: []
+  ParentOverride: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -415,7 +418,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponObject: {fileID: 5328371602657346740}
   Parts:
-  - PartTransform: {fileID: 1925955925272789095}
+  - PartTransform: {fileID: 7492061643999322201}
     RecoilDirection: {x: 0, y: 0, z: -1}
     RecoilStrength: 0.2
     RecoilTime: 0.33
@@ -686,6 +689,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2913741366723729313, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
+      propertyPath: Info.ShortDescription
+      value: Sturdy and cheap vehicle capable of taking on both infantry and light
+        vehicles.
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913741366723729313, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
       propertyPath: _weapons.Array.data[0]
       value: 
       objectReference: {fileID: 5328371602657346740}
@@ -827,6 +836,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
+    - {fileID: 8637245996842802624, guid: 33f5a0aae17b39244abe6fcfea9db228, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 622443194761057015, guid: 33f5a0aae17b39244abe6fcfea9db228,
@@ -838,6 +848,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2296308264596277100}
+    - targetCorrespondingSourceObject: {fileID: 7553692932367407739, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4260368228829599238}
     - targetCorrespondingSourceObject: {fileID: 6619875413042999094, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
       insertIndex: -1
@@ -867,9 +881,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Machine Gun
   Description: Side-mounted machine guns which can assist against lighter infantry.
+  MainComponent: {fileID: 0}
   Model: {fileID: 0}
   AimBehaviour:
     rid: -2
+  EquipmentRenderers: []
+  ParentOverride: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -894,6 +911,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
+--- !u!114 &4260368228829599238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382969094849056518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 6354588343913548983}
+  - {fileID: 343346973827329191}
+  - {fileID: 2419181444834796714}
+  - {fileID: 8442716553452408948}
+  - {fileID: 9034626135416685754}
 --- !u!1 &2322684498228296267 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6619875413042999094, guid: 33f5a0aae17b39244abe6fcfea9db228,
@@ -914,17 +949,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Machine Gun
   Description: Side-mounted machine guns which can assist against lighter infantry.
+  MainComponent: {fileID: 0}
   Model: {fileID: 0}
   AimBehaviour:
     rid: -2
+  EquipmentRenderers: []
+  ParentOverride: {fileID: 0}
   references:
     version: 2
     RefIds:
     - rid: -2
       type: {class: , ns: , asm: }
+--- !u!23 &2419181444834796714 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6518951763367244247, guid: 33f5a0aae17b39244abe6fcfea9db228,
+    type: 3}
+  m_PrefabInstance: {fileID: 8927630501266658685}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8306340213301872522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 622443194761057015, guid: 33f5a0aae17b39244abe6fcfea9db228,
+    type: 3}
+  m_PrefabInstance: {fileID: 8927630501266658685}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8442716553452408948 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1067315018449962249, guid: 33f5a0aae17b39244abe6fcfea9db228,
+    type: 3}
+  m_PrefabInstance: {fileID: 8927630501266658685}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &9034626135416685754 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 469535693258478023, guid: 33f5a0aae17b39244abe6fcfea9db228,
     type: 3}
   m_PrefabInstance: {fileID: 8927630501266658685}
   m_PrefabAsset: {fileID: 0}

@@ -55,10 +55,10 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Engineers Lodge
+    ShortDescription: 10% chance for tanks, heavy tanks to be equipped with additional
+      turrets.
     Description: Small lodge housing workbenches, sofas, and plenty of coffee for
-      engineers to gather around, tinker with their devices, and discuss work. Adds
-      a 10% chance for tanks, heavy tanks to be equipped with additional turrets.
-      Heavier units get more turrets.
+      engineers to gather around, tinker with their devices, and discuss work.
     Tags: []
     Cost: 3500
     Value: 350
@@ -83,7 +83,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 2500
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -140,6 +139,7 @@ MonoBehaviour:
   BaseChance: 0.2
   ChancePerStack: 0.2
   Filter: {fileID: 11400000, guid: 0e93cfa7753b0694787b6ae51836aba1, type: 2}
+  UpgradeDelay: 0
   Object: {fileID: 1810895093889678491, guid: e853375bafefdc74ab33294daa9d72ba, type: 3}
   UnitTransformInfos:
   - UnitIdentifier: 
@@ -163,6 +163,7 @@ MonoBehaviour:
   BaseChance: 0.2
   ChancePerStack: 0.2
   Filter: {fileID: 11400000, guid: 9fea0c2ee96605045b6b9bde80645084, type: 2}
+  UpgradeDelay: 0
   Object: {fileID: 9202451039662648653, guid: 07cf960d18f98434281315f8443a4b0f, type: 3}
   UnitTransformInfos:
   - UnitIdentifier: 
@@ -186,6 +187,7 @@ MonoBehaviour:
   BaseChance: 0.2
   ChancePerStack: 0.2
   Filter: {fileID: 11400000, guid: bf8f75425da91dd44a334f20dfe784b7, type: 2}
+  UpgradeDelay: 0
   Object: {fileID: 7546856959777286860, guid: 3a0418c6ade88484893348caa096845c, type: 3}
   UnitTransformInfos:
   - UnitIdentifier: 
@@ -209,6 +211,7 @@ MonoBehaviour:
   BaseChance: 0.2
   ChancePerStack: 0.2
   Filter: {fileID: 11400000, guid: 9988c8470c32a80498f44a8b8e0bab7d, type: 2}
+  UpgradeDelay: 0
   Object: {fileID: 4466266222378625537, guid: 15ae142e0ef8b094c918b183cd23b721, type: 3}
   UnitTransformInfos:
   - UnitIdentifier: 

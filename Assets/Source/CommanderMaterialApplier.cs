@@ -2,32 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CommanderMaterialApplier : MonoBehaviour, ICommanderComponent
+public class CommanderMaterialApplier : MonoBehaviour
 {
     [SerializeField] private Renderer[] _renderersToApplyTo;
 
-    public void AssignCommander(Commander commander)
+    public void ApplyMaterial(Material mat)
     {
         foreach (Renderer renderer in _renderersToApplyTo)
         {
             if (renderer)
             {
-                renderer.material = commander.UnitPalette.UnitBodyMaterial;
+                renderer.material = mat;
             }
             else
             {
                 Debug.LogWarning("Renderer missing in material applier.");
             }
-        }
-        //StartCoroutine(WaitAndPaint(commander));
-    }
-
-    private IEnumerator WaitAndPaint(Commander cmd)
-    {
-        yield return new WaitForEndOfFrame();
-        foreach (Renderer renderer in _renderersToApplyTo)
-        {
-            renderer.material = cmd.UnitPalette.UnitBodyMaterial;
         }
     }
 }

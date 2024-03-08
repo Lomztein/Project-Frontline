@@ -24,7 +24,7 @@ public class InsectoidLegsProceduralAnimation : MonoBehaviour
 
     public event Action<Leg, Vector3, Vector3, float> OnLegMovement;
 
-    void Awake()
+    void Start()
     {
         foreach (var group in LegGroups)
         {

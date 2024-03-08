@@ -26,9 +26,9 @@ public class AccelerationRecoil : MonoBehaviour
         float deltaAngle = Body.transform.eulerAngles.y - _lastAngle;
         _lastAngle = Body.transform.eulerAngles.y;
 
-        float accDelta = deltaVelocity.z / Time.fixedDeltaTime / MaxAccelerationDeltaVelocity;
+        deltaVelocity = deltaVelocity / Time.fixedDeltaTime / MaxAccelerationDeltaVelocity;
         float turnDelta = deltaAngle / Time.fixedDeltaTime / MaxDeltaAngle;
-        turnDelta *= Body.MaxSpeed / Body.MaxSpeed;
+        turnDelta *= Body.CurrentSpeed / Body.MaxSpeed;
 
         if (Mathf.Abs (turnDelta) > 180f)
         {
@@ -40,6 +40,7 @@ public class AccelerationRecoil : MonoBehaviour
             turnDelta = -turnDelta;
         }
 
-        Anim.Recoil(Body.transform.TransformVector (-new Vector3(turnDelta, 0, accDelta)));
+        Vector3 turnFactor = Body.transform.TransformVector(new Vector3(turnDelta, 0f, 0f));
+        Anim.Recoil(-(deltaVelocity + turnFactor));
     }
 }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 
 public abstract class DamageModifier : ScriptableObject
 {
@@ -17,9 +18,8 @@ public abstract class DamageModifier : ScriptableObject
 
     public string Name;
     public string Description;
-    public bool Abstract; // Abstract modifiers are not included in the name printout.
 
-    public uint? ID; // "Compile-time" modifiers could have an ID assigned, used for caching.
+    public int ID; // "Compile-time" modifiers could have an ID assigned, used for caching.
 
     //public bool Cachable; // Should be true only if the output // Implement caching if neccesary, consider assigning each modifier an ID using asset post processing for easy indexing.
 
@@ -59,19 +59,7 @@ public abstract class DamageModifier : ScriptableObject
     }
 
     public override string ToString()
-    {
-        if (Base)
-        {
-            string bn = Base.ToString();
-            if (!string.IsNullOrWhiteSpace(bn))
-            {
-                return bn + ", " + Name;
-            }
-        }
-        if (Abstract)
-            return string.Empty;
-        else return Name;
-    }
+        => Name;
 
     private static T[] GetEnumerableCache<T>(ref T[] cacheObj, string resourcePath) where T : UnityEngine.Object
     {
@@ -97,4 +85,8 @@ public abstract class DamageModifier : ScriptableObject
     {
         return Name.GetHashCode();
     }
+
+    public bool IsCreatedAtRuntime()
+        => ID == int.MinValue;
+
 }

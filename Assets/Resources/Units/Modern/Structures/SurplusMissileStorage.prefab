@@ -384,9 +384,10 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Surplus Missile Storage
-    Description: Some idiot ordered way too many missiles, and we need a place to
-      store them. Same idiot decided they'd be of use on IFVs, and that idiot has
-      now recieved a raise. 33% chance to add a rocket launcher to IFV-type vehicles.
+    ShortDescription: 33% chance to add a rocket launcher to IFV-type vehicles.
+    Description: 'Some idiot ordered way too many missiles, and we need a place to
+      store them. Same idiot decided they''d be of use on IFVs, and that idiot has
+      now recieved a raise. '
     Tags: []
     Cost: 2000
     Value: 200
@@ -411,7 +412,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 2500
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -453,6 +453,7 @@ MonoBehaviour:
   BaseChance: 0.33
   ChancePerStack: 0.33
   Filter: {fileID: 11400000, guid: cd2817d92b46dca4995dc92266b6505f, type: 2}
+  UpgradeDelay: 0
   Object: {fileID: 7525712616068689682, guid: 9f9d65533dcb70d4681146715953984e, type: 3}
   UnitTransformInfos:
   - UnitIdentifier: IFV.Cannon

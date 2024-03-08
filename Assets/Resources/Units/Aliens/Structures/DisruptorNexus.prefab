@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2108924908564841635}
   - component: {fileID: 1231885524419893182}
   - component: {fileID: 3477924835519288961}
-  - component: {fileID: 6748033396613200690}
   - component: {fileID: 3557642036227573473}
   - component: {fileID: 6639905333820411301}
   m_Layer: 0
@@ -52,6 +51,7 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Disruption Nexus
+    ShortDescription: 
     Description: Facility used to produce disruptor particles, through a very complicated
       process using exotic particles and fox urine. Adds 25% chance for light voidcraft
       and magscouts to spawn with light disruptor drives.
@@ -83,21 +83,6 @@ MonoBehaviour:
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
---- !u!114 &6748033396613200690
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1769109693647990259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 454818305666771061}
-  - {fileID: 6538117219362801765}
 --- !u!114 &3557642036227573473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -125,10 +110,14 @@ MonoBehaviour:
     Path: Body
     LocalPosition: {x: 0, y: 1.229, z: -1.61}
     LocalRotation: {x: 285, y: 0, z: 0}
-  - UnitIdentifier: 
+  - UnitIdentifier: Magscout
     Path: Body
     LocalPosition: {x: 0, y: 1.229, z: -1.61}
     LocalRotation: {x: 285, y: 0, z: 0}
+  - UnitIdentifier: HeavyWalker.Assault
+    Path: Body/MainTurret/Horizontal/Vertical
+    LocalPosition: {x: 0, y: 0.34191817, z: -0.7864081}
+    LocalRotation: {x: 333.05246, y: 0.0000034722796, z: -0.000007662128}
   AddWeaponToAI: 0
 --- !u!65 &6639905333820411301
 BoxCollider:
@@ -234,21 +223,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc45967dfd16a3248bdbd627b8ff59fe, type: 3}
---- !u!23 &454818305666771061 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: bc45967dfd16a3248bdbd627b8ff59fe,
-    type: 3}
-  m_PrefabInstance: {fileID: 4129683497878929082}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4523070052464908625 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bc45967dfd16a3248bdbd627b8ff59fe,
-    type: 3}
-  m_PrefabInstance: {fileID: 4129683497878929082}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &6538117219362801765 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 7202271454713460447, guid: bc45967dfd16a3248bdbd627b8ff59fe,
     type: 3}
   m_PrefabInstance: {fileID: 4129683497878929082}
   m_PrefabAsset: {fileID: 0}

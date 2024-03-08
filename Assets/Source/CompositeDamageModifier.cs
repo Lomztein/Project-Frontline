@@ -41,6 +41,7 @@ public class CompositeDamageModifier : DamageModifier
         newModifier.Name = name;
         newModifier.Modifiers = modifiers;
         newModifier.Function = func;
+        newModifier.ID = int.MinValue;
         return newModifier;
     }
 }

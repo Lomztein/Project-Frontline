@@ -52,9 +52,10 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Optics Facility
-    Description: Facility where lasers and lenses are tested and optimized for less
-      energy usage, as well as smaller sizes. Adds 20% chance to equip Heavy and
-      Transport heliopters with forward facing Point Defense.
+    ShortDescription: Adds 20% chance to equip Heavy and Transport heliopters with
+      forward facing Point Defense.
+    Description: 'Facility where lasers and lenses are tested and optimized for less
+      energy usage, as well as smaller sizes. '
     Tags: []
     Cost: 3500
     Value: 200
@@ -79,7 +80,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 3500
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -135,6 +135,7 @@ MonoBehaviour:
   BaseChance: 0.2
   ChancePerStack: 0.2
   Filter: {fileID: 11400000, guid: 5bba141fe8dfb52419b7112c7ba9f4b4, type: 2}
+  UpgradeDelay: 0
   Object: {fileID: 6395399407065096120, guid: 3161fadf8a3846a4596b2767e4ddc60e, type: 3}
   UnitTransformInfos:
   - UnitIdentifier: Helicopter.Heavy

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class TopDownCameraController : MonoBehaviour, ICameraController
+public abstract class TopDownCameraController : MonoBehaviour, IMovableCameraController, IZoomableCameraController, ITransitionableCameraController
 {
     public Vector2 PanSpeedMinMax;
     public float PanMargin;
@@ -92,4 +92,22 @@ public abstract class TopDownCameraController : MonoBehaviour, ICameraController
     {
         _targetAngle = 0f;
     }
+
+    public void ResetZoom()
+    {
+        _targetZoomLevel = 1f;
+    }
+
+    public Vector3 GetTransitionStartPosition()
+    {
+        return transform.position;
+    }
+
+    public Quaternion GetTransitionStartRotation()
+    {
+        return transform.rotation;
+    }
+
+    public string GetName()
+        => gameObject.name;
 }

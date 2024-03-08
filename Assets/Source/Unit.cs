@@ -11,7 +11,7 @@ public class Unit : MonoBehaviour, IPurchasable, ICommanderComponent, ITeamCompo
     public UnitInfo Info;
 
     public string Name => Info.Name;
-    public string Description => Info.Description;
+    public string Description => Info.ShortDescription;
     public Sprite Sprite => null;
     public Health Health;
 
@@ -55,28 +55,23 @@ public class Unit : MonoBehaviour, IPurchasable, ICommanderComponent, ITeamCompo
     private bool _initialTeamSet = false;
     public TeamInfo InitialTeamInfo { get; private set; }
 
-
-    private void CheckBattlefieldBounds()
-    {
-        // Kill the unit if they go way too far out of bounds.
-        if (!MatchSettings.Current.MapInfo.Contains(transform.position / 2f))
-        {
-            Health.TakeDamage(new DamageInfo(Health.MaxHealth / 3f, DamageModifier.One, transform.position, transform.forward, this, Health));
-        }
-    }
-
     public void AddWeapon(IWeapon weapon)
     {
         _weaponCache.Add(weapon);
         weapon.OnKill += Weapon_OnKill;
         weapon.OnHit += Weapon_OnHit;
+        weapon.OnDamageDone += Weapon_OnDamageDone;
+        AddStat("Kills", 0);
+        AddStat("Damage done", 0);
     }
+
 
     public void RemoveWeapon(IWeapon weapon)
     {
         _weaponCache.Remove(weapon);
         weapon.OnKill -= Weapon_OnKill;
         weapon.OnHit -= Weapon_OnHit;
+        weapon.OnDamageDone -= Weapon_OnDamageDone;
     }
 
     private void Awake()
@@ -85,7 +80,8 @@ public class Unit : MonoBehaviour, IPurchasable, ICommanderComponent, ITeamCompo
         GetWeaponCache(ref _weaponCache);
 
         Health = GetComponent<Health>();
-        InvokeRepeating(nameof(CheckBattlefieldBounds), 10f, 10f);
+        AddStat("Damage taken", 0f);
+        AddStat("Damage healed", 0f);
 
         if (TryGetComponent(out Rigidbody body))
         {
@@ -118,15 +114,38 @@ public class Unit : MonoBehaviour, IPurchasable, ICommanderComponent, ITeamCompo
     private void Start()
     {
         Health.OnDamageTaken += Health_OnDamageTaken;
+        Health.OnHeal += Health_OnHeal;
+    }
+
+    private void Health_OnHeal(Health arg1, DamageInfo arg2)
+    {
+        ChangeStat("Damage healed", arg2.DamageDone);
     }
 
     private void Health_OnDamageTaken(Health arg1, DamageInfo info)
     {
         _lastEngageTime = Time.time;
+        ChangeStat("Damage taken", info.DamageDone);
+    }
+
+
+    private void Weapon_OnDamageDone(IWeapon arg1, Projectile arg2, IDamagable arg3, DamageInfo arg4)
+    {
+        ChangeStat("Damage done", arg4.DamageDone);
     }
 
     public Dictionary<string, float> GetStats()
         => new Dictionary<string, float>(_stats);
+
+    public bool AddStat(string name, float initialValue)
+    {
+        if (_stats.ContainsKey(name))
+        {
+            return false;
+        }
+        _stats.Add(name, initialValue);
+        return true;
+    }
 
     public float SetStat(string stat, float value)
     {
@@ -157,9 +176,9 @@ public class Unit : MonoBehaviour, IPurchasable, ICommanderComponent, ITeamCompo
         ChangeStat("Kills", 1);
     }
 
-    public WeaponInfo[] GetWeaponInfo()
+    public EquipmentInfo[] GetWeaponInfo()
     {
-        return GetComponentsInChildren<WeaponInfo>();
+        return GetComponentsInChildren<EquipmentInfo>();
     }
 
     public void AssignCommander(Commander commander)

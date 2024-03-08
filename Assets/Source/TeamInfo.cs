@@ -75,4 +75,7 @@ public class TeamInfo : ScriptableObject
     public int ProjectileGetLayer() => ProjectileLayerStart + Id;
     public int ProjectileGetLayerMask() => ProjectileGetLayerMask(Id);
     public int ProjectileGetOtherLayerMasks() => ProjectileLayerAllTeams & ~ProjectileGetLayerMask();
+
+    public static TeamInfo[] LoadTeams()
+        => Resources.LoadAll<TeamInfo>("Teams");
 }

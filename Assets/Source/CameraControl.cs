@@ -50,23 +50,26 @@ public class CameraControl : MonoBehaviour
 
     private void CameraReset_Action(InputAction.CallbackContext ctx)
     {
-        if (ctx.phase == InputActionPhase.Canceled && ctx.duration < CameraResetTapLimit)
+        if (CameraSelector.CurrentIs(out IMovableCameraController movable))
         {
-            CameraSelector.CurrentCameraController.Reset();
-        }
-
-        Debug.Log(ctx.phase);
-        if (PlayerHandler.PlayerInputType == PlayerHandler.InputType.MouseAndKeyboard)
-        {
-            if (ctx.phase == InputActionPhase.Performed)
+            if (ctx.phase == InputActionPhase.Canceled && ctx.duration < CameraResetTapLimit)
             {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
+                movable.Reset();
             }
-            if (ctx.phase == InputActionPhase.Canceled)
+
+            Debug.Log(ctx.phase);
+            if (PlayerHandler.PlayerInputType == PlayerHandler.InputType.MouseAndKeyboard)
             {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
+                if (ctx.phase == InputActionPhase.Performed)
+                {
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                }
+                if (ctx.phase == InputActionPhase.Canceled)
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                }
             }
         }
     }
@@ -82,28 +85,46 @@ public class CameraControl : MonoBehaviour
         bool toHq = CameraToHQ.triggered;
         bool toFrontline = CameraToFrontline.triggered;
 
-        ICameraController controller = CameraSelector.CurrentCameraController;
-        if (controller != null )
+        if (CameraSelector.CurrentIs(out IMovableCameraController movable))
         {
-            controller.Pan(pan);
-            controller.Rotate(rotate);
-            controller.Zoom(zoom);
+            movable.Pan(pan);
+            movable.Rotate(rotate);
+        }
 
+        if (CameraSelector.CurrentIs(out IZoomableCameraController zoomable))
+        {
+            zoomable.Zoom(zoom);
+        }
+
+        if (CameraSelector.CurrentIs(out ISettableCameraController settable))
+        {
             if (toHq)
             {
-                controller.LookAt(GetHQPosition());
+            settable.LookAt(GetHQPosition());
             }
 
             if (toFrontline)
             {
-                controller.LookAt(GetFrontlinePosition());
+            settable.LookAt(GetFrontlinePosition());
             }
         }
 
         if (change)
         {
             int value = Mathf.RoundToInt(Mathf.Sign(CameraChange.ReadValue<float>()));
-            CameraSelector.SelectCamera(CameraSelector.SelectedIndex + value);
+            ICompositeCameraController composite = CameraSelector.CurrentAs<ICompositeCameraController>();
+            if (composite != null)
+            {
+                if (composite.Change(value))
+                {
+                    value = 0;
+                }
+            }
+
+            if (value != 0)
+            {
+                CameraSelector.SelectCamera(CameraSelector.SelectedIndex + value);
+            }
         }
 
         if (reset && Time.time > _cameraResetBeginTime + CameraResetTapLimit)
@@ -114,8 +135,10 @@ public class CameraControl : MonoBehaviour
 
     public void MoveToHQ ()
     {
-        ICameraController controller = CameraSelector.CurrentCameraController;
-        controller.LookAt(GetHQPosition());
+        if (CameraSelector.CurrentIs(out ISettableCameraController settable))
+        {
+            settable.LookAt(GetHQPosition());
+        }
     }
 
     private Vector3 GetHQPosition()

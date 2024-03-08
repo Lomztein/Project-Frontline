@@ -12,7 +12,8 @@ public static class UnitTooltip
     public static GameObject Create(Unit unit, Commander owner)
     {
         GameObject newTooltip = Object.Instantiate(Resources.Load<GameObject>(RESOURCE_PATH));
-        newTooltip.transform.Find("Name").GetComponentInChildren<Text>().text = unit.Name + " - " + owner == null ? unit.BaseCost.ToString() : unit.GetCost(owner) + "$";
+        newTooltip.transform.Find("Name").GetComponentInChildren<Text>().text = $"<b>{unit.Name}</b>" + " - " + (owner == null ? unit.BaseCost.ToString() : unit.GetCost(owner)) + "$";
+        string desc = string.IsNullOrEmpty(unit.Info.ShortDescription) ? unit.Info.Description : unit.Info.ShortDescription;        
         newTooltip.transform.Find("Description").GetComponentInChildren<Text>().text = unit.Description;
         string purchaseNotes = owner == null ? null : owner.GetCanAffordAndPurchaseDescription(unit.gameObject);
         var notes = newTooltip.transform.Find("PurchaseNotes");
@@ -24,37 +25,37 @@ public static class UnitTooltip
         {
             notes.Find("Text").GetComponent<Text>().text = purchaseNotes;
         }
-        string weaponInfo = WeaponInfoToString(unit);
-        if (string.IsNullOrEmpty(weaponInfo))
-        {
-            newTooltip.transform.Find("Weapons").gameObject.SetActive(false);
-        }
-        else
-        {
-            newTooltip.transform.Find("Weapons").GetComponentInChildren<Text>().text = WeaponInfoToString(unit);
-        }
+        string weaponInfo = EquipmentInfoString(unit, owner);
+        newTooltip.transform.Find("Equipment").GetComponentInChildren<Text>().text = weaponInfo;
         return newTooltip;
     }
 
-    private static string WeaponInfoToString(Unit unit)
+    private static string EquipmentInfoString(Unit unit, Commander commander)
     {
-        WeaponInfo[] info = unit.GetWeaponInfo();
-        if (info.Length > 0)
-        {
-            var groups = info.GroupBy(x => x.Name);
-            StringBuilder builder = new StringBuilder();
-            foreach (var group in groups)
-            {
-                IWeapon weapon = group.First().GetComponent<IWeapon>();
+        StringBuilder builder = new StringBuilder();
+        Health[] healths = unit.GetComponentsInChildren<Health>();
+        IWeapon[] weapons = unit.GetWeapons().ToArray();
 
-                int count = group.Count();
-                string prefix = count == 1 ? "" : count + "x ";
-                string suffix = weapon != null ? $" - {weapon.GetDPSOrOverride() * count} {weapon.Modifier} DPS" : "";
-                builder.AppendLine($"<b>{prefix}{group.Key}</b>{suffix}");
-                builder.AppendLine($"<i>{group.First().Description}</i>");
-            }
-            return builder.ToString().Trim();
+        foreach (Health health in healths)
+        {
+            IEnumerable<DamageModifier> strongAgainst = commander != null ? DamageModifierUtils.GetLowestAgainst(health.Modifier, DamageModifierUtils.GetAvailableWeaponModifiers(commander.Target)) : new DamageModifier[0];
+            IEnumerable<DamageModifier> weakAgainst = commander != null ? DamageModifierUtils.GetHighestAgainst(health.Modifier, DamageModifierUtils.GetAvailableWeaponModifiers(commander.Target)) : new DamageModifier[0];
+
+            builder.AppendLine($"<b>{health.MaxHealth} {health.Modifier.Name} HP</b>");
+            builder.AppendLine($"\tStrong against: {string.Join(", ", strongAgainst)}");
+            builder.AppendLine($"\tWeak against: {string.Join(", ", weakAgainst)}");
         }
-        return null;
+
+        foreach (IWeapon weapon in weapons)
+        {
+            IEnumerable<DamageModifier> strongAgainst = commander != null ? DamageModifierUtils.GetHighestAgainst(weapon.Modifier, DamageModifierUtils.GetAvailableArmorModifiers(commander.Target)) : new DamageModifier[0];
+            IEnumerable<DamageModifier> weakAgainst = commander != null ? DamageModifierUtils.GetLowestAgainst(weapon.Modifier, DamageModifierUtils.GetAvailableArmorModifiers(commander.Target)) : new DamageModifier[0];
+
+            builder.AppendLine($"<b>{weapon.GetDPSOrOverride()} {weapon.Modifier.Name} DPS</b>");
+            builder.AppendLine($"\tStrong against: {string.Join(", ", strongAgainst)}");
+            builder.AppendLine($"\tWeak against: {string.Join(", ", weakAgainst)}");
+        }
+
+        return builder.ToString().Trim();
     }
 }

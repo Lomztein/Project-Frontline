@@ -23,8 +23,11 @@ public class ContinuousUnitProductionBehaviour : UnitProductionBehaviour
         private Commander _owner;
         private Coroutine _coroutine;
 
+        private float _productionTime;
         private float _nextProductionTime;
+
         public override float NextProductionTime => _nextProductionTime;
+        public override float ProductionTime => _productionTime;
 
         public override void Initialize(Commander owner, float baseProductionTime, Action callback)
         {
@@ -34,14 +37,15 @@ public class ContinuousUnitProductionBehaviour : UnitProductionBehaviour
             int teamMembers = owner.TeamInfo.GetTeam().GetCommanders().Length;
             float mult = NormalizePerTeam ? teamMembers : 1f;
 
-            _nextProductionTime = Time.time + baseProductionTime * mult;
-            _coroutine = _owner.StartCoroutine(InvokeCallback(baseProductionTime * mult));
+            _productionTime = baseProductionTime * mult;
+            _coroutine = _owner.StartCoroutine(InvokeCallback(_productionTime));
         }
 
         public IEnumerator InvokeCallback (float time)
         {
             while (true)
             {
+                _nextProductionTime = Time.time + _productionTime;
                 yield return new WaitForSeconds(time);
                 _callback();
             }

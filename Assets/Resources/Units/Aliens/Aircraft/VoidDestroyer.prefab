@@ -69,8 +69,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damage: 600
-  Firerate: 0.2
-  Modifier: {fileID: 11400000, guid: 314342fc66eec6d48825ca07dec91c8c, type: 2}
+  Firerate: 0.3
+  Modifier: {fileID: 11400000, guid: 92e6b21166c648b45b3686dd2030c041, type: 2}
   Speed: 150
   Range: 200
   Amount: 1
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 3390617944157028309}
   - component: {fileID: 5974441448718156352}
   - component: {fileID: 5119211598259079654}
-  - component: {fileID: 2092341667532482408}
+  - component: {fileID: 4194004675719551956}
   m_Layer: 0
   m_Name: VoidDestroyer
   m_TagString: Untagged
@@ -310,6 +310,8 @@ MonoBehaviour:
   Info:
     Identifier: Voidcraft.Destroyer
     Name: Destroyer
+    ShortDescription: Heavy armored voidcraft with a powerful anti-armor photon cannon
+      that can take out armored hostiles in a single shot.
     Description: Heavy voidcraft armed with a powerful photon cannon that, designed
       and built to destroy enemy armor beyond the range of their cannons. A powerful
       anti-gravity drive provides enough lift to allow heavier armor than contemporary
@@ -352,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 2500
+  MaxHealth: 3500
   Modifier: {fileID: 11400000, guid: d6673408d255459408e6572144ffabbc, type: 2}
   DestroyOnDeath: 1
   DestroyDelay: 0
@@ -371,7 +373,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 10
-  Rigidbody: {fileID: 0}
   MaxAngularSpeed: 90
   AccelerationSpeed: 5
   AngularAccelerationSpeed: 80
@@ -436,7 +437,7 @@ MonoBehaviour:
   Weapon: {fileID: 8796598382180843177}
   Shots: 1
   HealthWeight: 10
---- !u!114 &2092341667532482408
+--- !u!114 &4194004675719551956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -445,12 +446,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 5098630938641068010}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:
-  - {fileID: 3778651877668035552}
   - {fileID: 2963445903266070284}
+  - {fileID: 132085711087517932}
 --- !u!1 &6290330118582384687
 GameObject:
   m_ObjectHideFlags: 0
@@ -5690,6 +5691,12 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 627704062522542832}
   m_SourcePrefab: {fileID: 100100000, guid: fd3e9a1c3b8a3804f8270c49752a1568, type: 3}
+--- !u!23 &132085711087517932 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1588066396962892842, guid: fd3e9a1c3b8a3804f8270c49752a1568,
+    type: 3}
+  m_PrefabInstance: {fileID: 1719445663239105734}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1177141293362350893 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: fd3e9a1c3b8a3804f8270c49752a1568,
@@ -5699,12 +5706,6 @@ Transform:
 --- !u!23 &2963445903266070284 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: -4684600263410887734, guid: fd3e9a1c3b8a3804f8270c49752a1568,
-    type: 3}
-  m_PrefabInstance: {fileID: 1719445663239105734}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &3778651877668035552 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -6652725513331149018, guid: fd3e9a1c3b8a3804f8270c49752a1568,
     type: 3}
   m_PrefabInstance: {fileID: 1719445663239105734}
   m_PrefabAsset: {fileID: 0}

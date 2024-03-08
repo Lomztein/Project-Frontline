@@ -13,6 +13,7 @@ public class Commander : MonoBehaviour, ITeamComponent
     public string Name;
     public uint OwnerId;
     public float BuildRadius;
+    public float BuildEnemyThreshold;
 
     public int Credits;
     private float _incomingCredits;
@@ -43,6 +44,7 @@ public class Commander : MonoBehaviour, ITeamComponent
 
     public event Action<Commander, Unit> OnUnitPlaced;
     public event Action<Commander, UnitFactory, Unit> OnUnitSpawned;
+    public event Action<Commander, Commander> OnNewTarget;
 
     public event Action<Commander, Unit> OnPlacedUnitDeath;
     public event Action<Commander> OnFortressDestroyed;
@@ -51,7 +53,6 @@ public class Commander : MonoBehaviour, ITeamComponent
     [Header("Frontline")]
     public Commander Target;
     public Frontline Frontline;
-    public float FrontlineBuildDistance = 75f;
 
     public float DefenseMargin = 50;
     public float DefenseThreshold = 100;
@@ -150,6 +151,10 @@ public class Commander : MonoBehaviour, ITeamComponent
             if (!Target)
             {
                 Target = FindTarget();
+                if (Target != null)
+                {
+                    OnNewTarget?.Invoke(this, Target);
+                }
             }
 
             if (Target)
@@ -246,10 +251,10 @@ public class Commander : MonoBehaviour, ITeamComponent
         return go;
     }
 
-    public bool IsNearAnyPlaced (Vector3 position)
+    public bool IsNearAnyPlaced (Vector3 position, float range)
     {
         var toCheck = Enumerable.Concat(Fortress.GetComponent<Unit>().SingleObjectAsEnumerable(), AlivePlaced);
-        return toCheck.Any(x => Vector3.Distance(x.transform.position, position) < BuildRadius);
+        return toCheck.Any(x => Vector3.Distance(x.transform.position, position) < range);
     }
 
     public bool TryPurchaseAndPlaceUnit(GameObject unitPrefab, Vector3 position, Quaternion rotation)
@@ -357,6 +362,10 @@ public class Commander : MonoBehaviour, ITeamComponent
         {
             component.AssignCommander(this);
         }
+        if (UnitPalette != null)
+        {
+            UnitPalette.ApplyTo(obj);
+        }
     }
 
     public void Earn (float moneys)
@@ -392,7 +401,9 @@ public class Commander : MonoBehaviour, ITeamComponent
 
     public bool CanPlace(Vector3 position, Quaternion rotation, OverlapUtils.OverlapShape unitOverlapGroup)
     {
-        if (DistanceFromFrontlineAlongBaseForward(position) < FrontlineBuildDistance)
+        if (!IsNearAnyPlaced(position, BuildRadius))
+            return false;
+        if (Physics.CheckSphere(position, BuildEnemyThreshold, TeamInfo.GetOtherLayerMasks()))
             return false;
         LayerMask terrainLayer = LayerMask.NameToLayer("Terrain");
         Collider[] colliders = unitOverlapGroup.Overlap(position, rotation, ~terrainLayer);

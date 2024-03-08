@@ -163,6 +163,8 @@ MonoBehaviour:
     UnitType: 0
   Health: {fileID: 0}
   _weapons: []
+  Parts: []
+  Weakpoints: []
 --- !u!114 &-2477253026524029928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 100
-  ArmorType: 2
+  Modifier: {fileID: 0}
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 6309138862387603851, guid: b8bdcc7c31cf2bc48b7fca9ea3c1d88e, type: 3}
@@ -194,7 +196,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 10
-  Rigidbody: {fileID: 109671596000499958}
   AccelerationSpeed: 20
   BrakeDrag: 30
   MaxTurnAngle: 60
@@ -222,6 +223,7 @@ MonoBehaviour:
   TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 50
+  HoldVariance: 2.5
   StayBehindFrontline: 0
 --- !u!114 &6103921204354685028
 MonoBehaviour:
@@ -486,7 +488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: {fileID: -2477253026524029928}
   Anim: {fileID: 7209007526179547936}
-  Sturdyness: 1
+  Sturdyness: 1.5
 --- !u!114 &3288475559599825864
 MonoBehaviour:
   m_ObjectHideFlags: 0

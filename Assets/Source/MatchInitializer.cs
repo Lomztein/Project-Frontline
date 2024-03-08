@@ -134,7 +134,9 @@ public class MatchInitializer : MonoBehaviour
         commander.OwnerId = info.Id;
         commander.Fortress = Instantiate(info.Faction.HeadquartersPrefab, commanderObj.transform).transform;
         commander.Credits = info.StartingCredits;
-        commander.Name = info.Name;
+        commander.Name = info.Name
+            .Replace("{Faction}", info.Faction == null ? "Observer" : info.Faction.Name)
+            .Replace("{Type}", info.AIProfile == null ? "No AI" : info.AIProfile.Name);
         commander.UnitAvailable = info.UnitAvailable;
         commander.Faction = info.Faction;
 

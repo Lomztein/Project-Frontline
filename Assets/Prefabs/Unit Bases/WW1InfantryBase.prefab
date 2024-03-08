@@ -1,5 +1,106 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &738376348576352715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1074763138931822162}
+  - component: {fileID: 1878258579071043425}
+  - component: {fileID: 3886941143965203730}
+  - component: {fileID: 8735033387461895644}
+  m_Layer: 0
+  m_Name: EquipmentList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1074763138931822162
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738376348576352715}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8086891902248042978}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1878258579071043425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738376348576352715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a463c88aaa0461c4c9b90d5e28ba4cfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InfoList:
+  - {fileID: 3886941143965203730}
+  - {fileID: 8735033387461895644}
+--- !u!114 &3886941143965203730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738376348576352715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Health
+  Description: The armor worn by this infantry.
+  MainComponent: {fileID: 221871567749722497}
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  EquipmentRenderers:
+  - {fileID: 6395310278657179922}
+  ParentOverride: {fileID: 8086891902248042978}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+--- !u!114 &8735033387461895644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738376348576352715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Lower Body
+  Description: The body of this infantry. Allows it to move around freely.
+  MainComponent: {fileID: 7582784818770834182}
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  EquipmentRenderers:
+  - {fileID: 3381888462426968774}
+  ParentOverride: {fileID: 8086891902248042978}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1001 &1129386276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -180,15 +281,61 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 8299666088126906342, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1074763138931822162}
     - targetCorrespondingSourceObject: {fileID: 7333146112172395668, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 543450652612523727}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
+--- !u!114 &221871567749722497 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1177128837, guid: 50378c4ca65714b4ebd2928ade59a707,
+    type: 3}
+  m_PrefabInstance: {fileID: 221871566639775236}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!137 &3381888462426968774 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3313205258211110082, guid: 50378c4ca65714b4ebd2928ade59a707,
+    type: 3}
+  m_PrefabInstance: {fileID: 221871566639775236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &6395310278657179922 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6617067491415211798, guid: 50378c4ca65714b4ebd2928ade59a707,
+    type: 3}
+  m_PrefabInstance: {fileID: 221871566639775236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7408613298599375504 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7333146112172395668, guid: 50378c4ca65714b4ebd2928ade59a707,
+    type: 3}
+  m_PrefabInstance: {fileID: 221871566639775236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7582784818770834182 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7651415233274957058, guid: 50378c4ca65714b4ebd2928ade59a707,
+    type: 3}
+  m_PrefabInstance: {fileID: 221871566639775236}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce0c54eb6fa4bb94aa3fd41409f023e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &8086891902248042978 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8299666088126906342, guid: 50378c4ca65714b4ebd2928ade59a707,
     type: 3}
   m_PrefabInstance: {fileID: 221871566639775236}
   m_PrefabAsset: {fileID: 0}

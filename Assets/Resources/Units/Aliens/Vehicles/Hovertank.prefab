@@ -5063,8 +5063,8 @@ GameObject:
   - component: {fileID: 4685482588723078254}
   - component: {fileID: 6121806967574398327}
   - component: {fileID: 7337033146408752773}
-  - component: {fileID: 55172517751872846}
   - component: {fileID: 6968871043046958595}
+  - component: {fileID: 4542109822654168002}
   m_Layer: 0
   m_Name: Hovertank
   m_TagString: MobileUnit
@@ -5103,6 +5103,7 @@ MonoBehaviour:
   Info:
     Identifier: Hovertank.Ion
     Name: Hovertank
+    ShortDescription: 
     Description: The primary battle tank of your army. While not as sturdy as other
       factions, it is more agile and has a higher damage output. It's light ion cannon
       can whittle down enemy armor with repeated strikes.
@@ -5148,7 +5149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 8
-  Rigidbody: {fileID: 7337033146408752773}
   MaxAngularSpeed: 90
   AccelerationSpeed: 20
   AngularAccelerationSpeed: 90
@@ -5226,22 +5226,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &55172517751872846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4117402744951761905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 5708819334684801844}
-  - {fileID: 763888504321449094}
-  - {fileID: 3271805771023950517}
 --- !u!114 &6968871043046958595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5255,6 +5239,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 259fba658c064ef4db94ec85f060efd0, type: 2}
+--- !u!114 &4542109822654168002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4117402744951761905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 3271805771023950517}
+  - {fileID: 763888504321449094}
+  - {fileID: 5708819334684801844}
 --- !u!1 &4452511611912023585
 GameObject:
   m_ObjectHideFlags: 0
@@ -5404,7 +5404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 85
+  Damage: 100
   Firerate: 1.75
   Modifier: {fileID: 11400000, guid: 92e6b21166c648b45b3686dd2030c041, type: 2}
   Speed: 75

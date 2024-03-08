@@ -119,7 +119,7 @@ namespace CustomGame
         public void StartGame ()
         {
             SetCurrentSettings();
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene("Battlefield");
         }
 
         public void SetEnabled (bool value)

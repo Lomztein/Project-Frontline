@@ -10302,8 +10302,8 @@ GameObject:
   - component: {fileID: 4685482588723078254}
   - component: {fileID: 6121806967574398327}
   - component: {fileID: 7337033146408752773}
-  - component: {fileID: 55172517751872846}
   - component: {fileID: 6968871043046958595}
+  - component: {fileID: 1780690639278489552}
   m_Layer: 0
   m_Name: HovertankAdvanced
   m_TagString: MobileUnit
@@ -10343,6 +10343,7 @@ MonoBehaviour:
   Info:
     Identifier: Hovertank.Advanced
     Name: Advanced Hovertank
+    ShortDescription: 
     Description: Variant of the Hovertank with heavier armor and equipped with a
       mass accelerator, capable of accelerating metal slugs to a notable fraction
       of the speed of light, for incredible armor penetration.
@@ -10388,7 +10389,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 8
-  Rigidbody: {fileID: 7337033146408752773}
   MaxAngularSpeed: 90
   AccelerationSpeed: 20
   AngularAccelerationSpeed: 90
@@ -10466,20 +10466,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &55172517751872846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4117402744951761905}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 5708819334684801844}
 --- !u!114 &6968871043046958595
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10493,6 +10479,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 259fba658c064ef4db94ec85f060efd0, type: 2}
+--- !u!114 &1780690639278489552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4117402744951761905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 5708819334684801844}
+  - {fileID: 1507409570953094134}
+  - {fileID: 7227223566162030255}
+  - {fileID: 1503425751271034825}
+  - {fileID: 6904677795991989671}
 --- !u!1 &4452511611912023585
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RechargeTime: 1
-  MaxChannelTime: 10
+  MaxChannelTime: 30
   ChannelState: 0
   ChannelEndDelay: 0.1
   ProgressPerSecond: 175
@@ -294,10 +294,9 @@ PrefabInstance:
     - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}
       propertyPath: Info.Description
-      value: Lanky, mutated variants of the smaller troopers, with hightened synaptic
-        sensitivity that provides them with psychic powers. These psychic powers
-        allow them to mind control hostile targets, though heavier targets are more
-        difficult to control.
+      value: Lanky, mutated variants of the smaller troopers with mind control powers
+        that allow them to take control of enemy units for a limited time, though
+        heavier targets are more difficult to control.
       objectReference: {fileID: 0}
     - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}
@@ -344,6 +343,16 @@ PrefabInstance:
         type: 3}
       propertyPath: ProductionTime
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706238921359540305, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: UseCanHit
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706238921359540305, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: UseDeltaAngle
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4706238921359540305, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}

@@ -489,7 +489,7 @@ MonoBehaviour:
   LeadTarget: 0
   TargetSearchFrequency: 2
   Modifiers: []
-  HoldRange: 50
+  HoldRange: 55
   HoldVariance: 5
   StayBehindFrontline: 0
 --- !u!114 &6370023998665172071
@@ -507,6 +507,8 @@ MonoBehaviour:
   Info:
     Identifier: Helicopter.Heavy
     Name: Heavy Helicopter
+    ShortDescription: Armored helicoptor with miniguns on the side that shred enemy
+      infantry.
     Description: More armored, and equipped with a powerful minigun on each side.
       These choppers can slaughter hordes of infantry with relative ease.
     Tags: []
@@ -535,7 +537,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FactoryPrefab: {fileID: 3940556133059093292, guid: 19c1d8ac2097cdf48ad8bf4c0e64766d,
     type: 3}
-  ProductionTime: 35
+  ProductionTime: 40
 --- !u!114 &6370023998665172069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,7 +569,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 7.5
-  Rigidbody: {fileID: 0}
   MaxAngularSpeed: 120
   AccelerationSpeed: 7.5
   AngularAccelerationSpeed: 120

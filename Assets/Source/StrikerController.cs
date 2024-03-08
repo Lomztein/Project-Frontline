@@ -49,7 +49,7 @@ public class StrikerController : AttackerController
     private float GetDisengageAngle ()
     {
         float angle;
-        if (DisengageAlongWaypoint)
+        if (PrevNode && NextNode && DisengageAlongWaypoint)
         {
             angle = Navigation.IncomingAngle(PrevNode, NextNode) + LaneOffset;
             angle = Mathf.DeltaAngle(transform.eulerAngles.y, angle);

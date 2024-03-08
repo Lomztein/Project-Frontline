@@ -57,6 +57,12 @@ public class Projectile : MonoBehaviour, IPoolObject
         DoDamage(damagable, Damage, Modifier, point, Velocity.normalized);
     }
 
+    protected virtual void DoDamage(Collider col, float damage, Vector3 point)
+    {
+        var damagable = col.GetComponentInParent<IDamagable>();
+        DoDamage(damagable, damage, Modifier, point, Velocity.normalized);
+    }
+
     public void DoDamage (IDamagable damagable, float damage, DamageModifier modifier, Vector3 point, Vector3 direction)
     {
         if (damagable != null)

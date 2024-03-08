@@ -9,7 +9,7 @@ public class FirstPersonWeaponsController : MonoBehaviour, ITeamComponent
 {
     public GameObject[] WeaponSlots;
     public IWeapon[] Weapons;
-    public WeaponInfo[] WeaponsInfo;
+    public EquipmentInfo[] WeaponsInfo;
     public GameObject[] WeaponPrefabs;
 
     public StarterAssetsInputs Inputs;
@@ -47,7 +47,7 @@ public class FirstPersonWeaponsController : MonoBehaviour, ITeamComponent
         Destroy(newWeapon.GetComponent<InfantryWeaponTurret>());
 
         Weapons[index] = newWeapon.GetComponent<IWeapon>();
-        WeaponsInfo[index] = newWeapon.GetComponent<WeaponInfo>();
+        WeaponsInfo[index] = newWeapon.GetComponent<EquipmentInfo>();
     }
 
     private void FixedUpdate()
@@ -97,7 +97,7 @@ public class FirstPersonWeaponsController : MonoBehaviour, ITeamComponent
     public void UpdateWeapons ()
     {
         Weapons = new IWeapon[WeaponPrefabs.Length];
-        WeaponsInfo = new WeaponInfo[WeaponPrefabs.Length];
+        WeaponsInfo = new EquipmentInfo[WeaponPrefabs.Length];
         int min = Mathf.Min(Weapons.Length, WeaponSlots.Length);
         for (int i = 0; i < min; i++)
         {

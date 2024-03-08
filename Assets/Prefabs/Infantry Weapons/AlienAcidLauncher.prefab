@@ -5061,11 +5061,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: Plasma Cannon
-  Description: Fires a continuous fusion beam that melts through heavy armor.
+  Name: Acid Launcher
+  Description: Fires a blob of metal-melting acid that can eat through light armor,
+    though seems to struggle against organics.
+  MainComponent: {fileID: 3250579649345278529}
   Model: {fileID: 0}
   AimBehaviour:
     rid: -2
+  LocalEquipmentBounds:
+    m_Center: {x: 0, y: 0.1, z: 0.12}
+    m_Extent: {x: 0.07, y: 0.08, z: 0.36}
+  BoundsParentOverride: {fileID: 0}
   references:
     version: 2
     RefIds:

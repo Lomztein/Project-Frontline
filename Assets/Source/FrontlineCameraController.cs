@@ -3,28 +3,40 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class FrontlineCameraController : MonoBehaviour
+public class FrontlineCameraController : MonoBehaviour, ICompositeCameraController, IZoomableCameraController
 {
-    public Vector3 Offset;
+    public Vector3 CameraOffsetMax;
+    public Vector3 CameraOffsetMin;
 
-    public float TargetMoveSpeed;
-    public float TargetMoveSpeedDistanceMultiplier = 0.1f;
-    public float LerpTime;
-    public float TargetRotationSpeed;
-    public float RotationLerpTime;
-    public Vector2 SwitchTimeMinMax;
+    public float AutoSwitchTime = 60f;
     public float DistanceBetweenPathSamples = 1f;
 
-    private Vector3 _targetPos;
-    private Quaternion _targetRot;
+    public Vector3 LookTargetPosition;
+    public Quaternion LookTargetRotation;
+    public Vector2 MovementThreshold;
+    public Vector2 RotationThreshold;
+
+    public Vector2 MovementSpeedMinMax;
+    public AnimationCurve MovementSpeedCurve;
+    public float MovementLerpTime;
+    public Vector2 RotationSpeedMinMax;
+    public AnimationCurve RotationSpeedCurve;
+    public float RotationLerpTime;
+
+    public float TargetZoom;
+    private float _zoom;
+    public float ZoomLerpSpeed;
 
     private Commander _commander;
     private Frontline _frontline;
     private LineSegment _frontlineLineSegment;
 
+    int _currentIndex;
+
     void Start()
     {
-        Switch();
+        Change(-1);
+        ResetZoom();
     }
 
     // Update is called once per frame
@@ -32,32 +44,49 @@ public class FrontlineCameraController : MonoBehaviour
     {
         if (_frontline != null)
         {
-            Vector3 frontlineDirection = (SamplePrevPoint(_frontline.Position) - SampleNextPoint(_frontline.Position)).normalized;
+            Vector3 frontlinePosition = _frontline.Position;
+            Quaternion rotationTowardsFrontline = Quaternion.LookRotation((frontlinePosition - transform.position).normalized, Vector3.up);
+
+            Vector3 frontlineDirection = (SamplePrevPoint(frontlinePosition) - SampleNextPoint(frontlinePosition)).normalized;
             Quaternion frontlineRotation = Quaternion.LookRotation(frontlineDirection, Vector3.up);
 
-            Vector3 targetPos = (_frontline.Position + frontlineRotation * Offset + _frontline.Change) * (1f + _frontline.Change.magnitude);
-            float dist = Vector3.Distance(targetPos, transform.position);
-            _targetPos = Vector3.MoveTowards(_targetPos, targetPos, TargetMoveSpeed * Time.deltaTime + (dist * TargetMoveSpeedDistanceMultiplier) * Time.deltaTime);
-            transform.position = Vector3.Lerp(transform.position, _targetPos, LerpTime * Time.deltaTime);
+            float frontlineDistFromTarget = Vector3.Distance(frontlinePosition, LookTargetPosition);
+            float rotationDiff = Quaternion.Angle(rotationTowardsFrontline, LookTargetRotation);
 
-            Quaternion targetRot = Quaternion.LookRotation((_frontline.Position - transform.position).normalized, Vector3.up);
-            _targetRot = Quaternion.RotateTowards(_targetRot, targetRot, TargetRotationSpeed * Time.deltaTime);
-            transform.rotation = Quaternion.Slerp (transform.rotation, _targetRot, RotationLerpTime * Time.deltaTime);
+            float movementFactor = Mathf.Clamp01(Mathf.InverseLerp(MovementThreshold.x, MovementThreshold.y, frontlineDistFromTarget));
+            float rotationFactor = Mathf.Clamp01(Mathf.InverseLerp(RotationThreshold.x, RotationThreshold.y, rotationDiff));
+
+            LookTargetPosition = Vector3.MoveTowards(LookTargetPosition, frontlinePosition, Mathf.Lerp(MovementSpeedMinMax.x, MovementSpeedMinMax.y, MovementSpeedCurve.Evaluate(movementFactor)) * Time.deltaTime);
+            LookTargetRotation = Quaternion.RotateTowards(LookTargetRotation, rotationTowardsFrontline, Mathf.Lerp(RotationSpeedMinMax.x, RotationSpeedMinMax.y, RotationSpeedCurve.Evaluate(rotationFactor)) * Time.deltaTime);
+
+            Vector3 cameraTargetPosition = LookTargetPosition + frontlineRotation * Vector3.Lerp(CameraOffsetMax, CameraOffsetMin, _zoom);
+            Quaternion cameraTargetRotation = LookTargetRotation;
+
+            transform.SetPositionAndRotation(
+                Vector3.Lerp(transform.position, cameraTargetPosition, MovementLerpTime * Time.deltaTime),
+                Quaternion.Slerp (transform.rotation, cameraTargetRotation, RotationLerpTime * Time.deltaTime)
+            );
+
+            _zoom = Mathf.Lerp(_zoom, TargetZoom, ZoomLerpSpeed * Time.fixedDeltaTime);
         }
     }
-
-    private void Switch ()
+    
+    private void SetRandomCommander ()
     {
         var commanders = GameObject.FindGameObjectsWithTag("Commander").Select(x => x.GetComponent<Commander>()).ToArray();
         if (commanders.Length > 0)
         {
-            _commander = commanders[Random.Range(0, commanders.Length)];
-            _frontline = _commander.Frontline;
-            var nodes = Navigation.GetPath(Navigation.GetNearestNode(_commander.transform.position), Navigation.GetNearestNode(_commander.Target.transform.position));
-            _frontlineLineSegment = LineSegment.CreateFrom(nodes.Select(x => x.Position));
+            SetCommander(commanders[Random.Range(0, commanders.Length)]);
         }
-        CancelInvoke(nameof(Switch));
-        Invoke(nameof(Switch), Random.Range(SwitchTimeMinMax.x, SwitchTimeMinMax.y));
+    }
+
+    private void SetCommander(Commander commander)
+    {
+        _commander = commander;
+        _frontline = _commander.Frontline;
+        var nodes = Navigation.GetPath(Navigation.GetNearestNode(_commander.transform.position), Navigation.GetNearestNode(_commander.Target.transform.position));
+        _frontlineLineSegment = LineSegment.CreateFrom(nodes.Select(x => x.Position));
+        Debug.Log("FrontlineCam SetCommander: " + commander.Name);
     }
 
     private Vector3 SamplePrevPoint(Vector3 point)
@@ -68,8 +97,6 @@ public class FrontlineCameraController : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawLine(Vector3.zero, Offset);
-        Gizmos.DrawSphere(Offset, 0.5f);
         Gizmos.color = Color.magenta;
         if (_frontlineLineSegment != null)
         {
@@ -83,6 +110,62 @@ public class FrontlineCameraController : MonoBehaviour
                 Gizmos.DrawLine(line.From, line.To);
             }
         }
-        Gizmos.color = Color.magenta;
+        Gizmos.color = Color.white;
+
+        if (_commander)
+        {
+            Gizmos.DrawWireSphere(_commander.Frontline.GetPosition(), MovementThreshold.x);
+            Gizmos.DrawWireSphere(_commander.Frontline.GetPosition(), MovementThreshold.y);
+            Gizmos.DrawSphere(LookTargetPosition, 0.25f);
+        }
+    }
+
+    public bool Change(int value)
+    {
+        CancelInvoke(nameof(SetRandomCommander));
+        var commanders = GameObject.FindGameObjectsWithTag("Commander").Select(x => x.GetComponent<Commander>()).ToArray();
+
+        _currentIndex += value;
+        if (_currentIndex > commanders.Length - 1) { 
+            _currentIndex = commanders.Length - 1;
+            return false;
+        }
+        if (_currentIndex < -1)
+        {
+            _currentIndex = 0;
+            return false;
+        }
+
+        if (_currentIndex == -1)
+        {
+            SetRandomCommander();
+            InvokeRepeating(nameof(SetRandomCommander), AutoSwitchTime, AutoSwitchTime);
+        }
+        else
+        {
+            SetCommander(commanders[_currentIndex]);
+        }
+
+        return true;
+    }
+
+    public string GetName()
+    {
+        if (_currentIndex != -1)
+        {
+            return $"Frontline ({_commander.Name})";
+        }
+        return $"Frontline (Auto - {_commander.Name})";
+    }
+
+    public void Zoom(float amount)
+    {
+        TargetZoom += amount;
+        TargetZoom = Mathf.Clamp01(TargetZoom);
+    }
+
+    public void ResetZoom()
+    {
+        TargetZoom = 1f;
     }
 }

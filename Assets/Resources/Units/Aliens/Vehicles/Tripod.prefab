@@ -2092,9 +2092,9 @@ GameObject:
   - component: {fileID: 4033023858069029473}
   - component: {fileID: 4891836030305097033}
   - component: {fileID: 7145766378651023591}
-  - component: {fileID: 1045138766884431919}
   - component: {fileID: 8671868782450789914}
   - component: {fileID: 5395642093535809798}
+  - component: {fileID: 6320795129103944266}
   m_Layer: 0
   m_Name: Tripod
   m_TagString: MobileUnit
@@ -2133,6 +2133,7 @@ MonoBehaviour:
   Info:
     Identifier: Tripod
     Name: Tripod
+    ShortDescription: 
     Description: Superheavy walker with a with a fusion core that allows it to stare
       down hostile forces with extreme prejudice. This is our trumph card, used to
       decimate armies, though beware that it is tall enough for enemy anti-air to
@@ -2179,7 +2180,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 2
-  Rigidbody: {fileID: 0}
   AccelerationSpeed: 2.5
   BrakeDrag: 10
   MaxTurnAngle: 15
@@ -2225,23 +2225,6 @@ MonoBehaviour:
   FactoryPrefab: {fileID: 8602111571912869181, guid: 14061487db186fa47a15b069b80d67dc,
     type: 3}
   ProductionTime: 80
---- !u!114 &1045138766884431919
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5500957360500527071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 4170415207674209294}
-  - {fileID: 7481918559069565883}
-  - {fileID: 1084305354506356728}
-  - {fileID: 1895008557271573096}
 --- !u!54 &8671868782450789914
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2282,6 +2265,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 259fba658c064ef4db94ec85f060efd0, type: 2}
+--- !u!114 &6320795129103944266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5500957360500527071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 4170415207674209294}
+  - {fileID: 4077342864688072722}
+  - {fileID: 7481918559069565883}
+  - {fileID: 2398705932851568304}
+  - {fileID: 1084305354506356728}
+  - {fileID: 6244060709858569380}
+  - {fileID: 1895008557271573096}
+  - {fileID: 3199935163988996900}
+  - {fileID: 2153895376840696683}
+  - {fileID: 3154885603258605350}
+  - {fileID: 4547830774941464028}
 --- !u!1 &5997510989253126836
 GameObject:
   m_ObjectHideFlags: 0

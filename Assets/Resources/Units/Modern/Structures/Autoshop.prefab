@@ -462,8 +462,9 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Autoshop
-    Description: Small shop with all the tools neccesary for doing small-scale modification
-      on Scouts. 20% chance to add a single slot garrison to Scout-type vehicles.
+    ShortDescription: 20% chance to add a single slot garrison to Scout-type vehicles.
+    Description: 'Small shop with all the tools neccesary for doing small-scale modification
+      on Scouts. '
     Tags: []
     Cost: 1000
     Value: 100
@@ -488,7 +489,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 2500
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -530,6 +530,7 @@ MonoBehaviour:
   BaseChance: 0.2
   ChancePerStack: 0.2
   Filter: {fileID: 11400000, guid: fbed27bc38166aa40ba5e52c4b973863, type: 2}
+  UpgradeDelay: 0
   Object: {fileID: 1432338357937530425, guid: 39aa70a8c85881e4db322528e47a805e, type: 3}
   UnitTransformInfos:
   - UnitIdentifier: 

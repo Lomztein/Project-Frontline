@@ -10758,6 +10758,7 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Mobile Rocket Artillary
+    ShortDescription: Long range siege weapon that bombard enemy units with rockets.
     Description: Often nicknamed the "Homewrecker" by frontline forces, this monster
       of a mobile artillary station is capable of, well, wrecking homes with unprecedented
       effeciency.
@@ -10807,7 +10808,6 @@ MonoBehaviour:
   AcquireTargetRange: 150
   LooseTargetRange: 150
   AttackRange: 125
-  CheckTargetLineOfSight: 0
   TurretObject: {fileID: 5640369136892039193}
   WeaponObjects:
   - {fileID: 5640369136630403019}
@@ -10818,6 +10818,7 @@ MonoBehaviour:
   - {fileID: -454217863282750625}
   - {fileID: -66800468921529488}
   HoldRange: 125
+  HoldVariance: 2.5
   StayBehindFrontline: 0
 --- !u!114 &6032616352911189941
 MonoBehaviour:
@@ -10832,7 +10833,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 2.5
-  Rigidbody: {fileID: 0}
   AccelerationSpeed: 5
   BrakeDrag: 10
   MaxTurnAngle: 25

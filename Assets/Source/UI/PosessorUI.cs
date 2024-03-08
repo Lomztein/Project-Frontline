@@ -99,7 +99,7 @@ public class PosessorUI : MonoBehaviour
                 Texture2D tex;
                 GameObject model;
 
-                if (comp.TryGetComponent(out WeaponInfo info))
+                if (comp.TryGetComponent(out EquipmentInfo info))
                 {
                     if (info.Model)
                     {

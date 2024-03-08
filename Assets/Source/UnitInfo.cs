@@ -23,6 +23,8 @@ public class UnitInfo
     public string Identifier;
     public string Name;
     [TextArea]
+    public string ShortDescription;
+    [TextArea]
     public string Description;
     public string[] Tags;
     public int Cost;

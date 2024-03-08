@@ -46,6 +46,8 @@ GameObject:
   - component: {fileID: 1133384227490564809}
   - component: {fileID: 8992524837499281156}
   - component: {fileID: 6731816000422383594}
+  - component: {fileID: 6630170207701423463}
+  - component: {fileID: 5480654472234156739}
   m_Layer: 0
   m_Name: Cannon
   m_TagString: Untagged
@@ -282,6 +284,60 @@ MonoBehaviour:
   - {fileID: 6986314690261382818}
   - {fileID: 2849683204882745346}
   - {fileID: 4661183961797199895}
+--- !u!114 &6630170207701423463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379412215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Heavy Cannon
+  Description: Excessively heavy cannon that fires dense uranium rounds capable of
+    immense armor penetration, though tends to overpenetrate against lighter armor.
+  MainComponent: {fileID: 1379412217}
+  Model: {fileID: 1584996713668919188}
+  AimBehaviour:
+    rid: -2
+  EquipmentRenderers:
+  - {fileID: 4703333335604377295}
+  - {fileID: 1423168519780670162}
+  ParentOverride: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+--- !u!114 &5480654472234156739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379412215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Turret
+  Description: Turret for the main weapon. Allows the unit to aim towards targets.
+  MainComponent: {fileID: 1133384227490564809}
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  EquipmentRenderers:
+  - {fileID: 6658806499046814483}
+  ParentOverride: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &2126640208
 GameObject:
   m_ObjectHideFlags: 0
@@ -10562,9 +10618,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7413236967939623016, guid: 809019c0ba3607d4ebcaa98d3d42a698,
         type: 3}
+      propertyPath: Info.ShortDescription
+      value: Heavy cannon on wheels extremely effective against armored targets at
+        range.
+      objectReference: {fileID: 0}
+    - target: {fileID: 7413236967939623016, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
       propertyPath: _weapons.Array.data[0]
       value: 
       objectReference: {fileID: 1379412215}
+    - target: {fileID: 7768243530462804439, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: EquipmentRenderers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7768243530462804439, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      propertyPath: EquipmentRenderers.Array.data[0]
+      value: 
+      objectReference: {fileID: 5348945267670205464}
     - target: {fileID: 7879884644458380785, guid: 809019c0ba3607d4ebcaa98d3d42a698,
         type: 3}
       propertyPath: Modifier
@@ -10646,16 +10718,32 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 9198845951950377899, guid: 809019c0ba3607d4ebcaa98d3d42a698,
         type: 3}
-      insertIndex: -1
+      insertIndex: 7
       addedObject: {fileID: -6319302282434269723}
     - targetCorrespondingSourceObject: {fileID: 9198845951950377899, guid: 809019c0ba3607d4ebcaa98d3d42a698,
         type: 3}
-      insertIndex: -1
+      insertIndex: 8
       addedObject: {fileID: 8102558749373117948}
+    - targetCorrespondingSourceObject: {fileID: 9198845951950377899, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3028536815064623652}
   m_SourcePrefab: {fileID: 100100000, guid: 809019c0ba3607d4ebcaa98d3d42a698, type: 3}
+--- !u!1 &1584996713668919188 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1885173817517213235, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+    type: 3}
+  m_PrefabInstance: {fileID: 1141224368888527271}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3682555868876772672 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4381264155662920935, guid: 809019c0ba3607d4ebcaa98d3d42a698,
+    type: 3}
+  m_PrefabInstance: {fileID: 1141224368888527271}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5348945267670205464 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5038741719854874047, guid: 809019c0ba3607d4ebcaa98d3d42a698,
     type: 3}
   m_PrefabInstance: {fileID: 1141224368888527271}
   m_PrefabAsset: {fileID: 0}
@@ -10693,6 +10781,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
+--- !u!114 &3028536815064623652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8106105647802903052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 5348945267670205464}
+  - {fileID: 6658806499046814483}
+  - {fileID: 4703333335604377295}
+  - {fileID: 1423168519780670162}
 --- !u!1001 &5238313587377313565
 PrefabInstance:
   m_ObjectHideFlags: 0

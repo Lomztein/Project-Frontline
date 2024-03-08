@@ -689,6 +689,8 @@ MonoBehaviour:
   Info:
     Identifier: Plane.Gunship
     Name: Gunship
+    ShortDescription: Heavy gunship that circles above the battlefield, raining hellfire
+      on enemies.
     Description: Huge and both heavily armored and armed gunship that circles targets
       and pummels them with fury and hellfire. Can take a lot of punishment and can
       deal even more.
@@ -722,7 +724,6 @@ MonoBehaviour:
   AcquireTargetRange: 500
   LooseTargetRange: 200
   AttackRange: 75
-  CheckTargetLineOfSight: 0
   TurretObject: {fileID: 0}
   WeaponObjects: []
   AimTolerance: 5
@@ -731,6 +732,7 @@ MonoBehaviour:
   Modifiers:
   - {fileID: 3471064318615009461}
   HoldRange: 60
+  HoldVariance: 2.5
   StayBehindFrontline: 0
   CircleRight: 0
   ChanceToCircleRight: 0
@@ -792,7 +794,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 50
-  Rigidbody: {fileID: 4964351093738814718}
   MinSpeed: 50
   AccelerationSpeed: 25
   RaiseSpeed: 25
@@ -1373,7 +1374,6 @@ MonoBehaviour:
   AcquireTargetRange: 100
   LooseTargetRange: 100
   AttackRange: 100
-  CheckTargetLineOfSight: 1
   TurretObject: {fileID: 5710782334178748803}
   WeaponObjects:
   - {fileID: 5710782334178748803}
@@ -1649,7 +1649,6 @@ MonoBehaviour:
   AcquireTargetRange: 100
   LooseTargetRange: 100
   AttackRange: 100
-  CheckTargetLineOfSight: 1
   TurretObject: {fileID: 5710782334378631605}
   WeaponObjects:
   - {fileID: 5710782334378631605}
@@ -2281,7 +2280,6 @@ MonoBehaviour:
   AcquireTargetRange: 100
   LooseTargetRange: 100
   AttackRange: 100
-  CheckTargetLineOfSight: 1
   TurretObject: {fileID: 5710782335347440846}
   WeaponObjects:
   - {fileID: 5710782335347440846}

@@ -319,7 +319,55 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 5233042390563487773}
   Inaccuracy: 0
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   MaxChargeTime: 1
   CurrentChargeTime: 0
   ResetChargeOnFire: 1
@@ -917,6 +965,12 @@ PrefabInstance:
         type: 3}
       propertyPath: _weapons.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
+        type: 3}
+      propertyPath: Info.ShortDescription
+      value: Very high health vehicle that can face the heaviest enemy units head
+        on.
       objectReference: {fileID: 0}
     - target: {fileID: 2103737329827059564, guid: eb15c42a80dcae14c80a2ac996877dfd,
         type: 3}

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static UnityEngine.UI.CanvasScaler;
 
 public class AICommander : Commander
@@ -45,12 +46,14 @@ public class AICommander : Commander
             }
             if (SaveTarget != null && CanAfford(SaveTarget, Credits))
             {
-                Vector3? position = _positionSelector.SelectPosition(this, SaveTarget.gameObject, GetUnitPlacementOverlapShape(SaveTarget.gameObject));
-                if (position.HasValue)
+                StartCoroutine(_positionSelector.SelectPosition(this, SaveTarget.gameObject, GetUnitPlacementOverlapShape(SaveTarget.gameObject), position =>
                 {
-                    TryPurchaseAndPlaceUnit(SaveTarget.gameObject, position.Value, transform.rotation);
-                }
-                SaveTarget = null;
+                    if (SaveTarget)
+                    {
+                        TryPurchaseAndPlaceUnit(SaveTarget.gameObject, position, transform.rotation);
+                        SaveTarget = null;
+                    }
+                }));
             }
         }
         _actionCooldownTime -= Time.fixedDeltaTime;
@@ -88,12 +91,11 @@ public class AICommander : Commander
     {
         for (int i = 0; i < amount; i++)
         {
-            Vector3? position = _positionSelector.SelectPosition(this, unit, GetUnitPlacementOverlapShape(unit));
-            if (position.HasValue)
+            yield return _positionSelector.SelectPosition(this, unit, GetUnitPlacementOverlapShape(unit), position =>
             {
-                TryPurchaseAndPlaceUnit(unit, position.Value, transform.rotation);
-                yield return new WaitForSeconds(QuickPlaceTime);
-            }
+                TryPurchaseAndPlaceUnit(unit, position, transform.rotation);
+            });
+            yield return new WaitForSeconds(QuickPlaceTime);
         }
     }
 

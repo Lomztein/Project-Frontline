@@ -40,14 +40,24 @@ namespace Util
         {
             List<Type> typesToKeep = new List<Type>()
             {
-                typeof(Transform), typeof(Renderer), typeof(MeshFilter), typeof(Rigidbody), typeof(ParticleSystem), typeof(CommanderMaterialApplier), typeof(Light)
+                typeof(Transform), typeof(Renderer), typeof(MeshFilter), typeof(Rigidbody), typeof(ParticleSystem), typeof(CommanderMaterialApplier), typeof(Light),
+                typeof(Rotator), typeof(CounterRotator)
             };
             typesToKeep.AddRange(ignore);
 
-            var nonVitals = gameObject.GetComponentsInChildren<Component>().Where(x => !typesToKeep.Any(y => y.IsAssignableFrom(x.GetType())));
+            var nonVitals = gameObject.GetComponentsInChildren<Component>().Where(x => !typesToKeep.Any(y => x != null ? y.IsAssignableFrom(x.GetType()) : false));
             foreach (Component comp in nonVitals)
             {
                 UnityEngine.Object.Destroy(comp); // Might not be neccesary, test sometime.
+            }
+        }
+
+        public static void DestroyComponents(GameObject gameObject, params Type[] components)
+        {
+            var toRemove = gameObject.GetComponentsInChildren<Component>().Where(x => components.Any(y => y.IsAssignableFrom(x.GetType())));
+            foreach (Component comp in toRemove)
+            {
+                UnityEngine.Object.Destroy(comp);
             }
         }
 

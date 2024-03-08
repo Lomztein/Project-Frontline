@@ -35,6 +35,14 @@ public class UnitPalette
         return newMaterial;
     }
 
+    public void ApplyTo(GameObject target)
+    {
+        if (target.TryGetComponent(out CommanderMaterialApplier applier))
+        {
+            applier.ApplyMaterial(UnitBodyMaterial);
+        }
+    }
+
     private static Texture2D ConcatonateHorizontally(params Texture2D[] textures)
     {
         Assert.IsTrue(textures.Length > 0, "Texture array cannot be empty.");

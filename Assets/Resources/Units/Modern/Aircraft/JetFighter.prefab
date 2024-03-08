@@ -130,6 +130,7 @@ MonoBehaviour:
   Info:
     Identifier: Jet.Fighter
     Name: Fighter Jet
+    ShortDescription: Air-supiriority fighter highly effective against enemy aircraft.
     Description: Incredibly fast hit-and-run jet, capable of outmaneuvering all but
       the fastest missiles. Armed with powerful air-to-air missles with enough explosives
       to demolish all you've ever loved.
@@ -200,7 +201,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 65
-  Rigidbody: {fileID: 1854339823422044918}
   MinSpeed: 35
   AccelerationSpeed: 25
   RaiseSpeed: 25
@@ -234,6 +234,7 @@ MonoBehaviour:
   - {fileID: 5078028238801753873}
   - {fileID: -5278097122815548714}
   HoldRange: 55
+  HoldVariance: 2.5
   StayBehindFrontline: 1
   ReengageRange: 200
   DisengageAlongWaypoint: 1

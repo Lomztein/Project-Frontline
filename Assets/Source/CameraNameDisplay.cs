@@ -11,6 +11,13 @@ public class CameraNameDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Text.text = CameraSelector.CurrentCameraObject.name;
+        if (CameraSelector.CurrentIs(out ICameraController cont))
+        {
+            Text.text = cont.GetName();
+        }
+        else
+        {
+            Text.text = CameraSelector.CurrentCameraObject.name;
+        }
     }
 }

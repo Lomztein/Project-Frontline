@@ -1,5 +1,106 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2438962248787532041
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 710549329505537666}
+  - component: {fileID: 6509503773402526883}
+  - component: {fileID: 542837024049045704}
+  - component: {fileID: 6654410111788702841}
+  m_Layer: 0
+  m_Name: EquipmentInfoList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &710549329505537666
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2438962248787532041}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7303377074153362065}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6509503773402526883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2438962248787532041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a463c88aaa0461c4c9b90d5e28ba4cfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InfoList:
+  - {fileID: 542837024049045704}
+  - {fileID: 6654410111788702841}
+--- !u!114 &542837024049045704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2438962248787532041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Health
+  Description: The flesh of this unit. Destrying this kills the unit.
+  MainComponent: {fileID: 1618085928270947058}
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  EquipmentRenderers:
+  - {fileID: 8211761768118645576}
+  ParentOverride: {fileID: 7303377074153362065}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+--- !u!114 &6654410111788702841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2438962248787532041}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Locomotion
+  Description: This unit has a body that allows it to run around.
+  MainComponent: {fileID: 8960985723604934773}
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  EquipmentRenderers:
+  - {fileID: 8211761768118645576}
+  ParentOverride: {fileID: 7303377074153362065}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1 &7303377074153362064
 GameObject:
   m_ObjectHideFlags: 0
@@ -13,10 +114,10 @@ GameObject:
   - component: {fileID: 1618085928270947057}
   - component: {fileID: 1618085928270947056}
   - component: {fileID: 8960985723604934773}
-  - component: {fileID: 7720703463632741726}
   - component: {fileID: 4046572453330662268}
   - component: {fileID: 2562536388021837445}
   - component: {fileID: 8438250041098592156}
+  - component: {fileID: 483742388720889655}
   m_Layer: 0
   m_Name: Alien_BasicInfantryBase
   m_TagString: Untagged
@@ -38,6 +139,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8799830675548848500}
+  - {fileID: 710549329505537666}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1618085928270947058
@@ -73,6 +175,7 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: 
+    ShortDescription: 
     Description: 
     Tags: []
     Cost: 100
@@ -110,6 +213,7 @@ MonoBehaviour:
   TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 40
+  HoldVariance: 2.5
   StayBehindFrontline: 0
 --- !u!114 &8960985723604934773
 MonoBehaviour:
@@ -124,23 +228,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 7
-  Rigidbody: {fileID: 2562536388021837445}
   IsMoving: 0
   RotateSpeed: 180
---- !u!114 &7720703463632741726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7303377074153362064}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 8211761768118645576}
 --- !u!114 &4046572453330662268
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +285,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 259fba658c064ef4db94ec85f060efd0, type: 2}
+--- !u!114 &483742388720889655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7303377074153362064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 8211761768118645576}
 --- !u!1001 &2153535815568512116
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,11 +7,11 @@ using Util;
 
 public class AttackerController : ControllableController, ITeamComponent, ICommanderComponent, IController
 {
-    protected NavigationNode[] MovementPath;
+    protected NavigationNode[] MovementPath = new NavigationNode[0];
     protected int MovementPathIndex;
 
     protected NavigationNode NextNode
-        => MovementPathIndex == MovementPath.Length - 1 ? null : MovementPath[MovementPathIndex + 1];
+        => MovementPathIndex >= MovementPath.Length - 1 ? null : MovementPath[MovementPathIndex + 1];
     protected NavigationNode PrevNode
         => MovementPathIndex < MovementPath.Length ? MovementPath[MovementPathIndex] : null;
 
@@ -54,9 +54,9 @@ public class AttackerController : ControllableController, ITeamComponent, IComma
 
     protected virtual void MoveAlongWaypoints ()
     {
-        if (MovementPath != null)
+        if (MovementPath != null && NextNode && PrevNode)
         {
-            if (ShouldHoldOnFrontline()) 
+            if (ShouldHoldOnFrontline())
             {
                 Controllable.Accelerate(0f);
             }
@@ -98,7 +98,7 @@ public class AttackerController : ControllableController, ITeamComponent, IComma
         {
             MoveTowardsTarget();
         }
-        else
+        else if (PrevNode && NextNode)
         {
             MoveAlongWaypoints();
         }

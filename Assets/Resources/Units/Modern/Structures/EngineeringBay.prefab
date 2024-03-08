@@ -52,9 +52,10 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Enginnering Bay
-    Description: Advanced structure where a bunch of highly trained engineers haphazardly
-      wield together some rebar and a reconstructor turret. 30% chance to add a Reconstructor
-      Turret to Heavy Tank type units.
+    ShortDescription: 30% chance to add a Reconstructor Turret to Heavy Tank type
+      units.
+    Description: 'Advanced structure where a bunch of highly trained engineers haphazardly
+      wield together some rebar and a reconstructor turret. '
     Tags: []
     Cost: 6000
     Value: 600
@@ -79,7 +80,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 4000
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -121,6 +121,7 @@ MonoBehaviour:
   BaseChance: 0.3
   ChancePerStack: 0.3
   Filter: {fileID: 11400000, guid: 9988c8470c32a80498f44a8b8e0bab7d, type: 2}
+  UpgradeDelay: 0
   Object: {fileID: 1020786887634592052, guid: 03e0f201f1acbab42917e6c9bf1aec26, type: 3}
   UnitTransformInfos:
   - UnitIdentifier: 

@@ -8,6 +8,7 @@ using UI;
 using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
+using Unity.XR.CoreUtils;
 
 public class PlayerHandler : MonoBehaviour
 {
@@ -25,7 +26,9 @@ public class PlayerHandler : MonoBehaviour
     public Rect CameraViewport;
     public Commander PlayerCommander;
     public UnitPurchaseMenu PurchaseMenu;
+    public FrontlineProgressDisplay FrontlineProgressDisplay;
     public Tooltip Tooltip;
+    public WorldPointer WorldPointer;
 
     public bool IsObserver => PlayerCommander == null;
     public bool IsDefault => name == "DefaultPlayerHandler";
@@ -42,6 +45,16 @@ public class PlayerHandler : MonoBehaviour
         PlayerCommander = commander;
         PlayerInputType = inputType;
         InputDeviceId = inputId;
+
+        if (PlayerCommander != null)
+        {
+            FrontlineProgressDisplay.Assign(PlayerCommander);
+        }
+        else
+        {
+            FrontlineProgressDisplay.gameObject.SetActive(false);
+            PurchaseMenu.gameObject.SetActive(false);
+        }
     }
 
     private void Awake()
@@ -111,6 +124,11 @@ public class PlayerHandler : MonoBehaviour
         {
             Debug.DrawRay(hit.point, hit.normal, Color.red, 0.1f);
         }
+        WorldPointer.Point(PointerToWorldRay());
+        WorldPointer.UpdateButtonState(new bool[] {
+            PlayerInput.actions["Select"].ReadValue<float>() > 0.1f,
+            PlayerInput.actions["Cancel"].ReadValue<float>() > 0.1f
+        });
     }
 
     private void Initialize()
@@ -118,6 +136,7 @@ public class PlayerHandler : MonoBehaviour
         if (PlayerInputType == InputType.MouseAndKeyboard)
         {
             SetDevices(InputSystem.GetDevice("Keyboard"), InputSystem.GetDevice("Mouse"));
+            WorldPointer.SetVisualizerEnabled(false);
         }
         if (PlayerInputType == InputType.Gamepad)
         {

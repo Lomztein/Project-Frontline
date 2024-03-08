@@ -27,9 +27,10 @@ public class LineSegment
     public Vector3 GetPosition(float continousIndex)
     {
         int lineIndex = Mathf.Clamp(Mathf.FloorToInt(continousIndex), 0, Lines.Length - 1);
+        continousIndex -= lineIndex;
         Line line = Lines[lineIndex];
 
-        return Vector3.Lerp(line.From, line.To, continousIndex % 1f);
+        return Vector3.Lerp(line.From, line.To, Mathf.Clamp01(continousIndex));
     }
 
     public static LineSegment CreateFrom(IEnumerable<Vector3> points)

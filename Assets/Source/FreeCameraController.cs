@@ -3,7 +3,7 @@ using UnityEngine.UIElements;
 
 namespace UnityTemplateProjects
 {
-    public class FreeCameraController : MonoBehaviour, ICameraController
+    public class FreeCameraController : MonoBehaviour, IMovableCameraController, IZoomableCameraController, ISettableCameraController, ICameraController
     {
         class CameraState
         {
@@ -112,6 +112,16 @@ namespace UnityTemplateProjects
 
         public void Reset()
         {
+            boost = 0f;
+            m_TargetCameraState.position = Vector3.up * 50;
         }
+
+        public void ResetZoom ()
+        {
+            boost = 0f;
+        }
+
+        public string GetName()
+            => gameObject.name;
     }
 }

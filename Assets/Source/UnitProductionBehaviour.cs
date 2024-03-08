@@ -14,6 +14,7 @@ public abstract class UnitProductionBehaviour : ScriptableObject
 
     public abstract class UnitProductionCallback
     {
+        public abstract float ProductionTime { get; }
         public abstract float NextProductionTime { get; }
 
         public abstract void Initialize(Commander owner, float baseProductionTime, Action callback);

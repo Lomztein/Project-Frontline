@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 6079610679032748404}
   - component: {fileID: 3835026811143850779}
   - component: {fileID: 6589151691684863284}
-  - component: {fileID: 5987163264221953832}
+  - component: {fileID: 4335143625086833193}
   m_Layer: 0
   m_Name: BlasterTurret
   m_TagString: StructureUnit
@@ -548,7 +548,6 @@ MonoBehaviour:
   AcquireTargetRange: 50
   LooseTargetRange: 50
   AttackRange: 50
-  CheckTargetLineOfSight: 0
   TurretObject: {fileID: 863701078200208922}
   WeaponObjects:
   - {fileID: 863701078200208922}
@@ -610,6 +609,7 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Blaster Turret
+    ShortDescription: 
     Description: Heavy turret with a short ramge that fires a high energy, incinerating
       blasts, which can take out groups of infantry in one or two blasts.
     Tags: []
@@ -623,7 +623,7 @@ MonoBehaviour:
   - {fileID: 863701078200208922}
   Parts: []
   Weakpoints: []
---- !u!114 &5987163264221953832
+--- !u!114 &4335143625086833193
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -632,7 +632,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6331654322908866856}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:

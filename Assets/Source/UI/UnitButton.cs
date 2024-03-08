@@ -18,8 +18,8 @@ namespace UI
         public Sprite[] TierSprites;
         public Color[] TierColors;
 
-        private GameObject _prefab;
-        private Unit _unit;
+        public GameObject Prefab;
+        public Unit Unit;
 
         private Action<GameObject> _onClick;
         private Commander _commander;
@@ -35,10 +35,10 @@ namespace UI
 
         public void Click()
         {
-            _onClick?.Invoke(_prefab);
+            _onClick?.Invoke(Prefab);
         }
 
-        public void Assign (GameObject prefab, Commander commander, Action<GameObject> onClick)
+        public void Assign (GameObject prefab, Commander commander, Action<GameObject> onIconModelInstantiated, Action<GameObject> onClick)
         {
             Unit unit = prefab.GetComponent<Unit>();
             if (unit.TryGetComponent<IIconOverride>(out var iconOverride))
@@ -47,41 +47,45 @@ namespace UI
             }
             else
             {
-                UnitImage.sprite = Iconography.GenerateSprite(prefab, Iconography.DefaultRotation, 64, x => commander.AssignCommander(x));
+                UnitImage.sprite = Iconography.GenerateSprite(prefab, Iconography.DefaultRotation, 128, onIconModelInstantiated);
             }
 
             UnitTierImage.sprite = TierSprites[(int)unit.Info.UnitTier];
 
-            _unit = unit;
-            _prefab = prefab;
+            Unit = unit;
+            Prefab = prefab;
             _onClick = onClick;
             _commander = commander;
         }
 
         private void FixedUpdate()
         {
-            bool canAfford = _commander.CanAfford(_prefab);
-            bool canPurchase = _commander.CanPurchase(_prefab);
-            bool interactable = canAfford && canPurchase;
-            Button.interactable = interactable;
-            if (interactable)
+            if (_commander)
             {
-                UnitImage.color = InteractableImageColor;
-            }else if (!canPurchase)
-            {
-                UnitImage.color = UnavailableImageColor;
-            }
-            else
-            {
-                UnitImage.color = NotInteractableImageColor;
-            }
+                bool canAfford = _commander.CanAfford(Prefab);
+                bool canPurchase = _commander.CanPurchase(Prefab);
+                bool interactable = canAfford && canPurchase;
+                Button.interactable = interactable;
+                if (interactable)
+                {
+                    UnitImage.color = InteractableImageColor;
+                }
+                else if (!canPurchase)
+                {
+                    UnitImage.color = UnavailableImageColor;
+                }
+                else
+                {
+                    UnitImage.color = NotInteractableImageColor;
+                }
 
-            UnitTierImage.color = TierColors[(int)_unit.Info.UnitTier] * (interactable ? InteractableImageColor : NotInteractableImageColor);
+                UnitTierImage.color = TierColors[(int)Unit.Info.UnitTier] * (interactable ? InteractableImageColor : NotInteractableImageColor);
+            }
         }
 
         public GameObject InstantiateTooltip()
         {
-            return UnitTooltip.Create(_unit, _commander);
+            return UnitTooltip.Create(Unit, _commander);
         }
     }
 }

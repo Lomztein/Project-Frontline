@@ -35,8 +35,30 @@ public class CameraSelector : MonoBehaviour
         }
     }
 
+    public bool CurrentIs<T>(out T controller) where T : class, ICameraController
+    {
+        if (CurrentCameraController != null && CurrentCameraController is T cam)
+        {
+            controller = cam;
+            return true;
+        }
+        controller = null;
+        return false;
+    }
+
+    public T CurrentAs<T>() where T : class, ICameraController
+    {
+        if (CurrentIs(out T controller))
+        {
+            return controller;
+        }
+        return null;
+    }
+
     public void SelectCamera(int index)
     {
+        ITransitionableCameraController sourceTrans = CurrentAs<ITransitionableCameraController>();
+
         Vector3 pos = CurrentCameraObject.transform.position;
         Quaternion rot = CurrentCameraObject.transform.rotation;
         CurrentCameraObject.SetActive(false);
@@ -44,9 +66,9 @@ public class CameraSelector : MonoBehaviour
         if (SelectedIndex < 0f) SelectedIndex = Cameras.Length - 1;
         CurrentCameraObject.SetActive(true);
 
-        if (CurrentCameraController != null)
+        if (sourceTrans != null && CurrentIs(out ITransitionableCameraController transCam))
         {
-            CurrentCameraController.TransitionFrom(pos, rot);
+            transCam.TransitionFrom(sourceTrans.GetTransitionStartPosition(), sourceTrans.GetTransitionStartRotation());
         }
     }
 

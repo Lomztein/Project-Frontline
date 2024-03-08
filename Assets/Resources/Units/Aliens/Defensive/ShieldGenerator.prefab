@@ -4949,8 +4949,8 @@ MonoBehaviour:
   DamageFlashAmount: 0.7
   HealDelay: 3
   HealRate: 500
-  ReviveTime: 35
-  HealthOnReviveMult: 0.75
+  ReviveTime: 90
+  HealthOnReviveMult: 0.5
   ShieldLerpTime: 10
 --- !u!114 &2772477570969109820
 MonoBehaviour:
@@ -4977,7 +4977,7 @@ MonoBehaviour:
     Value: 300
     UnitRole: 2
     UnitTier: 1
-    UnitType: 4
+    UnitType: 3
   Health: {fileID: 0}
   _weapons: []
   Parts: []
@@ -5092,7 +5092,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 46acfedcec31fa849a6ceeb32ec83dab, type: 2}
+  - {fileID: 2100000, guid: 0c74bc257ed965349b6f03edebcb9c20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5214,7 +5214,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 46acfedcec31fa849a6ceeb32ec83dab, type: 2}
+  - {fileID: 2100000, guid: 0c74bc257ed965349b6f03edebcb9c20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5313,7 +5313,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 43a31f6b776efde43b90b9fb808e3a00, type: 2}
+      objectReference: {fileID: 2100000, guid: e62ee79f7d3d66f43a6a75a39f77989d, type: 2}
     - target: {fileID: 919132149155446097, guid: 0ee1992ce10f3f5428c141c5208e253d,
         type: 3}
       propertyPath: m_Name

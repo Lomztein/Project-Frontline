@@ -67,7 +67,7 @@ namespace UI
         {
             GameObject newObj = Instantiate(ButtonPrefab, ButtonParent);
             UnitButton button = newObj.GetComponent<UnitButton>();
-            button.Assign(unitPrefab, Commander, OnButtonClick);
+            button.Assign(unitPrefab, Commander, x => Commander.AssignCommander(x), OnButtonClick);
             return button;
         }
 

@@ -48,7 +48,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Bertrude
+  OwnerId: 0
   BuildRadius: 50
+  BuildEnemyThreshold: 50
   Credits: 500
   TeamInfo: {fileID: 0}
   Faction: {fileID: 0}
@@ -56,7 +58,6 @@ MonoBehaviour:
   MaxBuildDistanceFromBounds: 0
   UnitSource: {fileID: 225398836}
   Target: {fileID: 0}
-  FrontlineBuildDistance: 50
   DefenseMargin: 25
   DefenseThreshold: 75
   OffenseMargin: 25
@@ -88,6 +89,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TargetPoints: 100
   MaxTries: 1000
+  TriesPerFrame: 1
   TerrainLayer:
     serializedVersion: 2
     m_Bits: 256

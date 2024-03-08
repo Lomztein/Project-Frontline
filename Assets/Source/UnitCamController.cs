@@ -6,7 +6,7 @@ using UnityEngine;
 using Util;
 using static UnityEngine.UI.CanvasScaler;
 
-public class UnitCamController : MonoBehaviour
+public class UnitCamController : MonoBehaviour, ICompositeCameraController
 {
     public UnitCam[] Cameras;
     public UnitCam CurrentCamera;
@@ -26,16 +26,16 @@ public class UnitCamController : MonoBehaviour
     public GameObjectFilter UnitFilter;
     public float FrontlineDistanceThreshold = 100;
 
-    public enum EvaluatorFunction { Constant, Power, DPS, Health, Tier, Cost }
+    public enum EvaluatorFunction { Power, Health, Tier, DPS, Cost, Constant }
     public EvaluatorFunction UnitEvaluator;
     public Dictionary<EvaluatorFunction, Func<Unit, float>> _evaluatorFunctions = new Dictionary<EvaluatorFunction, Func<Unit, float>>()
     {
-        { EvaluatorFunction.Constant, (x) => 1f },
         { EvaluatorFunction.Power, (x) => x.Health.MaxHealth * x.GetWeapons().Sum(y => y.GetDPS()) },
-        { EvaluatorFunction.Cost, (x) => x.BaseCost },
         { EvaluatorFunction.Health, (x) => x.Health.MaxHealth },
+        { EvaluatorFunction.Tier, (x) => (int)x.Info.UnitTier },
         { EvaluatorFunction.DPS, (x) =>  x.GetWeapons().Sum(y => y.GetDPS()) },
-        { EvaluatorFunction.Tier, (x) => (int)x.Info.UnitTier }
+        { EvaluatorFunction.Constant, (x) => 1f },
+        { EvaluatorFunction.Cost, (x) => x.BaseCost }
     };
 
     private void Awake()
@@ -216,4 +216,27 @@ public class UnitCamController : MonoBehaviour
     {
         FindActionCamera();
     }
+
+    public bool Change(int value)
+    {
+        int current = (int)UnitEvaluator;
+        int len = Enum.GetValues(typeof(EvaluatorFunction)).Length;
+        current += value;
+        if (current > len - 1)
+        {
+            UnitEvaluator = (EvaluatorFunction)len - 1;
+            return false;
+        }
+        if (current < 0)
+        {
+            UnitEvaluator = 0;
+            return false;
+        }
+        UnitEvaluator = (EvaluatorFunction)current;
+        Switch();
+        return true;
+    }
+
+    public string GetName()
+        => $"Unit Perspective (Random by {UnitEvaluator})";
 }

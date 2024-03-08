@@ -8,6 +8,7 @@ public class BlastProjectile : Projectile
     public float ConeLength;
     public float ConeRadius;
 
+    public AnimationCurve DamageByDistanceMultiplier = AnimationCurve.Linear(1f, 0f, 1f, 0f);
     public AnimationCurve DamageDelayCurve;
     public float MaxDamageDelay;
 
@@ -16,15 +17,22 @@ public class BlastProjectile : Projectile
     {
         base.Fire(direction);
 
-        Collider[] colliders = Physics.OverlapSphere(transform.position, ConeLength, HitLayerMask);
+        Collider[] colliders = Physics.OverlapSphere(transform.position, ConeLength, HitLayerMask | TerrainLayerMask);
         foreach (var col in colliders)
         {
+            Debug.Log(col);
             if (IsWithinCone(col.transform))
             {
-                float time = DamageDelayCurve.Evaluate(Vector3.Distance(col.transform.position, transform.position) / ConeLength) * MaxDamageDelay;
-                StartCoroutine(DoDamage(col, time));
+                float distNormalized = Vector3.Distance(col.transform.position, transform.position) / ConeLength;
+                float time = DamageDelayCurve.Evaluate(distNormalized * MaxDamageDelay);
+                float damage = DamageByDistanceMultiplier.Evaluate(distNormalized) * Damage;
+                StartCoroutine(DoDamage(col, damage, time));
             }
         }
+    }
+
+    protected override void FixedUpdate()
+    {
     }
 
     private bool IsWithinCone (Transform obj)
@@ -35,13 +43,14 @@ public class BlastProjectile : Projectile
         return angle < Mathf.Atan(ConeRadius / ConeLength) * Mathf.Rad2Deg;
     }
 
-    IEnumerator DoDamage(Collider target, float delayTime)
+    IEnumerator DoDamage(Collider target, float damage, float delayTime)
     {
         yield return new WaitForSeconds(delayTime);
         if (target)
         {
-            DoDamage(target, target.transform.position);
-            InvokeOnHit(target, target.transform.position, (target.transform.position - transform.position).normalized);
+            Vector3 point = target.ClosestPoint(transform.position);
+            DoDamage(target, damage, point);
+            InvokeOnHit(target, point, (target.transform.position - transform.position).normalized);
         }
     }
 }

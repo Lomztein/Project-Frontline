@@ -244,6 +244,8 @@ GameObject:
   - component: {fileID: 9067334805250807443}
   - component: {fileID: 7070320414790005114}
   - component: {fileID: 6196506891941075560}
+  - component: {fileID: 3620230291862390385}
+  - component: {fileID: 8950037470352357463}
   m_Layer: 0
   m_Name: MarkVSideCannon
   m_TagString: Untagged
@@ -388,6 +390,58 @@ MonoBehaviour:
   LeadTarget: 1
   TargetSearchFrequency: 2
   Modifiers: []
+--- !u!114 &3620230291862390385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8325587282745010374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Cannon
+  Description: Powerful cannon mounted on the side of the tank.
+  MainComponent: {fileID: 7070320414790005114}
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  EquipmentRenderers:
+  - {fileID: 4287219217819471457}
+  ParentOverride: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
+--- !u!114 &8950037470352357463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8325587282745010374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e511bde15769204cbf26fa384ea99e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: Turret
+  Description: Man-handled turret that allows the cannon to be aimed at targets.
+  MainComponent: {fileID: 9067334805250807443}
+  Model: {fileID: 0}
+  AimBehaviour:
+    rid: -2
+  EquipmentRenderers:
+  - {fileID: 4228101401702092804}
+  ParentOverride: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: -2
+      type: {class: , ns: , asm: }
 --- !u!1001 &8603622993367741684
 PrefabInstance:
   m_ObjectHideFlags: 0
