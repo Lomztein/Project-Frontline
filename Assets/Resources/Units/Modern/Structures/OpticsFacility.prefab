@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8124651150434441100}
   - component: {fileID: 8124651150434441101}
   - component: {fileID: 8124651150434441102}
-  - component: {fileID: 8310609224741507878}
   - component: {fileID: 4815261126857433814}
+  - component: {fileID: 5066026848489551588}
   m_Layer: 0
   m_Name: OpticsFacility
   m_TagString: StructureUnit
@@ -105,20 +105,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.76, y: 3.4375162, z: 10.76}
   m_Center: {x: 0, y: 1.5336719, z: 0}
---- !u!114 &8310609224741507878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8124651150434441096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 8237210528206656220}
 --- !u!114 &4815261126857433814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +145,21 @@ MonoBehaviour:
     LocalPosition: {x: 0, y: 0.003, z: -11.332}
     LocalRotation: {x: 90, y: 180.00006, z: 0}
   AddWeaponToAI: 0
+--- !u!114 &5066026848489551588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8124651150434441096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 8237210528206656220}
+  - {fileID: 2803585431408666114}
 --- !u!1001 &5571006344789279763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -252,6 +253,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a312a69a0e4a6c345bff5c98c1608b21, type: 3}
+--- !u!23 &2803585431408666114 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1461304994638716399, guid: a312a69a0e4a6c345bff5c98c1608b21,
+    type: 3}
+  m_PrefabInstance: {fileID: 5571006344789279763}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5393774946157700088 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a312a69a0e4a6c345bff5c98c1608b21,

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5404113830695882634}
   - component: {fileID: 5404113830695882635}
   - component: {fileID: 5404113830695882632}
-  - component: {fileID: 5290318646985820960}
   - component: {fileID: 6802300283121846927}
+  - component: {fileID: 2014168207324104605}
   m_Layer: 0
   m_Name: Armory
   m_TagString: StructureUnit
@@ -52,6 +52,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Armory
+    ShortDescription: +5% chance for most infantry units to spawn with an additional
+      weapon.
     Description: The boss thought we might need some additional weapons on the frontline.
       We didn't, but they were sent anyways. 5% chance for an infantry to dual wield
       an extra weapon, if applicable.
@@ -79,7 +81,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 2500
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -105,20 +106,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.19, y: 5.070714, z: 8.85}
   m_Center: {x: 0, y: 2.3502707, z: 0}
---- !u!114 &5290318646985820960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5404113830695882638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 7475138239039110450}
 --- !u!114 &6802300283121846927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,11 +122,26 @@ MonoBehaviour:
   BaseChance: 0.05
   ChancePerStack: 0.05
   Filter: {fileID: 11400000, guid: ef5d07d4123da5144b6a26be88370b81, type: 2}
+  UpgradeDelay: 0
   CommonRootName: spine.003
   SideSplitCharacter: .
   LeftSideSuffix: L
   RightSideSuffix: R
   EndString: _end
+--- !u!114 &2014168207324104605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404113830695882638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 7475138239039110450}
 --- !u!1001 &6394342962294959101
 PrefabInstance:
   m_ObjectHideFlags: 0

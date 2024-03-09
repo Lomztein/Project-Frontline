@@ -582,7 +582,8 @@ PrefabInstance:
       propertyPath: BurstReloadTime
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5728593424244484284, guid: d9117cde3af7c7e49b48839c2fef3f80, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1815988753865088676, guid: d9117cde3af7c7e49b48839c2fef3f80,
@@ -602,6 +603,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 223945547138167655}
+    - targetCorrespondingSourceObject: {fileID: 1685374889454587877, guid: d9117cde3af7c7e49b48839c2fef3f80,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3171060876248460972}
   m_SourcePrefab: {fileID: 100100000, guid: d9117cde3af7c7e49b48839c2fef3f80, type: 3}
 --- !u!23 &399776269447816567 stripped
 MeshRenderer:
@@ -694,6 +699,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
+--- !u!114 &3171060876248460972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4216475837206170070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 5944500636125900007}
+  - {fileID: 5928445114655677049}
+  - {fileID: 2086688391335370412}
+  - {fileID: 6797336649628009413}
+  - {fileID: 7369114096253735252}
+  - {fileID: 9136853149541348047}
+  - {fileID: 1058440875541437347}
+  - {fileID: 8714706165784232772}
+  - {fileID: 7806752398529202943}
+  - {fileID: 2119623014135575011}
+  - {fileID: 399776269447816567}
+  - {fileID: 4919109691654503956}
+  - {fileID: 7312765289786799131}
 --- !u!114 &4822376491725838786 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8001995187100295153, guid: d9117cde3af7c7e49b48839c2fef3f80,

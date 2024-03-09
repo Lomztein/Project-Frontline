@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3860518986300959320}
   - component: {fileID: 3815186638110724740}
   - component: {fileID: 3699935002793541393}
-  - component: {fileID: 864177297221940069}
   - component: {fileID: 2488613011812603246}
+  - component: {fileID: 8834278248335616723}
   m_Layer: 0
   m_Name: Hangar
   m_TagString: StructureUnit
@@ -94,20 +94,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.37, y: 4.85, z: 19.48}
   m_Center: {x: 0, y: 2.474749, z: -0.0043907166}
---- !u!114 &864177297221940069
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5933526610876931780}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 7324466378050578975}
 --- !u!114 &2488613011812603246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,7 +108,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Info:
     Identifier: 
-    Name: 
+    Name: Airstrip
+    ShortDescription: Produces fixed-wing air units.
     Description: 
     Tags: []
     Cost: 0
@@ -134,6 +121,20 @@ MonoBehaviour:
   _weapons: []
   Parts: []
   Weakpoints: []
+--- !u!114 &8834278248335616723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5933526610876931780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 7324466378050578975}
 --- !u!1001 &4256227176652442174
 PrefabInstance:
   m_ObjectHideFlags: 0

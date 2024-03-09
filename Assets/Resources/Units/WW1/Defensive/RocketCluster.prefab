@@ -934,6 +934,7 @@ MonoBehaviour:
   ProjectileSpeed: 55
   ProjectileGravity: 20
   HighAngle: 0
+  ElevationRangeMinMax: {x: -90, y: 90}
 --- !u!1 &8871988985095771953
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,9 +948,9 @@ GameObject:
   - component: {fileID: 851054364688297190}
   - component: {fileID: 9129461581690365121}
   - component: {fileID: 3488528003239156427}
-  - component: {fileID: 6224231499374905245}
   - component: {fileID: 378331278097361364}
   - component: {fileID: -8486429500704918196}
+  - component: {fileID: 2697459913192552122}
   m_Layer: 0
   m_Name: RocketCluster
   m_TagString: StructureUnit
@@ -988,7 +989,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 750
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -1008,6 +1008,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Rocket Cluster
+    ShortDescription: Defensive structure that fires bursts of explosive rockets
+      at enemy forces from afar.
     Description: Defensive structure with an array of upscaled, highly explosive
       Le Prieur rockets. While slow to reload, the barrages unleashed can decimate
       entire battalions in a single volley.
@@ -1068,39 +1070,6 @@ MonoBehaviour:
   TargetSearchFrequency: 2
   Modifiers:
   - {fileID: 378331278097361364}
---- !u!114 &6224231499374905245
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8871988985095771953}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 3282666446287830891}
-  - {fileID: 7754052951054147598}
-  - {fileID: 6577250050166984958}
-  - {fileID: 1336790404923312845}
-  - {fileID: 775627356286167286}
-  - {fileID: 7162449458600810014}
-  - {fileID: 155399144308940625}
-  - {fileID: 1844441626090488545}
-  - {fileID: 4576612582217458715}
-  - {fileID: 1946377654746871337}
-  - {fileID: 52979472533587508}
-  - {fileID: 4459246463780377067}
-  - {fileID: 8977973626107523079}
-  - {fileID: 4170759708591607173}
-  - {fileID: 6146955557023746020}
-  - {fileID: 7007291147123304171}
-  - {fileID: 5381543167270993997}
-  - {fileID: 8805520462506594886}
-  - {fileID: 6629238650149219206}
-  - {fileID: 2810648816996541537}
 --- !u!114 &378331278097361364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1128,6 +1097,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Filter: {fileID: 11400000, guid: a26308058bb5fb84c888ceb9461d5fcb, type: 2}
   Weight: 10000
+--- !u!114 &2697459913192552122
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8871988985095771953}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 8977973626107523079}
+  - {fileID: 4170759708591607173}
+  - {fileID: 6146955557023746020}
+  - {fileID: 7007291147123304171}
+  - {fileID: 5381543167270993997}
+  - {fileID: 8805520462506594886}
+  - {fileID: 3282666446287830891}
+  - {fileID: 7754052951054147598}
+  - {fileID: 6577250050166984958}
+  - {fileID: 1336790404923312845}
+  - {fileID: 775627356286167286}
+  - {fileID: 7162449458600810014}
+  - {fileID: 155399144308940625}
+  - {fileID: 1844441626090488545}
+  - {fileID: 4576612582217458715}
+  - {fileID: 1946377654746871337}
+  - {fileID: 52979472533587508}
+  - {fileID: 4459246463780377067}
+  - {fileID: 6629238650149219206}
+  - {fileID: 2810648816996541537}
 --- !u!1001 &162586703855912434
 PrefabInstance:
   m_ObjectHideFlags: 0

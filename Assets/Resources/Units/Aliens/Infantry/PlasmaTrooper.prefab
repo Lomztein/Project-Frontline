@@ -78,6 +78,24 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2d8234f95f3f0384e9511750e2039a25, type: 3}
+--- !u!23 &213321991648132158 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1626084148651022380, guid: 2d8234f95f3f0384e9511750e2039a25,
+    type: 3}
+  m_PrefabInstance: {fileID: 1469543274217464850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &227334765058220635 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1676317703061603913, guid: 2d8234f95f3f0384e9511750e2039a25,
+    type: 3}
+  m_PrefabInstance: {fileID: 1469543274217464850}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &937674157677762074 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1830595049998103048, guid: 2d8234f95f3f0384e9511750e2039a25,
+    type: 3}
+  m_PrefabInstance: {fileID: 1469543274217464850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1069386221658053842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1924133014072981696, guid: 2d8234f95f3f0384e9511750e2039a25,
@@ -110,6 +128,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483742388720889655, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 483742388720889655, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[1]
+      value: 
+      objectReference: {fileID: 213321991648132158}
+    - target: {fileID: 483742388720889655, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[2]
+      value: 
+      objectReference: {fileID: 227334765058220635}
+    - target: {fileID: 483742388720889655, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[3]
+      value: 
+      objectReference: {fileID: 937674157677762074}
     - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}
       propertyPath: HoldRange
@@ -163,7 +201,12 @@ PrefabInstance:
     - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}
       propertyPath: Info.Description
-      value: Sturdy trooper equipped with a fusion lance that can beam down heavy
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.ShortDescription
+      value: Sturdy trooper equipped with a plasma cannon that can beam down heavy
         armor.
       objectReference: {fileID: 0}
     - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,

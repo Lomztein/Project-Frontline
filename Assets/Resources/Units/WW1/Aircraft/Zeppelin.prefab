@@ -377,6 +377,7 @@ GameObject:
   - component: {fileID: 7319221078144050912}
   - component: {fileID: 2290908023937450560}
   - component: {fileID: 6616532944503663477}
+  - component: {fileID: 7660702212607924816}
   m_Layer: 0
   m_Name: Zeppelin
   m_TagString: Untagged
@@ -443,6 +444,8 @@ MonoBehaviour:
   Info:
     Identifier: Zeppelin
     Name: Zeppelin
+    ShortDescription: Heavy hydrogen-filled zeppelin with a heavy flamethrower to
+      lay waste to enemy infantry and structures.
     Description: '"We have one thing that they sorely lacked: ZEPPELINS" - The Major'
     Tags:
     - Siege
@@ -508,7 +511,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 6
-  Rigidbody: {fileID: 0}
   MaxAngularSpeed: 30
   AccelerationSpeed: 30
   AngularAccelerationSpeed: 10
@@ -585,6 +587,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
+--- !u!114 &7660702212607924816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4323231714993610058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 7022021509712300123}
+  - {fileID: 2947134895267150169}
+  - {fileID: 4431792126978500683}
+  - {fileID: 7663536765258333310}
+  - {fileID: 7802933138367533229}
+  - {fileID: 7802933138260609904}
+  - {fileID: 7802933136270525461}
+  - {fileID: 7464116239543855775}
+  - {fileID: 7464116239332541542}
+  - {fileID: 7464116238159031318}
+  - {fileID: 7464116238912371897}
+  - {fileID: 7464116238247458542}
+  - {fileID: 7464116239518401175}
 --- !u!1 &4801132331138364133
 GameObject:
   m_ObjectHideFlags: 0
@@ -6944,6 +6972,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7802933136290198416}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &7464116238159031318 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 854637694679129990, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 7802933136290198416}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7802933136344803688
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7041,6 +7075,12 @@ GameObject:
 --- !u!4 &6205326428756660266 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4203030372693752130, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 7802933136344803688}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7464116238247458542 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 854637694679129990, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
     type: 3}
   m_PrefabInstance: {fileID: 7802933136344803688}
   m_PrefabAsset: {fileID: 0}
@@ -7144,6 +7184,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7802933137278411583}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &7464116238912371897 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 854637694679129990, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 7802933137278411583}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7802933137396603872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7241,6 +7287,12 @@ GameObject:
 --- !u!4 &6205326427662885538 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4203030372693752130, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 7802933137396603872}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7464116239332541542 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 854637694679129990, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
     type: 3}
   m_PrefabInstance: {fileID: 7802933137396603872}
   m_PrefabAsset: {fileID: 0}
@@ -7344,6 +7396,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7802933137616018705}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &7464116239518401175 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 854637694679129990, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 7802933137616018705}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7802933137708578073
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7441,6 +7499,12 @@ GameObject:
 --- !u!4 &6205326427452656731 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4203030372693752130, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
+    type: 3}
+  m_PrefabInstance: {fileID: 7802933137708578073}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7464116239543855775 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 854637694679129990, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
     type: 3}
   m_PrefabInstance: {fileID: 7802933137708578073}
   m_PrefabAsset: {fileID: 0}

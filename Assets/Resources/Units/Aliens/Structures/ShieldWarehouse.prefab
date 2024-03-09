@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8481149593104203267}
   - component: {fileID: 8481149593104203264}
   - component: {fileID: 8481149593104203265}
-  - component: {fileID: 8387516038791962156}
+  - component: {fileID: 1108465438975115047}
   m_Layer: 0
   m_Name: ShieldWarehouse
   m_TagString: StructureUnit
@@ -52,6 +52,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Personal Shield Warehouse
+    ShortDescription: Warehouse filled with small personal shield generators that
+      units
     Description: A great big warehouse filled to the brim with small, personal shield
       generators that can be fitted onto anything. 10% chance to attach a 50%+ health
       shield to any unit.
@@ -80,7 +82,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 3538
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -122,6 +123,7 @@ MonoBehaviour:
   BaseChance: 0.1
   ChancePerStack: 0.1
   Filter: {fileID: 11400000, guid: b0b9c82e5df243b4b8e8022341499794, type: 2}
+  UpgradeDelay: 0
   Object: {fileID: 6176094635248760833, guid: a11b6452c910ce348acc19c57c1b0e2d, type: 3}
   UnitTransformInfos:
   - UnitIdentifier: 
@@ -129,7 +131,7 @@ MonoBehaviour:
     LocalPosition: {x: 0, y: 0, z: 0}
     LocalRotation: {x: 0, y: 0, z: 0}
   AddWeaponToAI: 0
---- !u!114 &8387516038791962156
+--- !u!114 &1108465438975115047
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8481149593104203270}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:

@@ -178,8 +178,8 @@ GameObject:
   - component: {fileID: 4311215863054917944}
   - component: {fileID: 6535671796607611735}
   - component: {fileID: 3817575574697387384}
-  - component: {fileID: -4855668697756973212}
   - component: {fileID: 2943333056548400230}
+  - component: {fileID: 4503143260810837231}
   m_Layer: 0
   m_Name: PsiEngine
   m_TagString: StructureUnit
@@ -258,6 +258,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Psi-Engine
+    ShortDescription: Large mind-emulating tower that can take control of enemy forces
+      from a long range for a short time.
     Description: 'Large structure towering over most others, capable of "emulating"
       the psychic energies displayed by organics to take control of up to three enemy
       units at once. How this is done is unknown, but it is theorized to include
@@ -276,22 +278,6 @@ MonoBehaviour:
   - {fileID: 6823330021361418748}
   Parts: []
   Weakpoints: []
---- !u!114 &-4855668697756973212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4059168509002600804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 3217051853173065837}
-  - {fileID: 8094828573497780349}
-  - {fileID: 8179912722588579352}
 --- !u!114 &2943333056548400230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +291,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 259fba658c064ef4db94ec85f060efd0, type: 2}
+--- !u!114 &4503143260810837231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4059168509002600804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 8094828573497780349}
+  - {fileID: 3217051853173065837}
+  - {fileID: 8179912722588579352}
 --- !u!1 &7314494348633685905
 GameObject:
   m_ObjectHideFlags: 0

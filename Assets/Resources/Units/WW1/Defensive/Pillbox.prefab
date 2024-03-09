@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 7142589462985280617}
   - component: {fileID: 177978382247566854}
   - component: {fileID: 4074910436805005047}
-  - component: {fileID: 770568765636859211}
+  - component: {fileID: 6917257365214768497}
   m_Layer: 0
   m_Name: Pillbox
   m_TagString: StructureUnit
@@ -415,8 +415,6 @@ MonoBehaviour:
   AcquireTargetRange: 75
   LooseTargetRange: 75
   AttackRange: 75
-  CheckTargetLineOfSight: 1
-  LineOfSightCheckOrigin: {x: 0, y: 1, z: 0}
   TurretObject: {fileID: 6691671026675796498}
   WeaponObjects:
   - {fileID: 6691671026675796498}
@@ -478,6 +476,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Pillbox
+    ShortDescription: Sturdy defensive structure with a twin heavy machine gun that
+      fires out at enemy infantry.
     Description: Sturdy structure housing a single heavy machinegunner that shoots
       out from safety onto incoming infantry.
     Tags: []
@@ -491,7 +491,7 @@ MonoBehaviour:
   - {fileID: 6691671026675796498}
   Parts: []
   Weakpoints: []
---- !u!114 &770568765636859211
+--- !u!114 &6917257365214768497
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -500,10 +500,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6962003151734455349}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:
+  - {fileID: 3076671649552723341}
+  - {fileID: 4297174586037750890}
   - {fileID: 3125762484964275176}
 --- !u!1 &8802919102460136247
 GameObject:

@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 2634479059218096647}
   - component: {fileID: 2306011290207378920}
   - component: {fileID: 2372091024851006584}
-  - component: {fileID: 4309600047945640549}
   - component: {fileID: 8628612630060680899}
   - component: {fileID: 421750062573104114}
   - component: {fileID: 3640943429932082101}
+  - component: {fileID: 1889490659210774958}
   m_Layer: 0
   m_Name: AlienParticleAcceleraetor
   m_TagString: StructureUnit
@@ -53,6 +53,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Particle Accelerator
+    ShortDescription: +25% chance to add light plasma cannons to Warwalkers, Destroyers,
+      and Protector drones.
     Description: Accelerator used to acclimate volatile particles to the local conditions,
       so that they're not so anxious about going outside. Adds 25% chance for Warwalkers,
       Destroyers, and Protector Drones to come equipped with light particle autocannons.
@@ -84,21 +86,6 @@ MonoBehaviour:
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
---- !u!114 &4309600047945640549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6093098337350478245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 5256524751405600643}
-  - {fileID: 1441491938786455443}
 --- !u!114 &8628612630060680899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,6 +102,7 @@ MonoBehaviour:
   BaseChance: 0.25
   ChancePerStack: 0.25
   Filter: {fileID: 11400000, guid: b636cd8a213d02a4db6ff9ec4588c2d8, type: 2}
+  UpgradeDelay: 0
   Object: {fileID: 1364993770730783676, guid: fdef58ce55247e0468bde1fe3540939b, type: 3}
   UnitTransformInfos:
   - UnitIdentifier: HeavyWalker.Assault
@@ -142,6 +130,7 @@ MonoBehaviour:
   BaseChance: 0.25
   ChancePerStack: 0.25
   Filter: {fileID: 11400000, guid: f0cd20d66564f6c498942a8d81b9f178, type: 2}
+  UpgradeDelay: 0
   Object: {fileID: 7522563694903119159, guid: d1f6f655993073c4e8449e96f514a4dc, type: 3}
   UnitTransformInfos:
   - UnitIdentifier: Voidcraft.Destroyer
@@ -170,6 +159,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.72, y: 3.5684705, z: 10.72}
   m_Center: {x: 0, y: 1.5991483, z: 0}
+--- !u!114 &1889490659210774958
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093098337350478245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 5256524751405600643}
+  - {fileID: 1441491938786455443}
+  - {fileID: 1417514746549972869}
+  - {fileID: 121966443558170708}
 --- !u!1001 &8643163038672034124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -253,6 +259,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 43a98e9b062415040a3e4c0bdc433648, type: 3}
+--- !u!23 &121966443558170708 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8521902485874960664, guid: 43a98e9b062415040a3e4c0bdc433648,
+    type: 3}
+  m_PrefabInstance: {fileID: 8643163038672034124}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1417514746549972869 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1990968323811559735, guid: 43a98e9b062415040a3e4c0bdc433648,
+    type: 3}
+  m_PrefabInstance: {fileID: 8643163038672034124}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &1441491938786455443 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7202271454713460447, guid: 43a98e9b062415040a3e4c0bdc433648,

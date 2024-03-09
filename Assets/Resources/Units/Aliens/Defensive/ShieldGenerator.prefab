@@ -4898,8 +4898,8 @@ GameObject:
   - component: {fileID: 2772477570969109761}
   - component: {fileID: 2772477570969109820}
   - component: {fileID: 2772477570969109763}
-  - component: {fileID: 2772477570969109762}
   - component: {fileID: 9201059215708206590}
+  - component: {fileID: 3183745861885180760}
   m_Layer: 0
   m_Name: ShieldGenerator
   m_TagString: StructureUnit
@@ -4967,6 +4967,7 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Shield Generator
+    ShortDescription: Shield generator that generates a psychic shield around itself.
     Description: Shield generator that generates an energy shield. The shield can
       take a considerable amount of punishment, but will eventually fall to sustained
       fire. Not quite as powerful as contemporary shields, but recharges much faster
@@ -5000,21 +5001,6 @@ MonoBehaviour:
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 5
---- !u!114 &2772477570969109762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2772477570969109767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 5106549624362952410}
-  - {fileID: 5119575903463913663}
 --- !u!114 &9201059215708206590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5028,6 +5014,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 259fba658c064ef4db94ec85f060efd0, type: 2}
+--- !u!114 &3183745861885180760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2772477570969109767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 5106549624362952410}
+  - {fileID: 5119575903463913663}
+  - {fileID: 4716157983414249164}
 --- !u!1 &2772477571419030472
 GameObject:
   m_ObjectHideFlags: 0
@@ -5369,6 +5371,12 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.82, y: 4.7413836, z: 1.82}
   m_Center: {x: 0, y: 2.4118078, z: 0}
+--- !u!23 &4716157983414249164 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1990968323811559735, guid: 0ee1992ce10f3f5428c141c5208e253d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2678938543798046725}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &5106549624362952410 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7202271454713460447, guid: 0ee1992ce10f3f5428c141c5208e253d,

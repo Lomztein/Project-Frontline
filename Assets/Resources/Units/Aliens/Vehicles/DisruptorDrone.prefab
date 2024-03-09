@@ -5297,9 +5297,9 @@ GameObject:
   - component: {fileID: 760717740652067611}
   - component: {fileID: 7553636284871315035}
   - component: {fileID: 6689945818107146596}
-  - component: {fileID: 2380118380735270947}
   - component: {fileID: 7500924125602383734}
   - component: {fileID: 3972628831883336080}
+  - component: {fileID: 3355823188445776437}
   m_Layer: 0
   m_Name: DisruptorDrone
   m_TagString: MobileUnit
@@ -5339,6 +5339,7 @@ MonoBehaviour:
   Info:
     Identifier: Drone.Disruptor
     Name: Disruptor Drone
+    ShortDescription: Light automated drones that track and shoot down enemy aircraft.
     Description: Light drone that specializes in shooting down enemy aircraft, using
       twin disruptor guns which fire bursts of fast, homing matter-desolving bolts.
     Tags:
@@ -5384,7 +5385,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 6
-  Rigidbody: {fileID: 6689945818107146596}
   MaxAngularSpeed: 90
   AccelerationSpeed: 20
   AngularAccelerationSpeed: 90
@@ -5463,20 +5463,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &2380118380735270947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7867263896555908820}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 583335212264797046}
 --- !u!114 &7500924125602383734
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5503,6 +5489,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AltitudeMinMax: {x: 5, y: 100}
+--- !u!114 &3355823188445776437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7867263896555908820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 583335212264797046}
 --- !u!1001 &1126637931665392101
 PrefabInstance:
   m_ObjectHideFlags: 0

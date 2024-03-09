@@ -797,7 +797,7 @@ GameObject:
   - component: {fileID: 3729237279393199279}
   - component: {fileID: 82992633527336301}
   - component: {fileID: 1570483722269026060}
-  - component: {fileID: 3144275169188953361}
+  - component: {fileID: 1345413721008251743}
   m_Layer: 0
   m_Name: FlyingSaucer
   m_TagString: Untagged
@@ -863,6 +863,8 @@ MonoBehaviour:
   Info:
     Identifier: Voidcraft.FlyingSaucer
     Name: Flying Saucer
+    ShortDescription: Heavy flying saucer equipped with a downwards-facing fusion
+      core and anti-infantry rayguns.
     Description: Large flying disk with an incredibly powerful superheavy fusion
       core. The fusion core can project a beam hotter than the surface of the hottest
       stars, and melt down heavy armor in seconds, though it can only fire directly
@@ -990,7 +992,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AltitudeMinMax: {x: -5, y: 5}
---- !u!114 &3144275169188953361
+--- !u!114 &1345413721008251743
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -999,7 +1001,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6065781432444922207}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:
@@ -1007,9 +1009,13 @@ MonoBehaviour:
   - {fileID: 5483889888519062969}
   - {fileID: 969051086195184760}
   - {fileID: 5646000229207198474}
+  - {fileID: 7412386875139865350}
   - {fileID: 7748315459357163332}
+  - {fileID: 4828705458509795144}
   - {fileID: 567222303089779373}
+  - {fileID: 3412501950678799009}
   - {fileID: 294164025097285676}
+  - {fileID: 3211520920452497440}
 --- !u!1 &7676796393262078745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,6 +1307,12 @@ MeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 2956676521637515021}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &3211520920452497440 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 403534934876065581, guid: a3b285a023cdac5449550a6ab07d4cd3,
+    type: 3}
+  m_PrefabInstance: {fileID: 2956676521637515021}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3912337161742666722 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2252732517721982191, guid: a3b285a023cdac5449550a6ab07d4cd3,
@@ -1404,6 +1416,12 @@ PrefabInstance:
 --- !u!23 &567222303089779373 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3250804253940154145, guid: a3b285a023cdac5449550a6ab07d4cd3,
+    type: 3}
+  m_PrefabInstance: {fileID: 3081025727411658124}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3412501950678799009 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 403534934876065581, guid: a3b285a023cdac5449550a6ab07d4cd3,
     type: 3}
   m_PrefabInstance: {fileID: 3081025727411658124}
   m_PrefabAsset: {fileID: 0}
@@ -1513,6 +1531,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5087562233505431653}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &4828705458509795144 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 403534934876065581, guid: a3b285a023cdac5449550a6ab07d4cd3,
+    type: 3}
+  m_PrefabInstance: {fileID: 5087562233505431653}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6474477172412286090 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2252732517721982191, guid: a3b285a023cdac5449550a6ab07d4cd3,
@@ -1607,6 +1631,12 @@ GameObject:
 --- !u!23 &5646000229207198474 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 3250804253940154145, guid: a3b285a023cdac5449550a6ab07d4cd3,
+    type: 3}
+  m_PrefabInstance: {fileID: 7153882751798948907}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7412386875139865350 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 403534934876065581, guid: a3b285a023cdac5449550a6ab07d4cd3,
     type: 3}
   m_PrefabInstance: {fileID: 7153882751798948907}
   m_PrefabAsset: {fileID: 0}

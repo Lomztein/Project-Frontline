@@ -296,9 +296,12 @@ MonoBehaviour:
   Name: Quad Missle Rack
   Description: Powerful air-to-everything missles that fire in bursts but take a
     while to reload.
+  MainComponent: {fileID: 0}
   Model: {fileID: 0}
   AimBehaviour:
     rid: -2
+  EquipmentRenderers: []
+  ParentOverride: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -452,9 +455,12 @@ MonoBehaviour:
   Name: Autocannon
   Description: Heavy nose gun firing explosive shells effective against infantry
     and lighter vehicles.
+  MainComponent: {fileID: 0}
   Model: {fileID: 0}
   AimBehaviour:
     rid: -2
+  EquipmentRenderers: []
+  ParentOverride: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -522,8 +528,8 @@ GameObject:
   - component: {fileID: 4325982583102194753}
   - component: {fileID: 4325982583102194766}
   - component: {fileID: 8555348099755170094}
-  - component: {fileID: 4580879363559203408}
   - component: {fileID: 8664986566560346018}
+  - component: {fileID: 3526160415054191188}
   m_Layer: 0
   m_Name: AttackHelicopter
   m_TagString: Untagged
@@ -701,23 +707,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4580879363559203408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4325982583102194759}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 6319852905996440800}
-  - {fileID: 762516186390915733}
-  - {fileID: 338313132915482324}
-  - {fileID: 812750840380241136}
 --- !u!114 &8664986566560346018
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -731,6 +720,26 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
+--- !u!114 &3526160415054191188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4325982583102194759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 7428727660226619798}
+  - {fileID: 3811573786211474269}
+  - {fileID: 6319852905996440800}
+  - {fileID: 7937399214319330473}
+  - {fileID: 762516186390915733}
+  - {fileID: 338313132915482324}
+  - {fileID: 812750840380241136}
 --- !u!1 &4325982583491187271
 GameObject:
   m_ObjectHideFlags: 0

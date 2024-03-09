@@ -687,7 +687,7 @@ GameObject:
   - component: {fileID: 3805815017800364403}
   - component: {fileID: 2573094669340042014}
   - component: {fileID: 6267262963864701070}
-  - component: {fileID: 7910733982006089821}
+  - component: {fileID: 561636063991399696}
   m_Layer: 0
   m_Name: LittleWillie
   m_TagString: MobileUnit
@@ -728,6 +728,8 @@ MonoBehaviour:
   Info:
     Identifier: Medium Willie
     Name: Infantry Transport
+    ShortDescription: Armored vehicle that can garrison a full squad of 12 soldiers
+      inside.
     Description: Armored threaded vehicles that can transport up to 12 infantry units,
       all of which can shoot out of small holes in the hull.
     Tags: []
@@ -771,7 +773,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 3.5
-  Rigidbody: {fileID: 2573094669340042014}
   AccelerationSpeed: 5
   BrakeDrag: 10
   MaxTurnAngle: 25
@@ -792,7 +793,6 @@ MonoBehaviour:
   AcquireTargetRange: 100
   LooseTargetRange: 100
   AttackRange: 75
-  CheckTargetLineOfSight: 0
   TurretObject: {fileID: 0}
   WeaponObjects: []
   AimTolerance: 2
@@ -800,6 +800,7 @@ MonoBehaviour:
   TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 30
+  HoldVariance: 2.5
   StayBehindFrontline: 0
 --- !u!54 &2573094669340042014
 Rigidbody:
@@ -843,7 +844,7 @@ MonoBehaviour:
   FactoryPrefab: {fileID: 8913899801669703661, guid: b091d99d3a2dced4086ab2fbd438a737,
     type: 3}
   ProductionTime: 35
---- !u!114 &7910733982006089821
+--- !u!114 &561636063991399696
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -852,7 +853,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7676501636232716214}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:

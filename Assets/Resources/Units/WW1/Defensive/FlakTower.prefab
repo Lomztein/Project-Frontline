@@ -557,8 +557,8 @@ GameObject:
   - component: {fileID: 1806350345576508972}
   - component: {fileID: 8772419971918684382}
   - component: {fileID: 4236089098498042077}
-  - component: {fileID: 7124676330136621028}
   - component: {fileID: 1880349754}
+  - component: {fileID: 1175081466160683292}
   m_Layer: 0
   m_Name: FlakTower
   m_TagString: StructureUnit
@@ -641,6 +641,7 @@ MonoBehaviour:
   Info:
     Identifier: Tower.Flak
     Name: Flak Tower
+    ShortDescription: Heavy anti-air flak tower that saturates the air with flak.
     Description: Rapid-fire anti-air tower with fast flak rounds that burst in the
       air for area damage. Excellent at wearing down planes and fighters, but is
       limited to high elevation ranges.
@@ -708,23 +709,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SequenceDelay: 0.1
---- !u!114 &7124676330136621028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8812851661045825632}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 6065155406392418897}
-  - {fileID: 6195187606915660852}
-  - {fileID: 637288602659684929}
-  - {fileID: 6656390438508885663}
 --- !u!114 &1880349754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -738,6 +722,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
+--- !u!114 &1175081466160683292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8812851661045825632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 6065155406392418897}
+  - {fileID: 6195187606915660852}
+  - {fileID: 637288602659684929}
+  - {fileID: 6656390438508885663}
 --- !u!1001 &8412605542916976326
 PrefabInstance:
   m_ObjectHideFlags: 0

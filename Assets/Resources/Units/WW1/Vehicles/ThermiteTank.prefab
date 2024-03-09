@@ -98,9 +98,9 @@ GameObject:
   - component: {fileID: 433461116617879516}
   - component: {fileID: 4250751124971361378}
   - component: {fileID: 7578550617325036628}
-  - component: {fileID: 7407912828579584071}
   - component: {fileID: 644176168611024065}
   - component: {fileID: 8739588452404636795}
+  - component: {fileID: 2849234702471532732}
   m_Layer: 0
   m_Name: ThermiteTank
   m_TagString: MobileUnit
@@ -141,6 +141,8 @@ MonoBehaviour:
   Info:
     Identifier: SaintChermond.Thermite
     Name: Thermite Tank
+    ShortDescription: Heavily armored and bulky tank with an anti-heavy thermite
+      scatter cannon.
     Description: This heavy tank is essentially a large cannon on threads. The cannon
       on this has been retrofitted to fire blasts of thermite pelltes at enemy armor,
       melting heavy armor.
@@ -186,7 +188,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 2.5
-  Rigidbody: {fileID: 4250751124971361378}
   AccelerationSpeed: 3.5
   BrakeDrag: 10
   MaxTurnAngle: 20
@@ -260,21 +261,6 @@ MonoBehaviour:
   FactoryPrefab: {fileID: 8913899801669703661, guid: b091d99d3a2dced4086ab2fbd438a737,
     type: 3}
   ProductionTime: 60
---- !u!114 &7407912828579584071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066814707162786914}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 5711093724212303465}
-  - {fileID: 5419952918351827417}
 --- !u!114 &644176168611024065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -301,6 +287,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AltitudeMinMax: {x: -10, y: 10}
+--- !u!114 &2849234702471532732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066814707162786914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 5711093724212303465}
+  - {fileID: 6502053202602268148}
+  - {fileID: 5419952918351827417}
 --- !u!1 &2785843311908479563
 GameObject:
   m_ObjectHideFlags: 0

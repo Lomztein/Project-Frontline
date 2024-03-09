@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 672743164759203573}
   - component: {fileID: 8194112078957016656}
   - component: {fileID: 2539630018435644555}
+  - component: {fileID: 2223908207273003866}
   m_Layer: 0
   m_Name: StationaryMissileLauncher
   m_TagString: StructureUnit
@@ -115,6 +116,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Plasma Missile Launcher
+    ShortDescription: Heavy defensive structures that launches anti-heavy plasma
+      missiles at enemy forces.
     Description: Defensive structure that launches powerful plasma missiles that
       seek in on heavily armored enemy units, to melt away their armor and their
       will to live.
@@ -142,6 +145,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 259fba658c064ef4db94ec85f060efd0, type: 2}
+--- !u!114 &2223908207273003866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205782605021121507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 141937923826868767}
+  - {fileID: 6704623876052845071}
 --- !u!1 &4486366364461428023
 GameObject:
   m_ObjectHideFlags: 0
@@ -5257,9 +5275,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4d5931c5becb0144c89387640df9ed5a, type: 3}
+--- !u!23 &141937923826868767 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: 4d5931c5becb0144c89387640df9ed5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4537377028681905360}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4139574569229308731 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4d5931c5becb0144c89387640df9ed5a,
+    type: 3}
+  m_PrefabInstance: {fileID: 4537377028681905360}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6704623876052845071 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7202271454713460447, guid: 4d5931c5becb0144c89387640df9ed5a,
     type: 3}
   m_PrefabInstance: {fileID: 4537377028681905360}
   m_PrefabAsset: {fileID: 0}

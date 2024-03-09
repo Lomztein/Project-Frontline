@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 3133217014020917393}
   - component: {fileID: 3133217014020917392}
   - component: {fileID: 4707429137107192341}
-  - component: {fileID: 6208922606456639294}
   - component: {fileID: 371446805670336796}
   - component: {fileID: 2197758364635985125}
   - component: {fileID: -2684035218032579784}
   - component: {fileID: 3848388346364606503}
   - component: {fileID: 4869191507464491839}
+  - component: {fileID: 1040903345729106497}
   m_Layer: 0
   m_Name: HeavyMachineGunner
   m_TagString: Untagged
@@ -75,6 +75,8 @@ MonoBehaviour:
   Info:
     Identifier: Infantry.HeavyMachineGunner
     Name: Heavy Machine Gunner
+    ShortDescription: Soldiers carrying heavy machine guns on their back, which they
+      deploy to decimate enemy infantry.
     Description: Soldiers forced to singlehandly carry heavy machine guns otherwise
       normally carried by a squad of six. While their backs may never recover, they
       are capable of laying down sustained heavy fire.
@@ -107,8 +109,6 @@ MonoBehaviour:
   AcquireTargetRange: 55
   LooseTargetRange: 55
   AttackRange: 55
-  CheckTargetLineOfSight: 1
-  LineOfSightCheckOrigin: {x: 0, y: 1, z: 0}
   TurretObject: {fileID: 8150723386312106452}
   WeaponObjects:
   - {fileID: 8150723386312106452}
@@ -118,6 +118,7 @@ MonoBehaviour:
   Modifiers:
   - {fileID: -2684035218032579784}
   HoldRange: 55
+  HoldVariance: 2.5
   StayBehindFrontline: 0
 --- !u!114 &4707429137107192341
 MonoBehaviour:
@@ -132,29 +133,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 3
-  Rigidbody: {fileID: 2197758364635985125}
   IsMoving: 0
   RotateSpeed: 180
---- !u!114 &6208922606456639294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6365057502642190576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 468852539306404821}
-  - {fileID: 8119963282226444289}
-  - {fileID: 4588823754643469491}
-  - {fileID: 8833302324094934876}
-  - {fileID: 8066089106140876366}
-  - {fileID: 3675879993865154142}
-  - {fileID: 7474704540575685248}
 --- !u!114 &371446805670336796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -236,6 +216,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Model: {fileID: 2528032039789341487}
+--- !u!114 &1040903345729106497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6365057502642190576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 468852539306404821}
+  - {fileID: 8119963282226444289}
+  - {fileID: 4588823754643469491}
+  - {fileID: 3675879993865154142}
+  - {fileID: 7474704540575685248}
+  - {fileID: 8833302324094934876}
 --- !u!1 &8150723386312106452
 GameObject:
   m_ObjectHideFlags: 0
@@ -525,12 +524,6 @@ MeshRenderer:
 --- !u!23 &7474704540575685248 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1484688856519491161, guid: 59af043a4a67b1e4a984b57b78e80104,
-    type: 3}
-  m_PrefabInstance: {fileID: 8296141285502248153}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &8066089106140876366 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 2076530809795029655, guid: 59af043a4a67b1e4a984b57b78e80104,
     type: 3}
   m_PrefabInstance: {fileID: 8296141285502248153}
   m_PrefabAsset: {fileID: 0}

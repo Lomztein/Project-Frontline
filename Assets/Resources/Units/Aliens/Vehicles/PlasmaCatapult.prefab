@@ -48,8 +48,8 @@ GameObject:
   - component: {fileID: 4570326409997820618}
   - component: {fileID: 771170909437692269}
   - component: {fileID: 7052962718122529085}
-  - component: {fileID: 4908485961403688310}
   - component: {fileID: 3043656961276103714}
+  - component: {fileID: 7487861197634249661}
   m_Layer: 0
   m_Name: PlasmaCatapult
   m_TagString: MobileUnit
@@ -89,6 +89,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Plasma Catapult
+    ShortDescription: Mobile plasma artillery that can demolish enemy armor and structures
+      from afar.
     Description: Mobile plasma artillery that lobs balls of extreme temperature plasma
       at enemy targets at a range, in order to siege them from afar. Most effective
       against heavy units and structures, and completely useless at close range.
@@ -163,7 +165,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 2.5
-  Rigidbody: {fileID: 0}
   AccelerationSpeed: 5
   BrakeDrag: 10
   MaxTurnAngle: 25
@@ -222,21 +223,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4908485961403688310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1075819139477039205}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 8565245718313057479}
-  - {fileID: 2687824297464716793}
 --- !u!114 &3043656961276103714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,6 +236,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AltitudeMinMax: {x: -5, y: 10}
+--- !u!114 &7487861197634249661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075819139477039205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 2687824297464716793}
+  - {fileID: 8565245718313057479}
 --- !u!1 &1660012604127780797
 GameObject:
   m_ObjectHideFlags: 0

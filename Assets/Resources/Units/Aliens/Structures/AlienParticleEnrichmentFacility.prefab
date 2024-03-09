@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 8497449141804704056}
   - component: {fileID: 5713381372935692390}
   - component: {fileID: 2151966710071303856}
-  - component: {fileID: 2666677835963010250}
   - component: {fileID: 3587585167050342044}
   - component: {fileID: 725356954972562198}
   - component: {fileID: 2935939925011399066}
+  - component: {fileID: 2965341414509646776}
   m_Layer: 0
   m_Name: AlienParticleEnrichmentFacility
   m_TagString: StructureUnit
@@ -53,14 +53,15 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Particle Enrichment Facility
+    ShortDescription: +20% chance for hovertanks to be equipped with double barrels.
     Description: Facility that empowers particles by teaching them to love themselves,
       no matter who they are. Adds a 20% chance for Hovertanks to have additional
       barrels.
     Tags: []
-    Cost: 7000
-    Value: 700
+    Cost: 3000
+    Value: 300
     UnitRole: 1
-    UnitTier: 2
+    UnitTier: 1
     UnitType: 4
   Health: {fileID: 0}
   _weapons: []
@@ -84,20 +85,6 @@ MonoBehaviour:
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
---- !u!114 &2666677835963010250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2985755576422444125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 6830939057254154351}
 --- !u!65 &3587585167050342044
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -159,6 +146,20 @@ MonoBehaviour:
   ObjectToRemotePath: Body/Turret
   ObjectToSpawn: {fileID: 1298927692999598133, guid: 812af8a1a38c26342830b87acccde939,
     type: 3}
+--- !u!114 &2965341414509646776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2985755576422444125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 6830939057254154351}
 --- !u!1001 &5264087018012105963
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 5404113830695882634}
   - component: {fileID: 5404113830695882635}
   - component: {fileID: 5404113830695882632}
-  - component: {fileID: 5290318646985820960}
   - component: {fileID: 4144239773406810940}
   - component: {fileID: -7630587748814031506}
+  - component: {fileID: 5130391707935911851}
   m_Layer: 0
   m_Name: GunShop
   m_TagString: StructureUnit
@@ -53,6 +53,7 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Gun Shop
+    ShortDescription: +25% chance to equip light and heavy tanks with machine guns.
     Description: Shop where soldiers can pick up additional firearms for their vehicles.
       This structure adds a 10% chance of adding additional machine guns to light,
       medium, and heavy tanks.
@@ -80,7 +81,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 3000
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -106,20 +106,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 12.23, y: 4.843529, z: 7.141568}
   m_Center: {x: 0, y: 2.2366784, z: -0.059499264}
---- !u!114 &5290318646985820960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5404113830695882638}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 5649845435941317108}
 --- !u!114 &4144239773406810940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +122,7 @@ MonoBehaviour:
   BaseChance: 0.25
   ChancePerStack: 0.25
   Filter: {fileID: 11400000, guid: 9f21f8092c6d5c24a846cffd7af898d9, type: 2}
+  UpgradeDelay: 0
   Object: {fileID: 2655663344646104377, guid: 3daf79e0cecc27e48a5e572efc71e3fd, type: 3}
   UnitTransformInfos:
   - UnitIdentifier: A7V
@@ -159,6 +146,7 @@ MonoBehaviour:
   BaseChance: 0.33
   ChancePerStack: 0.33
   Filter: {fileID: 11400000, guid: ca3d7366f4cb092478d0c968f4601a31, type: 2}
+  UpgradeDelay: 0
   Object: {fileID: 1380006937693839194, guid: 9358b098cdafa534996619b11b642cc5, type: 3}
   UnitTransformInfos:
   - UnitIdentifier: RenaultFT.Cannon
@@ -166,6 +154,20 @@ MonoBehaviour:
     LocalPosition: {x: 0.0574, y: 0.1034, z: -0.172}
     LocalRotation: {x: 0, y: 0, z: 0}
   AddWeaponToAI: 1
+--- !u!114 &5130391707935911851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5404113830695882638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 5649845435941317108}
 --- !u!1001 &8171794620735668027
 PrefabInstance:
   m_ObjectHideFlags: 0

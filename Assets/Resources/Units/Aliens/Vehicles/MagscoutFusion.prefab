@@ -5625,8 +5625,8 @@ GameObject:
   - component: {fileID: 2125656493593004871}
   - component: {fileID: 735426194120849910}
   - component: {fileID: 3173943289603908737}
-  - component: {fileID: 5588513182928041419}
   - component: {fileID: 933316157535537744}
+  - component: {fileID: 1458493111035014657}
   m_Layer: 0
   m_Name: MagscoutFusion
   m_TagString: MobileUnit
@@ -5665,6 +5665,8 @@ MonoBehaviour:
   Info:
     Identifier: Magscout.Fusion
     Name: Fusion Magscout
+    ShortDescription: Light hovercraft that melts down heavy armor with a fusion
+      beam.
     Description: Light hovercraft equipped with an anti-heavy fusion beam cannon
       that can melt the heaviest of armors with its million-degree beam.
     Tags: []
@@ -5709,7 +5711,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 12
-  Rigidbody: {fileID: 3173943289603908737}
   MaxAngularSpeed: 90
   AccelerationSpeed: 20
   AngularAccelerationSpeed: 90
@@ -5787,22 +5788,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5588513182928041419
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8804376909081873497}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 8600102958743606449}
-  - {fileID: 6698818313115877027}
-  - {fileID: 2844506107243938403}
 --- !u!114 &933316157535537744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5816,6 +5801,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 8f8059ce28c7c4f458cd46ae5320cd22, type: 2}
+--- !u!114 &1458493111035014657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8804376909081873497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 8600102958743606449}
+  - {fileID: 518357833714906732}
+  - {fileID: 6698818313115877027}
+  - {fileID: 2844506107243938403}
 --- !u!1 &8997045077867599284
 GameObject:
   m_ObjectHideFlags: 0

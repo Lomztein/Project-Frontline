@@ -10,6 +10,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1568255785295421517, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
         type: 3}
+      propertyPath: Info.Name
+      value: Beacon
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568255785295421517, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
+        type: 3}
       propertyPath: Info.Value
       value: 500
       objectReference: {fileID: 0}
@@ -22,6 +27,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Info.UnitType
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568255785295421517, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
+        type: 3}
+      propertyPath: Info.ShortDescription
+      value: Produces large air units.
       objectReference: {fileID: 0}
     - target: {fileID: 2635971483640119611, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
         type: 3}
@@ -128,15 +138,40 @@ PrefabInstance:
       propertyPath: _renderersToApplyTo.Array.data[0]
       value: 
       objectReference: {fileID: 1174023866701386356}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7746603083531687878, guid: 5920c77dd156fa84d9ef20fc112bf9b9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6650765120204559775, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8373276630517138240}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6801044878694592254, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9071145458237701874}
   m_SourcePrefab: {fileID: 100100000, guid: 5920c77dd156fa84d9ef20fc112bf9b9, type: 3}
+--- !u!1 &1858560341678210657 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6801044878694592254, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 5163593027877277855}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9071145458237701874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858560341678210657}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 1174023866701386356}
 --- !u!4 &2009879920340550912 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6650765120204559775, guid: 5920c77dd156fa84d9ef20fc112bf9b9,

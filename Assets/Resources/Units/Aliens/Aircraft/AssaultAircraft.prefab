@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 5966015316709170270}
   - component: {fileID: 4829155774281114781}
   - component: {fileID: 3860404798022704373}
-  - component: {fileID: 352612463471824551}
   - component: {fileID: 8565999049829108765}
+  - component: {fileID: 3288867666272318954}
   m_Layer: 0
   m_Name: AssaultAircraft
   m_TagString: Untagged
@@ -96,6 +96,8 @@ MonoBehaviour:
   Info:
     Identifier: Voidcraft.Assault
     Name: Assault Voidcraft
+    ShortDescription: Light assault aircraft that is highly effective against infantry
+      units.
     Description: Light assault voidcraft equipped with a rapid-fire particle cannon.
       Designed to engage battleship weakpoints in deep space, but it serves quite
       well on planetside combat as well.
@@ -156,7 +158,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 15
-  Rigidbody: {fileID: 0}
   MaxAngularSpeed: 120
   AccelerationSpeed: 50
   AngularAccelerationSpeed: 180
@@ -193,21 +194,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &352612463471824551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802071443492275285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 446329263139692515}
-  - {fileID: 6213666389930310751}
 --- !u!114 &8565999049829108765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,6 +207,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
+--- !u!114 &3288867666272318954
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802071443492275285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 6213666389930310751}
+  - {fileID: 446329263139692515}
 --- !u!1 &1671220647359966905
 GameObject:
   m_ObjectHideFlags: 0
@@ -795,9 +796,12 @@ MonoBehaviour:
   Name: Autocannon
   Description: Heavy nose gun firing explosive shells effective against infantry
     and lighter vehicles.
+  MainComponent: {fileID: 0}
   Model: {fileID: 0}
   AimBehaviour:
     rid: -2
+  EquipmentRenderers: []
+  ParentOverride: {fileID: 0}
   references:
     version: 2
     RefIds:

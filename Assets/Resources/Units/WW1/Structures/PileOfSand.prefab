@@ -51,6 +51,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Pile of Sand
+    ShortDescription: +20% chance to equip landships with sandbags that allow up
+      to two infantry units to garrison.
     Description: Just a large pile of sand. Soldiers take sand from this pile and
       puts it into bags, and then place that on the biggest tanks. Adds 20% chance
       to add garrisonable sandbags to Landships.
@@ -78,7 +80,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 2000
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -120,6 +121,7 @@ MonoBehaviour:
   BaseChance: 0.33
   ChancePerStack: 0.33
   Filter: {fileID: 11400000, guid: e26829077215aa24dbdcc2160b7ca49a, type: 2}
+  UpgradeDelay: 0
   Object: {fileID: 8876911398856622618, guid: f45e42e57bb5d4d4bab3db426d9389f7, type: 3}
   UnitTransformInfos:
   - UnitIdentifier: 

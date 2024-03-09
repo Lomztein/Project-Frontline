@@ -1168,6 +1168,7 @@ GameObject:
   - component: {fileID: 7897096464993776627}
   - component: {fileID: 7897096464993776623}
   - component: {fileID: 7897096464993778124}
+  - component: {fileID: 8298962364728695686}
   m_Layer: 0
   m_Name: TransportHelicopter
   m_TagString: Untagged
@@ -1328,6 +1329,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &8298962364728695686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7897096464993775577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 7781373553087873495}
+  - {fileID: 4105506871732440035}
+  - {fileID: 719662572064933440}
+  - {fileID: 3967431759859868103}
+  - {fileID: 3953420301783515042}
 --- !u!1 &8534971440172773390
 GameObject:
   m_ObjectHideFlags: 0

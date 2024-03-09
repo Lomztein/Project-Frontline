@@ -129,6 +129,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 3598946346479365204}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &5416751683061620090 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8853562668338164014, guid: 66a8ee02e7209f947a5ec29ff998a912,
+    type: 3}
+  m_PrefabInstance: {fileID: 3598946346479365204}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5741538183249689060 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9105165932294559152, guid: 66a8ee02e7209f947a5ec29ff998a912,
@@ -214,6 +220,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 221871567749722498, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
+      propertyPath: Info.ShortDescription
+      value: Advanced anti-armor infantry that lobs armor-piercing grenades at enemy
+        armor.
+      objectReference: {fileID: 0}
+    - target: {fileID: 221871567749722498, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
       propertyPath: _weapons.Array.data[0]
       value: 
       objectReference: {fileID: 5741538183249689060}
@@ -292,6 +304,16 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: 0.00025944604
       objectReference: {fileID: 0}
+    - target: {fileID: 1804215200578774597, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804215200578774597, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[2]
+      value: 
+      objectReference: {fileID: 5416751683061620090}
     - target: {fileID: 3263130210043256847, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
       propertyPath: FactoryPrefab

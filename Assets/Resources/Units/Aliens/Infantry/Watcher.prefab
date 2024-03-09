@@ -5771,9 +5771,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Psychic Blast
   Description: 'A '
+  MainComponent: {fileID: 0}
   Model: {fileID: 0}
   AimBehaviour:
     rid: -2
+  EquipmentRenderers: []
+  ParentOverride: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -5794,9 +5797,9 @@ GameObject:
   - component: {fileID: 1853550875623168228}
   - component: {fileID: 7879933519164237656}
   - component: {fileID: 7459781491209873042}
-  - component: {fileID: 3015227595412004673}
   - component: {fileID: 1806922940641080017}
   - component: {fileID: 4577853647497667733}
+  - component: {fileID: 7347545883474565270}
   m_Layer: 0
   m_Name: Watcher
   m_TagString: Untagged
@@ -5866,6 +5869,8 @@ MonoBehaviour:
   Info:
     Identifier: Watcher
     Name: Watcher
+    ShortDescription: Creature of unknown origin that beams down enemy infantry from
+      afar.
     Description: Creature from the furthest depths of space known only as a "Watcher".
       No one knows it's true loyalty, but it seems content staring down enemy forces
       with its powerful psychic beam.
@@ -5927,7 +5932,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 5
-  Rigidbody: {fileID: 0}
   MaxAngularSpeed: 60
   AccelerationSpeed: 5
   AngularAccelerationSpeed: 30
@@ -5964,22 +5968,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3015227595412004673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7378487300522752732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 3780646749976405751}
-  - {fileID: 990913921163119126}
-  - {fileID: 7208891742193587970}
 --- !u!114 &1806922940641080017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6005,6 +5993,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5590b4a8020dd348881c407ee5d07f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7347545883474565270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7378487300522752732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 7208891742193587970}
+  - {fileID: 990913921163119126}
+  - {fileID: 3780646749976405751}
 --- !u!1001 &1255521566395868987
 PrefabInstance:
   m_ObjectHideFlags: 0

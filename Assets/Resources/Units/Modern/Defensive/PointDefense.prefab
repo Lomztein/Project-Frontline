@@ -312,10 +312,10 @@ GameObject:
   - component: {fileID: 4909013613854862240}
   - component: {fileID: 2686270717336435151}
   - component: {fileID: 5408280962125623264}
-  - component: {fileID: 4857661237212515836}
   - component: {fileID: 5161620381060537336}
   - component: {fileID: 5161620381060537337}
   - component: {fileID: 2395724251528074651}
+  - component: {fileID: 6569763518225685288}
   m_Layer: 0
   m_Name: PointDefense
   m_TagString: StructureUnit
@@ -394,9 +394,9 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Point Defense Turret
-    ShortDescription: 
-    Description: Rapid pulse laser turret capable of tracking and shooting down slower
-      moving projectiles.
+    ShortDescription: Rapid pulse laser turret capable of tracking and shooting down
+      slower moving projectiles.
+    Description: 
     Tags:
     - Point Defense
     Cost: 2500
@@ -409,22 +409,6 @@ MonoBehaviour:
   - {fileID: 7553270161911384106}
   Parts: []
   Weakpoints: []
---- !u!114 &4857661237212515836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5161620381060537340}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 5795162613357394238}
-  - {fileID: 6352169847964904944}
-  - {fileID: 909539795261872430}
 --- !u!114 &5161620381060537336
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -475,6 +459,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 59551ab9d676ab942a343bb9c54efd2b, type: 2}
+--- !u!114 &6569763518225685288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5161620381060537340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 5795162613357394238}
+  - {fileID: 6352169847964904944}
+  - {fileID: 909539795261872430}
 --- !u!1 &5424978883440824305
 GameObject:
   m_ObjectHideFlags: 0

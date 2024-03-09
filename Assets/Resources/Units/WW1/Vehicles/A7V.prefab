@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 7543917213727227172}
   - component: {fileID: 9211250869147463497}
   - component: {fileID: 763450646310552793}
-  - component: {fileID: 3578402925907121162}
+  - component: {fileID: 607841889034074357}
   m_Layer: 0
   m_Name: A7V
   m_TagString: MobileUnit
@@ -526,6 +526,7 @@ MonoBehaviour:
   Info:
     Identifier: A7V
     Name: Heavy Tank
+    ShortDescription: Heavy tank with hardened armor that can take a serious beating.
     Description: A mobile fortress of a tank, featuring a powerful main cannon and
       a grand total of six heavy machine guns on the sides. This beast of a war machine
       can absolutely wreck havoc on infantry on the front.
@@ -575,7 +576,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 3.5
-  Rigidbody: {fileID: 9211250869147463497}
   AccelerationSpeed: 5
   BrakeDrag: 10
   MaxTurnAngle: 20
@@ -648,7 +648,7 @@ MonoBehaviour:
   FactoryPrefab: {fileID: 8913899801669703661, guid: b091d99d3a2dced4086ab2fbd438a737,
     type: 3}
   ProductionTime: 40
---- !u!114 &3578402925907121162
+--- !u!114 &607841889034074357
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -657,7 +657,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3956959504270562273}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:
@@ -665,14 +665,9 @@ MonoBehaviour:
   - {fileID: 1939751284347872652}
   - {fileID: 873564324109214792}
   - {fileID: 77086344904402357}
-  - {fileID: 6764975851796661669}
   - {fileID: 6621386064923711975}
-  - {fileID: 508972341189884407}
   - {fileID: 2802488701689165739}
-  - {fileID: 8797685727385786299}
   - {fileID: 550105153667823816}
-  - {fileID: 6580187417039050968}
-  - {fileID: 1401433243891625767}
 --- !u!1 &6174992373795007606
 GameObject:
   m_ObjectHideFlags: 0
@@ -1133,12 +1128,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 778443150477589043}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &6764975851796661669 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6282398722070609814, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
-    type: 3}
-  m_PrefabInstance: {fileID: 778443150477589043}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8642515263704817256 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9024637768550655067, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
@@ -1227,12 +1216,6 @@ MeshRenderer:
 --- !u!4 &3902998098480193036 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4203030372693752130, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
-    type: 3}
-  m_PrefabInstance: {fileID: 900180948056368974}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &6580187417039050968 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6282398722070609814, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
     type: 3}
   m_PrefabInstance: {fileID: 900180948056368974}
   m_PrefabAsset: {fileID: 0}
@@ -1333,12 +1316,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3258416816610371629}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &8797685727385786299 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6282398722070609814, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
-    type: 3}
-  m_PrefabInstance: {fileID: 3258416816610371629}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5782529562222904929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1412,12 +1389,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a1d7acbfc06e8d43bb444ca665882ca, type: 3}
---- !u!23 &508972341189884407 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6282398722070609814, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
-    type: 3}
-  m_PrefabInstance: {fileID: 5782529562222904929}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3243259975173464634 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9024637768550655067, guid: 1a1d7acbfc06e8d43bb444ca665882ca,

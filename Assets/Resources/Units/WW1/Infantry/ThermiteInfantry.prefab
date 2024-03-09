@@ -117,6 +117,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 221871567749722498, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
+      propertyPath: Info.ShortDescription
+      value: Heavy infantry that lob thermite grenades at heavy enemy armor.
+      objectReference: {fileID: 0}
+    - target: {fileID: 221871567749722498, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
       propertyPath: _weapons.Array.data[0]
       value: 
       objectReference: {fileID: 5741538183249689060}
@@ -195,6 +200,26 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: 0.00025944604
       objectReference: {fileID: 0}
+    - target: {fileID: 1804215200578774597, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804215200578774597, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[2]
+      value: 
+      objectReference: {fileID: 3166830364925052792}
+    - target: {fileID: 1804215200578774597, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[3]
+      value: 
+      objectReference: {fileID: 9172409937249711014}
+    - target: {fileID: 1804215200578774597, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[4]
+      value: 
+      objectReference: {fileID: 8575152064444213096}
     - target: {fileID: 3263130210043256847, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
       propertyPath: FactoryPrefab
@@ -559,15 +584,33 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 5860670641942562064}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &3166830364925052792 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8838208260261233256, guid: 3e39b0b8526994e49bef3c15a11b6edd,
+    type: 3}
+  m_PrefabInstance: {fileID: 5860670641942562064}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5741538183249689060 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2232451067797077236, guid: 3e39b0b8526994e49bef3c15a11b6edd,
     type: 3}
   m_PrefabInstance: {fileID: 5860670641942562064}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &8575152064444213096 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2761911341423501944, guid: 3e39b0b8526994e49bef3c15a11b6edd,
+    type: 3}
+  m_PrefabInstance: {fileID: 5860670641942562064}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8912420122838771070 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3096803106132140142, guid: 3e39b0b8526994e49bef3c15a11b6edd,
+    type: 3}
+  m_PrefabInstance: {fileID: 5860670641942562064}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &9172409937249711014 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3323580488014378678, guid: 3e39b0b8526994e49bef3c15a11b6edd,
     type: 3}
   m_PrefabInstance: {fileID: 5860670641942562064}
   m_PrefabAsset: {fileID: 0}

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 421750062573104114}
   - component: {fileID: 5030250656112920657}
   - component: {fileID: 3640943429932082101}
+  - component: {fileID: 1181390458802996342}
   m_Layer: 0
   m_Name: AlienLegScrapyard
   m_TagString: StructureUnit
@@ -60,10 +61,10 @@ MonoBehaviour:
       mechanical machinery would be unreliable? Adds +20% chance for walker units
       to be equipped with a raymarcher turret.
     Tags: []
-    Cost: 2000
-    Value: 100
+    Cost: 6000
+    Value: 600
     UnitRole: 1
-    UnitTier: 0
+    UnitTier: 2
     UnitType: 4
   Health: {fileID: 0}
   _weapons: []
@@ -130,7 +131,7 @@ MonoBehaviour:
   UpgradeDelay: 0
   Object: {fileID: 7802180008453472830, guid: 0a1e2199bf3680c47b1463b3d274278c, type: 3}
   UnitTransformInfos:
-  - UnitIdentifier: HeavyWalker
+  - UnitIdentifier: HeavyWalker.Assault
     Path: Body
     LocalPosition: {x: 0, y: 0, z: 0}
     LocalRotation: {x: 0, y: 0, z: 0}
@@ -180,6 +181,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.72, y: 3.5684705, z: 10.72}
   m_Center: {x: 0, y: 1.5991483, z: 0}
+--- !u!114 &1181390458802996342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093098337350478245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 915092935438872408}
+  - {fileID: 6344223188930714502}
 --- !u!1001 &3725413371169536407
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -268,9 +284,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c71554f1f8da8ab4e84608393b16cd62, type: 3}
+--- !u!23 &915092935438872408 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: c71554f1f8da8ab4e84608393b16cd62,
+    type: 3}
+  m_PrefabInstance: {fileID: 3725413371169536407}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3763297092935720572 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: c71554f1f8da8ab4e84608393b16cd62,
+    type: 3}
+  m_PrefabInstance: {fileID: 3725413371169536407}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6344223188930714502 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1461304994638716399, guid: c71554f1f8da8ab4e84608393b16cd62,
     type: 3}
   m_PrefabInstance: {fileID: 3725413371169536407}
   m_PrefabAsset: {fileID: 0}

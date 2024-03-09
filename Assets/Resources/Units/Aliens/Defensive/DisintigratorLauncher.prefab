@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 8194112078957016656}
   - component: {fileID: 2539630018435644555}
   - component: {fileID: 98929126695219865}
+  - component: {fileID: 2384733952562400989}
   m_Layer: 0
   m_Name: DisintigratorLauncher
   m_TagString: StructureUnit
@@ -233,6 +234,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Disintigrator Launcher
+    ShortDescription: Defensive turret that lobs neutron orbs that disintigrate enemy
+      infantry at the molecular level.
     Description: Sentry turret that launches orbs of organic-disintigrating neutrons,
       which provides an effective defense against bunched-up organic life forms.
     Tags: []
@@ -271,6 +274,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5e35b93808555d43ac3271e157a4171, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2384733952562400989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205782605021121507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 6524595242322405593}
+  - {fileID: 468335755743480009}
+  - {fileID: 1023479850580302855}
 --- !u!1 &6140699156856188248
 GameObject:
   m_ObjectHideFlags: 0

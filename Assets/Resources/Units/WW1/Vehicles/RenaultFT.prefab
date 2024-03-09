@@ -497,7 +497,7 @@ GameObject:
   - component: {fileID: 3052483114788943211}
   - component: {fileID: 4402130457795577818}
   - component: {fileID: 1958886560716888749}
-  - component: {fileID: 567627677143667945}
+  - component: {fileID: 4246635245522869504}
   m_Layer: 0
   m_Name: RenaultFT
   m_TagString: MobileUnit
@@ -538,6 +538,8 @@ MonoBehaviour:
   Info:
     Identifier: RenaultFT.Cannon
     Name: Light Tank
+    ShortDescription: Light agile tank with a smaller anti-tank cannon that can support
+      a heavier frontline.
     Description: Light tank with an anti-tank cannon. It's thin armor cannot take
       much anti-armor heat, but holds up strong against small-arms fire.
     Tags: []
@@ -582,7 +584,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 10
-  Rigidbody: {fileID: 0}
   AccelerationSpeed: 20
   BrakeDrag: 30
   MaxTurnAngle: 45
@@ -655,7 +656,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &567627677143667945
+--- !u!114 &4246635245522869504
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -664,7 +665,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5551863359537181301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:

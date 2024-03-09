@@ -689,9 +689,9 @@ GameObject:
   - component: {fileID: 4665477327298425325}
   - component: {fileID: 7941545939903765019}
   - component: {fileID: 8302660576047510494}
-  - component: {fileID: 3122258145412497998}
   - component: {fileID: 1343112685132614935}
   - component: {fileID: 4967611741348996808}
+  - component: {fileID: 3299978365174073343}
   m_Layer: 0
   m_Name: ThermiteBallista
   m_TagString: StructureUnit
@@ -793,6 +793,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Thermite Ballista
+    ShortDescription: Ballista loaded with heavy thermite shells that melt through
+      heavy enemy armor.
     Description: Old-timey ballista built to launch heavy thermite grenades at enemy
       forces, which deal extreme damage to even the tourhgest targets.
     Tags: []
@@ -806,25 +808,6 @@ MonoBehaviour:
   - {fileID: 6906480355664142086}
   Parts: []
   Weakpoints: []
---- !u!114 &3122258145412497998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7543421157530361691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 293446731295927974}
-  - {fileID: 2997886422887133704}
-  - {fileID: 6436198426354094143}
-  - {fileID: 3958972154698741857}
-  - {fileID: 8343212035830619756}
-  - {fileID: 5569746099801038310}
 --- !u!114 &1343112685132614935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -851,6 +834,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AltitudeMinMax: {x: -10, y: 10}
+--- !u!114 &3299978365174073343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7543421157530361691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 293446731295927974}
+  - {fileID: 2997886422887133704}
+  - {fileID: 3958972154698741857}
+  - {fileID: 8343212035830619756}
+  - {fileID: 6436198426354094143}
+  - {fileID: 5569746099801038310}
 --- !u!1 &7548470882360849089
 GameObject:
   m_ObjectHideFlags: 0

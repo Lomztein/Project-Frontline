@@ -649,6 +649,7 @@ GameObject:
   - component: {fileID: 4514442581584012209}
   - component: {fileID: 4482750102270464676}
   - component: {fileID: 3471064318615009461}
+  - component: {fileID: 641113415093832529}
   m_Layer: 0
   m_Name: Gunship
   m_TagString: Untagged
@@ -689,7 +690,7 @@ MonoBehaviour:
   Info:
     Identifier: Plane.Gunship
     Name: Gunship
-    ShortDescription: Heavy gunship that circles above the battlefield, raining hellfire
+    ShortDescription: Heavy gunship that circles above the battlefield, down hellfire
       on enemies.
     Description: Huge and both heavily armored and armed gunship that circles targets
       and pummels them with fury and hellfire. Can take a lot of punishment and can
@@ -859,6 +860,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AltitudeMinMax: {x: -5, y: 5}
+--- !u!114 &641113415093832529
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4964351093738814712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 5112309818604904000}
+  - {fileID: 1582975729674114164}
+  - {fileID: 6469403849117753594}
+  - {fileID: 4196540240562951162}
+  - {fileID: 7048008015786075358}
+  - {fileID: 3808641178635351550}
+  - {fileID: 1318068134571190942}
+  - {fileID: 5710782335241004944}
+  - {fileID: 5710782334683402200}
+  - {fileID: 9218355255241208835}
+  - {fileID: 5710782334328814207}
+  - {fileID: 5710782335437816378}
+  - {fileID: 5710782334051733493}
 --- !u!1 &5425705864996947599
 GameObject:
   m_ObjectHideFlags: 0
@@ -1395,9 +1422,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Gatling Cannon
   Description: 
+  MainComponent: {fileID: 0}
   Model: {fileID: 0}
   AimBehaviour:
     rid: -2
+  EquipmentRenderers: []
+  ParentOverride: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -1670,9 +1700,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Heavy Cannon
   Description: 
+  MainComponent: {fileID: 0}
   Model: {fileID: 0}
   AimBehaviour:
     rid: -2
+  EquipmentRenderers: []
+  ParentOverride: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -2301,9 +2334,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Auotcannon
   Description: 
+  MainComponent: {fileID: 0}
   Model: {fileID: 0}
   AimBehaviour:
     rid: -2
+  EquipmentRenderers: []
+  ParentOverride: {fileID: 0}
   references:
     version: 2
     RefIds:

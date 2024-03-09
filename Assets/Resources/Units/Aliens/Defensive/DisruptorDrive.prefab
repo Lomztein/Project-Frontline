@@ -244,8 +244,8 @@ GameObject:
   - component: {fileID: 4508624818378136712}
   - component: {fileID: 943479025418396997}
   - component: {fileID: 8316729652220060535}
-  - component: {fileID: 3991372772639399303}
   - component: {fileID: 1383740221063283244}
+  - component: {fileID: 4267933105804842181}
   m_Layer: 0
   m_Name: DisruptorDrive
   m_TagString: StructureUnit
@@ -328,6 +328,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Disruptor Drive
+    ShortDescription: Dual-purpose defensive structure that shoots down both enemy
+      aircraft and larger projectiles.
     Description: Stationary dual-purpose disruptor turret that fires fast, homing
       matter-disrupting bolts that tear aircraft and larger projectiles out of the
       sky at the molecular level.
@@ -382,21 +384,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.84, y: 1.6555201, z: 3.7181454}
   m_Center: {x: 0, y: 0.7177604, z: 0.006260395}
---- !u!114 &3991372772639399303
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6811187965412090588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 1906963045640106002}
-  - {fileID: 6543236168443594846}
 --- !u!114 &1383740221063283244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,6 +397,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 259fba658c064ef4db94ec85f060efd0, type: 2}
+--- !u!114 &4267933105804842181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6811187965412090588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 1906963045640106002}
+  - {fileID: 6543236168443594846}
 --- !u!1 &7533571854766180169
 GameObject:
   m_ObjectHideFlags: 0

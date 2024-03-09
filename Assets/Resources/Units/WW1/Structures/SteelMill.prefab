@@ -14822,10 +14822,10 @@ GameObject:
   - component: {fileID: 3471069925645095731}
   - component: {fileID: 7572576981753478838}
   - component: {fileID: 3047995644146826770}
-  - component: {fileID: 9123654499106384006}
   - component: {fileID: 5700911502735027345}
   - component: {fileID: 801687054899381915}
   - component: {fileID: 2474720954034673767}
+  - component: {fileID: 4990116180293928976}
   m_Layer: 0
   m_Name: SteelMill
   m_TagString: StructureUnit
@@ -14867,6 +14867,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Steel Mill
+    ShortDescription: +25% chance to equip several different tanks with additional
+      cannons.
     Description: Industrial steel mill used to produce reinforced barrels for tanks.
       Adds a 25% chance to add additional cannons to some tanks.
     Tags: []
@@ -14893,25 +14895,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 5000
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 3
---- !u!114 &9123654499106384006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5983546331492509615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 5618482186108718095}
 --- !u!114 &5700911502735027345
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14928,6 +14915,7 @@ MonoBehaviour:
   BaseChance: 0.25
   ChancePerStack: 0.25
   Filter: {fileID: 11400000, guid: 84d8990d971db104d9fa7e2eec4538c2, type: 2}
+  UpgradeDelay: 0
   Object: {fileID: 2655663344646104377, guid: 4cb3add65432dde4ba0b5fb173b7a5e8, type: 3}
   UnitTransformInfos:
   - UnitIdentifier: MarkV.Male
@@ -14989,6 +14977,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.022194, y: 10.245752, z: 4.071006}
   m_Center: {x: -0.1, y: 8.278265, z: 1.8}
+--- !u!114 &4990116180293928976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5983546331492509615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 5618482186108718095}
 --- !u!1001 &6501313738916515979
 PrefabInstance:
   m_ObjectHideFlags: 0

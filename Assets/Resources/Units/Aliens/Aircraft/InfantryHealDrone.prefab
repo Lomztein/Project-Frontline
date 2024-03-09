@@ -290,6 +290,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5544798868777723212}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &7889000158374921710 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2416267963331764386, guid: 8b05046c6ca1d8c479b95761612fa83e,
+    type: 3}
+  m_PrefabInstance: {fileID: 5544798868777723212}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6699196934733182493
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -642,6 +648,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6934709375411705530, guid: c048221778a2618489102fcf028d4127,
         type: 3}
+      propertyPath: Info.ShortDescription
+      value: Tiny drone that flies around and heals allied units.
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934709375411705530, guid: c048221778a2618489102fcf028d4127,
+        type: 3}
       propertyPath: _weapons.Array.data[0]
       value: 
       objectReference: {fileID: 4429607624149178163}
@@ -693,6 +704,7 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 1620269070727205509, guid: c048221778a2618489102fcf028d4127, type: 3}
     - {fileID: 3157320907993424282, guid: c048221778a2618489102fcf028d4127, type: 3}
+    - {fileID: 6666310221052844726, guid: c048221778a2618489102fcf028d4127, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2443528731557278803, guid: c048221778a2618489102fcf028d4127, type: 3}
     - {fileID: 1216131776751805301, guid: c048221778a2618489102fcf028d4127, type: 3}
@@ -726,6 +738,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5349481653821435016}
+    - targetCorrespondingSourceObject: {fileID: 7945464987948583290, guid: c048221778a2618489102fcf028d4127,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7350911628300548724}
   m_SourcePrefab: {fileID: 100100000, guid: c048221778a2618489102fcf028d4127, type: 3}
 --- !u!1 &825600886256743386 stripped
 GameObject:
@@ -786,6 +802,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 259fba658c064ef4db94ec85f060efd0, type: 2}
+--- !u!114 &7350911628300548724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825600886256743386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 7255032741198153444}
+  - {fileID: 2112642735630555384}
+  - {fileID: 5513812475652864452}
+  - {fileID: 4372495771783029970}
+  - {fileID: 7889000158374921710}
 --- !u!114 &825600886256743387 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7945464987948583291, guid: c048221778a2618489102fcf028d4127,
@@ -903,6 +937,12 @@ GameObject:
 --- !u!23 &2112642735630555384 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 8096676690920309150, guid: 8b05046c6ca1d8c479b95761612fa83e,
+    type: 3}
+  m_PrefabInstance: {fileID: 7857850967871199590}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &5513812475652864452 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2416267963331764386, guid: 8b05046c6ca1d8c479b95761612fa83e,
     type: 3}
   m_PrefabInstance: {fileID: 7857850967871199590}
   m_PrefabAsset: {fileID: 0}

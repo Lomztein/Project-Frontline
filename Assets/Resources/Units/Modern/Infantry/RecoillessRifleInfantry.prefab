@@ -231,6 +231,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29c390efeb2a587489e31a74abb13bc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!23 &3030063758632061454 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6784162112082116033, guid: 7b1001a9d264e91469aefa6f7e0c3525,
+    type: 3}
+  m_PrefabInstance: {fileID: 8370746468123670479}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3820629292233835863 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4697051591437529752, guid: 7b1001a9d264e91469aefa6f7e0c3525,
@@ -292,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: Info.Identifier
-      value: Infantry.RecoillessLifle
+      value: Infantry.RecoillessRifle
       objectReference: {fileID: 0}
     - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: Info.Description
@@ -303,6 +309,11 @@ PrefabInstance:
     - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: _weapons.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
+      propertyPath: Info.ShortDescription
+      value: Advanced anti-armor infantry equipped with a quad recoilless rifle that
+        fires in bursts.
       objectReference: {fileID: 0}
     - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: _weapons.Array.data[0]
@@ -359,6 +370,16 @@ PrefabInstance:
       propertyPath: m_ConnectedAnchor.z
       value: 0.000131077
       objectReference: {fileID: 0}
+    - target: {fileID: 1881909988227094593, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1881909988227094593, guid: 50378c4ca65714b4ebd2928ade59a707,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[2]
+      value: 
+      objectReference: {fileID: 3030063758632061454}
     - target: {fileID: 2880299552174437101, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: VerMinMax.x
@@ -367,7 +388,7 @@ PrefabInstance:
     - target: {fileID: 2880299552174437101, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}
       propertyPath: VerMinMax.y
-      value: 15
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 3340765615440518667, guid: 50378c4ca65714b4ebd2928ade59a707,
         type: 3}

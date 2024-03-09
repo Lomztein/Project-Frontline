@@ -89,6 +89,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 4121257764807032353}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1511153675234915199 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3299190573810027870, guid: eea0ebbdf9090fc49bddc29c181e5e25,
+    type: 3}
+  m_PrefabInstance: {fileID: 4121257764807032353}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2359161581521820143 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1841069477840545742, guid: eea0ebbdf9090fc49bddc29c181e5e25,
@@ -98,6 +104,12 @@ GameObject:
 --- !u!4 &4430891815584207188 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 309647468561280885, guid: eea0ebbdf9090fc49bddc29c181e5e25,
+    type: 3}
+  m_PrefabInstance: {fileID: 4121257764807032353}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4629866509297534881 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8750829519084779904, guid: eea0ebbdf9090fc49bddc29c181e5e25,
     type: 3}
   m_PrefabInstance: {fileID: 4121257764807032353}
   m_PrefabAsset: {fileID: 0}
@@ -169,6 +181,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 221871567749722498, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
+      propertyPath: Info.ShortDescription
+      value: Anti-tank riflemen effective against enemy armor.
+      objectReference: {fileID: 0}
+    - target: {fileID: 221871567749722498, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
       propertyPath: _weapons.Array.data[0]
       value: 
       objectReference: {fileID: 2359161581521820143}
@@ -217,6 +234,26 @@ PrefabInstance:
       propertyPath: WeaponObjects.Array.data[0]
       value: 
       objectReference: {fileID: 2359161581521820143}
+    - target: {fileID: 1804215200578774597, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804215200578774597, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[2]
+      value: 
+      objectReference: {fileID: 6212570189657135871}
+    - target: {fileID: 1804215200578774597, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[3]
+      value: 
+      objectReference: {fileID: 1511153675234915199}
+    - target: {fileID: 1804215200578774597, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[4]
+      value: 
+      objectReference: {fileID: 4629866509297534881}
     - target: {fileID: 3263130210043256847, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
       propertyPath: FactoryPrefab

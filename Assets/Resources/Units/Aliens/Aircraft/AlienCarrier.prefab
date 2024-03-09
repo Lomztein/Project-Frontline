@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1167326796111377896}
   - component: {fileID: 7846306337514832092}
   - component: {fileID: 6314576633711653591}
-  - component: {fileID: 4457355531900005561}
+  - component: {fileID: 6915604242502762296}
   m_Layer: 0
   m_Name: AlienCarrier
   m_TagString: Untagged
@@ -81,6 +81,8 @@ MonoBehaviour:
   Info:
     Identifier: AlienCarrier
     Name: Carrier
+    ShortDescription: Bulky carrier that rapidly produces small fighter crafts that
+      swarm and destroy hostile forces.
     Description: Carrier aircraft equipped with a miniature factory that can rapidly
       produce automated attack fighters. Places itself at a distance and lets the
       drones do the work, though it has no way to defend itself without them.
@@ -191,7 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 8f8059ce28c7c4f458cd46ae5320cd22, type: 2}
---- !u!114 &4457355531900005561
+--- !u!114 &6915604242502762296
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -200,7 +202,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1122439784772549124}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:
@@ -208,6 +210,8 @@ MonoBehaviour:
   - {fileID: 5760873886590697732}
   - {fileID: 2288061518573529294}
   - {fileID: 769644300336443904}
+  - {fileID: 8670762213716412025}
+  - {fileID: 9176043725182996753}
 --- !u!1 &4769373350818423269
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,9 +484,12 @@ MonoBehaviour:
   Description: Factory and bay that produces and deploys automated fighter drones.
     The drones are most effective against light armor, and can harass and distract
     enemy units.
+  MainComponent: {fileID: 0}
   Model: {fileID: 2775385336555101310, guid: 38bd3fb11c2039e4196e43ebc4a1b462, type: 3}
   AimBehaviour:
     rid: -2
+  EquipmentRenderers: []
+  ParentOverride: {fileID: 0}
   references:
     version: 2
     RefIds:

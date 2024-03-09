@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3477924835519288961}
   - component: {fileID: 3557642036227573473}
   - component: {fileID: 6639905333820411301}
+  - component: {fileID: 7070576416028354736}
   m_Layer: 0
   m_Name: DisruptorNexus
   m_TagString: StructureUnit
@@ -51,7 +52,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Disruption Nexus
-    ShortDescription: 
+    ShortDescription: +25% chance for Voidcraft, Magscouts, and Warwalkers to come
+      equipped with light disruptor cannons.
     Description: Facility used to produce disruptor particles, through a very complicated
       process using exotic particles and fox urine. Adds 25% chance for light voidcraft
       and magscouts to spawn with light disruptor drives.
@@ -140,6 +142,21 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 9.72, y: 5.7620254, z: 9.72}
   m_Center: {x: 0, y: 2.6959255, z: 0}
+--- !u!114 &7070576416028354736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769109693647990259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 454818305666771061}
+  - {fileID: 6538117219362801765}
 --- !u!1001 &4129683497878929082
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -223,9 +240,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc45967dfd16a3248bdbd627b8ff59fe, type: 3}
+--- !u!23 &454818305666771061 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 4129683497878929082}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4523070052464908625 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bc45967dfd16a3248bdbd627b8ff59fe,
+    type: 3}
+  m_PrefabInstance: {fileID: 4129683497878929082}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6538117219362801765 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7202271454713460447, guid: bc45967dfd16a3248bdbd627b8ff59fe,
     type: 3}
   m_PrefabInstance: {fileID: 4129683497878929082}
   m_PrefabAsset: {fileID: 0}

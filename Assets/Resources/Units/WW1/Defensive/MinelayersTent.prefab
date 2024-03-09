@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5319506043410111181}
   - component: {fileID: 1281434284935478571}
   - component: {fileID: 31382291024255605}
-  - component: {fileID: 5885437574404806129}
+  - component: {fileID: 1674602467990215387}
   m_Layer: 0
   m_Name: MinelayersTent
   m_TagString: StructureUnit
@@ -115,6 +115,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Minelayers Tent
+    ShortDescription: A tent raised to house a single minelayer infantry. If the
+      infantry is killed, a new one takes its place.
     Description: "A tent raised to house a guy who's only job is to run around in
       front of your base to place mines. The guy, who we shall name G\xFCnter, will
       automatically be replaced if he dies."
@@ -129,7 +131,7 @@ MonoBehaviour:
   - {fileID: 8129940576614131207}
   Parts: []
   Weakpoints: []
---- !u!114 &5885437574404806129
+--- !u!114 &1674602467990215387
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,7 +140,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2655017026964830181}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:

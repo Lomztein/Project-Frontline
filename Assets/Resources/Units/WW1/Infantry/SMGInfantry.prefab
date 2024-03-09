@@ -113,6 +113,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5e8e004628402f44ba95b21de99f419, type: 3}
+--- !u!23 &168610865671265878 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 852883383824941399, guid: e5e8e004628402f44ba95b21de99f419,
+    type: 3}
+  m_PrefabInstance: {fileID: 684840005740486401}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1156792562378127567 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1841069477840545742, guid: e5e8e004628402f44ba95b21de99f419,
@@ -193,6 +199,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 221871567749722498, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
+      propertyPath: Info.ShortDescription
+      value: Light anti-infantry infantry that is absolutely not largely considered
+        cannon fodder.
+      objectReference: {fileID: 0}
+    - target: {fileID: 221871567749722498, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
       propertyPath: _weapons.Array.data[0]
       value: 
       objectReference: {fileID: 1156792562378127567}
@@ -231,6 +243,16 @@ PrefabInstance:
       propertyPath: WeaponObjects.Array.data[0]
       value: 
       objectReference: {fileID: 1156792562378127567}
+    - target: {fileID: 1804215200578774597, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804215200578774597, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[2]
+      value: 
+      objectReference: {fileID: 168610865671265878}
     - target: {fileID: 3263130210043256847, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
       propertyPath: FactoryPrefab

@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 4311215863054917944}
   - component: {fileID: 6535671796607611735}
   - component: {fileID: 3817575574697387384}
-  - component: {fileID: -4855668697756973212}
+  - component: {fileID: 728602786452201293}
   m_Layer: 0
   m_Name: CannonTurret
   m_TagString: StructureUnit
@@ -158,7 +158,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 1000
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -199,6 +198,7 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Cannon Turret
+    ShortDescription: Heavy caliber defensive turret effective against medium armor.
     Description: Stationary cannon turret with a caliber that makes you wonder what
       the designer was compensating for. Can take out enemy armor fairly easily.
     Tags: []
@@ -212,7 +212,7 @@ MonoBehaviour:
   - {fileID: 7239507549102304598}
   Parts: []
   Weakpoints: []
---- !u!114 &-4855668697756973212
+--- !u!114 &728602786452201293
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -221,13 +221,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4059168509002600804}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:
+  - {fileID: 3113596326864263239}
   - {fileID: 8630708273228838999}
   - {fileID: 2557563276202019977}
-  - {fileID: 3113596326864263239}
 --- !u!1 &4848775266762693884
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,7 +510,6 @@ MonoBehaviour:
   Damage: 300
   Firerate: 0.3
   Modifier: {fileID: 11400000, guid: 92e6b21166c648b45b3686dd2030c041, type: 2}
-  DamageType: 1
   Speed: 300
   Range: 100
   Amount: 1
@@ -525,7 +524,55 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 8401448266279676610}
   Inaccuracy: 0
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8826782037728698520
 GameObject:
   m_ObjectHideFlags: 0

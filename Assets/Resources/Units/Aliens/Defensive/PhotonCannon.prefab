@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4311215863054917944}
   - component: {fileID: 6535671796607611735}
   - component: {fileID: 3817575574697387384}
-  - component: {fileID: -4855668697756973212}
   - component: {fileID: 2943333056548400230}
+  - component: {fileID: 6377829243071062194}
   m_Layer: 0
   m_Name: PhotonCannon
   m_TagString: StructureUnit
@@ -116,6 +116,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Photon Cannon
+    ShortDescription: Anti-armor launcher effective against slow-moving aircraft
+      and lighter vehicles.
     Description: We stole this photon-condensing tech from some high and mighty nerds,
       and found that it performs excellently against lightly armored targets, which
       lead to the development of this.
@@ -130,21 +132,6 @@ MonoBehaviour:
   - {fileID: 7239507549102304598}
   Parts: []
   Weakpoints: []
---- !u!114 &-4855668697756973212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4059168509002600804}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 3501233616282449895}
-  - {fileID: 6036846595274438746}
 --- !u!114 &2943333056548400230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,6 +145,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 259fba658c064ef4db94ec85f060efd0, type: 2}
+--- !u!114 &6377829243071062194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4059168509002600804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 6036846595274438746}
+  - {fileID: 3501233616282449895}
 --- !u!1 &6070054661554465783
 GameObject:
   m_ObjectHideFlags: 0

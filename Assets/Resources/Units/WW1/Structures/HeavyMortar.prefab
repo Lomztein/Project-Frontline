@@ -128,7 +128,6 @@ GameObject:
   - component: {fileID: 55885839613171485}
   - component: {fileID: 2476162970634138865}
   - component: {fileID: 835560189604165040}
-  - component: {fileID: 5226911492694726194}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Untagged
@@ -252,23 +251,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5226911492694726194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244591003029453303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 3737700609207850584}
-  - {fileID: 1901096595478128832}
-  - {fileID: 370248874570882849}
-  - {fileID: 6471878605699415857}
 --- !u!1 &2662349127569828899
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,6 +548,7 @@ GameObject:
   - component: {fileID: 1159676567398182207}
   - component: {fileID: 8966566408742433458}
   - component: {fileID: 1182438349}
+  - component: {fileID: 358090033830632618}
   m_Layer: 0
   m_Name: HeavyMortar
   m_TagString: StructureUnit
@@ -623,6 +606,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Coast Mortar
+    ShortDescription: Heavy stationary mortar that bombars enemy bases with high-explosive
+      mortar rounds.
     Description: Long range heavy coast mortar, repurposed for base-to-base bombardment.
       Its low accuracy is compensated for with its insane splash damage.
     Tags:
@@ -676,7 +661,6 @@ MonoBehaviour:
   AcquireTargetRange: 750
   LooseTargetRange: 750
   AttackRange: 750
-  CheckTargetLineOfSight: 0
   TurretObject: {fileID: 1244591003029453303}
   WeaponObjects:
   - {fileID: 1244591003029453303}
@@ -710,6 +694,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
+--- !u!114 &358090033830632618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9151599428216314589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 3737700609207850584}
+  - {fileID: 1901096595478128832}
+  - {fileID: 370248874570882849}
+  - {fileID: 6471878605699415857}
 --- !u!1001 &227905809702708720
 PrefabInstance:
   m_ObjectHideFlags: 0

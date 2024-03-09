@@ -151,6 +151,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2040911242}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1711813854969153806 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 8d4a3c84167117c4e841a685638cf9d9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2040911242}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4753248198775166815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -223,6 +229,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 221871567749722498, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
+      propertyPath: Info.ShortDescription
+      value: Shovel-carrying infantry that can raise sandbags on the battlefield
+        for infantry to garrison behind.
+      objectReference: {fileID: 0}
+    - target: {fileID: 221871567749722498, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
       propertyPath: _weapons.Array.data[0]
       value: 
       objectReference: {fileID: 1041369756}
@@ -286,6 +298,16 @@ PrefabInstance:
       propertyPath: WeaponObjects.Array.data[0]
       value: 
       objectReference: {fileID: 1041369756}
+    - target: {fileID: 1804215200578774597, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804215200578774597, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[2]
+      value: 
+      objectReference: {fileID: 1711813854969153806}
     - target: {fileID: 3263130210043256847, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
       propertyPath: FactoryPrefab

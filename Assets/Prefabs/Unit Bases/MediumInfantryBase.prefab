@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 1177128838}
   - component: {fileID: 1177128839}
   - component: {fileID: 7651415233274957058}
-  - component: {fileID: 9030256496918218793}
   - component: {fileID: 3340765615440518667}
   - component: {fileID: 3889823447320212466}
+  - component: {fileID: 1881909988227094593}
   m_Layer: 0
   m_Name: MediumInfantryBase
   m_TagString: Untagged
@@ -53,7 +53,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 0
   Modifier: {fileID: 11400000, guid: 4a550da09889e3d428b0cdf1d3cde176, type: 2}
-  ArmorType: 0
   DestroyOnDeath: 0
   DestroyDelay: 0
   Debris: {fileID: 0}
@@ -73,6 +72,7 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: 
+    ShortDescription: 
     Description: 
     Tags: []
     Cost: 100
@@ -108,6 +108,7 @@ MonoBehaviour:
   TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 40
+  HoldVariance: 2.5
   StayBehindFrontline: 0
 --- !u!114 &7651415233274957058
 MonoBehaviour:
@@ -122,24 +123,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 7
-  Rigidbody: {fileID: 3889823447320212466}
   IsMoving: 0
   RotateSpeed: 180
---- !u!114 &9030256496918218793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8299666088126906343}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 3313205258211110082}
-  - {fileID: 6617067491415211798}
 --- !u!114 &3340765615440518667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -182,6 +167,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1881909988227094593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8299666088126906343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 3313205258211110082}
+  - {fileID: 6617067491415211798}
 --- !u!1001 &6187533495866818264
 PrefabInstance:
   m_ObjectHideFlags: 0

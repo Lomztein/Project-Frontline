@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8558564917136176585}
   - component: {fileID: 8558564917136176584}
   - component: {fileID: 8558564917136176587}
-  - component: {fileID: 8454269495644909923}
   - component: {fileID: 8464025219770526676}
+  - component: {fileID: 6137925332892325846}
   m_Layer: 0
   m_Name: CoilLab
   m_TagString: StructureUnit
@@ -104,20 +104,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 12.23, y: 5.1227555, z: 11.274459}
   m_Center: {x: 0, y: 2.460595, z: -0.73084784}
---- !u!114 &8454269495644909923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8558564917136176589}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 1909380784458178487}
 --- !u!114 &8464025219770526676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,6 +171,20 @@ MonoBehaviour:
     SpeedMultiplier: 1
     FirerateMultiplier: 1
     AmountMultiplier: 1
+--- !u!114 &6137925332892325846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8558564917136176589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 1909380784458178487}
 --- !u!1001 &2701940016801073528
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -263,6 +263,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1461304994638716399, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: cb2174e8ed21adc4eaf3cadd4beb2cd3, type: 2}
     - target: {fileID: 919132149155446097, guid: 219b9527a18f5764f8e7a6d90d3db6c9,
         type: 3}
       propertyPath: m_Name

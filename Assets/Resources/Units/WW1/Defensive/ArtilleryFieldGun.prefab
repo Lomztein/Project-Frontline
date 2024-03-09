@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 218721335508439103}
   - component: {fileID: 7092836012480037456}
   - component: {fileID: 875755356153107583}
-  - component: {fileID: 306452662815766115}
   - component: {fileID: 720397599}
+  - component: {fileID: 7912488489627993426}
   m_Layer: 0
   m_Name: ArtilleryFieldGun
   m_TagString: StructureUnit
@@ -54,8 +54,6 @@ MonoBehaviour:
   AcquireTargetRange: 100
   LooseTargetRange: 100
   AttackRange: 100
-  CheckTargetLineOfSight: 1
-  LineOfSightCheckOrigin: {x: 0, y: 1, z: 0}
   TurretObject: {fileID: 6677267986770970449}
   WeaponObjects:
   - {fileID: 6677267987578035281}
@@ -117,6 +115,7 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Field Gun
+    ShortDescription: Field gun built to counter enemy armor from an extended range.
     Description: Light artillery designed to bombard enemy with high-explosive shells
       from a distance.
     Tags: []
@@ -130,22 +129,6 @@ MonoBehaviour:
   - {fileID: 6677267987578035281}
   Parts: []
   Weakpoints: []
---- !u!114 &306452662815766115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 38454704709050467}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 7593402366144898052}
-  - {fileID: 7001639861040115914}
-  - {fileID: 3860419507756303380}
 --- !u!114 &720397599
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,6 +142,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 259fba658c064ef4db94ec85f060efd0, type: 2}
+--- !u!114 &7912488489627993426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 38454704709050467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 7593402366144898052}
+  - {fileID: 7001639861040115914}
+  - {fileID: 3860419507756303380}
 --- !u!1 &80738302647263423
 GameObject:
   m_ObjectHideFlags: 0

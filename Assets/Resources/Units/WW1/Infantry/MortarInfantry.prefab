@@ -13,12 +13,12 @@ GameObject:
   - component: {fileID: 3133217014020917393}
   - component: {fileID: 3133217014020917392}
   - component: {fileID: 4707429137107192341}
-  - component: {fileID: 6208922606456639294}
   - component: {fileID: 371446805670336796}
   - component: {fileID: 2197758364635985125}
   - component: {fileID: 4726252616097994505}
   - component: {fileID: 6118108388280353875}
   - component: {fileID: 1376441837653897052}
+  - component: {fileID: 7913691293624130660}
   m_Layer: 0
   m_Name: MortarInfantry
   m_TagString: Untagged
@@ -75,6 +75,8 @@ MonoBehaviour:
   Info:
     Identifier: Infantry.Mortar
     Name: Mortar Infantry
+    ShortDescription: Support infantry carrying mortars on their back, which they
+      deploy to bombard forces from afar.
     Description: 
     Tags:
     - CantGarrison
@@ -105,8 +107,6 @@ MonoBehaviour:
   AcquireTargetRange: 150
   LooseTargetRange: 150
   AttackRange: 125
-  CheckTargetLineOfSight: 0
-  LineOfSightCheckOrigin: {x: 0, y: 1, z: 0}
   TurretObject: {fileID: 8150723386312106452}
   WeaponObjects:
   - {fileID: 8150723386312106452}
@@ -117,6 +117,7 @@ MonoBehaviour:
   - {fileID: 4726252616097994505}
   - {fileID: 6118108388280353875}
   HoldRange: 125
+  HoldVariance: 2.5
   StayBehindFrontline: 0
 --- !u!114 &4707429137107192341
 MonoBehaviour:
@@ -131,25 +132,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 3
-  Rigidbody: {fileID: 2197758364635985125}
   IsMoving: 0
   RotateSpeed: 180
---- !u!114 &6208922606456639294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6365057502642190576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 468852539306404821}
-  - {fileID: 8119963282226444289}
-  - {fileID: 4588823754643469491}
 --- !u!114 &371446805670336796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -230,6 +214,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Model: {fileID: 1857487047268247526}
+--- !u!114 &7913691293624130660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6365057502642190576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 468852539306404821}
+  - {fileID: 8119963282226444289}
+  - {fileID: 4588823754643469491}
+  - {fileID: 7175179976757476730}
+  - {fileID: 3028165957875682424}
+  - {fileID: 8719947849962997324}
+  - {fileID: 7863090766916029890}
+  - {fileID: 8585994150899347981}
+  - {fileID: 7863090766807404165}
 --- !u!1 &8150723386312106452
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +391,42 @@ Transform:
 --- !u!1 &1857487047268247526 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1464892437551921373, guid: 6d91f3ae714fb8c41afd81ccbbe4197e,
+    type: 3}
+  m_PrefabInstance: {fileID: 978206125526622011}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3028165957875682424 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2852324120005989187, guid: 6d91f3ae714fb8c41afd81ccbbe4197e,
+    type: 3}
+  m_PrefabInstance: {fileID: 978206125526622011}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7175179976757476730 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7926358869977064001, guid: 6d91f3ae714fb8c41afd81ccbbe4197e,
+    type: 3}
+  m_PrefabInstance: {fileID: 978206125526622011}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7863090766807404165 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6956942317090869694, guid: 6d91f3ae714fb8c41afd81ccbbe4197e,
+    type: 3}
+  m_PrefabInstance: {fileID: 978206125526622011}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7863090766916029890 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 6956942317065278201, guid: 6d91f3ae714fb8c41afd81ccbbe4197e,
+    type: 3}
+  m_PrefabInstance: {fileID: 978206125526622011}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8585994150899347981 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8841935481719483702, guid: 6d91f3ae714fb8c41afd81ccbbe4197e,
+    type: 3}
+  m_PrefabInstance: {fileID: 978206125526622011}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8719947849962997324 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8399269480497797495, guid: 6d91f3ae714fb8c41afd81ccbbe4197e,
     type: 3}
   m_PrefabInstance: {fileID: 978206125526622011}
   m_PrefabAsset: {fileID: 0}

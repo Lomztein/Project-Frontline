@@ -5079,7 +5079,7 @@ GameObject:
   - component: {fileID: 2772477570969109761}
   - component: {fileID: 2772477570969109820}
   - component: {fileID: 2772477570969109763}
-  - component: {fileID: 2772477570969109762}
+  - component: {fileID: 6099756770058546600}
   m_Layer: 0
   m_Name: ShieldGenerator
   m_TagString: StructureUnit
@@ -5147,6 +5147,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Shield Projector
+    ShortDescription: Hard-light shield projector that projects a barrier that protects
+      nearby units.
     Description: This is much like a video projector, except mostly not. A hard light
       shield is projected in a wide area around it, which can take sagnificant punishment
       and protect structures behind it.
@@ -5179,7 +5181,7 @@ MonoBehaviour:
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 5
---- !u!114 &2772477570969109762
+--- !u!114 &6099756770058546600
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5188,7 +5190,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2772477570969109767}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:

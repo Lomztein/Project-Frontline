@@ -1208,6 +1208,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9035589861437556256, guid: 8c9aeb8aedbb1694485fcc7673507336,
         type: 3}
+      propertyPath: Info.ShortDescription
+      value: Heavy gatling cannon highly effective at shredding both enemy infantry
+        and light vehicles.
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035589861437556256, guid: 8c9aeb8aedbb1694485fcc7673507336,
+        type: 3}
       propertyPath: _weapons.Array.data[0]
       value: 
       objectReference: {fileID: 1187514992}
@@ -1227,6 +1233,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 3098977898190338878}
+    - targetCorrespondingSourceObject: {fileID: 1256509098192466957, guid: 8c9aeb8aedbb1694485fcc7673507336,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 470565116036903216}
   m_SourcePrefab: {fileID: 100100000, guid: 8c9aeb8aedbb1694485fcc7673507336, type: 3}
 --- !u!4 &455416363573266304 stripped
 Transform:
@@ -1276,6 +1286,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 8f8059ce28c7c4f458cd46ae5320cd22, type: 2}
+--- !u!114 &470565116036903216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3604651880949064601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 7348960960943842075}
+  - {fileID: 6791315656455773812}
+  - {fileID: 8809669474207094887}
+  - {fileID: 4333771400011945425}
+  - {fileID: 6147490216506236525}
 --- !u!1001 &8051610483283583282
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -677,18 +677,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2112904944048978154}
   m_PrefabAsset: {fileID: 0}
---- !u!23 &2473259383341313573 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: d5e44e428c8f1624eb2014b4db6b02ac,
-    type: 3}
-  m_PrefabInstance: {fileID: 2112904944048978154}
-  m_PrefabAsset: {fileID: 0}
---- !u!23 &8568921840787561211 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -1461304994638716399, guid: d5e44e428c8f1624eb2014b4db6b02ac,
-    type: 3}
-  m_PrefabInstance: {fileID: 2112904944048978154}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2282123490953318207
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1296,6 +1284,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3068688912037162774, guid: 68236862e5ec3be4b8135ba7f4991890,
         type: 3}
+      propertyPath: Info.ShortDescription
+      value: Areal infantry that fires swarms of agile heat-seeking missiles at enemy
+        forces.
+      objectReference: {fileID: 0}
+    - target: {fileID: 3068688912037162774, guid: 68236862e5ec3be4b8135ba7f4991890,
+        type: 3}
       propertyPath: _weapons.Array.data[0]
       value: 
       objectReference: {fileID: 2209987075911034390}
@@ -1537,16 +1531,22 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3068688912037162773, guid: 68236862e5ec3be4b8135ba7f4991890,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1284582085}
+      addedObject: {fileID: 760920765256712150}
     - targetCorrespondingSourceObject: {fileID: 3068688912037162773, guid: 68236862e5ec3be4b8135ba7f4991890,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 760920765256712150}
+      addedObject: {fileID: 1672623663189447918}
     - targetCorrespondingSourceObject: {fileID: 893668712339879614, guid: 68236862e5ec3be4b8135ba7f4991890,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6063074699763865065}
   m_SourcePrefab: {fileID: 100100000, guid: 68236862e5ec3be4b8135ba7f4991890, type: 3}
+--- !u!23 &1136421610770619378 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4696773473927700567, guid: 68236862e5ec3be4b8135ba7f4991890,
+    type: 3}
+  m_PrefabInstance: {fileID: 5686687299157326757}
+  m_PrefabAsset: {fileID: 0}
 --- !u!137 &2042754033692204359 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5958959399048783586, guid: 68236862e5ec3be4b8135ba7f4991890,
@@ -1610,6 +1610,12 @@ Transform:
 --- !u!4 &5403615444713541193 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 294515623005287916, guid: 68236862e5ec3be4b8135ba7f4991890,
+    type: 3}
+  m_PrefabInstance: {fileID: 5686687299157326757}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &6592500345048411948 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1555553706596848777, guid: 68236862e5ec3be4b8135ba7f4991890,
     type: 3}
   m_PrefabInstance: {fileID: 5686687299157326757}
   m_PrefabAsset: {fileID: 0}
@@ -1689,23 +1695,6 @@ MonoBehaviour:
   AngularDragCoeffecient: 0
   AccFactorLerp: 20
   TurnFactorLeap: 20
---- !u!114 &1284582085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7240952256543642800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 2042754033692204359}
-  - {fileID: 7671605487687683731}
-  - {fileID: 2473259383341313573}
-  - {fileID: 8568921840787561211}
 --- !u!114 &760920765256712150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1719,6 +1708,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Model: {fileID: 1266604461358941627}
+--- !u!114 &1672623663189447918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240952256543642800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 2042754033692204359}
+  - {fileID: 7671605487687683731}
+  - {fileID: 6592500345048411948}
+  - {fileID: 1136421610770619378}
 --- !u!114 &7240952256543642802 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3068688912037162775, guid: 68236862e5ec3be4b8135ba7f4991890,

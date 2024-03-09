@@ -215,8 +215,8 @@ GameObject:
   - component: {fileID: 2996561609964713333}
   - component: {fileID: 2996561609964713338}
   - component: {fileID: 2996561609964713331}
-  - component: {fileID: 2726443102629586329}
   - component: {fileID: 8548780513891731636}
+  - component: {fileID: 3092699183539432156}
   m_Layer: 0
   m_Name: AntiMaterialRifle
   m_TagString: StructureUnit
@@ -256,6 +256,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Anti-Material Turret
+    ShortDescription: Anti-material turret snipes down enemy infantry and light armor
+      from afar.
     Description: '"Death from long range" is an inadaqute description, rather something
       along the lines of "all your memories scattered across the battlefield" is
       a better fit for this super long-range sniper turret.'
@@ -330,7 +332,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 500
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -350,7 +351,6 @@ MonoBehaviour:
   Damage: 250
   Firerate: 0.4
   Modifier: {fileID: 11400000, guid: f75d5f910f7de0d48ab5cab93d6c821d, type: 2}
-  DamageType: 6
   Speed: 500
   Range: 300
   Amount: 1
@@ -365,7 +365,55 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 5897573740125161469}
   Inaccuracy: 0
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &2996561609964713338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,23 +447,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
---- !u!114 &2726443102629586329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2996561609964713339}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 2261706903961581372}
-  - {fileID: 4029099572149331}
-  - {fileID: 6104195247142357133}
-  - {fileID: 2099554789985614223}
 --- !u!114 &8548780513891731636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,6 +461,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Filter: {fileID: 11400000, guid: a26308058bb5fb84c888ceb9461d5fcb, type: 2}
   Weight: 10000
+--- !u!114 &3092699183539432156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2996561609964713339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 2261706903961581372}
+  - {fileID: 6104195247142357133}
+  - {fileID: 4029099572149331}
 --- !u!1 &2996561610042921427
 GameObject:
   m_ObjectHideFlags: 0

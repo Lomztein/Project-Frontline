@@ -84,6 +84,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1469543274217464850}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &3125082690747134666 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4556055077416048344, guid: 2dc6c68ff7046174eab8f27a86a1b749,
+    type: 3}
+  m_PrefabInstance: {fileID: 1469543274217464850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &4239705245653483592 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3364937308259394650, guid: 2dc6c68ff7046174eab8f27a86a1b749,
@@ -98,6 +104,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483742388720889655, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 483742388720889655, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[1]
+      value: 
+      objectReference: {fileID: 3125082690747134666}
     - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}
       propertyPath: HoldRange
@@ -153,6 +169,11 @@ PrefabInstance:
       propertyPath: Info.Description
       value: Infantry wielding a (very heavy) personal ion cannon, which it uses
         to square up against enemy armor.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.ShortDescription
+      value: Heavy anti-tank infantry equipped with personal ion cannons.
       objectReference: {fileID: 0}
     - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}

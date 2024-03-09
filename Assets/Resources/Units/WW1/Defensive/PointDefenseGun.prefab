@@ -179,9 +179,9 @@ GameObject:
   - component: {fileID: 3205124167639553028}
   - component: {fileID: 5556666036064077419}
   - component: {fileID: 2545835941462642756}
-  - component: {fileID: 3112923598565700184}
   - component: {fileID: 2096526801790563483}
   - component: {fileID: 5649367049913407189}
+  - component: {fileID: 3418734778842626894}
   m_Layer: 0
   m_Name: PointDefenseGun
   m_TagString: StructureUnit
@@ -284,6 +284,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Point Defense Gun
+    ShortDescription: Twin heavy machine guns that shoots larger enemy projectiles
+      out of the air.
     Description: Twin heavy machine guns traditionally designed to shoot down light
       aircraft, but repurposed shoot down larger projectiles instead.
     Tags:
@@ -298,24 +300,6 @@ MonoBehaviour:
   - {fileID: 8347849948313224042}
   Parts: []
   Weakpoints: []
---- !u!114 &3112923598565700184
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3457481169082999896}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 4544965467744279870}
-  - {fileID: 7788897183754163978}
-  - {fileID: 1134470369984307272}
-  - {fileID: 7197084452742266158}
-  - {fileID: 7076094919380771659}
 --- !u!114 &2096526801790563483
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,6 +326,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 59551ab9d676ab942a343bb9c54efd2b, type: 2}
+--- !u!114 &3418734778842626894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3457481169082999896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 4544965467744279870}
+  - {fileID: 7788897183754163978}
+  - {fileID: 7197084452742266158}
+  - {fileID: 7076094919380771659}
 --- !u!1 &3651185707761452529
 GameObject:
   m_ObjectHideFlags: 0

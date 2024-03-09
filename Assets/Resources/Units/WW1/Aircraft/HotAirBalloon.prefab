@@ -85,6 +85,7 @@ GameObject:
   - component: {fileID: 3925931362492525584}
   - component: {fileID: 2063965065709647722}
   - component: {fileID: 5044624503882584457}
+  - component: {fileID: 4698674952442288205}
   m_Layer: 0
   m_Name: HotAirBalloon
   m_TagString: Untagged
@@ -129,7 +130,6 @@ MonoBehaviour:
   AcquireTargetRange: 100
   LooseTargetRange: 100
   AttackRange: 75
-  CheckTargetLineOfSight: 0
   TurretObject: {fileID: 0}
   WeaponObjects: []
   AimTolerance: 20
@@ -137,6 +137,7 @@ MonoBehaviour:
   TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 65
+  HoldVariance: 2.5
   StayBehindFrontline: 0
 --- !u!114 &7007789788878976967
 MonoBehaviour:
@@ -153,6 +154,8 @@ MonoBehaviour:
   Info:
     Identifier: HotAirBalloon
     Name: Hot Air Balloon
+    ShortDescription: Big balloon with a garrison slot that can be manned by a single
+      infantry unit for a sagnificant height advantage.
     Description: Big balloon filled with volatile gasses that keep it afloat. It
       carries a basket where a single infantry unit can garrison in order to get
       a large height advantage.
@@ -213,7 +216,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 5
-  Rigidbody: {fileID: 0}
   MaxAngularSpeed: 30
   AccelerationSpeed: 2.5
   AngularAccelerationSpeed: 15
@@ -263,6 +265,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: d9e61fb0e27a85d468c910206f9bb82c, type: 2}
+--- !u!114 &4698674952442288205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3463913700597910733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 2642710134293296642}
+  - {fileID: 8076343434470687452}
+  - {fileID: 8673672242820847122}
+  - {fileID: 8758773433184274551}
+  - {fileID: 8622568535568546870}
 --- !u!1 &5791365670322195332
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,6 +557,36 @@ PrefabInstance:
 --- !u!4 &2028361685548156710 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8b79677756049fc4395c14e57e1c92be,
+    type: 3}
+  m_PrefabInstance: {fileID: 1994119684624031949}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &2642710134293296642 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: 8b79677756049fc4395c14e57e1c92be,
+    type: 3}
+  m_PrefabInstance: {fileID: 1994119684624031949}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8076343434470687452 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1461304994638716399, guid: 8b79677756049fc4395c14e57e1c92be,
+    type: 3}
+  m_PrefabInstance: {fileID: 1994119684624031949}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8622568535568546870 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -1439730007547781893, guid: 8b79677756049fc4395c14e57e1c92be,
+    type: 3}
+  m_PrefabInstance: {fileID: 1994119684624031949}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8673672242820847122 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7202271454713460447, guid: 8b79677756049fc4395c14e57e1c92be,
+    type: 3}
+  m_PrefabInstance: {fileID: 1994119684624031949}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8758773433184274551 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7071182760956848314, guid: 8b79677756049fc4395c14e57e1c92be,
     type: 3}
   m_PrefabInstance: {fileID: 1994119684624031949}
   m_PrefabAsset: {fileID: 0}

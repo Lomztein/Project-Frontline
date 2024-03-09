@@ -110,8 +110,18 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1568255785295421517, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
         type: 3}
+      propertyPath: Info.Name
+      value: War Factory
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568255785295421517, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
+        type: 3}
       propertyPath: Info.Value
       value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 1568255785295421517, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
+        type: 3}
+      propertyPath: Info.ShortDescription
+      value: Produces vehicle units.
       objectReference: {fileID: 0}
     - target: {fileID: 2635971483640119611, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
         type: 3}
@@ -219,14 +229,19 @@ PrefabInstance:
       propertyPath: _renderersToApplyTo.Array.data[0]
       value: 
       objectReference: {fileID: 779112472446372856}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7746603083531687878, guid: 5920c77dd156fa84d9ef20fc112bf9b9, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 6650765120204559775, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1910892345946140823}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6801044878694592254, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4087357059868984008}
   m_SourcePrefab: {fileID: 100100000, guid: 5920c77dd156fa84d9ef20fc112bf9b9, type: 3}
 --- !u!4 &8762563755826474124 stripped
 Transform:
@@ -234,3 +249,23 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2726545762839574803}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8913899801669703661 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6801044878694592254, guid: 5920c77dd156fa84d9ef20fc112bf9b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2726545762839574803}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4087357059868984008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8913899801669703661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 779112472446372856}

@@ -648,7 +648,7 @@ GameObject:
   - component: {fileID: 4123503063658984808}
   - component: {fileID: 3340597045722375941}
   - component: {fileID: 6561906137118575765}
-  - component: {fileID: 2256070013968973893}
+  - component: {fileID: 2194524726390525226}
   m_Layer: 0
   m_Name: KWagen
   m_TagString: MobileUnit
@@ -689,6 +689,7 @@ MonoBehaviour:
   Info:
     Identifier: KWagon
     Name: Landship
+    ShortDescription: Ultra-heavy vehicle loaded with cannons and machine guns.
     Description: Immense vehicle equipped with four large-caliber cannons and a good
       handfull of machine guns. Capable of both breaking a siege and sieging an enemy
       base, this massive war machine is the apex of tank warfare.
@@ -742,7 +743,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 2.5
-  Rigidbody: {fileID: 3340597045722375941}
   AccelerationSpeed: 5
   BrakeDrag: 10
   MaxTurnAngle: 10
@@ -771,6 +771,7 @@ MonoBehaviour:
   TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 50
+  HoldVariance: 2.5
   StayBehindFrontline: 0
 --- !u!54 &3340597045722375941
 Rigidbody:
@@ -814,7 +815,7 @@ MonoBehaviour:
   FactoryPrefab: {fileID: 8602111571912869181, guid: 8262f74429dab07418333b3810bc5ca6,
     type: 3}
   ProductionTime: 80
---- !u!114 &2256070013968973893
+--- !u!114 &2194524726390525226
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -823,28 +824,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 7449289378090556333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:
   - {fileID: 2500584948854798788}
-  - {fileID: 2500584948854798788}
+  - {fileID: 8193897619358495728}
   - {fileID: 1305859218701796530}
   - {fileID: 9192546226449287089}
   - {fileID: 9097276665562487252}
   - {fileID: 544589040016922299}
   - {fileID: 458448122814974174}
   - {fileID: 544589041202960953}
-  - {fileID: 458448124258268156}
+  - {fileID: 458448124083061852}
   - {fileID: 544589040855870873}
   - {fileID: 458448124258268156}
   - {fileID: 4980687412034033542}
-  - {fileID: 1868198766766241686}
   - {fileID: 4980687411596197652}
-  - {fileID: 1868198766584241924}
   - {fileID: 4980687411269117385}
-  - {fileID: 1868198766928217561}
-  - {fileID: 8193897619358495728}
+  - {fileID: 8506166712157261082}
 --- !u!1001 &2724427734122377401
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1190,6 +1188,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb460757473b2524eb2e371fe10fa753, type: 3}
+--- !u!23 &458448124083061852 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5232620473131738810, guid: eb460757473b2524eb2e371fe10fa753,
+    type: 3}
+  m_PrefabInstance: {fileID: 5675305992030413542}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &544589041202960953 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 5281728833687877855, guid: eb460757473b2524eb2e371fe10fa753,
@@ -1526,12 +1530,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a1d7acbfc06e8d43bb444ca665882ca, type: 3}
---- !u!23 &1868198766928217561 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6282398722070609814, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
-    type: 3}
-  m_PrefabInstance: {fileID: 5675305992975727183}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3746793160257281556 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9024637768550655067, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
@@ -1623,12 +1621,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a1d7acbfc06e8d43bb444ca665882ca, type: 3}
---- !u!23 &1868198766584241924 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6282398722070609814, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
-    type: 3}
-  m_PrefabInstance: {fileID: 5675305993570967698}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3746793159912867017 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9024637768550655067, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
@@ -1720,12 +1712,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1a1d7acbfc06e8d43bb444ca665882ca, type: 3}
---- !u!23 &1868198766766241686 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 6282398722070609814, guid: 1a1d7acbfc06e8d43bb444ca665882ca,
-    type: 3}
-  m_PrefabInstance: {fileID: 5675305993673525248}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &3746793160014523483 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9024637768550655067, guid: 1a1d7acbfc06e8d43bb444ca665882ca,

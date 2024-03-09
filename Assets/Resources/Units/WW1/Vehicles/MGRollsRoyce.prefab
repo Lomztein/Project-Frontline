@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 7948640684196843216}
   - component: {fileID: 7159768823265169035}
   - component: {fileID: 3921581449708654105}
-  - component: {fileID: 3532775504822701343}
+  - component: {fileID: 6321049511449710918}
   m_Layer: 0
   m_Name: MGRollsRoyce
   m_TagString: MobileUnit
@@ -400,6 +400,8 @@ MonoBehaviour:
   Info:
     Identifier: RollsRoyce.MG
     Name: Armored Car
+    ShortDescription: Lightly armored car equipped with an anti-infantry machine
+      gun.
     Description: Light car equipped with a machine gun. It's flimsy armor can barely
       handle light arms fire.
     Tags: []
@@ -444,7 +446,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 10
-  Rigidbody: {fileID: 3921581449708654105}
   AccelerationSpeed: 30
   BrakeDrag: 30
   MaxTurnAngle: 60
@@ -473,6 +474,7 @@ MonoBehaviour:
   TargetSearchFrequency: 2
   Modifiers: []
   HoldRange: 50
+  HoldVariance: 2.5
   StayBehindFrontline: 0
 --- !u!114 &7159768823265169035
 MonoBehaviour:
@@ -516,7 +518,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &3532775504822701343
+--- !u!114 &6321049511449710918
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -525,7 +527,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1616953874168452399}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:

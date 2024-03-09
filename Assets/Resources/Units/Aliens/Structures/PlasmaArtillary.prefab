@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 55885839613171485}
   - component: {fileID: 2476162970634138865}
   - component: {fileID: 835560189604165040}
-  - component: {fileID: 5226911492694726194}
   m_Layer: 0
   m_Name: PlasmaCannon
   m_TagString: Untagged
@@ -168,22 +167,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5226911492694726194
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1244591003029453303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 2963669374574083179}
-  - {fileID: 9050323018672130229}
-  - {fileID: 2407997514018891941}
 --- !u!1 &2971242610451871948
 GameObject:
   m_ObjectHideFlags: 0
@@ -5554,6 +5537,7 @@ GameObject:
   - component: {fileID: 9094752563827018474}
   - component: {fileID: 1159676567398182207}
   - component: {fileID: 8966566408742433458}
+  - component: {fileID: 7227898392767200753}
   m_Layer: 0
   m_Name: PlasmaArtillary
   m_TagString: StructureUnit
@@ -5610,6 +5594,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Plasma Artillary
+    ShortDescription: Heavy plasma artillery that lobs building-melting bolts of
+      plasma at the enemy base.
     Description: Exteremely long range and high damage define this structure. It
       is able to shoot square across the battlefield and destroy enemy structures
       from the safety of your base. Very low damage against shields.
@@ -5663,7 +5649,6 @@ MonoBehaviour:
   AcquireTargetRange: 500
   LooseTargetRange: 500
   AttackRange: 500
-  CheckTargetLineOfSight: 0
   TurretObject: {fileID: 1244591003029453303}
   WeaponObjects:
   - {fileID: 1244591003029453303}
@@ -5684,6 +5669,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c498c43eb27de4bac5bf82321f14fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7227898392767200753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9151599428216314589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 2407997514018891941}
+  - {fileID: 334983243645025663}
+  - {fileID: 2963669374574083179}
+  - {fileID: 9050323018672130229}
 --- !u!1 &9151599428409537149
 GameObject:
   m_ObjectHideFlags: 0

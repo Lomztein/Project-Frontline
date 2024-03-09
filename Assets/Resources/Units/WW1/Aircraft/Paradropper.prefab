@@ -927,8 +927,8 @@ GameObject:
   - component: {fileID: 2977313167760143501}
   - component: {fileID: 4103871851549751263}
   - component: {fileID: 6274288770152103032}
-  - component: {fileID: 2737601656462315535}
   - component: {fileID: 4044108308410533352}
+  - component: {fileID: 4332444583091168457}
   m_Layer: 0
   m_Name: Paradropper
   m_TagString: Untagged
@@ -969,6 +969,8 @@ MonoBehaviour:
   Info:
     Identifier: Triplane.Paradropper
     Name: Paradropper
+    ShortDescription: Heavy triplane filled with elite troopers that paradrop down
+      on the battlefield.
     Description: Heavy triplane filled to the brim with troopers ready to be dropped
       directly on top of the battlefield. How do they get so many troopers in there?
       Clown magic.
@@ -1039,7 +1041,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 50
-  Rigidbody: {fileID: 2977313167760143601}
   MinSpeed: 40
   AccelerationSpeed: 20
   RaiseSpeed: 25
@@ -1108,26 +1109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AltitudeMinMax: {x: -5, y: 5}
---- !u!114 &2737601656462315535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2977313167760143607}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 2831108099011015114}
-  - {fileID: 8502464746398170311}
-  - {fileID: 817249064025752863}
-  - {fileID: 6502858683630830044}
-  - {fileID: 490069556577018316}
-  - {fileID: 513246880219725737}
-  - {fileID: 8035181333740400748}
 --- !u!114 &4044108308410533352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1141,6 +1122,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 8f8059ce28c7c4f458cd46ae5320cd22, type: 2}
+--- !u!114 &4332444583091168457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2977313167760143607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 2831108099011015114}
+  - {fileID: 8502464746398170311}
+  - {fileID: 817249064025752863}
+  - {fileID: 6502858683630830044}
+  - {fileID: 490069556577018316}
+  - {fileID: 513246880219725737}
+  - {fileID: 8035181333740400748}
+  - {fileID: 6132950761603094163}
+  - {fileID: 2536313061558961479}
 --- !u!1 &3026505299448970918
 GameObject:
   m_ObjectHideFlags: 0

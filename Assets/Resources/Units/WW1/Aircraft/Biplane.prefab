@@ -939,7 +939,7 @@ GameObject:
   - component: {fileID: 2977313167760143592}
   - component: {fileID: 5107284976161941682}
   - component: {fileID: 6274288770152103032}
-  - component: {fileID: 2737601656462315535}
+  - component: {fileID: 3116804983383477597}
   m_Layer: 0
   m_Name: Biplane
   m_TagString: Untagged
@@ -979,6 +979,8 @@ MonoBehaviour:
   Info:
     Identifier: Biplane
     Name: Biplane
+    ShortDescription: Air-to-air fighter with an anti-armor machine gun and an array
+      of anti-air rockets.
     Description: Agile air-to-air fighter equipped with machine guns and an array
       of rockets rockets.
     Tags:
@@ -1049,7 +1051,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 45
-  Rigidbody: {fileID: 2977313167760143601}
   MinSpeed: 25
   AccelerationSpeed: 20
   RaiseSpeed: 25
@@ -1083,6 +1084,7 @@ MonoBehaviour:
   Modifiers:
   - {fileID: 6274288770152103032}
   HoldRange: 25
+  HoldVariance: 2.5
   StayBehindFrontline: 1
   ReengageRange: 200
   DisengageAlongWaypoint: 1
@@ -1122,6 +1124,8 @@ MonoBehaviour:
   Ragdoll: {fileID: 4839266017366311447}
   RagdollRoot: {fileID: 4915564811604716586}
   RootCollider: {fileID: 0}
+  ExternalParts: []
+  PartsToSeperate: []
   Sturdyness: 0
 --- !u!114 &5107284976161941682
 MonoBehaviour:
@@ -1151,7 +1155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AltitudeMinMax: {x: 10, y: 70}
---- !u!114 &2737601656462315535
+--- !u!114 &3116804983383477597
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1160,7 +1164,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2977313167760143607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:
@@ -1170,8 +1174,6 @@ MonoBehaviour:
   - {fileID: 275317730008551644}
   - {fileID: 6132950761603094163}
   - {fileID: 2536313061558961479}
-  - {fileID: 7796832922175031797}
-  - {fileID: 319557603068489270}
   - {fileID: 6952408244974069662}
   - {fileID: 7292314325934195958}
   - {fileID: 7292314326080050468}
@@ -2921,7 +2923,55 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 8005480116049742445}
   Inaccuracy: 0.5
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8048269179837108415
 GameObject:
   m_ObjectHideFlags: 0
@@ -4060,12 +4110,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0585a68fd9108a4fa7d97ef01d4ccfc, type: 3}
---- !u!23 &7796832922175031797 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: d0585a68fd9108a4fa7d97ef01d4ccfc,
-    type: 3}
-  m_PrefabInstance: {fileID: 8931341312208328049}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8969137353739186842 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d0585a68fd9108a4fa7d97ef01d4ccfc,

@@ -67,9 +67,12 @@ MonoBehaviour:
   Name: Battle Shield
   Description: Heavy shield capable of taking massive damage, but will quickly fall
     to cannon fire.
+  MainComponent: {fileID: 0}
   Model: {fileID: 0}
   AimBehaviour:
     rid: -2
+  EquipmentRenderers: []
+  ParentOverride: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -283,9 +286,12 @@ MonoBehaviour:
   Name: Shotgun
   Description: Quickly looses effectivenes at range due to spread, but very deadly
     up close.
+  MainComponent: {fileID: 0}
   Model: {fileID: 0}
   AimBehaviour:
     rid: -2
+  EquipmentRenderers: []
+  ParentOverride: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -343,6 +349,11 @@ PrefabInstance:
     - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: _weapons.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
+      propertyPath: Info.ShortDescription
+      value: Tanky infantry units carrying a battle shield and a shotgun that allows
+        it to get in close.
       objectReference: {fileID: 0}
     - target: {fileID: 1177128838, guid: 50378c4ca65714b4ebd2928ade59a707, type: 3}
       propertyPath: _weapons.Array.data[0]

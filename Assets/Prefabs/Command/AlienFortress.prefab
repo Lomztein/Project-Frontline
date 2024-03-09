@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3624032928379106665}
   - component: {fileID: -8404627194951678604}
   - component: {fileID: 5462264894719349773}
-  - component: {fileID: 8513653558647105787}
+  - component: {fileID: 7761624115175567971}
   m_Layer: 0
   m_Name: AlienFortress
   m_TagString: StructureUnit
@@ -53,6 +53,7 @@ MonoBehaviour:
   Info:
     Identifier: Fortress
     Name: Fortress
+    ShortDescription: 
     Description: Your fortress, the heart of your operations. Don't loose it, or
       you will be eliminated.
     Tags: []
@@ -119,7 +120,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 8.81, y: 22.35598, z: 8.81}
   m_Center: {x: 0, y: 10.677986, z: 0}
---- !u!114 &8513653558647105787
+--- !u!114 &7761624115175567971
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,7 +129,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1744709123000931361}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:
@@ -342,6 +343,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 0c74bc257ed965349b6f03edebcb9c20, type: 2}
+    - target: {fileID: 6099756770058546600, guid: d294f7f297ea0834fa9746bd89c1559b,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6099756770058546600, guid: d294f7f297ea0834fa9746bd89c1559b,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6924644335248620487, guid: d294f7f297ea0834fa9746bd89c1559b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

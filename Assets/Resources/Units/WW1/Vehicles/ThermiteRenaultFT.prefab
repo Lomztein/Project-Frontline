@@ -163,7 +163,6 @@ MonoBehaviour:
   Damage: 500
   Firerate: 0.25
   Modifier: {fileID: 11400000, guid: 945d88c08db340144ab265835acf69ca, type: 2}
-  DamageType: 3
   Speed: 100
   Range: 100
   Amount: 1
@@ -178,7 +177,55 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 4010953644909881623}
   Inaccuracy: 0
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &2527014072677744432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,6 +247,7 @@ MonoBehaviour:
   ProjectileSpeed: 100
   ProjectileGravity: 20
   HighAngle: 0
+  ElevationRangeMinMax: {x: -90, y: 90}
 --- !u!1 &1515354331690900924
 GameObject:
   m_ObjectHideFlags: 0
@@ -815,8 +863,8 @@ GameObject:
   - component: {fileID: 3052483114788943211}
   - component: {fileID: 4402130457795577818}
   - component: {fileID: 1958886560716888749}
-  - component: {fileID: 567627677143667945}
   - component: {fileID: 4044902447818680156}
+  - component: {fileID: 4713286931242765950}
   m_Layer: 0
   m_Name: ThermiteRenaultFT
   m_TagString: MobileUnit
@@ -857,6 +905,8 @@ MonoBehaviour:
   Info:
     Identifier: RenaultFT.Thermite
     Name: Thermite Light Tank
+    ShortDescription: Advanced light tank equipped with a heavy thermite crossbow
+      that can melt through heavy armor.
     Description: Variant of the light tank, where the turret is replaced by a heavy
       crossbow loaded with thermite grenades. These light tanks are capable of cutting
       through heavy armor from a distance.
@@ -885,7 +935,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 750
   Modifier: {fileID: 11400000, guid: 998fc5c61550d024286c252cfab30310, type: 2}
-  ArmorType: 3
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -903,7 +952,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 10
-  Rigidbody: {fileID: 0}
   AccelerationSpeed: 20
   BrakeDrag: 30
   MaxTurnAngle: 45
@@ -933,6 +981,7 @@ MonoBehaviour:
   Modifiers:
   - {fileID: 4044902447818680156}
   HoldRange: 60
+  HoldVariance: 2.5
   StayBehindFrontline: 0
 --- !u!114 &4402130457795577818
 MonoBehaviour:
@@ -976,28 +1025,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &567627677143667945
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5551863359537181301}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 8040509244374810330}
-  - {fileID: 1435614701422166095}
-  - {fileID: 1783133743159133555}
-  - {fileID: 5478299078667022765}
-  - {fileID: 5848942781015323761}
-  - {fileID: 6011093838328937154}
-  - {fileID: 4921641230525506915}
-  - {fileID: 923661053268489210}
-  - {fileID: 5635434370325936520}
 --- !u!114 &4044902447818680156
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1011,6 +1038,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AltitudeMinMax: {x: -10, y: 10}
+--- !u!114 &4713286931242765950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5551863359537181301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 8040509244374810330}
+  - {fileID: 1435614701422166095}
+  - {fileID: 1783133743159133555}
+  - {fileID: 5478299078667022765}
+  - {fileID: 5848942781015323761}
+  - {fileID: 6011093838328937154}
+  - {fileID: 4921641230525506915}
+  - {fileID: 5635434370325936520}
+  - {fileID: 923661053268489210}
 --- !u!1 &6012921133996757593
 GameObject:
   m_ObjectHideFlags: 0

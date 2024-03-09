@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2772477570969109760}
   - component: {fileID: 2772477570969109820}
   - component: {fileID: 2772477570969109763}
-  - component: {fileID: 2772477570969109762}
   - component: {fileID: 4486289457915879353}
+  - component: {fileID: 1933070143372545968}
   m_Layer: 0
   m_Name: MeshShield
   m_TagString: StructureUnit
@@ -51,6 +51,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Mesh Shield
+    ShortDescription: A giant mesh of steel and iron that protects units beneath
+      it from incoming fire.
     Description: A giant mesh of steel and iron that is erected to protect units
       and structures from incoming artillery. It is cheap to set up, but entirely
       passive and vulnurable to energy damage.
@@ -83,21 +85,6 @@ MonoBehaviour:
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
   DebrisLife: 5
---- !u!114 &2772477570969109762
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2772477570969109767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 181515612705524969}
-  - {fileID: 240563831629369996}
 --- !u!65 &4486289457915879353
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -119,6 +106,22 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 26.20717, z: 3}
   m_Center: {x: 0, y: 13.065377, z: 0}
+--- !u!114 &1933070143372545968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2772477570969109767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 181515612705524969}
+  - {fileID: 240563831629369996}
+  - {fileID: 4406431112991138628}
 --- !u!1 &8484633271860853750
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,6 +278,12 @@ MeshRenderer:
 --- !u!23 &240563831629369996 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 7071182760956848314, guid: e514db8c852cf58489ea202f2fd80405,
+    type: 3}
+  m_PrefabInstance: {fileID: 7023157762756557366}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4406431112991138628 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -2571118854743697038, guid: e514db8c852cf58489ea202f2fd80405,
     type: 3}
   m_PrefabInstance: {fileID: 7023157762756557366}
   m_PrefabAsset: {fileID: 0}

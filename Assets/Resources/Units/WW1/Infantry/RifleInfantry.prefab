@@ -112,6 +112,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1948445167023643196}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &5795446427975934568 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5433535072693827668, guid: 87050310418a5f44eaa56666f98ac73c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1948445167023643196}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4753248198775166815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -170,6 +176,12 @@ PrefabInstance:
         type: 3}
       propertyPath: Info.Tags.Array.size
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 221871567749722498, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: Info.ShortDescription
+      value: Trained marksman with bolt-action rifles effective against infantry
+        at range.
       objectReference: {fileID: 0}
     - target: {fileID: 221871567749722498, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
@@ -241,6 +253,16 @@ PrefabInstance:
       propertyPath: WeaponObjects.Array.data[0]
       value: 
       objectReference: {fileID: 181989385803841010}
+    - target: {fileID: 1804215200578774597, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1804215200578774597, guid: 921f14449a56edf44ae71f83ff321a64,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[2]
+      value: 
+      objectReference: {fileID: 5795446427975934568}
     - target: {fileID: 3263130210043256847, guid: 921f14449a56edf44ae71f83ff321a64,
         type: 3}
       propertyPath: FactoryPrefab

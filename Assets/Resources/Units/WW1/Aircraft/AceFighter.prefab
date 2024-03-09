@@ -1283,7 +1283,7 @@ GameObject:
   - component: {fileID: 4103871851549751263}
   - component: {fileID: 5107284976161941682}
   - component: {fileID: 6274288770152103032}
-  - component: {fileID: 2737601656462315535}
+  - component: {fileID: 7420858027619711987}
   m_Layer: 0
   m_Name: AceFighter
   m_TagString: Untagged
@@ -1323,6 +1323,8 @@ MonoBehaviour:
   Info:
     Identifier: Biplane.AceFighter
     Name: Ace Fighter
+    ShortDescription: Agile air-to-air fighter with anti-armor machine guns and garrison
+      slots.
     Description: Agile air-to-air fighter equipped with even heavier machine guns,
       two gunners in the back, and an ace pilot.
     Tags:
@@ -1392,7 +1394,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 65
-  Rigidbody: {fileID: 2977313167760143601}
   MinSpeed: 35
   AccelerationSpeed: 20
   RaiseSpeed: 25
@@ -1416,8 +1417,6 @@ MonoBehaviour:
   AcquireTargetRange: 200
   LooseTargetRange: 400
   AttackRange: 100
-  CheckTargetLineOfSight: 1
-  LineOfSightCheckOrigin: {x: 0, y: 1, z: 0}
   TurretObject: {fileID: 7359202249276239449}
   WeaponObjects:
   - {fileID: 6786188459032726642}
@@ -1427,6 +1426,7 @@ MonoBehaviour:
   Modifiers:
   - {fileID: 6274288770152103032}
   HoldRange: 25
+  HoldVariance: 2.5
   StayBehindFrontline: 1
   ReengageRange: 150
   DisengageAlongWaypoint: 1
@@ -1477,7 +1477,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AltitudeMinMax: {x: 10, y: 70}
---- !u!114 &2737601656462315535
+--- !u!114 &7420858027619711987
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1486,16 +1486,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 2977313167760143607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:
+  - {fileID: 6132950761603094163}
+  - {fileID: 2536313061558961479}
   - {fileID: 765281665474835772}
   - {fileID: 6227646710582072620}
   - {fileID: 6322899168353094473}
   - {fileID: 6456927273665347336}
-  - {fileID: 6132950761603094163}
-  - {fileID: 2536313061558961479}
+  - {fileID: 5637210053460052227}
+  - {fileID: 1910443099712142813}
 --- !u!1 &3026505299448970918
 GameObject:
   m_ObjectHideFlags: 0

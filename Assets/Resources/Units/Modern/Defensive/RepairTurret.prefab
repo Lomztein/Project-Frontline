@@ -145,6 +145,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 7705632488707539443}
+    - targetCorrespondingSourceObject: {fileID: 7977617831024787339, guid: 5eef721856967274c80f299c4cc69d23,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6365785241091387492}
   m_SourcePrefab: {fileID: 100100000, guid: 5eef721856967274c80f299c4cc69d23, type: 3}
 --- !u!114 &72682910483269686 stripped
 MonoBehaviour:
@@ -193,6 +197,7 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Repair Turret
+    ShortDescription: Light turret that repair friendly units within range.
     Description: Light turret that can repair friendly units within a close range.
       While it is somewhat pricey, and slow to repair, it can help maintain structures
       against artillery bombardment.
@@ -209,6 +214,21 @@ MonoBehaviour:
   - {fileID: 1374599984365709901}
   Parts: []
   Weakpoints: []
+--- !u!114 &6365785241091387492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4050747021405754524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 1776864588044896779}
+  - {fileID: 1624777485519765066}
 --- !u!4 &6250299455017629230 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 17051153543322937, guid: 5eef721856967274c80f299c4cc69d23,
@@ -306,6 +326,18 @@ PrefabInstance:
 --- !u!1 &1374599984365709901 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7472484473938001957, guid: 77ad8b4733384304da8fe4ef1033ebdc,
+    type: 3}
+  m_PrefabInstance: {fileID: 8403741570180999784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1624777485519765066 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7074109299007902754, guid: 77ad8b4733384304da8fe4ef1033ebdc,
+    type: 3}
+  m_PrefabInstance: {fileID: 8403741570180999784}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &1776864588044896779 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7784655039002402915, guid: 77ad8b4733384304da8fe4ef1033ebdc,
     type: 3}
   m_PrefabInstance: {fileID: 8403741570180999784}
   m_PrefabAsset: {fileID: 0}

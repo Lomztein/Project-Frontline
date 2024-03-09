@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 2836877085260325567}
   - component: {fileID: 2871496437880351904}
   - component: {fileID: 3656993045264831985}
-  - component: {fileID: 8858944245812094024}
   - component: {fileID: 7751713969057047638}
   - component: {fileID: 2757051606113460208}
   - component: {fileID: 1288372571282964027}
+  - component: {fileID: 3751160539462424748}
   m_Layer: 0
   m_Name: DroneNest
   m_TagString: MobileUnit
@@ -59,6 +59,8 @@ MonoBehaviour:
   Info:
     Identifier: DroneNest
     Name: Drone Nest
+    ShortDescription: Bulky unit that sits in the backline and produces small anti-infantry
+      drones.
     Description: The Drone Nest is essentially a huge factory on wheels. It is capable
       of rapidly producing tiny scuttlebugs that move forwards and zap enemies, while
       itself staying behind in order to siege the enemy.
@@ -106,7 +108,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 2.5
-  Rigidbody: {fileID: 0}
   AccelerationSpeed: 2.5
   BrakeDrag: 10
   MaxTurnAngle: 15
@@ -154,22 +155,6 @@ MonoBehaviour:
   FactoryPrefab: {fileID: 8602111571912869181, guid: 14061487db186fa47a15b069b80d67dc,
     type: 3}
   ProductionTime: 60
---- !u!114 &8858944245812094024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2351868287306400479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 2022777735200690893}
-  - {fileID: 5368691940727158064}
-  - {fileID: 8392919672449344181}
 --- !u!54 &7751713969057047638
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -223,6 +208,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AltitudeMinMax: {x: -5, y: 5}
+--- !u!114 &3751160539462424748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2351868287306400479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 8392919672449344181}
+  - {fileID: 2022777735200690893}
+  - {fileID: 5368691940727158064}
 --- !u!1 &2475555956736589944
 GameObject:
   m_ObjectHideFlags: 0

@@ -5308,9 +5308,12 @@ MonoBehaviour:
   Name: Rocket Battery
   Description: Contains 4 high-explosive rockets that can lay waste to structures
     from afar.
+  MainComponent: {fileID: 0}
   Model: {fileID: 5640369136892039193}
   AimBehaviour:
     rid: -2
+  EquipmentRenderers: []
+  ParentOverride: {fileID: 0}
   references:
     version: 2
     RefIds:
@@ -10717,8 +10720,8 @@ GameObject:
   - component: {fileID: -7567754369517084437}
   - component: {fileID: -454217863282750625}
   - component: {fileID: 5688178698784461455}
-  - component: {fileID: 1515345535465780839}
   - component: {fileID: -66800468921529488}
+  - component: {fileID: 8475109305382024780}
   m_Layer: 0
   m_Name: MRLS
   m_TagString: MobileUnit
@@ -10758,7 +10761,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Mobile Rocket Artillary
-    ShortDescription: Long range siege weapon that bombard enemy units with rockets.
+    ShortDescription: Long range siege weapon that bombard enemy units with high-explosive
+      rockets.
     Description: Often nicknamed the "Homewrecker" by frontline forces, this monster
       of a mobile artillary station is capable of, well, wrecking homes with unprecedented
       effeciency.
@@ -10891,23 +10895,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &1515345535465780839
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5640369137628400748}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 1977906866424872053}
-  - {fileID: 567006190848564636}
-  - {fileID: 6672624172365402072}
-  - {fileID: 67726201551824447}
 --- !u!114 &-66800468921529488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10921,6 +10908,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AltitudeMinMax: {x: -5, y: 10}
+--- !u!114 &8475109305382024780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5640369137628400748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 67726201551824447}
+  - {fileID: 2137833091564053449}
+  - {fileID: 1977906866424872053}
+  - {fileID: 6672624172365402072}
 --- !u!1 &5640369137643957884
 GameObject:
   m_ObjectHideFlags: 0

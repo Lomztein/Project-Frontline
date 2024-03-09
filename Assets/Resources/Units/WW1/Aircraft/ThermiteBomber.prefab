@@ -771,7 +771,7 @@ GameObject:
   - component: {fileID: 2977313167760143501}
   - component: {fileID: 4103871851549751263}
   - component: {fileID: 6274288770152103032}
-  - component: {fileID: 2737601656462315535}
+  - component: {fileID: 7625066905884195916}
   m_Layer: 0
   m_Name: ThermiteBomber
   m_TagString: Untagged
@@ -812,6 +812,8 @@ MonoBehaviour:
   Info:
     Identifier: Biplane.ThermiteBomber
     Name: Thermite Bomber
+    ShortDescription: Bomber filled with thermite grenades to be dumped on heavy
+      enemy armor.
     Description: Bomber full of thermite grenades that it desperately wants to dump
       on enemy units, in an effort to melt away heavy armor
     Tags: []
@@ -880,7 +882,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 50
-  Rigidbody: {fileID: 2977313167760143601}
   MinSpeed: 40
   AccelerationSpeed: 20
   RaiseSpeed: 25
@@ -904,7 +905,6 @@ MonoBehaviour:
   AcquireTargetRange: 200
   LooseTargetRange: 400
   AttackRange: 75
-  CheckTargetLineOfSight: 0
   TurretObject: {fileID: 0}
   WeaponObjects:
   - {fileID: 5351548609782237349}
@@ -914,6 +914,7 @@ MonoBehaviour:
   Modifiers:
   - {fileID: 6274288770152103032}
   HoldRange: 25
+  HoldVariance: 2.5
   StayBehindFrontline: 0
   ReengageRange: 200
   DisengageAlongWaypoint: 1
@@ -949,7 +950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AltitudeMinMax: {x: -5, y: 5}
---- !u!114 &2737601656462315535
+--- !u!114 &7625066905884195916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -958,16 +959,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 2977313167760143607}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:
+  - {fileID: 6132950761603094163}
+  - {fileID: 2536313061558961479}
   - {fileID: 8381009152376175614}
   - {fileID: 2375497237596901152}
   - {fileID: 2935374188959833070}
+  - {fileID: 2985591604479149451}
   - {fileID: 2831108099011015114}
-  - {fileID: 6132950761603094163}
-  - {fileID: 2536313061558961479}
   - {fileID: 817249064025752863}
 --- !u!1 &3026505299448970918
 GameObject:

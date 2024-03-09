@@ -548,8 +548,8 @@ GameObject:
   - component: {fileID: 5111522300398674067}
   - component: {fileID: 6560768094481454159}
   - component: {fileID: 8479187156045753685}
-  - component: {fileID: 802852485726685650}
   - component: {fileID: 5083142006745401547}
+  - component: {fileID: 3994422878019222404}
   m_Layer: 0
   m_Name: GravityJet
   m_TagString: Untagged
@@ -589,8 +589,9 @@ MonoBehaviour:
   Info:
     Identifier: Plane.GravityJet
     Name: Gravity Jet
-    Description: Fast air-to-air fighter with dual particle cannons that shred other
-      aircraft to pieces.
+    ShortDescription: Fast air-to-air fighter with dual particle cannons that shred
+      other aircraft to pieces.
+    Description: 
     Tags:
     - Anti-Air
     Cost: 3500
@@ -661,7 +662,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 70
-  Rigidbody: {fileID: 154142351125274450}
   MinSpeed: 25
   AccelerationSpeed: 20
   RaiseSpeed: 25
@@ -745,20 +745,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AltitudeMinMax: {x: 10, y: 70}
---- !u!114 &802852485726685650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5797121086466959858}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 5115708350659959585}
 --- !u!114 &5083142006745401547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -772,6 +758,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Team: {fileID: 11400000, guid: 8f8059ce28c7c4f458cd46ae5320cd22, type: 2}
+--- !u!114 &3994422878019222404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5797121086466959858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 5115708350659959585}
+  - {fileID: 3367908446136551403}
+  - {fileID: 4141954940939767605}
+  - {fileID: 2005853095200976402}
+  - {fileID: 7314219265842317014}
 --- !u!1 &8745191777218382549
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,6 +946,12 @@ Transform:
 --- !u!1 &2509581982760750008 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 123700114201071739, guid: ec4c34130e6020042bf9280282857b4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 2550351431862164419}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &7314219265842317014 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5108762813180157205, guid: ec4c34130e6020042bf9280282857b4c,
     type: 3}
   m_PrefabInstance: {fileID: 2550351431862164419}
   m_PrefabAsset: {fileID: 0}
@@ -1153,6 +1163,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec4c34130e6020042bf9280282857b4c, type: 3}
+--- !u!23 &2005853095200976402 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5108762813180157205, guid: ec4c34130e6020042bf9280282857b4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6715923078792508167}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6666656672702210940 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 123700114201071739, guid: ec4c34130e6020042bf9280282857b4c,
@@ -1233,6 +1249,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec4c34130e6020042bf9280282857b4c, type: 3}
+--- !u!23 &3367908446136551403 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5108762813180157205, guid: ec4c34130e6020042bf9280282857b4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 7518986443861383934}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4676117819626276076 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2935263065809559058, guid: ec4c34130e6020042bf9280282857b4c,
@@ -1318,6 +1340,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec4c34130e6020042bf9280282857b4c, type: 3}
+--- !u!23 &4141954940939767605 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5108762813180157205, guid: ec4c34130e6020042bf9280282857b4c,
+    type: 3}
+  m_PrefabInstance: {fileID: 9196023493080617504}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6278845332123061298 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2935263065809559058, guid: ec4c34130e6020042bf9280282857b4c,

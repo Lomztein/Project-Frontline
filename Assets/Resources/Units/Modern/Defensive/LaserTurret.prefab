@@ -47,7 +47,6 @@ MonoBehaviour:
   Damage: 150
   Firerate: 0.65
   Modifier: {fileID: 11400000, guid: 945d88c08db340144ab265835acf69ca, type: 2}
-  DamageType: 3
   Speed: 100
   Range: 150
   Amount: 1
@@ -62,7 +61,55 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 660165391177945130}
   Inaccuracy: 0
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2722950775402494793
 GameObject:
   m_ObjectHideFlags: 0
@@ -276,7 +323,6 @@ MonoBehaviour:
   Damage: 150
   Firerate: 0.65
   Modifier: {fileID: 11400000, guid: 945d88c08db340144ab265835acf69ca, type: 2}
-  DamageType: 3
   Speed: 100
   Range: 150
   Amount: 1
@@ -291,7 +337,55 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 2816974994008677015}
   Inaccuracy: 0
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &2816974995353551254
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,7 +954,6 @@ MonoBehaviour:
   Damage: 150
   Firerate: 0.65
   Modifier: {fileID: 11400000, guid: 945d88c08db340144ab265835acf69ca, type: 2}
-  DamageType: 3
   Speed: 100
   Range: 150
   Amount: 1
@@ -875,7 +968,55 @@ MonoBehaviour:
     type: 3}
   Muzzle: {fileID: 4655682625271787482}
   Inaccuracy: 0
+  InaccuracyCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   SpeedVariance: 0
+  SpeedVarianceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8878022408532305572
 GameObject:
   m_ObjectHideFlags: 0
@@ -889,7 +1030,7 @@ GameObject:
   - component: {fileID: 8697719627572123384}
   - component: {fileID: 1860933087167120535}
   - component: {fileID: 8618415057665020600}
-  - component: {fileID: 9222581611965296804}
+  - component: {fileID: 1251636070168195448}
   m_Layer: 0
   m_Name: LaserTurret
   m_TagString: StructureUnit
@@ -951,7 +1092,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 3000
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
@@ -992,6 +1132,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Laser Turret
+    ShortDescription: Tri-barreled laser cannon with extended range, designed to
+      melt down heavy enemy armor.
     Description: Tri-barreled laser cannons are a powerful tool for dispelling anyone
       who thought they'd like a closer look at your base.
     Tags: []
@@ -1005,7 +1147,7 @@ MonoBehaviour:
   - {fileID: 2816974995353551254}
   Parts: []
   Weakpoints: []
---- !u!114 &9222581611965296804
+--- !u!114 &1251636070168195448
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1014,14 +1156,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8878022408532305572}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _renderersToApplyTo:
   - {fileID: 8771464474993462044}
-  - {fileID: 2933073858254893731}
   - {fileID: 377579427684739608}
   - {fileID: 2898883315428007991}
+  - {fileID: 2933073858254893731}
   - {fileID: 1071160224503916560}
 --- !u!1001 &5631274111166103920
 PrefabInstance:

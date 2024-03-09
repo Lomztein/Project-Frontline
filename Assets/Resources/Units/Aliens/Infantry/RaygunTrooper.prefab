@@ -73,6 +73,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e14c3b617b9c0d14fb33506307377ad5, type: 3}
+--- !u!23 &1883806160955755630 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1026893740502820988, guid: e14c3b617b9c0d14fb33506307377ad5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1469543274217464850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2055735873117382944 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 640545997662686514, guid: e14c3b617b9c0d14fb33506307377ad5,
@@ -85,6 +91,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1469543274217464850}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &5104627413629086846 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5959276349827762284, guid: e14c3b617b9c0d14fb33506307377ad5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1469543274217464850}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7297122948166711209
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93,6 +105,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 483742388720889655, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 483742388720889655, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[1]
+      value: 
+      objectReference: {fileID: 5104627413629086846}
+    - target: {fileID: 483742388720889655, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: _renderersToApplyTo.Array.data[2]
+      value: 
+      objectReference: {fileID: 1883806160955755630}
     - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}
       propertyPath: HoldRange
@@ -140,6 +167,11 @@ PrefabInstance:
         a handheld raygun for anti-infantry use that fires slowly but does sagnificant
         damage per shot. While their bodies are frail and squishy, the advanced technology
         of the body suits grants them some sturdyness.
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.ShortDescription
+      value: Light anti-infantry infantry cloned en-masse for frontline combat.
       objectReference: {fileID: 0}
     - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}

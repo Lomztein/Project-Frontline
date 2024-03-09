@@ -230,10 +230,10 @@ GameObject:
   - component: {fileID: 8114042654974297430}
   - component: {fileID: 8114042654974297431}
   - component: {fileID: 8114042654974297428}
-  - component: {fileID: 8114042654974297418}
   - component: {fileID: 8114042654974297424}
   - component: {fileID: 8114042654974297425}
   - component: {fileID: 8484332554461163597}
+  - component: {fileID: 2685136431634383618}
   m_Layer: 0
   m_Name: Bunker
   m_TagString: StructureUnit
@@ -276,7 +276,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaxHealth: 2500
   Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
-  ArmorType: 5
   DestroyOnDeath: 1
   DestroyDelay: 0
   Debris: {fileID: 0}
@@ -296,6 +295,8 @@ MonoBehaviour:
   Info:
     Identifier: 
     Name: Bunker
+    ShortDescription: Study bunker that can garrison up to five infantry units, with
+      two emplacement slots for heavy weapons.
     Description: Study defensive structure that can garrison up to five infantry
       units, who can then fire from the safety of the bunker. Infantry is automatically
       ejected on when the bunker is destroyed.
@@ -309,20 +310,6 @@ MonoBehaviour:
   _weapons: []
   Parts: []
   Weakpoints: []
---- !u!114 &8114042654974297418
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8114042654974297419}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 7447629336805358448}
 --- !u!114 &8114042654974297424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -392,6 +379,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 10.03, y: 4.2071996, z: 7.4879513}
   m_Center: {x: 0, y: 1.3068244, z: -0.3990059}
+--- !u!114 &2685136431634383618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8114042654974297419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 7447629336805358448}
 --- !u!1001 &8114042654967015412
 PrefabInstance:
   m_ObjectHideFlags: 0
