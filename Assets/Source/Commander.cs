@@ -11,7 +11,7 @@ using Util;
 public class Commander : MonoBehaviour, ITeamComponent
 {
     public string Name;
-    public uint OwnerId;
+    public PlayerInfo PlayerInfo;
     public float BuildRadius;
     public float BuildEnemyThreshold;
 
@@ -127,25 +127,21 @@ public class Commander : MonoBehaviour, ITeamComponent
 
     protected virtual void Start()
     {
-        Team.GetTeam(TeamInfo).AddCommander(this);
         InvokeRepeating(nameof(MoveNextAverageEarnings), 1f, 1f);
         UpdateBaseBounds();
+
+        _alivePlaced.Add(Fortress.GetComponent<Unit>());
+        Fortress.GetComponent<Health>().OnDeath += Fortress_OnDeath;
     }
 
-    private void OnDestroy()
+    private void Fortress_OnDeath(Health obj)
     {
-        if (Team.GetTeam(TeamInfo) != null)
-            Team.GetTeam(TeamInfo).RemoveCommander(this);
+        PlacedUnitDeath(obj);
+        OnFortressDestroyed?.Invoke(this);
     }
 
     protected virtual void FixedUpdate ()
     {
-        if (_ded == false && !Fortress)
-        {
-            _ded = true;
-            OnFortressDestroyed?.Invoke(this);
-        }
-
         if (!_ded)
         {
             if (!Target)
@@ -233,28 +229,42 @@ public class Commander : MonoBehaviour, ITeamComponent
         Unit placed = go.GetComponent<Unit>();
         AssignCommander(go);
         _alivePlaced.Add(placed);
+
         go.GetComponent<Health>().OnDeath += PlacedUnitDeath;
         placed.OnKill += Unit_OnKill;
-
-        void PlacedUnitDeath (Health health)
-        {
-            u.GetComponent<Health>().OnDeath -= PlacedUnitDeath;
-            _alivePlaced.Remove(placed);
-            OnPlacedUnitDeath?.Invoke(this, u);
-            if (_alivePlaced.Count == 0)
-            {
-                OnEliminated?.Invoke(this);
-            }
-            UpdateBaseBounds();
-        }
 
         return go;
     }
 
+    void PlacedUnitDeath(Health health)
+    {
+        Unit unit = health.GetComponent<Unit>();
+        health.OnDeath -= PlacedUnitDeath;
+
+        _alivePlaced.Remove(unit);
+        OnPlacedUnitDeath?.Invoke(this, unit);
+
+        if (_alivePlaced.Count == 0)
+        {
+            Eliminate();
+        }
+
+        UpdateBaseBounds();
+    }
+
+    private void Eliminate()
+    {
+        _ded = true;
+        OnEliminated?.Invoke(this);
+    }
+
     public bool IsNearAnyPlaced (Vector3 position, float range)
     {
-        var toCheck = Enumerable.Concat(Fortress.GetComponent<Unit>().SingleObjectAsEnumerable(), AlivePlaced);
-        return toCheck.Any(x => Vector3.Distance(x.transform.position, position) < range);
+        if (AlivePlaced.Any())
+        {
+            return AlivePlaced.Any(x => Vector3.Distance(x.transform.position, position) < range);
+        }
+        return false;
     }
 
     public bool TryPurchaseAndPlaceUnit(GameObject unitPrefab, Vector3 position, Quaternion rotation)
@@ -407,7 +417,7 @@ public class Commander : MonoBehaviour, ITeamComponent
             return false;
         LayerMask terrainLayer = LayerMask.NameToLayer("Terrain");
         Collider[] colliders = unitOverlapGroup.Overlap(position, rotation, ~terrainLayer);
-        return !colliders.Any(x => x.CompareTag("StructureUnit")) && MatchSettings.Current.MapInfo.Contains(position);
+        return !colliders.Any(x => x.CompareTag("StructureUnit")) && MatchSetup.Current.MapInfo.Contains(position);
     }
 
     private void OnDrawGizmos()

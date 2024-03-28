@@ -67,7 +67,7 @@ public class AICommander : Commander
     private void PerformAction()
     {
         SaveTarget = null;
-        float time = Mathf.Lerp(SaveTimeMinMax.x, SaveTimeMinMax.y, SaveTimeBias.Evaluate(Random.Range(0f, 1f)));
+        float time = GetRandomSaveTime(SaveTimeMinMax.x, SaveTimeMinMax.y);
         float maxCost = GetExpectedCreditsAfterSaveTime(time);
         GameObject unit = _unitSelector.SelectUnit(UnitSource.GetAvailableUnitPrefabs(Faction).Where(x => CanAfford(x, (int)maxCost) && CanPurchase(x)));
 
@@ -85,6 +85,14 @@ public class AICommander : Commander
             }
             _actionCooldownTime = ActionCooldown;
         }
+    }
+
+    private float GetRandomSaveTime(float min, float max)
+    {
+        // When on the defensive, pump out units to put pressure.
+        // When on the offensive, theres more room to save up for more powerful units.
+        float defensiveMax = Mathf.Lerp(max, min, DefenseFactor);
+        return Mathf.Lerp(min, defensiveMax, SaveTimeBias.Evaluate(Random.Range(0f, 1f)));
     }
 
     private IEnumerator PurchaseMultiple(GameObject unit, int amount)

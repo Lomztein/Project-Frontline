@@ -73,6 +73,13 @@ public class PlayerHandler : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(DelayedInit());
+    }
+
+    private IEnumerator DelayedInit ()
+    {
+        yield return null;
+        yield return null;
         Initialize();
         Handlers.Add(this);
     }
@@ -140,7 +147,6 @@ public class PlayerHandler : MonoBehaviour
         }
         if (PlayerInputType == InputType.Gamepad)
         {
-            Debug.Log(PlayerCommander.Name + ": " + InputDeviceId);
             SetDevices(Gamepad.all.First(x => x.deviceId == InputDeviceId));
             PurchaseMenu.gameObject.AddComponent<UnitPurchaseMenuGamepadAdapter>().Assign(PurchaseMenu, this, GetComponentInChildren<UnitPlacement>());
         }

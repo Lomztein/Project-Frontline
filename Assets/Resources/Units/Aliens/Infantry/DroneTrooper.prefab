@@ -128,6 +128,7 @@ MonoBehaviour:
   Cooldown: 20
   PlaceDelay: 20
   SetPath: 1
+  CurrentHolding: 0
   MaxHolding: 1
   MaxSimultanious: 1
   DestroyUnengagedUnits: 0
@@ -185,9 +186,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}
+      propertyPath: Modifiers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
       propertyPath: CheckTargetLineOfSight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Modifiers.Array.data[0]
+      value: 
+      objectReference: {fileID: 7549276006171755311}
     - target: {fileID: 1618085928270947056, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}
       propertyPath: WeaponObjects.Array.data[0]
@@ -232,6 +243,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}
+      propertyPath: Info.Tags.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
       propertyPath: Info.ShortDescription
       value: Minion-producing infantry that stands in the backline and send tiny
         drones to attack enemy forces.
@@ -241,6 +257,11 @@ PrefabInstance:
       propertyPath: _weapons.Array.data[0]
       value: 
       objectReference: {fileID: 6814865443354604864}
+    - target: {fileID: 1618085928270947057, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      propertyPath: Info.Tags.Array.data[0]
+      value: Priority
+      objectReference: {fileID: 0}
     - target: {fileID: 1618085928270947058, guid: f1db2eb8f4738f9408419eb4695ae6ee,
         type: 3}
       propertyPath: MaxHealth
@@ -369,8 +390,30 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 6185857567760855034}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7303377074153362064, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7549276006171755311}
   m_SourcePrefab: {fileID: 100100000, guid: f1db2eb8f4738f9408419eb4695ae6ee, type: 3}
+--- !u!1 &8541460827170105 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7303377074153362064, guid: f1db2eb8f4738f9408419eb4695ae6ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 7297122948166711209}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7549276006171755311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8541460827170105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a08a58e6b62d2b4db3e7a3ecf21df09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &3445522628052186515 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5374028264682357306, guid: f1db2eb8f4738f9408419eb4695ae6ee,

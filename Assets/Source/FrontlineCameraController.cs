@@ -35,7 +35,7 @@ public class FrontlineCameraController : MonoBehaviour, ICompositeCameraControll
 
     void Start()
     {
-        Change(-1);
+        Change(0);
         ResetZoom();
     }
 
@@ -59,7 +59,7 @@ public class FrontlineCameraController : MonoBehaviour, ICompositeCameraControll
             LookTargetPosition = Vector3.MoveTowards(LookTargetPosition, frontlinePosition, Mathf.Lerp(MovementSpeedMinMax.x, MovementSpeedMinMax.y, MovementSpeedCurve.Evaluate(movementFactor)) * Time.deltaTime);
             LookTargetRotation = Quaternion.RotateTowards(LookTargetRotation, rotationTowardsFrontline, Mathf.Lerp(RotationSpeedMinMax.x, RotationSpeedMinMax.y, RotationSpeedCurve.Evaluate(rotationFactor)) * Time.deltaTime);
 
-            Vector3 cameraTargetPosition = LookTargetPosition + frontlineRotation * Vector3.Lerp(CameraOffsetMax, CameraOffsetMin, _zoom);
+            Vector3 cameraTargetPosition = LookTargetPosition + frontlineRotation * Vector3.Lerp(CameraOffsetMin, CameraOffsetMax, _zoom);
             Quaternion cameraTargetRotation = LookTargetRotation;
 
             transform.SetPositionAndRotation(
@@ -153,9 +153,9 @@ public class FrontlineCameraController : MonoBehaviour, ICompositeCameraControll
     {
         if (_currentIndex != -1)
         {
-            return $"Frontline ({_commander.Name})";
+            return $"{name} ({_commander.Name})";
         }
-        return $"Frontline (Auto - {_commander.Name})";
+        return $"{name} (Auto - {_commander.Name})";
     }
 
     public void Zoom(float amount)

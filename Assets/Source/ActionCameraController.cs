@@ -51,7 +51,7 @@ public class ActionCameraController : MonoBehaviour
     private void GenerateFallbacks ()
     {
         _fallbacks = new List<Transform>();
-        var verts = MatchSettings.Current.MapInfo.GetPerimeterPolygon().ToArray();
+        var verts = MatchSetup.Current.MapInfo.GetPerimeterPolygon().ToArray();
         foreach (var vert in verts)
         {
             var pos = new Vector3(vert.z / 2f, FallbackHeight, vert.x / 2f);

@@ -5576,7 +5576,7 @@ MonoBehaviour:
   Base: {fileID: 1017396331825698905}
   VectoringPlatform: {fileID: 5267786988030354240}
   HorizontalRange: {x: -45, y: 45}
-  VerticalRange: {x: -20, y: 20}
+  VerticalRange: {x: -30, y: 30}
   VectoringSpeed: 60
   Instant: 0
   _targetLocalPosition: {x: 0, y: 0, z: 0}
@@ -5800,6 +5800,7 @@ GameObject:
   - component: {fileID: 1806922940641080017}
   - component: {fileID: 4577853647497667733}
   - component: {fileID: 7347545883474565270}
+  - component: {fileID: -5579355941613304685}
   m_Layer: 0
   m_Name: Watcher
   m_TagString: Untagged
@@ -5851,6 +5852,7 @@ MonoBehaviour:
   TargetSearchFrequency: 2
   Modifiers:
   - {fileID: 4577853647497667733}
+  - {fileID: -5579355941613304685}
   HoldRange: 100
   HoldVariance: 2.5
   StayBehindFrontline: 0
@@ -5914,7 +5916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxHealth: 10
-  Modifier: {fileID: 11400000, guid: 4a550da09889e3d428b0cdf1d3cde176, type: 2}
+  Modifier: {fileID: 11400000, guid: cabc53187187f4942995bc2ae4985ca9, type: 2}
   DestroyOnDeath: 0
   DestroyDelay: 0
   Debris: {fileID: 0}
@@ -6009,6 +6011,20 @@ MonoBehaviour:
   - {fileID: 7208891742193587970}
   - {fileID: 990913921163119126}
   - {fileID: 3780646749976405751}
+--- !u!114 &-5579355941613304685
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7378487300522752732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f5e45afc1f82b42bc78257019e4139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Filter: {fileID: 11400000, guid: 98010712a4e2f864f9431e98c638c3f9, type: 2}
+  Weight: 10000
 --- !u!1001 &1255521566395868987
 PrefabInstance:
   m_ObjectHideFlags: 0

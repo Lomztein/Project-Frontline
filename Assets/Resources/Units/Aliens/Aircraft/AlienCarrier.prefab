@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Team: {fileID: 0}
   AcquireTargetRange: 125
-  LooseTargetRange: 150
+  LooseTargetRange: 125
   AttackRange: 125
   TurretObject: {fileID: 0}
   WeaponObjects:
@@ -88,6 +88,7 @@ MonoBehaviour:
       drones do the work, though it has no way to defend itself without them.
     Tags:
     - Siege
+    - Priority
     Cost: 10000
     Value: 1000
     UnitRole: 1
@@ -125,7 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 1500
+  MaxHealth: 2500
   Modifier: {fileID: 11400000, guid: 4bdea23464958bb4fb9f42f36ef1819e, type: 2}
   DestroyOnDeath: 1
   DestroyDelay: 0
@@ -459,11 +460,12 @@ MonoBehaviour:
   UnitPrefabs:
   - {fileID: 2775385336555101310, guid: 38bd3fb11c2039e4196e43ebc4a1b462, type: 3}
   SelectionBehaviour: 0
-  Cooldown: 5
-  PlaceDelay: 1
+  Cooldown: 15
+  PlaceDelay: 2
   SetPath: 0
-  MaxHolding: 4
-  MaxSimultanious: 4
+  CurrentHolding: 6
+  MaxHolding: 6
+  MaxSimultanious: 6
   DestroyUnengagedUnits: 0
   DestroyUnengagedTimeTreshold: 10
   SpawnRange: 0

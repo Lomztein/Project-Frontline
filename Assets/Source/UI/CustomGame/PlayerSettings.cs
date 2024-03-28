@@ -25,9 +25,9 @@ namespace CustomGame
 
         private void Awake()
         {
-            MatchSettings.OnUpdated += MatchSettings_OnUpdated;
+            MatchSetup.OnUpdated += MatchSettings_OnUpdated;
             InputSystem.onDeviceChange += InputSystem_OnDeviceChange;
-            MatchSettings_OnUpdated(MatchSettings.Current);
+            MatchSettings_OnUpdated(MatchSetup.Current);
 
             Faction.options.Add(new Dropdown.OptionData("Random Faction"));
             Faction.options.AddRange(GetFactions().Select(x => new Dropdown.OptionData(x.Name)).ToList());
@@ -52,11 +52,11 @@ namespace CustomGame
 
         private void OnDestroy()
         {
-            MatchSettings.OnUpdated -= MatchSettings_OnUpdated;
+            MatchSetup.OnUpdated -= MatchSettings_OnUpdated;
             InputSystem.onDeviceChange -= InputSystem_OnDeviceChange;
         }
 
-        private void MatchSettings_OnUpdated(MatchSettings obj)
+        private void MatchSettings_OnUpdated(MatchSetup obj)
         {
             Spawn.options = Enumerable.Range(0, obj.MapInfo.Shape.Spawns).Select(x => new Dropdown.OptionData(x.ToString())).ToList();
         }
@@ -112,9 +112,9 @@ namespace CustomGame
             return PlayerHandler.InputType.Gamepad;
         }
 
-        public MatchSettings.PlayerInfo CreatePlayerInfo ()
+        public PlayerInfo CreatePlayerInfo ()
         {
-            var playerInfo = new MatchSettings.PlayerInfo ();
+            var playerInfo = new PlayerInfo ();
             playerInfo.Name = Name.text;
             playerInfo.Team = GetTeams().ElementAt(Team.value);
             if (Type.value == 0) playerInfo.AIProfile = null;
@@ -139,7 +139,7 @@ namespace CustomGame
             return playerInfo;
         }
 
-        public void ApplyPlayerInfo(MatchSettings.PlayerInfo info)
+        public void ApplyPlayerInfo(PlayerInfo info)
         {
             Name.text = info.Name;
             Team.value = GetTeams().ToList().IndexOf(info.Team);

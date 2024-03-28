@@ -28,42 +28,43 @@ public class InfantryGarrison : MonoBehaviour
             && unit.transform.root != transform.root; // For the time being simply support infantry bodies only. Later perhaps refactor into an IGarrisonable interface.
     }
 
-    public void EnterGarrison(GameObject unit)
+    public bool TryGarrison(GameObject unit)
     {
-        Assert.IsTrue(CanGarrison(unit), "Tried to garrison unit that cannot be garrisoned.");
-        Unit info = unit.GetComponentInChildren<Unit>();
-
-        if (AvailableCount > 0)
+        if (CanGarrison(unit))
         {
-            InfantryBody body = unit.GetComponentInChildren<InfantryBody>();
-            var ai = unit.GetComponent<AIController>();
-            ai.AttackRange *= OccupantRangeMultiplier;
-            ai.AcquireTargetRange *= OccupantRangeMultiplier;
-            ai.LooseTargetRange *= OccupantRangeMultiplier;
+            Unit info = unit.GetComponentInChildren<Unit>();
 
-            GarrisonSlot slot = GetFirstEmptySlot(info.Info.Tags.Contains("EmplaceGarrison"));
-            unit.transform.SetParent(slot.GarrionParent);
-            unit.transform.position = slot.GarrionParent.position;
-            unit.transform.rotation = slot.GarrionParent.rotation;
-            slot.Occupant = unit;
-            body.enabled = false;
-
-            IEmplacable emplacableWeapon = info.GetWeapons().Where(x => x is IEmplacable).FirstOrDefault() as IEmplacable;
-            if (emplacableWeapon != null)
+            if (AvailableCount > 0)
             {
-                emplacableWeapon.Emplace(slot.EmplacementParent);
-            }
+                InfantryBody body = unit.GetComponentInChildren<InfantryBody>();
+                var ai = unit.GetComponent<AIController>();
+                ai.AttackRange *= OccupantRangeMultiplier;
+                ai.AcquireTargetRange *= OccupantRangeMultiplier;
+                ai.LooseTargetRange *= OccupantRangeMultiplier;
 
-            if (HideGarrisoned)
-            {
-                unit.transform.localScale = Vector3.one * 0.1f;
+                GarrisonSlot slot = GetFirstEmptySlot(info.Info.Tags.Contains("EmplaceGarrison"));
+                unit.transform.SetParent(slot.GarrionParent);
+                unit.transform.position = slot.GarrionParent.position;
+                unit.transform.rotation = slot.GarrionParent.rotation;
+                slot.Occupant = unit;
+                body.enabled = false;
+
+                IEmplacable emplacableWeapon = info.GetWeapons().Where(x => x is IEmplacable).FirstOrDefault() as IEmplacable;
+                if (emplacableWeapon != null)
+                {
+                    emplacableWeapon.Emplace(slot.EmplacementParent);
+                }
+
+                if (HideGarrisoned)
+                {
+                    unit.transform.localScale = Vector3.one * 0.1f;
+                }
+
+                return true;
             }
         }
-        else
-        {
-            throw new InvalidOperationException("Cannot garrison a unit as the garrison is already full.");
-        }
 
+        return false;
     }
 
     private void OnDestroy()

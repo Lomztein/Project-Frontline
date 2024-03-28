@@ -106,10 +106,10 @@ public class WeaponGroup : MonoBehaviour, IWeapon
 
     public bool TryFire(ITarget intendedTarget)
     {
-        // Target should always be valid when TryFire is first called.
-        Assert.IsTrue(intendedTarget.ExistsAndValid());
-        _lastTargetPosition = new PositionTarget(intendedTarget.GetCenter());
-
+        if (intendedTarget.ExistsAndValid())
+        {
+            _lastTargetPosition = new PositionTarget(intendedTarget.GetCenter());
+        }
         if (CanFire())
         {
             _fireControl.Fire(_weapons.Length, (index) => FireControlCallback(index, intendedTarget));

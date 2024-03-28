@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New AI Player Profile", menuName = "AI Player Profile")]
 public class AIPlayerProfile : ScriptableObject
 {
-    public const string PATH_TO_PROFILES = "AI Player Profiles/";
+    public const string PATH_TO_PROFILES = "AIProfiles/";
     public const string PATH_TO_DEFAULT = PATH_TO_PROFILES + "Default";
 
     public string Name;
@@ -20,4 +20,7 @@ public class AIPlayerProfile : ScriptableObject
     [Header("Unit Weights")]
     public UnitWeightTableBase UnitWeightTable;
     public Vector2 WeightRandomizer;
+
+    public static AIPlayerProfile[] LoadAll()
+        => Resources.LoadAll<AIPlayerProfile>(PATH_TO_PROFILES);
 }

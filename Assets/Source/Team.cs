@@ -8,6 +8,7 @@ public class Team : MonoBehaviour, ITeamComponent
 {
     private static List<Team> _teams = new List<Team>();
     public static IEnumerable<Team> AllTeams => _teams;
+    public static IEnumerable<Commander> AllCommanders => _teams.SelectMany(x => x.GetCommanders());
 
     public TeamInfo TeamInfo;
     private List<Commander> _commanders = new List<Commander>();

@@ -48,7 +48,11 @@ public class AttackerController : ControllableController, ITeamComponent, IComma
 
     protected float DistToFrontline()
     {
-        return VectorUtils.DifferenceAlongDirection(Navigation.OutgoingVector(PrevNode, NextNode), Commander.Frontline.Position, transform.position);
+        if (PrevNode && NextNode)
+        {
+            return VectorUtils.DifferenceAlongDirection(Navigation.OutgoingVector(PrevNode, NextNode), Commander.Frontline.Position, transform.position);
+        }
+        return 0;
     }
 
 

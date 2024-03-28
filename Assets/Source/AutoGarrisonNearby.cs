@@ -58,7 +58,7 @@ public class AutoGarrisonNearby : MonoBehaviour, ITeamComponent
         int toFill = Mathf.Min(hit.Length, Garrison.AvailableCount);
         for (int i = 0; i < toFill; i++)
         {
-            Garrison.EnterGarrison(hit[i].transform.root.gameObject);
+            Garrison.TryGarrison(hit[i].transform.root.gameObject);
         }
     }
 }

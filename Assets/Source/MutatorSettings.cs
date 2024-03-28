@@ -17,7 +17,7 @@ public class MutatorSettings : MonoBehaviour
 
     private void Start()
     {
-        MatchSettings.Current.ClearMutators();
+        MatchSetup.Current.ClearMutators();
         GenerateToggles();
     }
 
@@ -46,11 +46,11 @@ public class MutatorSettings : MonoBehaviour
 
     private void AddMutator(Mutator mutator)
     {
-        MatchSettings.Current.AddMutator(mutator);
+        MatchSetup.Current.AddMutator(mutator);
     }
 
     private void RemoveMutator (Mutator mutator)
     {
-        MatchSettings.Current.RemoveMutator(mutator);
+        MatchSetup.Current.RemoveMutator(mutator);
     }
 }

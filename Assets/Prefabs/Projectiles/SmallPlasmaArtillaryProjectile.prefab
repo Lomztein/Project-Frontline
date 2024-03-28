@@ -11,6 +11,9 @@ GameObject:
   - component: {fileID: 6855570270530046268}
   - component: {fileID: 1921472646127750867}
   - component: {fileID: 3141969925603540545}
+  - component: {fileID: 3299154499591588061}
+  - component: {fileID: 8453102337298078531}
+  - component: {fileID: 2773139876804595423}
   m_Layer: 0
   m_Name: SmallPlasmaArtillaryProjectile
   m_TagString: Untagged
@@ -55,6 +58,8 @@ MonoBehaviour:
   HitEffect: {fileID: 3353554848920050341}
   TrailEffect: {fileID: 4105149361866500923}
   EffectRecallTime: 1
+  UseSpherecast: 0
+  SpherecastProjectileSize: 0
   HitLayerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -72,6 +77,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Projectile: {fileID: 1921472646127750867}
   Gravity: 20
+--- !u!135 &3299154499591588061
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2840500956360759292}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8453102337298078531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2840500956360759292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 15
+  Modifier: {fileID: 11400000, guid: 48edd60faee51d246a8009cd399ac2f2, type: 2}
+  DestroyOnDeath: 0
+  DestroyDelay: 0
+  Debris: {fileID: 0}
+  DebrisLife: 0
+--- !u!114 &2773139876804595423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2840500956360759292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0177d1ec70d0929489e9dc9e8f40ce4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: {fileID: 8453102337298078531}
+  Projectile: {fileID: 1921472646127750867}
 --- !u!1 &4754481930291093941
 GameObject:
   m_ObjectHideFlags: 0

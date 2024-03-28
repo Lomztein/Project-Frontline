@@ -25,6 +25,6 @@ public class ParachuteUnitOnBuild : MonoBehaviour
         GameObject parachute = Instantiate(ParachutePrefab, transform.position, transform.rotation);
         Parachute chute = parachute.GetComponent<Parachute>();
 
-        chute.Garrison.EnterGarrison(unit);
+        chute.Garrison.TryGarrison(unit);
     }
 }

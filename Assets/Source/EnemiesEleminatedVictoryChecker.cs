@@ -17,7 +17,10 @@ public class EnemiesEleminatedVictoryChecker : VictoryChecker
 
     private void Commander_OnEliminated(Commander obj)
     {
-        TryFindVictor();
+        if (GetVictor() == null)
+        {
+            TryFindVictor();
+        }
     }
 
     private bool TryFindVictor()
@@ -34,8 +37,9 @@ public class EnemiesEleminatedVictoryChecker : VictoryChecker
         if (remainingTeams.Count == 1)
         {
             SetVictor(remainingTeams.First());
+            return true;
         }
 
-        throw new InvalidOperationException("Somehow, there are no teams alive.");
+        return false;
     }
 }

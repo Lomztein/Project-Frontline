@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// FIXME: If the "first" structure is destroyed, the upgrade event is removed even if there are other structures of the same type.
+// Change "first" system to a "master" system where every structure subscribes to the event, but only the "master" actually executes the upgrade.
+// The master structure is simply the first in the list, updated whenever a structure is destroyed.
+
 public abstract class UpgradeStructure : MonoBehaviour, ICommanderComponent, IUnitPurchasePredicate
 {
     public string UpgradeIdentifier;
@@ -14,7 +18,6 @@ public abstract class UpgradeStructure : MonoBehaviour, ICommanderComponent, IUn
         _commander = commander;
     }
 
-    // Start is called before the first frame update
     private void Start()
     {
         UpgradeStructure first = GetFirst();

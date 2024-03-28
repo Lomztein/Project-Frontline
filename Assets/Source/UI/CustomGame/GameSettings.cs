@@ -26,7 +26,7 @@ namespace CustomGame
         private void Start()
         {
             Initialize();
-            Apply(MatchSettings.Current);
+            Apply(MatchSetup.Current);
         }
 
         private void Initialize()
@@ -41,7 +41,7 @@ namespace CustomGame
             PlayerCountWarning.SetActive(PlayerSettingsParent.childCount > PlayerCountWarningThreshold);
         }
 
-        public void Apply(MatchSettings settings)
+        public void Apply(MatchSetup settings)
         {
             ClearPlayerSettings();
             Map.ApplyMapInfo(settings.MapInfo);
@@ -60,7 +60,7 @@ namespace CustomGame
         public void AddNewPlayer ()
         {
             GameObject newObj = Instantiate(PlayerSettingsPrefab, PlayerSettingsParent);
-            MatchSettings.PlayerInfo newPlayer = new MatchSettings.PlayerInfo();
+            PlayerInfo newPlayer = new PlayerInfo();
             newPlayer.Name = newPlayer.GenerateDefaultName();
             newPlayer.AIProfile = Resources.Load<AIPlayerProfile>("AIProfiles/Balanced");
             newPlayer.Faction = Resources.Load<Faction>("Factions/ModernMilitary");
@@ -70,7 +70,7 @@ namespace CustomGame
             InitializePlayerSettings(playerSettings, newPlayer);
         }
 
-        private void InitializePlayerSettings(PlayerSettings settings, MatchSettings.PlayerInfo info)
+        private void InitializePlayerSettings(PlayerSettings settings, PlayerInfo info)
         {
             settings.ApplyPlayerInfo(info);
             settings.Units.onClick.AddListener(() =>
@@ -99,27 +99,27 @@ namespace CustomGame
 
         public void SetDayNightCycle (int value)
         {
-            MatchSettings.GetCurrent().DayNightBehaviour = (DayNightCycle.DayNightBehaviour)value;
+            MatchSetup.GetCurrent().DayNightBehaviour = (DayNightCycle.DayNightBehaviour)value;
         }
 
         public void SetCurrentSettings ()
         {
-            MatchSettings.Current.MapInfo = Map.CreateMapInfo();
+            MatchSetup.Current.MapInfo = Map.CreateMapInfo();
 
-            MatchSettings.Current.ClearPlayers();
+            MatchSetup.Current.ClearPlayers();
             foreach (var info in GetPlayerSettings().Select(x => x.CreatePlayerInfo()))
             {
-                MatchSettings.Current.AddPlayer(info);
+                MatchSetup.Current.AddPlayer(info);
             }
 
-            MatchSettings.Current.ProductionBehaviour = UnitProductionBehaviour.LoadAll()[ProductionModeDropdown.value];
-            MatchSettings.Current.VictoryChecker = VictoryChecker.LoadAll()[VictoryCheckerDropdown.value];
+            MatchSetup.Current.ProductionBehaviour = UnitProductionBehaviour.LoadAll()[ProductionModeDropdown.value];
+            MatchSetup.Current.VictoryChecker = VictoryChecker.LoadAll()[VictoryCheckerDropdown.value];
         }
 
         public void StartGame ()
         {
             SetCurrentSettings();
-            SceneManager.LoadScene("Battlefield");
+            MatchRunner.GetInstance().RunMatch(MatchSetup.Current);
         }
 
         public void SetEnabled (bool value)

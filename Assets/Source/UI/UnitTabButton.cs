@@ -14,7 +14,7 @@ namespace UI
         private void Awake()
         {
             Button.onClick.AddListener(OnClick);
-            if (!MatchSettings.Current.SupportsUnitType(Type))
+            if (!MatchSetup.Current.SupportsUnitType(Type))
             {
                 gameObject.SetActive(false);
             }

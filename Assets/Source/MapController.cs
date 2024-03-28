@@ -8,6 +8,6 @@ public class MapController : MonoBehaviour
 
     public void Start()
     {
-        SceneryGenerator.Generate(MatchSettings.Current.MapInfo);
+        SceneryGenerator.Generate(MatchSetup.Current.MapInfo);
     }
 }

@@ -29,7 +29,7 @@ public class UnitFactory : MonoBehaviour, ITeamComponent, ICommanderComponent
 
     public void Start()
     {
-        _callback = MatchSettings.GetCurrent().ProductionBehaviour.CreateCallback();
+        _callback = MatchSetup.GetCurrent().ProductionBehaviour.CreateCallback();
         _callback.Initialize(_commander, SpawnDelay, Spawn);
 
         _unit = UnitPrefab.GetComponent<Unit>();
@@ -52,8 +52,17 @@ public class UnitFactory : MonoBehaviour, ITeamComponent, ICommanderComponent
     {
         Vector3 pos = GetLocalRandomSpawnPosition() + transform.position;
         GameObject go = _team.Instantiate(UnitPrefab, pos, transform.rotation);
-        NavigationNode targetNode = Navigation.GetNearestNode(_commander.Target.transform.position);
+        NavigationNode targetNode;
+        if (_commander.Target)
+        {
+            targetNode = Navigation.GetNearestNode(_commander.Target.transform.position);
+        }
+        else
+        {
+            targetNode = Navigation.GetNearestNode(_commander.transform.position + _commander.transform.forward * 1000);
+        }
         go.BroadcastMessage("SetPath", Navigation.GetPath(_nearestWaypoint, targetNode).ToArray(), SendMessageOptions.DontRequireReceiver);
+
         OnUnitSpawned?.Invoke(this, go);
         go.GetComponent<Health>().OnDeath += Unit_OnDeath;
         go.GetComponent<Unit>().OnKill += Unit_OnKill;

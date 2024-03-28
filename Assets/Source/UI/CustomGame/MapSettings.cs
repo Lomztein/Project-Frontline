@@ -48,8 +48,8 @@ public class MapSettings : MonoBehaviour
 
     private void OnShapeChanged(int val)
     {
-        MatchSettings.Current.MapInfo.Shape = GetShapes()[val];
-        MatchSettings.NotifyUpdate(MatchSettings.Current);
+        MatchSetup.Current.MapInfo.Shape = GetShapes()[val];
+        MatchSetup.NotifyUpdate(MatchSetup.Current);
         UpdateProperties();
     }
 
@@ -61,25 +61,25 @@ public class MapSettings : MonoBehaviour
             Destroy(trans.gameObject);
             pc.OnPropertyChanged -= OnPropertyChanged;
         }
-        var properties = MatchSettings.Current.MapInfo.Shape.GetProperties();
+        var properties = MatchSetup.Current.MapInfo.Shape.GetProperties();
         foreach (var property in properties)
         {
             var control = PropertyControl.GetControlPrefab(property);
             PropertyControl pc = Instantiate(control, PropertyParent).GetComponent<PropertyControl>();
-            pc.Assign(property, MatchSettings.Current.MapInfo.Shape);
+            pc.Assign(property, MatchSetup.Current.MapInfo.Shape);
             pc.OnPropertyChanged += OnPropertyChanged;
         }
     }
 
     private void OnPropertyChanged(IProperty arg1, IHasProperties arg2, object arg3)
     {
-        MatchSettings.NotifyUpdate(MatchSettings.Current);
+        MatchSetup.NotifyUpdate(MatchSetup.Current);
     }
 
     private void OnSceneryChanged(int val)
     {
-        MatchSettings.Current.MapInfo.SceneryGenerator = GetSceneries()[val];
-        MatchSettings.NotifyUpdate(MatchSettings.Current);
+        MatchSetup.Current.MapInfo.SceneryGenerator = GetSceneries()[val];
+        MatchSetup.NotifyUpdate(MatchSetup.Current);
     }
 
     public MapInfo CreateMapInfo()

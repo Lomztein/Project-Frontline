@@ -25,7 +25,7 @@ public class ParachuteGarrisonOnDeath : MonoBehaviour
                 GameObject parachute = Instantiate(ParachutePrefab, slot.GarrionParent.position, slot.GarrionParent.rotation);
                 Parachute chute = parachute.GetComponent<Parachute>();
 
-                chute.Garrison.EnterGarrison(obj);
+                chute.Garrison.TryGarrison(obj);
             }
         }
     }

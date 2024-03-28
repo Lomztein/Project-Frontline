@@ -8,9 +8,9 @@ public class DefensePositionEvaluator : IPositionEvaluator
 {
     public float Evaluate(Commander commander, GameObject go, Vector3 position)
     {
-        Vector3 differenceDirection = commander.Fortress.forward;
+        Vector3 differenceDirection = commander.transform.forward;
 
-        float difference = VectorUtils.DifferenceAlongDirection(differenceDirection, position, commander.Fortress.position);
+        float difference = VectorUtils.DifferenceAlongDirection(differenceDirection, position, commander.transform.position);
         int nearbyStructures = commander.AlivePlaced.Count(x => Vector3.SqrMagnitude(x.transform.position - position) < 100);
 
         Unit unit = go.GetComponent<Unit>();

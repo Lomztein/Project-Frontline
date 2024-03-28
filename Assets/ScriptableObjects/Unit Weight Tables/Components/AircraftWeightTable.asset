@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14afa95531c91ab4ea8b1a9be69638da, type: 3}
   m_Name: AircraftWeightTable
   m_EditorClassIdentifier: 
+  NormalizeOptions: 1
+  Cache: 1
   Weights:
   - Type: 2
-    Weight: 1
+    WeightMinMax: {x: 1, y: 1}
+  FallbackWeight: 0.25

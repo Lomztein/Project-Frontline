@@ -20,16 +20,16 @@ public class MapPreview : MonoBehaviour
 
     private void Start()
     {
-        MatchSettings.OnUpdated += MatchSettings_OnUpdated;
-        MatchSettings_OnUpdated(MatchSettings.Current);
+        MatchSetup.OnUpdated += MatchSettings_OnUpdated;
+        MatchSettings_OnUpdated(MatchSetup.Current);
     }
 
     private void OnDestroy()
     {
-        MatchSettings.OnUpdated -= MatchSettings_OnUpdated;
+        MatchSetup.OnUpdated -= MatchSettings_OnUpdated;
     }
 
-    private IEnumerator DelayedUpdate(MatchSettings obj)
+    private IEnumerator DelayedUpdate(MatchSetup obj)
     {
         yield return new WaitForEndOfFrame();
         IEnumerable<Vector2> parimiter = obj.MapInfo.GetPerimeterPolygon()
@@ -60,7 +60,7 @@ public class MapPreview : MonoBehaviour
         Polygon.DrawPolygon(parimiter.Reverse().ToArray());
     }
 
-    private void MatchSettings_OnUpdated(MatchSettings obj)
+    private void MatchSettings_OnUpdated(MatchSetup obj)
     {
         StartCoroutine(DelayedUpdate(obj));
     }

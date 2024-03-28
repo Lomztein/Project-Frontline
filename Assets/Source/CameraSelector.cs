@@ -10,6 +10,8 @@ public class CameraSelector : MonoBehaviour
     private ICameraController[] _cameraControllers;
     public Camera[] Cameras => _cameras;
     public ICameraController[] CameraControllers => _cameraControllers;
+
+    public int StartIndex;
     public int SelectedIndex { get; private set; }
 
     public GameObject CurrentCameraObject => CameraObjects[SelectedIndex];
@@ -24,6 +26,15 @@ public class CameraSelector : MonoBehaviour
 
     private void Start()
     {
+        StartCoroutine(DelayedStart());
+    }
+
+    private IEnumerator DelayedStart ()
+    {
+        yield return null;
+        yield return null;
+
+        SelectedIndex = StartIndex;
         SelectCamera(SelectedIndex);
     }
 

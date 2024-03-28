@@ -835,9 +835,19 @@ PrefabInstance:
       objectReference: {fileID: 36447726}
     - target: {fileID: 1118208566537510245, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
+      propertyPath: Modifiers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1118208566537510245, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
       propertyPath: CheckTargetLineOfSight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1118208566537510245, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      propertyPath: Modifiers.Array.data[0]
+      value: 
+      objectReference: {fileID: -400533585563315442}
     - target: {fileID: 1118208566537510245, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
       propertyPath: WeaponObjects.Array.size
@@ -929,6 +939,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Info.Tags.Array.data[1]
       value: Defense
+      objectReference: {fileID: 0}
+    - target: {fileID: 2913741366723729313, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      propertyPath: Info.Tags.Array.data[2]
+      value: Priority
       objectReference: {fileID: 0}
     - target: {fileID: 4095960138140975757, guid: 33f5a0aae17b39244abe6fcfea9db228,
         type: 3}
@@ -1028,6 +1043,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 4103477088244659781}
+    - targetCorrespondingSourceObject: {fileID: 7553692932367407739, guid: 33f5a0aae17b39244abe6fcfea9db228,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -400533585563315442}
   m_SourcePrefab: {fileID: 100100000, guid: 33f5a0aae17b39244abe6fcfea9db228, type: 3}
 --- !u!1 &767467167766415937 stripped
 GameObject:
@@ -1067,6 +1086,18 @@ MonoBehaviour:
   - {fileID: 7093887264536481851}
   - {fileID: 7093887264536481852}
   - {fileID: 7275192293409456637}
+--- !u!114 &-400533585563315442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767467167766415937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a08a58e6b62d2b4db3e7a3ecf21df09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1742277461998696340 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8817868846401890222, guid: 33f5a0aae17b39244abe6fcfea9db228,

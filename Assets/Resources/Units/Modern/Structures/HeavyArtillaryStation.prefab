@@ -198,7 +198,7 @@ MonoBehaviour:
   Amount: 1
   BurstReloadTime: 0
   BurstAmmo: 1
-  IsChambered: 0
+  IsChambered: 1
   FireParticle: {fileID: 0}
   LightFlash: {fileID: 0}
   FireAudioClip: {fileID: 0}
@@ -455,6 +455,7 @@ GameObject:
   - component: {fileID: 3273074936498737040}
   - component: {fileID: 4545227489854603791}
   - component: {fileID: 6870087397647314301}
+  - component: {fileID: 514654819596536881}
   m_Layer: 0
   m_Name: HeavyArtillaryStation
   m_TagString: StructureUnit
@@ -546,6 +547,19 @@ MonoBehaviour:
   - {fileID: 1879381777715651346}
   - {fileID: 5669119925748897740}
   - {fileID: 174823415990326581}
+--- !u!114 &514654819596536881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1858310021985413352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46fe0a88465a2b94c817b7220b4e3306, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Team: {fileID: 11400000, guid: 259fba658c064ef4db94ec85f060efd0, type: 2}
 --- !u!1 &1858310022714998856
 GameObject:
   m_ObjectHideFlags: 0

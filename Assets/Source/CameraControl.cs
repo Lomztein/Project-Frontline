@@ -100,27 +100,18 @@ public class CameraControl : MonoBehaviour
         {
             if (toHq)
             {
-            settable.LookAt(GetHQPosition());
+                settable.LookAt(GetHQPosition());
             }
 
             if (toFrontline)
             {
-            settable.LookAt(GetFrontlinePosition());
+                settable.LookAt(GetFrontlinePosition());
             }
         }
 
         if (change)
         {
             int value = Mathf.RoundToInt(Mathf.Sign(CameraChange.ReadValue<float>()));
-            ICompositeCameraController composite = CameraSelector.CurrentAs<ICompositeCameraController>();
-            if (composite != null)
-            {
-                if (composite.Change(value))
-                {
-                    value = 0;
-                }
-            }
-
             if (value != 0)
             {
                 CameraSelector.SelectCamera(CameraSelector.SelectedIndex + value);

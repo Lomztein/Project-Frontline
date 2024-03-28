@@ -15,6 +15,8 @@ public class Projectile : MonoBehaviour, IPoolObject
     public Effect HitEffect;
     public Effect TrailEffect;
     public float EffectRecallTime;
+    public bool UseSpherecast;
+    public float SpherecastProjectileSize;
     private float _endTime;
 
     protected const int TerrainLayerMask = 1 << 8;
@@ -40,8 +42,7 @@ public class Projectile : MonoBehaviour, IPoolObject
 
     protected virtual void FixedUpdate()
     {
-        float dist = Speed * Time.fixedDeltaTime + 0.2f;
-        if (Physics.Raycast(transform.position, transform.forward * dist, out RaycastHit hit, dist, HitLayerMask | TerrainLayerMask))
+        if (Raycast(out RaycastHit hit))
         {
             DoDamage(hit.collider, hit.point);
             HandleHitEffects(hit.point, hit.normal);
@@ -49,6 +50,19 @@ public class Projectile : MonoBehaviour, IPoolObject
             End();
         }
         transform.position += Velocity * Time.fixedDeltaTime;
+    }
+
+    private bool Raycast(out RaycastHit hit)
+    {
+        float dist = Speed * Time.fixedDeltaTime + 0.2f;
+        if (UseSpherecast)
+        {
+            return Physics.Raycast(transform.position, transform.forward * dist, out hit, dist, HitLayerMask | TerrainLayerMask);
+        }
+        else
+        {
+            return Physics.SphereCast(transform.position, SpherecastProjectileSize, transform.forward * dist, out hit, dist, HitLayerMask | TerrainLayerMask);
+        }
     }
 
     protected virtual void DoDamage (Collider col, Vector3 point)
@@ -87,7 +101,10 @@ public class Projectile : MonoBehaviour, IPoolObject
         if (HitEffect)
         {
             HitEffect.transform.position = point;
-            HitEffect.transform.forward = normal;
+            if (normal != Vector3.zero)
+            {
+                HitEffect.transform.forward = normal;
+            }
 
             HitEffect.Detatch();
             HitEffect.Play();

@@ -48,7 +48,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Name: Bertrude
-  OwnerId: 0
+  PlayerInfo:
+    Name: 
+    Id: 0
+    Faction: {fileID: 0}
+    Team: {fileID: 0}
+    _spawnIndex: 0
+    StartingCredits: 0
+    Handicap: 0
+    AIProfile: {fileID: 0}
+    PlayerInputType: 0
+    PlayerInputDeviceId: -1
   BuildRadius: 50
   BuildEnemyThreshold: 50
   Credits: 500
@@ -94,20 +104,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   PositionEvaluators:
-  - rid: 0
+  - rid: 2738323297947353088
   - rid: 1
   - rid: 2
   references:
     version: 2
     RefIds:
-    - rid: 0
-      type: {class: FortressDistancePositionEvaluator, ns: , asm: Assembly-CSharp}
-      data: 
     - rid: 1
       type: {class: ShieldProjectorPositionEvaluator, ns: , asm: Assembly-CSharp}
       data: 
     - rid: 2
       type: {class: DefensePositionEvaluator, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 2738323297947353088
+      type: {class: BaseDistancePositionEvaluator, ns: , asm: Assembly-CSharp}
       data: 
 --- !u!114 &-1274060127916580420
 MonoBehaviour:

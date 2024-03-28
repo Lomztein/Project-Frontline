@@ -504,9 +504,9 @@ GameObject:
   - component: {fileID: 5493423470493044788}
   - component: {fileID: 3957050086688457571}
   - component: {fileID: 1087066091112407231}
-  - component: {fileID: 6092957263989337136}
   - component: {fileID: 4096002824566441507}
   - component: {fileID: 3224480871510509913}
+  - component: {fileID: 1862147543694575920}
   m_Layer: 0
   m_Name: Skyscooter
   m_TagString: Untagged
@@ -546,6 +546,7 @@ MonoBehaviour:
   Info:
     Identifier: Plane.Skyscooter
     Name: Skyscooter
+    ShortDescription: 
     Description: Lightning fast aircraft that zooms through the skies and fires bolts
       of volatile elemental particles at hostile forces. Its speed make it difficult
       to hit, but the thin armor is very vulnurable to anti-air.
@@ -616,7 +617,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxSpeed: 60
-  Rigidbody: {fileID: 4210417753680946284}
   MinSpeed: 40
   AccelerationSpeed: 50
   RaiseSpeed: 50
@@ -666,23 +666,8 @@ MonoBehaviour:
   Modifiers:
   - {fileID: 3224480871510509913}
   HoldRange: 75
+  HoldVariance: 2.5
   StayBehindFrontline: 0
---- !u!114 &6092957263989337136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2775385336555101310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc53f02fbd6a07943a0d579527f2a104, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _renderersToApplyTo:
-  - {fileID: 7923592165701768691}
-  - {fileID: 7731986081262860677}
-  - {fileID: 3829651687668836895}
 --- !u!114 &4096002824566441507
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -709,6 +694,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AltitudeMinMax: {x: -5, y: 10}
+--- !u!114 &1862147543694575920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2775385336555101310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 7923592165701768691}
+  - {fileID: 7731986081262860677}
+  - {fileID: 3829651687668836895}
 --- !u!1 &3254707881319476203
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,7 +967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1957050d194ada14ea356ac0f8c51d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Damage: 15
+  Damage: 35
   Firerate: 6
   Modifier: {fileID: 11400000, guid: 314342fc66eec6d48825ca07dec91c8c, type: 2}
   Speed: 200

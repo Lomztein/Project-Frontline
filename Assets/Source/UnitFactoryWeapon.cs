@@ -16,7 +16,7 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, ICommanderCompon
     private bool _canPlace = true;
     public bool SetPath;
 
-    private int _currentHolding;
+    public int CurrentHolding;
     public int MaxHolding = 1;
 
     public int MaxSimultanious;
@@ -49,7 +49,7 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, ICommanderCompon
     public event Action<IWeapon, Projectile, IDamagable, DamageInfo> OnDoDamage;
     public event Action<IWeapon, Projectile, IDamagable, DamageInfo> OnDamageDone;
 
-    public int Ammo => _currentHolding;
+    public int Ammo => CurrentHolding;
     public int MaxAmmo => MaxHolding;
 
     // Perfectly readable code I don't know what you're crying about.
@@ -75,13 +75,13 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, ICommanderCompon
 
     private void FixedUpdate()
     {
-        if (_currentHolding < MaxHolding)
+        if (CurrentHolding < MaxHolding)
         {
             _currentCooldown -= Time.fixedDeltaTime;
             if (_currentCooldown <= 0f)
             {
                 _currentCooldown = Cooldown;
-                _currentHolding++;
+                CurrentHolding++;
             }
         }
         else
@@ -121,7 +121,7 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, ICommanderCompon
 
     public bool CanFire()
     {
-        return _canPlace && _currentSimultanious.Count < MaxSimultanious && _currentHolding > 0;
+        return _canPlace && _currentSimultanious.Count < MaxSimultanious && CurrentHolding > 0;
     }
 
     private void DestroyUnengaged ()
@@ -143,7 +143,7 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, ICommanderCompon
 
     public bool TryFire(ITarget intendedTarget)
     {
-        if (DestroyUnengagedUnits && _currentSimultanious.Count == MaxSimultanious && _canPlace && _currentHolding > 0)
+        if (DestroyUnengagedUnits && _currentSimultanious.Count == MaxSimultanious && _canPlace && CurrentHolding > 0)
         {
             DestroyUnengaged();
         }
@@ -151,7 +151,7 @@ public class UnitFactoryWeapon : MonoBehaviour, ITeamComponent, ICommanderCompon
         if (CanFire())
         {
             GameObject go = Spawn();
-            _currentHolding--;
+            CurrentHolding--;
             _currentSimultanious.Add(go);
 
             OnFire?.Invoke(this);

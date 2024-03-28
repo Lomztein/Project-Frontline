@@ -2,8 +2,8 @@ LONG TERM PLANS
  - Main menu with a few different buttons.
 	- Skirmish mode which is basically the current mode.
 	- Challenge mode which pits you against certain challenges.
-	- Campaign mode which presents you with a procedurally generated campaign of skirmish missions.
-		- Campaign map could be a board of hexagonal pieces that forms like a country map.
+	- Conquest mode which presents you with a procedurally generated campaign of skirmish missions.
+		- Conquest map could be a board of hexagonal pieces that forms like a country map.
 		- Individual missions could have a variety of rewards.
 			- Unit unlocks, with only the most basic units available from the beginning.
 			- Enemies should also be limited to what sort of units they could produce.
@@ -16,6 +16,12 @@ LONG TERM PLANS
 			- Select, powerful units from other factions.
 		- Holding certain areas on the campaign could provide powerful bonuses in combat.
 		- Various victory conditions. Different endings depending on condition.
+		- Conquest mode specific resources.
+			- Supplies - General-purpose credits resource. Can be used for a variety of things.
+				- Can be converted to credits to gain a credits advantage at the start of a mission.
+				- Can be used to build bases and fortresses on nodes.
+			- Logistics - Used to make changes to nodes and such.
+			- Tech - Required to purchase conquest mode upgrades.
 	- AI Editor - Allows for the creation of custom AI weights.
 	- Unit Editor - Allows for the construction of unique units using pre-existing unit bodies and weapons.
 		- Would likely require an overhaul to standardize units and weapons.
@@ -25,6 +31,51 @@ LONG TERM PLANS
  - Support for loading AssetBundles or similar for new content such as units, factions, sceneries, whathaveyou
 	- Include support for loading new C# assemblies into memory so that custom code can be used.
 	- Could perhaps be considered to implement a content pack system similar to BFA2, though only through AssetBundles or Addressables.
+
+CONQUEST MODE PROGRESSION GENERATION
+ - For conquest mode to have some sort of progression where units are unlocked by missions, this progression needs to make somewhat sense.
+	- Lower tier units would naturally be unlocked before higher tier units, with some exceptions.
+		- Exceptions could be that at least half previous tier units should be unlocked, with chance of higher tier units increasing with more lower tier unlocks.
+		- Unlocks should perhaps be by unit type basis.
+	- Higher tier variants of units, ei Tank, Laser Tank, should be unlocked after the lower tier.
+ - Enemies should have limited unlocks as well, generally up to a unit of similar role.
+	- Enemies should not have access to units that cannot be countered without certain other units.
+		- Biggest example is perhaps that enemies should not have B2B before shields have been unlocked.
+		- Enemies should not have artillery units before players have point defense.
+ - Players can choose their own progression path, but there should at least be one path that respects these conditions.
+	- Progression path should preferrible avoid allowing the player to progress *too* quickly by taking a shortcut.
+
+CONQUEST MODE MAP GENERATION
+ - Conquest mode requires a map of different nodes, perhaps presented as a grid of hexagons.
+ - Nodes are connected with each other based on progression generation.
+ - A player should only get the benifits of owning a node if they are directly connected to it.
+ - Nodes can be captured in missions, usually involving some sort of skirmish match.
+	- Matches are against whoever currently owns the node. If the node is neutral, then its just captured
+	- Some nodes such as resource nodes are captured by securing the area, as in capturing all connected nodes.
+ - Each node contains something, and can be captured players / AI. Nodes could be something like:
+	- Empty - Empty node that simply must be captured. Capturing yields a unit unlock reward.
+	- Resource - Some sort of resource that gives the player that owns it a bonus.
+		- Supply Depot / Logistics Center / Tech Lab - Produces some amount of supply/logistics/tech per turn.
+		- Rich Ore - The owner starts missions with additional credits.
+		- City Center / Industrial Zone / Airport - Infantry/vehicles/aircraft are cheaper for the owner.
+		- Artillery Post - The owner can call in artillery strikes on nodes within range.
+		- Experimental Tech Plant - Grants some sort of upgrade to the player.
+	- Base - Pre-built base that is difficult to capture. Could guard some cool stuff or a chokepoint.
+	- Fortress - Same as base, but doesn't build anything, just kinda stands there with a lot of defenses.
+	- Force - Collection of units that must be defeated.
+ - Nodes and links between them could be implemented as a dependency tree based on the rules above.
+	- Some dependencies could always be required such as those that would otherwise break the game.
+	- Other dependencies could have a certain chance to not be required, creating links between parts of the tree.
+	- Some links could just be put in at random, allowing the player to jump between trees.
+	- The player could potentially build new links at the cost of Logistics.
+	- Start by implementing the dependency tree, then make the rest work after that.
+
+CONQUEST MODE TURNS / AI
+ - Conquest mode map movement should be turn based, with each turn usually resulting in a skirmish match.
+ - Should only the player be aggressive in conquest mode? Or should AI be allowed to push back?
+	- Since the map, nodes, and connection is kinda built for player progression, the playing field isn't really fair for AI.
+	- AI could still try to capture nodes every now and then, and the player has to defend them.
+	- AI could fight between themselves.
 
 FACTIONS
  - Modern Millitary (DONE): Vehicle-oriented faction drawing inspiration from modern millitary forces, with weapons being primarily guns, cannons, rockets, and lasers.
@@ -36,24 +87,39 @@ POTENTIAL FUTURE FACTIONS
  - Commando (CONCEPT): Faction composed of a single unit that is upgraded through the placement of various structures. Style and tech uncertain, might draw from all other factions.
  - Fantasy (CONCEPT): Melee-oriented faction composed of medieval-type high fantasy units such as knights, archers, wizards, dragons, fantastical devices, ect. Higher tier units draw from later time periods.
 
-HIGH PRIORITY
- - Begin work on Alien faction, with like 2 units of each type for a prototype, and 4-5 for minimum viable product.
- - Extend FrontlineCam
-	- Rotate towards / against frontline trend.
- - Add CinematicCam - Camera that switches between dramatic shots with extreme perspectives.
-	- Implement a few select base camera angles.
-		- Low angle looking towards the frontline.
-		- Basically use existing top-down cams.
+MUTATORS - For conquest mode to be varied, a decent amount of mutators should be available to spice up missions.
+ - Unit Variety - The cost of units is increased for every one you have of the same type, incentivising compositional variety.
+ - Direct Control Only - You only control individual units. When your currently controlled unit is killed, you automatically posess a new one.
+ - Fog of War - You cannot see the enemy base, it is covered in darkness. (Likely only feasible for singleplayer modes)
+ - No <Unit Category> Units of the given category is completely disabled for everyone.
+ - Rich Land - Miners produce sagnificantly more credits.
+ - Recycling Paradise - Killing units provide sagnficantly more credits.
+ - No Recycling - Killing units provide no credits at all, all income is from fortress / miners.
+ - Local Stash - Start out with a large sum of money, random between 10000 and 100000 in increments of 10000
+ - Starvation - Composite of Local Stash, No Recycling, and No Miners, there is no way to make money but you start with a ton of it.
+ - Beurocratic Hell - Units of higher tiers are locked until a condition is met or some time has passed.
+ - Database Malfunction - All but most basic units are disabled at first, but enabled over time.
+ - Scrambled Blueprints - Units of similar stats/roles are swapped between players at random.
+ - Unreliable Construction - Factory structures self-destruct after having produced a certain amount of units.
+ - Senior Engineers - All chance-based upgrades always apply. Affected structures limited to only one.
+ - Methamphetamines - The air is filled with aerolized meth, infantry units move twice as fast.
+ - Instagib - All units explosively die to a single hit.
 
 MID PRIORITY
  - Add forest scenery, with green grass, dense trees, and perhaps mountains in the distance.
  - Add mountain scenery, with white snow, stones, and on top of a mountain.
  - Add urban scenery, on a street with streetlights, cars, and highrise buildings.
  - Add farmland scenery, with a farmohouse, a field, and a general fall / october asthetic.
+ - Add Valley scenery, with stoney ground and cliffs on the sides.
+ - Add Bridge scenery, with units funneled onto a bridge.
+	- Requires more advanced unit movement and pathing for funneling to be feasible.
  - Add moon scenery, inside a big dome on a moon with craters and darkness.
 	- Could also be without the dome, but how does the people breathe? Attach a silly fishbowl helmet to infantry units lol
+		- Dome could be destructable, with the destruction killing / disabling all infantry.
 	- Should low gravity be a factor? How would that be implemented?
 	- Should aircraft dependant on atmosphere be available?
+ - Add a vector field to maps, that push units away from inaccessible terrain.
+ - Add a height map to maps, that units can sample to place themselves on the terrain
  - Jobify physical projectile movement and raycasting.
  - Jobify unit target finding if possible.
 
@@ -72,3 +138,17 @@ LOW PRIORITY
  - Replay system that allows recording of player actions to then be replayed as an AI.
  - Neutral units / structures in the middle of the map that does some cool stuff.
 	- Generate extra cash? Produce free units? Maybe just a big wall or turret hostile to everyone that needs to be destroyed.
+
+POTENTIAL NEUTRAL STRUCTURES
+ - Tesla Cannon - Capturable structure that is hostile to everyone at first.
+ - Wall - Destructable structure that blocks everything but aircraft from moving past. Effectively acts as an anti-rush mechanic.
+ - Vessal - Commander of any faction that, when eliminated, is instead captured and changes team to the capturing team.
+ - Silo - Capturable silo full of credits that is drained over time. Worthless once drained.
+ - Industrial Miner - Capturable structure that produces considerable credits to the entire owner team.
+ - Ion Storm - Non-capturable storm that damages units that pass through it.
+ - War Factory - Capturable structure that produces free units for the owner team.
+ - Tech Lab - Capturable structure that provides some upgrade for the owner team.
+ - Bunker - Capturable structure that is garrisonable by infantry forces.
+ - Fortress - Capturable structure that produces free defensive structures around it.
+ - EMP Cannon - Capturable structure that periodically fires an EMP at the enemy base, destroying shields.
+ - Nuclear Silo - Capturable structure that must be held for an amount of time, after which the match is won.

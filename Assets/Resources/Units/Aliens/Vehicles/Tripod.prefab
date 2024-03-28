@@ -790,7 +790,6 @@ GameObject:
   - component: {fileID: 6066306751476541902}
   - component: {fileID: 2296762959107730767}
   - component: {fileID: 4372959348116983641}
-  - component: {fileID: 6047461965466773498}
   - component: {fileID: 2792910358557355242}
   - component: {fileID: 5133316408798261753}
   m_Layer: 0
@@ -915,23 +914,6 @@ MonoBehaviour:
   Health: {fileID: 2988860379816925358}
   Anim: {fileID: 6066306751476541902}
   Sturdyness: 7.5
---- !u!114 &6047461965466773498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3308127715787929752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfe3846dde81a35458d9b66f44f48c0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Muzzle: {fileID: 0}
-  Weapon: {fileID: 0}
-  WeaponObject: {fileID: 0}
-  Animator: {fileID: 6066306751476541902}
-  RecoilStrength: 150
 --- !u!95 &2792910358557355242
 Animator:
   serializedVersion: 5
@@ -2095,6 +2077,7 @@ GameObject:
   - component: {fileID: 8671868782450789914}
   - component: {fileID: 5395642093535809798}
   - component: {fileID: 6320795129103944266}
+  - component: {fileID: 7508905041510961043}
   m_Layer: 0
   m_Name: Tripod
   m_TagString: MobileUnit
@@ -2207,7 +2190,8 @@ MonoBehaviour:
   AimTolerance: 45
   LeadTarget: 1
   TargetSearchFrequency: 2
-  Modifiers: []
+  Modifiers:
+  - {fileID: 7508905041510961043}
   HoldRange: 60
   HoldVariance: 5
   StayBehindFrontline: 0
@@ -2290,6 +2274,18 @@ MonoBehaviour:
   - {fileID: 2153895376840696683}
   - {fileID: 3154885603258605350}
   - {fileID: 4547830774941464028}
+--- !u!114 &7508905041510961043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5500957360500527071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a08a58e6b62d2b4db3e7a3ecf21df09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5997510989253126836
 GameObject:
   m_ObjectHideFlags: 0

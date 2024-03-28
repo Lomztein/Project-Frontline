@@ -14,6 +14,14 @@ public class CommanderInfoPanel : MonoBehaviour
 
     public void Start()
     {
+        StartCoroutine(DelayedInit());
+    }
+
+    private IEnumerator DelayedInit()
+    {
+        yield return null;
+        yield return null;
+
         var commanders = FindObjectsOfType<Commander>();
         foreach (var commander in commanders)
         {

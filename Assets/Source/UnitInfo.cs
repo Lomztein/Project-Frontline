@@ -7,7 +7,7 @@ public class UnitInfo
 {
     public enum Role
     {
-        Vanguard, Support, Defense, Production
+        Vanguard, Support, Defense, Production, Siege, Artillery, Repair
     }
 
     public enum Tier

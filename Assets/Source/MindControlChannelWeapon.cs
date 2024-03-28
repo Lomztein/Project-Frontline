@@ -112,9 +112,9 @@ public class MindControlChannelWeapon : ChannelWeapon
         if (Unit.Commander)
             Unit.Commander.AssignCommander(target.gameObject);
         CurrentControllingUnit = target;
-        if (target.TryGetComponent(out AttackerController cont) && Unit.Commander)
+        if (target.TryGetComponent(out AttackerController cont) && Unit.Commander && Unit.Commander.Target)
         {
-            cont.SetPath(Navigation.GetPath(Navigation.GetNearestNode(cont.transform.position), Navigation.GetNearestNode(Unit.Commander.Target.Fortress.position)).ToArray());
+            cont.SetPath(Navigation.GetPath(Navigation.GetNearestNode(cont.transform.position), Navigation.GetNearestNode(Unit.Commander.Target.transform.position)).ToArray());
         }
     }
 
@@ -124,9 +124,9 @@ public class MindControlChannelWeapon : ChannelWeapon
         if (target.InitialCommander)
             target.InitialCommander.AssignCommander(target.gameObject);
         CurrentControllingUnit = null;
-        if (target.TryGetComponent(out AttackerController cont) && target.InitialCommander)
+        if (target.TryGetComponent(out AttackerController cont) && target.InitialCommander && target.InitialCommander.Target)
         {
-            cont.SetPath(Navigation.GetPath(Navigation.GetNearestNode(cont.transform.position), Navigation.GetNearestNode(target.InitialCommander.Target.Fortress.position)).ToArray());
+            cont.SetPath(Navigation.GetPath(Navigation.GetNearestNode(cont.transform.position), Navigation.GetNearestNode(target.InitialCommander.Target.transform.position)).ToArray());
         }
     }
 

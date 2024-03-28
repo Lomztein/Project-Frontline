@@ -452,7 +452,7 @@ MonoBehaviour:
   UpgradeIdentifier: IFVRocketLauncher
   BaseChance: 0.33
   ChancePerStack: 0.33
-  Filter: {fileID: 11400000, guid: cd2817d92b46dca4995dc92266b6505f, type: 2}
+  Filter: {fileID: 11400000, guid: 0dff0d314d822874399ccb77fdf37053, type: 2}
   UpgradeDelay: 0
   Object: {fileID: 7525712616068689682, guid: 9f9d65533dcb70d4681146715953984e, type: 3}
   UnitTransformInfos:
@@ -467,7 +467,15 @@ MonoBehaviour:
   - UnitIdentifier: IFV.Grenade
     Path: Body/MainTurret/HeavyGrenadeLauncher/Horizontal/Vertical
     LocalPosition: {x: 0, y: 0.5736, z: 0}
-    LocalRotation: {x: 0, y: 0, z: 314.99997}
+    LocalRotation: {x: 0, y: 0, z: 0}
+  - UnitIdentifier: Scout.MG
+    Path: Body/Turret/MachineGunTurret/HorizontalAxis/VerticalAxis
+    LocalPosition: {x: 0, y: 0.386, z: 0}
+    LocalRotation: {x: 0, y: 0, z: 0}
+  - UnitIdentifier: Scout.Laser
+    Path: Body/Turret/LightLaserTurret/Horizontal/Vertical
+    LocalPosition: {x: 0, y: 0.248, z: 0}
+    LocalRotation: {x: 0, y: 0, z: 0}
   AddWeaponToAI: 1
 --- !u!114 &3949079436862124621
 MonoBehaviour:

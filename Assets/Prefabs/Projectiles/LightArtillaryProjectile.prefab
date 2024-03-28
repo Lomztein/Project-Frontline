@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 378259457130168591}
   - component: {fileID: 7866584654920479487}
   - component: {fileID: 4710538243649565020}
+  - component: {fileID: 7877618972688398120}
+  - component: {fileID: 5534104346955962394}
+  - component: {fileID: 3704757456596785711}
   m_Layer: 0
   m_Name: LightArtillaryProjectile
   m_TagString: Untagged
@@ -51,12 +54,13 @@ MonoBehaviour:
   Speed: 60
   Damage: 200
   Modifier: {fileID: 0}
-  DamageType: 1
   Velocity: {x: 0, y: 0, z: 0}
   Life: 5
   HitEffect: {fileID: 5391653686778751026}
   TrailEffect: {fileID: 0}
   EffectRecallTime: 3
+  UseSpherecast: 0
+  SpherecastProjectileSize: 0
   HitLayerMask:
     serializedVersion: 2
     m_Bits: 0
@@ -91,7 +95,6 @@ MonoBehaviour:
   ExplosionDamage: 25
   ExplosionDamageModifier: {fileID: 11400000, guid: c005ea8f0e75e674d92d114853d418cd,
     type: 2}
-  ExplosionDamageType: 2
 --- !u!96 &4710538243649565020
 TrailRenderer:
   serializedVersion: 3
@@ -205,6 +208,59 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 0
+--- !u!135 &7877618972688398120
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706538927366367410}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5534104346955962394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706538927366367410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 15
+  Modifier: {fileID: 11400000, guid: 48edd60faee51d246a8009cd399ac2f2, type: 2}
+  DestroyOnDeath: 0
+  DestroyDelay: 0
+  Debris: {fileID: 0}
+  DebrisLife: 0
+--- !u!114 &3704757456596785711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 706538927366367410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0177d1ec70d0929489e9dc9e8f40ce4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: {fileID: 5534104346955962394}
+  Projectile: {fileID: 3751266253062353309}
 --- !u!1001 &439668791746593738
 PrefabInstance:
   m_ObjectHideFlags: 0

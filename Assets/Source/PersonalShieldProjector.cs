@@ -32,11 +32,18 @@ public class PersonalShieldProjector : MonoBehaviour
         }
         transform.position = bounds.center + transform.parent.position;
 
-        Projector.ShieldSize = bounds.size.magnitude * ShieldSizeMultiplier;
-        float unitHealth = transform.parent.GetComponentInChildren<Health>().MaxHealth;
+        float shieldSize = bounds.size.magnitude * ShieldSizeMultiplier;
+        float shieldHealth = transform.parent.GetComponentInChildren<Health>().MaxHealth * ShieldHealthFactor;
+        if (transform.parent.TryGetComponent(out PersonalShieldProjectorStatsOverride sizeOverride)) {
+            if (sizeOverride.DoOverrideSize)
+                shieldSize = sizeOverride.OverrideSize;
+            if (sizeOverride.DoOverrideHealth)
+                shieldHealth = sizeOverride.OverrideHealth;
+        }
+        Projector.ShieldSize = shieldSize;
 
-        Projector.GetComponentInChildren<Health>().MaxHealth = unitHealth * ShieldHealthFactor;
-        Projector.HealRate = unitHealth / TotalHealTime;
+        Projector.GetComponentInChildren<Health>().MaxHealth = shieldHealth * ShieldHealthFactor;
+        Projector.HealRate = shieldHealth / TotalHealTime;
         Projector.ForceResetSize();
     }
 

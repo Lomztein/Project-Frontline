@@ -1,0 +1,253 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6093098337350478245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2634479059218096647}
+  - component: {fileID: 2306011290207378920}
+  - component: {fileID: 2372091024851006584}
+  - component: {fileID: 8628612630060680899}
+  - component: {fileID: 3640943429932082101}
+  - component: {fileID: 1181390458802996342}
+  m_Layer: 0
+  m_Name: AlienShrimpHabitat
+  m_TagString: StructureUnit
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2634479059218096647
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093098337350478245}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 807275509731994084}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2306011290207378920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093098337350478245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 955e3746abfe5e14cb56265a34877e72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Info:
+    Identifier: 
+    Name: Shrimp Habitat
+    ShortDescription: +20% chance for Protector Drones to be equipped with point
+      defense cannons.
+    Description: Carefully controlled habitat where cosmic shrimp are grown and taught
+      to home in on incoming projectiles through excessive psychic violence. Adds
+      +20% chance for protector drones to be equipped with point defense cannons.
+    Tags: []
+    Cost: 5000
+    Value: 500
+    UnitRole: 1
+    UnitTier: 2
+    UnitType: 4
+  Health: {fileID: 0}
+  _weapons: []
+  Parts: []
+  Weakpoints: []
+--- !u!114 &2372091024851006584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093098337350478245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8fb6387037efd4cafc44e2320655ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxHealth: 4000
+  Modifier: {fileID: 11400000, guid: 8c90c69493f457147a2f118eeba48a8a, type: 2}
+  DestroyOnDeath: 1
+  DestroyDelay: 0
+  Debris: {fileID: 477857750749949445, guid: e33a0d2ca448ab6459aab394166264a1, type: 3}
+  DebrisLife: 3
+--- !u!114 &8628612630060680899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093098337350478245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca6d5a2228878cc4e8e464bae199ad63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  UpgradeIdentifier: AddedPointDefenseCannon
+  BaseChance: 0.2
+  ChancePerStack: 0.2
+  Filter: {fileID: 11400000, guid: b0d98e9fd11412b4e9708f5ca6d79d50, type: 2}
+  UpgradeDelay: 0
+  Object: {fileID: 5719099902237409011, guid: 21a2c75d59b80fc40b58a47a5819dc5e, type: 3}
+  UnitTransformInfos:
+  - UnitIdentifier: 
+    Path: Body
+    LocalPosition: {x: 0, y: -0.25, z: -0.228}
+    LocalRotation: {x: 353.35297, y: 180, z: 180}
+  AddWeaponToAI: 0
+--- !u!65 &3640943429932082101
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093098337350478245}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10.72, y: 3.5684705, z: 10.72}
+  m_Center: {x: 0, y: 1.5991483, z: 0}
+--- !u!114 &1181390458802996342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6093098337350478245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fb778a28d42ac048bfc9715d94a5172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _renderersToApplyTo:
+  - {fileID: 3728696979741382848}
+  - {fileID: 8020108341813344464}
+--- !u!1001 &918379946094611983
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2634479059218096647}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3712
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3712
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3712
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+        type: 3}
+      propertyPath: m_Name
+      value: AlienShrimpHabitat
+      objectReference: {fileID: 0}
+    - target: {fileID: 7071182760956848314, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e62ee79f7d3d66f43a6a75a39f77989d, type: 2}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e2f3eb0265e400c4ba08c4ecc2498666, type: 3}
+--- !u!4 &807275509731994084 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+    type: 3}
+  m_PrefabInstance: {fileID: 918379946094611983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3728696979741382848 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4683669308469848369, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+    type: 3}
+  m_PrefabInstance: {fileID: 918379946094611983}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &8020108341813344464 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 7202271454713460447, guid: e2f3eb0265e400c4ba08c4ecc2498666,
+    type: 3}
+  m_PrefabInstance: {fileID: 918379946094611983}
+  m_PrefabAsset: {fileID: 0}
